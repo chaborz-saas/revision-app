@@ -188,6 +188,125 @@
             margin-left: 0.4rem;
             vertical-align: middle;
         }
+        /* === FEEDBACK SECTION === */
+        .feedback-section {
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+        }
+        .feedback-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+        .feedback-box h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .feedback-box p {
+            font-size: 0.85rem;
+            color: #606070;
+            margin-bottom: 1.5rem;
+        }
+        .feedback-form {
+            display: grid;
+            gap: 1rem;
+        }
+        .feedback-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .feedback-form label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #808090;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .feedback-form select,
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 0.7rem 1rem;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .feedback-form select option {
+            background: #1a1a2e;
+            color: #e0e0e0;
+        }
+        .feedback-form select:focus,
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            border-color: rgba(233, 69, 96, 0.5);
+        }
+        .feedback-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .stars-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .stars-row input[type="radio"] { display: none; }
+        .stars-row label {
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #333;
+            text-transform: none;
+            letter-spacing: 0;
+            margin: 0;
+            transition: color 0.15s;
+        }
+        .stars-row input[type="radio"]:checked ~ label,
+        .stars-row label:hover,
+        .stars-row label:hover ~ label {
+            color: #f59e0b;
+        }
+        .stars-row { flex-direction: row-reverse; }
+        .stars-row label:hover,
+        .stars-row label:hover ~ label { color: #f59e0b; }
+        .feedback-submit {
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            justify-self: start;
+        }
+        .feedback-submit:hover { opacity: 0.85; }
+        .feedback-thanks {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: #10b981;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        @media (max-width: 600px) {
+            .feedback-row { grid-template-columns: 1fr; }
+        }
         .footer {
             text-align: center;
             padding: 2rem;
@@ -497,6 +616,91 @@
     </div>
 
 </div>
+
+<!-- ===== FEEDBACK SECTION ===== -->
+<div class="feedback-section">
+    <div class="feedback-box">
+        <h3>💬 Suggérer une amélioration</h3>
+        <p>Tu veux ajouter du contenu, corriger une erreur ou améliorer une fiche ? Laisse un message — je lis tout.</p>
+
+        <form class="feedback-form" id="feedbackForm"
+              action="https://formspree.io/f/REMPLACE_PAR_TON_ID"
+              method="POST">
+
+            <div class="feedback-row">
+                <div>
+                    <label for="fb-matiere">Matière concernée</label>
+                    <select name="matiere" id="fb-matiere" required>
+                        <option value="" disabled selected>Choisir...</option>
+                        <option value="Analyse Quantitative">📊 Analyse Quantitative</option>
+                        <option value="RH – GRH pour Manager">👥 RH — GRH pour Manager</option>
+                        <option value="Droit">⚖️ Droit</option>
+                        <option value="Pilotage de la Performance">📈 Pilotage de la Performance</option>
+                        <option value="Général / Site">🌐 Général / Site</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fb-type">Type de retour</label>
+                    <select name="type" id="fb-type" required>
+                        <option value="" disabled selected>Choisir...</option>
+                        <option value="Erreur à corriger">❌ Erreur à corriger</option>
+                        <option value="Contenu manquant">➕ Contenu manquant</option>
+                        <option value="Amélioration fiche">✏️ Amélioration fiche/synthèse</option>
+                        <option value="Bug affichage">🐛 Bug / affichage</option>
+                        <option value="Autre">💡 Autre suggestion</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label>Note globale du site</label>
+                <div class="stars-row">
+                    <input type="radio" name="note" id="s5" value="5"><label for="s5" title="5">★</label>
+                    <input type="radio" name="note" id="s4" value="4"><label for="s4" title="4">★</label>
+                    <input type="radio" name="note" id="s3" value="3"><label for="s3" title="3">★</label>
+                    <input type="radio" name="note" id="s2" value="2"><label for="s2" title="2">★</label>
+                    <input type="radio" name="note" id="s1" value="1"><label for="s1" title="1">★</label>
+                </div>
+            </div>
+
+            <div>
+                <label for="fb-message">Ton message</label>
+                <textarea name="message" id="fb-message"
+                    placeholder="Ex : Dans la fiche Leack Prof, la correction de l'exo 2 manque de détails sur le V de Cramér..."
+                    required></textarea>
+            </div>
+
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_subject" value="[Révision App] Nouveau feedback">
+
+            <button type="submit" class="feedback-submit">Envoyer 🚀</button>
+        </form>
+        <div class="feedback-thanks" id="feedbackThanks">
+            ✅ Merci pour ton retour ! Je regarde ça dès que possible.
+        </div>
+    </div>
+</div>
+
+<script>
+const form = document.getElementById('feedbackForm');
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+        const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+            form.style.display = 'none';
+            document.getElementById('feedbackThanks').style.display = 'block';
+        }
+    } catch(err) {
+        alert('Erreur réseau — réessaie dans un moment.');
+    }
+});
+</script>
 
 <div class="footer">
     Machine de Guerre — 24 chapitres, 48 synthèses & fiches, 24 quiz interactifs

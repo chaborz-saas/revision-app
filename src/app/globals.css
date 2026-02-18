@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #09090b;
+  --bg-secondary: #18181b;
+  --bg-card: #1c1c21;
+  --border: #27272a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a transparent;
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes flip {
+  from { transform: rotateY(0); }
+  to { transform: rotateY(180deg); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* =============================================
+   FICHE DE REVISION - Markdown Styling
+   ============================================= */
+
+/* Title */
+.prose-revision h1 {
+  @apply text-2xl font-bold text-zinc-100 mb-6 pb-3;
+  font-family: 'Space Grotesk', sans-serif;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+/* Section headers with emoji icons */
+.prose-revision h2 {
+  @apply text-lg font-semibold text-zinc-100 mt-8 mb-4 pb-2;
+  font-family: 'Space Grotesk', sans-serif;
+  border-bottom: 1px solid rgba(39, 39, 42, 0.8);
+}
+
+/* Sub-sections */
+.prose-revision h3 {
+  @apply text-base font-medium text-zinc-200 mt-5 mb-2;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Body text */
+.prose-revision p {
+  @apply text-zinc-300 leading-relaxed mb-3 text-sm;
+}
+
+/* Lists */
+.prose-revision ul, .prose-revision ol {
+  @apply text-zinc-300 ml-4 mb-4 space-y-2;
+}
+
+.prose-revision li {
+  @apply text-zinc-300 text-sm leading-relaxed;
+}
+
+.prose-revision ul li {
+  @apply list-disc;
+  list-style-type: '▸ ';
+  padding-left: 0.25rem;
+}
+
+.prose-revision ol li {
+  @apply list-decimal;
+}
+
+/* KEY TERMS - highlighted in cyan */
+.prose-revision strong {
+  @apply text-cyan-400 font-semibold;
+  background: rgba(6, 182, 212, 0.08);
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.25rem;
+}
+
+/* Code blocks (formulas, values) */
+.prose-revision code {
+  @apply text-amber-300 px-2 py-0.5 rounded text-sm font-mono;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+/* Blockquotes - callout boxes */
+.prose-revision blockquote {
+  @apply pl-4 my-4 text-sm leading-relaxed rounded-r-lg py-3 pr-4;
+  border-left: 3px solid rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.04);
+  color: #d4d4d8;
+}
+
+.prose-revision blockquote strong {
+  @apply text-cyan-300;
+  background: rgba(6, 182, 212, 0.12);
+}
+
+/* Horizontal rules - section separators */
+.prose-revision hr {
+  @apply my-6 border-none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(6, 182, 212, 0.3), transparent);
+}
+
+/* Tables (for formulas) */
+.prose-revision table {
+  @apply w-full mb-4 text-sm;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.prose-revision table td,
+.prose-revision table th {
+  @apply px-3 py-2 text-zinc-300;
+  border-bottom: 1px solid rgba(39, 39, 42, 0.5);
+}
+
+.prose-revision table tr:hover {
+  background: rgba(6, 182, 212, 0.03);
+}
+
+/* Links */
+.prose-revision a {
+  @apply text-cyan-400 hover:text-cyan-300 underline underline-offset-2;
+}
+
+/* Images */
+.prose-revision img {
+  @apply rounded-lg my-4 max-w-full;
+}

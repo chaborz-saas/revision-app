@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synthèse — Leack Partiel : Analyse des Données Quantitatives</title>
+    <title>Synthèse — Analyse des Données Quantitatives</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -80,42 +80,41 @@
 </head>
 <body>
 
-<h1>Leack Partiel — Analyse des Données Quantitatives</h1>
+<h1>Synthèse complète du cours — Analyse des données quantitatives</h1>
 
-<p class="intro">Synthèse complète regroupant le résumé du cours (37 slides) et la correction du partiel 2025/2026 Track Anglo. Ce document couvre l'ensemble des notions examinables : types de variables, analyses descriptives, tests bivariés (Khi-deux, Pearson, t-test, ANOVA) et régression linéaire multiple.</p>
+<p class="intro">Ce document couvre l'ensemble des notions examinables : types de variables, statistiques descriptives, tests bivariés et régression linéaire multiple. Il constitue une synthèse de cours à visée pédagogique — compréhension des concepts, maîtrise des formules et logique de décision statistique.</p>
 
 <nav>
     <a href="#variables">1. Types de variables</a>
     <a href="#tendance">2. Tendance centrale</a>
     <a href="#dispersion">3. Dispersion</a>
     <a href="#visualisation">4. Visualisation</a>
-    <a href="#bivarie">5. Analyses bivariées</a>
+    <a href="#bivarie">5. Choisir le bon test</a>
     <a href="#khideux">6. Khi-deux</a>
     <a href="#pearson">7. Corrélation de Pearson</a>
-    <a href="#ttest">8. Test t</a>
+    <a href="#ttest">8. Test t de Student</a>
     <a href="#anova">9. ANOVA</a>
     <a href="#regression">10. Régression multiple</a>
-    <a href="#partiel">11. Correction du partiel</a>
 </nav>
 
 <!-- ============================================================ -->
 <h2 id="variables">1. Les quatre grandes familles de variables</h2>
 
 <div class="definition">
-    <strong>Variable qualitative nominale :</strong> Catégories sans ordre naturel. Exemples : Genre (homme/femme), secteur d'activité, région géographique.
+    <strong>Variable qualitative nominale :</strong> Catégories sans ordre naturel. La comparaison entre catégories n'a pas de sens en termes de rang. Exemples : Genre (homme/femme), secteur d'activité, région géographique, type de contrat.
 </div>
 <div class="definition">
-    <strong>Variable qualitative ordinale :</strong> Catégories avec un ordre logique mais sans intervalle mesurable. Exemple : Niveau de satisfaction (faible – moyen – fort).
+    <strong>Variable qualitative ordinale :</strong> Catégories avec un ordre logique, mais dont les intervalles entre modalités ne sont pas mesurables ni comparables. La distance entre "faible" et "moyen" n'est pas nécessairement la même qu'entre "moyen" et "fort". Exemples : Niveau de satisfaction (faible – moyen – fort), niveau d'études (bac – bac+2 – bac+5).
 </div>
 <div class="definition">
-    <strong>Variable quantitative discrète :</strong> Valeurs numériques entières, dénombrables. Exemple : Nombre de commandes (0, 1, 2, 3…).
+    <strong>Variable quantitative discrète :</strong> Valeurs numériques entières, dénombrables — on ne peut pas prendre de valeur intermédiaire. Exemples : Nombre de commandes par mois (0, 1, 2, 3…), nombre d'enfants, nombre de visites sur un site web.
 </div>
 <div class="definition">
-    <strong>Variable quantitative continue :</strong> Valeurs numériques réelles pouvant prendre n'importe quelle valeur dans un intervalle. Exemples : Salaire (€), montant d'achat (€), âge (années).
+    <strong>Variable quantitative continue :</strong> Valeurs numériques réelles pouvant prendre n'importe quelle valeur dans un intervalle, y compris des décimales. Exemples : Salaire (€), chiffre d'affaires (€), âge (années), montant d'achat (€), durée d'utilisation (heures).
 </div>
 
 <div class="important">
-    <strong>Point critique :</strong> Le type de variable conditionne entièrement le choix du test statistique. Identifier correctement les variables avant tout calcul est une étape fondamentale.
+    <strong>Point critique :</strong> Le type de variable conditionne entièrement le choix du test statistique. Identifier correctement la nature de chaque variable avant tout calcul est une étape fondamentale et incontournable.
 </div>
 
 <table>
@@ -128,25 +127,25 @@
     <tr>
         <td>Qualitative nominale</td>
         <td>Catégories sans ordre</td>
-        <td>Genre, région, secteur</td>
+        <td>Genre, région, secteur, type de contrat</td>
         <td>Khi-deux, V de Cramér</td>
     </tr>
     <tr>
         <td>Qualitative ordinale</td>
-        <td>Catégories ordonnées</td>
-        <td>Satisfaction (faible/moyen/fort)</td>
+        <td>Catégories ordonnées, intervalles non mesurables</td>
+        <td>Satisfaction (faible/moyen/fort), niveau d'études</td>
         <td>Khi-deux, Spearman</td>
     </tr>
     <tr>
         <td>Quantitative discrète</td>
         <td>Entiers dénombrables</td>
-        <td>Nombre de commandes</td>
+        <td>Nombre de commandes, nombre de visites</td>
         <td>Pearson, t-test, ANOVA</td>
     </tr>
     <tr>
         <td>Quantitative continue</td>
-        <td>Valeurs réelles</td>
-        <td>Salaire, CA, âge</td>
+        <td>Valeurs réelles avec décimales possibles</td>
+        <td>Salaire, CA, âge, montant d'achat</td>
         <td>Pearson, t-test, ANOVA, Régression</td>
     </tr>
 </table>
@@ -155,68 +154,107 @@
 <h2 id="tendance">2. Les indicateurs de tendance centrale</h2>
 
 <div class="definition">
-    <strong>Moyenne :</strong> Somme de toutes les valeurs divisée par le nombre d'observations. Représente le "centre de gravité" de la distribution.
+    <strong>Moyenne :</strong> Somme de toutes les valeurs divisée par le nombre d'observations. Représente le "centre de gravité" de la distribution. Très intuitive, mais très sensible aux valeurs extrêmes (outliers).
 </div>
 <div class="formula">
     Moyenne (x̄) = (Σ xᵢ) / n
-    <br>Exemple : Salaire moyen = 2 450 €
+    <br><br>Lecture : on additionne toutes les valeurs, on divise par le nombre d'observations.
+</div>
+
+<div class="example">
+    <strong>Exemple :</strong> Les salaires de 5 employés sont 1 800 €, 2 000 €, 2 200 €, 2 400 € et 8 000 € (directeur).<br>
+    Moyenne = (1 800 + 2 000 + 2 200 + 2 400 + 8 000) / 5 = 3 280 €.<br>
+    Cette moyenne est peu représentative des 4 premiers salaires — elle est tirée vers le haut par la valeur extrême.
 </div>
 
 <div class="definition">
-    <strong>Médiane :</strong> Valeur qui divise la distribution en deux moitiés égales : 50 % des observations sont en dessous, 50 % au-dessus. Moins sensible aux valeurs extrêmes que la moyenne.
+    <strong>Médiane :</strong> Valeur qui divise la distribution en deux moitiés égales : 50 % des observations sont en dessous, 50 % au-dessus. Pour la calculer, on classe les données par ordre croissant et on prend la valeur centrale.
 </div>
 <div class="formula">
-    Médiane = valeur centrale (ou moyenne des deux valeurs centrales si n est pair)
-    <br>Exemple : Médiane du CA = 120 000 €
+    Médiane = valeur en position (n+1)/2 après tri croissant
+    <br>(Si n est pair : moyenne des deux valeurs centrales)
+</div>
+
+<div class="example">
+    <strong>Exemple (même série) :</strong> Tri croissant → 1 800 / 2 000 / <strong>2 200</strong> / 2 400 / 8 000.<br>
+    Médiane = 2 200 €. Elle est bien plus représentative que la moyenne (3 280 €) dans ce cas.
 </div>
 
 <div class="definition">
-    <strong>Mode :</strong> Valeur (ou modalité) qui apparaît le plus fréquemment dans la distribution.
-    <br>Exemple : Catégorie la plus vendue = café.
+    <strong>Mode :</strong> Valeur (ou modalité) qui apparaît le plus fréquemment dans la distribution. Seul indicateur applicable aux variables qualitatives.
+</div>
+
+<div class="example">
+    <strong>Exemple :</strong> Dans une boutique, les ventes mensuelles par catégorie sont : Café (420), Thé (310), Jus (210), Soda (180).<br>
+    Le mode est "Café" — c'est la catégorie la plus fréquente.
 </div>
 
 <div class="important">
-    <strong>Règle d'or :</strong> Si la distribution est <em>parfaitement symétrique</em>, alors Moyenne = Médiane = Mode.<br>
-    <strong>En cas de valeurs extrêmes (outliers) :</strong> la médiane est plus robuste et représentative que la moyenne, qui est tirée vers les valeurs aberrantes.
+    <strong>Règle d'or — Relation entre les trois indicateurs :</strong><br>
+    Si la distribution est <em>parfaitement symétrique</em>, alors Moyenne = Médiane = Mode.<br><br>
+    <strong>En présence de valeurs extrêmes (outliers) :</strong> la moyenne est "tirée" vers les valeurs aberrantes, tandis que la médiane reste stable. La médiane est donc plus robuste et représentative lorsque la distribution est asymétrique ou contient des outliers.<br><br>
+    <strong>Règle pratique :</strong> Toujours comparer moyenne et médiane. Si elles divergent fortement, la distribution est asymétrique et la médiane est préférable pour décrire le "centre".
 </div>
 
 <!-- ============================================================ -->
 <h2 id="dispersion">3. Les indicateurs de dispersion</h2>
 
 <div class="definition">
-    <strong>Étendue :</strong> Différence entre la valeur maximale et la valeur minimale. Mesure simple mais très sensible aux extrêmes.
+    <strong>Étendue :</strong> Différence entre la valeur maximale et la valeur minimale de la distribution. Mesure la plage totale des données. Simple à calculer, mais très sensible aux valeurs extrêmes — un seul outlier suffit à gonfler l'étendue.
 </div>
 <div class="formula">
     Étendue = Max − Min
-    <br>Exemple : Âge des clients → 65 − 18 = 47 ans
+</div>
+
+<div class="example">
+    <strong>Exemple :</strong> Ancienneté des salariés d'une entreprise : valeur min = 0,5 an, valeur max = 32 ans.<br>
+    Étendue = 32 − 0,5 = 31,5 ans. La dispersion est très forte.
 </div>
 
 <div class="definition">
-    <strong>Variance (σ²) :</strong> Moyenne des carrés des écarts à la moyenne. Quantifie l'écart moyen au carré.
+    <strong>Variance (σ²) :</strong> Moyenne des carrés des écarts à la moyenne. Quantifie à quel point les observations s'éloignent en moyenne du centre. Le fait de mettre au carré amplifie les grands écarts et élimine les signes négatifs.
 </div>
 <div class="formula">
     σ² = (Σ (xᵢ − x̄)²) / n
-    <br>Exemple : σ² = 4 900
+    <br><br>Remarque : la variance est exprimée dans l'unité au carré (ex : €²), ce qui la rend difficile à interpréter directement.
 </div>
 
 <div class="definition">
-    <strong>Écart-type (σ) :</strong> Racine carrée de la variance. Exprimé dans la même unité que la variable, il mesure la dispersion moyenne autour de la moyenne.
+    <strong>Écart-type (σ) :</strong> Racine carrée de la variance. Ramène la dispersion dans l'unité originale de la variable, ce qui permet une interprétation directe. C'est la mesure de dispersion la plus utilisée en pratique.
 </div>
 <div class="formula">
     σ = √σ²
-    <br>Exemple : σ = 70 (dans l'unité de la variable)
+    <br><br>Lecture : en moyenne, les observations s'écartent de σ unités par rapport à la moyenne.
+</div>
+
+<div class="example">
+    <strong>Exemple :</strong> Salaires dans deux équipes commerciales — Équipe A : x̄ = 3 500 €, σ = 200 €. Équipe B : x̄ = 3 500 €, σ = 1 200 €.<br>
+    Les deux équipes ont la même moyenne, mais l'équipe B est beaucoup plus hétérogène. L'écart-type révèle des profils très différents au sein de l'équipe B.
 </div>
 
 <div class="definition">
-    <strong>Coefficient de variation (CV) :</strong> Dispersion relative, exprimée en pourcentage. Permet de comparer la dispersion entre des variables d'unités différentes.
+    <strong>Coefficient de variation (CV) :</strong> Dispersion relative, exprimée en pourcentage. Il rapporte l'écart-type à la moyenne, ce qui permet de comparer la dispersion entre des variables d'unités différentes ou de magnitudes très différentes.
 </div>
 <div class="formula">
     CV = (σ / x̄) × 100
-    <br>Exemple : CV = 15 % — dispersion modérée par rapport à la moyenne
+    <br><br>Interprétation indicative : CV &lt; 15 % → faible dispersion relative ; CV entre 15–30 % → dispersion modérée ; CV &gt; 30 % → forte dispersion relative.
+</div>
+
+<div class="example">
+    <strong>Exemple :</strong> Variable A : salaire mensuel, x̄ = 3 000 €, σ = 600 €, CV = 20 %.<br>
+    Variable B : nombre de commandes, x̄ = 5, σ = 1, CV = 20 %.<br>
+    Les deux variables ont la même dispersion relative de 20 %, malgré des unités et des magnitudes très différentes. Le CV permet cette comparaison.
+</div>
+
+<div class="definition">
+    <strong>Écart interquartile (IQR) :</strong> Différence entre le 3e quartile (Q3) et le 1er quartile (Q1). Représente la plage des 50 % centraux de la distribution. Très robuste aux outliers car il ne tient pas compte des valeurs extrêmes.
+</div>
+<div class="formula">
+    IQR = Q3 − Q1
 </div>
 
 <div class="important">
-    <strong>Interprétation managériale :</strong> Une forte dispersion signale une hétérogénéité au sein du groupe. C'est un signal d'exploration : pourquoi certains individus se comportent-ils très différemment de la moyenne ?
+    <strong>Interprétation managériale de la dispersion :</strong> Une forte dispersion (grand σ, grand CV) signale une hétérogénéité au sein du groupe analysé. C'est un signal d'exploration : pourquoi certains individus se comportent-ils très différemment de la moyenne ? Existe-t-il des sous-groupes distincts ? La dispersion est aussi une information stratégique : un marché très hétérogène appelle une segmentation.
 </div>
 
 <!-- ============================================================ -->
@@ -232,133 +270,184 @@
     <tr>
         <td>Histogramme (densité)</td>
         <td>Quantitative continue</td>
-        <td>Observer la forme de la distribution</td>
+        <td>Observer la forme de la distribution, détecter l'asymétrie et les outliers</td>
     </tr>
     <tr>
         <td>Diagramme en barres</td>
         <td>Qualitative (nominale ou ordinale)</td>
-        <td>Comparer des fréquences par catégorie</td>
+        <td>Comparer des fréquences ou des effectifs par catégorie</td>
     </tr>
     <tr>
         <td>Boxplot (boîte à moustaches)</td>
         <td>Quantitative continue</td>
-        <td>Comparer des groupes, détecter les outliers</td>
+        <td>Comparer des groupes, visualiser la médiane, détecter les outliers</td>
     </tr>
 </table>
 
-<h3>Interpréter un histogramme</h3>
+<h3>Interpréter un histogramme — les trois formes fondamentales</h3>
 <div class="definition">
-    <strong>Distribution symétrique (en cloche) :</strong> Les données sont équilibrées de part et d'autre de la moyenne. La moyenne, la médiane et le mode coïncident. Forme idéale pour la plupart des tests paramétriques.
+    <strong>Distribution symétrique (en cloche) :</strong> Les données sont équilibrées de part et d'autre de la moyenne. La moyenne, la médiane et le mode coïncident. C'est la forme de la loi normale. La plupart des tests paramétriques supposent cette forme.
 </div>
 <div class="definition">
-    <strong>Asymétrie à droite (positive) :</strong> La queue s'étend vers la droite. La majorité des valeurs est concentrée à gauche (valeurs faibles), quelques valeurs très élevées tirent la distribution. La moyenne > médiane.
+    <strong>Asymétrie à droite (positive, "queue à droite") :</strong> La majorité des valeurs est concentrée à gauche (valeurs faibles), quelques valeurs très élevées "tirent" la distribution vers la droite. La moyenne est supérieure à la médiane. Exemple typique : revenus dans une population (quelques très hauts revenus tirent la moyenne vers le haut).
 </div>
 <div class="definition">
-    <strong>Asymétrie à gauche (négative) :</strong> La queue s'étend vers la gauche. La majorité des valeurs est concentrée à droite (valeurs élevées), quelques valeurs très faibles tirent la distribution. La moyenne < médiane.
+    <strong>Asymétrie à gauche (négative, "queue à gauche") :</strong> La majorité des valeurs est concentrée à droite (valeurs élevées), quelques valeurs très faibles tirent la distribution vers la gauche. La moyenne est inférieure à la médiane. Exemple typique : scores à un examen facile (la plupart des notes sont hautes, quelques très mauvaises notes tirent la moyenne vers le bas).
 </div>
 
-<h3>Le Boxplot (boîte à moustaches)</h3>
+<div class="important">
+    <strong>Règle de lecture asymétrie :</strong>
+    <ul>
+        <li>Queue à droite → asymétrie <strong>positive</strong> → Moyenne <strong>&gt;</strong> Médiane</li>
+        <li>Queue à gauche → asymétrie <strong>négative</strong> → Moyenne <strong>&lt;</strong> Médiane</li>
+        <li>Distribution symétrique → Moyenne <strong>=</strong> Médiane</li>
+    </ul>
+    Astuce mnémotechnique : la queue indique la direction, et la moyenne est toujours "attirée" dans la direction de la queue.
+</div>
+
+<h3>Le Boxplot (boîte à moustaches) — composition et lecture</h3>
 <div class="definition">
     <strong>Composition du boxplot :</strong>
     <ul>
-        <li><strong>Q1</strong> : 1er quartile (25e percentile) — 25 % des données sont en dessous</li>
-        <li><strong>Médiane</strong> : 2e quartile (50e percentile) — trait central de la boîte</li>
-        <li><strong>Q3</strong> : 3e quartile (75e percentile) — 75 % des données sont en dessous</li>
-        <li><strong>IQR</strong> (Écart interquartile) = Q3 − Q1 — longueur de la boîte</li>
-        <li><strong>Moustaches</strong> : s'étendent jusqu'à Q1 − 1,5 × IQR (bas) et Q3 + 1,5 × IQR (haut)</li>
-        <li><strong>Valeurs aberrantes (outliers)</strong> : points au-delà des moustaches</li>
+        <li><strong>Q1</strong> : 1er quartile (25e percentile) — 25 % des données sont en dessous, 75 % au-dessus</li>
+        <li><strong>Médiane (Q2)</strong> : 2e quartile (50e percentile) — trait central de la boîte ; 50 % des données de chaque côté</li>
+        <li><strong>Q3</strong> : 3e quartile (75e percentile) — 75 % des données sont en dessous, 25 % au-dessus</li>
+        <li><strong>IQR</strong> (Écart interquartile) = Q3 − Q1 — longueur de la boîte, représente les 50 % centraux</li>
+        <li><strong>Moustache inférieure</strong> : s'étend jusqu'à la valeur minimale dans la plage [Q1 − 1,5 × IQR ; Q1]</li>
+        <li><strong>Moustache supérieure</strong> : s'étend jusqu'à la valeur maximale dans la plage [Q3 ; Q3 + 1,5 × IQR]</li>
+        <li><strong>Valeurs aberrantes (outliers)</strong> : points au-delà des bornes des moustaches, représentés par des points individuels</li>
     </ul>
 </div>
 <div class="formula">
     IQR = Q3 − Q1
     <br>Borne inférieure moustache = Q1 − 1,5 × IQR
     <br>Borne supérieure moustache = Q3 + 1,5 × IQR
+    <br><br>Tout point en dehors de ces bornes est un outlier.
 </div>
+
 <div class="important">
-    <strong>Lecture de la symétrie sur un boxplot :</strong> Si la médiane est centrée dans la boîte → distribution symétrique. Si la médiane est proche de Q1 → asymétrie à droite. Si la médiane est proche de Q3 → asymétrie à gauche.
+    <strong>Lecture de la symétrie sur un boxplot :</strong>
+    <ul>
+        <li>Médiane <strong>centrée</strong> dans la boîte + moustaches égales → distribution <strong>symétrique</strong></li>
+        <li>Médiane <strong>proche de Q1</strong> (boîte asymétrique vers le bas) + moustache supérieure plus longue → <strong>asymétrie à droite</strong></li>
+        <li>Médiane <strong>proche de Q3</strong> (boîte asymétrique vers le haut) + moustache inférieure plus longue → <strong>asymétrie à gauche</strong></li>
+    </ul>
+    Le boxplot permet aussi la comparaison visuelle entre plusieurs groupes : on pose un boxplot par groupe côte à côte pour visualiser si leurs médianes et dispersions diffèrent.
+</div>
+
+<div class="example">
+    <strong>Exemple de lecture :</strong> On compare le montant d'achat mensuel (€) pour trois segments clients (Bronze, Silver, Gold).<br>
+    Le boxplot du segment Gold est plus haut (médiane plus élevée), plus large (IQR plus grand) et présente des outliers vers le haut. Les segments Bronze et Silver ont des boîtes plus compactes. On voit immédiatement que le segment Gold est à la fois plus dépensier et plus hétérogène.
 </div>
 
 <!-- ============================================================ -->
 <h2 id="bivarie">5. Choisir le bon test selon la nature des variables</h2>
 
 <div class="important">
-    <strong>Tableau de décision fondamental :</strong> La combinaison des types de variables détermine le test à utiliser.
+    <strong>Tableau de décision fondamental :</strong> La combinaison des types de variables (qualitative vs quantitative) et du nombre de modalités (2 groupes vs 3+) détermine entièrement le test statistique à utiliser. Ce tableau est à maîtriser parfaitement.
 </div>
 
 <table>
     <tr>
-        <th>Variable 1</th>
-        <th>Variable 2</th>
-        <th>Relation étudiée</th>
+        <th>Variable 1 (explicative)</th>
+        <th>Variable 2 (à expliquer ou en relation)</th>
+        <th>Question posée</th>
         <th>Test approprié</th>
     </tr>
     <tr>
         <td>Qualitative</td>
         <td>Qualitative</td>
-        <td>Association</td>
-        <td>Khi-deux (χ²), V de Cramér</td>
+        <td>Existe-t-il une association entre les deux variables ?</td>
+        <td>Khi-deux (χ²) + V de Cramér (force)</td>
     </tr>
     <tr>
         <td>Quantitative</td>
         <td>Quantitative</td>
-        <td>Corrélation</td>
-        <td>Pearson (r)</td>
+        <td>Existe-t-il une relation linéaire entre les deux variables ?</td>
+        <td>Corrélation de Pearson (r)</td>
     </tr>
     <tr>
         <td>Qualitative (2 modalités)</td>
         <td>Quantitative</td>
-        <td>Comparaison de moyennes</td>
+        <td>Les deux groupes ont-ils des moyennes différentes ?</td>
         <td>Test t de Student</td>
     </tr>
     <tr>
-        <td>Qualitative (3+ modalités)</td>
+        <td>Qualitative (3 modalités ou plus)</td>
         <td>Quantitative</td>
-        <td>Comparaison de moyennes</td>
+        <td>Au moins un groupe a-t-il une moyenne différente des autres ?</td>
         <td>ANOVA (+ test post hoc Tukey)</td>
     </tr>
     <tr>
-        <td>Mixte (qual. + quant.)</td>
-        <td>Quantitative (VD)</td>
-        <td>Prédiction</td>
+        <td>Mixte (variables qual. et quant.)</td>
+        <td>Quantitative continue (VD)</td>
+        <td>Quels facteurs prédisent la variable dépendante ?</td>
         <td>Régression linéaire multiple</td>
     </tr>
 </table>
+
+<div class="example">
+    <strong>Exemples de décision :</strong>
+    <ul>
+        <li>Genre (H/F) × Secteur d'activité → deux qualitatives → <strong>Khi-deux</strong></li>
+        <li>Salaire (€) × Ancienneté (années) → deux quantitatives → <strong>Pearson</strong></li>
+        <li>Statut (temps plein / temps partiel) × Salaire (€) → quali 2 modalités × quanti → <strong>Test t</strong></li>
+        <li>Région (Nord/Centre/Sud/Ouest) × CA (€) → quali 4 modalités × quanti → <strong>ANOVA</strong></li>
+        <li>Prédire montant_achat à partir de visites, satisfaction, genre → <strong>Régression multiple</strong></li>
+    </ul>
+</div>
 
 <!-- ============================================================ -->
 <h2 id="khideux">6. Test du Khi-deux — Association entre deux variables qualitatives</h2>
 
 <div class="definition">
-    <strong>Objectif :</strong> Tester s'il existe une association statistique entre deux variables qualitatives (nominales ou ordinales). Compare les fréquences observées aux fréquences attendues sous l'hypothèse d'indépendance.
+    <strong>Objectif :</strong> Tester s'il existe une association statistique entre deux variables qualitatives (nominales ou ordinales). Le principe : comparer les fréquences <em>observées</em> dans le tableau croisé aux fréquences <em>attendues</em> si les deux variables étaient indépendantes. Si l'écart est trop grand pour être dû au hasard, on conclut à une association.
 </div>
 
 <div class="formula">
     H₀ : Il n'y a pas d'association entre les deux variables (indépendance)
     <br>H₁ : Il existe une association entre les deux variables
     <br><br>Règle de décision : Si p ≤ 0,05 → rejeter H₀ → association statistiquement significative
+    <br><br>Statistique : χ² = Σ [(Observé − Attendu)² / Attendu]
 </div>
 
 <div class="definition">
-    <strong>V de Cramér :</strong> Mesure la force (intensité) de l'association, indépendamment de la taille de l'échantillon. Compris entre 0 (aucune association) et 1 (association parfaite).
+    <strong>V de Cramér :</strong> Mesure la <em>force</em> (intensité) de l'association entre les deux variables qualitatives, indépendamment de la taille de l'échantillon et du nombre de modalités. Compris entre 0 (aucune association) et 1 (association parfaite).
+    <ul>
+        <li>V ≈ 0,10 : association faible</li>
+        <li>V ≈ 0,30 : association modérée</li>
+        <li>V ≥ 0,50 : association forte</li>
+    </ul>
+</div>
+
+<div class="important">
+    <strong>Distinction fondamentale :</strong>
+    <ul>
+        <li><strong>Khi-deux (p-value)</strong> → répond à : "L'association est-elle statistiquement significative ?" (oui/non)</li>
+        <li><strong>V de Cramér</strong> → répond à : "Si association il y a, est-elle forte ou faible ?" (intensité)</li>
+    </ul>
+    Un khi-deux significatif avec un grand échantillon peut correspondre à un V de Cramér très faible : l'association existe mais elle est négligeable en pratique.
 </div>
 
 <div class="example">
-    <strong>Exemple du cours :</strong> χ² = 47,6, ddl = 14, p &lt; 0,001<br>
-    Interprétation : p &lt; 0,05 donc H₀ rejetée. L'association entre les deux variables qualitatives est statistiquement significative.
+    <strong>Exemple générique :</strong> On étudie l'association entre le niveau d'études (Bac / Bac+2 / Bac+5) et le type de contrat obtenu (CDD / CDI / Freelance) pour 800 individus.<br>
+    Résultat : χ² = 52,4, ddl = 4, p &lt; 0,001, V de Cramér = 0,18.<br>
+    Interprétation : L'association est statistiquement significative (p &lt; 0,05), mais l'intensité est faible (V = 0,18). Le niveau d'études influence légèrement le type de contrat, mais d'autres facteurs jouent un rôle plus important.
 </div>
 
 <!-- ============================================================ -->
 <h2 id="pearson">7. Corrélation de Pearson — Relation entre deux variables quantitatives</h2>
 
 <div class="definition">
-    <strong>Coefficient r de Pearson :</strong> Mesure la force et la direction d'une relation linéaire entre deux variables quantitatives continues. Compris entre −1 et +1.
+    <strong>Coefficient r de Pearson :</strong> Mesure la force et la direction d'une relation <em>linéaire</em> entre deux variables quantitatives continues. Compris entre −1 (relation linéaire négative parfaite) et +1 (relation linéaire positive parfaite). La valeur 0 indique l'absence de relation linéaire.
 </div>
 
 <div class="formula">
-    H₀ : r = 0 (pas de corrélation linéaire)
-    <br>H₁ : r ≠ 0 (il existe une corrélation)
+    H₀ : r = 0 (pas de corrélation linéaire dans la population)
+    <br>H₁ : r ≠ 0 (il existe une corrélation linéaire)
     <br><br>Règle de décision : Si p ≤ 0,05 → corrélation statistiquement significative
-    <br><br>Direction : r > 0 → corrélation positive (les deux variables augmentent ensemble)
-    <br>           r &lt; 0 → corrélation négative (une augmente, l'autre diminue)
+    <br><br>Direction : r &gt; 0 → corrélation positive (les deux variables augmentent ensemble)
+    <br>           r &lt; 0 → corrélation négative (quand l'une augmente, l'autre diminue)
 </div>
 
 <h3>Barème d'intensité de la corrélation</h3>
@@ -366,114 +455,260 @@
     <tr>
         <th>Valeur absolue |r|</th>
         <th>Intensité de la corrélation</th>
+        <th>Interprétation pratique</th>
     </tr>
     <tr>
         <td>0,00 – 0,20</td>
-        <td>Très faible (négligeable en pratique)</td>
+        <td>Très faible (négligeable)</td>
+        <td>Relation linéaire inexistante ou non exploitable</td>
     </tr>
     <tr>
         <td>0,20 – 0,40</td>
         <td>Faible</td>
+        <td>Relation tenue, peu exploitable seule</td>
     </tr>
     <tr>
         <td>0,40 – 0,60</td>
         <td>Modérée</td>
+        <td>Relation réelle, à considérer avec d'autres variables</td>
     </tr>
     <tr>
         <td>0,60 – 0,80</td>
         <td>Forte</td>
+        <td>Relation robuste, exploitable pour la décision</td>
     </tr>
     <tr>
         <td>0,80 – 1,00</td>
         <td>Très forte</td>
+        <td>Relation quasi-linéaire, lien très marqué</td>
     </tr>
 </table>
 
-<div class="important">
-    <strong>Attention :</strong> Une corrélation statistiquement significative (p ≤ 0,05) ne signifie pas nécessairement une corrélation forte. Avec un grand échantillon, même un r très faible peut être significatif. Il faut toujours interpréter la <em>taille de l'effet</em> (valeur de |r|), pas seulement le p-value.
+<div class="example">
+    <strong>Exemple — Salaires et ancienneté :</strong> Étude sur 300 employés d'un groupe industriel.<br>
+    Pearson entre salaire mensuel (€) et ancienneté (années) : r = 0,71, p &lt; 0,001.<br>
+    Interprétation : Corrélation positive forte et significative. Plus un employé est anciennement dans l'entreprise, plus son salaire tend à être élevé. La relation est robuste et exploitable.
 </div>
 
 <div class="example">
-    <strong>Exemple matrice (cours) :</strong>
+    <strong>Exemple — Nombre de visites et montant d'achat :</strong> Étude e-commerce sur 500 clients.<br>
+    r = 0,58, p &lt; 0,001 → corrélation positive modérée significative. Les clients qui visitent plus souvent le site ont tendance à dépenser davantage, mais la relation n'est pas exclusive (d'autres facteurs jouent).
+</div>
+
+<div class="important">
+    <strong>Deux confusions à éviter absolument :</strong>
     <ul>
-        <li>Engagement vs Dépenses : r = 0,68** → forte corrélation positive significative</li>
-        <li>Utilisation vs Dépenses : r = 0,62** → forte corrélation positive significative</li>
-        <li>Satisfaction vs Engagement : r = 0,63** → forte corrélation positive significative</li>
+        <li><strong>Significatif ≠ Fort :</strong> Une corrélation statistiquement significative (p ≤ 0,05) ne signifie pas nécessairement une corrélation forte. Avec un grand échantillon (n = 1 000+), même un r = 0,06 peut être significatif tout en étant négligeable en pratique. Il faut toujours interpréter la <em>taille de l'effet</em> (valeur de |r|), pas seulement la p-value.</li>
+        <li><strong>Corrélation ≠ Causalité :</strong> Une corrélation forte entre deux variables ne prouve pas qu'une variable <em>cause</em> l'autre. Il peut exister une troisième variable cachée (variable de confusion) qui explique la relation. Exemple : les ventes de glaces et les noyades sont corrélées — la chaleur est la variable confondante.</li>
     </ul>
-    (** = significatif au seuil 0,01)
+</div>
+
+<h3>La matrice de corrélation</h3>
+<div class="definition">
+    <strong>Matrice de corrélation :</strong> Tableau présentant les coefficients r de Pearson entre toutes les paires de variables quantitatives d'un même jeu de données. La diagonale vaut toujours 1 (corrélation d'une variable avec elle-même). La matrice est symétrique. Les astérisques indiquent le seuil de significativité : * p &lt; 0,05 ; ** p &lt; 0,01.
+</div>
+
+<div class="example">
+    <strong>Exemple de lecture de matrice (données RH fictives, n = 350) :</strong>
+    <table>
+        <tr>
+            <th>Variable</th>
+            <th>Salaire</th>
+            <th>Ancienneté</th>
+            <th>Satisfaction</th>
+            <th>Heures_supp</th>
+        </tr>
+        <tr>
+            <td><strong>Salaire</strong></td>
+            <td>1</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>Ancienneté</strong></td>
+            <td>0,71**</td>
+            <td>1</td>
+            <td>—</td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>Satisfaction</strong></td>
+            <td>0,44**</td>
+            <td>0,29**</td>
+            <td>1</td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>Heures_supp</strong></td>
+            <td>0,12*</td>
+            <td>0,08</td>
+            <td>−0,47**</td>
+            <td>1</td>
+        </tr>
+    </table>
+    <p style="font-size:0.85rem;color:#555;">** p &lt; 0,01 &nbsp;|&nbsp; * p &lt; 0,05</p>
+    Lecture : salaire et ancienneté sont fortement corrélés (r = 0,71**). La satisfaction est négativement corrélée aux heures supplémentaires (r = −0,47**) : plus les employés font d'heures sup, moins ils sont satisfaits. Les heures sup et le salaire ont une corrélation très faible (r = 0,12*) : significative mais négligeable en pratique.
 </div>
 
 <!-- ============================================================ -->
 <h2 id="ttest">8. Test t de Student — Comparaison de deux moyennes</h2>
 
 <div class="definition">
-    <strong>Objectif :</strong> Comparer les moyennes d'une variable quantitative entre deux groupes définis par une variable qualitative à deux modalités (ex : homme vs femme, fumeur vs non-fumeur).
+    <strong>Objectif :</strong> Comparer les moyennes d'une variable quantitative entre <em>deux groupes</em> définis par une variable qualitative à deux modalités. Le test t détermine si la différence observée entre les deux moyennes est statistiquement significative ou si elle peut être due au hasard (variabilité d'échantillonnage).
+</div>
+
+<div class="definition">
+    <strong>Conditions d'application :</strong>
+    <ul>
+        <li>Variable dépendante : quantitative continue</li>
+        <li>Variable de groupement : qualitative à exactement 2 modalités (ex : homme / femme, traité / contrôle, avant / après)</li>
+        <li>Les deux groupes sont indépendants (observations différentes dans chaque groupe)</li>
+    </ul>
 </div>
 
 <div class="formula">
-    H₀ : Moyenne groupe 1 = Moyenne groupe 2 (pas de différence)
-    <br>H₁ : Moyenne groupe 1 ≠ Moyenne groupe 2 (il y a une différence)
+    H₀ : μ₁ = μ₂ (les deux moyennes sont égales dans la population)
+    <br>H₁ : μ₁ ≠ μ₂ (les deux moyennes sont différentes)
     <br><br>Règle de décision : Si p ≤ 0,05 → différence statistiquement significative entre les deux groupes
 </div>
 
+<div class="example">
+    <strong>Exemple :</strong> On compare le salaire moyen entre les employés en CDI et ceux en CDD dans une entreprise (n = 240).<br>
+    CDI : x̄ = 3 450 €. CDD : x̄ = 2 190 €. Test t : p &lt; 0,001.<br>
+    Interprétation : La différence de salaire entre CDI et CDD est statistiquement significative. Les salariés en CDI gagnent en moyenne significativement plus que ceux en CDD.
+</div>
+
+<div class="example">
+    <strong>Autre exemple :</strong> On teste si le taux de conversion d'une page web est différent entre la version A (ancienne) et la version B (nouvelle design) — A/B testing.<br>
+    Version A : x̄ = 3,2 %. Version B : x̄ = 4,1 %. Test t : p = 0,032.<br>
+    Interprétation : p &lt; 0,05 → la différence est significative. La version B génère significativement plus de conversions.
+</div>
+
 <div class="important">
-    <strong>Rappel :</strong> Le test t est le cas particulier de l'ANOVA à deux groupes. Pour 3 groupes ou plus, on utilise l'ANOVA.
+    <strong>Rappel structurant :</strong> Le test t est le cas particulier de l'ANOVA limité à deux groupes. Pour 3 groupes ou plus, on bascule sur l'ANOVA (qui généralise le test t à k groupes). Ne jamais faire plusieurs tests t successifs pour comparer 3 groupes — cela gonfle le risque d'erreur de type I (faux positifs).
 </div>
 
 <!-- ============================================================ -->
 <h2 id="anova">9. ANOVA — Comparaison de 3 moyennes ou plus</h2>
 
 <div class="definition">
-    <strong>ANOVA (Analyse de Variance) :</strong> Permet de comparer simultanément les moyennes d'une variable quantitative pour 3 groupes ou plus, définis par une variable qualitative. Elle teste si au moins une moyenne diffère des autres.
+    <strong>ANOVA (Analysis of Variance — Analyse de Variance) :</strong> Permet de comparer simultanément les moyennes d'une variable quantitative pour 3 groupes ou plus, définis par une variable qualitative. Elle teste si au moins une des moyennes diffère des autres, en comparant la variabilité <em>entre</em> les groupes à la variabilité <em>au sein</em> des groupes.
 </div>
 
 <div class="formula">
-    H₀ : Toutes les moyennes des groupes sont égales (μ₁ = μ₂ = μ₃ = …)
-    <br>H₁ : Au moins une moyenne diffère
-    <br><br>Règle de décision : Si p ≤ 0,05 → différence statistiquement significative (mais on ne sait pas encore laquelle)
+    H₀ : μ₁ = μ₂ = μ₃ = … = μₖ (toutes les moyennes des groupes sont égales)
+    <br>H₁ : Au moins une moyenne diffère des autres
+    <br><br>Règle de décision : Si p ≤ 0,05 → au moins une différence significative existe entre les groupes
+    <br><br>Statistique F = Variance entre groupes / Variance au sein des groupes
+    <br>Plus F est grand, plus la différence entre groupes est forte relativement à la variabilité interne.
 </div>
 
-<h3>Choix entre Fisher et Welch</h3>
+<div class="example">
+    <strong>Exemple :</strong> On compare le chiffre d'affaires annuel moyen (€) de trois régions commerciales : Nord, Centre, Sud (n = 180 points de vente au total).<br>
+    ANOVA : F = 8,34, p = 0,0003 → p &lt; 0,05 : il existe une différence significative entre au moins deux régions.<br>
+    Mais l'ANOVA ne dit pas encore quelles régions diffèrent → il faut un test post hoc (Tukey).
+</div>
+
+<h3>Préalable : le test de Levene — Homogénéité des variances</h3>
 <div class="definition">
-    <strong>Test de Levene :</strong> Préalable à l'ANOVA, il vérifie l'homogénéité des variances entre les groupes.
+    <strong>Test de Levene :</strong> Avant de choisir entre Fisher et Welch, on vérifie l'homogénéité des variances entre les groupes à l'aide du test de Levene.
     <ul>
-        <li>Si p (Levene) > 0,05 → variances homogènes → utiliser le <strong>test de Fisher</strong> (ANOVA classique)</li>
-        <li>Si p (Levene) ≤ 0,05 → variances non homogènes → utiliser le <strong>test de Welch</strong> (ANOVA robuste)</li>
+        <li>H₀ (Levene) : Les variances des groupes sont égales (homogènes)</li>
+        <li>H₁ (Levene) : Les variances des groupes sont différentes (hétérogènes)</li>
     </ul>
 </div>
 
-<h3>Test post hoc de Tukey</h3>
+<h3>Choix entre Fisher et Welch selon le résultat de Levene</h3>
 <div class="definition">
-    <strong>Test de Tukey :</strong> Après une ANOVA significative, le test de Tukey permet d'identifier précisément quelles paires de groupes diffèrent significativement l'une de l'autre. Il réalise des comparaisons multiples entre chaque combinaison de groupes.
+    <strong>Règle de décision :</strong>
+    <ul>
+        <li>Si p (Levene) <strong>&gt; 0,05</strong> → on ne rejette pas H₀ → variances considérées comme <strong>homogènes</strong> → utiliser le <strong>test de Fisher</strong> (ANOVA classique)</li>
+        <li>Si p (Levene) <strong>≤ 0,05</strong> → on rejette H₀ → variances <strong>non homogènes</strong> → utiliser le <strong>test de Welch</strong> (ANOVA robuste, qui ne suppose pas l'égalité des variances)</li>
+    </ul>
 </div>
+
+<div class="example">
+    <strong>Exemple :</strong> Test de Levene sur les salaires de 4 départements (R&amp;D, Commercial, RH, IT).<br>
+    Levene : p = 0,003 ≤ 0,05 → variances non homogènes → on utilise le test de Welch plutôt que Fisher.<br>
+    Welch : F = 11,2, p &lt; 0,001 → différence significative entre au moins deux départements.
+</div>
+
+<h3>Test post hoc de Tukey — Identifier les paires différentes</h3>
+<div class="definition">
+    <strong>Test de Tukey (HSD — Honestly Significant Difference) :</strong> Après une ANOVA significative, le test de Tukey compare chaque paire possible de groupes deux à deux, en contrôlant le risque d'erreur global. Il répond à la question : "Entre quels groupes spécifiquement la différence est-elle significative ?"
+</div>
+
+<div class="example">
+    <strong>Exemple (suite) :</strong> ANOVA sur le CA de 3 régions (Nord, Centre, Sud) est significative.<br>
+    Test de Tukey :
+    <ul>
+        <li>Nord vs Centre : p = 0,021 → différence significative</li>
+        <li>Nord vs Sud : p = 0,002 → différence significative</li>
+        <li>Centre vs Sud : p = 0,614 → différence non significative</li>
+    </ul>
+    Conclusion : La région Nord se distingue significativement des deux autres, mais Centre et Sud ne diffèrent pas entre eux.
+</div>
+
 <div class="important">
-    <strong>Distinction fondamentale :</strong>
+    <strong>Distinction ANOVA / Tukey — à ne jamais confondre :</strong>
     <ul>
-        <li><strong>ANOVA</strong> → répond à : "Est-ce qu'au moins une moyenne diffère ?" (oui/non)</li>
-        <li><strong>Tukey</strong> → répond à : "Quels groupes spécifiques diffèrent ?" (identification des paires)</li>
+        <li><strong>ANOVA</strong> → répond à : "Existe-t-il au moins une différence entre les groupes ?" → réponse : oui ou non (p globale)</li>
+        <li><strong>Tukey</strong> → répond à : "Quels groupes spécifiques diffèrent l'un de l'autre ?" → identifie les paires significatives</li>
     </ul>
-    L'ANOVA sans Tukey ne permet pas de savoir quels groupes sont différents.
+    Une ANOVA significative sans Tukey est incomplète : on sait qu'une différence existe, mais pas laquelle. Le test de Tukey est donc systématiquement nécessaire lorsque l'ANOVA est significative et qu'on a 3 groupes ou plus.
 </div>
 
 <!-- ============================================================ -->
 <h2 id="regression">10. Régression linéaire multiple</h2>
 
 <div class="definition">
-    <strong>Objectif :</strong> Modéliser et prédire une variable quantitative continue (variable dépendante Y) à partir de plusieurs prédicteurs (variables indépendantes X₁, X₂, … Xₙ), qui peuvent être quantitatifs ou qualitatifs (variables dummy).
+    <strong>Objectif :</strong> Modéliser et prédire une variable quantitative continue (variable dépendante Y) à partir de plusieurs prédicteurs (variables indépendantes X₁, X₂, … Xₙ), qui peuvent être quantitatifs ou qualitatifs (variables dummy). La régression multiple permet de mesurer la contribution <em>propre</em> de chaque prédicteur, en contrôlant l'effet des autres — c'est le principe "toutes choses égales par ailleurs".
 </div>
 
 <div class="formula">
-    Modèle : Y = β₀ + β₁X₁ + β₂X₂ + … + βₙXₙ + ε
-    <br><br>Où : β₀ = constante (intercept)
-    <br>     βᵢ = coefficient de régression de Xᵢ
-    <br>     ε  = terme d'erreur résiduel
+    Modèle général : Y = β₀ + β₁X₁ + β₂X₂ + … + βₙXₙ + ε
+    <br><br>Où :
+    <br>  β₀ = constante (intercept) — valeur de Y quand tous les Xᵢ = 0
+    <br>  βᵢ = coefficient de régression du prédicteur Xᵢ
+    <br>  ε  = terme d'erreur résiduel (part de Y non expliquée par le modèle)
 </div>
 
-<h3>Interpréter les coefficients</h3>
+<div class="example">
+    <strong>Exemple de modèle du cours :</strong><br>
+    montant_achat = β₀ + β₁ × visites + β₂ × satisfaction + β₃ × genre_homme + ε<br>
+    → On cherche à prédire le montant d'achat mensuel d'un client à partir du nombre de visites sur le site, de son score de satisfaction et de son genre.
+</div>
+
+<h3>Interpréter les coefficients : B vs β standardisé</h3>
 <div class="definition">
-    <strong>Coefficient B (non standardisé) :</strong> Variation de Y pour une augmentation d'une unité de Xᵢ, toutes autres variables constantes. Interprétable dans l'unité de la variable.
-    <br><br>
-    <strong>Coefficient β standardisé (bêta_std) :</strong> Coefficient exprimé en écarts-types. Permet de comparer l'importance relative des prédicteurs entre eux, indépendamment des unités. Plus |β_std| est élevé, plus la variable a d'influence relative.
+    <strong>Coefficient B (non standardisé) :</strong> Variation de Y pour une augmentation d'une unité de Xᵢ, toutes les autres variables restant constantes. Interprétable directement dans l'unité de la variable — permet de faire des prédictions concrètes.
+</div>
+<div class="definition">
+    <strong>Coefficient β standardisé (bêta_std) :</strong> Coefficient B exprimé en nombre d'écarts-types. Tous les prédicteurs sont ramenés à la même échelle, ce qui permet de comparer leur <em>importance relative</em> entre eux, indépendamment de leurs unités d'origine. Plus |β_std| est élevé, plus la variable a d'influence relative dans le modèle.
+</div>
+
+<div class="important">
+    <strong>B vs β_std — à ne jamais confondre :</strong>
+    <ul>
+        <li><strong>B</strong> → utile pour l'<strong>interprétation</strong> et la prédiction dans l'unité réelle ("une visite supplémentaire est associée à +2,99 € d'achat")</li>
+        <li><strong>β_std</strong> → utile pour le <strong>classement de l'importance</strong> des prédicteurs ("les visites ont plus d'impact que la satisfaction dans ce modèle")</li>
+    </ul>
+    On ne compare jamais deux coefficients B bruts pour déterminer lequel est "plus important" — leurs unités sont différentes. On compare les β standardisés.
+</div>
+
+<div class="example">
+    <strong>Exemple (cours) — Modèle 1 : montant_achat = f(visites, satisfaction)</strong>
+    <ul>
+        <li>Visites : B = 2,99, p &lt; 0,001, β_std = 0,508 → significatif, forte influence relative</li>
+        <li>Satisfaction : B = 3,46, p &lt; 0,001, β_std = 0,256 → significatif, influence modérée</li>
+    </ul>
+    Bien que le B de "Satisfaction" (3,46) soit légèrement supérieur au B de "Visites" (2,99), les unités sont différentes — on ne peut pas les comparer directement. Le β_std révèle que les visites ont l'impact <em>relatif</em> le plus fort (0,508 &gt; 0,256).<br><br>
+    <strong>Modèle 2 : montant_achat = f(visites, satisfaction, genre)</strong>
+    <ul>
+        <li>Genre Homme (réf. = Femme) : B = −3,64, p = 0,016, β_std = −0,291 → significatif</li>
+        <li>Interprétation : Toutes choses égales par ailleurs, les hommes dépensent en moyenne 3,64 € de moins que les femmes.</li>
+    </ul>
 </div>
 
 <h3>Indicateurs de qualité du modèle</h3>
@@ -485,326 +720,76 @@
     </tr>
     <tr>
         <td>R²</td>
-        <td>% de variance de Y expliquée par le modèle</td>
-        <td>Plus R² est proche de 1, mieux le modèle ajuste les données</td>
+        <td>Proportion de la variance de Y expliquée par le modèle</td>
+        <td>Entre 0 et 1 ; plus c'est proche de 1, mieux le modèle s'ajuste aux données</td>
     </tr>
     <tr>
         <td>R² ajusté</td>
-        <td>R² corrigé pour le nombre de prédicteurs</td>
-        <td>Préférer le R² ajusté pour comparer des modèles avec ≠ prédicteurs</td>
+        <td>R² corrigé par le nombre de prédicteurs et la taille de l'échantillon</td>
+        <td>Toujours ≤ R² ; préférer R² ajusté pour comparer des modèles avec des nombres différents de prédicteurs</td>
     </tr>
     <tr>
         <td>Statistique F</td>
-        <td>Test de significativité globale du modèle</td>
-        <td>Si p &lt; 0,05 : le modèle est globalement significatif</td>
+        <td>Test de significativité globale : le modèle explique-t-il quelque chose ?</td>
+        <td>Si p &lt; 0,05 : le modèle dans son ensemble est significatif</td>
     </tr>
     <tr>
         <td>p-value de chaque βᵢ</td>
-        <td>Significativité de chaque prédicteur</td>
-        <td>Si p &lt; 0,05 : le prédicteur contribue significativement</td>
+        <td>Significativité individuelle de chaque prédicteur</td>
+        <td>Si p &lt; 0,05 : le prédicteur contribue significativement au modèle</td>
     </tr>
 </table>
 
 <div class="formula">
     Test F global :
-    <br>H₀ : Tous les coefficients βᵢ = 0 (le modèle n'explique rien)
-    <br>H₁ : Au moins un coefficient βᵢ ≠ 0 (le modèle est utile)
-    <br>Si p &lt; 0,05 → modèle globalement significatif
-</div>
-
-<h3>Variables qualitatives dans la régression (dummy variables)</h3>
-<div class="definition">
-    <strong>Variable dummy (indicatrice) :</strong> Une variable qualitative à k modalités est recodée en k−1 variables binaires (0/1) pour entrer dans la régression. La modalité exclue constitue la <em>référence</em>.<br>
-    Le coefficient associé mesure l'écart de moyenne par rapport à la catégorie de référence.
-</div>
-<div class="example">
-    <strong>Exemple (cours) :</strong> Genre Homme (réf. = Femme) : B = −3,64, p = 0,016<br>
-    Interprétation : Toutes choses égales par ailleurs, les hommes dépensent en moyenne 3,64 € de moins que les femmes.
-</div>
-
-<div class="example">
-    <strong>Modèle 1 — Montant = f(Visites, Satisfaction) :</strong>
-    <ul>
-        <li>Visites : B = 2,99, p &lt; 0,001, β_std = 0,508 → forte influence, significatif</li>
-        <li>Satisfaction : B = 3,46, p &lt; 0,001, β_std = 0,256 → influence modérée, significatif</li>
-    </ul>
-    Les visites ont l'impact le plus élevé (β_std le plus grand).
-    <br><br>
-    <strong>Modèle 2 — Montant = f(Visites, Satisfaction, Genre) :</strong>
-    <ul>
-        <li>Genre Homme/Femme : B = −3,64, p = 0,016, β_std = −0,291 → significatif, référence = Femme</li>
-    </ul>
-</div>
-
-<!-- ============================================================ -->
-<h2 id="partiel">11. Correction du Partiel 2025/2026 — Track Anglo (FeelWell &amp; USA Health)</h2>
-
-<!-- ====== EXERCICE 1 ====== -->
-<h3>Exercice 1 (3 pts) — Histogramme de satisfaction FeelWell (480 utilisateurs, échelle 1–10)</h3>
-
-<div class="definition">
-    <strong>Contexte :</strong> Analyse de la distribution des scores de satisfaction de 480 utilisateurs de l'application FeelWell.
-</div>
-
-<div class="example">
-    <strong>Q1 — Description de l'histogramme :</strong><br>
-    Distribution unimodale (un seul pic), pic observé entre 5 et 6, forme globalement symétrique, dispersion modérée (valeurs concentrées entre 4 et 7).
-</div>
-
-<div class="example">
-    <strong>Q2 — Relation Moyenne / Médiane / Mode :</strong><br>
-    La distribution est approximativement symétrique, donc : <strong>Moyenne ≈ Médiane ≈ Mode</strong>.<br>
-    Dans une distribution parfaitement symétrique, les trois indicateurs de tendance centrale coïncident.
-</div>
-
-<div class="example">
-    <strong>Q3 — Quel indicateur est le plus représentatif ?</strong><br>
-    La moyenne est sensible aux valeurs extrêmes. Par exemple, si un petit groupe d'utilisateurs donne des notes très faibles (1–2), ces valeurs aberrantes tirent la moyenne vers le bas alors que la majorité des utilisateurs est satisfaite. Dans ce cas, la médiane reste plus représentative car elle n'est pas affectée par les valeurs extrêmes.
-</div>
-
-<!-- ====== EXERCICE 2 ====== -->
-<h3>Exercice 2 (8 pts) — Matrice de corrélation FeelWell (480 utilisateurs)</h3>
-
-<div class="definition">
-    <strong>Variables analysées (toutes quantitatives continues) :</strong> Utilisation (heures/semaine), Engagement (score 0–100), Stress (score 1–10), Satisfaction (score 1–10), Dépenses (€/mois).
-</div>
-
-<h4>Matrice de corrélation de Pearson</h4>
-<table>
-    <tr>
-        <th>Variables</th>
-        <th>Utilisation</th>
-        <th>Engagement</th>
-        <th>Stress</th>
-        <th>Satisfaction</th>
-        <th>Dépenses</th>
-    </tr>
-    <tr>
-        <td><strong>Utilisation</strong></td>
-        <td>1</td>
-        <td>—</td>
-        <td>—</td>
-        <td>—</td>
-        <td>—</td>
-    </tr>
-    <tr>
-        <td><strong>Engagement</strong></td>
-        <td>0,66**</td>
-        <td>1</td>
-        <td>—</td>
-        <td>—</td>
-        <td>—</td>
-    </tr>
-    <tr>
-        <td><strong>Stress</strong></td>
-        <td>0,29**</td>
-        <td>0,41**</td>
-        <td>1</td>
-        <td>—</td>
-        <td>—</td>
-    </tr>
-    <tr>
-        <td><strong>Satisfaction</strong></td>
-        <td>0,51**</td>
-        <td>0,63**</td>
-        <td>−0,39**</td>
-        <td>1</td>
-        <td>—</td>
-    </tr>
-    <tr>
-        <td><strong>Dépenses</strong></td>
-        <td>0,62**</td>
-        <td>0,68**</td>
-        <td>0,16*</td>
-        <td>0,55**</td>
-        <td>1</td>
-    </tr>
-</table>
-<p style="font-size:0.85rem;color:#555;">** p &lt; 0,01 (significatif au seuil 1 %) &nbsp;|&nbsp; * p &lt; 0,05 (significatif au seuil 5 %)</p>
-
-<div class="example">
-    <strong>Q1 — Quel test utiliser ?</strong><br>
-    Le test de <strong>corrélation de Pearson</strong>, car toutes les variables sont quantitatives continues.
-</div>
-
-<div class="example">
-    <strong>Q2 — Les 3 relations les plus fortes :</strong>
-    <ol>
-        <li><strong>Engagement ↔ Dépenses</strong> : r = 0,68**, p &lt; 0,001 → forte corrélation positive significative. Les utilisateurs les plus engagés dépensent davantage (abonnements premium, achats in-app).</li>
-        <li><strong>Utilisation ↔ Dépenses</strong> : r = 0,62**, p &lt; 0,001 → forte corrélation positive significative. Plus un utilisateur passe du temps sur l'app, plus il dépense.</li>
-        <li><strong>Satisfaction ↔ Engagement</strong> : r = 0,63**, p &lt; 0,001 → forte corrélation positive significative. Les utilisateurs satisfaits sont plus engagés, ce qui renforce la fidélité.</li>
-    </ol>
-</div>
-
-<div class="example">
-    <strong>Q3 — Relation trompeuse : Stress ↔ Dépenses (r = 0,16, p &lt; 0,05)</strong><br>
-    Cette corrélation est statistiquement significative mais d'intensité très faible (|r| = 0,16). L'effet pratique est négligeable. L'erreur serait de conclure que le stress génère des dépenses : la significativité statistique ne garantit pas la pertinence managériale. Avec 480 observations, même de très faibles effets deviennent significatifs.
-</div>
-
-<div class="example">
-    <strong>Q4 — Relation négative : Stress ↔ Satisfaction (r = −0,39)</strong><br>
-    Corrélation négative modérée significative : plus le niveau de stress est élevé, moins l'utilisateur est satisfait. D'un point de vue managérial, réduire le stress des utilisateurs est un levier direct d'amélioration de la satisfaction et donc de la fidélité.
-</div>
-
-<div class="example">
-    <strong>Q5 — Recommandations managériales :</strong>
-    <ul>
-        <li>Renforcer l'engagement des utilisateurs (notifications, gamification, contenus personnalisés)</li>
-        <li>Encourager l'utilisation régulière de l'application</li>
-        <li>Réduire le stress perçu (fonctionnalités de relaxation, méditation)</li>
-        <li>Ne pas investir dans des actions liées au stress pour stimuler les dépenses (relation trop faible)</li>
-    </ul>
-</div>
-
-<div class="example">
-    <strong>Q6 — Méthode complémentaire :</strong><br>
-    <strong>Régression linéaire multiple</strong>. Variable dépendante (VD) = Dépenses (€). Variables indépendantes = Utilisation, Engagement, Stress, Satisfaction. Cette méthode permet d'identifier la contribution propre (toutes choses égales par ailleurs) de chaque variable sur les dépenses, et de contrôler les effets de confusion.
-</div>
-
-<!-- ====== EXERCICE 3 ====== -->
-<h3>Exercice 3 (9 pts) — Régression linéaire multiple — Dépenses santé (USA)</h3>
-
-<div class="definition">
-    <strong>Contexte :</strong> Modélisation des dépenses de santé annuelles aux États-Unis. Variable dépendante : Dépenses de santé (€/an). Prédicteurs : Âge (années), Statut tabagique (fumeur/non-fumeur), Nombre d'enfants, Sexe (masculin/féminin).
-</div>
-
-<h4>Résultats globaux du modèle</h4>
-<table>
-    <tr>
-        <th>Indicateur</th>
-        <th>Valeur</th>
-        <th>Interprétation</th>
-    </tr>
-    <tr>
-        <td>R (corrélation multiple)</td>
-        <td>0,851</td>
-        <td>Très forte corrélation entre prédicteurs et VD</td>
-    </tr>
-    <tr>
-        <td>R² (coefficient de détermination)</td>
-        <td>0,724</td>
-        <td>72,4 % de la variance des dépenses expliquée</td>
-    </tr>
-    <tr>
-        <td>R² ajusté</td>
-        <td>0,723</td>
-        <td>Très proche de R² → modèle parcimonieux, bon ajustement</td>
-    </tr>
-    <tr>
-        <td>Statistique F</td>
-        <td>873</td>
-        <td>Très élevée → modèle globalement très significatif</td>
-    </tr>
-    <tr>
-        <td>p-value (modèle)</td>
-        <td>&lt; 0,001</td>
-        <td>Le modèle est globalement significatif (p &lt; 0,05)</td>
-    </tr>
-</table>
-
-<h4>Coefficients des prédicteurs</h4>
-<table>
-    <tr>
-        <th>Prédicteur</th>
-        <th>B (non standardisé)</th>
-        <th>β standardisé</th>
-        <th>p-value</th>
-        <th>Significatif ?</th>
-    </tr>
-    <tr>
-        <td>Âge (années)</td>
-        <td>273,1</td>
-        <td>0,317</td>
-        <td>&lt; 0,001</td>
-        <td>Oui</td>
-    </tr>
-    <tr>
-        <td>Tabagisme (Fumeur vs Non-fumeur)</td>
-        <td>23 836,9</td>
-        <td>1,968</td>
-        <td>&lt; 0,001</td>
-        <td>Oui — impact MAJEUR</td>
-    </tr>
-    <tr>
-        <td>Nombre d'enfants</td>
-        <td>486,2</td>
-        <td>0,048</td>
-        <td>&lt; 0,001</td>
-        <td>Oui — mais faible effet</td>
-    </tr>
-    <tr>
-        <td>Sexe (Masculin vs Féminin)</td>
-        <td>61,3</td>
-        <td>—</td>
-        <td>0,861</td>
-        <td>Non (p &gt; 0,05)</td>
-    </tr>
-</table>
-
-<div class="example">
-    <strong>Q1 — Quel test utiliser ?</strong><br>
-    La <strong>régression linéaire multiple</strong>, car la variable dépendante (dépenses de santé) est quantitative continue, et les prédicteurs sont de nature mixte (variables quantitatives continues + variables qualitatives recodées en dummy).
-</div>
-
-<div class="example">
-    <strong>Q2 — Prédicteurs significatifs et non significatifs :</strong>
-    <ul>
-        <li><strong>Significatifs</strong> (p &lt; 0,05) : Âge, Tabagisme (Fumeur), Nombre d'enfants</li>
-        <li><strong>Non significatif</strong> (p = 0,861 &gt; 0,05) : Sexe (Masculin)</li>
-    </ul>
-    Le sexe ne contribue pas significativement à expliquer les dépenses de santé, toutes choses égales par ailleurs.
-</div>
-
-<div class="example">
-    <strong>Q3 — Variable avec le plus d'influence :</strong><br>
-    Le <strong>Tabagisme</strong> (statut Fumeur) avec β_std = 1,968 — de loin le coefficient standardisé le plus élevé.<br>
-    Interprétation : Être fumeur est associé à des dépenses de santé supérieures de 23 836,9 € par an, toutes choses égales par ailleurs. C'est le facteur de loin le plus déterminant du modèle.
-</div>
-
-<div class="example">
-    <strong>Q4 — Qualité du modèle :</strong><br>
-    La qualité est <strong>très élevée</strong> :
-    <ul>
-        <li>R² = 0,724 : le modèle explique 72,4 % de la variance des dépenses de santé — excellent pouvoir explicatif.</li>
-        <li>R² ajusté ≈ R² (0,723) : le modèle n'est pas surajusté, il est parcimonieux.</li>
-        <li>F = 873, p &lt; 0,001 : le modèle est globalement très significatif.</li>
-    </ul>
-</div>
-
-<div class="example">
-    <strong>Q5 — Recommandations managériales :</strong>
-    <ul>
-        <li><strong>Priorité absolue</strong> : Programmes anti-tabac — le tabagisme explique à lui seul l'essentiel de l'impact sur les dépenses.</li>
-        <li>Adapter les offres d'assurance selon l'âge (segmentation tarifaire par tranche d'âge).</li>
-        <li>Tenir compte du nombre d'enfants dans les offres familiales.</li>
-        <li>Ne pas intégrer le sexe comme critère discriminant — il n'a aucun effet significatif sur les dépenses.</li>
-    </ul>
-</div>
-
-<div class="example">
-    <strong>Q6 — Variables supplémentaires à intégrer dans un modèle enrichi :</strong>
-    <ul>
-        <li>Niveau de revenu (les dépenses de santé sont corrélées au revenu)</li>
-        <li>Présence de maladies chroniques (diabète, hypertension, etc.)</li>
-        <li>Couverture d'assurance santé (franchise, type de plan)</li>
-        <li>Indice de masse corporelle (IMC)</li>
-        <li>Région géographique (disparités de coûts médicaux selon les États)</li>
-    </ul>
+    <br>H₀ : β₁ = β₂ = … = βₙ = 0 (aucun prédicteur n'explique Y — le modèle est inutile)
+    <br>H₁ : Au moins un βᵢ ≠ 0 (le modèle apporte une information)
+    <br>Si p &lt; 0,05 → on rejette H₀ → le modèle est globalement significatif
 </div>
 
 <div class="important">
-    <strong>Récapitulatif — Points à ne pas confondre à l'examen :</strong>
+    <strong>R² vs R² ajusté :</strong><br>
+    Le R² augmente mécaniquement à chaque prédicteur ajouté, même si le prédicteur n'a aucun pouvoir explicatif réel. Le R² ajusté corrige cette dérive en pénalisant les modèles trop complexes. Si R² ajusté &lt; R², le modèle a trop de prédicteurs par rapport à son gain explicatif réel. On utilise systématiquement le R² ajusté pour évaluer et comparer des modèles.
+</div>
+
+<h3>Variables qualitatives dans la régression : les variables dummy (indicatrices)</h3>
+<div class="definition">
+    <strong>Variable dummy (ou indicatrice) :</strong> Les variables qualitatives ne peuvent pas entrer directement dans une équation de régression (qui ne manipule que des nombres). On les recode en k−1 variables binaires (0/1), où k est le nombre de modalités. La modalité exclue du recodage devient la <em>catégorie de référence</em>.
+</div>
+
+<div class="formula">
+    Variable qualitative à k modalités → (k − 1) dummies
+    <br><br>Exemple : Genre (Homme / Femme) → 1 dummy "Homme" (0 = Femme, 1 = Homme)
+    <br>         Région (Nord / Centre / Sud) → 2 dummies : "Centre" et "Sud" (réf. = Nord)
+</div>
+
+<div class="definition">
+    <strong>Interprétation du coefficient B d'une dummy :</strong> Le B mesure l'écart de moyenne sur Y entre la modalité représentée et la catégorie de référence, toutes les autres variables constantes.
+</div>
+
+<div class="example">
+    <strong>Exemple :</strong> Régression sur le montant_achat avec les 3 régions (réf. = Nord).<br>
+    B_Centre = +8,20, p = 0,004 → Les clients du Centre dépensent en moyenne 8,20 € de plus que ceux du Nord, toutes choses égales par ailleurs.<br>
+    B_Sud = +3,10, p = 0,18 → Les clients du Sud ne dépensent pas significativement plus ou moins que ceux du Nord (p &gt; 0,05).
+</div>
+
+<!-- ============================================================ -->
+<div class="important">
+    <strong>Récapitulatif — Points critiques à ne pas confondre :</strong>
     <ul>
-        <li>p &lt; 0,05 = <strong>statistiquement significatif</strong> ≠ fort ou important en pratique</li>
-        <li>r faible et p significatif = corrélation réelle mais négligeable sur le plan pratique</li>
-        <li>ANOVA → dit SI une différence existe / Tukey → dit LAQUELLE</li>
-        <li>R² → qualité du modèle (% variance expliquée) / β_std → importance relative des prédicteurs</li>
-        <li>Médiane → robuste aux outliers / Moyenne → sensible aux valeurs extrêmes</li>
-        <li>Corrélation ≠ Causalité : une corrélation forte ne prouve pas un lien de cause à effet</li>
+        <li><strong>p ≤ 0,05 = statistiquement significatif</strong> ≠ fort, important ou pertinent en pratique. La significativité dépend aussi de la taille de l'échantillon — avec n très grand, tout devient significatif. Toujours interpréter la <em>taille de l'effet</em> (|r|, V de Cramér, β_std).</li>
+        <li><strong>Corrélation ≠ Causalité :</strong> une corrélation forte ne prouve pas un lien de cause à effet — une troisième variable peut expliquer la covariation des deux premières.</li>
+        <li><strong>ANOVA</strong> → répond à "Existe-t-il au moins une différence entre les groupes ?" / <strong>Tukey</strong> → répond à "Quels groupes spécifiques diffèrent ?" — les deux sont complémentaires et nécessaires.</li>
+        <li><strong>R²</strong> → mesure la <em>qualité globale</em> du modèle (% de variance expliquée) / <strong>β_std</strong> → mesure l'<em>importance relative</em> de chaque prédicteur — ce sont deux informations distinctes.</li>
+        <li><strong>Médiane</strong> → robuste aux outliers, préférable en cas d'asymétrie / <strong>Moyenne</strong> → sensible aux valeurs extrêmes, représentative uniquement en cas de distribution symétrique.</li>
+        <li><strong>Fisher vs Welch :</strong> ne pas appliquer Fisher si le test de Levene est significatif (p ≤ 0,05) — utiliser Welch lorsque les variances sont hétérogènes.</li>
+        <li><strong>B (non standardisé) vs β_std :</strong> ne jamais comparer deux coefficients B bruts pour déterminer "quel prédicteur est plus important" — utiliser les β_std pour ce classement.</li>
     </ul>
 </div>
 
-<div class="source-footer" style="margin-top:3rem;padding:1rem;background:#eaf2f8;border-radius:8px;font-size:0.85rem;color:#666;">Sources : Résumé du cours (37 slides) + Correction du Partiel 2025/2026 Track Anglo</div>
+<div style="margin-top:3rem;padding:1rem;background:#eaf2f8;border-radius:8px;font-size:0.85rem;color:#666;">
+    Source : Synthèse du cours — Analyse des données quantitatives (37 slides). Document à usage pédagogique — apprentissage des concepts, formules et logique de décision statistique.
+</div>
 
 </body>
 </html>

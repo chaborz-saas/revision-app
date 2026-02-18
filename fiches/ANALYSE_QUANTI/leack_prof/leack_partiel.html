@@ -29,6 +29,18 @@
     .flash-a { background: #f8f9ff; padding: 0.6rem 1rem; border-radius: 0 0 8px 8px; margin-bottom: 0.8rem; font-size: 0.88rem; border: 1px solid #e8eaf0; border-top: none; }
     .source-footer { margin-top: 2rem; padding: 0.8rem; background: #f8f9ff; border-radius: 8px; font-size: 0.8rem; color: #666; }
     .source-footer a { color: #4361ee; text-decoration: none; }
+    /* Exercices du partiel */
+    .exo-block { border: 2px solid #e8eaf0; border-radius: 12px; margin: 1rem 0; overflow: hidden; }
+    .exo-sujet { background: #1a1a2e; color: white; padding: 0.8rem 1.2rem; }
+    .exo-sujet .exo-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; margin-bottom: 0.2rem; }
+    .exo-sujet .exo-titre { font-weight: 700; font-size: 0.95rem; }
+    .exo-sujet .exo-enonce { margin-top: 0.6rem; font-size: 0.88rem; line-height: 1.6; opacity: 0.9; }
+    .exo-toggle { width: 100%; background: #f0f4ff; border: none; border-top: 1px solid #dde3ff; padding: 0.6rem 1.2rem; text-align: left; font-size: 0.85rem; font-weight: 600; color: #4361ee; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+    .exo-toggle:hover { background: #e4eaff; }
+    .exo-toggle .arrow { transition: transform 0.2s; font-size: 0.75rem; }
+    .exo-toggle.open .arrow { transform: rotate(90deg); }
+    .exo-correction { display: none; padding: 1rem 1.2rem; background: white; border-top: 1px solid #e8eaf0; font-size: 0.88rem; line-height: 1.7; }
+    .exo-correction.visible { display: block; }
   </style>
 </head>
 <body>
@@ -140,33 +152,95 @@
 
     <div class="block-attention">Un coefficient B élevé ne signifie pas une influence plus grande si les unités diffèrent. Toujours comparer via <span class="hl-critical">β standardisé</span>.</div>
 
-    <!-- 8. EXEMPLES DU PARTIEL -->
-    <div class="section-title">8. Exemples du Partiel à Connaître</div>
+    <!-- 8. EXERCICES DU PARTIEL -->
+    <div class="section-title">8. Exercices du Partiel 2025/2026</div>
 
-    <div class="flash-q">Exo 1 — FeelWell : histogramme de satisfaction (480 users)</div>
-    <div class="flash-a">
-      Distribution <strong>unimodale, symétrique</strong>, pic centré sur 5–6, dispersion modérée (4–7).<br>
-      Distribution symétrique => <strong>Moyenne = Médiane = Mode</strong>.<br>
-      Risque : un petit groupe avec notes très faibles tire la moyenne vers le bas => <span class="hl-important">préférer la médiane</span>.
+    <!-- Exo 1 -->
+    <div class="exo-block">
+      <div class="exo-sujet">
+        <div class="exo-label">Exercice 1</div>
+        <div class="exo-titre">FeelWell — Analyse d'un histogramme de satisfaction</div>
+        <div class="exo-enonce">
+          Une application de bien-être (FeelWell) dispose de données de satisfaction de 480 utilisateurs sur une échelle de 1 à 10.
+          L'histogramme montre une distribution avec un pic centré sur les scores 5–6, des valeurs qui s'étendent de 4 à 7,
+          et un petit groupe avec des notes très faibles (1–2).<br><br>
+          <strong>Questions :</strong><br>
+          a) Décrivez la forme de cette distribution.<br>
+          b) Quelle mesure de tendance centrale est la plus appropriée ? Pourquoi ?<br>
+          c) Quel est le risque d'utiliser la moyenne ici ?
+        </div>
+      </div>
+      <button class="exo-toggle" onclick="toggleCorrection(this)">
+        <span class="arrow">▶</span> Voir la correction
+      </button>
+      <div class="exo-correction">
+        <strong>a) Forme :</strong> Distribution <span class="hl-important">unimodale, globalement symétrique</span>, pic centré sur 5–6, dispersion modérée (4–7).<br><br>
+        <strong>b) Mesure appropriée :</strong> Dans une distribution symétrique, <strong>Moyenne = Médiane = Mode</strong>, donc les trois sont équivalentes. Cependant, à cause du petit groupe avec notes très faibles...<br><br>
+        <strong>c) Risque :</strong> Le petit groupe de notes très faibles (1–2) tire la moyenne vers le bas, la rendant moins représentative. <span class="hl-important">Préférer la médiane</span>, plus robuste aux valeurs extrêmes.
+      </div>
     </div>
 
-    <div class="flash-q">Exo 2 — Matrice de corrélation FeelWell</div>
-    <div class="flash-a">
-      <strong>Engagement / Dépenses :</strong> r = 0.68** — forte, positive, significative => levier de revenus<br>
-      <strong>Utilisation / Dépenses :</strong> r = 0.62** — forte, positive => plus de temps = plus de dépenses<br>
-      <strong>Satisfaction / Engagement :</strong> r = 0.63** — forte, positive => satisfaits = plus engagés<br>
-      <strong>Stress / Satisfaction :</strong> r = −0.39** — négatif => plus de stress = moins de satisfaction = moins de fidélité<br>
-      <span class="hl-critical">PIÈGE :</span> <strong>Stress / Dépenses :</strong> r = 0.16* => significatif mais TRÈS faible, aucune pertinence managériale<br>
-      Méthode complémentaire suggérée : <span class="hl-important">régression linéaire multiple</span>
+    <!-- Exo 2 -->
+    <div class="exo-block">
+      <div class="exo-sujet">
+        <div class="exo-label">Exercice 2</div>
+        <div class="exo-titre">FeelWell — Interprétation d'une matrice de corrélation</div>
+        <div class="exo-enonce">
+          La matrice de corrélation de FeelWell présente 5 variables : Satisfaction, Engagement, Utilisation (temps/semaine),
+          Dépenses (€/mois) et Niveau de stress.<br><br>
+          Résultats clés :<br>
+          Engagement / Dépenses : r = 0.68** &nbsp;|&nbsp; Utilisation / Dépenses : r = 0.62**<br>
+          Satisfaction / Engagement : r = 0.63** &nbsp;|&nbsp; Stress / Satisfaction : r = −0.39**<br>
+          Stress / Dépenses : r = 0.16*<br><br>
+          <strong>Questions :</strong><br>
+          a) Identifiez les corrélations les plus importantes pour la stratégie de l'entreprise.<br>
+          b) Commentez la corrélation Stress / Dépenses.<br>
+          c) Quelle méthode complémentaire proposeriez-vous ?
+        </div>
+      </div>
+      <button class="exo-toggle" onclick="toggleCorrection(this)">
+        <span class="arrow">▶</span> Voir la correction
+      </button>
+      <div class="exo-correction">
+        <strong>a) Corrélations stratégiques :</strong><br>
+        • <strong>Engagement / Dépenses :</strong> r = 0.68** — forte, positive, significative → levier principal de revenus<br>
+        • <strong>Utilisation / Dépenses :</strong> r = 0.62** — forte, positive → plus de temps = plus de dépenses<br>
+        • <strong>Satisfaction / Engagement :</strong> r = 0.63** — forte, positive → satisfaits = plus engagés<br>
+        • <strong>Stress / Satisfaction :</strong> r = −0.39** — négative → plus de stress = moins de satisfaction = moins de fidélité<br><br>
+        <strong>b) Stress / Dépenses :</strong> r = 0.16* — <span class="hl-critical">PIÈGE CLASSIQUE</span> : statistiquement significatif (p &lt; 0.05) mais corrélation <strong>TRÈS faible</strong>. Aucune pertinence managériale réelle. Ne pas conclure que le stress génère des dépenses.<br><br>
+        <strong>c) Méthode complémentaire :</strong> <span class="hl-important">Régression linéaire multiple</span> — pour isoler l'effet propre de chaque variable sur les dépenses en contrôlant les autres.
+      </div>
     </div>
 
-    <div class="flash-q">Exo 3 — Régression dépenses santé USA</div>
-    <div class="flash-a">
-      R² = 0.724 (72,4% variance expliquée) — F = 873, p &lt; 0.001 => <strong>excellente qualité du modèle</strong><br>
-      <strong>Tabagisme :</strong> B = 23 836.9, β_std = 1.968 => <span class="hl-critical">PLUS GRANDE influence</span> (β_std le plus élevé)<br>
-      <strong>Âge :</strong> B = 273.1, p &lt; 0.001 => significatif (chaque année = +273$ de dépenses)<br>
-      <strong>Nb enfants :</strong> B = 486.2, p &lt; 0.001 => significatif<br>
-      <span class="hl-critical">PIÈGE :</span> <strong>Sexe :</strong> B = 61.3, p = 0.861 => <strong>NON significatif</strong> — à ignorer dans l'interprétation
+    <!-- Exo 3 -->
+    <div class="exo-block">
+      <div class="exo-sujet">
+        <div class="exo-label">Exercice 3</div>
+        <div class="exo-titre">Régression multiple — Dépenses de santé aux USA</div>
+        <div class="exo-enonce">
+          Un modèle de régression linéaire multiple prédit les dépenses de santé annuelles (en $) aux USA
+          à partir de 4 prédicteurs : Âge, Sexe, Nombre d'enfants, Tabagisme (fumeur/non-fumeur).<br><br>
+          Résultats du modèle :<br>
+          R² = 0.724 &nbsp;|&nbsp; R² ajusté = 0.723 &nbsp;|&nbsp; F = 873, p &lt; 0.001<br><br>
+          Coefficients :<br>
+          Tabagisme (fumeur) : B = 23 836.9, β_std = 1.968, p &lt; 0.001<br>
+          Âge : B = 273.1, β_std = 0.520, p &lt; 0.001<br>
+          Nb enfants : B = 486.2, β_std = 0.121, p &lt; 0.001<br>
+          Sexe (homme) : B = 61.3, β_std = 0.004, p = 0.861<br><br>
+          <strong>Questions :</strong><br>
+          a) Évaluez la qualité globale du modèle.<br>
+          b) Quel prédicteur a la plus grande influence ? Comment le déterminer ?<br>
+          c) Peut-on interpréter l'effet du sexe ? Pourquoi ?
+        </div>
+      </div>
+      <button class="exo-toggle" onclick="toggleCorrection(this)">
+        <span class="arrow">▶</span> Voir la correction
+      </button>
+      <div class="exo-correction">
+        <strong>a) Qualité du modèle :</strong> R² = 0.724 → le modèle explique <span class="hl-important">72,4% de la variance</span> des dépenses. F = 873, p &lt; 0.001 → modèle <strong>globalement significatif</strong>. Excellente qualité.<br><br>
+        <strong>b) Prédicteur le plus influent :</strong> On compare les <strong>β standardisés</strong> (pas les B bruts, car les unités diffèrent). <span class="hl-critical">Tabagisme : β_std = 1.968</span> — de loin le plus élevé → c'est le prédicteur le plus influent. Être fumeur représente une augmentation de +23 837$ par an.<br><br>
+        <strong>c) Effet du sexe :</strong> <span class="hl-critical">NON — variable NON significative</span>. p = 0.861 >> 0.05 → on ne peut pas rejeter H0. Le sexe n'a pas d'effet significatif sur les dépenses de santé dans ce modèle. À exclure de l'interprétation.
+      </div>
     </div>
 
     <!-- FLASH QUESTIONS TYPES -->
@@ -192,5 +266,18 @@
   </div>
 </div>
 
+<script>
+function toggleCorrection(btn) {
+  const correction = btn.nextElementSibling;
+  const isOpen = correction.classList.contains('visible');
+  correction.classList.toggle('visible', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.arrow').textContent = isOpen ? '▶' : '▼';
+  btn.innerHTML = btn.innerHTML.replace(
+    isOpen ? 'Masquer la correction' : 'Voir la correction',
+    isOpen ? 'Voir la correction' : 'Masquer la correction'
+  );
+}
+</script>
 </body>
 </html>

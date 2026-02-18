@@ -1,0 +1,35 @@
+**Cas pratique n°3 : Le non-paiement du prix par l'acheteur espagnol**
+
+**Énoncé :**
+
+La société **Électro-France SA**, basée à Toulouse (France), vend le 10 janvier 2024 à la société **TecnoSol SL**, établie à Madrid (Espagne), **500 moteurs électriques** pour un prix total de **250 000 €**.
+
+Le contrat prévoit :
+
+- Livraison **CIF Barcelone (Incoterms 2020)** avant le **1er mars 2024** ;
+
+- Paiement **à 30 jours** après la réception des marchandises ;
+
+- Aucune clause sur le droit applicable.
+
+Les moteurs sont livrés le **28 février 2024** et reçus sans réserve.\
+Cependant, **TecnoSol ne paie pas** à l'échéance (1er avril 2024).\
+Malgré plusieurs relances, aucun paiement n'intervient.
+
+Le 10 mai 2024, Électro-France met l'acheteur en demeure de payer dans un délai de 10 jours.\
+Devant le silence persistant, le vendeur décide de **résoudre le contrat** et de **réclamer des dommages et intérêts**.\
+L'acheteur soutient qu'il a eu des difficultés de trésorerie et qu'il compte payer « dès que possible ».
+
+------------------------------------------------------------------------
+
+**⚖️ Questions :**
+
+1.  La Convention de Vienne est-elle applicable ?
+
+2.  L'acheteur a-t-il manqué à ses obligations ?
+
+3.  Le vendeur peut-il résoudre le contrat ?
+
+4.  Quels sont les autres recours possibles pour le vendeur ?
+
+5.  Qu'en est-il des intérêts de retard ?

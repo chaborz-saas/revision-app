@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Pilotage : La methode des couts et seuil de rentabilite</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .hl-formula {
+            background: linear-gradient(180deg, transparent 50%, #fdebd0 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-formula { background: #fef9e7; border-color: #f39c12; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "? "; font-weight: bold; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Pilotage de la performance</div>
+        <h1>La methode des couts et le seuil de rentabilite</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definitions essentielles</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Couts variables</strong> = charges proportionnelles au volume d'activite. Exemples : <span class="hl-critical">matieres premieres</span>, energie, <span class="hl-critical">sous-traitance</span>, interimaires.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Couts fixes</strong> = charges stables quel que soit le niveau d'activite. Exemples : <span class="hl-critical">amortissements</span>, salaires CDI, loyers, <span class="hl-critical">frais generaux</span>.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Seuil de rentabilite</strong> = niveau de CA ou la <span class="hl-critical">MCV = Charges fixes</span>. Resultat = 0. En dessous : deficit. Au-dessus : benefice.
+        </div>
+
+        <div class="section-title">Compte de resultat differentiel</div>
+
+        <table class="compact-table">
+            <tr><th>Ligne</th><th>Calcul</th></tr>
+            <tr><td>Chiffre d'affaires (CA)</td><td>Prix &times; Quantites</td></tr>
+            <tr><td>&minus; Couts variables (CV)</td><td>Charges proportionnelles</td></tr>
+            <tr><td>= <strong>Marge sur couts variables (MCV)</strong></td><td><span class="hl-formula">CA &minus; CV</span></td></tr>
+            <tr><td>&minus; Couts fixes (CF)</td><td>Charges de structure</td></tr>
+            <tr><td>= <strong>Resultat</strong></td><td><span class="hl-formula">MCV &minus; CF</span></td></tr>
+        </table>
+
+        <div class="section-title">Formules cles</div>
+
+        <div class="block block-formula">
+            <div class="block-label">Formules</div>
+            <table class="compact-table">
+                <tr><th>Indicateur</th><th>Formule</th></tr>
+                <tr><td>Taux de MCV (TMCV)</td><td><span class="hl-formula">MCV / CA</span></td></tr>
+                <tr><td>SR en euros</td><td><span class="hl-formula">CF / TMCV</span></td></tr>
+                <tr><td>SR en quantites</td><td><span class="hl-formula">CF / MCV unitaire</span></td></tr>
+                <tr><td>Point mort (jours)</td><td><span class="hl-formula">(SR / CA) &times; 360</span></td></tr>
+                <tr><td>Marge de securite</td><td><span class="hl-formula">CA &minus; SR</span></td></tr>
+                <tr><td>Indice de securite</td><td><span class="hl-formula">(CA &minus; SR) / CA</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section-title">Cas JIBI : les chiffres a retenir</div>
+
+        <table class="compact-table">
+            <tr><th></th><th>Societe A (internalise)</th><th>Societe B (sous-traite)</th></tr>
+            <tr><td>CA</td><td>1 000 000</td><td>1 000 000</td></tr>
+            <tr><td>CV</td><td>600 000</td><td>750 000</td></tr>
+            <tr><td>MCV</td><td><span class="hl-critical">400 000</span></td><td><span class="hl-critical">250 000</span></td></tr>
+            <tr><td>CF</td><td>200 000</td><td>50 000</td></tr>
+            <tr><td>Resultat</td><td>200 000</td><td>200 000</td></tr>
+            <tr><td>TMCV</td><td><span class="hl-important">40 %</span></td><td><span class="hl-important">25 %</span></td></tr>
+            <tr><td>SR (euros)</td><td><span class="hl-critical">500 000</span></td><td><span class="hl-critical">200 000</span></td></tr>
+            <tr><td>SR (briques)</td><td><span class="hl-critical">500 000</span></td><td><span class="hl-critical">200 000</span></td></tr>
+        </table>
+
+        <div class="section-title">Impact d'une variation de +/- 10 % du CA</div>
+
+        <table class="compact-table">
+            <tr><th>Scenario</th><th>Resultat A</th><th>Resultat B</th></tr>
+            <tr><td>CA de base (1 M)</td><td>200 000</td><td>200 000</td></tr>
+            <tr><td>&minus;10 % (CA = 900 K)</td><td><span class="hl-important">160 000</span></td><td><span class="hl-important">175 000</span></td></tr>
+            <tr><td>+10 % (CA = 1,1 M)</td><td><span class="hl-important">240 000</span></td><td><span class="hl-important">225 000</span></td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">A retenir</div>
+            <strong>Sous-traitance (B)</strong> = <span class="hl-critical">plus flexible</span>, SR atteint plus vite, resiste mieux en baisse, mais profite moins de la hausse.<br>
+            <strong>Internalisation (A)</strong> = <span class="hl-critical">levier operationnel</span> plus fort, amplifie les variations (risque + opportunite).
+        </div>
+
+        <div class="section-title">Methode graphique : 2 approches</div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            <strong>Graphique 1 :</strong> Tracer MCV (droite croissante) et CF (droite horizontale). L'intersection = SR.<br>
+            <strong>Graphique 2 :</strong> Tracer CA (bissectrice) et Charges totales (CF + CV). L'intersection = SR. Zone a gauche = deficit, zone a droite = benefice.
+        </div>
+
+        <div class="section-title">Sous-traitance vs internalisation</div>
+
+        <table class="compact-table">
+            <tr><th>Critere</th><th>Sous-traitance (type B)</th><th>Internalisation (type A)</th></tr>
+            <tr><td>Couts fixes</td><td>Faibles</td><td>Eleves</td></tr>
+            <tr><td>Couts variables</td><td>Eleves</td><td>Moderes</td></tr>
+            <tr><td>TMCV</td><td>Faible</td><td>Eleve</td></tr>
+            <tr><td>SR</td><td>Bas (atteint vite)</td><td>Haut (atteint tard)</td></tr>
+            <tr><td>Flexibilite</td><td>Forte</td><td>Faible</td></tr>
+            <tr><td>Levier operationnel</td><td>Faible</td><td>Fort</td></tr>
+            <tr><td>Risque en baisse CA</td><td>Limite</td><td>Eleve</td></tr>
+            <tr><td>Gain en hausse CA</td><td>Limite</td><td>Eleve</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelle est la formule du seuil de rentabilite en euros ?
+            <span class="answer">SR = Charges fixes / Taux de marge sur couts variables (CF / TMCV)</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la condition d'equilibre au seuil de rentabilite ?
+            <span class="answer">Marge sur couts variables = Charges fixes (MCV = CF), soit un resultat egal a zero.</span>
+        </div>
+
+        <div class="flash-q">
+            Dans le cas JIBI, quel est le SR de la societe A et de la societe B ?
+            <span class="answer">Societe A : 500 000 euros (500 000 briques). Societe B : 200 000 euros (200 000 briques).</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi la societe B (sous-traitance) a-t-elle un SR plus bas que A ?
+            <span class="answer">Ses couts fixes sont beaucoup plus faibles (50 000 vs 200 000). La sous-traitance variabilise les couts, ce qui abaisse le SR.</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est l'effet d'une baisse de 10 % du CA sur les resultats des deux societes ?
+            <span class="answer">A : resultat tombe a 160 000 (-20 %). B : resultat tombe a 175 000 (-12,5 %). B resiste mieux grace a sa flexibilite.</span>
+        </div>
+
+        <div class="flash-q">
+            Comment calcule-t-on le point mort en jours ?
+            <span class="answer">Point mort = (SR / CA annuel) x 360 jours.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que le levier operationnel et quelle societe en beneficie le plus ?
+            <span class="answer">Le levier operationnel mesure l'amplification des variations du CA dans le resultat. La societe A (TMCV = 40 %) en beneficie le plus : forte hausse en croissance, forte baisse en recession.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../syntheses/PILOTAGE/ch2_couts_seuil_rentabilite.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours original</a>
+    </div>
+</body>
+</html>

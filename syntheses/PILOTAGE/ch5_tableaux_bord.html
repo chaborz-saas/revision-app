@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthese — Pilotage Ch.5 : Les tableaux de bord</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.75;
+            color: #2c3e50;
+            background: #fafafa;
+        }
+        h1 {
+            color: #1a5276;
+            border-bottom: 3px solid #2980b9;
+            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        h2 {
+            color: #2471a3;
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+        }
+        h3 { color: #2e86c1; font-size: 1.15rem; }
+        .definition {
+            background: #eaf2f8;
+            border-left: 4px solid #2980b9;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition strong { color: #1a5276; }
+        .formula {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .important {
+            background: #fdedec;
+            border-left: 4px solid #e74c3c;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .example {
+            background: #eafaf1;
+            border-left: 4px solid #27ae60;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        th { background: #2c3e50; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .source-link {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .source-link a { color: #2980b9; text-decoration: none; }
+        blockquote {
+            border-left: 3px solid #7f8c8d;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pilotage de la performance — Les tableaux de bord</h1>
+
+<h2>1. Performance globale et pilotage multi-criteres</h2>
+
+<p>Le controle de gestion ne se limite plus a la seule maitrise des couts. Il s'agit desormais de piloter le <strong>couple valeur-couts</strong> en integrant l'ensemble des dimensions de la performance. Deux notions fondamentales structurent cette approche : l'<strong>efficacite</strong>, definie comme la capacite d'une entreprise a atteindre ses objectifs par rapport a son environnement (faire ce qu'il faut), et l'<strong>efficience</strong>, definie comme la capacite a utiliser au mieux ses ressources (faire bien). L'efficience se mesure par des indicateurs tels que la rentabilite (rapport d'un benefice aux capitaux investis) ou la productivite (rapport d'un volume obtenu a un volume consomme).</p>
+
+<div class="definition">
+    <strong>Determinants de la valeur pour le client :</strong> La valeur du produit pour le client repose sur quatre elements : la <strong>qualite de conception</strong> (les fonctions du produit repondent-elles aux attentes ?), la <strong>qualite de production</strong> (conformite aux specifications), les <strong>delais</strong> de mise a disposition, et l'existence de <strong>services annexes</strong> (SAV, financement, conseil).
+</div>
+
+<p>Le controle de gestion s'est longtemps focalise sur la maitrise et la reduction des couts. Aujourd'hui, la maitrise de la valeur des produits offerts par l'entreprise apparait comme un objectif complementaire : elle mesure l'utilite pour le marche, les clients internes et externes, ainsi que pour la societe dans son ensemble.</p>
+
+<h2>2. Definition et roles du tableau de bord</h2>
+
+<div class="definition">
+    <strong>Definition (Alazard &amp; Separi, 2013) :</strong> Le tableau de bord est un outil qui repond aux besoins d'un pilotage rapide et permanent sur un ensemble de variables tant financieres, quantitatives que qualitatives. C'est un document rassemblant de maniere claire et synthetique un ensemble d'informations organise sur des variables choisies pour aider a decider, a coordonner et a controler les actions d'un service, d'une fonction ou d'une equipe.
+</div>
+
+<p>Le tableau de bord est defini par et pour une entite, un service ou une fonction sur un perimetre precis. Il se distingue du <strong>reporting</strong>, qui est mis en place au sein d'un groupe pour remonter les donnees principalement financieres de chaque entite a la direction generale. Le reporting n'est pas un support a l'action au quotidien ; il permet plutot de verifier a posteriori si les objectifs delegues sont atteints. Tableaux de bord et reportings peuvent cohabiter, mais il faut veiller a la coherence des indicateurs et de leurs definitions.</p>
+
+<h3>Les trois roles du tableau de bord</h3>
+
+<table>
+    <tr>
+        <th>Role</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><strong>1. Instrument de controle et de comparaison</strong></td>
+        <td>Permet de controler les realisations par rapport aux objectifs fixes dans le cadre de la demarche budgetaire. Il doit permettre de diagnostiquer les points faibles et de faire apparaitre ce qui est anormal et qui a un impact sur le resultat.</td>
+    </tr>
+    <tr>
+        <td><strong>2. Aide a la decision</strong></td>
+        <td>La connaissance des points faibles doit etre completee par une analyse des causes et la mise en oeuvre d'actions correctives. Le TdB soutient la prise de decision en temps reel, repartie, avec des informations adaptees a chaque decideur, pour le pilotage d'objectifs diversifies.</td>
+    </tr>
+    <tr>
+        <td><strong>3. Outil de dialogue et de communication</strong></td>
+        <td>Permet au subordonne de commenter les resultats de son action et de justifier des demandes de moyens. Le superieur hierarchique coordonne les actions correctives en privilegiant l'optimum global. Le TdB apporte un langage commun et federateur.</td>
+    </tr>
+</table>
+
+<h2>3. Les indicateurs de performance (KPI)</h2>
+
+<p>Les indicateurs, ou <strong>KPI</strong> (Key Performance Indicators), constituent le coeur du tableau de bord. Ils se classent selon plusieurs axes complementaires, chacun apportant un eclairage different sur la performance de l'organisation.</p>
+
+<h3>Categories d'indicateurs</h3>
+
+<table>
+    <tr>
+        <th>Axe de classification</th>
+        <th>Type 1</th>
+        <th>Type 2</th>
+    </tr>
+    <tr>
+        <td><strong>Nature</strong></td>
+        <td>Financiers (marge, resultat, CA)</td>
+        <td>Physiques (quantites produites, taux de rebut, reclamations)</td>
+    </tr>
+    <tr>
+        <td><strong>Orientation</strong></td>
+        <td>D'objectifs (brevets deposes, ventes realisees)</td>
+        <td>De moyens (budget de formation, investissement R&amp;D)</td>
+    </tr>
+    <tr>
+        <td><strong>Temporalite</strong></td>
+        <td>Retrospectifs (ventes, production passees)</td>
+        <td>Avances / prospectifs (commandes recues, anticipation)</td>
+    </tr>
+</table>
+
+<h3>Fonctions des indicateurs</h3>
+
+<p>Les indicateurs remplissent quatre fonctions essentielles : le <strong>suivi des actions</strong>, activites et processus ; l'<strong>evaluation</strong> d'une action ; le <strong>diagnostic</strong> d'une situation ou d'un probleme ; et la <strong>veille</strong> et surveillance d'environnements et de changements. Ils doivent etre simples, comprehensibles et mesurables. Il est par ailleurs necessaire de les faire evoluer regulierement afin de les adapter aux enjeux actuels de l'entreprise et de gommer les effets pervers (habitude, lassitude ou contournement des managers).</p>
+
+<h3>Formes de representation des indicateurs</h3>
+
+<div class="definition">
+    <strong>Les quatre modes de representation :</strong>
+    <br><br>
+    <strong>1. Les ecarts</strong> : en valeur absolue ou en valeur relative. Formule de l'ecart relatif entre deux periodes : Ecart = (Valeur<sub>n</sub> - Valeur<sub>n-1</sub>) / Valeur<sub>n-1</sub> = x %.
+    <br><br>
+    <strong>2. Les ratios</strong> : rapports de grandeurs significatives du fonctionnement de l'entreprise. Leur evolution dans le temps et l'espace donne des indications sur la performance. Il faut definir le rapport de telle sorte qu'une augmentation du ratio soit signe d'amelioration. Exemple : CA / Nombre de vendeurs.
+    <br><br>
+    <strong>3. Les graphiques</strong> : courbes pour les evolutions dans le temps, histogrammes pour les comparaisons, histogrammes empiles pour les comparaisons avec decomposition.
+    <br><br>
+    <strong>4. Les clignotants</strong> : fleches, feux tricolores, jauges ou meteo, fonctionnant avec des seuils predetermines.
+</div>
+
+<h3>References de comparaison</h3>
+
+<p>Pour apprecier la performance dans un tableau de bord, il faut se comparer a une reference. Cinq types de references sont possibles : <strong>soi-meme</strong> (comparaison dans le temps), <strong>ses pairs</strong> (regions similaires, fonctions proches), <strong>les meilleurs</strong> (top 10, classements), <strong>la moyenne</strong> de sa categorie, ou une <strong>source externe</strong> via le benchmark (comparaison a un leader du marche ou a des entreprises d'autres secteurs ayant les memes fonctions).</p>
+
+<h2>4. Principes de conception du tableau de bord</h2>
+
+<p>La construction d'un tableau de bord efficace repose sur cinq principes fondamentaux qui garantissent sa pertinence et son utilite operationnelle.</p>
+
+<h3>Principe 1 : Coherence avec l'organigramme (logique de "poupees russes")</h3>
+
+<p>Le decoupage des tableaux de bord doit respecter le decoupage des responsabilites et des lignes hierarchiques. La direction generale dispose de tableaux de bord synthetiques sur les axes strategiques. Les directions fonctionnelles (production, ventes, RH, SI) disposent de tableaux de bord plus detailles. Enfin, les services operationnels (ateliers, agences, maintenance) ont des tableaux de bord tres detailles avec des indicateurs operationnels portant sur les couts, la qualite et les delais.</p>
+
+<h3>Principe 2 : Rapidite d'elaboration et de transmission</h3>
+
+<p>Dans le pilotage de la performance, la rapidite doit l'emporter sur la precision. La notion de rapidite est relative selon le secteur : une industrie a cycles longs (siderurgie, nucleaire) n'a pas les memes enjeux qu'une societe high tech ou la grande distribution. Le tableau de bord a un role d'alerte : les responsables doivent pouvoir mettre en oeuvre des actions correctives rapides et efficaces. Les anglo-saxons utilisent souvent le terme de "rapport flash".</p>
+
+<h3>Principe 3 : Respecter la forme et le contenu</h3>
+
+<div class="important">
+    <strong>Structure-type d'un tableau de bord :</strong> Un tableau de bord contient generalement 4 a 5 zones. Il faut toujours indiquer clairement la <strong>periode</strong> et le <strong>perimetre</strong> concerne.
+    <br><br>
+    <table>
+        <tr>
+            <th>Zone</th>
+            <th>Contenu</th>
+        </tr>
+        <tr>
+            <td>Parametres economiques</td>
+            <td>Indicateurs financiers, volumetriques, de qualite, de delai. Chaque rubrique represente un enjeu important.</td>
+        </tr>
+        <tr>
+            <td>Resultats</td>
+            <td>Resultats reels par periode (mensuels) ou cumules depuis le debut de l'annee (YTD).</td>
+        </tr>
+        <tr>
+            <td>Objectifs</td>
+            <td>Definis au moment du budget, rapportes a la periode consideree (budget ou forecast mensualise).</td>
+        </tr>
+        <tr>
+            <td>Ecarts</td>
+            <td>Ecarts entre resultats et objectifs, en valeur absolue ou relative (%).</td>
+        </tr>
+    </table>
+</div>
+
+<h3>Principe 4 : Choisir des indicateurs simples et mesurables</h3>
+
+<p>Les indicateurs doivent repondre a des criteres de simplicite, de comprehensibilite et de mesurabilite. Un bon tableau de bord ne depasse pas 15 priorites et 30 indicateurs maximum. Il ne se substitue pas aux reportings mais sert a poser les questions et les enjeux. Chaque indicateur doit avoir un porteur unique, charge de justifier son evolution.</p>
+
+<h3>Principe 5 : Synthese et processus de production</h3>
+
+<div class="important">
+    <strong>Ce qu'un tableau de bord est et n'est pas :</strong>
+    <br><br>
+    <strong>Un TdB est :</strong> un document synthetique (max 15 priorites, 30 indicateurs), avec des principes d'usage partages et integres dans les modes de management (support de CODIR, de revues d'activite), des principes de responsabilite definis (un porteur unique par indicateur), et un processus de production (maquettes automatisees, responsables de remontee des donnees et commentaires).
+    <br><br>
+    <strong>Un TdB n'est pas :</strong> une bibliotheque d'indicateurs, un outil charge d'apporter toutes les reponses, un outil capable de desservir des niveaux de management differents (il faut "cascader" les TdB), ni une simple evaluation de l'atteinte des objectifs budgetes.
+</div>
+
+<h2>5. La methode OVAR</h2>
+
+<div class="definition">
+    <strong>Methode OVAR :</strong> La methode <strong>OVAR</strong> (Objectifs, Variables d'Action, Responsables) est une methode d'elaboration des tableaux de bord. Elle part des <strong>missions</strong> (objectifs) et des <strong>facteurs cles de succes</strong> de l'organisation pour definir les indicateurs pertinents. Elle assure ainsi l'alignement entre la strategie de l'entreprise et les indicateurs operationnels de suivi.
+</div>
+
+<p>La demarche OVAR consiste d'abord a identifier les objectifs de chaque responsable, puis a determiner les variables d'action (facteurs cles de succes) sur lesquelles ces responsables peuvent agir pour atteindre leurs objectifs. Enfin, elle attribue a chaque variable d'action un ou plusieurs indicateurs de suivi, en precisant le responsable de chaque indicateur.</p>
+
+<h2>6. Applications pratiques : construction d'un tableau de bord</h2>
+
+<h3>Exemple 1 : Agence de soutien scolaire</h3>
+
+<p>Pour une agence de cours de soutien scolaire a domicile, les objectifs sont d'atteindre les objectifs de chiffre d'affaires, de developper l'activite et de satisfaire la clientele. La demarche consiste a identifier d'abord les facteurs cles de succes, puis a determiner les indicateurs correspondants.</p>
+
+<div class="example">
+    <strong>Facteurs cles de succes identifies :</strong> performance commerciale, qualite de l'enseignement, mise en place rapide des cours, progression des eleves.
+</div>
+
+<table>
+    <tr>
+        <th>Facteur cle de succes</th>
+        <th>Indicateurs proposes</th>
+    </tr>
+    <tr>
+        <td><strong>Performance commerciale</strong></td>
+        <td>CA global de l'agence ; CA par bloc de matieres ; Taux de croissance du CA ; Taux de croissance du nombre d'heures de cours ; Nombre de contacts clients ; Nombre d'inscriptions nouvelles</td>
+    </tr>
+    <tr>
+        <td><strong>Qualite de l'enseignement</strong></td>
+        <td>Note de satisfaction clients (cours et supports) ; Nombre de reclamations ; Nombre de remplacements pour insatisfaction ; Taux de fidelite ; Taux d'abandon pour insatisfaction</td>
+    </tr>
+    <tr>
+        <td><strong>Mise en place rapide des cours</strong></td>
+        <td>Delai moyen d'evaluation a l'inscription ; Delai moyen entre inscription et debut du cours ; Delai moyen en cas de remplacement</td>
+    </tr>
+    <tr>
+        <td><strong>Progression des eleves</strong></td>
+        <td>Evaluation a l'inscription et en fin de trimestre ; Taux de reussite aux examens ; Taux d'abandon pour objectifs non atteints ; Taux d'evolution des resultats scolaires</td>
+    </tr>
+</table>
+
+<h3>Exemple 2 : SA Labopharma (laboratoire pharmaceutique)</h3>
+
+<p>L'exercice Labopharma illustre la construction d'un tableau de bord mensuel complet dans une entreprise manquant de systeme de suivi de gestion. L'objectif est de permettre un suivi mensuel des couts, des stocks, de l'activite et des principales donnees financieres. Le tableau de bord propose comprend cinq categories de donnees.</p>
+
+<table>
+    <tr>
+        <th>Categorie</th>
+        <th>Contenu du tableau de bord</th>
+    </tr>
+    <tr>
+        <td><strong>Donnees commerciales</strong></td>
+        <td>CA du mois et cumule par produit, previsions, ecarts. Possibilite de decoupage en secteurs geographiques pour detecter les zones prioritaires.</td>
+    </tr>
+    <tr>
+        <td><strong>Donnees de production</strong></td>
+        <td>Volumes produits (quantites et valeur au cout preetabli) ; suivi des couts controlables avec ecarts sur matieres, MOD et autres couts.</td>
+    </tr>
+    <tr>
+        <td><strong>Donnees comptables</strong></td>
+        <td>Comptes de resultats mensuels pour mesurer la progression du resultat a l'interieur de l'exercice.</td>
+    </tr>
+    <tr>
+        <td><strong>Suivi des stocks</strong></td>
+        <td>Quantite, cout unitaire preetabli et montant par matiere et par produit.</td>
+    </tr>
+    <tr>
+        <td><strong>Donnees financieres</strong></td>
+        <td>Duree credit clients et fournisseurs, BFR en valeur, tresorerie (disponible fin de mois, position la plus haute et la plus basse).</td>
+    </tr>
+</table>
+
+<div class="example">
+    <strong>Informations necessaires :</strong> La comptabilite generale doit produire les documents utiles a la gestion (methode des abonnements, inventaires permanents). La comptabilite analytique doit etre renforcee avec un systeme de couts preetablis pour le suivi des ecarts. Les stocks doivent etre tenus en quantites et en valeur sur ordinateur, avec bons de reception et bons de sortie.
+</div>
+
+<h2>7. Limites et pistes d'amelioration</h2>
+
+<p>Traditionnellement, les tableaux de bord rencontraient quatre limites principales : ils n'etaient pas assez adaptes aux specificites de chaque service, pas assez relies aux actions de pilotage dans une approche transversale, elabores de maniere sequentielle avec retard, et trop ponctuels dans une optique de controle.</p>
+
+<p>L'amelioration passe par plusieurs axes : une <strong>vision coherente par rapport aux objectifs</strong>, une <strong>mesure de performance multicriteres</strong> portant sur l'effort accompli et sur l'effort a accomplir, un <strong>signalement des dysfonctionnements</strong>, une <strong>possibilite de simulation</strong>, un <strong>outil de communication et de cooperation</strong> entre les acteurs, et une <strong>integration de plusieurs dimensions</strong> : operationnel passe, strategique prospectif, social et societal.</p>
+
+<div class="source-link">
+    <p>Source originale : <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Pilotage de la performance — Cours Tableaux de bord</a></p>
+    <p>References bibliographiques : Alazard &amp; Separi (2013), de Villarmoris et al. (2022), Grandguillot B. et F., Courcoureux M., Cuyaubere T., Muller J.</p>
+</div>
+
+</body>
+</html>

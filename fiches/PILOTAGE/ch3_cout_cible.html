@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Pilotage : La methode du cout cible (target costing)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Pilotage de la performance</div>
+        <h1>La methode du cout cible (target costing)</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Principe fondamental</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Cout cible</strong> = cout maximal admissible sous la double contrainte du <span class="hl-critical">prix de vente impose par le marche</span> et de la <span class="hl-critical">marge souhaitee par l'entreprise</span>. C'est le retournement de l'equation traditionnelle : on ne subit plus le resultat, on fixe le cout comme objectif.
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            Approche classique : Prix de vente = Cout + Marge (logique subie)<br>
+            <strong>Target costing</strong> : <span class="hl-critical">Cout cible = Prix de vente &minus; Profit cible</span> (logique proactive)
+        </div>
+
+        <div class="section-title">Formules essentielles</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Formules a retenir</div>
+            <span class="hl-critical">Cout cible = Prix de vente HT &minus; Marge souhaitee</span><br><br>
+            <span class="hl-critical">Prix HT = Prix TTC / (1 + Taux TVA)</span><br><br>
+            <span class="hl-critical">Ecart = Cout estime &minus; Cout cible</span><br><br>
+            Si ecart > 0 : le cout estime depasse le cout cible, il faut reduire les couts.<br><br>
+            <span class="hl-important">Valeur = Satisfaction du besoin / Couts</span> (AFNOR)
+        </div>
+
+        <div class="section-title">Les deux ecarts du target costing (P. Lorino)</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">CE</span> = Cout estime (estime par le bureau d'etudes / controle de gestion)</li>
+            <li><span class="hl-important">CC</span> = Cout cible (cout maximal pour atteindre la marge souhaitee)</li>
+            <li><span class="hl-important">PV</span> = Prix de vente | <span class="hl-important">PC</span> = Profit cible</li>
+            <li><strong>Ecart 1</strong> = CE &minus; CC</li>
+            <li><strong>Ecart 2</strong> = CE &minus; (PV &minus; PC) [equivalent a Ecart 1]</li>
+        </ul>
+
+        <div class="section-title">Demarche de decomposition par composant</div>
+
+        <ul class="condensed-list">
+            <li><strong>1.</strong> Identifier les <span class="hl-important">fonctions</span> du produit et leur poids (% importance client)</li>
+            <li><strong>2.</strong> Etablir la <span class="hl-important">matrice composants / fonctions</span> (contribution de chaque composant a chaque fonction)</li>
+            <li><strong>3.</strong> Calculer le poids de chaque composant = <span class="hl-critical">somme ponderee</span> (poids fonction &times; contribution composant)</li>
+            <li><strong>4.</strong> Cout cible par composant = poids du composant &times; cout cible global</li>
+            <li><strong>5.</strong> Comparer cout cible vs cout estime par composant : cibler les ecarts les plus importants</li>
+        </ul>
+
+        <div class="section-title">Exemple AERONEF (avion)</div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Application chiffree</div>
+            Prix TTC = 100 000 euros, TVA 20 %, Marge = 20 % du PV HT<br>
+            PV HT = 100 000 / 1,2 = <strong>83 333 euros</strong><br>
+            Cout cible = 83 333 &minus; (83 333 &times; 20 %) = <strong>66 667 euros</strong><br>
+            Cout estime = 80 000 euros &rarr; Ecart = <strong>13 333 euros</strong> a resorber<br><br>
+            Composant critique : <strong>Moteur</strong> (ecart +29 333 euros) &rarr; priorite de reduction
+        </div>
+
+        <div class="section-title">Decomposition composants AERONEF</div>
+
+        <table class="compact-table">
+            <tr><th>Composant</th><th>Poids</th><th>Cout cible</th><th>Cout estime</th><th>Ecart</th></tr>
+            <tr><td>Carlingue</td><td>31 %</td><td>20 667 euros</td><td>30 000 euros</td><td>+9 333</td></tr>
+            <tr><td>Moteur</td><td>16 %</td><td>10 667 euros</td><td>40 000 euros</td><td><span class="hl-critical">+29 333</span></td></tr>
+            <tr><td>Equip. electronique</td><td>53 %</td><td>35 333 euros</td><td>10 000 euros</td><td>&minus;25 333</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>100 %</strong></td><td><strong>66 667</strong></td><td><strong>80 000</strong></td><td><strong>+13 333</strong></td></tr>
+        </table>
+
+        <div class="section-title">Exemple sac de sport (exercice simplifie)</div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Application rapide</div>
+            Prix TTC = 34,80 euros, TVA 20 %, Marge = 40 % du PV HT<br>
+            PV HT = 34,80 / 1,20 = <strong>29 euros</strong><br>
+            Cout cible = 29 &minus; (29 &times; 40 %) = <strong>17,40 euros</strong><br>
+            Cout estime = 20,30 euros &rarr; Ecart = <strong>2,90 euros</strong> a resorber
+        </div>
+
+        <div class="section-title">Analyse de la valeur (AFNOR)</div>
+
+        <ul class="condensed-list">
+            <li>Methode de <span class="hl-important">competitivite organisee et creative</span>, demarche fonctionnelle, economique et pluridisciplinaire</li>
+            <li>Basee sur l'<span class="hl-important">analyse fonctionnelle</span> : identifier, hierarchiser les fonctions du produit</li>
+            <li>Supprimer les fonctions inutiles et leurs couts</li>
+            <li>Ameliorer une fonction a cout constant OU reduire le cout a service constant</li>
+        </ul>
+
+        <div class="section-title">6 etapes de la demarche d'analyse de la valeur</div>
+
+        <ul class="condensed-list">
+            <li><strong>1.</strong> Definition des orientations d'analyse</li>
+            <li><strong>2.</strong> Recherche d'informations (externes : concurrence / internes : specifications)</li>
+            <li><strong>3.</strong> Analyse fonctionnelle : identification et classement des besoins clients</li>
+            <li><strong>4.</strong> Evaluation des fonctionnalites existantes vs attendues</li>
+            <li><strong>5.</strong> Recherche, proposition et selection de solutions</li>
+            <li><strong>6.</strong> Mise en oeuvre, suivi et bilan</li>
+        </ul>
+
+        <div class="section-title">Avantages et limites</div>
+
+        <table class="compact-table">
+            <tr><th>Avantages</th><th>Limites</th></tr>
+            <tr><td>Part du client et du marche</td><td rowspan="3"><span class="hl-critical">Ne prend en compte que les couts directs</span> (matieres, MOD, dechets). Les frais generaux et frais de structure sont exclus.</td></tr>
+            <tr><td>Reflexion sur l'organisation (vision fonctionnelle)</td></tr>
+            <tr><td>Collaboration pluridisciplinaire + progres continu</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelle est la formule du cout cible ?
+            <span class="answer">Cout cible = Prix de vente HT &minus; Profit cible (marge souhaitee)</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference fondamentale entre l'approche classique et le target costing ?
+            <span class="answer">L'approche classique calcule le prix a partir du cout (PV = Cout + Marge). Le target costing fixe le cout a partir du prix de marche et de la marge souhaitee (CC = PV &minus; Marge).</span>
+        </div>
+
+        <div class="flash-q">
+            Comment decompose-t-on le cout cible par composant ?
+            <span class="answer">On calcule la somme ponderee : pour chaque composant, on multiplie le poids de chaque fonction par la contribution du composant a cette fonction, puis on somme. On applique ensuite ce pourcentage au cout cible global.</span>
+        </div>
+
+        <div class="flash-q">
+            Que signifie un ecart positif entre cout estime et cout cible ?
+            <span class="answer">Le cout estime depasse le cout cible : l'entreprise doit reduire ses couts (changement de fournisseur, redesign, optimisation des processus, etc.).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la principale limite de la methode du cout cible ?
+            <span class="answer">Elle ne prend en compte que les depenses en rapport direct avec le produit (matieres premieres, MOD, dechets). Les frais generaux et frais de structure sont exclus.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que l'analyse de la valeur selon l'AFNOR ?
+            <span class="answer">Une methode de competitivite organisee et creative, visant a la satisfaction du besoin de l'utilisateur par une demarche fonctionnelle, economique et pluridisciplinaire. Valeur = Satisfaction du besoin / Couts.</span>
+        </div>
+
+        <div class="flash-q">
+            Dans l'exercice AERONEF, quel composant presente l'ecart le plus critique et pourquoi ?
+            <span class="answer">Le Moteur : son cout estime (40 000 euros) depasse son cout cible (10 667 euros) de 29 333 euros. C'est le composant prioritaire pour la reduction des couts.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/PILOTAGE/ch3_cout_cible.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours original</a>
+    </div>
+</body>
+</html>

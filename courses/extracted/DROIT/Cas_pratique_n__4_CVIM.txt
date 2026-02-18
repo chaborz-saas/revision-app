@@ -1,0 +1,37 @@
+**Cas pratique n°4 : Les téléviseurs endommagés pendant le transport**
+
+**Énoncé :**
+
+La société **VisionTech SA**, basée à **Lille (France)**, vend le 2 mars 2024 à la société **NordicElectro AB**, établie à **Stockholm (Suède)**, **1 000 téléviseurs LED** pour un prix total de **400 000 €**.
+
+Le contrat prévoit :
+
+- Livraison **FOB Le Havre (Incoterms 2020)**, expédition avant le **15 avril 2024** ;
+
+- Paiement à la réception des documents de transport ;
+
+- Aucune clause sur le droit applicable.
+
+Le 12 avril 2024, VisionTech remet la marchandise au transporteur maritime désigné par l'acheteur, en parfait état apparent.\
+La cargaison est embarquée sur le navire *Baltic Star*.
+
+Lors du déchargement à Stockholm le **25 avril 2024**, **plus de 300 téléviseurs sont gravement endommagés** à cause d'une mauvaise manutention pendant le transport.\
+NordicElectro refuse de payer le prix et réclame au vendeur la **remplacement des téléviseurs endommagés**, arguant d'un défaut de conformité.
+
+VisionTech réplique que les risques ont été transférés à l'acheteur au moment du chargement à bord du navire.
+
+------------------------------------------------------------------------
+
+**⚖️ Questions :**
+
+1.  La Convention de Vienne est-elle applicable ?
+
+2.  Les marchandises sont-elles conformes au sens de la CVIM ?
+
+3.  À quel moment les risques ont-ils été transférés ?
+
+4.  L'acheteur peut-il exiger le remplacement des téléviseurs ?
+
+5.  Quels sont les recours possibles de chaque partie ?
+
+------------------------------------------------------------------------

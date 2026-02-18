@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — DROIT : La CVIM — Convention de Vienne</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Droit du commerce international</div>
+        <h1>La CVIM — Convention de Vienne sur la vente internationale de marchandises</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definition et chiffres cles</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>CVIM (CISG)</strong> = Convention des Nations Unies sur les contrats de vente internationale de marchandises, signee le <span class="hl-critical">11 avril 1980</span>. Traite multilateral etablissant un cadre juridique uniforme. Ratifiee par <span class="hl-critical">97 pays</span> (dec. 2023) = 2/3 du commerce mondial. Tous les Etats UE sauf le <span class="hl-important">Royaume-Uni</span>.
+        </div>
+
+        <div class="section-title">Champ d'application (art. 1)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Conditions d'applicabilite</div>
+            3 conditions cumulatives : <span class="hl-critical">vente de marchandises</span> + parties dans <span class="hl-critical">Etats differents</span> + ces Etats sont <span class="hl-critical">Etats contractants</span> (art. 1 &sect;1 a). Voie indirecte (art. 1 &sect;1 b) : regles de conflit de lois designent la loi d'un Etat contractant.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Exclusions (hors champ)</th><th>Non traite par la CVIM (art. 4)</th></tr>
+            <tr><td>Ventes aux consommateurs</td><td><span class="hl-critical">Validite du contrat</span></td></tr>
+            <tr><td>Encheres, navires, aeronefs</td><td><span class="hl-critical">Transfert de propriete</span></td></tr>
+            <tr><td>Immobilier, instruments financiers</td><td rowspan="2">Ces questions relevent du droit national</td></tr>
+            <tr><td>Electricite, services</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">A retenir</div>
+            Les parties peuvent <span class="hl-critical">exclure ou modifier</span> l'application de la CVIM dans leur contrat. Application automatique sauf clause contraire.
+        </div>
+
+        <div class="section-title">Formation du contrat</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Offre</span> : adressee a une personne + description marchandises/quantite/prix + intention d'etre lie</li>
+            <li><span class="hl-important">Prix implicite</span> : si pas de prix explicite, prix habituellement pratique pour biens similaires</li>
+            <li><span class="hl-important">Revocation</span> : possible avant reception de l'offre ou avant envoi de l'acceptation (sauf offre irrevocable)</li>
+            <li><span class="hl-critical">Acceptation</span> = acte positif obligatoire. Le silence n'est JAMAIS une acceptation</li>
+            <li><span class="hl-important">Contre-offre</span> : toute modification substantielle = rejet + contre-offre</li>
+        </ul>
+
+        <div class="block block-def">
+            <div class="block-label">Modifications substantielles</div>
+            <span class="hl-critical">Prix</span>, paiement, <span class="hl-critical">qualite</span>, <span class="hl-critical">quantite</span>, livraison, responsabilite, arbitrage.
+        </div>
+
+        <div class="section-title">Obligations du vendeur</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-critical">Livrer</span> les marchandises + <span class="hl-critical">remettre les documents</span> + <span class="hl-critical">transferer la propriete</span></li>
+            <li><span class="hl-important">Conformite (art. 35)</span> : qualite, quantite, description, emballage, aptitude a l'usage</li>
+            <li><span class="hl-important">Garantie PI</span> : pas de reclamation de tiers pour violation de droits de propriete intellectuelle</li>
+            <li><span class="hl-important">Responsabilite (art. 36)</span> : responsable du defaut existant au transfert des risques, meme si decouvert apres</li>
+        </ul>
+
+        <div class="section-title">Obligations de l'acheteur</div>
+
+        <table class="compact-table">
+            <tr><th>Obligation</th><th>Article</th><th>Detail</th></tr>
+            <tr><td><span class="hl-critical">Examen</span></td><td>Art. 38</td><td>Delai <span class="hl-critical">aussi bref que possible</span></td></tr>
+            <tr><td><span class="hl-critical">Notification defaut</span></td><td>Art. 39</td><td>Delai raisonnable (<span class="hl-critical">2 a 4 semaines</span>). Max <span class="hl-critical">2 ans</span> apres remise</td></tr>
+            <tr><td><span class="hl-critical">Paiement</span></td><td>Art. 53</td><td>Payer le prix + prendre livraison. Prix <span class="hl-important">portable</span></td></tr>
+            <tr><td>Lieu de paiement</td><td>Art. 57</td><td>Siege du vendeur OU lieu de remise si paiement contre documents</td></tr>
+            <tr><td>Moment du paiement</td><td>Art. 58</td><td>A la mise a disposition des marchandises/documents</td></tr>
+        </table>
+
+        <div class="section-title">Transfert des risques (art. 67)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Regle cle</div>
+            Risques transferes a l'acheteur des la <span class="hl-critical">remise au premier transporteur</span> (art. 67 &sect;1). En pratique, defini par l'<span class="hl-critical">Incoterm</span> choisi (FOB, CIF, DDP...).
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Cas pratique type</div>
+            FOB Le Havre : risques transferes au chargement a bord du navire. Dommages pendant le transport = a la charge de l'<span class="hl-important">acheteur</span>. Recours contre le <span class="hl-important">transporteur</span>, pas le vendeur.
+        </div>
+
+        <div class="section-title">Recours en cas d'inexecution</div>
+
+        <table class="compact-table">
+            <tr><th colspan="3" style="text-align:center;">Recours de l'acheteur</th></tr>
+            <tr><th>Article</th><th>Recours</th><th>Condition</th></tr>
+            <tr><td>Art. 46</td><td>Remplacement / reparation</td><td><span class="hl-critical">Violation essentielle</span> + defaut avant transfert risques</td></tr>
+            <tr><td>Art. 49</td><td>Resolution du contrat</td><td>Violation essentielle</td></tr>
+            <tr><td>Art. 50</td><td>Reduction du prix</td><td>Defaut de conformite</td></tr>
+            <tr><td>Art. 74</td><td>Dommages et interets</td><td>Prejudice subi</td></tr>
+        </table>
+
+        <table class="compact-table">
+            <tr><th colspan="3" style="text-align:center;">Recours du vendeur</th></tr>
+            <tr><th>Article</th><th>Recours</th><th>Detail</th></tr>
+            <tr><td>Art. 62</td><td>Exiger paiement du prix</td><td>Execution forcee</td></tr>
+            <tr><td>Art. 63</td><td>Delai supplementaire</td><td>Mise en demeure prealable</td></tr>
+            <tr><td>Art. 64</td><td>Resolution du contrat</td><td>(a) violation essentielle OU (b) delai expire sans resultat</td></tr>
+            <tr><td>Art. 74-75</td><td>D&I + difference de prix</td><td>Cumul possible avec resolution</td></tr>
+            <tr><td>Art. 77</td><td>Mitigation</td><td>Obligation de limiter le dommage</td></tr>
+            <tr><td><span class="hl-critical">Art. 78</span></td><td>Interets de retard</td><td>Taux selon droit national (DIP)</td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Violation essentielle (art. 25)</div>
+            = l'autre partie est <span class="hl-critical">privee substantiellement</span> de ce qu'elle attendait du contrat + violation <span class="hl-critical">non previsible</span> (test objectif). Si violation non essentielle : pas de resolution, mais D&I + execution en nature + ajustement du prix.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Force majeure / Exoneration</div>
+            Exoneration de D&I si inexecution due a un <span class="hl-important">empechement independant de la volonte</span> de la partie, <span class="hl-important">non raisonnablement previsible</span>.
+        </div>
+
+        <div class="section-title">Cadre juridique complementaire</div>
+
+        <table class="compact-table">
+            <tr><th>Instrument</th><th>Objet</th><th>Regle cle</th></tr>
+            <tr><td><span class="hl-important">Rome I</span> (CE 593/2008)</td><td>Loi applicable</td><td>Liberte de choix ; a defaut : loi du vendeur (vente), loi du prestataire (services)</td></tr>
+            <tr><td><span class="hl-important">Bruxelles I bis</span> (1215/2012)</td><td>Competence judiciaire</td><td>Tribunal du defendeur OU lieu d'execution ; clause attributive possible</td></tr>
+            <tr><td>Conv. New York 1958</td><td>Arbitrage</td><td>Reconnaissance des sentences arbitrales etrangeres</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Lois de police (art. 9 Rome I)</div>
+            Dispositions imperatives essentielles aux interets publics d'un Etat. S'appliquent <span class="hl-important">quel que soit le choix de loi</span> des parties.
+        </div>
+
+        <div class="section-title">Clauses contractuelles types</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Intensite des obligations</span> : best efforts > reasonable endeavours > due diligence</li>
+            <li><span class="hl-important">Clause penale</span> : fixe forfaitairement les dommages en cas d'inexecution</li>
+            <li><span class="hl-important">Reserve de propriete</span> : clause de transfert de propriete</li>
+            <li><span class="hl-important">Clause d'annulation</span> : conditions de resiliation</li>
+            <li>Documents precontractuels : lettres d'intention, lettres de confort (ambiguite juridique)</li>
+        </ul>
+
+        <div class="section-title">US : CVIM vs UCC</div>
+
+        <table class="compact-table">
+            <tr><th>Point</th><th>CVIM</th><th>UCC (droit US)</th></tr>
+            <tr><td>Conflit de formulaires</td><td>Acceptation modifiee = <span class="hl-critical">contre-offre</span></td><td>Acceptation modifiee peut etre <span class="hl-critical">valable</span></td></tr>
+            <tr><td>Forme ecrite</td><td><span class="hl-critical">Pas d'exigence d'ecrit</span></td><td>Ecrit obligatoire si >= <span class="hl-critical">500 $</span> (Statute of Frauds)</td></tr>
+            <tr><td>Reserve art. 95</td><td colspan="2">US : CVIM uniquement entre Etats contractants</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelles sont les 3 conditions cumulatives d'application de la CVIM (voie directe) ?
+            <span class="answer">1) Vente de marchandises. 2) Parties dans des Etats differents. 3) Ces Etats sont des Etats contractants (art. 1 &sect;1 a).</span>
+        </div>
+
+        <div class="flash-q">
+            Le silence vaut-il acceptation sous la CVIM ?
+            <span class="answer">Non, jamais. La CVIM exige un acte positif d'acceptation. Le silence ou l'inaction ne constituent pas une acceptation.</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le delai maximal pour notifier un defaut de conformite ?
+            <span class="answer">Delai raisonnable apres decouverte (en pratique 2 a 4 semaines). En tout etat de cause, au plus tard 2 ans apres la remise effective des marchandises (art. 39).</span>
+        </div>
+
+        <div class="flash-q">
+            A quel moment les risques sont-ils transferes a l'acheteur lorsque le contrat implique un transport ?
+            <span class="answer">Lors de la remise des marchandises au premier transporteur (art. 67 &sect;1). En pratique, le moment exact depend de l'Incoterm choisi (FOB, CIF, DDP...).</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce qu'une violation essentielle au sens de l'article 25 CVIM ?
+            <span class="answer">C'est une violation qui prive l'autre partie de maniere substantielle de ce qu'elle attendait du contrat, a condition que cette violation n'ait pas ete previsible (test objectif).</span>
+        </div>
+
+        <div class="flash-q">
+            Le vendeur peut-il resoudre le contrat si l'acheteur ne paie pas ?
+            <span class="answer">Oui, soit en cas de violation essentielle (art. 64 &sect;1 a), soit apres mise en demeure avec delai supplementaire raisonnable restee sans effet (art. 64 &sect;1 b). Il peut cumuler resolution et dommages-interets.</span>
+        </div>
+
+        <div class="flash-q">
+            L'acheteur peut-il exiger le remplacement de marchandises endommagees pendant le transport (FOB) ?
+            <span class="answer">Non. Si les marchandises etaient conformes au moment du transfert des risques (remise au transporteur), le defaut n'existait pas avant ce moment. L'acheteur doit agir contre le transporteur, pas contre le vendeur (art. 46 &sect;2 + art. 67).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle loi s'applique a un contrat de vente international en l'absence de choix des parties (dans l'UE) ?
+            <span class="answer">La loi du pays ou le vendeur a sa residence habituelle (Reglement Rome I, art. 4.1 a).</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/DROIT/ch2_cvim.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/DROIT/">Cours original</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — DROIT Ch.7 : L'agent commercial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "\2753 "; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Droit</div>
+        <h1>Ch. 7 — L'agent commercial</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definition et statut</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Agent commercial</strong> (art. L134-1 C. com.) = <span class="hl-critical">mandataire independant</span>, charge a titre permanent de negocier et, le cas echeant, de conclure des contrats (vente, achat, location, prestation de services) au nom et pour le compte de <span class="hl-important">commettants</span>. Peut etre personne physique ou morale.
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">Attention — Negociation</div>
+            <strong>Cour de cassation (avant 2020)</strong> : negocier = pouvoir modifier les prix.<br>
+            <strong>CJUE, 4 juin 2020 (Trendsetteuse / DCA)</strong> : negocier = informer, conseiller, discuter pour favoriser la vente. <span class="hl-critical">Le pouvoir de modifier les prix n'est plus exige.</span>
+        </div>
+
+        <div class="section-title">Cadre juridique</div>
+
+        <table class="compact-table">
+            <tr><th>Source</th><th>Detail</th></tr>
+            <tr><td>Decret francais</td><td>1958 — premier encadrement</td></tr>
+            <tr><td>Directive europeenne</td><td><span class="hl-critical">86/653/CEE du 18/12/1986</span> — harmonisation UE</td></tr>
+            <tr><td>Loi francaise</td><td>25 juin 1991, codifiee aux <span class="hl-critical">art. L134-1 a L134-16</span> C. com.</td></tr>
+        </table>
+
+        <div class="section-title">Obligations reciproques (art. L134-4)</div>
+
+        <table class="compact-table">
+            <tr><th>Agent commercial</th><th>Commettant</th></tr>
+            <tr><td>Obligation de <span class="hl-critical">loyaute</span></td><td>Obligation de <span class="hl-critical">loyaute</span></td></tr>
+            <tr><td>Information reciproque</td><td>Information reciproque</td></tr>
+            <tr><td>Diligence d'un <span class="hl-important">bon professionnel</span></td><td>Mettre l'agent en mesure d'executer son mandat</td></tr>
+            <tr><td>Ne pas representer un concurrent sans accord</td><td>Contrat conclu dans l'<span class="hl-important">interet commun</span></td></tr>
+        </table>
+
+        <div class="section-title">Remuneration — La commission</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Commission</span> = tout element de remuneration variant selon le nombre ou la valeur des operations (art. L134-5)</li>
+            <li>A defaut de clause : remuneration conforme aux <span class="hl-important">usages du secteur</span>, sinon remuneration raisonnable</li>
+            <li>Commission acquise des que le commettant ou le tiers a execute la transaction</li>
+            <li>Payee au plus tard le <span class="hl-critical">dernier jour du mois suivant le trimestre</span> d'acquisition</li>
+            <li>Droit a commission meme <strong>apres cessation</strong> du contrat si la transaction est due a l'activite de l'agent (art. L134-7)</li>
+        </ul>
+
+        <div class="block block-astuce">
+            <div class="block-label">Cas LH Wind</div>
+            Volante (SARL) : commission de <span class="hl-critical">4 %</span> du CA de BOT Inc. CA France passe de 80 000 EUR (annee 1) a 20 000 000 EUR (annee 14). Commission annuelle France : de 3 200 EUR a 800 000 EUR. CA total zone (4 pays) : environ 35 M EUR.
+        </div>
+
+        <div class="section-title">Rupture du contrat</div>
+
+        <table class="compact-table">
+            <tr><th>Anciennete</th><th>Preavis (art. L134-11)</th></tr>
+            <tr><td>1re annee</td><td><span class="hl-critical">1 mois</span></td></tr>
+            <tr><td>2e annee</td><td><span class="hl-critical">2 mois</span></td></tr>
+            <tr><td>3e annee et +</td><td><span class="hl-critical">3 mois</span></td></tr>
+        </table>
+
+        <ul class="condensed-list">
+            <li>Fin du preavis = fin d'un mois civil</li>
+            <li>Parties ne peuvent pas convenir de delais <strong>plus courts</strong></li>
+            <li>Preavis du commettant ne peut pas etre plus court que celui de l'agent</li>
+            <li><span class="hl-important">Exception</span> : pas de preavis en cas de faute grave ou de force majeure</li>
+            <li>CDD execute apres expiration = transforme en <span class="hl-critical">CDI</span></li>
+        </ul>
+
+        <div class="section-title">Indemnite de cessation (art. L134-12)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            En cas de cessation du contrat, l'agent a droit a une <span class="hl-critical">indemnite compensatrice du prejudice subi</span>. Jurisprudence francaise : generalement <span class="hl-critical">2 annees de commissions</span>.<br><br>
+            <strong>Delai</strong> : l'agent doit notifier son intention dans un delai d'<span class="hl-critical">1 an</span> apres la resiliation, sous peine de perdre ce droit.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Pas d'indemnite si... (art. L134-13)</th></tr>
+            <tr><td>1. Resiliation due a la <span class="hl-critical">faute grave</span> de l'agent</td></tr>
+            <tr><td>2. Resiliation a l'<span class="hl-important">initiative de l'agent</span> (sauf si imputable au commettant, ou age/infirmite/maladie)</td></tr>
+            <tr><td>3. <span class="hl-important">Cession</span> du contrat a un tiers en accord avec le commettant</td></tr>
+        </table>
+
+        <div class="section-title">Clause de non-concurrence (art. L134-14)</div>
+
+        <ul class="condensed-list">
+            <li>Doit etre redigee <strong>par ecrit</strong></li>
+            <li>Porte sur le secteur geographique, le groupe de personnes et le type de biens/services</li>
+            <li>Duree maximale : <span class="hl-critical">2 ans</span> apres cessation du contrat</li>
+        </ul>
+
+        <div class="section-title">Dimension internationale (Cas LH Wind)</div>
+
+        <table class="compact-table">
+            <tr><th>Situation</th><th>Loi applicable</th><th>Consequence</th></tr>
+            <tr><td>Diego c/ BOT Inc. (14 ans, CA passe de 80K a 20M EUR)</td><td>Loi californienne (art. 189 du contrat)</td><td>Pas de preavis ni d'indemnite selon le droit californien</td></tr>
+            <tr><td>Pamela c/ Dr Perth Wind (8 ans, CA stable a 1M EUR/an)</td><td>Droit allemand (art. 146) + tribunal de Kiel (art. 145)</td><td>Indemnite calculee selon la progression des ventes (droit allemand), defavorable si ventes stagnantes</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">A retenir</div>
+            Le choix de la <span class="hl-critical">loi applicable</span> et de la <span class="hl-critical">juridiction competente</span> dans un contrat d'agence international est determinant pour les droits de l'agent. Droit francais (2 ans de commissions) vs. droit allemand (lie a la progression des ventes) vs. droit californien (aucune indemnite).
+        </div>
+
+        <div class="section-title">Ordre public (art. L134-16)</div>
+
+        <div class="block block-def">
+            <div class="block-label">Regle</div>
+            Toute clause contraire aux dispositions protectrices du statut (loyaute, preavis, indemnite, non-concurrence) est reputee <span class="hl-critical">non ecrite</span>. Ces regles sont d'ordre public et ne peuvent pas etre ecartees au detriment de l'agent.
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelle est la definition legale de l'agent commercial ?
+            <span class="answer">Mandataire independant charge a titre permanent de negocier et, le cas echeant, de conclure des contrats au nom et pour le compte de commettants (art. L134-1 C. com.).</span>
+        </div>
+
+        <div class="flash-q">
+            Quel arret a elargi la notion de « negociation » pour l'agent commercial ?
+            <span class="answer">CJUE, 4 juin 2020, Trendsetteuse / DCA (C-828/18) : le pouvoir de modifier les prix n'est plus necessaire. Informer, conseiller et discuter suffit.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les delais de preavis en cas de resiliation du contrat d'agence ?
+            <span class="answer">1 mois (1re annee), 2 mois (2e annee), 3 mois (3e annee et suivantes). Exception : pas de preavis en cas de faute grave ou force majeure.</span>
+        </div>
+
+        <div class="flash-q">
+            A combien la jurisprudence francaise evalue-t-elle l'indemnite de cessation de contrat ?
+            <span class="answer">2 annees de commissions. L'agent doit notifier son intention dans un delai d'1 an apres la resiliation.</span>
+        </div>
+
+        <div class="flash-q">
+            Dans quels cas l'indemnite de cessation n'est-elle pas due ?
+            <span class="answer">1) Faute grave de l'agent. 2) Initiative de l'agent (sauf causes imputables au commettant ou age/infirmite/maladie). 3) Cession du contrat a un tiers avec accord du commettant.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la duree maximale d'une clause de non-concurrence post-contractuelle ?
+            <span class="answer">2 ans apres la cessation du contrat (art. L134-14 C. com.).</span>
+        </div>
+
+        <div class="flash-q">
+            Dans le cas LH Wind, pourquoi le choix de la loi applicable pose-t-il probleme a Diego ?
+            <span class="answer">Le contrat designe la loi californienne (art. 189), qui ne prevoit ni preavis ni indemnite. En droit francais, Diego aurait eu droit a 3 mois de preavis et environ 2 ans de commissions d'indemnite.</span>
+        </div>
+
+        <div class="flash-q">
+            Quand la commission de l'agent est-elle acquise ?
+            <span class="answer">Des que le commettant a execute la transaction (ou aurait du l'executer), ou des que le tiers a execute sa part. Payee au plus tard le dernier jour du mois suivant le trimestre d'acquisition.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/DROIT/ch7_agent_commercial.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/DROIT/">Cours original</a>
+    </div>
+</body>
+</html>

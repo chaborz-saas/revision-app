@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Pilotage Ch.5 : Les tableaux de bord</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "? "; font-weight: 700; color: #9b59b6; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Pilotage de la performance</div>
+        <h1>Les tableaux de bord et indicateurs</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definitions essentielles</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Tableau de bord</strong> = document synthetique rassemblant des informations sur des variables choisies pour aider a <span class="hl-critical">decider</span>, <span class="hl-critical">coordonner</span> et <span class="hl-critical">controler</span> les actions d'un service ou d'une fonction. Pilotage rapide et permanent, variables financieres + quantitatives + qualitatives.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Reporting</strong> = remontee de donnees principalement <span class="hl-important">financieres</span> de chaque entite vers la DG. Verification <span class="hl-important">a posteriori</span> de l'atteinte des objectifs delegues. Ce n'est PAS un support a l'action quotidienne.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Efficacite</strong> = atteindre ses objectifs ("faire ce qu'il faut"). <strong>Efficience</strong> = optimiser l'utilisation des ressources ("faire bien"). Piloter le <span class="hl-critical">couple valeur-couts</span>.
+        </div>
+
+        <div class="section-title">Les 3 roles du tableau de bord</div>
+
+        <table class="compact-table">
+            <tr><th>Role</th><th>A retenir</th></tr>
+            <tr><td><strong>1. Controle &amp; comparaison</strong></td><td>Realisations vs objectifs budgetaires, diagnostic des points faibles</td></tr>
+            <tr><td><strong>2. Aide a la decision</strong></td><td>Analyse des causes + actions correctives, decision en <span class="hl-critical">temps reel</span>, info adaptee a chaque decideur</td></tr>
+            <tr><td><strong>3. Dialogue &amp; communication</strong></td><td>Langage commun, federateur ; le subordonne commente, le superieur coordonne l'<span class="hl-important">optimum global</span></td></tr>
+        </table>
+
+        <div class="section-title">Categories d'indicateurs (KPI)</div>
+
+        <table class="compact-table">
+            <tr><th>Axe</th><th>Type A</th><th>Type B</th></tr>
+            <tr><td><strong>Nature</strong></td><td>Financiers (marge, CA, resultat)</td><td>Physiques (quantites, rebut, reclamations)</td></tr>
+            <tr><td><strong>Orientation</strong></td><td>D'objectifs (brevets, ventes)</td><td>De moyens (budget formation, R&amp;D)</td></tr>
+            <tr><td><strong>Temporalite</strong></td><td><span class="hl-important">Retrospectifs</span> (ventes passees)</td><td><span class="hl-important">Prospectifs / avances</span> (commandes)</td></tr>
+        </table>
+
+        <div class="section-title">4 formes de representation</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Ecarts</span> : valeur absolue ou relative. Formule : (V<sub>n</sub> - V<sub>n-1</sub>) / V<sub>n-1</sub> = x %</li>
+            <li><span class="hl-important">Ratios</span> : rapports de grandeurs significatives (ex : CA / Nb vendeurs). Une hausse = amelioration</li>
+            <li><span class="hl-important">Graphiques</span> : courbes (evolutions), histogrammes (comparaisons), empiles (decomposition)</li>
+            <li><span class="hl-important">Clignotants</span> : fleches, feux tricolores, jauges, meteo avec seuils predetermines</li>
+        </ul>
+
+        <div class="section-title">5 principes de conception</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <table class="compact-table">
+                <tr><th>#</th><th>Principe</th><th>Cle</th></tr>
+                <tr><td>1</td><td><span class="hl-critical">Coherence avec l'organigramme</span></td><td>Logique "poupees russes" : DG synthetique, directions detaillees, services operationnels tres detailles</td></tr>
+                <tr><td>2</td><td><span class="hl-critical">Rapidite</span> d'elaboration/transmission</td><td>Rapidite > precision. Role d'alerte. "Rapport flash"</td></tr>
+                <tr><td>3</td><td>Forme et contenu</td><td>4-5 zones : parametres eco, resultats, objectifs, ecarts. Toujours indiquer <span class="hl-critical">periode + perimetre</span></td></tr>
+                <tr><td>4</td><td>Indicateurs <span class="hl-critical">simples et mesurables</span></td><td>Max <span class="hl-critical">15 priorites, 30 indicateurs</span>. Faire evoluer regulierement</td></tr>
+                <tr><td>5</td><td>Processus de production</td><td>1 porteur unique par indicateur, maquettes automatisees, responsable consolidation</td></tr>
+            </table>
+        </div>
+
+        <div class="section-title">5 references de comparaison</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Soi-meme</span> : comparaison dans le temps</li>
+            <li><span class="hl-important">Ses pairs</span> : regions similaires, fonctions proches</li>
+            <li><span class="hl-important">Les meilleurs</span> : top 10, classement top/flop</li>
+            <li><span class="hl-important">La moyenne</span> : au-dessus ou en dessous de sa categorie</li>
+            <li><span class="hl-important">Source externe (benchmark)</span> : comparaison a un leader du marche ou autre secteur (ex : APQC)</li>
+        </ul>
+
+        <div class="section-title">Methode OVAR</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>OVAR</strong> = <span class="hl-critical">Objectifs</span>, <span class="hl-critical">Variables d'Action</span>, <span class="hl-critical">Responsables</span>. On part des missions (objectifs) et facteurs cles de succes pour definir les indicateurs pertinents. Assure l'alignement strategie / indicateurs operationnels.
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce methodologique</div>
+            Demarche OVAR en 3 etapes : <strong>1)</strong> Identifier les objectifs de chaque responsable. <strong>2)</strong> Determiner les variables d'action (FCS) sur lesquelles agir. <strong>3)</strong> Attribuer a chaque variable un ou plusieurs indicateurs + designer un responsable.
+        </div>
+
+        <div class="section-title">Exercice-type : Agence soutien scolaire</div>
+
+        <table class="compact-table">
+            <tr><th>Facteur cle de succes</th><th>Indicateurs</th></tr>
+            <tr><td>Performance commerciale</td><td>CA global, CA par matiere, taux de croissance CA, nb contacts, nb inscriptions</td></tr>
+            <tr><td>Qualite enseignement</td><td>Note satisfaction, nb reclamations, taux fidelite, taux abandon insatisfaction</td></tr>
+            <tr><td>Mise en place rapide</td><td>Delai evaluation, delai inscription-debut cours, delai remplacement</td></tr>
+            <tr><td>Progression eleves</td><td>Evaluation inscription/fin trimestre, taux reussite examens, evolution resultats</td></tr>
+        </table>
+
+        <div class="section-title">Exercice-type : Labopharma (TdB mensuel)</div>
+
+        <table class="compact-table">
+            <tr><th>Categorie</th><th>Donnees du TdB</th></tr>
+            <tr><td>Commerciales</td><td>CA mois + cumule par produit, previsions, ecarts, decoupage secteurs</td></tr>
+            <tr><td>Production</td><td>Volumes produits, suivi couts controlables, ecarts matieres/MOD/autres</td></tr>
+            <tr><td>Comptables</td><td>Comptes de resultats mensuels</td></tr>
+            <tr><td>Stocks</td><td>Quantite, cout unitaire preetabli, montant par matiere/produit</td></tr>
+            <tr><td>Financieres</td><td>Credit clients/fournisseurs, BFR, tresorerie (disponible, positions hautes/basses)</td></tr>
+        </table>
+
+        <div class="section-title">TdB : est / n'est pas</div>
+
+        <table class="compact-table">
+            <tr><th>Un TdB EST</th><th>Un TdB N'EST PAS</th></tr>
+            <tr><td>Document synthetique (max 15 priorites, 30 indicateurs)</td><td>Une bibliotheque d'indicateurs</td></tr>
+            <tr><td>Principes d'usage partages, integres au management</td><td>Un outil qui apporte toutes les reponses</td></tr>
+            <tr><td>Un porteur unique par indicateur</td><td>Un outil pour des niveaux de management differents</td></tr>
+            <tr><td>Un processus de production automatise</td><td>Une simple evaluation de l'atteinte du budget</td></tr>
+        </table>
+
+        <div class="section-title">4 limites historiques et ameliorations</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Limites</div>
+            Pas assez adapte a chaque service / Pas assez relie au pilotage transversal / Elabore avec retard / Ponctuel (optique de controle).
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Pistes d'amelioration</div>
+            Vision coherente avec les objectifs / Mesure multicriteres (effort accompli + a accomplir) / Signalement des dysfonctionnements / Possibilite de simulation / Outil de communication et cooperation / Integration de dimensions : <span class="hl-critical">operationnel, strategique, social, societal</span>.
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quels sont les 3 roles du tableau de bord ?
+            <span class="answer">1) Instrument de controle et de comparaison. 2) Aide a la decision. 3) Outil de dialogue et de communication.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre un tableau de bord et un reporting ?
+            <span class="answer">Le TdB est un outil de pilotage tourne vers l'action (variables financieres + qualitatives + quantitatives). Le reporting remonte les donnees financieres a la DG pour verifier a posteriori l'atteinte des objectifs.</span>
+        </div>
+
+        <div class="flash-q">
+            Que signifie OVAR et quelle est sa logique ?
+            <span class="answer">Objectifs, Variables d'Action, Responsables. On part des missions et FCS pour definir les indicateurs. Demarche : Objectifs -> Variables d'action -> Indicateurs + Responsable.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 4 zones d'un tableau de bord ?
+            <span class="answer">1) Parametres economiques (indicateurs). 2) Resultats reels. 3) Objectifs (budget/forecast). 4) Ecarts (valeur absolue ou %).</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le nombre maximal d'indicateurs recommande dans un TdB ?
+            <span class="answer">15 priorites et 30 indicateurs maximum. Au-dela, le TdB perd son caractere synthetique et sa lisibilite.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 3 categories d'indicateurs KPI ?
+            <span class="answer">Par nature (financiers/physiques), par orientation (objectifs/moyens), par temporalite (retrospectifs/prospectifs).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la formule de l'ecart en valeur relative ?
+            <span class="answer">Ecart = (Valeur n - Valeur n-1) / Valeur n-1 = x %</span>
+        </div>
+
+        <div class="flash-q">
+            Citez les 5 references de comparaison dans un TdB.
+            <span class="answer">Soi-meme (dans le temps), ses pairs, les meilleurs (top 10), la moyenne de sa categorie, source externe (benchmark).</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/PILOTAGE/ch5_tableaux_bord.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours original</a>
+    </div>
+</body>
+</html>

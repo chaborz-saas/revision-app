@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Pilotage : Lean Management et Mudas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Pilotage de la Performance</div>
+        <h1>Lean Management et Mudas (7 gaspillages)</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definitions essentielles</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Lean Management</strong> = systeme d'organisation industrielle issu du <span class="hl-critical">TPS (Toyota Production System)</span>, annees 1950. Objectif : <span class="hl-critical">eliminer les gaspillages</span> et augmenter la <span class="hl-critical">valeur ajoutee</span> dans les processus. Signifie « production au plus juste » ou « faire plus avec moins ».
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Mudas</strong> = terme japonais pour <span class="hl-important">gaspillages</span>. Toute activite qui consomme des ressources sans creer de valeur pour le client. Le Lean identifie <span class="hl-critical">7 types de Mudas</span>.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Kaizen</strong> = « changement pour le bien » = <span class="hl-important">amelioration continue</span>. Ajustements progressifs et permanents impliquant tous les collaborateurs.
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <strong>Les 5M</strong> : les 5 facteurs de production a maitriser pour la stabilite des processus :<br>
+            <span class="hl-critical">Main-d'oeuvre</span> - <span class="hl-critical">Matiere</span> - <span class="hl-critical">Materiel</span> - <span class="hl-critical">Methodes</span> - <span class="hl-critical">Milieu</span>
+        </div>
+
+        <div class="section-title">3 leviers de performance</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Flexibilite</span> : adapter ressources et capacites aux demandes clients (JIT, innovation, mobilite)</li>
+            <li><span class="hl-important">Qualite</span> : se differencier, repondre aux attentes clients, mise a plat des procedures</li>
+            <li><span class="hl-important">Productivite</span> : chasse aux couts, allegement des procedures, automatisation</li>
+        </ul>
+
+        <div class="section-title">Les 7 Mudas (gaspillages) - Tableau complet</div>
+
+        <table class="compact-table">
+            <tr>
+                <th>Muda</th>
+                <th>Definition / Exemple</th>
+                <th>Causes</th>
+                <th>Methodes</th>
+            </tr>
+            <tr>
+                <td><strong>1. Surproductions</strong></td>
+                <td>Production hors besoin (quantite/qualite). Ex : stocker des produits invendus</td>
+                <td>Mauvaises previsions, production push, instabilite 5M</td>
+                <td><span class="hl-critical">JIT, Kanban</span></td>
+            </tr>
+            <tr>
+                <td><strong>2. Attentes inutiles</strong></td>
+                <td>Attente des 5M. Ex : defaillance equipement, indisponibilite pieces</td>
+                <td>Mauvaise planification 5M, mauvaise logistique</td>
+                <td><span class="hl-critical">Gestion efficace 5M</span></td>
+            </tr>
+            <tr>
+                <td><strong>3. Transports</strong></td>
+                <td>Voyages a vide, trajets non optimises, transport sans valeur ajoutee</td>
+                <td>Mauvaise logistique, mauvaises implantations</td>
+                <td><span class="hl-critical">Diagramme spaghetti</span></td>
+            </tr>
+            <tr>
+                <td><strong>4. Stocks</strong></td>
+                <td>Argent immobilise, risques de deterioration, vols, obsolescence</td>
+                <td>Mauvaise gestion stocks/approvisionnements</td>
+                <td><span class="hl-critical">JIT, Kanban</span></td>
+            </tr>
+            <tr>
+                <td><strong>5. Processus excessifs</strong></td>
+                <td>Operations inutiles, perfectionnisme au-dela des attentes client</td>
+                <td>Mauvaise conception, mauvais dimensionnement 5M</td>
+                <td><span class="hl-critical">Analyse de valeur ajoutee</span></td>
+            </tr>
+            <tr>
+                <td><strong>6. Mouvements humains</strong></td>
+                <td>Deplacements non optimises. Ex : chercher une piece au lieu d'un convoyeur</td>
+                <td>Mauvaise ergonomie poste/lignes</td>
+                <td><span class="hl-critical">Diagramme spaghetti, ergonomie</span></td>
+            </tr>
+            <tr>
+                <td><strong>7. Non-qualite</strong></td>
+                <td>Non-conformites, erreurs, travaux mal executes</td>
+                <td>Mauvaise gestion qualite</td>
+                <td><span class="hl-critical">MSP, Six Sigma, QRQC, Jidoka</span></td>
+            </tr>
+        </table>
+
+        <div class="section-title">Remedes par Muda</div>
+
+        <table class="compact-table">
+            <tr>
+                <th>Muda</th>
+                <th>Remedes cles</th>
+            </tr>
+            <tr>
+                <td>Surproductions</td>
+                <td>Bonnes previsions, production <span class="hl-important">tiree</span> (pas push), stabilite 5M</td>
+            </tr>
+            <tr>
+                <td>Attentes</td>
+                <td>Planification fiable des 5M, bonne gestion logistique et approvisionnements</td>
+            </tr>
+            <tr>
+                <td>Transports</td>
+                <td>Optimiser logistique, implantations, flux, routes, quantites</td>
+            </tr>
+            <tr>
+                <td>Stocks</td>
+                <td>Optimiser stocks, approvisionnements, plan de production, maintenance</td>
+            </tr>
+            <tr>
+                <td>Processus excessifs</td>
+                <td>Bon dimensionnement postes/processus/5M, planification fiable</td>
+            </tr>
+            <tr>
+                <td>Mouvements humains</td>
+                <td>Bonne ergonomie poste et ligne, implantations optimisees</td>
+            </tr>
+            <tr>
+                <td>Non-qualite</td>
+                <td>Assurance qualite, amelioration qualite continue</td>
+            </tr>
+        </table>
+
+        <div class="section-title">Lean et organisation</div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            Le Lean Management entraine une <span class="hl-critical">reduction des niveaux hierarchiques</span> (de 5-6 niveaux a 3). Consequence : disparition du « chef d'equipe », carrieres plus lentes mais organisations plus souples. On parle de management « maigre ».
+        </div>
+
+        <ul class="condensed-list">
+            <li>5 consequences organisationnelles : decentralisation, reduction hierarchique, polyvalence, travail collectif, fonctionnement en projet/processus</li>
+            <li><span class="hl-important">Empowerment</span> : davantage de responsabilites pour les managers</li>
+            <li><span class="hl-important">Despecialisation</span> : une meme personne effectue plusieurs taches differentes</li>
+        </ul>
+
+        <div class="section-title">Methodes et outils a retenir</div>
+
+        <table class="compact-table">
+            <tr>
+                <th>Methode / Outil</th>
+                <th>Utilisation</th>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">JIT (Just In Time)</span></td>
+                <td>Produire juste ce qu'il faut, quand il faut (contre surproductions et stocks)</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Kanban</span></td>
+                <td>Systeme visuel de gestion de flux en production tiree</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Diagramme spaghetti</span></td>
+                <td>Visualiser les deplacements pour optimiser transports et mouvements</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Six Sigma</span></td>
+                <td>Reduire la variabilite et les defauts (non-qualite)</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">MSP</span></td>
+                <td>Maitrise Statistique des Procedes (controle qualite)</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">QRQC</span></td>
+                <td>Quick Response Quality Control (reponse rapide aux problemes qualite)</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Jidoka</span></td>
+                <td>Detection automatique des anomalies (principe TPS)</td>
+            </tr>
+            <tr>
+                <td><span class="hl-important">Analyse de valeur ajoutee</span></td>
+                <td>Identifier les activites sans VA (contre processus excessifs)</td>
+            </tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quels sont les 7 Mudas (gaspillages) du Lean ?
+            <span class="answer">1) Surproductions, 2) Attentes inutiles, 3) Transports, 4) Stocks, 5) Processus/methodes excessifs, 6) Deplacements et mouvements humains, 7) Non-qualite de produit.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que le TPS et quel est son lien avec le Lean Management ?
+            <span class="answer">TPS = Toyota Production System, systeme d'organisation industrielle cree dans les usines Toyota dans les annees 1950. Le Lean Management en est l'heritier direct : il vise a eliminer les gaspillages et augmenter la valeur ajoutee.</span>
+        </div>
+
+        <div class="flash-q">
+            Que signifie Kaizen et quels sont les 5M ?
+            <span class="answer">Kaizen = « changement pour le bien » = amelioration continue. Les 5M : Main-d'oeuvre, Matiere, Materiel, Methodes, Milieu.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles methodes permettent de lutter contre les surproductions et les stocks excessifs ?
+            <span class="answer">Le JIT (Just In Time), le Kanban, les bonnes previsions et la production tiree (pull) au lieu de la production poussee (push).</span>
+        </div>
+
+        <div class="flash-q">
+            Quel outil permet de visualiser les deplacements inutiles dans un atelier ?
+            <span class="answer">Le diagramme spaghetti. Il permet de tracer les trajets reels des operateurs ou des pieces pour identifier et reduire les transports et mouvements non optimises.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/PILOTAGE/ch7_lean_mudas.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours original</a>
+    </div>
+</body>
+</html>

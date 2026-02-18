@@ -1,0 +1,471 @@
+--- Slide 1 ---
+Contrats de transport international
+Pr. Philippe Corruble, EMN
+Avocat
+Stream, avocats & solicitors
+Barreau du Havre
+--- Slide 2 ---
+Contrat de transport maritime = tout contrat par lequel un transporteur s'engage, moyennant le paiement d'un fret, à transporter des marchandises d'un port à un autre.
+Transport terrestre = partie non maritime d'un transport multimodal précédant la partie maritime (pré-acheminement) ou la suivant (post-acheminement).
+Droit des transports : glossaire
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 3 ---
+LCL = chargement partiel d'un conteneur. FCL = chargement complet d'un conteneur.
+FCL/FCL = conteneur chargé à domicile et livré à domicile.
+FCL/LCL = conteneur chargé à domicile mais livré au port de déchargement.
+LCL/LCL = conteneur chargé au port d'embarquement et livré au port de déchargement.
+LCL/FCL = conteneur chargé au port d'expédition mais livré à domicile ou au lieu de livraison convenu.
+Droit des transports : glossaire
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 4 ---
+Avant d'étudier le droit des transports, il convient de distinguer les différents modes de transport.
+D'un point de vue juridique, les modes de transport présentent des points communs et des différences.
+Droit des transports : introduction
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 5 ---
+Trois modes de transport :
+Transport maritime
+Transport terrestre (route, voie navigable intérieure, rail)
+Transport aérien
+Droit des transports : introduction
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 6 ---
+- Droit international et droit national
+Un document de transport représentant le contrat de transport
+Informations clés figurant sur ce document de transport (Qui a pris en charge les marchandises ? Dans quel état les marchandises ont-elles été prises en charge ?)
+Responsabilité du transporteur pour le transport des marchandises du point A au point B (limitation de la responsabilité du transporteur, nécessité pour l'expéditeur de faire des réserves, délai de prescription court pour limiter l'exposition du transporteur)
+Points communs entre les modes de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 7 ---
+Droit international : Convention de Bruxelles (1924)
+Droit français : « Code des transports » (5e partie)
+Document de transport : connaissement maritime (B/L)
+Les spécificités du transport maritime
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 9 ---
+Droit international : Convention CMR (1956)
+Droit français : « Code des transports » (3e partie)
+Document de transport : lettre de voiture CMR
+Les spécificités du transport routier
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 11 ---
+Droit international : la Convention relative au contrat de transport de marchandises par voie navigable intérieure (dite « CMNI », 2000)
+Droit français : « Code des transports » (4e partie)
+Document de transport : connaissement fluvial
+Les spécificités du transport fluvial
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 12 ---
+Droit international : Convention de Berne (1890, régulièrement mise à jour)
+Droit français : « Code des transports » (2e partie)
+Document de transport : lettre de voiture ferroviaire
+Les spécificités du transport ferroviaire
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 14 ---
+Droit international : Convention de Montréal (1999)
+Droit français : « Code des transports » (6e partie)
+Document de transport : lettre de transport aérien – AWB (« lettre de transport aérien – LTA »)
+Les spécificités du transport aérien
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 16 ---
+Quel que soit le mode de transport, le transporteur est toujours exposé à un risque important. Si les marchandises sont endommagées, le propriétaire des marchandises peut tenir le transporteur pour responsable. Afin de limiter l'exposition du transporteur à ce risque, la loi prévoit plusieurs mécanismes :
+Réserves = le propriétaire des marchandises doit envoyer sans délai au transporteur des réserves précises et motivées.
+Délai de prescription = délai au-delà duquel le propriétaire des marchandises ne peut plus réclamer de dédommagement au transporteur.
+Limitation de la responsabilité = en fonction du poids et de l'emballage des marchandises, il existe une indemnisation maximale que le propriétaire des marchandises peut réclamer au transporteur pour chaque expédition.
+Ces trois mécanismes s'appliquent de manière différente selon le mode de transport concerné.
+Concepts généraux du droit des transports
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 17 ---
+Acteurs clés du droit des transports
+Responsabilité de chaque acteur clé
+CE QUE VOUS DEVEZ SAVOIR SUR LA LOGISTIQUE DANS LES TRANSACTIONS INTERNATIONALES
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 18 ---
+A - EXPÉDITEURS
+B – TRANSPORTEURS
+C – TRANSPORTEURS DE MARCHANDISES
+D – DÉCLARANTS EN DOUANE
+PARTIE I – QUI : LES ACTEURS CLÉS DU DROIT DES TRANSPORTS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 19 ---
+1- Rôle des expéditeurs ?
+2 – Relations contractuelles des expéditeurs ?
+A – EXPÉDITEURS
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 20 ---
+RÔLE DE L'EXPÉDITEUR : la partie qui souhaite que la marchandise soit transportée (vendeur/acheteur)
+RELATION CONTRACTUELLE DE L'EXPÉDITEUR : l'expéditeur conclut un contrat de transport avec le transporteur ou un contrat d'organisation du transport avec un transitaire
+A – EXPÉDITEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 21 ---
+Rôle des transporteurs ?
+Relations contractuelles des transporteurs ?
+B – TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 22 ---
+La société chargée du transport des marchandises
+Cette société est propriétaire du navire / camion / barge / train / avion et l'exploite ou se contente de l'exploiter
+Relation contractuelle : transporteur – expéditeur / transporteur – transitaire
+B – TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 23 ---
+1) Transporteurs maritimes
+B – TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 24 ---
+Deux types de contrats :- contrat de transport- affrètement.
+B – TRANSPORTEURS (MARITIMES)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 25 ---
+Forme du contrat : le connaissement
+Obligations des parties en vertu d'un contrat de transport
+CONTRAT DE TRANSPORT
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 26 ---
+Le connaissement est émis par le transporteur maritime. Il a deux fonctions :
+Une fonction contractuelle
+Une fonction probatoire.
+Le transporteur et le destinataire peuvent inscrire des réserves sur le connaissement : les réserves doivent être précises et motivées.
+La plupart des connaissements stipulent que 3 originaux sont requis. Le transporteur en conserve 1 et le destinataire doit présenter les 2 autres.
+CONTRAT DE TRANSPORT : LE CONNAISSANCE MARITIME
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 27 ---
+Pour calculer la responsabilité du transporteur
+Réservations
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 28 ---
+CONTRAT DE TRANSPORT
+Les deux obligations de l'expéditeur en vertu d'un contrat de transport :
+Payer le fret
+Faire des déclarations exactes sur les marchandises.
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 29 ---
+Obligations du transporteur en vertu d'un contrat de transport :
+- Utiliser un navire en état de navigabilité
+- Charger, transporter et décharger les marchandises.
+CONTRAT DE TRANSPORT
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 30 ---
+Forme du contrat : contrat d'affrètement
+Obligations des parties en vertu de chaque type de contrat d'affrètement
+CONTRAT D'AFFRETE
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 31 ---
+Connaissement  contrat de transport
+¹
+Contrat d'affrètement  contrat de location d'un navire
+CONTRAT D'AFFRETE
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 32 ---
+Le contrat d'affrètement est le document qui établit les obligations des parties au contrat d'affrètement.
+Il s'agit d'un document standardisé qui définit les modalités contractuelles selon lesquelles une partie (l'affréteur) engage une autre partie (le propriétaire du navire) pour le transport, en tout ou en partie, d'un navire lui appartenant.
+L'affréteur paie toujours un loyer au propriétaire du navire.
+Il existe trois types fondamentaux d'affrètement : l'affrètement au voyage, l'affrètement à temps et l'affrètement à nu (coque nue).
+CONTRAT D'AFFRETEEMENT : LE CONTRAT D'AFFRETEEMENT
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 33 ---
+OBLIGATIONS DES PARTIES EN VERTU D'UN CONTRAT DE LOCATION COQUE NU (BARE BOAT) :
+L'affréteur met à la disposition du locataire un navire non équipé et non armé.
+Le navire est armé et navigue avec l'équipage de l'affréteur.
+L'affréteur est libre d'organiser les destinations et les opérations commerciales.
+&gt; L'affréteur est responsable de la gestion nautique et commerciale du navire.
+CONTRAT D'AFFRETE : AFFRETE À LA DÉNÉE
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 34 ---
+OBLIGATIONS DES PARTIES EN VERTU D'UN CONTRAT D'AFFRÈTEMENT À VOYAGE :
+Le propriétaire du navire transporte des marchandises d'un port à un autre au cours d'un voyage déterminé.
+Le navire est équipé et piloté par l'équipage du propriétaire du navire.
+L'affréteur n'est pas responsable de l'entretien ni des dommages causés à des tiers résultant de la négligence opérationnelle de l'équipage. Un affréteur au voyage n'est généralement pas responsable des dépenses telles que le soutage (carburant).
+CONTRAT D'AFFRETE : AFFRETE DE VOYAGE
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 35 ---
+CONTRAT D'AFFRETEEMENT : AFFRETEEMENT À TEMPS
+OBLIGATIONS DES PARTIES EN VERTU D'UN AFFRETMENT À TEMPS :
+L'armateur met la capacité de transport du navire à la disposition de l'affréteur pour une période déterminée.
+Le propriétaire du navire est responsable de la navigation et de la gestion du navire.
+Le capitaine et l'équipage restent employés du propriétaire et sont soumis aux ordres de celui-ci en ce qui concerne la navigation et la gestion du navire.
+Le navire est à la disposition de l'affréteur pour ce qui concerne les ports d'escale, les marchandises transportées et les autres questions liées à l'activité de l'affréteur.
+Étant donné que l'affréteur à temps n'obtient que la capacité de transport d'un navire particulier, il n'est pas responsable de l'entretien, des réparations du navire ou des dommages causés à des tiers résultant de la négligence opérationnelle de l'équipage.
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 36 ---
+ | Gestion nautique | Gestion commerciale
+AFFRETEMENT COASSE-ET-CHARGEMENT (BARE BOAT) | Affréteur | Affréteur
+AFFRETEUR | Armateur | Armateur
+AFFRÈTEMENT À TEMPS | Armateur | Affréteur
+Questions de responsabilité
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 37 ---
+RÔLE DU TRANSPORTEUR ROUTIER ?
+RELATION CONTRACTUELLE DU TRANSPORTEUR ROUTIER ?
+B – TRANSPORTEURS (ROUTIERS)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 38 ---
+RÔLE DU TRANSPORTEUR ROUTIER : le transporteur routier achemine les marchandises d'un point A à un point B. Ce transport peut être effectué à l'intérieur d'un même pays ou à l'international.
+RELATION CONTRACTUELLE DU TRANSPORTEUR ROUTIER :
+Lorsque l'expéditeur a fait appel à un transitaire, celui-ci passe un contrat avec le transporteur.
+Lorsque le chargeur n'a pas fait appel à un transitaire, il passe directement contrat avec le transporteur.
+Remarque : la sous-traitance est possible. Lorsqu'un transporteur a conclu un contrat avec un transitaire ou avec le chargeur, il peut alors sous-traiter ce transport à un autre transporteur. Il y aura alors un nouveau contrat, conclu entre le transporteur initial et le transporteur sous-traitant.
+B – TRANSPORTEURS (ROUTIERS)
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 39 ---
+RÔLE DES TRANSPORTEURS ?
+RELATION CONTRACTUELLE ENTRE LES TRANSPORTEURS ?
+C – TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 40 ---
+RÔLE : ORGANISATION COMPLÈTE DU TRANSPORT
+- conclusion des contrats de transport avec les transporteurs requis
+- dédouanement
+RELATION CONTRACTUELLE : PARTIE AU CONTRAT DE TRANSPORT
+C – TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 41 ---
+Attention : un transitaire peut également être un transporteur
+Les transitaires disposent souvent de leurs propres moyens de transport
+Cela dépend de ce que vous leur demandez de faire
+Les qualifications juridiques dépendent des termes du contrat
+C – TRANSPORTEURS
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 42 ---
+Transitaires importants en France
+C – TRANSPORTEURS
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 43 ---
+RÔLE DES DÉCLARANTS EN DOUANE ?
+RELATION CONTRACTUELLE DES DÉCLARANTS EN DOUANE ?
+D – DÉCLARANTS EN DOUANE
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 44 ---
+RÔLE :  le commissionnaire en douane agréé est la personne dont la profession consiste à accomplir des formalités douanières pour le compte d'un tiers.
+RELATION CONTRACTUELLE :
+Parfois, les formalités douanières sont effectuées par le transitaire. Dans ce cas, le transitaire agit en tant que déclarant en douane. Il passe un contrat avec l'expéditeur.
+S'il n'y a pas de transitaire ou si le transitaire ne dispose pas d'un service de déclaration en douane, l'expéditeur devra lui-même faire appel à un déclarant en douane et conclure un contrat avec lui.
+D – DÉCLARANT EN DOUANE
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 45 ---
+A – Responsabilité dans le transport maritime
+B – Responsabilité du transitaire
+C – Responsabilité du dédouaneur
+PARTIE II – RESPONSABILITÉ DE CHAQUE ACTEUR CLÉ
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 46 ---
+Dans le domaine maritime, la responsabilité fonctionne différemment selon que les marchandises ont été transportées dans le cadre d'un contrat de transport ou d'un contrat d'affrètement. Cependant, nous concentrerons notre cours sur les responsabilités découlant des contrats de transport. Les conteneurs entreront donc dans le champ d'application de ce cours, mais pas les marchandises telles que le pétrole et les céréales.
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 47 ---
+Chaque mode de transport international est régi par sa propre convention internationale.
+La Convention de Bruxelles (1924), connue sous le nom de « Règles de La Haye », détermine les règles applicables au transport maritime international. La Convention de Bruxelles (1924) s'applique lorsque deux conditions sont remplies :
+Le connaissement est établi dans un État partie à la convention
+Le transport a lieu entre deux ports de pays différents.
+Exemple : si un connaissement a été émis à Alger, l'Algérie ayant ratifié la convention de 1924, cette convention s'applique.
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 48 ---
+En tant qu'expéditeur, je dois faire attention à plusieurs choses lorsque je dépose une réclamation contre le transporteur maritime :
+Le délai pour formuler des réserves (a)
+Le délai pour intenter une action en justice (appelé « délai de prescription ») (b)
+Les documents à joindre à la réclamation (c)
+La limitation de la responsabilité du transporteur maritime et ses exceptions (d).
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 49 ---
+En cas de dommage ou de perte partielle, le destinataire doit faire une réserve écrite, motivée et précise sur le bordereau de livraison. Une distinction est faite selon que le dommage est apparent ou non. Le dommage est apparent lorsque, au moment de la livraison, le destinataire peut le constater par un examen rapide.
+Lorsque le dommage est apparent, le destinataire doit adresser ses réserves par écrit au transporteur le jour de la livraison.
+Lorsque le dommage n'est pas apparent, les réserves doivent être notifiées au transporteur au plus tard dans les trois jours suivant la livraison.
+Si les réserves sont adressées au transporteur après le délai, le transporteur bénéficie de la présomption de livraison conforme.
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport : réserves écrites (1)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 50 ---
+Dans le transport maritime, le délai de prescription est d'un an. Cela signifie que le chargeur ne peut intenter aucune action en justice après un an. Ce délai d'un an commence à courir à compter du jour où les marchandises ont été livrées au destinataire. Si les marchandises ont été totalement perdues, le délai de prescription court à compter du jour où les marchandises auraient dû être livrées au destinataire.
+Plusieurs événements interrompent le délai de prescription. L'interruption efface le délai de prescription. À la fin de l'interruption, le délai d'un an recommence à courir à partir du début. Les deux principaux événements qui provoquent une interruption du délai de prescription sont les suivants :
+La reconnaissance par le transporteur de sa responsabilité.
+Une action en justice.1
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport : prescription légale (2)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 51 ---
+Lorsqu'un expéditeur dépose une réclamation contre le transporteur maritime, il doit fournir plusieurs documents :
+Le connaissement (B/L)
+La facture d'achat des marchandises transportées
+Le rapport d'expertise (si une expertise des marchandises a été organisée juste après la livraison)
+Tout document permettant d'évaluer la nature, l'état et la quantité des marchandises transportées.
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME – Contrat de transport : documents (3)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 52 ---
+La responsabilité du transporteur maritime est limitée. Cela signifie que l'expéditeur ne pourra pas réclamer une indemnisation au transporteur au-delà d'une certaine limite. Cette limite varie en fonction de la valeur et de la quantité des marchandises. Il existe deux méthodes pour calculer la limite de responsabilité du transporteur. La méthode utilisée sera celle qui est la plus favorable à l'expéditeur.
+Voici les deux méthodes de calcul de la limitation de la responsabilité du transporteur dans le transport maritime international :
+666,67 DTS par colis ou unité
+2 DTS par kilogramme de fret brut (« brut » signifie que cela inclut l'emballage).
+« DTS » signifie « droit de tirage spécial ». Les DTS sont des unités de compte du Fonds monétaire international (FMI). 1 DTS = 1,23 €.
+A – RESPONSABILITÉ DANS LE TRANSPORT MARITIME – Contrat de transport : limitation de la responsabilité (4)
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 53 ---
+La limitation de responsabilité du transporteur est levée dans deux cas :
+Lorsque l'expéditeur a envoyé une déclaration de valeur au transporteur avant la livraison.
+La limitation de l'indemnisation ne s'applique pas lorsque l'expéditeur a déclaré la nature et la valeur des marchandises avant l'expédition et que cette déclaration a été mentionnée dans le connaissement.
+Lorsque le transporteur a commis une faute inexcusable.
+La limitation de la responsabilité du transporteur est écartée lorsque le chargeur démontre que le transporteur a commis une faute inexcusable : une faute imprudente et consciente. Le chargeur doit démontrer que le transporteur savait que son comportement pouvait entraîner un dommage.
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport : limitation de la responsabilité (4)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 54 ---
+Mettons en œuvre ces règles juridiques à l'aide d'un exemple
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport : limitation de la responsabilité (4)
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 55 ---
+Je travaille pour une entreprise française qui commercialise du café. J'ai acheté une cargaison de café auprès d'un producteur brésilien selon les termes FAS.
+Les marchandises sont transportées par CMA CGM du port de Sao Paulo au port du Havre.
+Le conteneur contient 300 caisses de 15 kg chacune (total : 4 500 kg). Prix : 400 000 €.
+Lors de la livraison au port du Havre, je constate que le café est très humide.
+Que dois-je faire en premier lieu ?
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 56 ---
+Première étape : je note des réserves précises et motivées sur le connaissement.
+Je dois indiquer le type de dommage : une perte ? Partielle ou totale ? Humidité ? Cassure ?
+Pourquoi dois-je faire des réserves sur le connaissement dès que possible ?
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 57 ---
+Dans le transport maritime, les réservations doivent être effectuées dans un délai très court :
+Lorsque les dommages sont apparents, je dois émettre des réserves le jour de la livraison.
+Lorsque les dommages ne sont pas apparents, je dois émettre des réserves dans les trois jours suivant la livraison.
+Lorsque des réserves précises et motivées sont formulées dans ce délai, le dommage est réputé avoir été causé par le transporteur. Il appartient alors à ce dernier de prouver qu'il n'a pas commis de faute.
+Lorsque les réserves sont formulées après ce délai (mais au plus tard dans un délai d'un an après la livraison), une indemnisation par le transporteur est possible, mais l'expéditeur devra prouver que le dommage a bien été causé par le transporteur maritime.
+Mais comment faire pour que toutes les parties au transport s'accordent sur les dommages ?
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 58 ---
+Après avoir inscrit les réserves sur le connaissement, j'organise une expertise contradictoire à laquelle j'invite CMA CGM (et tous les acteurs impliqués dans le transport). J'envoie une réclamation au service des réclamations de CMA CGM.
+Le rapport d'expertise viendra étayer ma réclamation : il contiendra des photos, des explications techniques, un résumé des faits...
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 59 ---
+Combien d'argent puis-je demander ?
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 60 ---
+Lorsque le dommage est survenu pendant le transport maritime, la responsabilité du transporteur maritime est présumée. L'expéditeur n'a pas à prouver la faute du transporteur.
+Mais la responsabilité du transporteur maritime est limitée : 2 DTS* par kg ou 666,67 DTS par colis. La limite la plus élevée est appliquée.
+*DTS = Droit de tirage spécial.
+Les DTS sont des unités de compte du Fonds monétaire international (FMI). 1 DTS = 1,23 €.
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit du transport international
+--- Slide 61 ---
+Quel est le montant maximal que je peux demander à CMA CGM ?
+Informations utiles :
+300 cartons de 15 kg chacun (total : 4 500 kg)
+Prix : 400 000 €
+- Responsabilité limitée du transporteur maritime : 2 DTS par kg ou 666,67 DTS par colis
+- 1 DTS = 1,23 €
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 62 ---
+Limite de responsabilité calculée en fonction du nombre de kilogrammes :
+4 500 kg *2 * 1,23 = 11 070 €
+Limite de responsabilité calculée en fonction du nombre de cartons :
+300 cartons * 666,67 * 1,23 = 246 001,23 €
+L'expéditeur peut demander la limitation la plus élevée. Prix de la marchandise : 400 000 €. La valeur est supérieure à la limite, mais je peux utiliser la limite la plus élevée.
+Je demanderai 246 001,23 €.
+A – RESPONSABILITÉS EN TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 63 ---
+La limitation de responsabilité du transporteur est levée dans deux cas :
+Lorsque l'expéditeur a envoyé une déclaration de valeur au transporteur avant la livraison (1)
+Lorsque le transporteur a commis une faute inexcusable (2).
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 64 ---
+(1) La limitation de l'indemnisation ne s'applique pas lorsque le chargeur a déclaré la nature et la valeur des marchandises avant l'expédition et que cette déclaration a été mentionnée dans le connaissement.
+J'aurais pu demander 400 000 € (et non  246 001,23 €) si j'avais remis à CMA CGM une déclaration de valeur avant la conclusion du contrat de transport, précisant les détails de cette cargaison de café et sa valeur.
+A – RESPONSABILITÉ DANS LE TRANSPORT MARITIME – Contrat de transport
+Procédures douanières - Partie 2 - 2021
+--- Slide 65 ---
+(2) La limitation de la responsabilité du transporteur est écartée lorsque le chargeur démontre que le transporteur a commis une faute inexcusable : une faute imprudente et consciente. Le chargeur doit prouver que le transporteur savait que son comportement pouvait causer un dommage.
+Exemple : le transporteur aurait commis une faute inexcusable s'il avait chargé le conteneur sur le pont sans y être autorisé par le connaissement et sans le déclarer à l'expéditeur, alors que le café est sensible à l'humidité et que le transporteur savait que le navire allait rencontrer en cours de route une zone de forte tempête.
+Autre exemple concret : lorsque le transporteur maritime ne prend aucune mesure pour déplacer le conteneur qui a été mis à quai contrairement aux instructions de l'autorité portuaire, le transporteur ayant été averti de l'arrivée d'un cyclone par Météo France.
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 66 ---
+Mais imaginons que nous n'ayons pas fait de déclaration de valeur et que CMA CGM n'ait pas commis de faute inexcusable.
+À première vue, nous pourrions donc réclamer 246 001,23 € à titre de dédommagement.
+Que pourrait répondre CMA CGM ?
+A – RESPONSABILITÉ DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 67 ---
+Une fois le dommage constaté, le transporteur peut être dégagé de sa responsabilité en prouvant l'existence d'un cas exceptionnel. Qu'est-ce qu'un cas exceptionnel ?
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 68 ---
+(1) Indescriptibilité du navire : l'indescriptibilité du navire est un cas exceptionnel lorsqu'elle est soudaine et que le transporteur a fait tous les efforts possibles pour rendre le navire en état de naviguer.
+(2) Incendie : l'incendie est un événement exceptionnel, sauf s'il est causé par un acte ou une négligence du transporteur.
+(3) Actes constituant un événement non imputable au transporteur. Exemple : piraterie.
+(4) Grève et lock-out
+A – RESPONSABILITÉ DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 69 ---
+(5) Vice inhérent à la marchandise : le vice inhérent à la marchandise est la propension naturelle de la marchandise à se détériorer.
+(6) Faute de l'expéditeur, notamment dans l'emballage, le conditionnement ou le marquage
+(7) Vices cachés du navire échappant à un examen attentif
+(8) Acte ou tentative visant à sauver des vies ou des biens, ou détournement à cette fin
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 70 ---
+(9) Faute maritime du transporteur, du capitaine ou d'un autre préposé. Une faute maritime est un acte commis par le propriétaire du navire dans le cadre de la navigation ou de l'administration du navire. Navigation = emprunter un chenal trop étroit, échouer le navire, mal lire une carte, etc. Administration du navire = gestion des cales.
+(10) Les risques de la mer : les risques de la mer constituent un cas d'exception, sauf s'ils sont particuliers, brutaux et violents. De nos jours, nous interprétons cette exception de manière stricte, car la technique a évolué et les navires sont de plus en plus sûrs.
+(11) Le « fait du prince » : le « fait du prince » réside dans une décision contraignante prise par les autorités publiques et qui a une conséquence sur la bonne exécution du contrat de transport. Cette décision n'est qualifiée de « cas de force majeure » que si elle était imprévisible.
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 71 ---
+Que pouvons-nous répondre au transporteur s'il a expliqué que le dommage a été causé par un cas exceptionnel ?
+A – RESPONSABILITÉS EN MATIÈRE DE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 72 ---
+Même si le transporteur prouve qu'il existe un cas exceptionnel, l'expéditeur peut prouver la faute du transporteur afin de surmonter les effets du cas exceptionnel.
+La responsabilité du transporteur sera alors réintroduite en tout ou en partie.
+La responsabilité peut ainsi être partagée entre le transporteur et l'expéditeur.
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 73 ---
+Résumé des responsabilités en matière de transport maritime :
+Réserves émises par le chargeur =&gt; on présume que les dommages ont été causés pendant le transport maritime.
+Le chargeur demande une indemnisation au transporteur maritime : responsabilité limitée. Non limitée si : faute inexcusable ou déclaration de valeur.
+Réponse du transporteur maritime =&gt; cas exceptionnel.
+Réponse du chargeur =&gt; faute du transporteur maritime.
+A – RESPONSABILITÉS DANS LE TRANSPORT MARITIME – Contrat de transport
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 74 ---
+Il n'existe aucune convention internationale relative à la responsabilité des transitaires !
+En cas de litige avec un transitaire, il convient de se référer à la législation nationale.
+B – RESPONSABILITÉ DES TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 75 ---
+Les éléments fondamentaux du régime de responsabilité du transitaire en droit français :
+(1) Le transitaire a une obligation de résultat envers son client. Sa responsabilité est donc fondamentalement identique à celle du transporteur. Le résultat que le transitaire doit atteindre est d'organiser le transport des marchandises d'un point A à un point B et de veiller à ce que les marchandises soient en bon état à l'arrivée. Si le transport n'est pas effectué dans le délai imparti ou si les marchandises sont endommagées, le transitaire a manqué à son obligation de résultat.
+2) Dans le cadre de cette obligation de résultat, le transitaire assume une double responsabilité : pour ses propres actes et pour ceux de ses subordonnés. La responsabilité personnelle sanctionne le manquement du transitaire à ses obligations personnelles envers son client, dans le cadre de sa mission d'organisation du mouvement des marchandises.
+3) Lorsqu'il est poursuivi en raison d'un acte d'un substitut, le transitaire dispose d'un recours contre ses substitués.
+B – RESPONSABILITÉ DES TRANSPORTEURS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 76 ---
+Il n'existe aucune convention internationale relative à la responsabilité des déclarants en douane !
+En cas de litige avec un transitaire en douane, il convient de se référer à la législation nationale.
+C – RESPONSABILITÉ DES DÉCLARANTS EN DOUANE ENVERS LEURS CLIENTS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 77 ---
+Le déclarant en douane agit au nom et pour le compte de son client. Il est lié à son client par un contrat de mandat. Les éléments fondamentaux du régime de responsabilité du déclarant en douane en droit français :
+Le déclarant en douane n'est responsable que de ses fautes personnelles.
+Sa responsabilité ne peut être présumée, mais doit être prouvée.
+C – RESPONSABILITÉ DES DÉCLARANTS EN DOUANE ENVERS LEURS CLIENTS
+Aspects juridiques de la logistique : droit international des transports
+--- Slide 78 ---
+ | Transport maritime international | Transport routier international | Transport aérien international
+Délai de réservation | Dommages apparents : les réserves doivent être formulées le jour de la livraison.
+Dommages non apparents : le destinataire dispose d'un délai de 3 jours pour émettre des réserves. | Dommages apparents : les réserves doivent être formulées le jour de la livraison.
+Dommages non apparents : le destinataire dispose d'un délai de 7 jours pour faire des réserves. | Les réserves doivent toujours être formulées le jour de la livraison (le destinataire doit donc vérifier l'état extérieur et intérieur des marchandises avant la fin de la livraison).
+Conséquences du dépassement du délai de réservation | Le dépassement du délai entraîne une simple présomption de conformité de la livraison à la charge du destinataire. | Le dépassement du délai entraîne une simple présomption de non-responsabilité du transporteur routier. | L'absence de réservation au moment de la livraison entraîne une présomption de non-responsabilité du transporteur. Le transporteur est présumé avoir livré les marchandises dans l'état et les conditions mentionnés sur la lettre de transport aérien.
+Délai de prescription | 1 an | 1 an | 2 ans
+Effets du dépassement du délai de prescription | L'expéditeur ne peut plus intenter d'action en justice contre le transporteur | L'expéditeur ne peut plus intenter d'action en justice contre le transporteur | L'expéditeur ne peut plus intenter d'action en justice contre le transporteur
+Limitation de responsabilité | 666,67 DTS par colis ou unité ; ou
+2 DTS par kilogramme de fret brut | 8,33 DTS par kilogramme de fret brut | 19 DSR par kilogramme de fret brut
+Événements entraînant la levée de la limitation de responsabilité | Déclaration de valeur avant le transport ; ou
+Faute inexcusable du transporteur maritime | Déclaration de valeur avant le transport ; ou
+Faute inexcusable du transporteur routier | Déclaration de valeur avant le transport (mais la Convention de Montréal ne permet pas à l'expéditeur d'invoquer une faute inexcusable à l'encontre du transporteur)
+RÉSUMÉ
+Aspects juridiques de la logistique : droit du transport international

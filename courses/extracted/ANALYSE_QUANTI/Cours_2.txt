@@ -1,0 +1,201 @@
+Relation entre deux
+variables
+Rappel
+Analyse descriptive univariée
+Analyse d’une seule variable séparément des autres variables
+Nature des variables
+• Quantitative (discrète, continue)
+• Qualitative (ordinale, nominale)
+Statistiques descriptives
+• Indicateurs (tendance centrale, dispersion)
+• Diagrammes (Histogramme, Diagramme en barres, Boxplot, etc)
+Rappel
+Les indicateurs de tendance centrale
+• Moyenne
+• Médiane
+• Mode
+Les indicateurs de dispersion
+• Étendue
+• Variance
+• Écart-type
+• Coefficient de variation
+Objectifs de la séance
+Apprendre à analyser la relation entre deux variables, selon leur nature :
+1. Identifier la nature de la relation entre deux variables
+2. Choisir le test statistique approprié
+3. Lire et interpréter les sorties Jamovi
+4. Transformer les résultats en recommandations managériales
+Plan de la séance n°2
+1. Introduction
+2. Relation entre deux variables qualitatives
+3. Relation entre deux variables quantitatives
+4. Relation entre une variable quantitative et une variable qualitative
+Introduction
+Pourquoi analyser une relation ?
+Prendre des décisions fondées sur les données
+Exemples en entreprise :
+- Les clients satisfaits achètent-ils plus ?
+- L’âge influence-t-il la performance ?
+- Le type de client est-il lié au taux d’abandon des clients ?
+Types de relations possibles
+• Relation entre deux variable Qualitatives ==> Association (Test de Khi-deux)
+• Relation entre deux variable Quantitatives ==> Corrélation (Test de Pearson)
+• Relation une variable Qualitative et une autre Quantitative ==> Comparaison (t-test)
+Chaque type de relation a un test adapté
+Exemple: Ressources Humaines
+Question : l’ancienneté est-elle liée à la performance ?
+Variables : ancienneté (quantitative), performance (quantitative)
+Indicateur : corrélation
+Analyser le diagramme de nuage de points (scatterplot) + Appliquer le test de Pearson
+Relation entre deux variables
+qualitatives
+Objectif
+Comprendre si deux variables qualitatives ont un lien structurel ou si leur co-occurrence est simplement
+due au hasard.
+Exemples:
+• Marketing : les jeunes choisissent-elles davantage des boissons sucrées ?
+• RH : les employés du service IT quittent-ils davantage l’entreprise ?
+• Service client : le motif d’insatisfaction dépend-il du canal utilisé (téléphone, e-mail, chat) ?
+• Opérations : les problèmes qualité touchent-ils certains types de produits plus que d’autres ?
+Comment analyser deux variables qualitatives ?
+Étape 1 : Construire un Tableau de contingence → Permet de visualiser la répartition des
+catégories.
+Étape 2 : Visualiser → Diagramme en barres (juxtaposées, empilées)
+Étape 3 : Tester statistiquement (test du Khi-deux) → Permet de déterminer si les différences
+observées sont statistiquement significatives.
+Exemple: CaféEMN
+Dataset CaféEMN_V2 (A télécharger sur Upward)
+Question : La répartition hommes/femmes est-elle la même dans toutes les villes ?
+Pourquoi cette question est pertinente ?
+Une ville avec plus de clientes peut préférer certains produits
+Les campagnes marketing peuvent être adaptées localement
+Les préférences de boisson peuvent varier selon la structure du segment
+• Genre: variable qualitative nominale
+• Ville: variable qualitative nominale (15 villes)
+Tableau de contingence
+Tableau de contingence
+En effectifs observés
+Tableau de contingence
+En pourcentages
+Visualisation (Diagramme en barres empilées)
+Visualisation (Diagramme en barres juxtaposée)
+On commence à suspecter
+une association, mais ça
+reste visuel.
+Il faut tester statistiquement
+pour conclure.
+Test du Khi-deux
+L’objectif du test
+Répondre à la question suivante : Les différences observées entre groupes sont-elles dues au hasard ?
+Démarche
+1. Hypothèse: il n’y a aucune association entre les deux variables qualitatives
+2. Calculer la probabilité d’observer nos données. Cette probabilité est appelée la p-value.
+3. Nous fixons une valeur pour un seuil (par exemple, 0,05)
+4. Si cette probabilité est inférieure à ce seuil ==> nous disons qu’il y a probablement une association
+entre les deux variables.
+Test du Khi-deux (formel)
+Hypothèses
+• Hypothèse nulle H : pas d’association (indépendance)
+• Hypothèse alternative H : association entre les variables
+Calculer la valeur p (p-value) de Khi-deux.
+• Si p < 0,05, alors l’association est statistiquement significative
+• Si p ≥ 0.05, alors il n y a pas de preuve suffisante d’association
+Logique du test (l’analogie innocent / coupable)
+Supposons que nous sommes des détectives:
+Hypothèses
+• Hypothèse nulle H : Le suspect est innocent.
+• Hypothèse alternative H : Le suspect est coupable.
+En statistique, nous commençons toujours par supposer l’innocence (H est vraie) tant que les
+preuves ne sont pas assez fortes pour dire le contraire.
+Logique du test (l’analogie innocent / coupable)
+Lorsque nous recueillons des preuves (données), elles peuvent parfois être trompeuses : un
+innocent peut avoir l’air suspect juste par hasard.
+Alors nous nous posons la question suivante :
+“Si le suspect était vraiment innocent, quelle est la probabilité d’observer des preuves (données) aussi
+étranges que celles que j’ai collectées ?”
+Cette probabilité, c’est exactement la p-value.
+• p-value grande ==> les preuves ne sont pas étonnantes si le suspect est innocent ==> on ne l’accuse pas.
+• p-value petite ==> les preuves seraient très improbables si le suspect était innocent ==> suspicion ==>
+on envisage de rejeter l’innocence.
+Logique du test (l’analogie innocent / coupable)
+Relation entre deux variables quantitatives L’analogie innocent / coupable
+Hypothèse nulle H : pas d’association Hypothèse nulle H : Le suspect est
+0 0
+(indépendance) innocent.
+Hypothèse alternative H : association entre Hypothèse alternative H : Le suspect est
+1 1
+les variables coupable
+Test du Khi-deux
+ddl: degré de la liberté de la statistique de khi-deux χ2
+p < 0,05, alors l’association est statistiquement significative
+Test V de Cramér
+Un test de khi-deux statistiquement significatif confirme qu'il existe une association entre vos
+variables qualitatives:
+Mais il ne révèle pas dans quelle mesure cette relation est significative ou forte en termes pratiques.
+Le V de Cramér comble cette lacune en mesurant la force de l'association sur une échelle normalisée
+de 0 à 1, où 0 indique l'absence d'association et 1 représente une association parfaite.
+Interprétation du V de Cramér
+Comprendre l'importance du coefficient V de Cramér vous aide à communiquer la signification
+pratique de vos résultats. Utilisez ce guide pour interpréter les tailles d'effet dans vos recherches.
+V de Cramér Interprétation
+0.00 to 0.10 Association très faible – pertinence pratique minimale
+0.10 to 0.30 Association faible à modérée – effet perceptible mais modeste
+0.30 to 0.50 Association modérée à forte – importance pratique considérable
+Supérieur à 0.50 Association très forte – relation hautement significative
+Test de chi-deux et le V de Cramér
+Conditions du Test de Khi-deux
+Pour que le test soit valide :
+• Observations indépendantes (un individu ne peut appartenir qu’à une seule classe)
+• Échantillon suffisamment grand
+• Effectifs attendus > 5 dans au moins 80% des cases
+(Jamovi signale les problèmes)
+Relation entre deux variables
+quantitatives
+Objectif
+Analyser si deux variables quantitatives évoluent ensemble, afin de :
+• détecter des tendances
+• comprendre des mécanismes
+• soutenir la prise de décision
+Exemples:
+• Ventes : Chiffre d’affaires Satisfaction régionale?
+• RH : Performance Ancienneté ?
+• CaféEMN : Montant du ticket Fréquence de visite ?
+Pourquoi analyser deux variables quantitatives ?
+Pour répondre à des questions clés :
+• Les clients qui viennent plus souvent dépensent-ils plus ?
+• Les salariés plus anciens performent-ils mieux ?
+• Les magasins avec un meilleur Net Promoter Score (NPS) ont-ils un chiffre d’affaires plus élevé ?
+Le nuage de points (scatterplot)
+• Le nuage de points est le premier outil pour comprendre une relation entre deux variables quantitatives
+• Permet d’observer la forme, la direction et la dispersion
+Comment lire un scatterplot ?
+• Relation positive : les variables augmentent ensemble
+• Relation négative : l’une augmente, l’autre diminue
+• Aucune relation : points dispersés
+• Relation non linéaire : forme courbe
+Corrélation de Pearson – Intuition
+• Coefficient de corrélation de Pearson « r »
+• Mesure la force et le sens d’une relation linéaire
+• Valeurs entre -1 et +1
+• L’intensité de la corrélation est la valeur absolue du coefficient r : |r|
+• Plus |r| est élevé, plus la relation est forte
+Interprétation de l’intensité
+• 0.00–0.20 → très faible
+• 0.20–0.40 → faible
+• 0.40–0.60 → modérée
+• 0.60–0.80 → forte
+• 0.80–1.00 → très forte
+Exemple: CaféEMN
+1- Choisir deux variables quantitatives (ex : âge montant du ticket, satisfaction montant du ticket)
+2- Créer un scatterplot
+3- Calculer le coefficient de corrélation de Pearson et
+4- Répondre aux deux questions :
+• La relation est-elle positive, négative ou inexistante ?
+• Quelle recommandation proposeriez-vous au manager ?
+Exemple: CaféEMN
+Relation entre une variable quantitative et
+une variable qualitative
+Relation entre une variable qualitative et une variable quantitative
+Méthode principale : test t pour comparer deux moyennes
+Applications: satisfaction selon le genre, ticket selon le type de client
+À suivre dans la prochaine séance

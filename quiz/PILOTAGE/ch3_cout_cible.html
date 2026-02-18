@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Coût cible (Target Costing)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #8b5cf6; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(139,92,246,0.08); border-left: 3px solid #8b5cf6; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #c4b5fd; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
+        .btn-next:hover { background: #7c3aed; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #8b5cf6; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
+        <h1>Le coût cible (Target Costing)</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Quelle est la formule du coût cible (target costing) ?",
+        options: ["Coût cible = Coût estimé + Marge souhaitée", "Coût cible = Prix de vente HT - Profit cible", "Coût cible = Prix de vente TTC - Charges fixes", "Coût cible = CA prévisionnel × (1 - taux de marge)"],
+        correct: 1,
+        explanation: "Coût cible = Prix de vente HT - Profit cible (marge souhaitée). C'est le retournement de l'équation traditionnelle : on fixe le coût comme objectif au lieu de le subir."
+    },
+    {
+        q: "Quelle est la différence fondamentale entre l'approche classique et le target costing ?",
+        options: ["L'approche classique est proactive, le target costing est réactif", "L'approche classique calcule le prix à partir du coût ; le target costing fixe le coût à partir du prix de marché", "Il n'y a pas de différence fondamentale, seule la terminologie change", "L'approche classique s'applique aux services, le target costing à l'industrie"],
+        correct: 1,
+        explanation: "Approche classique : PV = Coût + Marge (logique subie). Target costing : Coût cible = PV - Profit cible (logique proactive). On part du marché pour déterminer le coût maximal admissible."
+    },
+    {
+        q: "Dans l'exercice AERONEF (Prix TTC = 100 000 €, TVA 20 %, marge = 20 % du PV HT), quel est le coût cible ?",
+        options: ["80 000 €", "75 000 €", "66 667 €", "70 000 €"],
+        correct: 2,
+        explanation: "PV HT = 100 000 / 1,2 = 83 333 €. Profit cible = 83 333 × 20 % = 16 667 €. Coût cible = 83 333 - 16 667 = 66 667 €."
+    },
+    {
+        q: "Dans l'exercice AERONEF, quel composant présente l'écart le plus critique ?",
+        options: ["La carlingue (écart +9 333 €)", "Le moteur (écart +29 333 €)", "L'équipement électronique (écart -25 333 €)", "L'ensemble du produit de façon équilibrée"],
+        correct: 1,
+        explanation: "Le moteur présente l'écart le plus critique : coût estimé 40 000 € vs coût cible 10 667 € = écart de +29 333 €. C'est le composant prioritaire pour la réduction des coûts."
+    },
+    {
+        q: "Que signifie un écart positif entre coût estimé et coût cible ?",
+        options: ["L'entreprise est plus efficiente que prévu", "Le coût estimé dépasse le coût cible : il faut réduire les coûts", "La marge sera supérieure à l'objectif", "Le prix de vente doit être révisé à la hausse"],
+        correct: 1,
+        explanation: "Écart = Coût estimé - Coût cible. Si écart > 0, le coût estimé dépasse le coût cible : l'entreprise doit trouver des pistes de réduction (fournisseurs, redesign, optimisation processus)."
+    },
+    {
+        q: "Comment calcule-t-on le poids d'un composant dans la décomposition du coût cible ?",
+        options: ["En divisant le coût du composant par le coût total estimé", "Par la somme pondérée : poids de chaque fonction × contribution du composant à cette fonction", "En appliquant le taux de marge au coût estimé du composant", "En comparant le coût cible au coût estimé composant par composant"],
+        correct: 1,
+        explanation: "Poids du composant = somme pondérée (poids de chaque fonction × contribution du composant à cette fonction). On applique ensuite ce pourcentage au coût cible global pour obtenir le coût cible par composant."
+    },
+    {
+        q: "Selon l'AFNOR, quelle est la formule de la valeur en analyse de la valeur ?",
+        options: ["Valeur = Coûts / Satisfaction du besoin", "Valeur = Satisfaction du besoin / Coûts", "Valeur = Prix de vente - Coût de revient", "Valeur = Fonctionnalités × Qualité"],
+        correct: 1,
+        explanation: "Valeur = Satisfaction du besoin / Coûts (formule AFNOR). L'analyse de la valeur vise soit à améliorer la satisfaction à coût constant, soit à réduire le coût à service constant."
+    },
+    {
+        q: "Quelle est la principale limite du coût cible selon le cours ?",
+        options: ["Il est trop complexe à calculer pour les PME", "Il ne prend en compte que les coûts directs (matières, MOD, déchets) et exclut les frais généraux", "Il impose un prix de vente que le marché n'accepte pas toujours", "Il ne peut s'appliquer qu'à l'industrie automobile"],
+        correct: 1,
+        explanation: "La principale limite est que le coût cible ne prend en compte que les dépenses en rapport direct avec le produit (matières premières, MOD, déchets). Les frais généraux et frais de structure en sont exclus."
+    },
+    {
+        q: "Combien d'étapes compte la démarche d'analyse de la valeur selon le cours ?",
+        options: ["4 étapes", "5 étapes", "6 étapes", "7 étapes"],
+        correct: 2,
+        explanation: "L'analyse de la valeur compte 6 étapes : 1) Définir les orientations, 2) Rechercher des informations, 3) Analyse fonctionnelle, 4) Évaluer les fonctionnalités, 5) Proposer et sélectionner des solutions, 6) Mise en œuvre et bilan."
+    },
+    {
+        q: "Dans l'exercice du sac de sport (Prix TTC = 34,80 €, TVA 20 %, marge = 40 % du PV HT), quel est le coût cible ?",
+        options: ["20,88 €", "17,40 €", "14,50 €", "23,20 €"],
+        correct: 1,
+        explanation: "PV HT = 34,80 / 1,20 = 29 €. Profit cible = 29 × 40 % = 11,60 €. Coût cible = 29 - 11,60 = 17,40 €. L'écart avec le coût estimé (20,30 €) est de 2,90 € à résorber."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return; answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    document.getElementById('result-card').style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

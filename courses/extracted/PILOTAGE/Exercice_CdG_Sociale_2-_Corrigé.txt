@@ -1,0 +1,83 @@
+Fichier Excel: Exercice CdG Sociale 2- Corrigé.xlsx
+Feuilles: ['Feuil1']
+
+=== Feuille: Feuil1 ===
+Analyse des effectifs et de la masse salariale (hors cotisations salariales) |  |  |  |  |  |  |  | 
+Voici les données de la société INOVIA |  |  |  |  |  |  |  | 
+Tableau 1- Masse salariale |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+Masse Salariale N-1 | 17777710 | 14361270 | 32138980 |  |  |  |  | 
+Masse Salariale N | 17989488 | 15332544 | 33322032 |  |  |  |  | 
+Mesures d'augmentation générales et catégorielles : |  |  |  |  |  |  |  | 
+Effet en masse des mesures | 0.0181 |  |  |  |  |  |  | 
+Taux de report de l'année N-1 | 0.0134 |  |  |  |  |  |  | 
+Taux de report sur l'année N+1 | 0.0368 |  |  |  |  |  |  | 
+Primes d'ancienneté | 218548 |  |  |  |  |  |  | 
+Somme des augmentations individuelles | 147840 |  |  |  |  |  |  | 
+Tableau 2- Evolution des effectifs |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+Effectif moyen N-1 | 169 | 55 | 224 |  |  |  |  | 
+Effectif moyen N | 164 | 57 | 221 |  |  |  |  | 
+Questions : |  |  |  |  |  |  |  | 
+1) Calculez l'évolution de la masse salariale |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+Masse Salariale N-1 | 17777710 | 14361270 | 32138980 |  |  |  |  | 
+Masse Salariale N | 17989488 | 15332544 | 33322032 |  |  |  |  | 
+Variation N - N-1 | 211778 | 971274 | 1183052 |  |  |  |  | 
+% Variation = variation / masse salariale N-1 | 0.011912557916627058 | 0.0676314838450917 | 0.03681050238682124 |  |  |  |  | 
+2) Calculez l'évolution des effectifs |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+Effectif moyen N-1 | 169 | 55 | 224 |  |  |  |  | 
+Effectif moyen N | 164 | 57 | 221 |  |  |  |  | 
+Variation N - N-1 | -5 | 2 | -3 |  |  |  |  | 
+% Variation = variation / effectif N-1 | -0.029585798816568046 | 0.03636363636363636 | -0.013392857142857142 |  |  |  |  | 
+3) Calculez la rémunération moyenne et son évolution. |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+Rémunération moyenne N-1 = masse salariale / effectif moyen | 105193.55029585799 | 261114 | 143477.5892857143 |  |  |  |  | 
+Rémunération moyenne N | 109692 | 268992 | 150778.4253393665 |  |  |  |  | 
+Variation N - N-1 | 4498.449704142011 | 7878 | 7300.836053652223 |  |  |  |  | 
+% Variation = variation / rémunération moyenne N-1 | 0.04276355053603641 | 0.03017073002596567 | 0.050884853097954506 |  |  |  |  | 
+4) Déterminez l'effet effectif |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+Rémunération moyenne N/N-1 | 1.0427635505360364 | 1.0301707300259657 | 1.0508848530979544 |  |  |  |  | 
+Effectif moyen N/N-1 | 0.9704142011834319 | 1.0363636363636364 | 0.9866071428571429 |  |  |  |  | 
+Masse salariale N/N-1 | 1.011912557916627 | 1.0676314838450918 | 1.0368105023868213 |  |  |  |  | 
+Effet effectif = taux variation masse salariale - taux variation rémunération moyenne | -0.03085099261940938 | 0.03746075381912606 | -0.014074350711133166 |  |  |  |  | 
+On peut aussi calculer l'effet effectif d'une autre façon : |  |  |  |  |  |  |  | 
+Effet effectif = taux variation rémunération moyenne X (taux variation effectif moyen-1) | -0.030850992619409403 | 0.03746075381912604 | -0.014074350711133268 |  |  |  |  | 
+5) Déterminez les effets de structure |  |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  |  | 
+a) Masse Salariale N-1 | 17777710 | 14361270 | 32138980 |  |  |  |  | 
+b) Masse salariale N | 17989488 | 15332544 | 33322032 |  |  |  |  | 
+c) Effectif moyen N -1 / Effectif moyen N | 1.0304878048780488 | 0.9649122807017544 |  |  | = taux de variation des effectifs par rapport à N |  |  | 
+d) Masse salariale fictive N à structure et effectifs constants = c X b | 18537948 | 14794560 | 33332508 |  | => on applique le taux de variation des effectifs sur la masse salariale N |  |  | 
+e) (Masse salariale fictive N (=d) / masse salariale N-1 (=a))-1 | 0.04276355053603642 | 0.03017073002596571 | 0.03713646170475848 |  | augmentation de la masse salariale à structure constante |  |  | 
+Rappel variation de la rémunération moyenne | 0.04276355053603641 | 0.03017073002596567 | 0.050884853097954506 |  | augmentation du niveau moyen de rémunération |  |  | 
+La prise en compte de l'évolution de la structure des effectifs est nécessairement opérée au niveau de la masse salariale de la société. Dans ce cas, à structure constante, la masse salariale progresse de 3,71% alors que compte tenu de l'évolution de la structure, elle augmente de 5,09% (augmentation du niveau moyen de rémunération). L'impact de la seule déformation structurelle est donc de : |  |  |  |  |  |  |  | 
+5,09% - 3,71% = | 0.0138 |  |  |  |  |  |  | 
+6) Evaluez l'effet Vieillissement |  |  |  |  |  |  |  | 
+Primes d'ancienneté | 218548 |  |  |  |  |  |  | 
+Soit en masse | 0.006800091353241453 | (par rapport à la masse salariale n-1) |  |  |  |  |  | 
+7) Evaluez l'effet Glissement Technicité |  |  |  |  |  |  |  | 
+Somme des augmentations individuelles | 147840 |  |  |  |  |  |  | 
+Soit en masse | 0.0046000215314860645 | (par rapport à la masse salariale n-1) |  |  |  |  |  | 
+8) Calculez la Noria |  |  |  |  |  |  |  | 
+Noria = variation de la masse salariale à structure et effectifs constants - (augmentation collective + report + GVT) |  |  |  |  |  |  |  | 
+Noria =  | 0.03713646170475848 | -  ( | 0.0181 | + | 0.0134 | + | 0.011400112884727517 | )
+ | -0.005763651179969034 |  |  |  |  |  |  | 
+Conclusion / synthèse : |  |  |  |  |  |  |  | 
+La variation totale de la masse salariale : |  | 0.03681050238682124 |  |  |  |  |  | 
+- effet effectif |  | -0.014074350711133268 |  |  |  |  |  | 
+Non cadres | -0.03085099261940938 |  |  |  |  |  |  | 
+Cadres | 0.03746075381912604 |  |  |  |  |  |  | 
+= MS à activité et effectifs constants |  | 0.050884853097954506 |  |  |  |  |  | 
+- Structure |  | 0.0138 |  |  |  |  |  | 
+= MS à activité et effectifs et structure constants |  | 0.03708485309795451 |  |  |  |  |  | 
+- Mesures individuelles |  | 0.005636461704758483 |  |  |  |  |  | 
+Viellissement | 0.006800091353241453 |  |  |  |  |  |  | 
+Glissement Technicité | 0.0046000215314860645 |  |  |  |  |  |  | 
+Noria | -0.005763651179969034 |  |  |  |  |  |  | 
+- Augmentations collectives |  | 0.0181 |  |  |  |  |  | 
+- Report de N-1 |  | 0.0134 |  |  |  |  |  | 
+= |  | -5.1608606803978455e-05 |  |  |  |  |  | 
+

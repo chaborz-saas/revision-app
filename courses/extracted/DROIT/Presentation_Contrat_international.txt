@@ -1,0 +1,116 @@
+--- Slide 1 ---
+Contrats internationaux principaux aspects juridiques
+Pr. Philippe CORRUBLE
+École de Management de Normandie
+--- Slide 2 ---
+Questions clés
+1. Quelle loi s'applique à un contrat international ?
+2. Quelle juridiction est compétente pour trancher les litiges relatifs au contrat ?
+3. L'arbitrage est-il une alternative ?
+--- Slide 3 ---
+1. Quelle loi s'applique à un contrat international ?
+RÈGLEMENT (CE) N° 593/2008 DU PARLEMENT EUROPÉEN ET DU CONSEIL du 17 juin 2008 sur la loi applicable aux obligations contractuelles (dit « Rome I »)
+Applicable dans l'Espace économique européen : tout juge d'un État membre de l'Union européenne est tenu d'appliquer les dispositions du présent règlement
++ application « universelle » : quel que soit le lieu où les parties au contrat ont leur résidence (personnes physiques) ou sont établies (sociétés), y compris en dehors de l'UE
+Rome I s'applique à tout contrat commercial
+Rome 1 contient généralement trois règles principales :
+1. Liberté des parties de choisir la loi applicable au contrat
+2. Détermination de la loi applicable au contrat en l'absence de choix des parties
+3. Exceptions…
+--- Slide 4 ---
+1.1 Liberté de choisir la loi applicable à un contrat international
+Rome 1 : « Un contrat est régi par la loi choisie par les parties... »
+Choix illimité !
+Devriez-vous vous battre pour votre droit national ?
+Rome 1 : « Le choix doit être exprimé expressément ou résulter de manière certaine
+par les termes du contrat ou par les circonstances de la situation. »
+Mieux vaut faire un choix exprès
+Dispositions impératives : Rome 1, art. 9 : « Les dispositions impératives sont celles dont le respect est considéré par un pays comme essentiel pour la sauvegarde de ses intérêts publics, tels que son organisation politique, sociale ou économique, au point qu'elles s'appliquent à toute situation relevant de leur champ d'application, quelle que soit la loi autrement applicable au contrat en vertu du présent règlement. »
+Gardez cela à l'esprit... mieux vaut choisir un juge dont les lois impératives sont compatibles avec vos propres opinions.
+--- Slide 5 ---
+1.2 Droit applicable en l'absence de choix
+Rome 1, art. 4.1 :
+(a) un contrat de vente de biens est régi par la loi du pays où le vendeur a sa résidence habituelle ;
+(b) un contrat de prestation de services est régi par la loi du pays où le prestataire a sa résidence habituelle ;...
+(e) un contrat de franchise est régi par la loi du pays où le franchisé a sa résidence habituelle ;
+(f) le contrat de distribution est régi par la loi du pays où le distributeur a sa résidence habituelle ;
+(g) un contrat de vente de biens aux enchères est régi par la loi du pays où se déroule la vente, si ce lieu peut être déterminé ;…
+--- Slide 6 ---
+1.2 Loi applicable en l'absence de choix
+2. « Lorsque le contrat n'est pas visé au paragraphe 1 ou lorsque les éléments du contrat relèvent de plusieurs des points a) à h) du paragraphe 1, le contrat est régi par la loi du pays où la partie tenue d'exécuter la prestation caractéristique du contrat a sa résidence habituelle. » Rome 1, art. 4.2
+--- Slide 7 ---
+1.3 Exceptions à Rome 1 : certaines dispositions spécifiques pour certaines catégories de contrats
+Contrats de transport (art. 5)
+Contrats d'assurance (art. 7)
+Contrats individuels de travail (art. 8)
+1. Le contrat individuel de travail est régi par la loi choisie par les parties conformément à l'article 3. Ce choix de la loi ne peut toutefois avoir pour effet de priver le travailleur de la protection que lui accordent les dispositions auxquelles il ne peut être dérogé par convention en vertu de la loi qui, à défaut de choix, aurait été applicable en vertu des paragraphes 2, 3 et 4 du présent article.
+2. Dans la mesure où la loi applicable au contrat individuel de travail n'a pas été choisie par les parties, le contrat est régi par la loi du pays dans lequel ou, à défaut, à partir duquel le travailleur effectue habituellement son travail en exécution du contrat. Le pays où le travail est habituellement effectué n'est pas réputé avoir changé si le travailleur est employé temporairement dans un autre pays.
+--- Slide 8 ---
+contrats de travail à Rome 1, poursuite
+3. Lorsque la loi applicable ne peut être déterminée conformément au paragraphe 2, le contrat est régi par la loi du pays où est situé le lieu d'activité par l'intermédiaire duquel le travailleur a été engagé
+4. Lorsque l'ensemble des circonstances fait apparaître que le contrat présente un lien plus étroit avec un pays autre que celui indiqué aux paragraphes 2 ou 3, la loi de cet autre pays s'applique.
+--- Slide 9 ---
+L'exception des contrats conclus avec des consommateurs
+Rome 1Article 6, Contrats conclus avec des consommateurs
+1. Sans préjudice des articles 5 et 7, un contrat conclu par une personne physique pour un but qui peut être considéré comme étranger à son activité commerciale ou professionnelle (le consommateur) avec une autre personne agissant dans l'exercice de son activité commerciale ou professionnelle (le professionnel) est régi par la loi du pays où le consommateur a sa résidence habituelle, à condition que le professionnel :
+(a) exerce ses activités commerciales ou professionnelles dans le pays où le consommateur a sa résidence habituelle, ou
+b) par tout moyen, dirige ces activités vers ce pays ou vers plusieurs pays, dont ce pays, et le contrat entre dans le cadre de ces activités.
+--- Slide 10 ---
+Contrats conclus avec des consommateurs, suite
+2. Nonobstant le paragraphe 1, les parties peuvent choisir la loi applicable à un contrat qui remplit les conditions du paragraphe 1, conformément à l'article 3. Ce choix ne peut toutefois avoir pour effet de priver le consommateur de la protection qui lui est accordée par des dispositions auxquelles il ne peut être dérogé par convention en vertu de la loi qui, en l'absence de choix, aurait été applicable sur la base du paragraphe 1.
+--- Slide 11 ---
+2. Quel forum, quelle juridiction pour le règlement des litiges contractuels ?
+La solution classique : en vertu de la souveraineté des États, la question de la compétence des tribunaux dans un cas particulier est tranchée par le droit de chaque État.
+De nombreuses législations nationales reconnaissent un privilège de juridiction à leurs ressortissants : ceux-ci peuvent poursuivre leur cocontractant (quel que soit le lieu de résidence ou la nationalité de ce dernier) devant leurs tribunaux nationaux (dans leur pays d'origine).
+Une exception à la souveraineté des États et au privilège accordé aux ressortissants nationaux : le règlement (CE) n° 44/2001 du Conseil du 22 décembre 2000 concernant la compétence judiciaire, la reconnaissance et l'exécution des décisions en matière civile et commerciale, applicable dans l'UE (Bruxelles I)
+Modifié par le règlement 1215/2012, applicable depuis le 10 janvier 2015.
+Supprime le privilège des ressortissants
+Impose le principe de la compétence du tribunal situé dans le pays où le défendeur a sa résidence, si le défendeur a sa résidence sur le territoire d'un des États membres de l'UE.
+--- Slide 12 ---
+Quel forum, quelle juridiction pour le règlement des litiges contractuels ? Suite
+Mais ce n'est pas la seule possibilité...
+Le règlement (CE) n° 44/2001 du Conseil du 22 décembre 2000 concernant la compétence judiciaire... prévoit également que :
+Une personne domiciliée dans un État membre peut être attrait dans un autre État membre :
+1. a) en matière contractuelle, devant les tribunaux du lieu d'exécution de l'obligation en cause ;
+(b) aux fins de la présente disposition et sauf convention contraire, le lieu d'exécution de l'obligation en question est :
+- dans le cas de la vente de biens, le lieu dans un État membre où, en vertu du contrat, les biens ont été livrés ou auraient dû être livrés,
+- en cas de prestation de services, le lieu dans un État membre où, en vertu du contrat, les services ont été fournis ou auraient dû être fournis.
+--- Slide 13 ---
+Contrats conclus avec les consommateurs et compétence juridictionnelle
+Compétence en matière de contrats conclus avec des consommateurs
+Article 15
+1. En matière de contrats conclus par une personne, le consommateur, à des fins qui ne relèvent pas de son activité commerciale ou professionnelle, la compétence est déterminée par la présente section, sans préjudice de l'article 4 et du point 5 de l'article 5, si :
+a) il s'agit d'un contrat de vente de biens à crédit avec paiement échelonné ; ou
+b) il s'agit d'un contrat de prêt remboursable par versements échelonnés ou de toute autre forme de crédit destiné à financer la vente de biens ; ou
+c) dans tous les autres cas, le contrat a été conclu avec une personne qui exerce des activités commerciales ou professionnelles dans l'État membre où le consommateur a son domicile ou, par tout moyen, dirige ces activités vers cet État membre ou vers plusieurs États, dont cet État membre, et le contrat entre dans le cadre de ces activités.
+--- Slide 14 ---
+Contrats conclus avec les consommateurs et compétence juridictionnelle (suite)
+Article 16
+1. Le consommateur peut intenter une action contre l'autre partie au contrat soit devant les tribunaux de l'État membre dans lequel cette partie a son domicile, soit devant les tribunaux du lieu où le consommateur a son domicile.
+2. Les tribunaux de l'État membre dans lequel le consommateur est domicilié sont seuls compétents pour connaître des actions intentées contre un consommateur par l'autre partie au contrat.
+--- Slide 15 ---
+Exécution ?
+Lorsque le règlement (CE) n° 44/2001 du Conseil du 22 décembre 2000 concernant la compétence judiciaire... s'applique, toute décision rendue dans un État membre de l'UE est considérée comme valable et dûment exécutée par toute autorité d'un autre État membre de l'UE.
+Il existe une seule exception, rare dans la pratique, lorsque la décision est manifestement contraire à l'ordre public de l'État dans lequel elle doit être exécutée.
+--- Slide 16 ---
+Clause attributive de compétence
+Dans les contrats internationaux, peut-on éviter la désignation d'un juge (tribunal) par le simple effet des règles contenues dans le règlement européen ?
+Inclure une disposition prévoyant la désignation d'une juridiction spécifique : clause attributive de compétence
+Valable
+La clause attributive de compétence est applicable dans tous les États membres de l'UE : aucun tribunal de ces États ne peut être saisi de l'affaire
+Exceptions : aucune clause de compétence dans :
+Contrat de travail
+Contrat d'assurance
+Contrat de consommation
+--- Slide 17 ---
+3. Arbitrage
+Qu'est-ce que c'est ?
+Avantages
+Inconvénients
+Arbitrage institutionnel
+Arbitrage « ad hoc »
+Paris, 1er forum d'arbitrage au monde
+Clause d'arbitrage
+Contenu
+Efficacité de l'arbitrage au sein de l'UE
+En dehors de l'UE : Convention de New York sur l'arbitrage,  10 juin 1958

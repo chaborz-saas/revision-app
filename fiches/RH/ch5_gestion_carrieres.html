@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de révision — RH Cours 5 : La Gestion de carrières</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "→"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "❓ "; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Ressources Humaines</div>
+        <h1>Cours 5 — La Gestion de carrières</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">📌 Définition essentielle</div>
+
+        <div class="block block-def">
+            <div class="block-label">Définition</div>
+            <strong>Gestion des carrières</strong> (Roger, 1991) = action finalisée, organisée et animée pour définir la <span class="hl-critical">succession des affectations individuelles</span> du personnel. C'est le <span class="hl-critical">point de rencontre</span> entre intérêts de l'organisation et intérêts de l'individu.
+        </div>
+
+        <div class="section-title">🎯 Objectifs : organisation vs salarié</div>
+
+        <table class="compact-table">
+            <tr><th>Pour l'organisation</th><th>Pour les salariés</th></tr>
+            <tr><td>Gérer emplois et compétences</td><td rowspan="4">Améliorer le rapport <span class="hl-critical">contributions / rétributions</span></td></tr>
+            <tr><td>Développer brassage culturel et connaissances</td></tr>
+            <tr><td>Stimuler la <span class="hl-important">motivation individuelle</span></td></tr>
+            <tr><td>Favoriser collaboration inter-unités</td></tr>
+        </table>
+
+        <div class="section-title">🔄 Carrière traditionnelle vs nouvelles carrières</div>
+
+        <table class="compact-table">
+            <tr><th>Carrière traditionnelle</th><th>Nouvelles carrières</th></tr>
+            <tr><td>Emploi long terme</td><td>Parcours inter-entreprises</td></tr>
+            <tr><td>Promotion <span class="hl-important">verticale</span></td><td>Mobilité <span class="hl-important">horizontale</span> et géographique</td></tr>
+            <tr><td>Gérée par l'organisation</td><td><span class="hl-critical">Co-responsabilité</span> individu / organisation</td></tr>
+            <tr><td>Valorise ancienneté</td><td>Valorise <span class="hl-important">employabilité</span></td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">A retenir</div>
+            3 types de nouvelles carrières : <span class="hl-critical">protéenne</span> (Hall), <span class="hl-critical">sans frontières</span> (Arthur), <span class="hl-critical">nomade</span> (Cadin) — Condomines (2020)
+        </div>
+
+        <div class="section-title">🛤️ Les 2 filières de carrière</div>
+
+        <table class="compact-table">
+            <tr><th>Filière managériale</th><th>Filière d'expertise</th></tr>
+            <tr><td>Responsabilités croissantes + encadrement</td><td>Développement compétences techniques</td></tr>
+            <tr><td>Progression verticale</td><td>Progression horizontale / spécialisation</td></tr>
+            <tr><td><em>Limite : compétences managériales requises ; pas tous motivés par le pouvoir</em></td><td>Projets complexes, fonctions de référence, formation</td></tr>
+        </table>
+
+        <div class="section-title">📐 Les 3 types de mobilité</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-critical">Mobilité verticale</span> : changement de niveau hiérarchique</li>
+            <li><span class="hl-critical">Mobilité horizontale</span> : changement de fonction/métier, sans changement hiérarchique</li>
+            <li><span class="hl-critical">Mobilité géographique</span> : changement de lieu (local, national, international)</li>
+        </ul>
+
+        <div class="section-title">🏢 Facteurs influençant la mobilité</div>
+
+        <table class="compact-table">
+            <tr><th>Contexte interne</th><th>Contexte externe (Livian, 2004)</th></tr>
+            <tr><td>Taille de l'organisation</td><td>Environnement économique, concurrence</td></tr>
+            <tr><td>Structure organisationnelle</td><td>Système éducatif (importance du diplôme)</td></tr>
+            <tr><td>Culture organisationnelle</td><td>Normes sociales (ex : métiers genrés)</td></tr>
+            <tr><td>Orientations stratégiques</td><td>Pouvoirs publics, partenaires sociaux</td></tr>
+            <tr><td>Politique RH</td><td>Législation, conventions collectives</td></tr>
+        </table>
+
+        <div class="section-title">👥 Acteurs de la gestion des carrières</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">DG</span> : valide les grandes orientations, gère certains cadres</li>
+            <li><span class="hl-important">Direction RH</span> : définit la politique, gère certains salariés</li>
+            <li><span class="hl-important">Spécialistes RH</span> : proposent les outils, animent la politique</li>
+            <li><span class="hl-important">Managers</span> : évaluent et orientent les salariés</li>
+            <li><span class="hl-important">Salarié</span> : met en oeuvre ses compétences, négocie son projet pro, recherche l'info</li>
+        </ul>
+
+        <div class="section-title">🧰 Outils de gestion des carrières</div>
+
+        <table class="compact-table">
+            <tr><th>Besoins entreprise</th><th>Articulation individu/entreprise</th><th>Projets individuels</th></tr>
+            <tr>
+                <td>Organigrammes de remplacement, cartes des emplois, référentiels de compétences</td>
+                <td>Revue de personnel, <span class="hl-critical">entretien professionnel</span>, formation</td>
+                <td>Bilan de compétences, conseillers mobilités, parcours repères</td>
+            </tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <strong>Entretien professionnel</strong> : <span class="hl-critical">obligatoire depuis 2014</span>, tous les <span class="hl-critical">2 ans</span>, mené par un responsable RH. Porte sur : évolution professionnelle, suivi des actions de formation/certification, réflexion sur l'avenir et le projet professionnel.
+        </div>
+
+        <div class="section-title">⭐ Matrice de Ference (1977) — Hauts potentiels</div>
+
+        <div class="block block-attention">
+            <div class="block-label">A retenir</div>
+            <table class="compact-table">
+                <tr><th>Potentiel \ Performance</th><th>Faible</th><th>Élevée</th></tr>
+                <tr><td><strong>Élevé</strong></td><td><span class="hl-important">Espoirs</span></td><td><span class="hl-critical">Étoiles</span></td></tr>
+                <tr><td><strong>Faible</strong></td><td>Branches mortes</td><td><span class="hl-important">Piliers</span></td></tr>
+            </table>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            Pratiques spécifiques pour les hauts potentiels : <span class="hl-important">promotions rapides</span>, <span class="hl-important">fidélisation</span>, tests de performance et d'implication. Exemple du Groupe SEB : évaluation sur 3 ans (N-2 à N) selon 3 critères : esprit entrepreneurial, capacité d'innovation, leadership.
+        </div>
+
+        <div class="section-title">💡 Conclusion clé</div>
+
+        <div class="block block-def">
+            <div class="block-label">Synthèse</div>
+            2 enseignements majeurs :<br>
+            1. La carrière relève de plus en plus de la <span class="hl-critical">co-responsabilité individu / organisation</span><br>
+            2. La qualité d'une politique de gestion des carrières dépend de la <span class="hl-critical">qualité de la circulation de l'information</span> dans l'organisation
+        </div>
+
+        <div class="section-title">❓ Questions flash</div>
+
+        <div class="flash-q">
+            Quelle est la définition de la gestion des carrières selon Roger (1991) ?
+            <span class="answer">Une action finalisée, organisée et animée pour définir la succession des affectations individuelles du personnel. Point de rencontre entre intérêts de l'organisation et de l'individu.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 3 types de mobilité ?
+            <span class="answer">Mobilité verticale (changement hiérarchique), horizontale (changement de fonction sans changement hiérarchique), géographique (changement de lieu).</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 4 profils de la matrice de Ference (1977) ?
+            <span class="answer">Étoiles (potentiel élevé + performance élevée), Espoirs (potentiel élevé + performance faible), Piliers (potentiel faible + performance élevée), Branches mortes (potentiel faible + performance faible).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 2 filières principales de carrière ?
+            <span class="answer">La filière managériale (responsabilités croissantes, encadrement) et la filière d'expertise (développement des compétences techniques, projets complexes, fonctions de référence).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 3 nouvelles formes de carrière et leurs auteurs ?
+            <span class="answer">Carrière protéenne (Hall), carrière sans frontières (Arthur), carrière nomade (Cadin).</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le rythme et le contenu de l'entretien professionnel ?
+            <span class="answer">Obligatoire depuis 2014, tous les 2 ans, mené par un responsable RH. Porte sur : évolution professionnelle, suivi formation/certification, réflexion sur l'avenir et le projet professionnel.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 2 enseignements majeurs de la conclusion ?
+            <span class="answer">1) La carrière relève de la co-responsabilité individu/organisation. 2) La qualité de la politique dépend de la qualité de la circulation de l'information.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        📄 <a href="../syntheses/RH/ch5_gestion_carrieres.html">Synthèse complète</a> |
+        📎 <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/RH/cour%205.pdf">Cours original (PDF)</a>
+    </div>
+</body>
+</html>

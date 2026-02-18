@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Cours 3 : ANOVA et tests statistiques</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #3b82f6; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #3b82f6; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(59,130,246,0.08); border-left: 3px solid #3b82f6; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #93c5fd; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #3b82f6; color: white; margin-left: auto; }
+        .btn-next:hover { background: #2563eb; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #3b82f6; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #3b82f6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #2563eb; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #3b82f6; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">ANALYSE QUANTITATIVE — QUIZ</div>
+        <h1>Cours 3 — ANOVA et tests statistiques</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "On veut comparer le panier moyen entre 4 segments de clients (Standard, Premium, VIP, Occasion). Quel test utiliser ?",
+        options: ["Test t de Student", "ANOVA", "Khi-deux", "Corrélation de Pearson"],
+        correct: 1,
+        explanation: "Panier moyen = variable quantitative. Segment = variable qualitative à 4 modalités (≥ 3 groupes). La règle : Qualitative (3+ groupes) + Quantitative → ANOVA. Si on avait seulement 2 groupes, on utiliserait le test t."
+    },
+    {
+        q: "Pourquoi ne pas effectuer plusieurs tests t deux à deux plutôt qu'une ANOVA ?",
+        options: ["Le test t est plus complexe à calculer", "Multiplier les tests t entraîne une inflation du risque d'erreur de type I", "Le test t ne fonctionne pas avec des variables quantitatives", "L'ANOVA donne des résultats plus précis sur chaque paire"],
+        correct: 1,
+        explanation: "Chaque test t au seuil 5 % accepte 5 % de faux positifs. En multipliant les comparaisons (ex : 6 tests pour 4 groupes), le risque cumulé d'erreur explose bien au-delà de 5 %. L'ANOVA effectue un test global unique en maintenant le risque à 5 %."
+    },
+    {
+        q: "Dans l'ANOVA, la statistique F se calcule comme :",
+        options: ["Variance intra-groupes / Variance inter-groupes", "Variance inter-groupes / Variance intra-groupes", "(SCE + SCR) / N", "Moyenne inter-groupes × Moyenne intra-groupes"],
+        correct: 1,
+        explanation: "F = (SCE / (k−1)) / (SCR / (N−k)) = Variance inter-groupes / Variance intra-groupes. Plus F est grand, plus les différences entre groupes sont importantes par rapport à la variabilité au sein des groupes, et plus l'effet est probable."
+    },
+    {
+        q: "H0 de l'ANOVA est :",
+        options: ["Au moins une paire de groupes a des moyennes différentes", "Toutes les moyennes des groupes sont égales", "Les variances de tous les groupes sont homogènes", "Le facteur étudié n'a pas de modalités"],
+        correct: 1,
+        explanation: "H0 : μ1 = μ2 = ... = μk (toutes les moyennes sont égales, le facteur n'a pas d'effet). H1 : au moins une moyenne diffère. Si p < 0,05, on rejette H0 et on conclut qu'il existe au moins une différence significative entre les groupes."
+    },
+    {
+        q: "Le test de Levene donne p = 0,03. Quelle décision prendre pour l'ANOVA ?",
+        options: ["Lire le test de Fisher (F classique)", "Lire le test de Welch (robuste aux variances hétérogènes)", "Abandonner l'ANOVA, les données sont invalides", "Transformer les données avant toute analyse"],
+        correct: 1,
+        explanation: "Test de Levene p ≤ 0,05 → variances NON homogènes (hétérogènes) → utiliser le test de Welch. Si Levene p > 0,05 → variances homogènes → utiliser Fisher (F classique). C'est une étape préalable indispensable à lire avant les résultats ANOVA."
+    },
+    {
+        q: "Une ANOVA donne F = 12,4 et p < 0,001. Quelle est l'étape obligatoire suivante ?",
+        options: ["Rien, la conclusion est complète : les groupes diffèrent", "Réaliser un test post-hoc (Tukey) pour identifier quelles paires de groupes diffèrent", "Calculer le V de Cramér pour mesurer la force", "Refaire l'analyse avec la corrélation de Pearson"],
+        correct: 1,
+        explanation: "L'ANOVA dit S'IL y a une différence globale, mais ne dit pas ENTRE QUELS groupes. Le test post-hoc de Tukey est obligatoire pour identifier les paires de groupes qui diffèrent significativement. Sans Tukey, la conclusion managériale reste incomplète."
+    },
+    {
+        q: "Que signifie SCT = SCE + SCR dans l'ANOVA ?",
+        options: ["La somme des coefficients totaux égale la somme des effets et des résidus", "La variance totale se décompose en variance inter-groupes (expliquée) et variance intra-groupes (résiduelle)", "Les sommes de carrés sont toujours égales à la moyenne", "SCT représente l'effectif total de l'échantillon"],
+        correct: 1,
+        explanation: "Décomposition fondamentale : SCT (variance totale) = SCE (variance inter-groupes, expliquée par le facteur) + SCR (variance intra-groupes, résiduelle, due au hasard). Plus SCE est grande relative à SCR, plus F est élevé et plus l'effet du facteur est probable."
+    },
+    {
+        q: "Quelle est la différence principale entre une ANOVA à un facteur et une ANOVA à deux facteurs ?",
+        options: ["L'ANOVA à deux facteurs utilise le test de Welch", "L'ANOVA à deux facteurs analyse 2 variables qualitatives + leur interaction, contre 1 seule pour l'ANOVA à un facteur", "L'ANOVA à un facteur nécessite obligatoirement un test de Tukey", "L'ANOVA à deux facteurs s'applique uniquement aux variables continues"],
+        correct: 1,
+        explanation: "ANOVA à 1 facteur : 1 variable qualitative (3+ modalités) + 1 variable quantitative → 1 effet principal. ANOVA à 2 facteurs : 2 variables qualitatives + 1 variable quantitative → 2 effets principaux + 1 effet d'interaction (la combinaison des deux facteurs peut créer un effet supplémentaire)."
+    },
+    {
+        q: "Résultats : F = 18,7, p < 0,001, Tukey montre que les groupes IT et Finance diffèrent significativement de RH et Ventes. Quelle conclusion managériale est correcte ?",
+        options: ["Les performances sont homogènes dans l'entreprise, pas d'action nécessaire", "IT et Finance ont des performances significativement différentes des autres services — cibler RH et Ventes pour l'amélioration", "Le test n'est pas valide car F est trop élevé", "Il faut refaire l'analyse avec un test t pour confirmer"],
+        correct: 1,
+        explanation: "F = 18,7 et p < 0,001 : effet très significatif, on rejette H0. Tukey identifie les paires : IT ≠ RH, IT ≠ Ventes, Finance ≠ RH. La conclusion managériale est ciblée : former/accompagner spécifiquement RH et Ventes qui sous-performent par rapport à IT et Finance."
+    },
+    {
+        q: "Quelle est la logique universelle du test d'hypothèse (applicable au test t, Khi-deux, ANOVA) ?",
+        options: ["H0 = la relation existe / H1 = pas de relation / p < 0,05 : on confirme H0", "H0 = pas de relation (innocent) / H1 = relation existe / p ≤ 0,05 : on rejette H0", "H0 = la p-value est significative / H1 = non significative / seuil = 0,01", "H0 = la variance est nulle / H1 = la variance est positive / p > 0,05 : on rejette H1"],
+        correct: 1,
+        explanation: "Logique universelle : H0 = hypothèse nulle (pas de relation, innocence). H1 = hypothèse alternative (relation existe). Si p ≤ 0,05 → preuves suffisantes pour rejeter H0, on conclut en faveur de H1. Si p > 0,05 → pas assez de preuves, on ne rejette pas H0 (mais on ne le confirme pas non plus)."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

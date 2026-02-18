@@ -1,0 +1,320 @@
+Analyse des Données
+Quantitatives
+Informations générales
+Enseignant
+• Dr. Mohammed Hichame Benbitour
+• Enseignant-chercheur en Supply Chain Management
+• Emails:
+• mbenbitour@em-normandie.fr
+Prérequis
+• Aucun
+Déroulement de module
+Module
+• 14 heures
+• 4 séances (3h30 par séance)
+Evaluation
+• Évaluation finale (60% de la note): Partiel
+• Evaluation continue (40 % de la note)
+• Etude de cas: Rapport à rendre
+• Interrogation
+Objectifs du cours
+1. Initier les étudiants aux techniques d’analyse de données quantitatives utilisées en entreprise
+pour éclairer la décision.
+2. Former des managers capables de comprendre, questionner et valoriser les données pour agir
+efficacement.
+De la donnée à la décision
+L’objectif n’est pas de “faire des statistiques”, mais de comprendre l’histoire que racontent les données.
+Exemples d’insights basés sur les données
+• Les clients les plus fidèles sont ceux qui commandent le plus souvent en semaine.
+• Les salariés les plus jeunes se déclarent moins satisfaits.
+Plan du cours
+1. Analyses descriptives univariées
+2. Relation entre deux variables
+3. Test ANOVA
+4. Prédiction d'une variable quantitative
+Analyses descriptives
+univariées
+Objectifs de la séance
+1. Identifier la nature des variables dans un jeu de données.
+2. Sélectionner les indicateurs et tests appropriés.
+3. Utiliser Jamovi pour produire et interpréter des statistiques descriptives.
+4. Tirer des enseignements managériaux à partir des résultats
+Plan de la séance n°1
+1. Introduction et typologie des variables
+2. Statistiques descriptives et graphiques
+3. Utilisation de Jamovi
+4. Étude de cas pratique
+5. Synthèse
+Introduction
+Exemple
+Une entreprise de e-commerce observe une baisse de commandes sur son site.
+Avant d’agir, elle se demande :
+• Quels types de clients ont diminué leurs achats ?
+• Y a-t-il une différence entre les familles de produits ?
+Exemple
+Ce type d’analyse commence toujours par une analyse descriptive univariée: l'âge des clients, le volume
+des achats, les familles de produits, etc
+Analyse descriptive univariée : analyse d’une seule variable séparément des autres variables
+Identifier la nature des
+variables
+Pourquoi classer les variables ?
+Avant d’analyser, il faut comprendre de quel type de données on dispose.
+C’est ce choix qui détermine les outils statistiques possibles.
+Exemple :
+- Le genre d’un client → variable qualitative
+- Le chiffre d’affaires → variable quantitative
+Les quatre grandes familles de variables
+Type de variable Définition Outils statistiques utilisés
+Catégories sans ordre (Sexe,
+Qualitative nominale Fréquences, pourcentages
+secteur, région)
+Catégories avec ordre
+Qualitative ordinale (Satisfaction : faible–moyen– Médiane, mode
+fort)
+Nombres entiers (Nombre de
+Quantitative discrète Moyenne, histogramme
+commandes)
+Valeurs réelles (Salaire, montant
+Quantitative continue Moyenne, écart-type
+d’achat)
+Exemples de variables en entreprise
+• Marketing : type de client, fréquence d’achat, note de satisfaction
+• RH : ancienneté, service, score de performance
+• Finance : chiffre d’affaires, taux de marge, coût moyen
+• Chaque variable raconte une histoire différente selon sa nature.
+Mini-activité
+Classez les variables suivantes selon leurs natures :
+- Âge du salarié
+- Niveau de satisfaction client (1 à 5)
+- Secteur d’activité
+- Nombre de formations suivies
+Pourquoi cette distinction est cruciale
+Utiliser le mauvais outil statistique, c’est comme essayer de mesurer une émotion avec une
+règle.
+- Une moyenne sur une variable « genre » n’a aucun sens.
+Interprétation managériale
+Exemple RH : « Les salariés du service logistique ont un âge moyen inférieur à la moyenne globale. »
+==> Interprétation : le service est jeune, peut-être en développement rapide (beaucoup de jeunes
+recrutés).
+Exemple marketing : « Les clients premium attribuent une satisfaction plus élevée. »
+==> Interprétation : le service haut de gamme fonctionne.
+Statistiques descriptives et
+graphiques
+Pourquoi décrire les données ?
+Avant toute modélisation, il faut comprendre la réalité que les chiffres reflètent.
+L’analyse descriptive répond à trois questions simples :
+- Quelles sont les valeurs typiques ?
+- Quelle est la dispersion ?
+- Quelle est la forme de la distribution ?
+Les indicateurs de tendance centrale
+• Moyenne : valeur moyenne des observations (exemple, Salaire moyen : 2 450 €)
+• Médiane : valeur centrale (50% des valeurs au-dessus, 50% en dessous), (Médiane du CA : 120 k€)
+• Mode : valeur la plus fréquente, (Catégorie la plus vendue : café)
+La médiane est plus robuste que la moyenne en cas de valeurs extrêmes.
+Les indicateurs de dispersion
+Étendue : différence entre max et min, (exemple, 18–65 ans)
+Variance : moyenne des carrés des écarts à la moyenne, (σ² = 4900)
+Écart-type : dispersion moyenne autour de la moyenne, racine carrée de la variance, (σ = 70)
+Coefficient de variation : dispersion relative (%), rapport entre l’écart-type et la moyenne, (CV=15 %)
+Une forte dispersion = hétérogénéité du groupe ==> à explorer managérialement.
+Exemple concret : service RH
+Statistiques
+Entreprise de 200 salariés :
+• Salaire moyen : 2 800 €
+• Médiane : 2 600 €
+• Écart-type : 900 €
+Interprétation
+- Salaires dispersés ==> profils variés.
+- Médiane < moyenne ==> quelques hauts salaires tirent la moyenne.
+Implication RH : communication sur l’équité salariale.
+Exemple marketing
+Statistiques
+Enquête satisfaction (500 clients) : Moyenne = 7,2 / 10 ; Écart-type = 1,8
+Interprétation : la moyenne est bonne, mais la dispersion suggère une hétérogénéité d’expérience.
+Recommandation : segmenter la clientèle pour identifier les profils les plus insatisfaits.
+Visualiser les données
+Les graphiques permettent de voir ce que les chiffres cachent.
+Types :
+- Histogramme (densité) pour les variables quantitatives
+- Diagramme en barres pour les variables qualitatives
+- Boxplot pour comparer des groupes
+Toujours accompagner un graphique d’un message clair
+Pièges fréquents
+• Confondre moyenne et médiane.
+• Oublier la dispersion.
+• Se baser sur les valeurs extrêmes.
+• Négliger la taille d’échantillon.
+Exemple : un salaire moyen de 4 000 € peut cacher de fortes inégalités internes.
+Exercice d’interprétation
+Statistiques
+• Moyenne de satisfaction = 8,1 /10
+• Écart-type = 0,9
+• 90 % des clients notent entre 7 et 9.
+Questions
+- Que retenir du niveau de satisfaction ?
+- L’entreprise doit-elle agir ?
+- Quels segments approfondir ?
+Utilisation de Jamovi
+Outil informatique: Jamovi
+Jamovi est un est un programme informatique gratuit et open source pour l'analyse de données et la
+réalisation de tests statistiques.
+• Logiciel libre et gratuit
+• Interface intuitive
+• Résultats en temps réel
+• Pas besoin de coder
+L’interface Jamovi
+Onglets principaux
+- Variables : gestion des variables
+- Données : manipulation des données
+- Analyses : statistiques et graphiques
+• Résultats affichés dans le panneau droit.
+• Données modifiables en direct.
+• Jamovi est “live” : toute modification met à jour les résultats.
+Types de variables (types de mesure)
+Dans Jamovi, chaque variable doit être définie avec son type : Nominal, Ordinal, Continu, Identité
+Exemple
+Sexe ==> Nominal
+Revenu mensuel ==> Continu
+Importer un fichier
+Étapes pour commencer une analyse :
+1. Ouvrir Jamovi
+2. Importer sur Upward le fichier Excel Données_RH_Performance
+3. Vérifier le type de chaque variable
+4. Lancer une première analyse descriptive
+Astuce : toujours nommer clairement les variables avant import.
+Importer un fichier
+Définir les types de variables
+1) Cliquer sur Configurer
+Chaque colonne est une variable.
+Choisir le bon Type de mesure :
+- Nominal (catégories sans ordre)
+- Ordinal (catégories ordonnées)
+2) Choisir le Type de mesure
+- Continu (valeurs numériques)
+- Identité
+Exemple
+- Âge → Continu
+Analyse descriptive
+Dans le menu Analyses → Exploration → Statistiques Descriptives :
+Analyse descriptive
+• Glisser les variables à analyser
+• Cocher les statistiques : moyenne, médiane, écart-type…
+• Ajouter graphiques : histogrammes, boxplots (Boîtes à moustaches)
+Lecture d’un tableau descriptif
+Tableau descriptif de la Performance
+Tableau descriptif de la variable Service
+et de la Satisfaction
+Visualisation dans Jamovi
+Histogrammes de la Performance, et de la Satisfaction
+Visualisation dans Jamovi
+Diagramme en barres de la variable Service
+Exporter les résultats
+Les résultats Jamovi peuvent être :
+- Copiés dans PowerPoint ou Word
+- Exportés en pdf, html, csv, etc
+Présentation du cas
+Entreprise : CaféEMN, chaîne de cafés dans 15 villes françaises.
+Objectif : comprendre les facteurs de satisfaction client pour ajuster la stratégie marketing.
+Données : 500 clients
+• Âge
+• Genre
+• Fréquence de visite (par semaine)
+• Note de satisfaction (1–10)
+• Montant moyen par ticket (€)
+Fichier Excel : CaféEMN
+Objectifs de l’analyse
+• Identifier les variables clés influençant la satisfaction.
+• Comprendre le profil des clients les plus fidèles.
+• Déterminer les pistes d’amélioration du service.
+• Formuler des recommandations opérationnelles pour le management.
+Structure des données
+Variable Type Exemple Description
+Genre Qualitative nominale Homme / Femme Catégorie du client
+Âge Quantitative continue 32 Âge en années
+Fréquence Quantitative discrète 3 Visites par semaine
+Satisfaction Quantitative continue 8.4 Note sur 10
+Montant ticket Quantitative continue 6.7 Dépense moyenne (€)
+Le type de variable guide le choix des analyses.
+Analyse 1 : Profil des clients
+- Moyenne d’âge : 32,7 ans
+- 54,6 % de femmes
+- Fréquence moyenne : 2,28 visites/semaine
+Interprétation managériale :
+• Clientèle jeune et régulière
+• Opportunité de ciblage:
+• Décor moderne, ambiance détendue, musique actuelle, Wi-Fi gratuit
+• Exploiter les réseaux sociaux (Instagram, TikTok, Snapchat) pour la promotion, avec du
+contenu visuel attractif (photos, stories, vidéos courtes).
+• …
+Analyse 2 : Satisfaction globale
+• Moyenne : 7,77 , Écart-type : 0,91
+• Majorité de clients satisfaits, minorité < 6.
+Hypothèse : ces clients appartiennent à un segment particulier (âge, fréquence, genre…)
+Analyse 3 : Dépense moyenne
+Statistiques descriptives
+Montant_Ticket
+N 500
+Manquants 0
+Moyenne 6.83
+Médiane 6.85
+Ecart-type 0.893
+Minimum 4.09
+Maximum 9.41
+Interprétation : panier moyen stable, dépense homogène
+Recommandations:
+Constat: Régularité de la demande ==> Action: Optimiser les stocks et le personnel
+Constat: Clientèle uniforme ==> Action: Segmentation et offres ciblées
+Croiser satisfaction et fréquence
+Jamovi → Graphiques → Boxplot Satisfaction vs Fréquence
+Lecture : les clients venant ≥3 fois/sem ont une satisfaction plus élevée.
+➤ Fidélité rime avec satisfaction.
+Recommandation : créer un programme de fidélité (carte de points, boisson offerte).
+Croiser satisfaction et fréquence
+• Fidélité est corrélée positivement avec
+satisfaction.
+• Recommandation: créer un programme de
+fidélité (carte de points, boisson offerte).
+Croiser satisfaction et fréquence
+Identifier les segments prioritaires
+Statistiques descriptives
+Genre Fréquence_Visite Age
+Moyenne Femme 0 32.1
+1 34.2
+2 32.2
+3 31.7
+4 33.5
+5 32.3
+6 28.0
+7 25.5
+Homme 0 33.0
+1 35.1
+2 33.2
+3 31.9
+4 29.3
+5 25.1
+6 32.7
+7 33.3
+Identifier les segments prioritaires
+Synthèse des enseignements
+• Satisfaction élevée (7,77/10)
+• Clientèle régulière (2,28 visites/semaine)
+• Segment des +35 ans à fidéliser
+Recommandation : campagne « Redécouvrez CaféEMN » pour les clients inactifs.
+Discussion
+• Quels leviers marketing activer ?
+• Faut-il différencier la communication selon les segments ?
+• Quels indicateurs suivre à l’avenir ?
+• Objectif : formuler des recommandations stratégiques à partir des données.
+Ce qu’il faut retenir
+Les analyses descriptives sont la base de toute démarche analytique.
+Elles permettent de :
+• Comprendre la structure des données
+• Dégager des tendances
+• Identifier anomalies et opportunités
+L’objectif n’est pas de faire des chiffres, mais de donner du sens aux chiffres.
+De la statistique à la décision
+Les indicateurs ne sont utiles que s’ils guident l’action.
+Exemples :
+• Dispersion élevée dans la satisfaction → agir sur la qualité du service
+• Moyenne stable mais médiane en baisse → attention à la perception globale
+Le rôle du manager : interpréter avant d’agir.

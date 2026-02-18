@@ -1,0 +1,56 @@
+Remplir le tableau suivant sur les Mudas (gaspillages)
+Type de gaspillage Définition et exemples Causes Remèdes Méthodes pour le
+réduire
+1- Surproductions Production hors besoin en Mauvaises prévisions Bonnes prévisions JIT, Kanban
+termes de quantité et de Mauvaise gestion de plan Bonne gestion de plan de Bonnes prévisions
+qualité de production production Stabilisation des 5M
+Ex.: produire et stocker des Production push Production tirée
+produits qui peuvent ne pas Instabilité des 5M Stabilité des 5M
+être vendus
+2- Attentes inutiles Attente des 5M de production Mauvaise planification Planification fiable des Gestion efficace des 5M
+Ex.: temps perdu à cause des 5M 5M Gestion de logistique
+d’une défaillance Mauvaise gestion de Bonne gestion de
+d’équipement ou logistique logistique
+indisponibilité d’outils, de Mauvaise gestion Bonne gestion
+pièces… d’approvisionnements l’approvisionnements
+3- Transports Voyages à vide ou selon des Mauvaise gestion de Optimiser la logistique Optimisation des
+trajets trop longs non logistique Optimiser les implantations, transports
+optimisés Mauvaises implantations implantations Diagramme spaghetti
+Voyages à vide ou Optimiser les flux Optimisation des
+insuffisamment chargés quantités
+Tout déplacement ou Optimisation des routes
+transport d’une pièce entre
+les machines ne lui conférant
+aucune valeur ajoutée
+4- Stocks Stockage au début, en cours Mauvaise gestion des Optimiser les stocks JIT, Kanban
+et en fin de production stocks Optimiser les Bonnes prévisions
+Tout stock est de l’argent Mauvaise gestion des approvisionnements
+immobilisé soumis à des approvisionnements
+Type de gaspillage Définition et exemples Causes Remèdes Méthodes pour le
+réduire
+risques de détérioration, de Mauvaise gestion de plan Optimiser le plan de
+vols et d’obsolescence, outre de production production
+le gaspillage de temps pour Optimiser la maintenance
+l’épuiser avant de passer à
+l’étape suivante
+5- Processus / méthodes Activités hors besoins Mauvaise gestion de Bonne gestion de Analyse de valeur ajoutée
+excessifs Tendance des opérateurs à production production
+atteindre un niveau de Mauvaise conception Bon dimensionnement de
+spécification au-delà des de processus postes et processus
+attentes de clients: Mauvais Bon dimensionnement
+opérations inutiles, dimensionnement des 5M des 5M
+perfectionnisme… requis Planification fiable
+Mauvaise planification
+6- Déplacements et Déplacements et Mauvaise ergonomie de Bonne ergonomie de Diagramme spaghetti
+mouvements humains mouvements non optimisés poste et de lignes poste Ergonomie
+des Ergonomie de ligne Mesure de temps
+opérateurs Implantations optimisées
+Ex.: déplacement pour
+chercher une pièce alors
+qu’elle peut venir au moyen
+d’un dispositif approprié
+(tapis, convoyeur, casier en
+plan incliné, etc.)
+7- Non-qualité de produit Non-conformités de Mauvaise gestion de la Assurance qualité MSP, Six Sigma, QRQC
+production, erreurs, travaux qualité Amélioration qualité Jidoka
+mal exécutés, etc.

@@ -1,0 +1,101 @@
+**Corrigé du cas pratique n° 4 CVIM:**
+
+**1. Applicabilité de la Convention de Vienne**
+
+Les conditions de l'article 1 §1 (a) CVIM sont réunies :
+
+- Vente internationale de **marchandises** ;
+
+- Parties établies dans **deux États contractants** (France et Suède) ;
+
+- Aucune exclusion de la Convention.
+
+➡️ La **CVIM s'applique de plein droit**.
+
+------------------------------------------------------------------------
+
+**2. Conformité des marchandises**
+
+Selon l'**article 35 CVIM**, le vendeur doit livrer des marchandises :
+
+- conformes en **quantité, qualité et description** au contrat,
+
+- et **propres à l'usage habituel**.
+
+Ici, les téléviseurs étaient **conformes et en bon état au moment de la remise au transporteur**.\
+Les dommages sont survenus **pendant le transport**.
+
+➡️ Donc, les marchandises **étaient conformes lors du transfert des risques**.\
+Le dommage **n'est pas imputable au vendeur**, sauf s'il a mal emballé les produits (ce qui n'est pas le cas ici).
+
+------------------------------------------------------------------------
+
+**3. Transfert des risques (article 67 CVIM)**
+
+L'article 67 §1 prévoit que :
+
+Si le contrat implique un transport de marchandises et que le vendeur n'est pas tenu de les livrer en un lieu déterminé, les risques sont transférés à l'acheteur **lorsque les marchandises sont remises au premier transporteur** pour transmission à l'acheteur.
+
+➡️ En clause **FOB (Free On Board) Le Havre**, le transfert des risques s'opère :
+
+- **au moment où les marchandises franchissent le bastingage du navire** au port de départ.
+
+Ainsi :
+
+- Le transfert des risques a eu lieu le **12 avril 2024** à **Le Havre**.
+
+- Les dommages survenus pendant le transport (avant Stockholm) sont **à la charge de l'acheteur**.
+
+------------------------------------------------------------------------
+
+**4. Possibilité de demander le remplacement**
+
+L'article **46 §2 CVIM** permet à l'acheteur de demander le **remplacement** seulement si :
+
+- le défaut de conformité **constitue une violation essentielle**,
+
+- **et** que le défaut existait **avant le transfert des risques**.
+
+Or :
+
+- Les marchandises étaient conformes au moment du transfert (12 avril) ;
+
+- Les dommages sont survenus **après** le transfert des risques.
+
+➡️ L'acheteur **ne peut pas exiger le remplacement** des téléviseurs.
+
+------------------------------------------------------------------------
+
+**5. Recours possibles**
+
+**🔹 Pour l'acheteur (NordicElectro) :**
+
+- Il peut agir **contre le transporteur** selon la convention applicable (Règles de Hambourg ou Règles de La Haye-Visby) pour les dommages subis pendant le transport ;
+
+- Il **ne peut pas refuser le paiement du prix** au vendeur (art. 53 CVIM).
+
+**🔹 Pour le vendeur (VisionTech) :**
+
+- Il peut **exiger le paiement du prix** (art. 62 CVIM) ;
+
+- Le transfert des risques le dégage de toute responsabilité (art. 67).
+
+------------------------------------------------------------------------
+
+**🧩 Conclusion :**
+
+  --------------------------------------------------------------------------------
+  **Élément**             **Analyse**
+  ----------------------- --------------------------------------------------------
+  Droit applicable        Convention de Vienne de 1980
+
+  Conformité              Oui, les marchandises étaient conformes à l'expédition
+
+  Transfert des risques   À la remise au transporteur (12 avril, FOB Le Havre)
+
+  Responsabilité          Acheteur supporte les dommages pendant le transport
+
+  Recours acheteur        Contre le transporteur, pas contre le vendeur
+
+  Recours vendeur         Exiger paiement du prix (art. 62)
+  --------------------------------------------------------------------------------

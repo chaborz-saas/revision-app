@@ -1,0 +1,677 @@
+Cours Pilotage de la
+performance
+Cours de tronc commun M1
+S07 2025-2026
+Responsable de cours :
+Isabelle LACOMBE
+Enseignant :
+Renato PEREIRA
+renato.pereira01@em-normandie.fr
+Plan du cours Pilotage de la Performance
+1- Introduction
+1.1 Définition du pilotage de la performance
+1.2 Liens entre comptabilité de gestion et comptabilité générale
+1.3 La gouvernance d'entreprise et le contrôle de gestion. Le pilotage stratégique
+1.4 La notion de groupe, les cessions internes et management fees (frais de siège)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+3.2 Le cycle et le calendrier budgétaire
+3.3 Le contrôle budgétaire
+4- Tableaux de bord et indicateurs et reporting
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du périmètre de l’entité
+6- Conduite du changement
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reportingde durabilité (CSRD), le bilan carbone
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Gouverner, c’est prévoir. Différentes méthodes existent
+- De simulations ad hoc
+- Le business plan
+- Le rolling forecast
+- Le budget base zéro
+- Le beyond budgeting
+- Le budget traditionnel
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Le modèle de simulation
+• est une représentation d’une problématique complexe que l’on désire étudier,
+afin d’en permettre la communication, le travail en groupe, et de faciliter la prise
+de décision. Une fois le problème bien défini, le modèle met en exergue les
+relations de causes à effets entre différentes variables. Une fois le modèle réalisé,
+il est alors possible de tester différents scénarios autant de fois que souhaité. Un
+modèle dans le domaine du contrôle de gestion a généralement une traduction
+sous forme informatique, mais des graphiques ou des algorithmes peuvent suffire
+Source : Selmer, 2024
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Le business plan
+• le business plan, aussi appelé « plan d’affaires », est un guide pour la planification
+stratégique d’une entreprise. Il détaille les objectifs, les stratégies pour les atteindre,
+ainsi que les ressources nécessaires.
+• Il présente une projection des flux de trésorerie, aidant à évaluer la viabilité financière du
+projet. Le business plan sert à comprendre comment créer et maximiser la valeur pour
+les clients, pour les parties prenantes et pour l’actionnaire
+• Le business plan est un outil d’information stratégique et financier complet Il fournit une
+série d’informations et d’indications sur un projet entrepreneurial, quel qu’il soit. Un
+business plan est « une feuille de route », il définit où et comment une activité peut se
+développer; Il détaille la mission, la vision, les objectifs à long terme et les stratégies
+pour les atteindre
+Source : Ristori,2024
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Le rolling forecast
+• consiste à réévaluer régulièrement les objectifs financiers (résultat, cashflow)
+arrêtés en début d’exercice, en tenant compte des changements les plus récents,
+de la conjoncture économique et des performances opérationnelles récemment
+réalisées. Les prévisions glissantes sont réalisées tous les trimestres sur 6
+trimestres roulants : 1 trimestre réel et 5 trimestres estimés. Les chiffres des 4
+trimestres de N+1 prévus lors du rolling forecast de décembre N (cible) servent
+de base pour la définition des objectifs qui serviront de référence pour
+l’attribution des primes variables de N+1.
+Source : Selmer, 2024
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+BBZ (Budget Base Zéro), une méthode qui ne s’ancre pas sur le passé
+ méthode mise au point dans les années 80 pour contenir la croissance des frais de structure et de support (frais indirects). Elle a été
+expérimentée chez Texas Instruments
+ Principe selon son initiateur (P. Pyhrr) exposant que :
+• Chaque dirigeant « justifie dans le détail et dès son origine (d’où l’intitulé base zéro) tous les
+postes de budget dont il a la responsabilité et qu’il donne la preuve de la nécessité d’effectuer
+cette dépense »,
+• « Plutôt que de procéder à des replâtrages incessants du budget existant ».
+ BBZ, le budget Base zéro (ou Zero BasedBudgeting) est une déclinaison de l’élaboration budgétaire très adaptée
+et répandue dans :
+• Les services fonctionnels d’entreprise, et d’état major (groupes)
+• Dans toutes les administrations, voire les programmes
+économiques de développement d’une région du monde
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Le Beyond Budgeting ou la gestion sans budget
+ Un constat : le budget ne permet pas de :
+• Faire du manager un véritable entrepreneur
+• Limiter la triche institutionnalisée
+ Certaines entreprises ont abandonné depuis plus de trente ans le rituel budgétaire : les premières sont
+scandinaves et partagent une culture d'entreprise fondée sur le dialogue et la confiance
+ Elle requiert l’exemplarité totale des dirigeants
+ Elle peut être déstabilisante
+ Elle implique une remise en cause permanente des différents acteurs
+ Certaines structures ne supportent pas un fonctionnement en îlots d'entrepreneurs
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Le positionnement du budget dans le cycle de gestion
+Source : Selmer, 2024
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+Exemple d’outil de contrôle de gestion favorisant la délégation et la décentralisation :
+ Le budget:
+ un outil de prévision (notamment du résultat).
+ Une attribution d'objectifs et de moyens. La démarche doit être dynamique et volontaire, ce n'est pas
+l'attribution d'enveloppes de dépenses.
+ Un outil de délégation et de motivation, d'évaluation des performances.
+ Un outil de coordination et de communication ; notamment pour s'assurer de la cohérence entre
+objectifs individuels et objectif global. Par ailleurs, le travail de préparation du budget renforce la
+communication horizontale et verticale. L'encadrement intermédiaire s'engage sur des objectifs qu'il
+s'est approprié, une partie de sa rémunération pourra être conditionnée par l'atteinte de ces objectifs.
+ Un outil d'optimisation des choix.
+ Le contrôle budgétaire par la confrontation périodique des réalisations avec le budget, mettant en
+évidence des écarts et permettant toutes mesures de régulation pour les écarts remarquables
+(gestion par exception).
+ Les budgets peuvent être établis en fonction de différentes hypothèses d’activité. On parle alors de
+budgets flexibles.
+3- L’élaboration et le contrôle budgétaire
+3.2 Le cycle et le calendrier budgétaire
+3- L’élaboration et le contrôle budgétaire
+3.2 Le cycle et le calendrier budgétaire
+• Le budget est un processus itératif avec une consolidation selon différents niveaux hiérarchiques. Ces
+itérations prennent la forme d’une approche top-down et bottom-up.
+• Les niveaux de consolidation dans des approches top-down et bottom-up
+Approche top- Approche
+down: budget Niveau Siège / Divisions bottom-up :
+élaboré par la (budgets consolidés) budget élaboré
+direction et Niveau Divisions/ Départements par les managers
+(budgets consolidés)
+imposé aux (remontées
+managers. Niveau département / Filiales terrain). Permet
+(budgets fonctionnels)
+Approche de responsabiliser
+Niveau filiale / Centres de responsabilité internes
+directive les managers (ils
+(budgets par centre de responsabilité)
+permettant s’engagent) et de
+Exemple de niveaux de consolidation budgétaire
+d’aller vite mais prendre en
+pouvant compte leur
+En pratique, un budget mixe
+dévaloriser les expérience et leur
+généralement les approches top-down
+managers. (lettre de cadrage et budgets spécifiques) vision de détail.
+et bottom-up (remontées terrain) Peut conduire à
+une vision
+inflationniste.
+3- L’élaboration et le contrôle budgétaire
+3.2 Le cycle et le calendrier budgétaire
+• Les budgets, souvent annuels, sont détaillés par périodes plus courtes (mois) afin de repérer et
+analyser les écarts selon une périodicité adaptée à la durée du cycle de production et de procéder
+efficacement aux régulations qui s’imposent.
+3- L’élaboration et le contrôle budgétaire
+Le budget des ventes
+Le budget des ventes représente le chiffre d'affaires prévisionnel pour
+une période de temps à venir
+En général, l'exercice comptable
+Décomposition par périodes plus courtes : le mois
+Objectif : déterminer le chiffre d'affaires prévisionnel
+2 étapes pour établir le budget des ventes :
+• Déterminer les volumes de vente prévisionnels (programme)
+• Puis en valeur (budget)
+3- L’élaboration et le contrôle budgétaire
+Le budget des ventes - Méthodes statistiques
+Deux grandes approches :
+• L’extrapolation du passé :
+L’analyse du passé permet de prévoir le futur = le trend
+• L’approche directe du futur :
+Remise en cause des tendances du passé
+3- L’élaboration et le contrôle budgétaire
+Le budget des ventes - Exemple
+• Une société prépare les budgets du 2ième trimestre N
+• Les programmes de ventes des 5 prochains mois sont les suivants :
+• Avril 20 000 unités
+• Mai 50 000 unités
+• Juin 30 000 unités
+• Juillet 25 000 unités
+• Août 15 000 unités
+• Le prix de vente unitaire est de 10 € HT
+3- L’élaboration et le contrôle budgétaire
+Le budget des ventes - Exemple
+• Les prévisions des mois d'avril, mai et juin sont cumulées pour obtenir le total
+des ventes en volume (Q) et en valeur (€) du 2ième trimestre de l'année N.
+Avril Mai Juin Trimestre
+Volume prévisionnel 20 000 50 000 30 000 100 000
+Prix de vente unitaire HT € 10 € 10 € 10 € 10
+CA prévisionnel HT € 200 000 € 500 000 € 300 000 €1 000 000
+3- L’élaboration et le contrôle budgétaire
+Le budget de production
+• Le budget de production dépend du volume des ventes et garantir le niveau
+souhaité de stock de produits fini de fin de période.
+• Les étapes :
+1. Etablir le programme de production : quels produits, quels volumes à quel moment.
+Le programme de production de chaque mois est lié aux volumes de ventes prévisionnelles, aux
+délais de fabrication, aux capacités de production, à la politique de sous-traitance et de stockage.
+Cette étape peut s’appuyer sur les outils de GPAO (Gestion de la Production Assistée par
+Ordinateur) qui gèrent les gammes et nomenclatures de production.
+2. Valoriser le programme de production (= établir le budget de production)
+Il s’agit de chiffrer les ressources nécessaires dans le processus de fabrication des produits finis. Ce
+chiffrage repose sur les résultats de la comptabilité analytique. Il prend en compte les matières
+premières utilisées, la main d’œuvre directe de production et les autres coûts de production
+(variables, fixes, directs ou indirects)
+3- L’élaboration et le contrôle budgétaire
+Le budget des approvisionnements
+• La fonction approvisionnement fournit les matières premières et les composants
+(entreprise industrielle) ou des marchandises (entreprises commerciales ou de
+négoce) en qualité et quantité suffisantes, au moment voulu et au coût le plus
+bas possible.
+• Le programme d’approvisionnement dépend du programme de production et
+détermine :
+• les volumes
+• Les dates de commande des biens à acheter pour satisfaire les besoins.
+3- L’élaboration et le contrôle budgétaire
+Le budget des frais commerciaux
+Budget de l’ensemble des charges à engager pour commercialiser les produits :
+• Direction commerciale
+• Force de vente (avec notamment la rémunération variable)
+• Marketing
+• Publicité et promotion
+3- L’élaboration et le contrôle budgétaire
+Le budget de Trésorerie
+Établir le budget de trésorerie consiste à déterminer le montant de disponibilités
+prévisionnel à la fin de chaque période (mois, semaine ou jour).
+• Rôles :
+Cela permet à l'entreprise de :
+• S'assurer que son exploitation dégage un excédent de trésorerie
+• Anticiper une demande de crédit à court terme pour couvrir une insuffisance de disponibilités
+• Vérifier que les délais de paiement accordés aux clients n'entraînent pas de dysfonctionnements et
+donc des coûts supplémentaires.
+3- L’élaboration et le contrôle budgétaire
+Le budget de trésorerie
+Le budget de trésorerie centralise et récapitule toutes les conséquences
+financières des budgets précédents. Il reprend toutes les dépenses (sorties
+de trésorerie = décaissements) d'une période donnée ainsi que toutes les
+recettes (entrées en trésorerie = encaissements) de cette même période. Il
+est généralement établi mois par mois.
+STRUCTURE DU BUDGET DE TRESORERIE :
+Janvier Février mars
+Solde initial
+Encaissements prévus
+Décaissements prévus
+Solde final
+3- L’élaboration et le contrôle budgétaire
+Le budget de trésorerie
+Encaissements Décaissements
+• les encaissements des clients • les paiements de factures
+fournisseurs
+• les nouveaux emprunts
+obtenus • le paiement des
+investissements
+• les nouveaux apports en
+numéraire de la part des • le paiement des salaires
+actionnaires
+• le paiement des charges
+• les subventions obtenues sociales
+• les dégrèvements d'impôts… • le paiement de la TVA
+• le paiement des impôts et
+taxes
+• les remboursements
+d'emprunts…
+3- L’élaboration et le contrôle budgétaire
+Les prévisions d’encaissement (trésorerie)
+• Pour réaliser le budget de trésorerie, il est nécessaire de déterminer les
+encaissements
+• Règles d'encaissement du chiffre d'affaires :
+• 70% le mois de la vente,
+• 25% le mois suivant celui de la vente
+• 5% irrécouvrable
+• La créance du 31 mars de 30 000 € sera encaissée en totalité en avril.
+3- L’élaboration et le contrôle budgétaire
+Les prévisions d’encaissement (trésorerie)
+• Attention : Nécessité d'avoir le chiffre d'affaires TTC pour déterminer le montant
+des encaissements d'où le tableau ci dessous
+3- L’élaboration et le contrôle budgétaire
+Les prévisions d’encaissement (trésorerie)
+Avril Mai Juin Trimestre
+Créance du 31/03 30 000 30 000
+Prévisions
+d'encaissements
+3- L’élaboration et le contrôle budgétaire
+Les prévisions d’encaissement (trésorerie)
+Avril Mai Juin Trimestre
+Créance du 31/03 30 000 30 000
+Ventes du mois d'avril
+70% x € 239 200 167 440 167 440
+25% x € 239 200 59 800 59 800
+Prévisions
+d'encaissements € 197 440
+3- L’élaboration et le contrôle budgétaire
+Les prévisions d’encaissement (trésorerie)
+Avril Mai Juin Trimestre
+Créance du 31/03 30 000 30 000
+Ventes du mois d'avril
+70% x € 239 200 167 440 167 440
+25% x € 239 200 59 800 59 800
+Ventes du mois de mai
+70% x € 598 000 418 600 418 600
+25% x € 598 000 149 500 149 500
+Prévisions
+d'encaissements € 197 440 € 478 400
+3- L’élaboration et le contrôle budgétaire
+Les prévisions d’encaissement (trésorerie)
+Avril Mai Juin Trimestre
+Créance du 31/03 30 000 30 000
+Ventes du mois d'avril
+70% x € 239 200 167 440 167 440
+25% x € 239 200 59 800 59 800
+Ventes du mois de mai
+70% x € 598 000 418 600 418 600
+25% x € 598 000 149 500 149 500
+Ventes du mois de juin
+70% x € 358 800 251 160 251 160
+Prévisions
+d'encaissements € 197 440 € 478 400 € 400 660 € 1 076 500
+3- L’élaboration et le contrôle budgétaire
+Le budget de TVA
+• L'entreprise collecte de la TVA sur les ventes qu'elle réalise, on parle de TVA
+collectée. Cette TVA facturée et encaissée par l'entreprise doit être reversée à
+l'état.
+• Par ailleurs, l'entreprise dispose de TVA déductible, TVA sur les achats qu'elle a
+réalisés.
+• Cette TVA déductible vient en diminution de la TVA que l'entreprise doit reverser
+à l'état.
+TVA à décaisser = TVA collectée – TVA déductible
+3- L’élaboration et le contrôle budgétaire
+Le budget de TVA
+• Il peut arriver que, sur une période, la TVA déductible soit supérieure à la TVA
+collectée. Dans ce cas, l'entreprise dispose d'un crédit de TVA.
+• Dans certains cas, ce crédit de TVA sera remboursé à l'entreprise par l'état
+• La plupart du temps, ce crédit n'est pas remboursé mais peut être rajouté à la TVA déductible de la période suivante
+3- L’élaboration et le contrôle budgétaire
+Le budget de TVA - Exemple
+Janvier Février Mars
+Crédit de TVA
+TVA collectée 18 000 15 000 20 000
+déterminé au titre
+du mois de février
+et rajouté à la TVA
+TVA déductible 12 500 25 000 7 000
+déductible de mars
+pour déterminer la
+TVA à décaisser 5 500 0 3 000
+TVA à décaisser au
+titre de mars
+Crédit de TVA 10 000
+TVA exigible en janvier d'après les règles fiscales. Par simplification, on
+supposera que la TVA facturée en janvier et donc collectée en janvier est
+totalement exigible au titre du mois de janvier.
+3- L’élaboration et le contrôle budgétaire
+Le budget de TVA - Exemple
+• Ne pas confondre le mois de la déclaration de TVA et le mois de son
+paiement :
+• Dans le budget de TVA, on détermine le montant de la TVA à décaisser / crédit de TVA au
+titre de chacune des périodes. On ne s'occupe pas de la date de paiement de cette TVA.
+• Dans le budget de trésorerie, on prendra en compte la date de paiement de la TVA à
+décaisser
+La TVA à décaisser, calculé au titre du mois M, est versée à l'état au cours du mois M+1.
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+• Le contrôle budgétaire se définit comme « la comparaison permanente des
+résultats réels et des prévisions chiffrées figurant au budget afin :
+- De rechercher la (ou les) causes(s) d’écarts,
+- D’informer les différents niveaux hiérarchiques,
+- De prendre les mesures correctives éventuellement nécessaires,
+- D’apprécier l’activité des responsables budgétaires. »
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+• Chaque mois, les entreprises regardent les écarts entre les budgets et les réalisations
+MMaarrss NN
+PPéérriimmèèttrree FFrraannccee
+Coûts et recettes du centre de responsabilité
+(B’)
+(B) Objectif (A’)
+(A-B si recette ou Objectifs (A’-B’) Ecarts (C-A’)
+(A) du mois Résultats
+B-A si coût) cumulés (en valeur (C) Budget Reste à
+Résultats (budget : ce cumulés =
+Ecarts (en valeur (budget : ce absolue et en annuel faire ou
+du mois qui fait foi) yearto
+absolue et en %) qui fait foi) %) yearto go
+ou estimé date
+ou estimé
+Rubrique 1 (ex : CA)
+- Indicateur 1a (ex : CA produit 1) 10 000 € 9 000 € +1 000 € +11% 40 000 € 50 000 € -10 000€ -20% 400 000 € 360 000 €
+- Indicateur 1b (ex : CA produit 2) 12 000 € 13 000 € -1 000 € -7,7% 38 000 € 40 000 € -2000€-5% 150 000 € 112 000 €
+Rubrique 2 (ex : coûts de production)
+- Indicateur 2a (ex : coût matière) 5 000 € 6 000 € -1 000€ -16% 15 000 € 16 000 € -1 000 € -6% 70 000 € 55 000 €
+- Indicateur 2b (ex : coûts salariaux) 7 000 € 6 000 € + 1 000€ + 16% 21 000 € 20 000 € + 1 000 €+5% 84 000 € 63 000 €
+Le reste à faire ou YTG (YearTo Go) indique l’écart par
+rapport à l’objectif annuel. Il peut être utile de le
+comparer au RAF en % de l’an précédent
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+• L’utilisation de coûts pré établis pour le budget de production en industrie :
+• Les différentes méthodes de calcul des coûts présentées étaient basées sur des coûts constatés
+« a posteriori »
+• Les coûts pré-établis : "la méthode consiste à comptabiliser les mouvements de valeurs à l'aide de
+coûts calculés à l'avance et à enregistrer les écarts résultant de la différence entre les valeurs ainsi
+dégagées et les valeurs réelles"
+• Le coût standard constitue un type de coûts préétablis parmi d'autres (coûts budgétisés, coûts
+prévisionnels, devis)
+• Exemple : Une table des taux de devises (fixée une fois par an par le groupe à ses filiales)
+constitue un élément de calcul de coût pré établi.
+• Coût standard théorique => utilisation la meilleure des facteurs de production
+• Coût standard normal => utilisation normale des facteurs de production
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire – Le rôle des coûts préétablis
+• Une évaluation rapide de la production obtenue et des stocks :
+• L'entreprise peut comptabiliser les coûts dès qu'elle connaît les quantités. Elle
+constateraensuiteunécartentre lecoûtimputéet lecoûtréel
+• une gestion par exception
+• Comparaison possible entre entités utilisant un même référentiel de coût unitaire
+• favorise le mode de gestion décentralisée et la mesure des performances en
+recourant à la participation active des responsables pour l'établissement des
+prévisions et du budget et pour engager dans des délais réduits des actions
+correctrices
+mois 1 mois 2
+comparaison réel / comparaison réel /
+ 
+standard standard . . .
+établissement
+analyse des écarts analyse des écarts
+des standards  
+actions actions
+ 
+correctrices correctrices
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire - Coûts Pré établis : le calcul du coût standard
+COUT STANDARD = QUANTITE STANDARD X COUT UNITAIRE STANDARD
+Eléments Coût unitaire Qui Quantités préétablies
+préétabli
+Matières Etude des coûts Service des achats, Etude technique + %
+d’achat comptabilité de rebut
+Main d’œuvre directe Estimationdes Servicedu personnel Estimation des temps
+salaires horaires (productifs +
+entretien+ inactivité)
+Autrescharges Calculdes coûts Tous les services Calcul des quantités
+préétablis des unités d’unités d’œuvre sur
+d’œuvre base de l’activité
+généralement à partir normale ou de plein
+d’un budget emploi
+correspondant à
+l’activité normale
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+• L’exemple de la décomposition de l’écart sur résultat
+Écart sur Prix
+Écart sur Écart sur mix
+produits
+Chiffre d'affaires
+Écart sur
+Quantités
+Écart sur volume
+Écart sur
+Écart sur volume d'activité
+Résultat
+Écart sur Écart sur
+Charges directes Quantités
+Écart sur Prix
+Écart sur Coûts
+Écart sur
+volume
+d'activité
+Écart sur
+Charges Écart sur
+indirectes Quantités
+Écart d'activité
+Écart sur Prix
+Écart de budget
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+L’exemple de l’analyse des écarts sur le chiffre d’affaires
+Écart liés à :
+• variation du prix de vente
+• variation du volume
+• modification dans le mix produits
+• variation autres : retours
+Écart sur chiffre d'affaires
+Chiffres d'affaires réel - Chiffre d'affaires prévu : CA r - CA p = (Qr x Pr) - (Qp x Pp)
+Écarts sur quantité Écarts sur Prix
+(Qr-Qp) x Pp (Pr-Pp) x Qr
+Écarts sur composition Écarts sur volume
+(Qr-Qmix) x Pr (Qmix-Qp) x Pr
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+L’exemple de l’analyse des écarts sur matière
+• Les écarts peuvent être analysés en écarts sur quantités et en écarts sur coûts
+• écart sur quantité consommée : rendement de la matière
+• écart sur prix : impact de la variation de prix d'achat
+Écart total
+Coût réel - Coût préétabli de la production préétablie
+EM = Écart économique sur Matière =
+Écarts sur volume
+Coût total réel - coût préétabli de la prod.réelle
+(PRODr - PRODp) x CUp
+Qr Pr -Qp Pp
+Écarts sur quantités
+Écarts sur prix
+consommées
+(Pr-Pp) x Qr
+(Qr-Qp) x Pp
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+L’analyse des causes d’écarts sur matière
+• Causes d'écarts
+• écarts sur matières consommées
+• mauvaise utilisation de la matière, excès de rebuts
+• standards mal calculés, écarts sur composition
+• mauvais entretien
+• écarts sur prix
+• mauvais choix de fournisseurs
+• mauvaises prévisions de ventes d'où mauvaises prévisions d'achats et de réapprovisionnement
+• variation des prix...
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+Exercice sur l’analyse des écarts sur matière
+• Données
+• la fabrication d'un produit nécessite selon les normes techniques 4 kg de matières à 8 €/ kg par unité produite
+• En réel, 5 000 produits ont nécessité 22 000 Kg de matière qui ont coûté 198 000€.
+• Questions
+• Calculer le coût pré établi
+• Calculer l'écart économique sur matière et l'expliquer
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+Exercice sur l’analyse des écarts sur matière
+• Solution
+Qp= 4 kg * 5 000 unités = 20 000 kg
+Coût préétabli = 20 000 * 8 € = 160 000 €
+• Calcul de l'Écart économique sur matière =
+Écart Économique sur matière : (Qr-Qp) x Pp + (Pr-Pp) x Qr
+(22 000 - 20 000) * 8 + ( (198 000/22 000) - 8) * 22 000
+= 16 000 + 22 000
+= 38 000
+Écart > 0 => Écart défavorable :
+• 16 000 écart sur quantités consommées
+• 22 000 écart sur prix d'achat
+• On peut déduire le coût réel par kg, soit 9€ et la quantité réelle, soit 4,4Kg
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+L’exemple de l’analyse des écarts sur main d’œuvre
+• Les écarts peuvent être analysés en écarts sur temps et en écarts sur taux
+• écart sur temps : rendement du travail
+• écart sur taux horaire : impact de la variation du taux horaire
+Écart total
+Coût réel - Coût préétabli de la production préétablie
+EMO = Écart économique sur main d'œuvre =
+Écarts sur volume
+Coût total réel - coût préétabli de la prod.réelle
+(PRODr – PRODp) x CUp
+(Tr x Sr) – (Tp x Sp)
+Écarts sur salaire horaire Écarts sur temps
+(Sr-Sp) x Tr (Tr-Tp) x Sp
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+L’analyse des causes d’écarts sur main d’œuvre
+• Causes d'écarts
+• écarts sur temps
+• chute des cadences, défaut d'encadrement, ...
+• standards mal calculés
+• ….
+• écarts sur salaire
+• excès d'heures supplémentaires
+• sur ou sous qualification de la main d'œuvre affectée à la production
+• augmentations légales non prévues
+• ...
+3- L’élaboration et le contrôle budgétaire
+3.3 Le contrôle budgétaire
+Application du contrôle budgétaire / calcul d’écart.
+La cas SEUROL
+Feuille de calcul
+Microsoft Excel
+3- L’élaboration et le contrôle budgétaire
+Intérêts et limites de la gestion budgétaire
+• La procédure budgétaire se caractérise par la hiérarchie et l’interdépendance des budgets (la
+prévision de production peut, selon les contraintes, conduire à un réajustement du budget des
+investissements ou du budget des ventes).
+• Les budgets généraux permettent de traduire, sous forme chiffrée, la cohérence des prévisions ;
+équilibre de la trésorerie, rentabilité de l’exploitation (compte de résultat prévisionnel), équilibre
+financier (bilan prévisionnel).
+En cas de déséquilibre, les responsables doivent procéder à des ajustements soit au sein de la période
+budgétaire soit en révisant les prévisions à moyen terme.
+• Ainsi, la prévision budgétaire est un processus itératif qui conduit l’ensemble à la cohérence et à
+la sécurité (prévisions probabilistes).
+3- L’élaboration et le contrôle budgétaire
+Intérêts et limites de la gestion budgétaire
+• Intérêt de la gestion budgétaire
+La démarche de la prévision budgétaire permet une meilleure connaissance des atouts et
+faiblesses de l’entreprise et, par l’anticipation sur les réalisations, d’améliorer la réactivité de
+l’entreprise.
+Elle responsabilise et engage les personnels opérationnels.
+Elle force à la coordination des actions.
+3- L’élaboration et le contrôle budgétaire
+Intérêts et limites de la gestion budgétaire
+• Limites de la gestion budgétaire
+• La construction budgétaire se fonde, en grande partie, sur les modèles passés. Elle risque de
+pérenniser des postes budgétaires non efficients. C’est en particulier vrai pour l’ensemble des
+budgets fonctionnels.
+• La désignation des responsabilités et le contrôle peuvent être mal vécus.
+• Les évolutions de l’environnement peuvent rendre la construction budgétaire obsolète. La veille
+doit être constante afin d’adapter les programmes d’actions et les prévisions.
+3- L’élaboration et le contrôle budgétaire
+Intérêts et limites de la gestion budgétaire
+Le processus budgétaire classique est en général long et mobilisateur d'énergie pour un résultat souvent
+éloigné de ses missions initiales
+•Les décisions sont figées sur les 12 mois à venir La pratique
+•L'organisation manque de capacité à réagir face aux événements
+imprévus
+•L'encadrement intermédiaire
+cherche à limiter les objectifs sur •La validation définitive intervient souvent après le début de l'exercice et
+lesquels il s’engage pénalise alors les décisions d'investissement du premier trimestre
+•Il se préserve une marge de •La construction du budget est réalisée
+manœuvre sous forme de revenus
+à un niveau de détail trop important
+sous-estimés ou de "matelas" de Stratégie
+•Une logique analytique complexe
+frais
+(sections principales/secondaires,
+•Une démarche descendante
+refacturations internes...) est
+s'instaure pour compenser cette Hommes Budget Structure reproduite au niveau du budget
+tendance et établir des prévisions
+•Les prévisions sont établies en
+répondant aux attentes de la
+reconduction de références
+Direction Générale
+Outil historiques au détriment de la qualité
+•L'encadrement opérationnel
+d’analyse
+n'adhère plus à la démarche, se
+trouve dans un carcan d'objectifs •Les données à agréger sont peu uniformes dans leur présentation comme dans leur
+imposés et se sent déresponsabilisé fiabilité
+par cette instauration de micro- •Elles sont stockées sous forme de tableur et de manière peu sécurisée à tous les
+management
+niveaux de la construction budgétaire
+•Les navettes entre les opérationnels et la Direction Générale sont nombreuses, elles
+sont rendues laborieuses voire complexes par les étapes de ressaisie et la gestion des
+versions intermédiaires
+•Le contrôle de gestion passe l’essentiel de son temps à agréger et à vérifier les
+informations et peu de temps à simuler des scénarios et à analyser les prévisions
+3- L’élaboration et le contrôle budgétaire
+Intérêts et limites de la gestion budgétaire
+Les développements technologiques récents et les nouvelles pratiques permettent de fluidifier
+le processus budgétaire classique
+•La prise de décision s’effectue hors contraintes du
+calendrier budgétaire classique
+•Les Rolling Forecaststraduisent périodiquement les
+décisions prises face aux événements non prévus
+•Les responsables opérationnels
+•Les règles de construction du budget sont
+expriment leurs prévisions en
+simples et connues de tous
+termes non monétaires (quantités Stratégie
+vendues, taux de charge…) •Les anticipations de l'année à venir sont
+réalisées à un niveau agrégé : grandes
+•Ils ne s'engagent que sur des leviers
+familles de coûts et de revenus,
+d'action opérationnels dans leur Hommes Budget Structure
+principales activités émettrices
+champ de responsabilité
+•Les refacturations internes sont
+•Le temps gagné sur les ressaisies et
+abandonnées
+le contrôle de données permet aux Outil
+contrôleurs de gestion de se •Le budget est recentré sur les indicateurs
+réorienter sur l'analyse clés de performance
+Les nouveaux outils du marché basés sur les technologies internet permettent :
+•Une collecte des données décentralisée via le web
+•Un accès direct des managers à leurs données avec mise à jour intégrée en temps réel
+•Une réconciliation et agrégation automatique
+•Un lien automatique avec les prévisions de ventes, et une construction collaborative
+avec les principaux clients
+•Une facilité de simulation sur les paramètres clés

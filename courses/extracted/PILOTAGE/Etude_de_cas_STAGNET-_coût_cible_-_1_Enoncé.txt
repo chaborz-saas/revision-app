@@ -1,0 +1,64 @@
+Etude de cas sur la méthode du coût cible
+Le CAS STAGNET
+ENONCE
+La société STAGNET fabrique et commercialise des fauteuils. Elle fabrique une vingtaine de modèle
+entre 20 € et 200 €.
+Elle renouvelle ses modèles tous les 5 ans : chaque année 20% de ses produits sont donc retirés du
+catalogue car ils ne correspondent plus à la mode de l’ameublement.
+En janvier N, un groupe de travail se réunit pour développer un nouveau fauteuil : le fautimousse. Ce
+groupe a défini les nouvelles fonctions et caractéristiques attendues par les clients. Le groupe
+distingue deux familles de fonctions :
+Fonctions de confort Fonctions d’apparence
+- Accoudoirs rehaussés - Pieds en bois
+- Rembourrage nouveau matériau - Tissu en feutrine antitache
+naturel - Boutons recouverts
+- Mémoire de forme
+- Réglage en hauteur 6 niveaux
+- Repose pied escamotable
+- Fauteuil spécial + de 100 kg
+La société a sondé 1 500 personnes pour déterminer l’importance des fonctions dans la valeur totale
+du produit.
+Le bureau d’étude connait la composition de chaque composant (pièce ou matière) pour satisfaire
+ces fonctions. Elle a ainsi pu déterminer le poids des composants dans les deux groupes de fonctions.
+Il établit le coût cible de chaque composant en effectuant la somme pondérée de leur contribution
+aux fonctions de confort (3/5 de la valeur du produit) et d’apparence (2/5 de la valeur).
+Ossatu- Pieds en Agrafes Moteur Tissu Coussin Barre Boutons Total en
+re bois d’assem électri- (mousse transver %
+métal- blage que ) sale
+lique mémoir
+e forme
+Fonction 30% 2% 13% 10% 10% 20% 10% 5% 100%
+de confort
+Fonction 15% 20% 3% 2% 30% 10% 5% 15% 100%
+d’apparen
+Ce fauteuil serait commercialisé 200 € en N+1 puis, l’effet de mode s’estompant, son prix serait de
+190 € en N+2, et il perdrait ensuite 5€ par an pour arriver à 175 € en N+5.
+Etude de cas sur le coût cible – CAS STAGNET – Isabelle Lacombe – EM Normandie
+Les prévisions de vente sont les suivantes :
+N+1 N+2 N+3 N+4 N+5
+Nb unités 1 500 2 000 2 100 1 800 1 400
+Les objectifs de marge sont les suivants :
+N+1 N+2 N+3 N+4 N+5
+Objectif taux 40% 30% 30% 20% 20%
+de marge
+Le bureau d’étude a estimé le coût de chaque composante du nouveau fauteuil :
+Fonction Ossatu- Pieds en Agrafes Moteur Tissu Coussin Barre Boutons Total
+re bois d’assem électri- (mousse transver
+métal- blage que ) sale
+lique mémoir
+e forme
+Coût 60 € 10 € 5 € 20 € 25 € 20 € 5 € 5 € 150 €
+estimé
+Questions :
+1) Quelle est la marge sur coûts variables prévisionnelle pour chacune des 5 années ?
+2) Quel est le prix de vente unitaire moyen sur la période ainsi que le taux de marge moyen et
+la marge unitaire sur la période ?
+3) Quel est le coût cible ?
+4) Calculez le coût cible par composant et comparez-le avec le coût estimé.
+5) Le bureau d’étude a réfléchi à une ossature métallique plus légère qui permettrait de réduire
+le coût de cette ossature de 10 €. Cela ne pourrait être accepté par le client qu’à condition de
+diminuer le prix de vente de 8 €. Quelle est l’incidence de la modification envisagée sur le
+coût cible ?
+6) Par quels autres moyens la société STAGNET peut-elle rapprocher le coût cible du coût
+estimé ?
+Etude de cas sur le coût cible – CAS STAGNET – Isabelle Lacombe – EM Normandie

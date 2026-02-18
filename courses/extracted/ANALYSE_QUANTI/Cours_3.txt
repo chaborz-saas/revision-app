@@ -1,0 +1,216 @@
+Relation entre deux variables
+Analyse de la variance (ANOVA)
+Rappel
+Analyse descriptive bivariée
+Analyse de la relation entre deux variables
+Types de relations possibles
+• Relation entre deux variable Qualitatives ==> Association (Test de Khi-deux, V de Cramer)
+• Relation entre deux variable Quantitatives ==> Corrélation (Test de Pearson)
+• Relation une variable Qualitative et une autre Quantitative ==> Comparaison (t-test)
+Chaque type de relation a un test d’hypothèse adapté
+Rappel
+Logique d’un test d’hypothèse
+Test de relation entre deux variables L’analogie innocent / coupable
+Hypothèse nulle H : pas de relation (indépendance) Hypothèse nulle H : Le suspect est innocent.
+0 0
+Hypothèse alternative H : relation entre les Hypothèse alternative H : Le suspect est
+1 1
+variables coupable
+Rappel
+Logique d’un test d’hypothèse
+La probabilité p-value:
+“Si le suspect était vraiment innocent, quelle est la probabilité d’observer les preuves (données) que
+j’ai collectées ?”
+• p-value grande (généralement > 0,05) ==> innocence (pas de relation).
+• p-value petite ==> on envisage de rejeter l’innocence (relation).
+Plan de la séance n°3
+1. Relation entre une variable quantitative et une variable qualitative
+2. Analyse de la variance (ANOVA)
+Relation entre une variable quantitative et
+une variable qualitative
+Relation de comparaison
+Relation entre une variable qualitative et une variable quantitative
+Exemple : Relation entre la variable Performance et la variable Service
+• Performance: variable quantitative
+• Service: variable qualitative (deux valeurs possibles: service IT et service RH)
+• Question: Les salariés du service IT ont-ils une performance moyenne plus élevée que ceux du
+service RH ?
+• Réponse: Comparer la performance moyenne entre les deux groupes (service IT et service RH).
+Le test t (test de Student)
+Test t
+Question : Les moyennes des deux groupes sont-elles réellement différentes, ou est-ce juste un hasard ?
+Démarche du test t
+1) Formuler les hypothèses
+• Hypothèse nulle H : pas de différence (moyenne du groupe 1 = moyenne du groupe 2)
+• Hypothèse alternative H : il y a une différence
+2) Calculer la probabilité p-value (valeur donnée par l’outil informatique)
+• Si p-value ≤ seuil de rejet: il y a une différence statistiquement significative
+• Si p-value > seuil de rejet: pas de différence
+Test t: calcul de la probabilité p-value
+C’est la probabilité d’observer la statistique 𝑡
+La statistique 𝒕:
+• Moyenne du groupe 1: 𝜇
+𝜇 − 𝜇 • Ecart-type du groupe 1: 𝑠
+1 2 1
+𝑡 =
+• Taille de l’échantillon: 𝑛
+2 2
+𝑠 𝑠
+1 2
+• Moyenne du groupe 2: 𝜇
+𝑛 𝑛 2
+1 2
+• Ecart-type du groupe 2: 𝑠
+• Taille de l’échantillon: 𝑛
+La probabilité p-value:
+2 × 𝑃 𝑇 ≥ 𝑡
+Exemple: CaféEMN
+Dataset CaféEMN_V2 (A télécharger sur Upward)
+Question : comparer les moyennes du montant dépensé entre les deux groupes Homme et Femme ?
+• Genre (H/F): variable qualitative
+• Montant du ticket (€): variable quantitative
+Réponse:
+Première étape: observer les distributions (tracer le diagramme Boxplot – Boîte à moustaches)
+Deuxième étape: appliquer le test t
+Exemple: CaféEMN
+Exemple: CaféEMN
+Exemple: CaféEMN
+p-value > 0,05: pas de différence
+Interprétation business
+Le test t montre qu’il n’y a pas de différence significative entre les deux groupes
+S'il existe une différence significative :
+- Ajuster les offres marketing
+- Adapter les prix ou promotions
+- Comprendre les segments clients
+Analyse de la variance
+(ANOVA)
+Pourquoi une analyse de la variance ?
+Nous savons déjà comment comparer entre deux variables: quantitative et qualitative (deux
+groupes)
+Mais en entreprise :
+Nous manipulons des variables qualitatives avec plus que deux groupes
+Exemple
+• La variable qualitative est la stratégie de marketing d’une entreprise
+• Valeurs prises par cette variable (stratégie A/ stratégie B/ stratégie C)
+Pourquoi une analyse de la variance ?
+Démarche
+Option 1: Multiplier les tests t
+Comparer les stratégies deux à deux
+==> inflation du risque d’erreur
+Option 2: Analyse de la variance (ANOVA)
+Généralisation du test t
+Logique statistique de l’ANOVA
+Question centrale
+La variabilité observée est-elle due aux groupes ou au hasard ?
+Idée
+ANOVA compare :
+• la variabilité entre les groupes
+• la variabilité à l’intérieur des groupes
+Si la variabilité entre groupes est grande par rapport à la différence à l’intérieur des groupes
+==> il y a une différence entre les groupes
+Logique statistique de l’ANOVA
+Décomposition de la variance
+• Variance totale
+• Variance expliquée (entre groupes)
+• Variance résiduelle (intra-groupes)
+Statistique de test
+• Statistique : F
+• F = Variance inter-groupes / Variance intra-groupes
+• Plus F est grand, plus l’effet est probable
+Test de l’ANOVA
+Démarche du test
+1) Formuler les hypothèses
+• Hypothèse nulle H : toutes les moyennes sont égales
+• Hypothèse alternative H : au moins une moyenne est différente
+2) Calculer la probabilité p-value (valeur donnée par l’outil informatique)
+• Si p-value ≤ seuil de rejet: il y a une différence statistiquement significative
+• Si p-value > seuil de rejet: pas de différence
+L’ANOVA ne dit pas quels groupes diffèrent
+ANOVA à un facteur (One-way ANOVA)
+Quand l’utiliser ?
+• Une variable quantitative
+• Une seule variable qualitative à ≥ 3 modalités (groupes)
+Exemples
+• Ventes selon la politique de prix
+• Performance selon le style de management
+• Satisfaction selon le type de service
+Exemple: politique de prix
+Variable quantitative : Ventes mensuelles (€)
+Variable qualitative : Politique de prix (Bas / Moyen / Premium)
+Objectif managérial :
+Identifier le positionnement prix le plus performant
+JAMOVI – ANOVA à un facteur
+Dataset ANOVA_PRIX_VENTES (A télécharger sur Upward)
+JAMOVI – ANOVA à un facteur
+Choisir les options suivantes
+JAMOVI – ANOVA à un facteur
+JAMOVI – ANOVA à un facteur
+Lecture des résultats
+Si p-value du test de Levene > 0,05 :
+==> il y a une homogénéité des variances
+==> Lire les résultats du test de Fisher
+Si le p-value ≤ 0,05 ==> il y a une différence entre les politiques
+Si p-value du test de Levene ≤ 𝟎, 𝟎𝟓 :
+==> il n’y a pas d’homogénéité des variances
+==> Lire les résultats du test de Welch
+Si le p-value ≤ 0,05 ==> il y a une différence entre les politiques
+JAMOVI – ANOVA à un facteur
+L’ANOVA ne dit pas quelles politiques diffèrent
+Il faut utiliser un test post hoc (Test de Tukey)
+JAMOVI – ANOVA à un facteur
+Résultats du test de Tukey
+JAMOVI – ANOVA à un facteur
+ANOVA à deux facteurs (Two-way ANOVA)
+Les décisions business dépendent rarement d’un seul facteur.
+Exemple : la satisfaction des clients dépend du canal de vente et du programme de fidélité
+• Variable quantitative: Satisfaction des clients
+• Variable qualitative n°1: Canal de vente
+• Variable qualitative n°2: Programme de fidélité
+Trois questions statistiques
+• Le canal influence-t-il la satisfaction ?
+• La fidélité influence-t-elle la satisfaction ?
+• L’effet du canal dépend-il de la fidélité ?
+Exercice 1
+Contexte
+Une entreprise e-commerce analyse si le montant moyen du panier dépend du type de client.
+• Variable quantitative : Montant du panier (€)
+• Variable qualitative : Type de client (Nouveau, Régulier, Fidèle, Premium)
+Exercice 1
+Résultats Jamovi
+Tableau ANOVA
+• F = 18,7
+• p-value < 0.001
+Moyennes observées
+• Nouveau : 32 €
+Post-hoc (Tukey)
+• Régulier : 41 €
+• Tous les groupes sont significativement différents (p < 0.01)
+• Fidèle : 52 €
+• Premium : 68 €
+Exercice 1
+Questions
+• Peut-on affirmer que le type de client influence le panier moyen ?
+• Quel groupe est le plus stratégique ?
+• Proposez 3 actions business concrètes.
+Exercice 2
+Contexte
+Le service RH souhaite savoir si la performance moyenne des employés diffère selon leur service.
+• Variable quantitative : Score de performance (0–100)
+• Variable qualitative : Service (Marketing, Ventes, Finance, IT, RH)
+Exercice 2
+Résultats Jamovi
+Tableau ANOVA
+• F = 9,85
+• p-value < 0.001
+Moyennes observées
+• IT : 82
+Post-hoc (Tukey)
+• Finance : 78 • IT ≠ Marketing, RH, Ventes (p < 0.01)
+• Ventes : 71 • Finance ≠ RH (p < 0.05)
+• Marketing : 69
+• RH : 66
+Exercice 2
+Questions
+• L’effet du service sur la performance est-il significatif ?
+• Quels services se distinguent le plus ?
+• Quelles décisions RH recommanderiez-vous ?

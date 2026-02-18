@@ -1,0 +1,105 @@
+Etude de cas sur le seuil de rentabilité
+Le CAS JIBI
+Corrigé :
+1. Donner des exemples de coûts variables et de coûts fixes.
+Coûts variables = coûts matières, énergie, sous-traitance de production, intérimaires, etc.
+Coûts fixes = amortissements des machines, des bâtiments, salaires de la main d’œuvre (CDI), frais
+généraux
+2. Selon vous, quelle est la société qui sous-traite et quelle est celle qui fait tout elle-même ?
+La société B est, a priori, celle qui sous-traite le plus car c’est celle qui a les coûts variables les plus
+élevés. La sous-traitance permet de « variabiliser » les coûts. Elle permet une plus grande flexibilité.
+Il faudrait toutefois avoir un détail du contenu des frais variables et fixes pour être certain du
+raisonnement car :
+- La société B pourrait, en fait, faire appel à des intérimaires (coûts variables), ce qui n’est pas
+considéré comme une sous-traitance totale, mais uniquement partielle.
+- Le faible niveau de coûts fixes de la société B s’explique, a priori, par la fait qu’il a peu
+d’amortissements de machines et de locaux du fait de la sous-traitance. Il pourrait aussi
+s’expliquer par un bon contrôle de ses frais généraux.
+Etude de cas sur le seuil de rentabilité – CAS JIBI – Isabelle Lacombe – EM Normandie
+3. Calculez les seuils de rentabilité des deux sociétés en euros et en nombre d’unités vendues
+(en utilisant la méthode de la formule)
+Seuil de rentabilité (ou point mort) en euros :
+Le seuil de rentabilité doit couvrir l’ensemble des charges de l’entreprise. Il correspond donc à
+l’équilibre suivant :
+Charge Fixes + Charges Variables = Chiffre d’affaires réalisé
+Donc Marge sur coût variable - Charges fixes = 0
+Seuil de rentabilité = charges fixes / Taux de Marge sur coûts variables
+TMCVa = MCVa / CAa
+TMCVa = 400 000 / 1 000 000
+TMCVa = 40 %
+SRa = 200 000 / 40%
+SRa = 500 000 € (à partir de 500 000 € de CA, l’entreprise A est à l’équilibre)
+TMCVb = MCVb / CAb
+TMCVb = 250 000 / 1 000 000
+TMCVb = 25 %
+SRb = 50 000 / 25%
+SRb = 200 000 € (à partir de 200 000 € de CA, l’entreprise B est à l’équilibre)
+Seuil de rentabilité (ou point mort) en nombre d’unités vendues :
+Le seuil de rentabilité doit couvrir l’ensemble des charges de l’entreprise. Il correspond donc à
+l’équilibre suivant :
+(Marge sur CV unitaires X quantités) / coûts fixes = 0
+Donc SR en quantité = coûts fixes / marge coûts variables unitaires
+Qa = 200 000 / (400 000/1000 000)
+Qa = 500 000 il faut produire au moins 500 000 briques pour atteindre l’équilibre de la société A
+Qb = 50 000 / (250 000/1000 000)
+Qb = 200 000 il faut produire au moins 200 000 briques pour atteindre l’équilibre de la société B
+Etude de cas sur le seuil de rentabilité – CAS JIBI – Isabelle Lacombe – EM Normandie
+4. Illustrez ces seuils de rentabilité par la méthode graphique
+1ère possibilité : la droite des charges fixes coupe la droite de la marge sur coûts variables
+Seuils de rentabilité sociétés A et B
+500 000 €
+450 000 €
+( 400 000 €
+r 350 000 €
+g 300 000 €
+250 000 €
+u SR A=500 K€ de CA
+s 200 000 € = 500
+s 150 000 €
+a 100 000 €
+50 000 €
+SR B = 200 K€ de CA
+0 €
+100 000 € 200 000 € 300 000 € 400 000 € 500 000 € 600 000 € 700 000 € 800 000 € 900 000 € 1 000 000 1 100 000
+€ €
+Activité (chiffre d'affaires)
+Charges fixes société A Marge sur coûts variables société A
+Charges fixes société B Marge sur coûts variables société B
+Etude de cas sur le seuil de rentabilité – CAS JIBI – Isabelle Lacombe – EM Normandie
+2ème possibilité : la droite des charges coupe la droite de chiffre d’affaires :
+Seuils de rentabilité sociétés A et B
+1200000
+1000000
+800000
+e 600000
+g r Chiffre d'affaires A ou B
+a SR A
+C Charges société A
+400000 Charges société B
+200000
+SR B
+100 200 300 400 500 600 700 800 900 1 M€ 1,1
+K€ K€ K€ K€ K€ K€ K€ K€ K€ M€
+Activité (chiffre d'affaires)
+Etude de cas sur le seuil de rentabilité – CAS JIBI – Isabelle Lacombe – EM Normandie
+5. Calculez les résultats des deux sociétés selon les deux hypothèses suivantes :
+a. Baisse de 10% du chiffre d’affaires
+-10% CA Société A Société B
+Chiffre d’affaires 900 000 € 900 000 €
+Coûts variables 540 000 € 675 000 €
+Marge sur coûts variables 360 000 € 225 000 €
+Coûts fixes 200 000 € 50 000 €
+Résultat 160 000 € 175 000 €
+b. Hausse de 10% du chiffre d’affaires
++10% CA Société A Société B
+Chiffre d’affaires 1 100 000 € 1 100 000 €
+Coûts variables 660 000 € 825 000 €
+Marge sur coûts variables 440 000 € 275 000 €
+Coûts fixes 200 000 € 50 000 €
+Résultat 240 000 € 225 000 €
+On note que la société B, qui sous-traite davantage, est plus flexible : en cas de baisse d’activité son
+résultat résiste mieux. Son seuil de rentabilité est atteint plus rapidement. En revanche, elle profite
+aussi moins de la hausse d’activité car sa mare sur coûts variables est plus faible.
+A noter toutefois que la société B peut être plus sensible aux problèmes de sous-traitance (ex : grève,
+retards de livraison, etc.).
+Etude de cas sur le seuil de rentabilité – CAS JIBI – Isabelle Lacombe – EM Normandie

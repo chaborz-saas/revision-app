@@ -1,0 +1,34 @@
+EXERCICE sur la méthode du coût cible (tiré de GRANDGUILLOT B et F, L’essentiel du contrôle de
+gestion, Gualino editeur)
+ENONCE
+La société X fabrique et commercialise des sacs. Elle souhaite développer un sac de sport léger et
+résistant. Les données de l’étude sont :
+Composants Fonctions
+- Armature en aluminium - Fonction ergonomie (confort dos et
+- Sac portage)
+- Bretelles ergonomiques - Fonction contenance et poids
+- Sangles de rappel de charge - Fonction esthétique
+- Ceinture réglable
+Prix cible : 34,8 euros TTC, TVA 20%
+Marge bénéficiaire attendue : 40% du prix de vente HT
+Degré d’importance des fonctions (analyse fonctionnelle) :
+Fonctions Pourcentage
+Ergonomie 50 %
+Contenance et poids 40 %
+Esthétique 10 %
+Contribution de chaque composant à la satisfaction des fonctions :
+Composants
+Fonctions Armature Sac Bretelles Sangles Ceinture
+Ergonomie 30 % 8 % 48 % 9 % 5 %
+Contenance
+10 % 90 %
+et poids
+Esthétique 16 % 70 % 10 % 2 % 2 %
+Coût estimé de chaque composant :
+Armature Sac Bretelles Sangles Ceinture Total
+Coût estimé 3,50 9,80 5,10 1,20 0,70 20,30
+Questions :
+1) Calculez le coût cible
+2) Déterminez la part de chaque composant dans la structure du coût cible
+3) Calculez le coût cible par composant et évaluez l’écart
+Exercice sur le coût cible

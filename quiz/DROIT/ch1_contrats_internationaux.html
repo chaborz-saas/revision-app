@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Contrats internationaux : principes généraux</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
+        .btn-next:hover { background: #d97706; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #f59e0b; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">DROIT — QUIZ</div>
+        <h1>Ch. 1 — Contrats internationaux : principes généraux</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Quel règlement européen détermine la loi applicable aux contrats internationaux dans l'UE ?",
+        options: ["Règlement Bruxelles I bis (1215/2012)", "Règlement Rome I (CE n° 593/2008)", "Règlement Rome II (CE n° 864/2007)", "Convention de Vienne (CVIM 1980)"],
+        correct: 1,
+        explanation: "Le Règlement Rome I (CE n° 593/2008 du 17 juin 2008) détermine la loi applicable aux obligations contractuelles. Il a une application universelle, y compris pour les parties hors UE."
+    },
+    {
+        q: "En l'absence de choix des parties, quelle loi s'applique à un contrat de vente de biens selon Rome I (art. 4) ?",
+        options: ["La loi du pays de l'acheteur", "La loi du lieu de livraison des marchandises", "La loi du pays de résidence habituelle du vendeur", "La loi du pays où le contrat a été signé"],
+        correct: 2,
+        explanation: "Selon Rome I art. 4.1.a, à défaut de choix, la vente de biens est régie par la loi du pays où le vendeur a sa résidence habituelle. C'est la prestation caractéristique du contrat de vente."
+    },
+    {
+        q: "Quel est le principe de compétence juridictionnelle posé par le Règlement Bruxelles I bis ?",
+        options: ["Le tribunal du lieu de signature du contrat", "Le tribunal du domicile du demandeur", "Le tribunal du domicile du défendeur", "Le tribunal du lieu d'exécution exclusivement"],
+        correct: 2,
+        explanation: "Le principe fondamental de Bruxelles I bis est la compétence du tribunal du domicile du défendeur. En matière contractuelle, une alternative existe : le tribunal du lieu d'exécution de l'obligation."
+    },
+    {
+        q: "Qu'est-ce que le principe de compétence-compétence en arbitrage international ?",
+        options: ["La compétence exclusive des tribunaux étatiques sur l'arbitrage", "Le droit de l'arbitre de statuer en priorité sur sa propre compétence", "L'obligation de saisir deux arbitres de compétences différentes", "La compétence partagée entre arbitre et juge étatique"],
+        correct: 1,
+        explanation: "Le principe de compétence-compétence (art. 1448 et 1506 CPC) signifie que l'arbitre a priorité pour statuer sur sa propre compétence. Le tribunal étatique doit se déclarer incompétent sauf si la clause est nulle ou manifestement inapplicable."
+    },
+    {
+        q: "Dans quels types de contrats une clause attributive de compétence est-elle interdite selon Bruxelles I bis ?",
+        options: ["Contrats de franchise, de distribution et d'agence", "Contrats de travail, d'assurance et de consommation", "Contrats de vente, de services et de transport", "Contrats d'assurance, de franchise et de vente"],
+        correct: 1,
+        explanation: "La clause attributive de compétence est interdite dans trois types de contrats protégeant la partie faible : les contrats de travail, d'assurance et de consommation (Bruxelles I bis)."
+    },
+    {
+        q: "Quelles sont les 4 conditions cumulatives du hardship selon les Principes UNIDROIT ?",
+        options: ["Événements imprévus, postérieurs, impossibles et onéreux", "Événements postérieurs au contrat, imprévisibles, hors contrôle, et risque non assumé", "Force majeure, bonne foi, renegociation obligatoire, et adaptation du juge", "Déséquilibre majeur, faute du co-contractant, perte subie, et demande écrite"],
+        correct: 1,
+        explanation: "Les 4 conditions cumulatives du hardship (UNIDROIT 6.2.2) : (a) événements postérieurs à la conclusion, (b) imprévisibles raisonnablement, (c) hors du contrôle de la partie lésée, (d) risque non assumé par cette partie."
+    },
+    {
+        q: "Quelle est la différence entre arbitrage institutionnel et arbitrage ad hoc ?",
+        options: ["L'arbitrage institutionnel est obligatoire, l'ad hoc est facultatif", "L'arbitrage institutionnel est organisé par une institution (ex. CCI), l'ad hoc est organisé directement par les parties", "L'arbitrage ad hoc est plus rapide, l'institutionnel est plus coûteux", "L'ad hoc s'applique aux contrats nationaux, l'institutionnel aux contrats internationaux"],
+        correct: 1,
+        explanation: "L'arbitrage institutionnel est organisé par une institution spécialisée (CCI, LCIA...) qui fournit un règlement procédural. L'arbitrage ad hoc est organisé directement par les parties sans institution. Paris est le 1er forum d'arbitrage mondial."
+    },
+    {
+        q: "Que peut faire le tribunal saisi en cas de hardship constaté, à défaut d'accord entre les parties à l'issue de la renégociation ?",
+        options: ["Uniquement condamner à des dommages-intérêts", "Uniquement résilier le contrat", "Résilier le contrat OU l'adapter pour rétablir l'équilibre", "Suspendre l'exécution pendant 6 mois supplémentaires"],
+        correct: 2,
+        explanation: "À défaut d'accord entre les parties après renégociation, le tribunal peut soit (a) résilier le contrat à une date et selon des modalités à déterminer, soit (b) adapter le contrat pour rétablir son équilibre (UNIDROIT art. 6.2.3)."
+    },
+    {
+        q: "La Convention de New York du 10 juin 1958 porte sur quel sujet ?",
+        options: ["La loi applicable aux contrats de vente internationale", "La reconnaissance et l'exécution des sentences arbitrales étrangères", "La compétence juridictionnelle en matière commerciale internationale", "La formation des contrats commerciaux internationaux"],
+        correct: 1,
+        explanation: "La Convention de New York de 1958 organise la reconnaissance et l'exécution des sentences arbitrales étrangères. Elle est ratifiée par plus de 170 États et constitue le pilier de l'arbitrage international hors UE."
+    },
+    {
+        q: "En matière contractuelle, quelle est l'alternative au tribunal du domicile du défendeur selon Bruxelles I bis ?",
+        options: ["Le tribunal du domicile du demandeur dans tous les cas", "Le tribunal du lieu de signature du contrat", "Le tribunal du lieu d'exécution (livraison des biens ou fourniture des services)", "Le tribunal choisi arbitrairement par le demandeur"],
+        correct: 2,
+        explanation: "En matière contractuelle, Bruxelles I bis offre une alternative : le demandeur peut saisir le tribunal du lieu d'exécution de l'obligation, c'est-à-dire le lieu de livraison des biens ou le lieu de fourniture des services."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return; answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    document.getElementById('result-card').style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

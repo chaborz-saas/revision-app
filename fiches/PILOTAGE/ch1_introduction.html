@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Pilotage de la Performance : Introduction et Elaboration budgetaire</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Pilotage de la Performance</div>
+        <h1>Cours 1 — Introduction et Elaboration budgetaire</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Plan general du cours (7 chapitres)</div>
+
+        <table class="compact-table">
+            <tr><th>#</th><th>Theme</th><th>Mots-cles</th></tr>
+            <tr><td>1</td><td>Introduction</td><td>Definition, compta gestion/generale, gouvernance, groupes, cessions internes</td></tr>
+            <tr><td>2</td><td>Masse salariale</td><td>CdG sociale</td></tr>
+            <tr><td>3</td><td><span class="hl-critical">Elaboration et controle budgetaire</span></td><td>Simulation, BP, budget, rolling forecast, ecarts</td></tr>
+            <tr><td>4</td><td>Tableaux de bord</td><td>Indicateurs, reporting</td></tr>
+            <tr><td>5</td><td>Plan de performance</td><td>Lean, croissance, perimetre</td></tr>
+            <tr><td>6</td><td>Conduite du changement</td><td>-</td></tr>
+            <tr><td>7</td><td>CdG et RSE</td><td>Finance verte, CSRD, taxonomie, bilan carbone</td></tr>
+        </table>
+
+        <div class="section-title">Les 6 methodes de prevision</div>
+
+        <table class="compact-table">
+            <tr><th>Methode</th><th>Principe cle</th></tr>
+            <tr><td><span class="hl-important">Modele de simulation</span></td><td>Representation d'une problematique complexe ; relations cause-effet ; test de scenarios</td></tr>
+            <tr><td><span class="hl-important">Business plan</span></td><td>Feuille de route strategique et financiere ; projection des flux de tresorerie ; mission/vision/objectifs</td></tr>
+            <tr><td><span class="hl-critical">Rolling forecast</span></td><td>Reevaluation trimestrielle sur <span class="hl-critical">6 trimestres roulants</span> (1 reel + 5 estimes) ; base des primes variables N+1</td></tr>
+            <tr><td><span class="hl-important">BBZ (Budget Base Zero)</span></td><td>Justifier chaque poste depuis zero (P. Pyhrr, annees 80, Texas Instruments) ; adapte aux frais de structure</td></tr>
+            <tr><td>Beyond Budgeting</td><td>Abandon du budget ; culture de confiance (origine scandinave) ; necessite exemplarite des dirigeants</td></tr>
+            <tr><td><span class="hl-critical">Budget traditionnel</span></td><td>Outil central : prevision, delegation, motivation, coordination, optimisation</td></tr>
+        </table>
+
+        <div class="section-title">Le budget : 5 fonctions cles</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Prevision</span> du resultat</li>
+                <li><span class="hl-critical">Attribution d'objectifs et de moyens</span> (demarche dynamique, pas des enveloppes)</li>
+                <li><span class="hl-critical">Delegation et motivation</span> (remuneration variable liee aux objectifs)</li>
+                <li><span class="hl-critical">Coordination et communication</span> (coherence individuel/global, horizontale/verticale)</li>
+                <li><span class="hl-critical">Optimisation des choix</span></li>
+            </ul>
+        </div>
+
+        <div class="section-title">Cycle budgetaire : Top-down vs Bottom-up</div>
+
+        <table class="compact-table">
+            <tr><th>Approche</th><th>Qui decide</th><th>+</th><th>-</th></tr>
+            <tr><td><span class="hl-important">Top-down</span></td><td>Direction impose</td><td>Rapidite</td><td>Devalorisation managers</td></tr>
+            <tr><td><span class="hl-important">Bottom-up</span></td><td>Managers remontent</td><td>Responsabilisation, detail</td><td>Vision inflationniste</td></tr>
+            <tr><td><span class="hl-critical">Mixte (pratique)</span></td><td>Lettre de cadrage + terrain</td><td>Equilibre</td><td>-</td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Consolidation</div>
+            Siege/Divisions &rarr; Divisions/Departements &rarr; Departement/Filiales &rarr; Centres de responsabilite
+        </div>
+
+        <div class="section-title">Les budgets operationnels</div>
+
+        <table class="compact-table">
+            <tr><th>Budget</th><th>Contenu</th></tr>
+            <tr><td><span class="hl-critical">Ventes</span></td><td>CA previsionnel = volumes x prix. 2 approches : extrapolation du passe (trend) ou approche directe du futur</td></tr>
+            <tr><td><span class="hl-critical">Production</span></td><td>Depend des ventes + politique de stock. Programme (volumes) puis valorisation (GPAO, compta analytique)</td></tr>
+            <tr><td>Approvisionnements</td><td>Depend du programme de production : volumes + dates de commande</td></tr>
+            <tr><td>Frais commerciaux</td><td>Direction commerciale, force de vente, marketing, publicite</td></tr>
+        </table>
+
+        <div class="section-title">Budget de tresorerie</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            Centralise <span class="hl-critical">tous les encaissements et decaissements</span> mois par mois. Structure : Solde initial + Encaissements - Decaissements = <span class="hl-critical">Solde final</span>
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Encaissements</th><th>Decaissements</th></tr>
+            <tr><td>Clients, emprunts, apports actionnaires, subventions</td><td>Fournisseurs, investissements, salaires, charges sociales, TVA, impots, remboursements emprunts</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            Utiliser le <span class="hl-critical">CA TTC</span> (pas HT) pour calculer les encaissements. Appliquer les regles d'encaissement (ex : 70% mois vente, 25% mois suivant, 5% irrecouvrables).
+        </div>
+
+        <div class="section-title">Budget de TVA</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Formule cle</div>
+            <span class="hl-critical">TVA a decaisser = TVA collectee - TVA deductible</span>
+            <br>Si TVA deductible > TVA collectee &rarr; <span class="hl-important">credit de TVA</span> (reporte sur periode suivante)
+            <br>TVA du mois M &rarr; payee au mois <span class="hl-critical">M+1</span>
+        </div>
+
+        <div class="section-title">Controle budgetaire et couts preetablis</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Controle budgetaire</strong> = comparaison permanente reel vs budget &rarr; recherche des causes d'ecarts &rarr; mesures correctives = <span class="hl-critical">gestion par exception</span>
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">Formule</div>
+            <span class="hl-critical">Cout standard = Quantite standard x Cout unitaire standard</span>
+            <br>Standard theorique (meilleure utilisation) vs standard normal (utilisation normale)
+        </div>
+
+        <div class="section-title">Decomposition des ecarts</div>
+
+        <table class="compact-table">
+            <tr><th>Ecart</th><th>Formule</th></tr>
+            <tr><td><span class="hl-critical">Ecart sur CA</span></td><td>(Qr x Pr) - (Qp x Pp)</td></tr>
+            <tr><td>Ecart sur quantite</td><td>(Qr - Qp) x Pp</td></tr>
+            <tr><td>Ecart sur prix</td><td>(Pr - Pp) x Qr</td></tr>
+            <tr><td>Ecart sur mix</td><td>(Qr - Qmix) x Pr</td></tr>
+            <tr><td>Ecart sur volume</td><td>(Qmix - Qp) x Pr</td></tr>
+        </table>
+
+        <table class="compact-table">
+            <tr><th>Ecart matiere</th><th>Ecart main d'oeuvre</th></tr>
+            <tr><td><span class="hl-critical">EM = (Qr-Qp)xPp + (Pr-Pp)xQr</span></td><td><span class="hl-critical">EMO = (Tr-Tp)xSp + (Sr-Sp)xTr</span></td></tr>
+            <tr><td>Ecart quantite + Ecart prix</td><td>Ecart temps + Ecart salaire horaire</td></tr>
+        </table>
+
+        <div class="section-title">Causes d'ecarts</div>
+
+        <table class="compact-table">
+            <tr><th>Type</th><th>Quantites / Temps</th><th>Prix / Taux</th></tr>
+            <tr><td>Matiere</td><td>Mauvaise utilisation, rebuts, standards mal calcules, mauvais entretien</td><td>Mauvais fournisseurs, mauvaises previsions ventes/achats, variation prix</td></tr>
+            <tr><td>Main d'oeuvre</td><td>Chute cadences, defaut encadrement, standards mal calcules</td><td>Exces heures sup, sur/sous-qualification, augmentations legales imprevues</td></tr>
+        </table>
+
+        <div class="section-title">Interets et limites du budget</div>
+
+        <table class="compact-table">
+            <tr><th>Interets</th><th>Limites</th></tr>
+            <tr><td>Meilleure connaissance forces/faiblesses</td><td>Fonde sur le passe (risque de perenniser l'inefficient)</td></tr>
+            <tr><td>Anticipation = reactivite</td><td>Controle parfois mal vecu</td></tr>
+            <tr><td>Responsabilisation des operationnels</td><td>Environnement peut rendre le budget obsolete</td></tr>
+            <tr><td>Coordination des actions</td><td>Processus long ; triche institutionnalisee ; detail excessif</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Evolutions modernes</div>
+            Rolling forecasts, previsions en termes non monetaires, regles simples, niveau agrege, abandon des refacturations internes, outils collaboratifs web, <span class="hl-important">recentrage sur les KPI</span>.
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelles sont les 5 fonctions du budget ?
+            <span class="answer">Prevision, attribution d'objectifs/moyens, delegation/motivation, coordination/communication, optimisation des choix.</span>
+        </div>
+
+        <div class="flash-q">
+            Comment fonctionne le rolling forecast ?
+            <span class="answer">Reevaluation trimestrielle sur 6 trimestres roulants (1 reel + 5 estimes). Les chiffres de decembre N servent de cible pour les primes variables de N+1.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la formule de la TVA a decaisser et quand est-elle payee ?
+            <span class="answer">TVA a decaisser = TVA collectee - TVA deductible. Payee le mois M+1 (TVA du mois M).</span>
+        </div>
+
+        <div class="flash-q">
+            Donnez la formule de l'ecart economique sur matiere (EM).
+            <span class="answer">EM = (Qr - Qp) x Pp + (Pr - Pp) x Qr. Se decompose en ecart sur quantites consommees et ecart sur prix.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre l'approche top-down et bottom-up du budget ?
+            <span class="answer">Top-down : budget impose par la direction (rapide mais devalorise les managers). Bottom-up : remontees terrain (responsabilise mais peut etre inflationniste). En pratique : approche mixte.</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le principe du Budget Base Zero (BBZ) ?
+            <span class="answer">Justifier chaque poste budgetaire depuis zero (pas de reconduction automatique). Mis au point par P. Pyhrr (annees 80, Texas Instruments). Adapte aux frais de structure et administrations.</span>
+        </div>
+
+        <div class="flash-q">
+            Citez 3 limites du processus budgetaire classique.
+            <span class="answer">Decisions figees 12 mois, triche institutionnalisee (matelas de frais), validation tardive penalisant le T1, detail excessif, donnees peu uniformes, CdG passe trop de temps a agreger au lieu d'analyser.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/PILOTAGE/ch1_introduction.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours original</a>
+    </div>
+</body>
+</html>

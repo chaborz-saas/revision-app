@@ -1,0 +1,69 @@
+Corrigé cas pratique 1 CVIM
+
+**Corrigé :**
+
+**1. Loi applicable**
+
+La **Convention de Vienne (CVIM)** s'applique **de plein droit** (art. 1 §1 a) car :
+
+- Le contrat est une **vente de marchandises** ;
+
+- Les parties ont leur **établissement dans deux États différents** (France et Allemagne) ;
+
+- Ces deux États sont **parties à la Convention de Vienne**.
+
+➡️ Donc, la **CVIM s'applique directement**, sauf clause contraire (qui n'existe pas ici).
+
+------------------------------------------------------------------------
+
+**2. Conformité des marchandises**
+
+Selon l'**article 35 CVIM**, le vendeur doit livrer des marchandises :
+
+- conformes à la **quantité, qualité et description** prévues ;
+
+- propres à l'usage habituel des marchandises du même type.
+
+Les bouteilles présentant un **goût de bouchon** sont **impropres à la consommation et à la revente**.\
+Elles ne sont donc **pas conformes** au contrat.
+
+➡️ Il y a **manquement du vendeur à son obligation de conformité**.
+
+------------------------------------------------------------------------
+
+**3. Délai de réclamation**
+
+L'acheteur doit :
+
+- **examiner la marchandise dans un délai aussi bref que possible** (art. 38) ;
+
+- **notifier le défaut de conformité dans un délai raisonnable** après sa découverte (art. 39).
+
+En l'espèce :
+
+- La marchandise est arrivée le **20 février 2024** ;
+
+- L'acheteur a signalé le défaut le **25 mars 2024**, soit **plus d'un mois plus tard**.
+
+Ce délai peut être considéré comme **trop long**, sauf s'il justifie le temps nécessaire pour effectuer des analyses ou expertises.\
+Les tribunaux apprécient ce délai **au cas par cas**, mais la pratique retient souvent **2 à 4 semaines** comme délai raisonnable.
+
+➡️ Donc, la **réclamation risque d'être jugée tardive**, rendant les recours de l'acheteur irrecevables (art. 39 §1).
+
+------------------------------------------------------------------------
+
+**4. Recours de l'acheteur (si la réclamation était recevable)**
+
+Selon la CVIM :
+
+- **Article 50** : il peut demander une **réduction proportionnelle du prix** ;
+
+- **Article 46** : il peut exiger une **livraison de remplacement** ou la **réparation** ;
+
+- **Article 49** : en cas de violation essentielle, il peut **résoudre le contrat** ;
+
+- **Article 74** : il peut demander **des dommages et intérêts**.
+
+Mais si la réclamation est tardive, ces recours ne peuvent pas être exercés (art. 39 §1).
+
+------------------------------------------------------------------------

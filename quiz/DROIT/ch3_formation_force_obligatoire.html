@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Formation et force obligatoire du contrat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
+        .btn-next:hover { background: #d97706; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #f59e0b; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">DROIT — QUIZ</div>
+        <h1>Ch. 3 — Formation et force obligatoire du contrat</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Quelles sont les 3 conditions pour qu'une proposition constitue une offre valable selon l'art. 14 CVIM ?",
+        options: ["Être adressée au public + indiquer le prix + être signée", "Être suffisamment précise (marchandises + quantité + prix) + adressée à une personne déterminée + volonté d'être lié", "Indiquer les délais + le mode de paiement + les conditions de livraison", "Être écrite + signée + envoyée par courrier recommandé"],
+        correct: 1,
+        explanation: "Selon l'art. 14 CVIM, une offre doit : 1) être suffisamment précise (marchandises + quantité + prix), 2) être adressée à une personne déterminée, 3) indiquer la volonté de l'offrant d'être lié en cas d'acceptation."
+    },
+    {
+        q: "Quelle théorie la CVIM adopte-t-elle pour déterminer le moment de formation du contrat ?",
+        options: ["La théorie de l'émission : le contrat est formé dès l'envoi de l'acceptation", "La théorie de la réception : le contrat est formé quand l'acceptation parvient à l'offrant", "La théorie de la prise de connaissance : dès que l'offrant lit l'acceptation", "La théorie de l'information : quand l'offrant confirme réception"],
+        correct: 1,
+        explanation: "La CVIM adopte la théorie de la réception (art. 18 §2 + art. 23) : le contrat est formé au moment où l'acceptation parvient à l'offrant. Différence avec la mailbox rule anglo-saxonne (formation dès l'expédition)."
+    },
+    {
+        q: "Dans quels cas l'offre est-elle irrevocable selon l'art. 16 §2 CVIM ?",
+        options: ["Si elle est envoyée par écrit et signée par l'offrant", "Si elle est adressée à un professionnel avec délai fixé", "Si elle indique un délai d'acceptation fixe OU si le destinataire pouvait raisonnablement la considérer comme irrévocable et a agi en conséquence", "Si les parties ont signé une lettre d'intention préalable"],
+        correct: 2,
+        explanation: "L'offre est irrévocable dans deux cas (art. 16 §2) : (a) elle indique un délai fixe d'acceptation, ou (b) le destinataire pouvait raisonnablement la considérer comme irrévocable et a agi en conséquence (confiance légitime)."
+    },
+    {
+        q: "Qu'est-ce que la « bataille des formulaires » en droit international des contrats ?",
+        options: ["Le conflit entre plusieurs exemplaires d'un même contrat", "La situation où chaque partie répond avec ses propres conditions générales contenant des modifications", "Le désaccord sur la langue du contrat entre deux parties étrangères", "L'opposition entre droit national et droit uniforme"],
+        correct: 1,
+        explanation: "La bataille des formulaires survient quand chaque partie utilise ses propres conditions générales. Selon l'art. 19 CVIM, toute modification substantielle (prix, paiement, qualité, quantité, livraison, responsabilité, arbitrage) constitue un rejet et une contre-offre."
+    },
+    {
+        q: "Une réponse modifiant uniquement les délais de paiement constitue-t-elle une acceptation valable selon la CVIM ?",
+        options: ["Oui, car les délais de paiement sont un élément secondaire du contrat", "Non, car le paiement fait partie des modifications substantielles : c'est un rejet et une contre-offre", "Oui, sauf si l'offrant s'y oppose dans les 48 heures", "Non, uniquement si la modification dépasse 30 jours"],
+        correct: 1,
+        explanation: "Le paiement est explicitement listé parmi les modifications substantielles de l'art. 19 §3 CVIM. Toute modification du mode ou des délais de paiement constitue donc un rejet de l'offre et une contre-offre."
+    },
+    {
+        q: "Qu'est-ce que le principe Pacta sunt servanda dans le contexte des contrats internationaux ?",
+        options: ["Les parties peuvent résilier unilatéralement si les circonstances changent", "Le contrat valablement formé lie les parties : aucune modification ou résiliation unilatérale n'est possible", "Le juge peut adapter librement le contrat en cas de déséquilibre", "Les clauses abusives sont automatiquement nulles"],
+        correct: 1,
+        explanation: "Pacta sunt servanda signifie que le contrat valablement formé lie les parties de manière irrévocable. Aucune modification ou résiliation unilatérale n'est possible. Toute modification requiert l'accord mutuel des parties (art. 29 CVIM)."
+    },
+    {
+        q: "Quelle est la différence fondamentale entre force majeure (art. 79 CVIM) et hardship (UNIDROIT) ?",
+        options: ["La force majeure permet la résolution, le hardship uniquement les dommages-intérêts", "La force majeure suppose une exécution impossible, le hardship une exécution possible mais excessivement onéreuse", "Le hardship est prévu par la CVIM, la force majeure par UNIDROIT", "Il n'y a pas de différence : les deux conduisent à la résolution"],
+        correct: 1,
+        explanation: "Force majeure (art. 79) : exécution impossible → exonération des dommages-intérêts. Hardship (UNIDROIT 6.2) : exécution possible mais excessivement onéreuse → droit à renégociation, puis le juge peut adapter ou résilier le contrat."
+    },
+    {
+        q: "Qu'est-ce que le mécanisme du Nachfrist en droit de la vente internationale ?",
+        options: ["Une pénalité de retard automatique prévue par la CVIM", "La fixation d'un délai supplémentaire raisonnable permettant, après expiration sans exécution, de résoudre le contrat même sans violation essentielle", "Un délai imposé par le juge pour la renégociation du contrat", "La suspension automatique du contrat en cas de litige"],
+        correct: 1,
+        explanation: "Le Nachfrist (art. 47 pour l'acheteur / art. 63 pour le vendeur) est la fixation d'un délai supplémentaire raisonnable pour l'exécution. À son expiration sans exécution, la résolution devient possible même en l'absence de violation essentielle. Mécanisme d'origine allemande."
+    },
+    {
+        q: "Une proposition adressée au public (ex. catalogue) est-elle une offre au sens de la CVIM ?",
+        options: ["Oui, toujours, car elle est adressée à un nombre indéterminé de personnes", "Oui, si le prix et la quantité sont indiqués", "Non, c'est une simple invitation à l'offre, sauf volonté contraire expresse de l'auteur", "Non, sauf si le catalogue porte la signature du vendeur"],
+        correct: 2,
+        explanation: "Selon l'art. 14 §2 CVIM, une proposition adressée à des personnes indéterminées (catalogue, publicité) n'est qu'une invitation à l'offre, sauf si l'auteur indique clairement son intention d'être lié. L'offre doit être adressée à une personne déterminée."
+    },
+    {
+        q: "En FOB, à quel moment les risques sont-ils transférés à l'acheteur selon la CVIM ?",
+        options: ["Au moment de la conclusion du contrat de vente", "Lors du chargement des marchandises à bord du navire au port d'embarquement", "À l'arrivée du navire au port de destination", "Au moment du paiement intégral du prix"],
+        correct: 1,
+        explanation: "En FOB, les risques sont transférés à l'acheteur lors de la remise des marchandises au transporteur au port d'embarquement, c'est-à-dire au chargement à bord (art. 67 §1 CVIM). Tout dommage survenu après est à la charge de l'acheteur."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return; answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    document.getElementById('result-card').style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

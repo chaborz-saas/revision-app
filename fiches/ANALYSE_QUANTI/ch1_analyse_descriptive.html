@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Analyse Quanti Cours 1 : Analyse descriptive univariee</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .hl-formula {
+            background: linear-gradient(180deg, transparent 50%, #fef3cd 50%);
+            font-weight: 600; padding: 0 2px; color: #7d6608;
+            font-family: 'Georgia', serif;
+        }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-formula { background: #fef9e7; border-color: #f39c12; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Analyse de Donnees Quantitatives</div>
+        <h1>Cours 1 — Analyse descriptive univariee (stats de base)</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definitions essentielles</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Analyse descriptive univariee</strong> = etude d'<span class="hl-critical">une seule variable</span> separement des autres. Objectif : comprendre la structure des donnees, degager des tendances, identifier anomalies et opportunites.
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">Principe fondamental</div>
+            Le <span class="hl-critical">type de variable</span> determine les outils statistiques utilisables. Une moyenne sur une variable qualitative nominale (ex : genre) <strong>n'a aucun sens</strong>.
+        </div>
+
+        <div class="section-title">Les 4 types de variables</div>
+
+        <table class="compact-table">
+            <tr><th>Type</th><th>Definition</th><th>Indicateurs</th><th>Graphiques</th></tr>
+            <tr>
+                <td><span class="hl-critical">Quali. nominale</span></td>
+                <td>Categories sans ordre</td>
+                <td>Freq. absolue/relative, <span class="hl-important">mode</span></td>
+                <td>Circulaire, batons</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Quali. ordinale</span></td>
+                <td>Categories avec ordre</td>
+                <td>Freq., mode, <span class="hl-important">mediane</span></td>
+                <td>Circulaire, batons</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Quanti. discrete</span></td>
+                <td>Nombres entiers</td>
+                <td>Moyenne, mediane, ecart-type, variance, quartiles, etendue</td>
+                <td>Histogramme, boxplot</td>
+            </tr>
+            <tr>
+                <td><span class="hl-critical">Quanti. continue</span></td>
+                <td>Valeurs reelles</td>
+                <td>Moyenne, mediane, ecart-type, variance, quartiles, etendue</td>
+                <td>Histogramme, boxplot</td>
+            </tr>
+        </table>
+
+        <div class="section-title">Indicateurs de tendance centrale</div>
+
+        <div class="block block-formula">
+            <div class="block-label">Formules</div>
+            <span class="hl-formula">Moyenne (x&#772;) = &#8721;xi / n</span> — sensible aux valeurs extremes
+            <br><span class="hl-formula">Mediane (Me)</span> — valeur centrale : 50% au-dessus, 50% en dessous — <span class="hl-critical">plus robuste</span> que la moyenne
+            <br><span class="hl-formula">Mode (Mo)</span> — valeur la plus frequente — seul indicateur pour les variables <span class="hl-important">qualitatives nominales</span>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            Si <span class="hl-critical">mediane &lt; moyenne</span> : quelques valeurs elevees tirent la moyenne vers le haut (distribution asymetrique a droite).
+        </div>
+
+        <div class="section-title">Indicateurs de dispersion</div>
+
+        <div class="block block-formula">
+            <div class="block-label">Formules</div>
+            <span class="hl-formula">Etendue (E) = Max - Min</span>
+            <br><span class="hl-formula">Variance (&#963;&sup2;) = &#8721;(xi - x&#772;)&sup2; / n</span>
+            <br><span class="hl-formula">Ecart-type (&#963;) = &#8730;(variance)</span> — dispersion dans la meme unite que la variable
+            <br><span class="hl-formula">CV = (&#963; / x&#772;) &times; 100</span> — dispersion relative en %
+            <br><span class="hl-formula">Quartiles</span> : Q1 (25%), Q2 = Mediane (50%), Q3 (75%)
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">A retenir</div>
+            Forte dispersion = <span class="hl-critical">heterogeneite du groupe</span> = a explorer managerialement.
+        </div>
+
+        <div class="section-title">Visualisation : quel graphique pour quelle variable ?</div>
+
+        <table class="compact-table">
+            <tr><th>Graphique</th><th>Usage</th><th>Type de variable</th></tr>
+            <tr><td>Histogramme</td><td>Distribution</td><td>Quantitative</td></tr>
+            <tr><td>Diag. en barres / batons</td><td>Comparaison de categories</td><td>Qualitative</td></tr>
+            <tr><td>Diag. circulaire</td><td>Repartition en proportions</td><td>Qualitative</td></tr>
+            <tr><td><span class="hl-important">Boxplot</span></td><td>Comparer groupes + valeurs extremes</td><td>Quantitative (comparaison)</td></tr>
+        </table>
+
+        <div class="section-title">4 pieges frequents</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-critical">Confondre moyenne et mediane</span> — Ex : salaire moyen 4 000 euros mais fortes inegalites</li>
+            <li><span class="hl-critical">Oublier la dispersion</span> — 2 groupes, meme moyenne, realites tres differentes</li>
+            <li>Se baser sur les <span class="hl-important">valeurs extremes</span> sans les identifier</li>
+            <li>Negliger la <span class="hl-important">taille d'echantillon</span></li>
+        </ul>
+
+        <div class="section-title">Jamovi : demarche d'analyse</div>
+
+        <ul class="condensed-list">
+            <li>Logiciel <span class="hl-important">gratuit et open source</span>, interface intuitive, resultats en temps reel</li>
+            <li>Definir le type de mesure : <span class="hl-critical">Nominal / Ordinal / Continu / Identite</span></li>
+            <li>Menu : <strong>Analyses → Exploration → Statistiques Descriptives</strong></li>
+            <li>Glisser variables, cocher stats (moyenne, mediane, ecart-type...), ajouter graphiques</li>
+            <li>Export : PDF, HTML, CSV, copie Word/PowerPoint</li>
+        </ul>
+
+        <div class="section-title">Etude de cas CafeEMN — Chiffres cles</div>
+
+        <table class="compact-table">
+            <tr><th>Indicateur</th><th>Valeur</th><th>Interpretation</th></tr>
+            <tr><td>Age moyen</td><td>32,7 ans</td><td>Clientele jeune</td></tr>
+            <tr><td>% Femmes</td><td>54,6%</td><td>Legerement plus de femmes</td></tr>
+            <tr><td>Frequence visite</td><td>2,28/sem</td><td>Clientele reguliere</td></tr>
+            <tr><td>Satisfaction</td><td>7,77/10 (&#963;=0,91)</td><td>Bonne, peu dispersee</td></tr>
+            <tr><td>Montant ticket</td><td>6,83 euros (Med=6,85)</td><td>Panier stable et homogene</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Enseignement cle</div>
+            Clients venant ≥3 fois/sem = satisfaction plus elevee. <span class="hl-critical">Fidelite rime avec satisfaction</span>. Recommandation : programme de fidelite.
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelles sont les 4 familles de variables ?
+            <span class="answer">Qualitative nominale, qualitative ordinale, quantitative discrete, quantitative continue.</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le seul indicateur de tendance centrale utilisable pour une variable qualitative nominale ?
+            <span class="answer">Le mode (valeur la plus frequente).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la formule de la variance ?
+            <span class="answer">&#963;&sup2; = &#8721;(xi - x&#772;)&sup2; / n — moyenne des carres des ecarts a la moyenne.</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi la mediane est-elle plus robuste que la moyenne ?
+            <span class="answer">Parce qu'elle n'est pas influencee par les valeurs extremes. Si mediane &lt; moyenne, quelques valeurs elevees tirent la moyenne vers le haut.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels indicateurs et graphiques pour une variable qualitative nominale ?
+            <span class="answer">Frequence absolue, frequence relative, mode. Graphiques : diagramme circulaire, diagramme en batons.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels indicateurs et graphiques pour une variable quantitative continue ?
+            <span class="answer">Moyenne, mediane, ecart-type, variance, min, max, quartiles, etendue. Graphiques : histogramme, boxplot.</span>
+        </div>
+
+        <div class="flash-q">
+            Que signifie une forte dispersion dans les donnees ?
+            <span class="answer">Une heterogeneite du groupe, a explorer managerialement (ex : segmenter la clientele, identifier les profils extremes).</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 4 types de mesure dans Jamovi ?
+            <span class="answer">Nominal, Ordinal, Continu, Identite.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/ANALYSE_QUANTI/ch1_analyse_descriptive.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/ANALYSE%20QUANTI/Cours%201.pdf">Cours original (PDF)</a>
+    </div>
+</body>
+</html>

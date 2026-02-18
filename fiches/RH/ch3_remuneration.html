@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision -- RH Cours 3 : La Remuneration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "? "; font-weight: bold; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Ressources Humaines</div>
+        <h1>Cours 3 -- La Remuneration</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Les 5 dimensions de la remuneration</div>
+
+        <table class="compact-table">
+            <tr><th>Dimension</th><th>Point cle</th></tr>
+            <tr><td><span class="hl-critical">Economique</span></td><td>57,6 % de la VA des entreprises (2019)</td></tr>
+            <tr><td><span class="hl-critical">Psychologique</span></td><td>Levier de motivation / demotivation</td></tr>
+            <tr><td><span class="hl-important">Sociologique</span></td><td>Lien remuneration - statut social</td></tr>
+            <tr><td><span class="hl-important">Politique</span></td><td>Rapport de forces direction / partenaires sociaux</td></tr>
+            <tr><td><span class="hl-important">Ethique & juridique</span></td><td>A travail egal, salaire egal</td></tr>
+        </table>
+
+        <div class="section-title">3 objectifs de la politique de remuneration</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-critical">Strategie interne</span> : coherence avec les objectifs economiques et strategiques</li>
+            <li><span class="hl-critical">Marche de l'emploi</span> : attirer en nombre et en qualite, prendre en compte le secteur et le bassin d'emploi</li>
+            <li><span class="hl-critical">Salaries en poste</span> : reguler le turnover + stimuler la performance</li>
+        </ul>
+
+        <div class="section-title">Les 4 composantes de la remuneration</div>
+
+        <table class="compact-table">
+            <tr><th>Composante</th><th>Horizon</th><th>Exemples</th></tr>
+            <tr><td><span class="hl-critical">Remuneration directe</span></td><td>Court terme</td><td>Salaire fixe (qualification) + variable (performance) + primes</td></tr>
+            <tr><td><span class="hl-critical">Peripheriques legaux</span></td><td>Moyen terme</td><td>Interessement, participation, PEE</td></tr>
+            <tr><td><span class="hl-important">Avantages en nature</span></td><td>Court terme</td><td>Voiture, logement, cheques dejeuner</td></tr>
+            <tr><td><span class="hl-important">Peripheriques statutaires</span></td><td>CT / MT / LT</td><td>Mutuelle, CET, retraite complementaire</td></tr>
+        </table>
+
+        <div class="section-title">Peripheriques legaux -- tableau comparatif</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <table class="compact-table">
+                <tr><th>Dispositif</th><th>Creation</th><th>Caractere</th><th>Seuil / condition</th></tr>
+                <tr><td><span class="hl-critical">Interessement</span></td><td>1959</td><td>Facultatif</td><td>Tous salaries ; forfait social 20 % (&gt; 250 sal.)</td></tr>
+                <tr><td><span class="hl-critical">Participation</span></td><td>1967</td><td>Obligatoire</td><td>50 sal./mois pendant 5 ans ; forfait social 20 %</td></tr>
+                <tr><td><span class="hl-critical">PEE</span></td><td>1967</td><td>Facultatif</td><td>Bloque 5 ans ; abondement possible ; forfait social 20 %</td></tr>
+            </table>
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Formule</div>
+            <strong>RSP</strong> = 1/2 x (Benefice - 5 % Capitaux propres) x (Salaires / VA)
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">Nouveaute 2025</div>
+            Entreprises de <span class="hl-critical">11 a 49 salaries</span> : obligation de partage de la valeur si benefice net fiscal &ge; 1 % du CA pendant <span class="hl-critical">3 annees consecutives</span> (interessement, participation, abondement PEE, ou prime de partage de la valeur).
+        </div>
+
+        <div class="section-title">La masse salariale</div>
+
+        <div class="block block-def">
+            <div class="block-label">Formule</div>
+            Remunerations nettes + Charges sociales = <span class="hl-critical">Brut</span><br>
+            Brut + Charges patronales (25-42 %) = <span class="hl-critical">Masse salariale</span>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Exemple</div>
+            Net ~1 570 + charges ~430 = Brut 2 000. Brut 2 000 + patronales 500-840 = <strong>Masse salariale 2 500 a 2 840</strong>.
+        </div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Facteurs emploi</span> : mouvements (entrees/sorties), promotions, emplois flexibles (CDD, interim)</li>
+            <li><span class="hl-important">Facteurs remuneration</span> : augmentations generales, categorielles, individuelles</li>
+        </ul>
+
+        <div class="section-title">Le mix-remuneration -- 5 objectifs</div>
+
+        <table class="compact-table">
+            <tr><th>Objectif</th><th>Levier de remuneration privilegie</th></tr>
+            <tr><td><span class="hl-critical">Attirer</span></td><td>Remuneration directe elevee (salaire de base + primes)</td></tr>
+            <tr><td><span class="hl-critical">Fideliser</span></td><td>Remuneration differee (stock-options, actionnariat) + avantages (mutuelle, logement)</td></tr>
+            <tr><td><span class="hl-critical">Motiver</span></td><td>Variable individuel lie a la performance percue comme influencable</td></tr>
+            <tr><td><span class="hl-important">Impliquer collectivement</span></td><td>Variable collectif (interessement, participation, actionnariat salarie)</td></tr>
+            <tr><td><span class="hl-important">Climat social</span></td><td>Augmentations generales, equite interne, pas d'individualisme excessif</td></tr>
+        </table>
+
+        <div class="section-title">Tendances d'evolution (Peretti)</div>
+
+        <table class="compact-table">
+            <tr><th>Enjeu environnement</th><th>Tendance</th></tr>
+            <tr><td>Competitivite par les <span class="hl-critical">couts</span></td><td>Part <span class="hl-critical">variable</span> en hausse</td></tr>
+            <tr><td>Competitivite par la <span class="hl-critical">qualite</span></td><td><span class="hl-critical">Individualisation</span> croissante</td></tr>
+            <tr><td>Imperatifs du marche <span class="hl-critical">financier</span></td><td>Part <span class="hl-critical">differee</span> en hausse</td></tr>
+        </table>
+
+        <div class="section-title">Conclusion -- 4 qualites d'une bonne politique</div>
+
+        <div class="block block-attention">
+            <div class="block-label">A retenir absolument</div>
+            <span class="hl-critical">Equitable</span> -- <span class="hl-critical">Motivante</span> -- <span class="hl-critical">Competitive</span> -- <span class="hl-critical">Souple</span>
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelles sont les 5 dimensions de la remuneration ?
+            <span class="answer">Economique (57,6 % de la VA), Psychologique (motivation), Sociologique (statut), Politique (rapport de forces), Ethique/juridique (a travail egal, salaire egal).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la formule de la reserve speciale de participation ?
+            <span class="answer">RSP = 1/2 x (Benefice - 5 % Capitaux propres) x (Salaires / VA).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre interessement et participation ?
+            <span class="answer">Interessement = facultatif, lie aux resultats/performances. Participation = obligatoire (50+ salaries pendant 5 ans), liee aux benefices.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 5 objectifs du mix-remuneration et leurs leviers ?
+            <span class="answer">Attirer (fixe eleve), Fideliser (differe + avantages), Motiver (variable individuel), Impliquer (variable collectif), Climat social (augmentations generales).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 3 tendances d'evolution selon Peretti ?
+            <span class="answer">Competitivite couts = plus de variable. Competitivite qualite = individualisation. Marche financier = plus de differe.</span>
+        </div>
+
+        <div class="flash-q">
+            Comment se calcule la masse salariale ?
+            <span class="answer">Net + charges sociales salariales = Brut. Brut + charges patronales (25-42 %) = Masse salariale.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 4 qualites d'une bonne politique de remuneration ?
+            <span class="answer">Equitable, Motivante, Competitive, Souple.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/RH/ch3_remuneration.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/RH/cour%203.pdf">Cours original (PDF)</a>
+    </div>
+</body>
+</html>

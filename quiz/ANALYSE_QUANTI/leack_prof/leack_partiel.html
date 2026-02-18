@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Leack Prof — Partiel : Analyse Quantitative</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #3b82f6; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #3b82f6; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(59,130,246,0.08); border-left: 3px solid #3b82f6; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #93c5fd; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #3b82f6; color: white; margin-left: auto; }
+        .btn-next:hover { background: #2563eb; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #3b82f6; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #3b82f6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #2563eb; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #3b82f6; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">ANALYSE QUANTITATIVE — QUIZ</div>
+        <h1>Leack Prof — Partiel : Résumé + Correction</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Dans le partiel FeelWell, l'histogramme de satisfaction de 480 utilisateurs est unimodal et symétrique. Que peut-on conclure ?",
+        options: ["La moyenne est nécessairement inférieure à la médiane", "Moyenne = Médiane = Mode, la distribution est équilibrée", "Il faut utiliser la médiane car la distribution est asymétrique", "La dispersion est obligatoirement faible"],
+        correct: 1,
+        explanation: "Une distribution unimodale symétrique implique Moyenne = Médiane = Mode. Cependant, un sous-groupe avec des notes très faibles pourrait tirer la moyenne vers le bas. Dans ce cas, la médiane reste plus représentative malgré la symétrie globale."
+    },
+    {
+        q: "Dans la matrice FeelWell, Engagement/Dépenses : r = 0,68** et Stress/Dépenses : r = 0,16*. Quelle interprétation est correcte ?",
+        options: ["Les deux corrélations sont exploitables managérialement car toutes deux significatives", "r = 0,68 est forte et pertinente ; r = 0,16 est significatif mais trop faible pour conclure managérialement", "r = 0,16 est plus fiable car le ** indique une meilleure significativité", "Les deux corrélations sont faibles et sans intérêt pratique"],
+        correct: 1,
+        explanation: "Piège classique du partiel : significatif ≠ fort. r = 0,68** = forte corrélation positive, pertinente → levier de revenus réel. r = 0,16* = statistiquement significatif (p < 0,05) mais |r| < 0,20 = très faible, aucune pertinence managériale. Ne jamais baser une décision sur r = 0,16."
+    },
+    {
+        q: "Dans la régression dépenses santé USA, R² = 0,724 et le test F donne p < 0,001. Que signifie ce résultat ?",
+        options: ["Le modèle explique 72,4 % de la variance des dépenses et est globalement significatif — excellente qualité", "72,4 % des patients sont correctement classifiés par le modèle", "Il y a 72,4 % de chances que la prédiction soit correcte pour un individu", "R² = 0,724 est insuffisant, un bon modèle doit dépasser 0,90"],
+        correct: 0,
+        explanation: "R² = 0,724 signifie que 72,4 % de la variabilité des dépenses santé est expliquée par le modèle (tabagisme, âge, nb d'enfants, sexe). F = 873 avec p < 0,001 confirme que le modèle est globalement significatif. C'est une excellente qualité d'ajustement."
+    },
+    {
+        q: "Dans la régression dépenses santé USA, le tabagisme a B = 23 836,9 et β_std = 1,968. Que conclure ?",
+        options: ["Le tabagisme a une influence faible car le β standardisé est supérieur à 1, ce qui signale une erreur", "Le tabagisme est le prédicteur avec la PLUS GRANDE influence relative sur les dépenses santé", "B = 23 836,9 signifie que le tabagisme coûte exactement ce montant à chaque individu", "Le β standardisé ne peut pas servir à comparer les prédicteurs"],
+        correct: 1,
+        explanation: "Le β standardisé (1,968) est le plus élevé en valeur absolue parmi tous les prédicteurs → c'est le facteur le plus influent. B = 23 836,9 signifie qu'un fumeur dépense en moyenne ~23 837 $ de plus qu'un non-fumeur (toutes choses égales). Le β > 1 est possible en régression multiple."
+    },
+    {
+        q: "Dans la même régression, le coefficient du sexe est B = 61,3 avec p = 0,861. Que faire de cette variable ?",
+        options: ["La garder car B = 61,3 représente un montant significatif", "L'ignorer dans les conclusions : p = 0,861 >> 0,05, la variable n'est pas significative", "La transformer en variable continue pour améliorer le modèle", "Elle confirme que les hommes dépensent systématiquement 61,3 $ de plus"],
+        correct: 1,
+        explanation: "p = 0,861 >> 0,05 : la variable Sexe n'est pas statistiquement significative. On ne peut pas rejeter H0 (B = 0). Cette variable n'apporte rien au modèle. Il faut IGNORER son coefficient dans les conclusions. Seuls les prédicteurs avec p < 0,05 sont interprétables."
+    },
+    {
+        q: "Quelle mesure utiliser pour décrire une distribution fortement asymétrique avec des valeurs extrêmes élevées ?",
+        options: ["La moyenne, car elle utilise toutes les données", "Le mode, car c'est la valeur la plus fréquente", "La médiane, car elle est robuste aux valeurs extrêmes", "L'écart-type, car il mesure la dispersion"],
+        correct: 2,
+        explanation: "En présence de valeurs extrêmes (salaires très élevés, dépenses anormales...), la moyenne est tirée vers la queue et devient non représentative. La médiane n'est pas influencée par les valeurs extrêmes (outliers) et reste le meilleur indicateur de tendance centrale dans ce cas."
+    },
+    {
+        q: "Dans l'étude FeelWell, Satisfaction/Engagement : r = 0,63** et Stress/Satisfaction : r = −0,39**. Quelle recommandation managériale en découle ?",
+        options: ["Augmenter le stress pour améliorer les dépenses, les deux étant liés positivement", "Réduire le stress pour améliorer la satisfaction et ainsi l'engagement des utilisateurs", "Ignorer ces corrélations, elles sont trop faibles pour être exploitables", "Lancer une ANOVA pour confirmer ces résultats avant toute décision"],
+        correct: 1,
+        explanation: "Chaîne causale suggérée : Réduire stress (r = −0,39 avec satisfaction) → améliore satisfaction → améliore engagement (r = +0,63) → augmente les dépenses (r = +0,68). Recommandation : fonctionnalités anti-stress (méditation, coaching). Attention : corrélation ≠ causalité, mais la logique est cohérente."
+    },
+    {
+        q: "Pour analyser la relation entre le revenu annuel (continu) et la région géographique (5 régions), quel test est adapté ?",
+        options: ["Corrélation de Pearson", "Test du Khi-deux + V de Cramér", "ANOVA (+ test post-hoc de Tukey)", "Test t de Student"],
+        correct: 2,
+        explanation: "Revenu = variable quantitative. Région = variable qualitative à 5 modalités (≥ 3 groupes). Règle : Qualitative (3+ groupes) + Quantitative → ANOVA. Après une ANOVA significative, le test de Tukey est obligatoire pour identifier quelles paires de régions diffèrent."
+    },
+    {
+        q: "Le R² ajusté est préféré au R² simple pour comparer des modèles. Pourquoi ?",
+        options: ["Le R² ajusté est toujours plus élevé que le R² simple", "Le R² ajusté pénalise l'ajout de variables non pertinentes et corrige pour le nombre de prédicteurs", "Le R² simple est instable et change à chaque calcul", "Le R² ajusté s'applique uniquement aux modèles avec variables qualitatives"],
+        correct: 1,
+        explanation: "Le R² simple augmente mécaniquement avec chaque variable ajoutée, même non pertinente. Le R² ajusté intègre une pénalité pour le nombre de variables, ce qui évite le sur-ajustement (overfitting). Pour comparer deux modèles avec des nombres différents de prédicteurs, toujours utiliser le R² ajusté."
+    },
+    {
+        q: "Vous lisez : 'Test de Levene : p = 0,12 → ANOVA Fisher : F = 9,85, p < 0,001 → Tukey : IT ≠ Marketing'. Résumez la démarche correcte.",
+        options: ["Levene non significatif = variances hétérogènes → Welch utilisé → IT différent de Marketing", "Levene non significatif = variances homogènes → Fisher valide → ANOVA significative → Tukey identifie IT ≠ Marketing", "Levene significatif = erreur, il faut relancer l'analyse", "Fisher non significatif = aucune différence entre groupes"],
+        correct: 1,
+        explanation: "Démarche complète : 1) Levene p = 0,12 > 0,05 → variances homogènes → Fisher valide. 2) F = 9,85, p < 0,001 → rejeter H0, différences significatives entre groupes. 3) Tukey → IT ≠ Marketing (paire spécifique identifiée). C'est la séquence Levene → Fisher/Welch → Tukey qu'il faut maîtriser à l'examen."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

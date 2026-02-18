@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Cours 2 : Analyse bivariée</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #3b82f6; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #3b82f6; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(59,130,246,0.08); border-left: 3px solid #3b82f6; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #93c5fd; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #3b82f6; color: white; margin-left: auto; }
+        .btn-next:hover { background: #2563eb; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #3b82f6; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #3b82f6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #2563eb; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #3b82f6; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">ANALYSE QUANTITATIVE — QUIZ</div>
+        <h1>Cours 2 — Analyse bivariée et relations entre variables</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "On veut analyser la relation entre le genre (H/F) et la préférence de produit (A/B/C). Quel test utiliser ?",
+        options: ["Test t de Student", "Corrélation de Pearson", "Test du Khi-deux", "ANOVA"],
+        correct: 2,
+        explanation: "Genre = qualitative nominale, Préférence = qualitative nominale. Deux variables qualitatives → test du Khi-deux. La force de l'association sera mesurée par le V de Cramér."
+    },
+    {
+        q: "On veut savoir si le chiffre d'affaires (en €) est lié à l'ancienneté de l'entreprise (en années). Quel test utiliser ?",
+        options: ["Test du Khi-deux", "Corrélation de Pearson", "Test t de Student", "Test de Levene"],
+        correct: 1,
+        explanation: "Chiffre d'affaires = quantitative, Ancienneté = quantitative. Deux variables quantitatives → corrélation de Pearson. On mesure la force (|r|) et le sens (+ ou −) de la relation linéaire."
+    },
+    {
+        q: "On compare la satisfaction moyenne (note sur 10) entre hommes et femmes. Quel test utiliser ?",
+        options: ["Khi-deux", "Pearson", "Test t de Student", "ANOVA"],
+        correct: 2,
+        explanation: "Satisfaction = quantitative, Genre = qualitative à 2 modalités (H/F). Quantitative + Qualitative à 2 groupes → Test t de Student pour comparer les moyennes des deux groupes."
+    },
+    {
+        q: "Un r de Pearson = −0,72 avec p < 0,05. Quelle est l'interprétation correcte ?",
+        options: ["Corrélation faible et non significative", "Corrélation forte négative et statistiquement significative", "Corrélation modérée positive et significative", "Corrélation très forte mais non significative"],
+        correct: 1,
+        explanation: "|r| = 0,72 se situe dans la plage 0,60–0,80 = forte. Le signe négatif indique une relation inverse (quand l'une augmente, l'autre diminue). p < 0,05 confirme la significativité statistique. Interprétation : corrélation forte négative et significative."
+    },
+    {
+        q: "Dans un test du Khi-deux, H0 est :",
+        options: ["Il existe une association entre les deux variables", "Les deux variables sont indépendantes (pas d'association)", "Les moyennes des deux groupes sont égales", "La corrélation est significativement différente de 0"],
+        correct: 1,
+        explanation: "H0 du Khi-deux : les deux variables sont indépendantes (pas d'association). H1 : il existe une association. Si p < 0,05, on rejette H0 et on conclut à une association statistiquement significative."
+    },
+    {
+        q: "Un V de Cramér = 0,38 s'interprète comme :",
+        options: ["Association très faible, non exploitable", "Association modérée à forte", "Association très forte (quasi-parfaite)", "Absence d'association"],
+        correct: 1,
+        explanation: "Échelle du V de Cramér : 0–0,10 = très faible ; 0,10–0,30 = faible à modérée ; 0,30–0,50 = modérée à forte ; > 0,50 = très forte. Un V = 0,38 indique donc une association modérée à forte."
+    },
+    {
+        q: "Quelle est la condition de validité du Khi-deux concernant les effectifs attendus ?",
+        options: ["Tous les effectifs attendus doivent être supérieurs à 10", "Les effectifs attendus doivent être > 5 dans au moins 80 % des cases", "L'effectif total doit être supérieur à 100", "Chaque case doit contenir au moins 30 observations"],
+        correct: 1,
+        explanation: "Pour que le test du Khi-deux soit valide : observations indépendantes + échantillon suffisamment grand + effectifs attendus > 5 dans au moins 80 % des cases. Si cette condition n'est pas remplie, les résultats ne sont pas fiables."
+    },
+    {
+        q: "r de Pearson = 0,16 avec p = 0,02. Quelle conclusion est correcte ?",
+        options: ["Corrélation forte et très exploitable managérialement", "Corrélation statistiquement significative mais d'intensité très faible, sans pertinence pratique", "Corrélation non significative à ignorer", "Résultat incohérent : impossible d'avoir r faible et p significatif"],
+        correct: 1,
+        explanation: "Piège classique d'examen : significativité statistique ≠ pertinence pratique. r = 0,16 est dans la plage très faible (0–0,20). Même si p < 0,05 (souvent dû à un grand N), l'effet est négligeable d'un point de vue managérial. Ne pas baser de décision sur r = 0,16."
+    },
+    {
+        q: "Dans une régression linéaire multiple, le R² = 0,724. Que signifie ce chiffre ?",
+        options: ["72,4 % des observations sont correctement classées", "72,4 % de la variance de la variable dépendante est expliquée par le modèle", "La corrélation entre les variables est de 0,724", "Le modèle commet 72,4 % d'erreurs de prédiction"],
+        correct: 1,
+        explanation: "R² (coefficient de détermination) = proportion de variance de la variable dépendante expliquée par le(s) prédicteur(s). R² = 0,724 signifie que le modèle explique 72,4 % de la variabilité observée. C'est une très bonne qualité d'ajustement."
+    },
+    {
+        q: "Pour comparer l'importance relative de deux prédicteurs mesurés dans des unités différentes (âge en années vs revenu en euros), on utilise :",
+        options: ["Les coefficients B non standardisés", "Les coefficients bêta standardisés", "La p-value de chaque variable", "Le R² du modèle"],
+        correct: 1,
+        explanation: "Les coefficients B dépendent de l'unité de mesure (on ne peut pas comparer 'un an d'âge' avec 'un euro de revenu'). Les coefficients bêta standardisés ramènent tout à une échelle commune (écarts-types), permettant de comparer l'influence relative des prédicteurs entre eux."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

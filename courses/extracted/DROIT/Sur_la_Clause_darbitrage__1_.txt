@@ -1,0 +1,26 @@
+**Litiges couverts par une clause compromissoire dans un contrat international**
+
+La clause d\'arbitrage figurant dans un contrat international doit être appliquée en cas de litige concernant la validité de garanties bancaires émises au profit des cocontractants, le lien entre ces garanties et le contrat principal étant évident, même si le garant n\'est pas partie au contrat contenant la clause.
+
+CA Paris 24-5-2022 n° 21/21700, Sté TCM FR SA c/ Sté Natural Gas Storage Company
+
+[Publiée le 07/10/2022\
+](https://www.efl.fr/archives/2022/10)
+
+Par **Sophie CLAUDE-FENDT**
+
+Une société française a conclu avec une société iranienne un **contrat** **portant sur la construction d\'une installation de stockage de gaz naturel en Iran**. Le contrat contient une clause compromissoire prévoyant « la compétence d\'un tribunal arbitral si un litige ou un différend de quelque nature que ce soit survient entre la société et l\'entrepreneur à propos du contrat ou de l\'exécution des travaux ou après leur achèvement, et ce, avant ou après la résiliation, l\'abandon ou la violation du contrat ». Des garanties bancaires sont émises en faveur de la société iranienne par une banque iranienne contre des garanties fournies par une banque française. **La société iranienne cède ensuite le contrat de construction** à une autre société iranienne. Cette dernière résilie alors le contrat, invoquant que la société française ne l\'a pas exécuté correctement.
+
+Les **garanties bancaires et contre-garanties** ayant alors été appelées, la société française a demandé au **tribunal de commerce de Paris de les déclarer nulles et non avenues,** au motif qu\'elles étaient invalides car elles n\'avaient pas été transférées à la deuxième société iranienne en même temps que le contrat de construction.
+
+La Cour d\'appel de Paris a jugé que le tribunal de commerce n\'était pas compétent pour connaître de l\'affaire. En présence d\'une clause compromissoire, même si le tribunal arbitral n\'est pas saisi, le tribunal national doit se déclarer incompétent, à moins qu\'un **examen sommaire** ne lui permette de constater que la clause est nulle ou manifestement inapplicable, la priorité étant donnée à l\'arbitre, qui doit se prononcer sur sa propre compétence pour juger de la validité et de l\'efficacité de la clause (articles [1448](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006412634/1981-05-14) et [1506](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023450642) du Code de procédure civile[)](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023450642).
+
+En l\'espèce, la question de savoir si les garanties avaient été cédées en même temps que le contrat contenant la clause d\'arbitrage avait un **lien évident** avec ce dernier. En outre, l\'entreprise de construction elle-même a déclaré que l\'ensemble **de l\'équilibre et de la faisabilité du projet reposait sur un système de garanties** et que les garanties et contre-garanties avaient été émises conformément au contrat.
+
+En conséquence, la clause compromissoire n\'était pas manifestement inapplicable et le tribunal arbitral était compétent pour l\'interpréter afin de déterminer si l\'action relevait de son champ d\'application, indépendamment du fait que la banque iranienne n\'avait pas signé le contrat de construction, car **l\'effet relatif des contrats** n\'était pas de nature à empêcher le litige d\'être soumis à l\'arbitrage.
+
+Remarque
+
+La clause compromissoire doit s\'appliquer à tous **les litiges liés au contrat**, tels que ceux relatifs aux conditions de résiliation du contrat et aux conséquences qui en découlent (Cass. 1^e^civ. 8-7-2010 n° 09-67.013 FS-PBI : D. 2010 p. 1797 obs. X. Delpech).
+
+Il a déjà été jugé qu\'une clause compromissoire insérée dans un contrat international a une validité et une efficacité propres qui exigent **que** son **application** soit étendue **aux parties directement impliquées dans l\'exécution du contrat et dans les litiges qui peuvent en découler**, lorsqu\'il est établi que leur situation et leurs activités permettent de présumer qu\'elles avaient connaissance de l\'existence et de la portée de la clause compromissoire, même si elles n\'étaient pas signataires du contrat qui la prévoit ; le fait que l\'implication du tiers dans l\'exécution du contrat stipulant la clause résulte d\'obligations contractées en vertu d\'un autre contrat ne signifie pas que cette implication n\'étend pas la clause d\'arbitrage à ce tiers (CA Paris 18-12-2018 n° 16/24924).

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leack Partiel — Analyse Quantitative</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+    .fiche-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0; }
+    .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+    .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+    .fiche-body { background: white; padding: 1.8rem 2rem; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto; }
+    .section-title { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e8eaf0; text-transform: uppercase; letter-spacing: 1px; }
+    .block-def { background: #f0f4ff; border-left: 4px solid #4361ee; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+    .block-def strong { color: #4361ee; }
+    .block-attention { background: #fff4f0; border-left: 4px solid #e63946; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+    .block-attention::before { content: "⚠ ATTENTION — "; font-weight: 700; color: #e63946; }
+    .block-astuce { background: #f0fff4; border-left: 4px solid #2dc653; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+    .block-astuce::before { content: "✓ ASTUCE — "; font-weight: 700; color: #2dc653; }
+    .hl-critical { background: #ffe8e8; color: #c0392b; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700; }
+    .hl-important { background: #fff3cd; color: #856404; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 600; }
+    .compact-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.85rem; }
+    .compact-table th { background: #1a1a2e; color: white; padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; }
+    .compact-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #e8eaf0; }
+    .compact-table tr:nth-child(even) td { background: #f8f9ff; }
+    .flash-q { background: #1a1a2e; color: white; padding: 0.6rem 1rem; border-radius: 8px; margin: 0.5rem 0 0.2rem; font-weight: 600; font-size: 0.9rem; }
+    .flash-a { background: #f8f9ff; padding: 0.6rem 1rem; border-radius: 0 0 8px 8px; margin-bottom: 0.8rem; font-size: 0.88rem; border: 1px solid #e8eaf0; border-top: none; }
+    .source-footer { margin-top: 2rem; padding: 0.8rem; background: #f8f9ff; border-radius: 8px; font-size: 0.8rem; color: #666; }
+    .source-footer a { color: #4361ee; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+  <div class="fiche-header">
+    <div class="matiere">Analyse Quantitative — Leack Prof</div>
+    <h1>Leack Partiel — Résumé + Correction</h1>
+  </div>
+
+  <div class="fiche-body">
+
+    <!-- 1. TYPES DE VARIABLES -->
+    <div class="section-title">1. Types de Variables</div>
+
+    <div class="block-def">
+      <strong>Qualitative nominale</strong> — Catégories SANS ordre. Ex : Genre, Ville<br>
+      <strong>Qualitative ordinale</strong> — Catégories AVEC ordre. Ex : Satisfaction (faible / moyen / fort)<br>
+      <strong>Quantitative discrète</strong> — Valeurs entières. Ex : Nombre de commandes<br>
+      <strong>Quantitative continue</strong> — Valeurs réelles. Ex : Salaire, Chiffre d'affaires
+    </div>
+
+    <!-- 2. STATISTIQUES DESCRIPTIVES -->
+    <div class="section-title">2. Statistiques Descriptives</div>
+
+    <div class="block-def">
+      <strong>Tendance centrale</strong><br>
+      <strong>Moyenne</strong> = somme / n — sensible aux valeurs extrêmes<br>
+      <strong>Médiane</strong> = valeur centrale — robuste aux outliers<br>
+      <strong>Mode</strong> = valeur la plus fréquente<br>
+      <span class="hl-important">Distribution symétrique => Moyenne = Médiane = Mode</span>
+    </div>
+
+    <div class="block-def">
+      <strong>Dispersion</strong><br>
+      <strong>Étendue</strong> = Max − Min<br>
+      <strong>Écart-type σ</strong> = √(variance)<br>
+      <strong>CV</strong> = σ / moyenne × 100% — dispersion relative (comparaison entre groupes)<br>
+      <strong>IQR</strong> = Q3 − Q1 — robuste aux outliers
+    </div>
+
+    <div class="block-attention">Si des valeurs extrêmes sont présentes, la <strong>médiane</strong> est plus représentative que la moyenne.</div>
+
+    <!-- 3. GRAPHIQUES -->
+    <div class="section-title">3. Graphiques</div>
+
+    <table class="compact-table">
+      <thead>
+        <tr><th>Graphique</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Histogramme</strong></td><td>Variables quantitatives continues</td></tr>
+        <tr><td><strong>Diagramme en barres</strong></td><td>Variables qualitatives</td></tr>
+        <tr><td><strong>Boxplot</strong></td><td>Comparer des groupes, détecter des outliers</td></tr>
+        <tr><td><strong>Asymétrique droite</strong></td><td>Queue vers la droite, valeurs concentrées à gauche</td></tr>
+        <tr><td><strong>Asymétrique gauche</strong></td><td>Queue vers la gauche, valeurs concentrées à droite</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 4. CHOISIR LE BON TEST -->
+    <div class="section-title">4. Choisir le Bon Test <span class="hl-critical">CRITIQUE EXAMEN</span></div>
+
+    <table class="compact-table">
+      <thead>
+        <tr><th>Variable 1</th><th>Variable 2</th><th>Test à utiliser</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Qualitative</td><td>Qualitative</td><td>Khi-deux (+ V de Cramér)</td></tr>
+        <tr><td>Quantitative</td><td>Quantitative</td><td>Corrélation de Pearson</td></tr>
+        <tr><td>Qualitative (2 groupes)</td><td>Quantitative</td><td>Test t de Student</td></tr>
+        <tr><td>Qualitative (3+ groupes)</td><td>Quantitative</td><td>ANOVA + Tukey post hoc</td></tr>
+        <tr><td>Plusieurs variables</td><td>1 variable continue</td><td>Régression linéaire multiple</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 5. CORRÉLATION DE PEARSON -->
+    <div class="section-title">5. Corrélation de Pearson</div>
+
+    <div class="block-def">
+      <strong>r</strong> compris entre −1 et +1<br>
+      |r| 0–0.20 : très faible &nbsp;|&nbsp; 0.20–0.40 : faible &nbsp;|&nbsp; 0.40–0.60 : modérée &nbsp;|&nbsp; 0.60–0.80 : forte &nbsp;|&nbsp; 0.80–1.00 : très forte<br><br>
+      H0 : r = 0 &nbsp;/&nbsp; H1 : r ≠ 0 &nbsp;/&nbsp; Décision : si <span class="hl-important">p ≤ 0.05 => H0 rejetée</span>
+    </div>
+
+    <div class="block-attention"><span class="hl-critical">Significatif ≠ Fort.</span> Ex : r = 0.16 avec p &lt; 0.05 = significatif mais TRÈS faible — aucune pertinence managériale réelle.</div>
+
+    <!-- 6. ANOVA -->
+    <div class="section-title">6. ANOVA</div>
+
+    <div class="block-def">
+      H0 : toutes les moyennes sont égales &nbsp;/&nbsp; H1 : au moins une est différente<br>
+      <strong>Variances homogènes</strong> (test de Levene) => utiliser <strong>Fisher</strong><br>
+      <strong>Variances hétérogènes</strong> => utiliser <strong>Welch</strong>
+    </div>
+
+    <div class="block-astuce">L'ANOVA dit S'IL y a une différence. Le test de Tukey dit <strong>LAQUELLE</strong>. Le post hoc Tukey est obligatoire pour identifier les groupes qui diffèrent.</div>
+
+    <!-- 7. RÉGRESSION LINÉAIRE MULTIPLE -->
+    <div class="section-title">7. Régression Linéaire Multiple</div>
+
+    <div class="block-def">
+      <strong>R²</strong> : % de variance expliquée. Ex : R² = 0.724 → <span class="hl-important">72,4% de la variance expliquée</span><br>
+      <strong>R² ajusté</strong> : à préférer pour comparer des modèles (corrigé pour le nb de variables)<br>
+      <strong>Test F</strong> : H0 = tous coeff = 0. Si p &lt; 0.05 => modèle globalement significatif<br>
+      <strong>β standardisé</strong> : permet de comparer l'influence RELATIVE des prédicteurs<br>
+      <strong>Variables qualitatives</strong> : un niveau de référence ; le coefficient = différence vs référence
+    </div>
+
+    <div class="block-attention">Un coefficient B élevé ne signifie pas une influence plus grande si les unités diffèrent. Toujours comparer via <span class="hl-critical">β standardisé</span>.</div>
+
+    <!-- 8. EXEMPLES DU PARTIEL -->
+    <div class="section-title">8. Exemples du Partiel à Connaître</div>
+
+    <div class="flash-q">Exo 1 — FeelWell : histogramme de satisfaction (480 users)</div>
+    <div class="flash-a">
+      Distribution <strong>unimodale, symétrique</strong>, pic centré sur 5–6, dispersion modérée (4–7).<br>
+      Distribution symétrique => <strong>Moyenne = Médiane = Mode</strong>.<br>
+      Risque : un petit groupe avec notes très faibles tire la moyenne vers le bas => <span class="hl-important">préférer la médiane</span>.
+    </div>
+
+    <div class="flash-q">Exo 2 — Matrice de corrélation FeelWell</div>
+    <div class="flash-a">
+      <strong>Engagement / Dépenses :</strong> r = 0.68** — forte, positive, significative => levier de revenus<br>
+      <strong>Utilisation / Dépenses :</strong> r = 0.62** — forte, positive => plus de temps = plus de dépenses<br>
+      <strong>Satisfaction / Engagement :</strong> r = 0.63** — forte, positive => satisfaits = plus engagés<br>
+      <strong>Stress / Satisfaction :</strong> r = −0.39** — négatif => plus de stress = moins de satisfaction = moins de fidélité<br>
+      <span class="hl-critical">PIÈGE :</span> <strong>Stress / Dépenses :</strong> r = 0.16* => significatif mais TRÈS faible, aucune pertinence managériale<br>
+      Méthode complémentaire suggérée : <span class="hl-important">régression linéaire multiple</span>
+    </div>
+
+    <div class="flash-q">Exo 3 — Régression dépenses santé USA</div>
+    <div class="flash-a">
+      R² = 0.724 (72,4% variance expliquée) — F = 873, p &lt; 0.001 => <strong>excellente qualité du modèle</strong><br>
+      <strong>Tabagisme :</strong> B = 23 836.9, β_std = 1.968 => <span class="hl-critical">PLUS GRANDE influence</span> (β_std le plus élevé)<br>
+      <strong>Âge :</strong> B = 273.1, p &lt; 0.001 => significatif (chaque année = +273$ de dépenses)<br>
+      <strong>Nb enfants :</strong> B = 486.2, p &lt; 0.001 => significatif<br>
+      <span class="hl-critical">PIÈGE :</span> <strong>Sexe :</strong> B = 61.3, p = 0.861 => <strong>NON significatif</strong> — à ignorer dans l'interprétation
+    </div>
+
+    <!-- FLASH QUESTIONS TYPES -->
+    <div class="section-title">Flash Questions Types</div>
+
+    <div class="flash-q">Quelle mesure utiliser quand la distribution est asymétrique ?</div>
+    <div class="flash-a">La <strong>médiane</strong> — robuste aux valeurs extrêmes. La moyenne est tirée vers la queue.</div>
+
+    <div class="flash-q">Comment identifier le prédicteur le plus influent en régression ?</div>
+    <div class="flash-a">Comparer les <strong>β standardisés</strong> (estimation standardisée). Le plus grand en valeur absolue = plus grande influence relative.</div>
+
+    <div class="flash-q">ANOVA significative : que faire ensuite ?</div>
+    <div class="flash-a">Obligatoirement un <strong>test post hoc de Tukey</strong> pour identifier quels groupes diffèrent entre eux.</div>
+
+    <div class="flash-q">r = 0.16, p = 0.03 — comment interpréter ?</div>
+    <div class="flash-a"><span class="hl-critical">Significatif mais TRÈS faible.</span> Statiquement significatif (p &lt; 0.05) mais la corrélation est négligeable — aucune conclusion managériale pertinente.</div>
+
+    <div class="flash-q">R² = 0.724 — que signifie ce chiffre ?</div>
+    <div class="flash-a">Le modèle explique <strong>72,4% de la variance</strong> de la variable dépendante. C'est un excellent pouvoir explicatif.</div>
+
+    <div class="source-footer">Sources : <a href="../../syntheses/ANALYSE_QUANTI/leack_prof/leack_partiel.html">Voir la synthèse complète</a> | Résumé du cours (37 slides) + Correction Partiel 2025/2026</div>
+
+  </div>
+</div>
+
+</body>
+</html>

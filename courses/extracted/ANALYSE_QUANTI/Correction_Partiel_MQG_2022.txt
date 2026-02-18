@@ -1,0 +1,53 @@
+Question 1 : 4 points
+Nature de la variable Code des Variables Indicateur(s) statistique (s) et
+(4*0,5= 2 points) graphiques correspondants
+(4*0,5= 2 points)
+Qualitative nominale 1, 2, 3, 4, 5, 1O - La fréquence absolue,
+- La fréquence relative,
+- Le mode
+- Le diagramme circulaire,
+- Le diagramme en bâtons
+Qualitative ordinale 11, 12 - La fréquence absolue,
+- La fréquence relative,
+- Le mode,
+- La médiane
+- Le diagramme circulaire,
+- Le diagramme en bâtons
+Quantitative continue 6, 8, 9, 13, 14 - La moyenne,
+- La médiane,
+- L’écart type,
+- Le minium,
+- Le maximum,
+- Les quartiles,
+- La variance,
+- L’étendue
+- L’histogramme,
+- Le boxplot
+Quantitative discrète 7, 15 - La moyenne,
+- La médiane,
+- L’écart type,
+- Le minium,
+- Le maximum,
+- Les quartiles,
+- La variance,
+- L’étendue
+- L’histogramme,
+- Le boxplot
+Question 2 : Analyse univariée 8 points
+Question 3 : 2,5 points
+1. Justification : deux variables qualitatives 0,25 point
+2. Hypothèses H0 (indépendance des variables) et H1 (les variables sont liées) 0,5 point
+3. Interprétation (sig. > 5%) => Accepter H0 => pas de relation 1,75 point
+Question 4 : 2 points
+1. Relation positive d’intensité forte 0,5 point
+2. Test de corrélation 0,5 point ; H0 et H1 0,5 point ; variables quantitatives 0,5 point
+Question 6 : 6 points
+1. Variables quantitatives et 9 relations significatives 2 points
+2. Hypothèses des relations significatives 2 points
+3. Interprétation des relations significatives 2 points
+Question 7 : 7,5 points
+1. Analyse de régression multiple et justification 1 point
+2.a. Interprétation de R2 et R2ajusté 1 point
+2.b. Significativité des variables (test de student) 1 point
+3. Hypothèses pour chacune des variables et interprétation des coefficients 3 points
+4. Non car il existe une variable non significative (note de satisfaction) 1,5 point

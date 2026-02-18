@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthese — Analyse Quanti Cours 3 : ANOVA et tests statistiques</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.75;
+            color: #2c3e50;
+            background: #fafafa;
+        }
+        h1 {
+            color: #1a5276;
+            border-bottom: 3px solid #2980b9;
+            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        h2 {
+            color: #2471a3;
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+        }
+        h3 { color: #2e86c1; font-size: 1.15rem; }
+        .definition {
+            background: #eaf2f8;
+            border-left: 4px solid #2980b9;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition strong { color: #1a5276; }
+        .formula {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .important {
+            background: #fdedec;
+            border-left: 4px solid #e74c3c;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .example {
+            background: #eafaf1;
+            border-left: 4px solid #27ae60;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        th { background: #2c3e50; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .source-link {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .source-link a { color: #2980b9; text-decoration: none; }
+        blockquote {
+            border-left: 3px solid #7f8c8d;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Analyse Quantitative — Cours 3 : ANOVA et tests statistiques</h1>
+
+<h2>1. Rappel : analyse de la relation entre deux variables</h2>
+
+<p>L'analyse descriptive bivariee consiste a etudier la relation entre deux variables. Selon la nature des variables en jeu (qualitative ou quantitative), le type de relation et le test d'hypothese adapte different. Il est essentiel de bien identifier le type de chaque variable avant de choisir le test statistique a appliquer.</p>
+
+<table>
+    <tr>
+        <th>Variable 1</th>
+        <th>Variable 2</th>
+        <th>Type de relation</th>
+        <th>Test adapte</th>
+    </tr>
+    <tr>
+        <td>Qualitative</td>
+        <td>Qualitative</td>
+        <td>Association</td>
+        <td>Test du Khi-deux, V de Cramer</td>
+    </tr>
+    <tr>
+        <td>Quantitative</td>
+        <td>Quantitative</td>
+        <td>Correlation</td>
+        <td>Test de Pearson</td>
+    </tr>
+    <tr>
+        <td>Qualitative</td>
+        <td>Quantitative</td>
+        <td>Comparaison</td>
+        <td>Test t (2 groupes) / ANOVA (3+ groupes)</td>
+    </tr>
+</table>
+
+<h3>Logique d'un test d'hypothese</h3>
+
+<p>Tout test statistique repose sur le meme raisonnement, comparable a l'analogie du tribunal. On formule deux hypotheses :</p>
+
+<div class="definition">
+    <strong>Hypothese nulle H<sub>0</sub> :</strong> il n'y a pas de relation entre les variables (le suspect est innocent).<br>
+    <strong>Hypothese alternative H<sub>1</sub> :</strong> il existe une relation entre les variables (le suspect est coupable).
+</div>
+
+<p>La <strong>p-value</strong> represente la probabilite d'observer les donnees collectees si H<sub>0</sub> etait vraie. Si cette probabilite est tres faible (generalement p-value &le; 0,05), on rejette H<sub>0</sub> et on conclut qu'il existe une relation significative. Si la p-value est grande (p-value &gt; 0,05), on ne peut pas rejeter H<sub>0</sub> : il n'y a pas de preuve suffisante pour affirmer qu'une relation existe.</p>
+
+<h2>2. Relation entre une variable quantitative et une variable qualitative : le test t de Student</h2>
+
+<p>Lorsqu'on souhaite comparer les moyennes d'une variable quantitative entre <strong>deux groupes</strong> definis par une variable qualitative, on utilise le <strong>test t de Student</strong>. Ce test permet de determiner si la difference observee entre les deux moyennes est statistiquement significative ou si elle peut etre attribuee au hasard.</p>
+
+<h3>Demarche du test t</h3>
+
+<div class="definition">
+    <strong>Etape 1 — Formuler les hypotheses :</strong><br>
+    H<sub>0</sub> : pas de difference (moyenne du groupe 1 = moyenne du groupe 2)<br>
+    H<sub>1</sub> : il y a une difference significative entre les deux moyennes
+</div>
+
+<div class="definition">
+    <strong>Etape 2 — Calculer la p-value</strong> a partir de la statistique t, puis conclure :<br>
+    Si p-value &le; 0,05 : difference statistiquement significative (on rejette H<sub>0</sub>)<br>
+    Si p-value &gt; 0,05 : pas de difference significative (on ne rejette pas H<sub>0</sub>)
+</div>
+
+<h3>Formule de la statistique t</h3>
+
+<div class="formula">
+    <strong>Statistique t :</strong><br><br>
+    t = (&mu;<sub>1</sub> &minus; &mu;<sub>2</sub>) / &radic;(s<sub>1</sub>&sup2;/n<sub>1</sub> + s<sub>2</sub>&sup2;/n<sub>2</sub>)<br><br>
+    Ou :<br>
+    &mu;<sub>1</sub>, &mu;<sub>2</sub> = moyennes des groupes 1 et 2<br>
+    s<sub>1</sub>, s<sub>2</sub> = ecarts-types des groupes 1 et 2<br>
+    n<sub>1</sub>, n<sub>2</sub> = tailles des echantillons<br><br>
+    <strong>p-value :</strong> 2 &times; P(T &ge; |t|)
+</div>
+
+<h3>Exemple : CafeEMN</h3>
+
+<div class="example">
+    <strong>Question :</strong> Le montant moyen depense differe-t-il entre les hommes et les femmes ?<br>
+    <strong>Variables :</strong> Genre (H/F) = qualitative ; Montant du ticket (&euro;) = quantitative<br>
+    <strong>Demarche :</strong> (1) Observer les distributions via un Boxplot, (2) Appliquer le test t<br>
+    <strong>Resultat :</strong> p-value &gt; 0,05 &rarr; pas de difference significative entre les deux groupes.<br>
+    <strong>Interpretation business :</strong> S'il y avait eu une difference significative, cela aurait permis d'ajuster les offres marketing, d'adapter les prix ou promotions, et de mieux comprendre les segments clients.
+</div>
+
+<h2>3. Analyse de la variance (ANOVA)</h2>
+
+<h3>Pourquoi l'ANOVA ?</h3>
+
+<p>Le test t ne permet de comparer que deux groupes. Or, en entreprise, les variables qualitatives ont souvent <strong>plus de deux modalites</strong> (par exemple, trois strategies de prix differentes). Multiplier les tests t deux a deux engendrerait une <strong>inflation du risque d'erreur</strong>. L'ANOVA generalise le test t a la comparaison de trois groupes ou plus, en un seul test.</p>
+
+<h3>Logique statistique de l'ANOVA</h3>
+
+<div class="definition">
+    <strong>Question centrale :</strong> La variabilite observee dans les donnees est-elle due aux groupes (au facteur etudie) ou simplement au hasard ?
+</div>
+
+<p>L'ANOVA repose sur la <strong>decomposition de la variance totale</strong> en deux composantes :</p>
+
+<ul>
+    <li><strong>Variance expliquee (inter-groupes)</strong> : variabilite des moyennes de chaque groupe autour de la moyenne generale. Si les groupes ont des moyennes tres differentes, cette variance est elevee.</li>
+    <li><strong>Variance residuelle (intra-groupes)</strong> : variabilite des observations a l'interieur de chaque groupe autour de leur propre moyenne. Elle represente le "bruit" ou la variabilite naturelle.</li>
+</ul>
+
+<div class="important">
+    <strong>Principe fondamental :</strong> Si la variabilite entre les groupes est grande par rapport a la variabilite a l'interieur des groupes, alors il y a probablement une difference reelle entre les groupes.
+</div>
+
+<h3>Formules de l'ANOVA</h3>
+
+<div class="formula">
+    <strong>Decomposition de la variance :</strong><br><br>
+    <strong>SCT</strong> (Somme des Carres Totale) = SCE + SCR<br><br>
+    <strong>SCE</strong> (Somme des Carres Expliquee / inter-groupes) = &sum; n<sub>j</sub> (&bar;X<sub>j</sub> &minus; &bar;X})<sup>2</sup><br>
+    Ou n<sub>j</sub> = effectif du groupe j, &bar;X<sub>j</sub> = moyenne du groupe j, &bar;X = moyenne generale<br><br>
+    <strong>SCR</strong> (Somme des Carres Residuelle / intra-groupes) = &sum;&sum; (X<sub>ij</sub> &minus; &bar;X<sub>j</sub>)<sup>2</sup><br>
+    Ou X<sub>ij</sub> = observation i du groupe j<br><br>
+    <strong>SCT</strong> (Somme des Carres Totale) = &sum;&sum; (X<sub>ij</sub> &minus; &bar;X)<sup>2</sup>
+</div>
+
+<div class="formula">
+    <strong>Statistique F de Fisher :</strong><br><br>
+    F = Variance inter-groupes / Variance intra-groupes<br><br>
+    F = (SCE / ddl<sub>inter</sub>) / (SCR / ddl<sub>intra</sub>)<br><br>
+    Ou :<br>
+    ddl<sub>inter</sub> = k &minus; 1 (k = nombre de groupes)<br>
+    ddl<sub>intra</sub> = N &minus; k (N = effectif total)<br><br>
+    <strong>Interpretation :</strong> Plus F est grand, plus l'effet du facteur est probable. Si F est proche de 1, la variabilite entre groupes est comparable a la variabilite intra-groupes (pas d'effet).
+</div>
+
+<h3>Demarche du test ANOVA</h3>
+
+<div class="definition">
+    <strong>Etape 1 — Formuler les hypotheses :</strong><br>
+    H<sub>0</sub> : toutes les moyennes des groupes sont egales (&mu;<sub>1</sub> = &mu;<sub>2</sub> = ... = &mu;<sub>k</sub>)<br>
+    H<sub>1</sub> : au moins une moyenne differe des autres
+</div>
+
+<div class="definition">
+    <strong>Etape 2 — Calculer la p-value et conclure :</strong><br>
+    Si p-value &le; 0,05 : il y a une difference statistiquement significative entre au moins deux groupes<br>
+    Si p-value &gt; 0,05 : pas de difference significative
+</div>
+
+<div class="important">
+    <strong>Attention :</strong> L'ANOVA indique s'il existe une difference globale entre les groupes, mais elle <strong>ne dit pas quels groupes different entre eux</strong>. Pour identifier les paires de groupes significativement differentes, il faut recourir a un <strong>test post-hoc</strong> (comme le test de Tukey).
+</div>
+
+<h3>Condition prealable : le test de Levene (homogeneite des variances)</h3>
+
+<p>Avant d'interpreter les resultats de l'ANOVA, il convient de verifier l'<strong>homogeneite des variances</strong> entre les groupes a l'aide du test de Levene :</p>
+
+<table>
+    <tr>
+        <th>Resultat du test de Levene</th>
+        <th>Interpretation</th>
+        <th>Test a utiliser</th>
+    </tr>
+    <tr>
+        <td>p-value &gt; 0,05</td>
+        <td>Homogeneite des variances (hypothese respectee)</td>
+        <td>Test F de Fisher classique</td>
+    </tr>
+    <tr>
+        <td>p-value &le; 0,05</td>
+        <td>Pas d'homogeneite des variances</td>
+        <td>Test de Welch (alternative robuste)</td>
+    </tr>
+</table>
+
+<h2>4. ANOVA a un facteur (One-way ANOVA)</h2>
+
+<h3>Quand l'utiliser ?</h3>
+
+<p>L'ANOVA a un facteur s'utilise lorsqu'on dispose d'<strong>une variable quantitative</strong> (variable dependante) et d'<strong>une seule variable qualitative a trois modalites ou plus</strong> (facteur). Des exemples typiques incluent : les ventes selon la politique de prix, la performance selon le style de management, ou la satisfaction selon le type de service.</p>
+
+<h3>Exemple : politique de prix et ventes</h3>
+
+<div class="example">
+    <strong>Variables :</strong><br>
+    Variable quantitative : Ventes mensuelles (&euro;)<br>
+    Variable qualitative : Politique de prix (Bas / Moyen / Premium)<br><br>
+    <strong>Objectif managerial :</strong> Identifier le positionnement prix le plus performant.<br><br>
+    <strong>Lecture des resultats sur Jamovi :</strong><br>
+    1. Verifier le test de Levene pour l'homogeneite des variances<br>
+    2. Si Levene p &gt; 0,05 &rarr; lire le test de Fisher ; si Levene p &le; 0,05 &rarr; lire le test de Welch<br>
+    3. Si p-value &le; 0,05 &rarr; difference significative entre les politiques<br>
+    4. Appliquer le test post-hoc de Tukey pour identifier quelles paires de politiques different
+</div>
+
+<h3>Exercice illustratif 1 : type de client et panier moyen</h3>
+
+<div class="example">
+    <strong>Contexte :</strong> Une entreprise e-commerce analyse si le montant moyen du panier depend du type de client (Nouveau, Regulier, Fidele, Premium).<br><br>
+    <strong>Resultats ANOVA :</strong> F = 18,7 ; p-value &lt; 0,001<br>
+    <strong>Moyennes :</strong> Nouveau = 32 &euro; ; Regulier = 41 &euro; ; Fidele = 52 &euro; ; Premium = 68 &euro;<br>
+    <strong>Post-hoc (Tukey) :</strong> Tous les groupes sont significativement differents (p &lt; 0,01)<br><br>
+    <strong>Interpretation :</strong> Le type de client influence significativement le panier moyen. Le groupe Premium est le plus strategique. Actions possibles : developper des programmes de fidelisation pour convertir les clients reguliers en fideles, puis en premium ; proposer des offres personnalisees selon le segment ; investir dans la retention des clients Premium.
+</div>
+
+<h3>Exercice illustratif 2 : service et performance</h3>
+
+<div class="example">
+    <strong>Contexte :</strong> Le service RH souhaite savoir si la performance moyenne des employes differe selon leur service (Marketing, Ventes, Finance, IT, RH).<br><br>
+    <strong>Resultats ANOVA :</strong> F = 9,85 ; p-value &lt; 0,001<br>
+    <strong>Moyennes :</strong> IT = 82 ; Finance = 78 ; Ventes = 71 ; Marketing = 69 ; RH = 66<br>
+    <strong>Post-hoc (Tukey) :</strong> IT differe significativement de Marketing, RH et Ventes (p &lt; 0,01) ; Finance differe de RH (p &lt; 0,05)<br><br>
+    <strong>Interpretation :</strong> L'effet du service sur la performance est significatif. IT et Finance se distinguent positivement. Decisions RH possibles : analyser les pratiques de management de l'IT et de la Finance pour les dupliquer, renforcer la formation dans les services moins performants, ajuster les objectifs selon les specificites de chaque service.
+</div>
+
+<h2>5. ANOVA a deux facteurs (Two-way ANOVA)</h2>
+
+<p>En pratique, les decisions business dependent rarement d'un seul facteur. L'ANOVA a deux facteurs permet d'analyser simultanement l'effet de <strong>deux variables qualitatives</strong> sur une variable quantitative, ainsi que leur <strong>interaction</strong>.</p>
+
+<div class="example">
+    <strong>Exemple :</strong> La satisfaction des clients depend-elle du canal de vente et du programme de fidelite ?<br><br>
+    <strong>Variables :</strong><br>
+    Variable quantitative : Satisfaction des clients<br>
+    Variable qualitative n&deg;1 : Canal de vente<br>
+    Variable qualitative n&deg;2 : Programme de fidelite<br><br>
+    <strong>Trois questions statistiques distinctes :</strong><br>
+    1. Le canal de vente influence-t-il la satisfaction ? (effet principal du facteur 1)<br>
+    2. Le programme de fidelite influence-t-il la satisfaction ? (effet principal du facteur 2)<br>
+    3. L'effet du canal depend-il du programme de fidelite ? (effet d'interaction)
+</div>
+
+<p>L'effet d'interaction est particulierement interessant : il signifie que l'impact d'un facteur n'est pas le meme selon les niveaux de l'autre facteur. Par exemple, un canal de vente en ligne pourrait etre plus satisfaisant uniquement pour les clients inscrits au programme de fidelite.</p>
+
+<h2>6. Synthese comparative : test t vs ANOVA</h2>
+
+<table>
+    <tr>
+        <th>Critere</th>
+        <th>Test t de Student</th>
+        <th>ANOVA (a un facteur)</th>
+    </tr>
+    <tr>
+        <td>Nombre de groupes</td>
+        <td>Exactement 2</td>
+        <td>3 ou plus</td>
+    </tr>
+    <tr>
+        <td>Variables</td>
+        <td>1 quantitative + 1 qualitative (2 modalites)</td>
+        <td>1 quantitative + 1 qualitative (3+ modalites)</td>
+    </tr>
+    <tr>
+        <td>Hypothese H<sub>0</sub></td>
+        <td>&mu;<sub>1</sub> = &mu;<sub>2</sub></td>
+        <td>&mu;<sub>1</sub> = &mu;<sub>2</sub> = ... = &mu;<sub>k</sub></td>
+    </tr>
+    <tr>
+        <td>Statistique de test</td>
+        <td>t</td>
+        <td>F</td>
+    </tr>
+    <tr>
+        <td>Identification des paires</td>
+        <td>Directement (2 groupes)</td>
+        <td>Necessite un test post-hoc (Tukey)</td>
+    </tr>
+    <tr>
+        <td>Risque si on multiplie les tests t</td>
+        <td>Inflation du risque d'erreur</td>
+        <td>Evite ce probleme</td>
+    </tr>
+</table>
+
+<h2>7. Arbre decisionnel : quel test choisir ?</h2>
+
+<table>
+    <tr>
+        <th>Situation</th>
+        <th>Test a utiliser</th>
+    </tr>
+    <tr>
+        <td>2 variables qualitatives</td>
+        <td>Khi-deux / V de Cramer</td>
+    </tr>
+    <tr>
+        <td>2 variables quantitatives</td>
+        <td>Correlation de Pearson</td>
+    </tr>
+    <tr>
+        <td>1 qualitative (2 groupes) + 1 quantitative</td>
+        <td>Test t de Student</td>
+    </tr>
+    <tr>
+        <td>1 qualitative (3+ groupes) + 1 quantitative</td>
+        <td>ANOVA a un facteur</td>
+    </tr>
+    <tr>
+        <td>2 qualitatives + 1 quantitative</td>
+        <td>ANOVA a deux facteurs</td>
+    </tr>
+    <tr>
+        <td>Plusieurs predicteurs &rarr; 1 quantitative</td>
+        <td>Regression lineaire multiple</td>
+    </tr>
+</table>
+
+<div class="source-link">
+    <p><strong>Source originale :</strong> <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/ANALYSE%20QUANTI/Cours%203.pdf">Analyse Quantitative — Cours 3.pdf</a></p>
+</div>
+
+</body>
+</html>

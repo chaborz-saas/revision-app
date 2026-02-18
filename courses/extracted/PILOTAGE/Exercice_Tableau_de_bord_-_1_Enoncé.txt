@@ -1,0 +1,15 @@
+EXERCICE sur le tableau de bord (tiré de GRANDGUILLOT B et F, L’essentiel
+du contrôle de gestion, Gualino editeur)
+ENONCE
+Une entreprise de cours particulier de soutien scolaire à domicile possède plusieurs
+agences dans le département. Le chef de département demande aux responsables
+d’agence d’établir une liste d’indicateurs pertinents pour l’élaboration d’un tableau de
+bord d’une périodicité trimestrielle.
+Les objectifs des responsables d’agence sont :
+- Atteindre les objectifs de chiffre d’affaires
+- Développer l’activité
+- Satisfaire la clientèle
+Questions :
+1) Quels peuvent être les facteurs clés de succès en lien avec ces objectifs ?
+2) Quels peuvent être les indicateurs pour chaque facteur clé de succès ?
+Exercice sur le tableau de bord

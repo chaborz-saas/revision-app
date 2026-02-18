@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthèse — Pilotage de la Performance : Introduction et Élaboration budgétaire</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.75;
+            color: #2c3e50;
+            background: #fafafa;
+        }
+        h1 {
+            color: #1a5276;
+            border-bottom: 3px solid #2980b9;
+            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        h2 {
+            color: #2471a3;
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+        }
+        h3 { color: #2e86c1; font-size: 1.15rem; }
+        .definition {
+            background: #eaf2f8;
+            border-left: 4px solid #2980b9;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition strong { color: #1a5276; }
+        .formula {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .important {
+            background: #fdedec;
+            border-left: 4px solid #e74c3c;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .example {
+            background: #eafaf1;
+            border-left: 4px solid #27ae60;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        th { background: #2c3e50; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .source-link {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .source-link a { color: #2980b9; text-decoration: none; }
+        blockquote {
+            border-left: 3px solid #7f8c8d;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pilotage de la Performance — Cours 1 : Introduction et Elaboration budgetaire</h1>
+
+<p>Ce premier cours du module de Pilotage de la Performance (M1, tronc commun) presente le cadre general de la matiere, puis developpe en profondeur le theme de l'elaboration et du controle budgetaire. Le pilotage de la performance recouvre l'ensemble des outils et methodes permettant a une organisation de definir ses objectifs, de planifier les moyens necessaires, de suivre les realisations et de corriger les ecarts. Le budget en constitue l'un des instruments centraux.</p>
+
+<h2>1. Plan general du cours</h2>
+
+<p>Le cours de Pilotage de la Performance s'articule autour de sept grands themes, qui forment une progression logique allant de la definition des concepts fondamentaux jusqu'aux enjeux contemporains de responsabilite societale.</p>
+
+<table>
+    <tr>
+        <th>Chapitre</th>
+        <th>Contenu</th>
+    </tr>
+    <tr>
+        <td><strong>1 - Introduction</strong></td>
+        <td>Definition du pilotage de la performance ; liens entre comptabilite de gestion et comptabilite generale ; gouvernance d'entreprise et controle de gestion ; pilotage strategique ; notion de groupe, cessions internes et management fees</td>
+    </tr>
+    <tr>
+        <td><strong>2 - Masse salariale</strong></td>
+        <td>Suivi de la masse salariale et controle de gestion sociale</td>
+    </tr>
+    <tr>
+        <td><strong>3 - Elaboration et controle budgetaire</strong></td>
+        <td>Modele de simulation, business plan, budget, rolling forecast ; cycle et calendrier budgetaire ; controle budgetaire</td>
+    </tr>
+    <tr>
+        <td><strong>4 - Tableaux de bord</strong></td>
+        <td>Indicateurs, reporting</td>
+    </tr>
+    <tr>
+        <td><strong>5 - Plan de performance</strong></td>
+        <td>Lean management, gestion de la croissance, gestion du perimetre</td>
+    </tr>
+    <tr>
+        <td><strong>6 - Conduite du changement</strong></td>
+        <td>Accompagnement des transformations organisationnelles</td>
+    </tr>
+    <tr>
+        <td><strong>7 - Controle de gestion et RSE</strong></td>
+        <td>Finance verte et durable ; performance extra-financiere (taxonomie, ratios verts, CSRD, bilan carbone)</td>
+    </tr>
+</table>
+
+<h2>2. Les outils de prevision : du modele de simulation au budget</h2>
+
+<p>Gouverner, c'est prevoir. Le pilotage de la performance repose sur differentes methodes de prevision, chacune repondant a des besoins specifiques en termes d'horizon temporel, de granularite et de philosophie de gestion.</p>
+
+<h3>2.1. Le modele de simulation</h3>
+
+<div class="definition">
+    <strong>Modele de simulation :</strong> representation d'une problematique complexe que l'on desire etudier, afin d'en permettre la communication, le travail en groupe et de faciliter la prise de decision. Le modele met en exergue les relations de causes a effets entre differentes variables. Une fois construit, il permet de tester differents scenarios autant de fois que souhaite. Dans le domaine du controle de gestion, il prend generalement une forme informatique, mais des graphiques ou des algorithmes peuvent suffire (Selmer, 2024).
+</div>
+
+<p>Le modele de simulation est donc un outil d'aide a la decision qui, en formalisant les interdependances entre variables, permet aux decideurs d'explorer des hypotheses sans engager de ressources reelles.</p>
+
+<h3>2.2. Le business plan</h3>
+
+<div class="definition">
+    <strong>Business plan (plan d'affaires) :</strong> guide pour la planification strategique d'une entreprise. Il detaille les objectifs, les strategies pour les atteindre, ainsi que les ressources necessaires. Il presente une projection des flux de tresorerie pour evaluer la viabilite financiere du projet (Ristori, 2024).
+</div>
+
+<p>Le business plan est un outil d'information strategique et financier complet. Il fournit une serie d'informations et d'indications sur un projet entrepreneurial quel qu'il soit. C'est une veritable feuille de route qui definit ou et comment une activite peut se developper. Il detaille la mission, la vision, les objectifs a long terme et les strategies pour les atteindre. Son objectif ultime est de comprendre comment creer et maximiser la valeur pour les clients, les parties prenantes et les actionnaires.</p>
+
+<h3>2.3. Le rolling forecast (previsions glissantes)</h3>
+
+<div class="definition">
+    <strong>Rolling forecast :</strong> methode consistant a reevaluer regulierement les objectifs financiers (resultat, cash-flow) arretes en debut d'exercice, en tenant compte des changements les plus recents, de la conjoncture economique et des performances operationnelles recemment realisees (Selmer, 2024).
+</div>
+
+<div class="important">
+    <strong>Mecanisme concret :</strong> les previsions glissantes sont realisees tous les trimestres sur 6 trimestres roulants : 1 trimestre reel et 5 trimestres estimes. Les chiffres des 4 trimestres de N+1 prevus lors du rolling forecast de decembre N (cible) servent de base pour la definition des objectifs qui determineront l'attribution des primes variables de N+1.
+</div>
+
+<h3>2.4. Le Budget Base Zero (BBZ)</h3>
+
+<div class="definition">
+    <strong>Budget Base Zero (BBZ / Zero Based Budgeting) :</strong> methode mise au point dans les annees 1980 pour contenir la croissance des frais de structure et de support (frais indirects). Experimentee chez Texas Instruments, elle a ete concue par P. Pyhrr.
+</div>
+
+<p>Le principe fondateur du BBZ est que chaque dirigeant doit justifier dans le detail et des son origine (d'ou l'intitule "base zero") tous les postes de budget dont il a la responsabilite, et donner la preuve de la necessite d'effectuer chaque depense, plutot que de proceder a des replatages incessants du budget existant. Cette approche rompt ainsi avec la logique de reconduction automatique des enveloppes budgetaires.</p>
+
+<p>Le BBZ est particulierement adapte et repandu dans les services fonctionnels d'entreprise, les etats-majors de groupes, les administrations et les programmes economiques de developpement.</p>
+
+<h3>2.5. Le Beyond Budgeting (gestion sans budget)</h3>
+
+<p>Le Beyond Budgeting part d'un constat : le budget traditionnel ne permet pas de faire du manager un veritable entrepreneur et ne parvient pas a limiter la triche institutionnalisee. Certaines entreprises ont abandonne depuis plus de trente ans le rituel budgetaire. Les pionnieres sont des entreprises scandinaves partageant une culture fondee sur le dialogue et la confiance.</p>
+
+<div class="important">
+    <strong>Conditions et limites du Beyond Budgeting :</strong> cette approche requiert l'exemplarite totale des dirigeants. Elle peut etre destabilisante et implique une remise en cause permanente des differents acteurs. Certaines structures ne supportent pas un fonctionnement en ilots d'entrepreneurs.
+</div>
+
+<h2>3. Le budget : outil central du pilotage</h2>
+
+<p>Le budget occupe une position centrale dans le cycle de gestion. Il est bien plus qu'une simple enveloppe de depenses : c'est un instrument aux multiples fonctions qui structure le pilotage operationnel de l'entreprise.</p>
+
+<div class="important">
+    <strong>Les fonctions du budget :</strong>
+    <ul>
+        <li><strong>Outil de prevision</strong> : notamment du resultat previsionnel</li>
+        <li><strong>Attribution d'objectifs et de moyens</strong> : la demarche doit etre dynamique et volontaire, ce n'est pas l'attribution d'enveloppes de depenses</li>
+        <li><strong>Outil de delegation et de motivation</strong> : evaluation des performances ; l'encadrement intermediaire s'engage sur des objectifs qu'il s'est approprie, une partie de sa remuneration pouvant etre conditionnee par leur atteinte</li>
+        <li><strong>Outil de coordination et de communication</strong> : assure la coherence entre objectifs individuels et objectif global ; renforce la communication horizontale et verticale</li>
+        <li><strong>Outil d'optimisation des choix</strong></li>
+    </ul>
+</div>
+
+<p>Le <strong>controle budgetaire</strong> consiste en la confrontation periodique des realisations avec le budget, mettant en evidence des ecarts et permettant toutes mesures de regulation pour les ecarts remarquables. C'est une approche de <strong>gestion par exception</strong>. Les budgets peuvent etre etablis en fonction de differentes hypotheses d'activite ; on parle alors de <strong>budgets flexibles</strong>.</p>
+
+<h2>4. Le cycle et le calendrier budgetaire</h2>
+
+<p>Le budget est un processus iteratif avec une consolidation selon differents niveaux hierarchiques. Ces iterations prennent la forme d'une double approche top-down et bottom-up.</p>
+
+<table>
+    <tr>
+        <th>Approche</th>
+        <th>Principe</th>
+        <th>Avantages</th>
+        <th>Inconvenients</th>
+    </tr>
+    <tr>
+        <td><strong>Top-down</strong></td>
+        <td>Budget elabore par la direction et impose aux managers. Approche directive.</td>
+        <td>Permet d'aller vite</td>
+        <td>Peut devaloriser les managers</td>
+    </tr>
+    <tr>
+        <td><strong>Bottom-up</strong></td>
+        <td>Budget elabore par les managers (remontees terrain)</td>
+        <td>Responsabilise les managers (ils s'engagent) ; prend en compte leur experience et leur vision de detail</td>
+        <td>Peut conduire a une vision inflationniste</td>
+    </tr>
+    <tr>
+        <td><strong>Mixte (pratique courante)</strong></td>
+        <td>Combine lettre de cadrage (top-down) et remontees terrain (bottom-up)</td>
+        <td>Equilibre entre direction strategique et realisme operationnel</td>
+        <td>-</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>Niveaux de consolidation :</strong> Siege / Divisions (budgets consolides) &rarr; Divisions / Departements (budgets consolides) &rarr; Departement / Filiales (budgets fonctionnels) &rarr; Filiale / Centres de responsabilite internes (budgets par centre de responsabilite).
+</div>
+
+<p>Les budgets, souvent annuels, sont detailles par periodes plus courtes (mois) afin de reperer et analyser les ecarts selon une periodicite adaptee a la duree du cycle de production, et de proceder efficacement aux regulations qui s'imposent.</p>
+
+<h2>5. Les budgets operationnels</h2>
+
+<h3>5.1. Le budget des ventes</h3>
+
+<p>Le budget des ventes represente le chiffre d'affaires previsionnel pour une periode a venir (en general l'exercice comptable), decompose par periodes plus courtes (le mois). Son objectif est de determiner le CA previsionnel en deux etapes : d'abord les volumes de vente previsionnels (programme), puis la valorisation (budget).</p>
+
+<p>Deux grandes approches existent pour etablir les previsions de ventes :</p>
+<ul>
+    <li><strong>L'extrapolation du passe</strong> : l'analyse du passe permet de prevoir le futur (le trend)</li>
+    <li><strong>L'approche directe du futur</strong> : remise en cause des tendances passees</li>
+</ul>
+
+<div class="example">
+    <strong>Exemple :</strong> une societe prepare les budgets du 2e trimestre N. Programmes de ventes : avril 20 000 unites, mai 50 000 unites, juin 30 000 unites (puis juillet 25 000, aout 15 000). Prix de vente unitaire : 10 euros HT.
+    <br><br>
+    <table>
+        <tr><th></th><th>Avril</th><th>Mai</th><th>Juin</th><th>Trimestre</th></tr>
+        <tr><td>Volume previsionnel</td><td>20 000</td><td>50 000</td><td>30 000</td><td>100 000</td></tr>
+        <tr><td>Prix de vente unitaire HT</td><td>10 &euro;</td><td>10 &euro;</td><td>10 &euro;</td><td>10 &euro;</td></tr>
+        <tr><td>CA previsionnel HT</td><td>200 000 &euro;</td><td>500 000 &euro;</td><td>300 000 &euro;</td><td>1 000 000 &euro;</td></tr>
+    </table>
+</div>
+
+<h3>5.2. Le budget de production</h3>
+
+<p>Le budget de production depend du volume des ventes et doit garantir le niveau souhaite de stock de produits finis en fin de periode. Il s'elabore en deux etapes :</p>
+
+<ol>
+    <li><strong>Etablir le programme de production :</strong> quels produits, quels volumes, a quel moment. Le programme est lie aux volumes de ventes previsionnelles, aux delais de fabrication, aux capacites de production, a la politique de sous-traitance et de stockage. Cette etape peut s'appuyer sur les outils de <strong>GPAO</strong> (Gestion de la Production Assistee par Ordinateur) gerant gammes et nomenclatures.</li>
+    <li><strong>Valoriser le programme de production :</strong> chiffrer les ressources necessaires dans le processus de fabrication (matieres premieres, main d'oeuvre directe, autres couts de production variables/fixes, directs/indirects). Ce chiffrage repose sur les resultats de la comptabilite analytique.</li>
+</ol>
+
+<h3>5.3. Le budget des approvisionnements</h3>
+
+<p>La fonction approvisionnement fournit les matieres premieres et composants (entreprise industrielle) ou des marchandises (entreprises commerciales ou de negoce) en qualite et quantite suffisantes, au moment voulu et au cout le plus bas possible. Le programme d'approvisionnement depend du programme de production et determine les volumes et les dates de commande des biens a acheter.</p>
+
+<h3>5.4. Le budget des frais commerciaux</h3>
+
+<p>Ce budget recouvre l'ensemble des charges a engager pour commercialiser les produits : direction commerciale, force de vente (avec la remuneration variable), marketing, publicite et promotion.</p>
+
+<h2>6. Le budget de tresorerie</h2>
+
+<p>Le budget de tresorerie centralise et recapitule toutes les consequences financieres des budgets precedents. Il reprend toutes les depenses (sorties de tresorerie = decaissements) et toutes les recettes (entrees = encaissements) d'une periode donnee, generalement mois par mois.</p>
+
+<div class="definition">
+    <strong>Objectif du budget de tresorerie :</strong> determiner le montant de disponibilites previsionnel a la fin de chaque periode (mois, semaine ou jour). Cela permet a l'entreprise de s'assurer que son exploitation degage un excedent de tresorerie, d'anticiper une demande de credit a court terme pour couvrir une insuffisance, et de verifier que les delais de paiement accordes aux clients n'entrainent pas de dysfonctionnements.
+</div>
+
+<table>
+    <tr>
+        <th>Encaissements</th>
+        <th>Decaissements</th>
+    </tr>
+    <tr>
+        <td>Encaissements clients</td>
+        <td>Paiement fournisseurs</td>
+    </tr>
+    <tr>
+        <td>Nouveaux emprunts obtenus</td>
+        <td>Paiement des investissements</td>
+    </tr>
+    <tr>
+        <td>Apports en numeraire des actionnaires</td>
+        <td>Paiement des salaires</td>
+    </tr>
+    <tr>
+        <td>Subventions obtenues</td>
+        <td>Charges sociales</td>
+    </tr>
+    <tr>
+        <td>Degrevements d'impots</td>
+        <td>Paiement de la TVA, impots et taxes</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Remboursements d'emprunts</td>
+    </tr>
+</table>
+
+<h3>6.1. Les previsions d'encaissement</h3>
+
+<p>Pour realiser le budget de tresorerie, il est necessaire de determiner les encaissements en tenant compte des regles d'encaissement du chiffre d'affaires. Il faut imperativement utiliser le chiffre d'affaires TTC pour determiner les montants d'encaissements.</p>
+
+<div class="example">
+    <strong>Exemple de regles d'encaissement :</strong> 70 % le mois de la vente, 25 % le mois suivant, 5 % irrecouvrables. La creance du 31 mars de 30 000 euros est encaissee en totalite en avril.
+    <br><br>
+    <table>
+        <tr><th></th><th>Avril</th><th>Mai</th><th>Juin</th><th>Trimestre</th></tr>
+        <tr><td>Creance du 31/03</td><td>30 000</td><td></td><td></td><td>30 000</td></tr>
+        <tr><td>Ventes avril (70 % de 239 200)</td><td>167 440</td><td></td><td></td><td>167 440</td></tr>
+        <tr><td>Ventes avril (25 % de 239 200)</td><td></td><td>59 800</td><td></td><td>59 800</td></tr>
+        <tr><td>Ventes mai (70 % de 598 000)</td><td></td><td>418 600</td><td></td><td>418 600</td></tr>
+        <tr><td>Ventes mai (25 % de 598 000)</td><td></td><td></td><td>149 500</td><td>149 500</td></tr>
+        <tr><td>Ventes juin (70 % de 358 800)</td><td></td><td></td><td>251 160</td><td>251 160</td></tr>
+        <tr><td><strong>Total encaissements</strong></td><td><strong>197 440</strong></td><td><strong>478 400</strong></td><td><strong>400 660</strong></td><td><strong>1 076 500</strong></td></tr>
+    </table>
+</div>
+
+<h3>6.2. Le budget de TVA</h3>
+
+<p>L'entreprise collecte de la TVA sur ses ventes (TVA collectee) qu'elle doit reverser a l'Etat, tout en disposant d'une TVA deductible sur ses achats.</p>
+
+<div class="formula">
+    <strong>TVA a decaisser = TVA collectee - TVA deductible</strong>
+</div>
+
+<p>Lorsque la TVA deductible est superieure a la TVA collectee sur une periode, l'entreprise dispose d'un <strong>credit de TVA</strong>. Dans certains cas, ce credit est rembourse par l'Etat ; le plus souvent, il est reporte sur la TVA deductible de la periode suivante.</p>
+
+<div class="example">
+    <strong>Exemple de budget de TVA :</strong>
+    <table>
+        <tr><th></th><th>Janvier</th><th>Fevrier</th><th>Mars</th></tr>
+        <tr><td>TVA collectee</td><td>18 000</td><td>15 000</td><td>20 000</td></tr>
+        <tr><td>TVA deductible</td><td>12 500</td><td>25 000</td><td>7 000</td></tr>
+        <tr><td>Credit de TVA reporte</td><td></td><td></td><td>10 000</td></tr>
+        <tr><td><strong>TVA a decaisser</strong></td><td><strong>5 500</strong></td><td><strong>0</strong></td><td><strong>3 000</strong></td></tr>
+        <tr><td>Credit de TVA</td><td></td><td>10 000</td><td></td></tr>
+    </table>
+</div>
+
+<div class="important">
+    <strong>Ne pas confondre :</strong> le mois de la declaration de TVA et le mois de son paiement. Dans le budget de TVA, on determine le montant au titre de chaque periode. Dans le budget de tresorerie, on prend en compte la date de paiement effective : la TVA a decaisser calculee au titre du mois M est versee a l'Etat au cours du mois M+1.
+</div>
+
+<h2>7. Le controle budgetaire</h2>
+
+<div class="definition">
+    <strong>Controle budgetaire :</strong> comparaison permanente des resultats reels et des previsions chiffrees figurant au budget afin de rechercher les causes d'ecarts, informer les differents niveaux hierarchiques, prendre les mesures correctives necessaires et apprecier l'activite des responsables budgetaires.
+</div>
+
+<p>Chaque mois, les entreprises analysent les ecarts entre budgets et realisations. Le suivi s'organise autour de plusieurs indicateurs : resultats du mois vs objectifs du mois, resultats cumules (year-to-date) vs objectifs cumules, et le <strong>reste a faire (Year-To-Go)</strong> qui indique l'ecart par rapport a l'objectif annuel.</p>
+
+<h3>7.1. Les couts preetablis et le cout standard</h3>
+
+<div class="definition">
+    <strong>Couts preetablis :</strong> methode consistant a comptabiliser les mouvements de valeurs a l'aide de couts calcules a l'avance et a enregistrer les ecarts resultant de la difference entre les valeurs ainsi degagees et les valeurs reelles. Le <strong>cout standard</strong> constitue un type de couts preetablis parmi d'autres (couts budgetises, couts previsionnels, devis).
+</div>
+
+<div class="formula">
+    <strong>Cout standard = Quantite standard x Cout unitaire standard</strong>
+</div>
+
+<p>On distingue le <strong>cout standard theorique</strong> (utilisation la meilleure des facteurs de production) du <strong>cout standard normal</strong> (utilisation normale des facteurs de production). Les couts preetablis servent a :</p>
+<ul>
+    <li>Evaluer rapidement la production obtenue et les stocks (l'entreprise comptabilise les couts des qu'elle connait les quantites)</li>
+    <li>Permettre une <strong>gestion par exception</strong></li>
+    <li>Rendre possible la comparaison entre entites utilisant un meme referentiel</li>
+    <li>Favoriser la gestion decentralisee et la mesure des performances</li>
+</ul>
+
+<table>
+    <tr>
+        <th>Element</th>
+        <th>Cout unitaire preetabli</th>
+        <th>Quantites preetablies</th>
+    </tr>
+    <tr>
+        <td>Matieres</td>
+        <td>Etude des couts d'achat (Service des achats, comptabilite)</td>
+        <td>Etude technique + pourcentage de rebut</td>
+    </tr>
+    <tr>
+        <td>Main d'oeuvre directe</td>
+        <td>Estimation des salaires horaires (Service du personnel)</td>
+        <td>Estimation des temps (productifs + entretien + inactivite)</td>
+    </tr>
+    <tr>
+        <td>Autres charges</td>
+        <td>Calcul des couts preetablis des unites d'oeuvre (a partir d'un budget d'activite normale)</td>
+        <td>Calcul des quantites d'unites d'oeuvre sur base de l'activite normale ou de plein emploi</td>
+    </tr>
+</table>
+
+<h3>7.2. Decomposition de l'ecart sur resultat</h3>
+
+<p>L'analyse des ecarts suit une logique de decomposition arborescente qui permet d'identifier avec precision l'origine des ecarts entre le resultat reel et le resultat budgete.</p>
+
+<div class="important">
+    <strong>Structure de decomposition de l'ecart sur resultat :</strong>
+    <ul>
+        <li><strong>Ecart sur chiffre d'affaires</strong> : ecart sur prix, ecart sur mix produits, ecart sur quantites, ecart sur volume</li>
+        <li><strong>Ecart sur couts</strong> :
+            <ul>
+                <li>Charges directes : ecart sur quantites + ecart sur prix + ecart sur volume d'activite</li>
+                <li>Charges indirectes : ecart sur quantites + ecart d'activite + ecart de budget (ecart sur prix)</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<h3>7.3. Analyse des ecarts sur chiffre d'affaires</h3>
+
+<div class="formula">
+    <strong>Ecart sur CA = CA reel - CA prevu = (Qr x Pr) - (Qp x Pp)</strong>
+    <br><br>
+    Decomposition :
+    <br>Ecart sur quantite = (Qr - Qp) x Pp
+    <br>Ecart sur prix = (Pr - Pp) x Qr
+    <br><br>
+    L'ecart sur quantite se decompose en :
+    <br>Ecart sur composition (mix) = (Qr - Qmix) x Pr
+    <br>Ecart sur volume = (Qmix - Qp) x Pr
+</div>
+
+<h3>7.4. Analyse des ecarts sur matiere</h3>
+
+<p>Les ecarts sur matiere s'analysent en ecarts sur quantites consommees (rendement de la matiere) et en ecarts sur prix (impact de la variation du prix d'achat).</p>
+
+<div class="formula">
+    <strong>Ecart economique sur matiere (EM) = Cout total reel - Cout preetabli de la production reelle</strong>
+    <br><br>
+    EM = (Qr - Qp) x Pp + (Pr - Pp) x Qr
+    <br><br>
+    Ou : Ecart sur quantites consommees = (Qr - Qp) x Pp
+    <br>Ecart sur prix = (Pr - Pp) x Qr
+</div>
+
+<p>Les <strong>causes d'ecarts sur matiere</strong> sont multiples : mauvaise utilisation de la matiere, exces de rebuts, standards mal calcules, ecarts sur composition, mauvais entretien (pour les quantites) ; mauvais choix de fournisseurs, mauvaises previsions de ventes entrainant de mauvaises previsions d'achats, variation des prix (pour les prix).</p>
+
+<div class="example">
+    <strong>Exercice d'application :</strong> La fabrication d'un produit necessite selon les normes 4 kg de matieres a 8 euros/kg par unite. En reel, 5 000 produits ont necessite 22 000 kg pour un cout total de 198 000 euros.
+    <br><br>
+    <strong>Solution :</strong>
+    <br>Qp = 4 kg x 5 000 = 20 000 kg &rarr; Cout preetabli = 20 000 x 8 = 160 000 euros
+    <br>Ecart economique = (22 000 - 20 000) x 8 + (198 000/22 000 - 8) x 22 000
+    <br>= 16 000 + 22 000 = <strong>38 000 euros (ecart defavorable)</strong>
+    <br>Dont : 16 000 euros d'ecart sur quantites consommees et 22 000 euros d'ecart sur prix d'achat.
+    <br>On en deduit un cout reel de 9 euros/kg et une quantite reelle de 4,4 kg par unite.
+</div>
+
+<h3>7.5. Analyse des ecarts sur main d'oeuvre</h3>
+
+<p>Les ecarts sur main d'oeuvre s'analysent en ecarts sur temps (rendement du travail) et en ecarts sur taux horaire.</p>
+
+<div class="formula">
+    <strong>Ecart economique sur main d'oeuvre (EMO) = Cout total reel - Cout preetabli de la production reelle</strong>
+    <br><br>
+    EMO = (Tr x Sr) - (Tp x Sp)
+    <br><br>
+    Ecart sur salaire horaire = (Sr - Sp) x Tr
+    <br>Ecart sur temps = (Tr - Tp) x Sp
+</div>
+
+<p>Les <strong>causes d'ecarts sur main d'oeuvre</strong> comprennent : chute des cadences, defaut d'encadrement, standards mal calcules (pour les temps) ; exces d'heures supplementaires, sur- ou sous-qualification de la main d'oeuvre affectee, augmentations legales non prevues (pour les salaires).</p>
+
+<h2>8. Interets et limites de la gestion budgetaire</h2>
+
+<p>La procedure budgetaire se caracterise par la hierarchie et l'interdependance des budgets : la prevision de production peut, selon les contraintes, conduire a un reajustement du budget des investissements ou du budget des ventes. Les budgets generaux traduisent la coherence des previsions (equilibre de tresorerie, rentabilite d'exploitation, equilibre financier). La prevision budgetaire est un processus iteratif qui conduit l'ensemble a la coherence et a la securite.</p>
+
+<h3>Interets</h3>
+<ul>
+    <li>Meilleure connaissance des atouts et faiblesses de l'entreprise</li>
+    <li>Amelioration de la reactivite par l'anticipation</li>
+    <li>Responsabilisation et engagement des personnels operationnels</li>
+    <li>Force a la coordination des actions</li>
+</ul>
+
+<h3>Limites</h3>
+<ul>
+    <li>La construction se fonde en grande partie sur les modeles passes, risquant de perenniser des postes non efficients (surtout pour les budgets fonctionnels)</li>
+    <li>La designation des responsabilites et le controle peuvent etre mal vecus</li>
+    <li>Les evolutions de l'environnement peuvent rendre la construction obsolete</li>
+    <li>Le processus est long et mobilisateur d'energie pour un resultat parfois eloigne de ses missions initiales</li>
+</ul>
+
+<div class="important">
+    <strong>Problemes recurrents du processus classique :</strong>
+    <ul>
+        <li>Les decisions sont figees sur 12 mois, limitant la capacite de reaction face aux imprevus</li>
+        <li>L'encadrement intermediaire cherche a limiter ses objectifs et se preserve des marges de manoeuvre (revenus sous-estimes, "matelas" de frais)</li>
+        <li>La validation definitive intervient souvent apres le debut de l'exercice</li>
+        <li>La construction est realisee a un niveau de detail trop important avec une logique analytique complexe</li>
+        <li>Les donnees a agreger sont peu uniformes et stockees sous forme de tableurs peu securises</li>
+        <li>Le controle de gestion passe l'essentiel de son temps a agreger et verifier plutot qu'a simuler et analyser</li>
+    </ul>
+</div>
+
+<h3>Les evolutions recentes</h3>
+
+<p>Les developpements technologiques et les nouvelles pratiques permettent de fluidifier le processus budgetaire :</p>
+<ul>
+    <li>La prise de decision s'effectue hors contraintes du calendrier budgetaire classique</li>
+    <li>Les <strong>rolling forecasts</strong> traduisent periodiquement les decisions face aux evenements non prevus</li>
+    <li>Les responsables operationnels expriment leurs previsions en termes non monetaires (quantites vendues, taux de charge) et ne s'engagent que sur des leviers d'action dans leur champ de responsabilite</li>
+    <li>Les regles de construction sont simples et connues de tous ; les anticipations sont realisees a un niveau agrege (grandes familles de couts/revenus)</li>
+    <li>Les refacturations internes sont abandonnees ; le budget est recentre sur les indicateurs cles de performance</li>
+</ul>
+
+<p>Les nouveaux outils bases sur les technologies internet permettent une collecte decentralisee via le web, un acces direct des managers a leurs donnees avec mise a jour en temps reel, une reconciliation et agregation automatique, un lien automatique avec les previsions de ventes et une construction collaborative avec les principaux clients.</p>
+
+<div class="source-link">
+    <p>Source originale : <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Pilotage de la Performance - Cours</a></p>
+    <p>References : Selmer (2024), Ristori (2024), P. Pyhrr (BBZ)</p>
+</div>
+
+</body>
+</html>

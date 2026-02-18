@@ -1,0 +1,30 @@
+Fichier Excel: Exercice CdG Sociale 1- Enoncé.xlsx
+Feuilles: ['Feuil1']
+
+=== Feuille: Feuil1 ===
+Analyse des effectifs et de la masse salariale (hors cotisations salariales) |  |  |  |  |  |  | 
+Voici les données de la société INOVIA |  |  |  |  |  |  | 
+Tableau 1- Masse salariale |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  | 
+Masse Salariale N-1 | 17777710 | 14361270 | 32138980 |  |  |  | 
+Masse Salariale N | 17989488 | 15332544 | 33322032 |  |  |  | 
+Mesures d'augmentation générales et catégorielles : |  |  |  |  |  |  | 
+Effet en masse des mesures | 0.0181 |  |  |  |  |  | 
+Taux de report de l'année N-1 | 0.0134 |  |  |  |  |  | 
+Taux de report sur l'année N+1 | 0.0368 |  |  |  |  |  | 
+Primes d'ancienneté | 218548 |  |  |  |  |  | 
+Somme des augmentations individuelles | 147840 |  |  |  |  |  | 
+Tableau 2- Evolution des effectifs |  |  |  |  |  |  | 
+ | Non-cadres | Cadres | Total |  |  |  | 
+Effectif moyen N-1 | 169 | 55 | 224 |  |  |  | 
+Effectif moyen N | 164 | 57 | 221 |  |  |  | 
+Questions : |  |  |  |  |  |  | 
+1) Calculez l'évolution de la masse salariale pour les cadres, les non-cadres et au total |  |  |  |  |  |  | 
+2) Calculez l'évolution des effectifs pour les cadres, les non-cadres et au total |  |  |  |  |  |  | 
+3) Calculez la rémunération moyenne et son évolution pour les cadres, les non-cadres et au total |  |  |  |  |  |  | 
+4) Déterminez l'effet effectif pour les cadres, les non-cadres et au total |  |  |  |  |  |  | 
+5) Déterminez les effets de structure pour les cadres, les non-cadres et au total |  |  |  |  |  |  | 
+6) Evaluez l'effet Vieillissement |  |  |  |  |  |  | 
+7) Evaluez l'effet Glissement Technicité |  |  |  |  |  |  | 
+8) Calculez la Noria |  |  |  |  |  |  | 
+

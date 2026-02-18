@@ -1,0 +1,25 @@
+Exercice : Convention de service et calcul des management fees
+Enoncé
+La société Alpha France, filiale d’un groupe international, signe une convention de service
+avec sa société mère Alpha Holding, basée aux Pays-Bas. Cette convention couvre :
+- Support administratif et juridique
+- Gestion des ressources humaines
+- Services informatiques partagés (IT)
+- Pilotage stratégique et reporting
+La convention prévoit une facturation annuelle des services selon les coûts réels + une
+marge de 5%.
+Les coûts réels sont répartis comme suit :
+- Support administratif et juridique : 120 000 €
+- RH : 80 000 €
+- IT : 150 000 €
+- Pilotage stratégique et reporting : 100 000 €
+Les management fees sont calculés comme un pourcentage du chiffre d’affaires de la filiale
+(Alpha France), soit 2% du CA annuel.
+Le chiffre d’affaires d’Alpha France est de 12 000 000 €.
+Questions
+1. Calculer le montant total des services facturés par Alpha Holding à Alpha France.
+2. Calculer les management fees dus par Alpha France.
+3. Déterminer le montant total à comptabiliser par Alpha France au titre de la
+convention de service.
+4. Analyser les risques fiscaux liés à cette convention (prix de transfert,
+documentation, etc.).

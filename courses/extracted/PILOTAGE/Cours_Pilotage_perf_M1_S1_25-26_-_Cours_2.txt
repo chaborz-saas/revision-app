@@ -1,0 +1,577 @@
+Cours Pilotage de la
+performance
+Cours de tronc commun M1
+S07 2025-2026
+Responsable de cours :
+Isabelle LACOMBE
+Enseignant :
+Renato PEREIRA
+renato.pereira01@em-normandie.fr
+Plan du cours Pilotage de la Performance
+1- Introduction
+1.1 Définition du pilotage de la performance
+1.2 Liens entre comptabilité de gestion et comptabilité générale
+1.3 La gouvernance d'entreprise et le contrôle de gestion. Le pilotage stratégique
+1.4 La notion de groupe, les cessions internes et management fees (frais de siège)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+3.2 Le cycle et le calendrier budgétaire
+3.3 Le contrôle budgétaire
+4- Tableaux de bord et indicateurs et reporting
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du périmètre de l’entité
+6- Conduite du changement
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reportingde durabilité (CSRD), le bilan carbone
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+• Rappel : Bernard Martory définit le contrôle de gestion sociale
+comme : « une des composantes et une des extensions du
+contrôle de gestion. C’est un système d’aide au pilotage social de
+l’organisation ayant pour objectif de contribuer à la gestion des
+ressources humaines dans leurs performances et leurs coûts ».
+Source: MartoryBernard, Contrôle de gestion sociale (9èmeédition), Vuibert, (2018) 3
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+Les méthodes du contrôle
+de gestion sociale
+Source: MartoryBernard, Contrôle de
+gestion sociale (9èmeédition), Vuibert,
+(2018)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+• Il ne faut pas confondre bilan social et tableau de bord social :
+• Le bilan social : créé en 1977 et son contenu précisé dans la loi NRE 2001, et sans doute renforcé
+par la loi PACTE de 2019 (Plan d’Action pour la Croissance et la Transformation des Entreprises),
+c’est un document obligatoire pour les entreprises et établissements de plus de 300 salariés et les
+collectivités territoriales. Il dresse une vision macroscopique de la situation sociale des entreprises
+sur les 3 dernières années et facilite le dialogue entre les différentes parties prenantes de
+l’entreprise (chef d’entreprise, représentants du personne, salariés, inspection du travail,
+actionnaires, etc.). L’information est présentée selon sept thématiques (familles) et comprend
+environ 120 indicateurs (ex : pyramide des âges, turnover, % de la masse salariale consacré à la
+formation).
+• Le tableau de bord social apporte un nombre limité d’indicateurs chiffrés pertinents et
+logiquement reliés entre eux. Ces tableaux de bord sont adossés à une stratégie, des leviers et
+plans d’actions prioritaires
+Source: GODOWSKI Christophe, DONADIO Alain, DUMAS Patrick, TAHAR Caroline, GIRAUD Laurent, NYOBE Sara, DSCG 3. Management et contrôlede 5
+gestion, VUIBERT 2017
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+• Le bilan social présente la situation et les
+évolutions de l’entreprise dans le
+domaine social au cours de l’année
+écoulée et des deux années précédentes.
+Tout salarié qui en fait la demande peut
+le consulter, ainsi que l’Inspection du
+Travail:
+Source: Leroy Michel, DSCG 3 Management et contrôle de gestion -Cours et
+applications corrigées (2ndédition), Gualino, 2021
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse
+salariale, bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+Exemple de bilan social à commenter par les étudiants
+www.societegenerale.com/sites/default/files/documents/2024-05/bilan-social-2023.pdf
+Bilan social 2023
+Société Générale
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+• L’analyse de la masse salariale est prise en exemple dans ce cours car la masse salariale s’exprime
+en euros et impacte donc les comptes de l’entreprise. Elle intéresse donc le DRH, mais aussi le
+Directeur Financier.
+• Il existe différentes définitions de la masse salariale :
+- La définition comptable : charge supportée par l’entreprise au sein d’une année par exemple (comptes de
+la classe 64- Charges de personnel).
+- La définition de la déclaration annuelle des salaires (Déclaration annuelle des données sociales (DADS)) :
+proche de la vision fiscale car elle intègre en outre les éléments périphériques aux rémunérations. A noter
+que la déclaration sociale nominative (DSN) remplace la déclaration annuelle de données sociales unifiée
+(DADS-U) au 1er janvier 2019 pour la plupart des entreprises. Un certain nombre d'employeurs continue
+néanmoins à relever de la DADS-U (notamment la fonction publique).
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+Il est important de bien définir le périmètre de l’analyse :
+• Masse salariale = somme des rémunérations perçues par les salariés. Peut être distinguée
+entre CDD et CDI par exemple.
+• Masse salariale chargée : comprend en plus les charges sociales patronales et les charges
+parafiscales (ex : formation sous le seuil de l’obligation légale, la construction…).
+• Les coûts de personnel : on y ajoute des coûts internes (avantages en nature, primes et
+indemnités non soumises, formation au-delà du seuil légal, dotations au comité
+d’entreprise…) et externes (coût des sociétés d’intérim, éventuellement la sous-traitance)
+• Le coût total du travail : on ajoute aux coûts de personnel l’ensemble des frais de gestion de
+la main d’œuvre (ex : recrutement, indemnités de résidence, services médicaux et sociaux,
+matériel de sécurité, indemnités de départ, primes de non concurrence).
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+• Il peut exister des écarts entre les :
+• données de paie (calée sur le rythme mensuel de paiement)
+• données comptables (régies par des règles de prudence qui enregistrent les charges au moment
+où elles sont constatées et provisionnent les charges à supporter pour l’avenir).
+• Données du budget : données prévisionnelles et estimatives dans la mesure où tous les
+événements et leurs dates ne sont pas connues (ex : démissions, date d’arrivée et salaire d’un
+nouvel arrivant).
+• Les écarts sont particulièrement sensibles sur :
+• Les congés payés : provisionnés en comptabilité avec reprise lors du paiement des congés
+• Les indemnités journalières de sécurité sociale : lorsque l’entreprise fait l’avance des indemnités
+journalières des salariés absents et les récupère par la suite (décalage dans le temps). Des
+décalages de montants peuvent exister liés aux régularisations (ex : cotisations plafonnées par la
+Sécurité Sociale)
+• Les indemnités de départ (retraite ou autre) : décalage possible entre la prévision budgétaire, la
+provision et la réalité (décalage dans le temps et en montant)
+• Le lissage des coûts dans le budget : notamment dans le cas d’une mensualisation en douzième
+alors que l’entreprise paie sur 13 mois.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+Les différents types d’augmentations des rémunérations :
+• Les augmentations générales : attribuées à l’ensemble des salariés de l’entreprise (générales) ou
+de groupes (catégorielles) soit :
+• En % du salaire et des primes
+• Pour une somme identique attribuée à l’ensemble du personnel
+• De façon semi-hiérarchisée : par exemple, une augmentation de x% jusqu’à un niveau de salaire plafonné
+• Les augmentations individuelles classables en 3 groupes :
+• Le glissement (G) : lié à la performance individuelle sans lien avec l’ancienneté et la qualification
+(augmentation, prime ou promotion au mérite)
+• Le vieillissement (V) : prise en compte de l’ancienneté de chaque salarié (prime d’ancienneté ou application
+d’une grille liée à l’ancienneté ou progression automatique dans la grille)
+• La technicité (T) : amélioration des qualifications des salariés (suite à une formation par exemple) avec un
+changement de poste ou de niveau hiérarchique
+• Les variations de primes mensuelles :
+• Si ces primes sont reconductibles sur les années à venir, elles peuvent être traitées comme les augmentations
+et intégrées dans l’évolution des rémunérations (ex : prime de vacances indiquées dans certaines conventions
+collectives)
+• Si elles sont exceptionnelles ou ne concernent qu’une année, on les analyse sur cette seule période
+Source: GODOWSKI Christophe, DONADIO Alain, DUMAS Patrick, TAHAR Caroline, GIRAUD Laurent, NYOBE Sara, 11
+DSCG 3. Management et contrôle de gestion, VUIBERT 2017
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale, bilan
+social, tableaux de bord sociaux, indicateurs de gestion sociale
+L’analyse de la masse salariale globale doit décomposer les différents facteurs en 4 familles :
+Variation totale
+entre deux périodes
+1- Variation
+d’activité
+2- Effectifs
+Variation de la
+masse salariale
+X % Variation de la
+Augmentations
+ou masse salariale Variation de la
+générales
+Y K € à activité masse salariale
+catégorielles
+constante à activité et
+Variation de la
+effectifs 4- Mesures
+masse salariale
+constants individuelles
+à activité
+Structure
+constante
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale,
+bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+Effet 1- Les variations de niveaux d’activité qui peuvent engendrer
+• Le recours aux heures supplémentaires ;
+• Ou au contraire, l’appel au chômage partiel ;
+• Le temps partiel accordé à certains salariés ;
+• Les événements imprévisibles ou accidentels (arrêts de production, grèves, incidents graves, etc.).
+• Le calcul d’une masse salariale à activité constante sert de base aux décompositions ultérieures.
+• Exemple de calcul de la masse salariale de référence (à activité constante)*
+En K€ Employés / Ouvriers Cadres Total
+Masse salariale DADS 460 325 352 237 812 562
+Grèvefévrier
+15 000 h EO (50€/h) + 750 +750
+Chômagepartiel mars-avril
+20 000h EO (50€/h) + 1000 +1 000
+(*) on raisonne en coûts et avantages marginaux par
+2 000h C (150€/h) +300 +300
+référence à une situation normale non affectée des
+Heures supp.Excep. (démarrage atelier T4) aléas
+3 000h EO (70€/h) -210 -210
+Indemnités fin carrière (contrat solidarité)
+150EO à 40 000 € -6 000 - 6 000
+20 C à 100 000 € -2 000 - 2 000
+Massesalariale de référence 455 865 350 537 806 402
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale,
+bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+Effet 2- La variation quantitative des effectifs (hors Noria) peut être mesurée en comparant l’effectif
+moyen entre deux années (moyenne arithmétique sur 12 mois/an).
+• Exemple de la détermination de l’effet effectif
+Année N Année N+1
+Effectif 1 000 1 100
+Masse salariale 112 000 K€ 129 360 K€
+Rémunération moyenne 112 000 € 117 600 €
+• Effet effectif = (variation d’effectif) (1 + augmentation de la rémunération moyenne)
+• Evolution de la rémunération moyenne unitaire de 112 000 € à 117 600 € -> + 5%
+• Soit un effet effectif de : (0,10 X 1,05) -> 10,5%
+• La progression de la masse salariale est de 129 360 / 112 000 -> 15,5%
+• L’augmentation de la masse salariale est attribuable à deux facteurs (effet volume avec les effectifs et
+effet prix avec la rémunération) dont les incidences se cumulent :
+• Méthode additive : effet d’effectif + augmentation des rémunérations 10,5% + 5% = 15,5%
+• Méthode multiplicative : (1 + Δrémunération) = (1 + Δ masse) = 1,1 X 1,05 = 1,155 -> 15,5%
+• Cette méthode basée sur les moyennes est rapide mais imprécise. On souhaitera parfois être plus
+précis et détailler les entrées ou sorties selon :
+• Leur nombre (une à une si nécessaire)
+• Leur date
+• Le niveau de coût salarial
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale,
+bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+Effet 3- La variation des niveaux de rémunération (1/2)
+• On mesure l’impact des mesures d’augmentation générales et/ou catégorielles.
+Cette variation est mesurée en masse ou en taux.
+• La masse salariale déterminée après déduction des évolutions de rémunération
+est appelée « masse salariale à activité, effectifs et niveaux de rémunération
+constants ».
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale,
+bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+Les augmentations de salaires se mesurent selon 3 variables :
+- Les augmentations en niveau (salaire N/salaire N-1) : mesure de la variation de salaire d’une personne ou d’un
+groupe entre deux périodes
+Ex : Salaire de 100 au 01/01/N
++ 2% au 01/04
++ 3% au 01/10 (par rapport à la base de janvier). Soit 105 en fin d’année représentant une hausse en niveau de 5%
+En taux multiplicatifs, la hausse s’applique au dernier niveau enregistré (pratique la plus courante). A la fin de l’année, on aurait 100 X 1,02 X 1,03 = 105,06. Soit
+5,06% de hausse en niveau.
+- Les effets de masse traduisent le pourcentage d’évolution de la masse salariale sur deux périodes. Ainsi une
+augmentation accordée en cours d’année n’a pas pour effet d’augmenter la rémunération totale de l’année dans les
+mêmes proportions. Dans ce cas, il y a donc un effet de masse inférieur à l’augmentation de niveau.
+Ex : une augmentation de 4% accordée au 01/10/N
+En niveau = +4%
+En masse = +1% (car 4% sur ¼ de l’année). S’il y avait un 13èmemois, ce serait 4% X 4/13 = 1,23%
+- Les effets de report concernent l’incidence en masse, sur l’année N+1, des mesures d’augmentation prises au cours
+de l’année N.
+(cid:3004)(cid:3042)û(cid:3047) (cid:3031)(cid:3032) (cid:3039)(cid:3028) (cid:3040)(cid:3032)(cid:3046)(cid:3048)(cid:3045)(cid:3032) (cid:3032)(cid:3041) (cid:3028)(cid:3041)(cid:3041)é(cid:3032) (cid:3043)(cid:3039)(cid:3032)(cid:3036)(cid:3041)(cid:3032) (cid:3015)(cid:2878)(cid:2869) (cid:2879)(cid:3004) û(cid:3047) (cid:3032)(cid:3041) (cid:3040)(cid:3028)(cid:3046)(cid:3046)(cid:3032) (cid:3043)(cid:3042)(cid:3048)(cid:3045) (cid:3039)(cid:4594)(cid:3028)(cid:3041)(cid:3041)é(cid:3032) (cid:3015)
+Effet report =
+(cid:3014)(cid:3028)(cid:3046)(cid:3046)(cid:3032) (cid:3046)(cid:3028)(cid:3039)(cid:3028)(cid:3045)(cid:3036)(cid:3028)(cid:3039)(cid:3032) (cid:3031)(cid:3032) (cid:3039)(cid:4594)(cid:3028)(cid:3041)(cid:3041)é(cid:3032) (cid:3015)
+Masse salariale indiciaire de N = 100 X 9 + 104 X 3 = 1 212
+Masse salariale indiciaire de N +1 = 104 X 12 = 1 248
+(cid:2869) (cid:2870)(cid:2872)(cid:2876) (cid:2879)(cid:2869) (cid:2870)(cid:2869)(cid:2870)
+Effet report = = 2,97 %
+(cid:2869) (cid:2870)(cid:2869)(cid:2870)
+Source: GODOWSKI Christophe, DONADIO Alain, DUMAS Patrick, TAHAR Caroline, GIRAUD Laurent, 16
+NYOBE Sara, DSCG 3. Management et contrôle de gestion, VUIBERT 2017
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale,
+bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+Effet 4- Les variations dues à l’évolution des structures de la masse salariale et aux mesures individuelles (1/2) :
+• Incidence des évolutions de structure et des mesures individuelles = variation globale de la masse salariale – somme des
+incidences des variations d’activité, d’effectifs, de rémunération
+• L’effet des mesures individuelles peut être exprimé au travers du glissement, du vieillissement, et de la technicité (GVT)
+• La redistribution des effectifs prend en compte les changements de la structure des effectifs dus à :
+- l’incidence des entrées-sorties sur la structure des emplois
+- L’effet qualitatif des créations et/ou suppressions de poste
+- La modification de la répartition géographique, des formes d’emploi, des lieux d’affectation, etc.
+- Les promotions ou redéfinitions collectives des emplois.
+• La Noria : conséquences sur la masse salariale du renouvellement des effectifs. En général, le remplacement de salariés
+âgés partant à la retraite par de nouveaux arrivants permet à l’entreprise d’économiser des coûts salariaux. La Noria est
+alors négative (= GVT négatif). Le calcul se fait salarié par salarié et la Noria n’existe qu’à partir de la date de
+remplacement.
+Effet de Noria (en valeur) = (Salaire Annuel Moyen des entrants – SAM des sortants) X Nb de remplaçants X prorata temporis
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse salariale,
+bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+• Généralement la Noria st négative : elle provoque une diminution de la masse salariale : c’est, par
+exemple, l’impact constaté des contrats de départ en retraite anticipé. Il existe des cas où elle est
+positive : il s’agit de situations à forte augmentation de technicité sur les postes, par exemple
+lorsque des électroniciens remplacent des électro-mécaniciens.
+Exemple :
+Entrants début Sortants début
+Début de période Fin de période
+période période
+Effectif 100 15 10 105
+Salaires moyensannuels 28 000 20 000 40 000 28 048
+• Détermination de la noria : effet en masse annuelle
+Nb de remplacements X différence de rémunération
+10 X [20 000 – 40 000] = - 200 000
+• Effet d’effectif : effet en masse annuelle
+Nb d’entrées X coût d’une entrée
+5 X 20 000 = 100 000
+Soit une variation totale de la masse salariale de – 200 000 + 100 000 = - 100 000
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.1- Les outils du contrôle de gestion pour gérer les ressources humaines : suivi de la masse
+salariale, bilan social, tableaux de bord sociaux, indicateurs de gestion sociale
+• Cas d’application : exercice CdG sociale (fichier excel)
+Exercice CdG
+Sociale 1- Enoncé
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+De la GPEC à la GEPP
+Définition de Dominique Thierry en 1993, qui est toujours d’actualité : « La Gestion Prévisionnelle des Emplois et des
+Compétences, est la conception, la mise en œuvre et le suivi de politiques et plans d’action cohérents visant à réduire de
+façon anticipée les écarts :
+- Entre les besoins et les ressources humaines de l’entreprise (en termes d’effectifs et de compétences) en fonction de
+son plan stratégique ou d’objectifs à moyen terme bien identifiés.
+- Et en impliquant chaque salarié dans le cadre d’un projet d’évolution professionnelle. »
+La GEPP est donc une démarche prévisionnelle et opérationnelle qui est loin de se résumer à la mise en place d’outils de
+type fiche de poste. C’est un outil d’aide à la décision.
+La gestion des emplois et des parcours professionnels est une démarche permanente d’anticipation pour ajuster les
+besoins de demain et les ressources humaines actuelles, à travers des plans d’action RH pour atteindre les objectifs de
+l’entreprise.
+Elle concerne les entreprises de plus de 300 salariés car elles sont soumises à l’obligation d’un accord. Cependant, les
+autres entreprises, quel que soit leur effectif peuvent avoir également intérêt à lancer cette démarche, par le biais d’un
+accord (sans obligation d’aborder les thèmes obligatoires par la loi) ou d’un plan d’action.
+Source : Hosdain, Marie-Françoise (2023), Réussir une GEPP en 9
+étapes. Ed. Gereso
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+Les évolutions conduisent les entreprises à effectuer un suivi précis des différents
+dispositifs relatifs aux salariés.
+La page suivante illustre la précision des réglementations.
+Source: Hosdain, Marie-Françoise (2023), Réussir une GEPP en 9 étapes. Ed. Gereso
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+Focus : La loi du 5 septembre 2018 pour la liberté de choisir son avenir professionnel : cette loi vise à sécuriser les parcoursprofessionnels pour
+prévenir et lutter contre le chômage. Résumé des mesures :
+• Le CPF* est monétisé : 500 euros/an et par salarié (plafond 5 000 euros) ou 800 euros/an pour les actifs n’ayant pas un niveau Vde qualification
+(plafond 8 000 euros). Liste universelle de qualifications pour tous les usagers.
+• Le CPF de transition : remplace le CIF (congé individuel de formation). Ouvert à tous les salariés (CDD, CDI et intérim) avec des conditions
+d’ancienneté. Sa prise en charge est totale ou partielle par la CPIR (commission paritaire interprofessionnelle régionale).
+• Le plan de développement des compétences* (PDC) : remplace le plan de formation. Il couvre 4 types d’actions : actions de formation, bilans de
+compétences, VAE, apprentissage au bénéfice des salariés pendant ou hors temps de travail. Pas de limite de durée de formation. Prise en charge
+par l’entreprise.
+• La VAE : expérimentation jusqu’au 31 décembre 2021 sur l’acquisition d’un ou plusieurs blocs de compétences et non d’une certification
+professionnelle inscrite au RNCP (défini par arrêté ministériel).
+• Alternance : l’âge limite passe de 26 ans à 30 ans pour les contrats d’apprentissage. La durée du contrat de professionnalisation est portée de 24 à
+36 mois.
+• L’entretien professionnel : il comporte des informations relatives à l’activation du CPF par le salarié, aux abondements que l’employeur est
+susceptible de financer sur le CPF, et au conseil en évolution professionnelle (CEP).
+• Le financement de la formation professionnelle : mise en place d’une contribution unique à la formation professionnelle et à l’alternance. Collecte
+par les URSSAF.
+• Gouvernance de la formation : création de France Compétences pour participer au financement de la formation professionnelle.
+• Remplacement des OPCA par des OPCO* (opérateurs de compétences) pour être recentrés sur des missions de conseil et de financement de
+l’alternance.
+• Information et consultation du CSE : la GEPP portera sur le plan de développement des compétences. Les informations sur la mise en œuvre des
+entretiens professionnels doivent être données au CSE.
+Source: Hosdain, Marie-Françoise (2023), Réussir une GEPP en 9 étapes. Ed. Gereso
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+La notion de compétence :
+- la compétence est liée à une situation de travail donnée. On n’est pas compétent
+en général, on le prouve en résolvant des problèmes concrets ;
+- elle fait l’objet d’un jugement. Nul ne saurait se déclarer compétent tout seul. Il
+faut donc une certaine forme de reconnaissance ;
+- elle désigne en général un attribut de la personne, mais il peut y avoir en plus
+des « compétences collectives », plus difficiles à juger
+- elle est constituée d’un ensemble de savoirs et de savoir-faire, qui font leurs
+preuves dans la situation de travail :
+- de divers ordres (techniques et sociaux, cognitifs et relationnels, etc.) : qu’est-ce exactement
+qu’être compétent dans tel ou tel métier ?
+- et acquis de diverses manières (la formation, l’apprentissage, la pratique, etc.)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+Les pratiques de gestion des compétences :
+1. identifier les compétences
+2. gérer les compétences de manière prévisionnelle
+3. développer les compétences
+4. valoriser et rémunérer ces compétences
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+1. Identifier les compétences :
+• nécessité d’une part d’identifier les compétences nécessaires au bon
+fonctionnement de l’entreprise, et d’autre part de situer les salariés disponibles
+par rapport à celles-ci.
+• Au plan collectif, l’outil principal mis en œuvre est le « référentiel de
+compétences ». Grâce à des groupes de travail internes et souvent avec l’aide
+d’un consultant, l’entreprise élabore, pour chacune des fonctions ou métiers
+existants en son sein, une grille définissant des niveaux de compétences requises.
+Cette grille peut être plus ou moins complexe.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+• Exemple de référentiel
+de compétences :
+Source : https://www.droits-
+salaries.com/417617479-
+feedback/41761747900056-
+siege/T09219006912-accord-sur-la-gestion-
+previsionnelle-des-emplois-et-des-
+competences-gpec-2019-2022-societe-
+feedback-GPEC.shtml
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+1. Identifier les compétences (suite) :
+• Des grilles de classification existent dans les conventions collectives : critères et niveaux permettant de
+hiérarchiser les salariés et de différencier les rémunérations et de dessiner des chemins possibles
+d’évolution (exemple : passer de technicien B2 à B3).
+• Les référentiels de compétences sont spécifiques à l’entreprise (même si dans la réalité elle peut être
+plus ou moins reliée à la convention collective) et on cherche à différencier des compétences et non
+des « postes » composés de « tâches ».
+• L’identification des compétences consiste donc
+• àlisterquellessont lessavoir-faire qu’on peutdemanderàunprofessionnel,et àdéfinirpourchacunedes niveaux
+• identifier les compétences plus globales parexemple lors de l’entretien individuel entre le salarié et son manager. Ce
+dernier, sur la base d’un dossier, est censé évaluer les compétences et indiquer les éventuels écarts entre le niveau
+des compétences atteint et le niveau requis. « L’entretien professionnel » prévu par les accords d’entreprise et la
+législation sociale peut servir à cet effet (on le distingue ainsi de l’entretien annuel d’évaluation « classique »).Dans
+certainesadministrationsexistentdes commissionsayantlemêmetype d’objectif
+• Le salarié peut avoir recours, hors de son entreprise, à un « bilan de compétences » (loi du 31 décembre 1991) lui
+permettant de faire le point, avec un spécialiste, sur ses compétences actuelles et les projets d’évolution qu’il
+souhaiteraitengager.
+• Autre chose est d’évaluer dans l’entreprise, la capacité du salarié à évoluer, ce que l’on appelle le
+«potentiel» : capacité qu’elle paraît avoir pour tenir, dans un délai donné, un poste de niveau
+supérieur à celui qu’elle tient actuellement.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+2. Gérer les compétences de manière prévisionnelle (GPEC) :
+• mesurer, d’analyser et chercher à réduire les écarts entre l’évolution prévisible
+des ressources sur une période donnée et les besoins en personnel nécessaires à
+cette date.
+• L’idée d’une gestion prévisionnelle (ou « anticipée ») a successivement porté sur
+les emplois et maintenant porte sur les compétences, en attendant peut-être de
+porter ultérieurement sur les âges (car il faut étudier l’évolution démographique
+de l’entreprise).
+• La DRH procède à un découpage en catégories (fonctions, métiers, activités) et
+analyse pour chacune les compétences centrales (pour lesquelles il faudra
+fidéliser et former le personnel) et les compétences secondaires pouvant être
+acquises sur le marché externe de l’emploi.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+3. Développer les compétences : 3 leviers
+• la politique de formation de l’entreprise pour faire progresser les compétences détenues
+par les salariés.
+• organisation de modules de formation, ou envoi de salariés dans des organismes de formation
+extérieurs dans le cadre de l’obligation légale (loi de 1971).
+• utilisation par l’entreprise de toute une gamme possible d’occasions allant dans le sens de la «
+professionnalisation » de ses salariés : formation à distance, participation à un congrès ou voyage
+d’étude, tutorat, appui à la poursuite d’études universitaires.
+• la formation professionnelle continue concerne en France chaque année dix millions d’adultes. Les
+dispositifs de Validation des Acquis de l’Expérience (VAE) peuvent également contribuer à
+accroître la reconnaissance des compétences des salariés.
+• Créer des emplois et des situations de travail qui permettent au salarié de résoudre
+des problèmes, de progresser, d’innover. Les organisations routinières, dans lesquelles
+l’individu n’a qu’à exécuter des tâches pré-établies, sous un étroit contrôle, sont peu
+susceptibles de faire évoluer les compétences. D’où l’idée de mettre en place des «
+organisations qualifiantes ».
+• La gestion des mobilités, et plus globalement des carrières (au sens de la succession des
+emplois), peut donc être organisée de manière à développer les compétences.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.2- Le contrôle de gestion et la gestion des emplois et des parcours professionnels
+4. Valoriser et rémunérer ces compétences :
+• Dans la réalité, la notion de compétences n’a pas introduit de révolution dans les
+pratiques de rémunération.
+• Dans la pratique, diverses notions autour des compétences influencent la
+rémunération :
+• le professionnalisme (connaissances, participation à l’équipe, qualité, efficacité technique,
+sécurité)
+• la polyvalence
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.3- Les situations de gestion de crise : négociation, conciliation, médiation et arbitrage
+Dans une situation économique défavorable, la direction pourra :
+• réduire ou supprimer tout remplacement d’un départ à la retraite,
+• favoriser des départs à la retraite anticipée,
+• voire provoquer des départs volontaires par des incitations monétaires.
+• C’est souvent la première étape d’un «plan social» ou «plan de sauvegarde de
+l’emploi» :
+• licenciements économiques, mais après avoir épuisé les mesures de mises à la retraite et les
+reclassements, internes et externes, des salariés concernés.
+• Suppose une consultation du comité d’entreprise et une validation par les services locaux du
+travail.
+• Le coût d’un « PSE » peut être très lourd : coût des transferts de personnel, coût des
+incitations au départ, indemnités de licenciement extra-légales, coût éventuel des recours
+juridiques de la part de salariés licenciés, coût du conflit social... (en moyenne 30 000 euros
+par salarié, mais tout dépend de la taille de l’entreprise et de l’ancienneté du personnel)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.3- Les situations de gestion de crise : négociation, conciliation, médiation et arbitrage
+La négociation collective est une obligation légale dans les entreprises de plus de
+50 salariés, sur les thèmes des salaires, de la participation, du temps de travail, des
+conditions de travail, de l’égalité hommes/femmes, de la formation, de l’insertion
+des travailleurs handicapés et des garanties sociales.
+Dans les entreprises de plus de 11 salariés, un CSE (Comité Social Économique) est
+représentatif du personnel et négocie avec la direction.
+Dans les entreprises de moins de 10 salariés, le dirigeant négocie un accord avec
+les salariés, valide si les 2/3 des salariés l’acceptent.
+La négociation débute par une réunion qui définit les principales étapes de la
+négociation, le calendrier, la nature des informations données, le crédit d’heures
+disponibles pour les négociateurs et les possibilités de recourir à une expertise.
+Très souvent, un conflit collectif du travail trouve sa solution dans la signature
+d’une convention ou d’un accord d’entreprise, mais la négociation directe est
+parfois difficile dans le climat du conflit.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.3- Les situations de gestion de crise : négociation, conciliation, médiation et arbitrage
+Des procédures de règlement des conflits collectifs, faisant appel à un intermédiaire, sont
+dans de nombreux cas le moyen d’engager ou de conclure une négociation :
+• La conciliation consiste, de la part d’une tierce personne appelée conciliateur ou d’une
+commission de conciliation, à organiser des entretiens en vue d’harmoniser les points de
+vue et d’aboutir à un accord. Elle est souvent prévue par les conventions collectives. Dans
+les conflits importants, elle résulte parfois d’une initiative des pouvoirs publics (Préfet,
+ministère du Travail). Dans le cadre de conflits individuels, c’est le Conseil des
+Prud’hommes qui fait office de conciliateur et de juge.
+• La médiation se fonde sur l’intervention d’un tiers qui, après audition des parties
+prenantes et enquête, propose une solution au conflit sous forme de recommandation
+motivée. Elle est ensuite soumise aux parties pour accord.
+• L’arbitrage consiste à soumettre le litige à un ou plusieurs arbitres désignés d’un
+commun accord par les parties intéressées du conflit. L’arbitre tranche le conflit par une
+sentence. La décision arbitrale est obligatoire pour toutes les parties du conflit dès
+l’instant où elles ont accepté le principe de l’arbitrage et donné leur accord sur le(s)
+nom(s) des arbitres.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.4- Les approches d'identification des compétences : connaissances professionnelles, potentiel
+estimé, savoir-faire opérationnel
+Les connaissances professionnelles et savoir-faire opérationnels
+Les connaissances professionnelles permettent la compréhension des objectifs généraux
+et des procédures permettant de réaliser une action en tenant compte des particularités
+de situations rencontrées. Ces connaissances favorisent l’adaptation au poste de travail et
+la capacité d’apprentissage, en se développant toute la vie professionnelle. Elles sont
+constituées de savoirs généraux (sur l’environnement du travail, le contexte où il se situe)
+et des savoirs socioprofessionnels (les normes et procédures, les modes d’intervention).
+À un niveau inférieur, on trouve le savoir-faire, c’est-à-dire ce qui permet d’exécuter une
+tâche prescrite et de gérer des situations complexes, avec des outils adaptés. Le savoir-
+faire peut être technique ou opérationnel (permettant d’agir) et relationnel (permettant de
+coopérer avec d’autres).
+On distingue deux types de connaissances :
+• explicites (ou conscientes) : apprises par la réflexion ou l’étude, et donc conceptuelles,
+• et tacites : liées à l’expérience des individus, exprimant un talent, une intuition ou un
+automatisme.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.4- Les approches d'identification des compétences : connaissances professionnelles, potentiel
+estimé, savoir-faire opérationnel
+Le potentiel estimé
+Le potentiel : ce sont des capacités professionnelles qui n’ont pas encore fait la
+preuve de leur performance (dimension dynamique de la performance).
+La performance, c’est l’articulation des trois composants de la compétence : le
+savoir-faire, le savoir être et les savoirs.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.4- Les approches d'identification des compétences : connaissances professionnelles, potentiel
+estimé, savoir-faire opérationnel
+• Définition de la compétence proposée par le MEDEF (syndicat du patronat français) : « la
+compétence professionnelle est une combinaison de connaissances, savoir-faire,
+expériences et comportements s’exerçant dans un contexte précis », plus
+particulièrement en situation professionnelle, c’est à l’entreprise de la repérer, de
+l’évaluer, la valider et la faire évoluer. La relation est donc claire et précise : la
+compétence est un des facteurs de gestion de l’emploi, et sans doute un des plus
+importants.
+• L’orientation liée à l’approche par la compétence rend obsolète la définition de postes de
+travail, au profit d’un système axé sur des activités :
+• permet au salarié de modeler sa carrière en se formant aux activités nouvelles, connexes ou
+annexes.
+• Cela étant, il convient de rappeler que c’est bien la hiérarchie qui oriente l’ensemble et qu’il n’y a
+pas ici de liberté de choix, l’entreprise restant maître de la situation et des évolutions.
+• Résultat mitigé de la gestion de l’emploi par les compétences : à l’origine, il s’agissait de remettre
+en question des éléments traditionnels comme l’ancienneté et le diplôme ; force est de constater
+que la réalité est claire en laissant une prééminence à ces deux éléments.
+2- Suivi de la masse salariale et contrôle de gestion sociale
+2.4- Les approches d'identification des compétences : connaissances professionnelles, potentiel
+estimé, savoir-faire opérationnel
+Différences entre le management stratégique et les compétences (notion utilisée en GRH) :
+En management stratégique En GRH
+- La compétence, comme avantage - la compétence des salariés est avant tout
+concurrentiel de l’entreprise est une individuelle (c’est d’ailleurs de cette
+notion collective. Elle est fondée sur ce manière qu’elle est le plus souvent
+que l’organisation est capable de faire rémunérée), même si elle peut se
+globalement, en termes de processus. combiner aux compétences de groupe.
+- Pour constituer un avantage - La gestion des compétences nécessite
+concurrentiel, la compétence doit être une explicitation.
+difficilement imitable : elle peut être
+tacite, non explicitée (pour garder secrets
+les processus efficaces), sauf en cas de
+dépôt de brevets (mais ceux-ci ne
+représentent souvent qu’une faible part
+de la« compétence de l’entreprise »).

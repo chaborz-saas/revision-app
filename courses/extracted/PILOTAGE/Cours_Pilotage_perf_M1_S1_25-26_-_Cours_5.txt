@@ -1,0 +1,563 @@
+Cours Pilotage de la
+performance
+Cours de tronc commun M1
+S07 2025-2026
+Responsable de cours :
+Isabelle LACOMBE
+Enseignant :
+Renato PEREIRA
+renato.pereira01@em-normandie.fr
+Plan du cours Pilotage de la Performance
+1- Introduction
+1.1 Définition du pilotage de la performance
+1.2 Liens entre comptabilité de gestion et comptabilité générale
+1.3 La gouvernance d'entreprise et le contrôle de gestion. Le pilotage stratégique
+1.4 La notion de groupe, les cessions internes et management fees (frais de siège)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+3.2 Le cycle et le calendrier budgétaire
+3.3 Le contrôle budgétaire
+4- Tableaux de bord et indicateurs et reporting
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du périmètre de l’entité
+6- Conduite du changement
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reportingde durabilité (CSRD), le bilan carbone
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Pour atteindre leurs objectifs, les organisations recherchent principalement :
+1. La Flexibilité
+2. La Qualité
+3. La Productivité
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+1. La flexibilité (financière, industrielle ou technique) :
+• Avec l’accroissement de la compétition nationale et internationale, les entreprises cherchent à
+adapter au plus près les ressources et les capacités des organisations aux demandes des clients et
+aux aléas des marchés. Elle suppose un recours accru à la sous-traitance.
+• Sur le plan organisationnel interne, cette flexibilité se matérialise par la : recherche d’innovation,
+souplesse dans les compétences de chacun, mobilité, modification permanente du volume de
+main-d'œuvre nécessaire (et donc risque de précarité pour les salariés), réponse de la production
+« juste à temps », etc.
+• Globalement, le modèle de base de l’entreprise peut être amené à évoluer selon cette politique
+Source :
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+2. La recherche de qualité
+• Elle est liée à la nécessité pour l’entreprise, de se différencier des autres et de
+montrer qu’elle répond au mieux aux attentes de ses clients
+• Fournir à ses clients ou usagers un degré accru de « certitude » sur l’adéquation
+entre leurs besoins et les procédés que l'organisation utilise pour les satisfaire.
+• Les conséquences organisationnelles, volontaires ou involontaires, de cette
+politique de qualité sont considérables
+• nécessité d’une « mise à plat » des procédures
+• formalisation des règles et des rôles de chacun (y compris en sortant des frontières de
+l’entreprise, avec ses sous-traitants)
+• incitation à une performance accrue en matière de management.
+• De nombreuses entreprises ont lourdement investi, dans les années 1990-2000,
+dans ces opérations.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+3. La recherche de productivité
+• Le caractère crucial des ressources financières surtout dans une gouvernance
+dominée par les actionnaires poussent les entreprises à accélérer le « retour »
+obtenu sur l’emploi de ces ressources.
+• La pression sur les prix, qui touche de nombreux secteurs soumis à la concurrence
+internationale, incite également à une « chasse » constante des coûts administratifs
+et de main-d'œuvre.
+• Les conséquences organisationnelles sont multiples: allègement des procédures,
+économies de personnel, automatisation des tâches.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Ces trois principales politiques,
+Flexibilité, Qualité, Productivité
+correspondent à l’économie de
+variété et d’innovation décrite par
+certains auteurs, qui parlent d’hyper
+compétition, et considérée comme
+pertinente dans la plupart des pays
+industrialisés.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+• Flexibilité, Qualité, Productivité ne sont pas forcément compatibles entre elles.
+• EX : rechercher une flexibilité totale peut aller à l’encontre du développement et de la transmission des
+compétences : faire appel de manière excessive à des intérimaires ou des stagiaires ne permet pas
+l'accumulation des savoir-fairedans l’entreprise.
+• EX : développer une politique qualité exigeante est coûteux et la formalisation qu’elle implique peut
+freiner l’innovation et la productivité des salariés (par souci de respecter les procédures, quels que
+soient le coût et les délais).
+• Flexibilité, Qualité, Productivité ne concernent pas toutes les activités de manière égale.
+• Ainsi, les industries de série à basse valeur ajoutée (textile) ou les services répétitifs (activités
+administratives, services de masse aux particuliers) restent dans des formes classiques d’organisation, où
+la productivité l'emporte sur la qualité et l’innovation.
+• Quant aux activités industrielles de process (raffinage, chimie), elles se prêtent peu à la flexibilité
+organisationnellemais davantageà la recherche de la qualité et de la productivité.
+• À l’inverse, les activités de conception (engineering, publicité, R et D) ne permettent pas une grande
+formalisation, ni une recherche de productivitépoussée mais se distinguent par la qualité et l’innovation.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Les 5 conséquences organisationnelles sur l'entreprise intégrée « classique »
+1. Une décentralisation accrue des unités (usines, agences, divisions...)
+2. Une réduction du nombre de niveaux hiérarchiques
+3. Une plus grande polyvalence
+4. Un travail plus collectif
+5. Un fonctionnement en projet et en processus
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+1. Une décentralisation accrue des unités (usines, agences, divisions...)
+• On donne plus de responsabilités aux managers (empowerment) pour permettre
+aux unités de la structure de s’adapter souplement à leurs environnements :
+• L’entreprise qui se développe à l’étranger va devoir créer des structures adaptées, d’abord
+permettant un contrôle étroit (par exemple une « division internationale » coiffant ses
+différents intérêts à l’étranger) puis une délégation accrue (création de filiales autonomes) et
+parfois une coordination internationale (divisions « produits » internationales, ou structures
+géographiques)
+• Il faut assurer un équilibre entre délégation et contrôle : l’accent peut être mis sur
+l’un ou sur l’autre selon les souhaits des dirigeants et les événements que la firme
+doit affronter.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+• Les organisations délèguent plus ou moins de responsabilités selon les types de centres
+définis :
+Responsabilité déléguée
+Type de centre Exemple Objectifs Eléments
+Chiffre Marge
+Coût de bilan
+d’affaires (rentabilité)
+(capitaux)
+Fabriquer au moindre coût, avecla
+Centres de coûts Usine,atelier 
+meilleure qualité possible et dans les délais
+Pasd’identification de produit fini
+Centres de Centre de support (DG, 
+identifiable. Doit respecter une dotation
+dépenses RH, marketing,
+budgétaire et un niveau de qualité de la Dotation
+discrétionnaires finance…) budgétaire
+prestation
+Centres de Bureau, agence Maximiser le chiffre d’affaires du produit
+recettes commerciale, marché ou de l’activité visée Coûts propres
+du centre
+Dégager la marge maximaleen améliorant
+Usine, établissement, Consomma-
+Centre de profit les recettes des produits vendus et en  
+pays, ligne de produit tions(moyens
+minimisant leur coût humains et
+capitaux)
+Filialeou pays ayant à 
+Dégager la meilleurerentabilité possible
+Centre la fois des activités de
+des capitaux investis tout en réalisant un Consomma-   
+d’investissement conception, de
+tionset coûts
+profit (vision long terme)
+production et de vente de capacité
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+2. Une réduction du nombre de niveaux hiérarchiques
+• Le management « maigre » (lean management), à la recherche de souplesse et
+d’économie :
+• les échelons hiérarchiques n’apparaissant pas essentiels sont supprimés : certains
+établissements industriels sont passés de 5 ou 6 niveaux à 3. Le « chef d’équipe » disparaît.
+• Mais il devient alors plus difficile de « grimper » les échelons. La distance technique et
+managériale entre deux niveaux est plus grande et, pour beaucoup, les carrières semblent se
+ralentir.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+3. Une plus grande polyvalence
+• L'objectif de souplesse incite à « déspécialiser » de nombreux postes, de manière
+à ce qu’une même personne fasse plusieurs tâches différentes, soit sur plusieurs
+domaines techniques, soit entre un domaine technique et de l’encadrement. De
+nombreux salariés y gagnent en autonomie mais revendiquent parfois une
+reconnaissance (également matérielle) de cette extension de responsabilité.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Le Lean Management
+« Le Lean management est un système d’organisation industrielle initié dans les
+usines japonaises du groupe Toyota au tout début des années cinquante. Jusqu’aux
+années quatre-vingt, on parlait alors de TPS pour « Toyota Production System » ou,
+plus simplement, de « Toyotisme ». Ce système d’organisation vise à éliminer les
+gaspillages et à augmenter la part de valeur ajoutée dans les processus métiers, de
+management ou les fonctions Supports »
+Source : Boussuat et al., 2022
+• « Le Lean est « la production au plus juste » ou encore « faire plus avec moins ».
+Faire plus en termes de qualité et moins en termes de ressources, de temps et de
+coût. La signification du mot anglais “Lean” est « maigre », « sans gras »,
+« svelte». De manière concise, le Lean est un système de gestion de production
+qui vise une « production sans gaspillage » ou une « production au plus juste ».
+Source : Bouami, 2023
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Source : Boussuat et al., 2022
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Kaizen = changement pour le bien
+Source : Bouami, 2023
+5 M (main-d’œuvre, matière, matériel, méthodes et milieu)
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+Exercice à faire en classe et en groupe. Remplir le tableau suivant sur les mudas (gaspillages)
+Enoncé mudas
+Enoncé mudas
+(forme modifiable)
+(pdf)
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Suite à la globalisation des économies, l’expansion des entreprises à
+l’international et leur présence dans les pays émergents deviennent de plus en
+plus importantes.
+Une des voies choisie est la réalisation d’une fusion-acquisition : elle constitue
+la stratégie de développement à l’international la plus engageante.
+• Ce haut niveau d’engagement, à l’origine de la réalisation de telles opérations,
+impacte le contrôle de gestion des entreprises qui se doit alors d’intégrer
+différentes histoires et cultures d’entreprise dans son champ d’action.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Une part importante des travaux considère que l’objectif de la mise en œuvre des
+fusions-acquisitions est la performance, la performance anticipée de ces
+opérations étant dans de nombreux cas un facteur clé pour justifier la mise en
+œuvre d’une opération (Meier et Schier, 2009).
+Or, les nombreuses recherches réalisées sur ces opérations font état de résultats
+en deçà des objectifs fixés, avec des taux d’échec pouvant excéder 50% selon les
+études (Buckley et Ghauri, 2002 ; Calipha et al., 2010 ; Schoenberg, 2006)
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Le terme « fusion-acquisition » regroupe deux grands types de rapprochement
+d’entreprises. Sudarsanam (2010) les définit de la manière suivante :
+• « Dans une fusion, les entreprises se regroupent afin de combiner et partager
+leurs ressources dans le but d’atteindre ensemble leurs objectifs. Les actionnaires
+des entreprises unifiées demeurent copropriétaires de l'entité combinée. Une
+acquisition ressemble plus à un accord autonome prévoyant qu’une entreprise
+acquière les actifs ou les actions d'une autre et que les actionnaires de l'entreprise
+achetée cessent d'en être propriétaire. Dans une fusion, une nouvelle entité peut
+être constituée du regroupement d’un ensemble d’entreprises qui fusionnent,
+alors que, dans une acquisition, l'entreprise acquise devient la filiale de
+l'acquéreur »
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• La phase d’intégration consiste à rassembler des structures auparavant
+indépendantes.
+• Haspeslagh et Jemison (1991) la définissent comme étant « un processus graduel
+au cours duquel les individus de deux organisations apprennent à travailler
+ensemble et coopèrent afin de transférer leurs ressources stratégiques ».
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• La notion d’intégration doit par ailleurs être précisée dans la mesure où elle peut revêtir trois
+principaux degrés dans son intensité :
+a. La préservation engendre une très faible intégration, l’acquéreur n’exerçant qu’un faible
+pouvoir décisionnel au niveau opérationnel. La cible bénéficie d’un fort degré d’autonomie et sa
+culture d’entreprise n’est que très peu impactée. L’acquéreur exerce une fonction de financeur
+de la cible et souhaite dégager une rentabilité élevée ;
+b. La rationalisation consiste à revoir les activités de l’acquéreur et de la cible afin de minimiser
+les coûts de production et d’exploiter au mieux les synergies résultant de ce rapprochement.
+Ces deux structures deviennent donc interdépendantes et la cible a une faible autonomie ;
+c. La symbiose souligne le caractère complexe de certaines fusions-acquisitions où les entreprises
+sont à la fois interdépendantes et ont un fort besoin d’autonomie. Un équilibre doit être trouvé
+entre la recherche de synergies et la préservation de la culture de la cible qui peut être à
+l’origine d’un avantage concurrentiel.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Concrètement, lors de fusions-acquisitions internationales, la phase d’intégration
+engendre la réunion de deux groupes de personnes n’ayant probablement jamais
+travaillé ensemble et ayant des méthodes de travail et des cultures différentes.
+• Ainsi, Birkinshaw et al. (2000) décomposent le processus d’intégration en deux grands
+sous-processus :
+1. Celui d’intégration des tâches dont dépendent les synergies opérationnelles
+2. Celui d’intégration des hommes essentiel à une convergence des cultures.
+• Qui plus est, la notion de contrôle est omniprésente, surtout au sein de cible où les
+craintes de perte de pouvoir et de contrôle vis-à-vis de l’acquéreur représentent une
+inquiétude souvent relevée auprès des salariés.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Par ailleurs, une bonne intégration est bien sûr essentielle pour les performances
+futures de l’acquéreur et de la cible et elle l’est d’autant plus si la méthode
+d’intégration choisie est la rationalisation ou la symbiose.
+La volonté de réalisation de synergies (de production, commerciales ou de
+recherches et développement, etc.) est un des principaux moteurs de la
+réalisation de fusions-acquisitions (Hoberg et Philips, 2010) et elles sont à
+l’origine de la création de valeur des fusions-acquisitions (Devos et al. 2009).
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Le contrôle de gestion a pour principale vocation la traduction des objectifs
+stratégiques d’une entreprise en objectifs évaluables au niveau opérationnel, ce
+qui rend possible la décentralisation des entreprises.
+Il s’agit donc d’une frontière critique pour la bonne mise en œuvre de la stratégie
+de l’entreprise.
+• Au quotidien, cela suppose un contrôle du personnel et des résultats des
+différents départements à même d’assurer la détection tant des bonnes pratiques
+que des dysfonctionnements.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Ainsi, en présence d’entreprises internationales, ces différentes étapes sont
+nécessairement impactées par la distance séparant le siège de ses implantations
+internationales et particulièrement par la distance culturelle.
+• L’essence du contrôle reposant sur la volonté de surveiller à distance, il trouve
+pleinement sa signification au sein de structure à envergure internationale.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Ces quatre dimensions se définissent de la manière suivante :
+La distance culturelle est l’écart entre deux cultures. Une culture peut être
+définie comme un système de normes, valeurs et croyances guidant les
+comportements des individus d’un même groupe. Autrement dit, « la culture
+renvoie à l’univers de sens partagé par un groupe et mobilisé par chacun de ses
+membres pour interpréter les situations quotidiennes. » (Chevrier 2004). Le cadre
+conceptuel s’attache à des notions telles que la langue, l’ethnie, les réseaux
+sociaux, la religion ou encore les normes sociales ;
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Ces quatre dimensions se définissent de la manière suivante :
+La distance administrative porte sur la présence ou non d’une histoire commune
+(passé colonial par exemple), d’une même monnaie ou de différences entre les
+systèmes institutionnels et les politiques développées par les gouvernements.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Ces quatre dimensions se définissent de la manière suivante :
+La distance géographique désigne la distance physique séparant le siège des
+différentes filiales. Plus précisément, elle comprend aussi bien l’éloignement
+physique, la présence de frontières en commun, que la possibilité d’utiliser des
+moyens de communication et de transports performants. Les technologies de
+communication tendent à réduire artificiellement les distances entre les individus ;
+cependant, la distance géographique exerce toujours une influence forte sur les
+décisions prises par les entreprises.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Ces quatre dimensions se définissent de la manière suivante :
+La distance économique met l’accent sur le pouvoir d’achat des consommateurs et
+le coût des ressources naturelles, financières et humaines, le pouvoir d’achat des
+consommateurs étant considéré comme l’élément fondamental selon la littérature.
+Ainsi, la distance économique du pays d’origine par rapport au pays d’implantation
+impacte la décision d’investissement et le choix de management d’une entreprise.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• L’importance de la distance culturelle peut être nuancée par la convergence des pratiques
+qui semble être constatée à travers l’adoption des dispositifs anglo-saxons, fondés sur des
+systèmes d’information et dont la première source de données est la comptabilité.
+• Concernant plus précisément le contrôle de gestion, des particularités sont par exemple
+identifiées dans les cultures française, anglaise et allemande (Bouquin et Schwarz, 2005).
+Les entreprises françaises utilisent le contrôle de gestion comme moyen de surveillance et afin
+d’avoir une plus grande connaissance des différents départementsau niveau de la direction.
+Elles se concentrent principalement sur le calcul du coût des produits.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+1. Extension du périmètre dans le cadre des fusions-acquisitions
+• Leurs homologues anglo-saxons considèrent le contrôle de gestion comme un moyen de
+déléguer et de piloter une structure.
+Elles se focalisent davantage sur l’analyse des écarts entre les objectifs fixés et les résultats obtenus.
+• Enfin, les entreprises allemandes voient le contrôle de gestion comme un moyen d’asseoir
+la compétitivité des entreprises grâce à la détermination et le respect d’un budget.
+• Suivant les méthodes anglo-saxonnes, elles attachent une forte importance à l’analyse
+financière pour comprendre et mieux maîtriser les dysfonctionnements et les avantages
+compétitifs des entreprises.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+• Le contrôle de gestion intervient dans un environnement en constante mutation et
+désormais à dimension mondiale.
+• Il doit s’adapter à des structures de plus en plus étendues géographiquement et
+dont les spécificités culturelles et institutionnelles sont nombreuses et complexes
+à appréhender.
+• Dès lors, la mise en place d’un système de contrôle est de plus en plus délicate.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+• La définition du contrôle d’une organisation peut s’avérer complexe en raison des
+différentes significations que ce terme peut revêtir.
+• Dès lors, l’éclatement de la chaîne de valeur des entreprises internationales peut
+intensifier les enjeux d’évaluation, de pilotage, de pouvoir et de circulation de
+l’information.
+• Les entreprises ont recours à différents types de contrôle, principalement le
+marché, la bureaucratie et le clan (Ouchi, 1979, 1980).
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par le marché
+• Le contrôle par le marché vise à améliorer la compétitivité de l’entreprise, ce qui
+se matérialise par la volonté de minimisation des coûts et d’établissement de
+processus de production permettant de faire face à la concurrence et d’accroître
+les parts de marché.
+• L’élément déterminant est ici le prix qui est établi par la confrontation de l’offre et
+de la demande et par comparaison aux autres biens et services équivalents sur le
+marché.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par le marché
+Cela suppose la présence de prix de cession interne (ou prix de transfert), c’est à
+dire le découpage plus ou moins fin de l’entreprise en centre de profit soumis à un
+contrôle strict par les administrations fiscales.
+Il implique aussi que la rémunération des salariés est fixée selon leur contribution
+au prix de vente, ce qui permet de faire converger les intérêts personnels et ceux
+de l’entreprise.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par le marché
+• L’exemple emblématique du département ayant le plus recours à cette forme de
+contrôle est celui des achats.
+• Si le contrôle par le marché ne peut pas être utilisé globalement (impossibilité de
+déterminer la contribution précise de chacun au prix de vente en raison de tâches
+complexes et interdépendantes), alors il est préférable de recourir conjointement
+au contrôle par la bureaucratie.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par la bureaucratie
+• Le contrôle par la bureaucratie s’appuie sur les procédures (règlements, normes,
+budgets, coûts standards, etc.).
+• Il faut tout d’abord souligner que le terme de « bureaucratie » n’est pas ici
+employé de façon péjorative !
+• L’élément déterminant est la règle établie par le manager en se fondant sur la
+performance actuelle et les améliorations à effectuer et qui spécifie l’objectif à
+atteindre.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par la bureaucratie
+• La collaboration entre les salariés et l’entreprise est favorisée tant au travers de la
+légitimité de la hiérarchie que de la convergence de l’intérêt commun et des motivations
+personnelles.
+• Dans le cadre d’une entreprise internationalisée, ce contrôle présente l’avantage d’avoir
+des procédures écrites et donc plus facilement diffusables.
+• Il est cependant nécessaire de s’assurer que le contenu est compréhensible par tous et
+qu’ils véhiculent la même information quelle que soit la culture des filiales à qui elle est
+destinée.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par la bureaucratie
+• Le contrôle par la bureaucratie s’avère être un système efficient lorsque le contrôle
+par le marché n’est pas adapté, faute d’éléments de comparaison.
+• Toutefois, le contrôle par la bureaucratie peut également être inefficient en raison
+de la fragilité du lien entre la contribution des salariés et leur rétribution.
+• Dans cette configuration, Ouchi (1980) conseille le recourt au troisième type de
+contrôle que constitue le clan.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par le clan
+• Le contrôle par le clan suppose que le personnel partage les valeurs de l’entreprise.
+• L’élément déterminant est ici le fort ancrage des objectifs à atteindre au sein des valeurs
+partagées par le groupe, ce qui permet de réduire nettement les coûts liés au contrôle et à
+la surveillance.
+• Le groupe partage un ensemble de valeurs, de croyances, de rituels et de cérémonies non
+formalisés qui rythment l’organisation de l’entreprise.
+• Par cette voie, les salariés ont le sentiment d’appartenir à même groupe qui conçoit son
+rôle dans la réalisation des objectifs de l’entreprise de manière similaire.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par le clan
+• Ce type de contrôle est le plus difficile à mettre en place et à faire perdurer dans le
+temps.
+• Ceci se vérifie d’autant plus en présence d’entreprises internationalisées où les distances
+géographiques et culturelles compliquent les relations durables entre les salariés de
+différents sites et donc rendent difficiles le partage d’un système de valeurs et croyances
+communes.
+• Le contrôle par le clan est dans de nombreuses structures le fondement du dispositif de
+contrôle mis en place. Il peut néanmoins être inefficient particulièrement en raison des
+difficultés de sa mise en œuvre et de son maintien dans le temps.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle par le clan
+• En résumé, on peut citer la phrase suivante : « En ce sens, le marché est
+comparable à une truite et le clan à un saumon, ces belles espèces sont très
+spécifiques mais requièrent des conditions particulières pour leur survie. En
+comparaison, le modèle de contrôle par la bureaucratie est un poisson-chat
+maladroit et laid, mais à même de vivre dans des environnements très différents et
+qui, en conséquence, domine les autres espèces. » (Ouchi, 1979).
+• Cette citation traduit la position intermédiaire du contrôle par la bureaucratie qui
+offre un niveau d’efficience très satisfaisant dans nombre de cas, sans pour autant
+nécessiter des conditions d’application particulièrement complexes.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Compatibilité des systèmes de contrôle
+• Les entreprises cherchent ainsi un équilibre entre ces différents types de contrôle et visent
+à mettre en place une méthode de contrôle appropriée et compatible avec celle qui était
+en place avant la réalisation de l’opération.
+• Il est, en effet, préférable de laisser suffisamment d’autonomie à la cible pour ne pas
+compromettre ses avantages compétitifs et pour que les salariés ne ressentent pas une
+trop forte contrainte de la part de la direction.
+• Ceci aurait pour effet d’augmenter les difficultés de la mise en place du nouveau système
+de contrôle et de risquer de fragiliser les avantages compétitifs de la cible, tout
+particulièrement lorsqu’il s’agit d’un savoir-faire tacite et que l’organisation en place
+facilitait jusqu’alors l’esprit créatif des salariés.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Compatibilité des systèmes de contrôle
+Lors de sa réalisation effective, les risques que doit prendre en compte le système
+de contrôle de gestion à mettre en place résident, d’une part, dans la modification
+de la structure de pouvoir de l’entreprise et les réorganisations au niveau
+opérationnel et, d’autre part, dans la prise en compte des distances,
+principalement culturelles, entre l’acquéreur et la cible.
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du
+périmètre de l’entité
+5.2 - le contrôle de gestion dans la mise en œuvre des politiques liées au périmètre
+2. Les Défis du contrôle de gestion dans les fusions-acquisitions internationales
+Le contrôle de gestion comme facilitateur d’intégration ?
+• La phase d’intégration pose concrètement la question de la mise en œuvre des systèmes
+de contrôle et de leur cohérence.
+• Un nouveau système doit être mis en place afin de répondre aux besoins de contrôle du
+siège et des services opérationnels.
+• Dans le cadre d’une fusion-acquisition nationale, la définition du système de contrôle
+n’est pas chose aisée dans la mesure où les entreprises ont une histoire et une culture
+d’entreprise propres à chacune des structures.
+• Dans le cadre d’une fusion-acquisition internationale, la tâche est d’autant plus délicate
+qu’il s’agit au préalable de comprendre les différences culturelles des deux structures.

@@ -1,0 +1,96 @@
+--- Slide 1 ---
+La Convention de Vienne sur la vente internationale de marchandises
+Pr. Philippe Corruble
+--- Slide 2 ---
+Qu'est-ce que la CISG ?
+La Convention des Nations Unies sur les contrats de vente internationale de marchandises (CISG), parfois appelée Convention de Vienne, est un traité multilatéral qui établit un cadre uniforme pour le commerce international.
+En décembre 2023, elle avait été ratifiée par 97 pays, représentant les deux tiers du commerce mondial.
+La CISG facilite le commerce international  en supprimant les obstacles juridiques entre les États parties   (appelés « États contractants ») et en fournissant des règles uniformes qui régissent la plupart des aspects d'une transaction commerciale, tels que :
+la formation des contrats
+les modes de livraison
+les obligations des parties
+et les recours en cas de rupture de contrat
+Sauf exclusion expresse dans le contrat, l'[ , la convention est automatiquement intégrée dans le droit interne des États contractants et s'applique directement aux transactions de marchandises entre leurs ressortissants.
+La CVIM est « rédigée dans un langage commercial clair », ce qui permet aux juges de la rendre applicable à toute une série de situations de vente.
+Il a été dit que « le style rédactionnel est clair et la formulation simple, sans clauses subordonnées complexes », et que « le sens général » peut être compris dès la première lecture, sans qu'il soit nécessaire d'être un expert en vente.
+--- Slide 3 ---
+Champ d'application de la CVIM (application géographique)
+La CVIM s'applique aux contrats de vente de marchandises entre des parties dont les sièges sont situés dans des États différents, lorsque ces États sont des États contractants (article 1(1)(a)).
+Compte tenu du nombre important d'États contractants, il s'agit là de la voie habituelle pour l'applicabilité de la CVIM.
+La CVIM s'applique également si les parties sont situées dans des pays différents (qui ne doivent pas nécessairement être des États contractants) et que les règles de conflit de lois conduisent à l'application de la loi d'un État contractant.[ Par exemple, un contrat entre un commerçant japonais et un commerçant brésilien peut contenir une clause prévoyant que l'arbitrage se fera à Sydney selon le droit australien[ , avec pour conséquence que la CVIM s'appliquera.
+Un certain nombre d'États ont déclaré qu'ils ne seraient pas liés par cette condition. Voir par exemple le cas des États-Unis.
+--- Slide 4 ---
+Pays n'ayant pas ratifié la CVIM
+L'Inde, l'Afrique du Sud, le Nigeria et le Royaume-Uni sont les principaux pays commerçants qui n'ont pas encore ratifié la CISG.
+L'absence du Royaume-Uni, juridiction de premier plan en matière de choix de la loi applicable aux contrats commerciaux internationaux, a été attribuée à divers facteurs, notamment :
+le fait que le gouvernement ne considère pas sa ratification comme une priorité législative,
+le manque d'intérêt des entreprises pour soutenir la ratification,
+l'opposition d'un certain nombre d'organisations importantes et influentes,
+le manque de ressources publiques,
+et le risque que Londres perde son avantage en matière d'arbitrage et de contentieux internationaux.[94] En 2020, le gouvernement britannique a fait savoir qu'il n'avait pas l'intention d'adhérer à la CISG.
+--- Slide 5 ---
+Le cas des États-Unis
+Aux États-Unis, les 50 États ont, à des degrés divers, adopté une législation commune appelée « Uniform Commercial Code » (UCC).
+L'UCC diffère de la CVIM à certains égards, notamment dans les domaines suivants :
+Conflit de formulaires : en vertu de la CVIM, une réponse à une offre qui se présente comme une acceptation, mais qui comporte des ajouts, des limitations ou d'autres modifications, est généralement considérée comme un rejet et une contre-offre. L'UCC, en revanche, tente d'éviter la « bataille des formulaires » qui peut résulter d'une telle règle et permet à une expression d'acceptation d'être valable, à moins que l'acceptation ne stipule qu'elle est subordonnée à l'accord de l'offrant sur les conditions supplémentaires ou différentes contenues dans l'acceptation.
+Exigence écrite – Sauf indication contraire d'un État ratifiant, la CVIM n'exige pas que le contrat de vente soit consigné par écrit. En vertu de la loi sur la fraude de l'UCC (héritée de la common law), les contrats de vente de marchandises d'une valeur supérieure ou égale à 500 dollars ne sont généralement pas exécutoires s'ils ne sont pas consignés par écrit.
+--- Slide 6 ---
+Réserves des États-Unis (article 95 de la CVIM)
+Parmi les réserves émises par les États-Unis à l'égard de la CVIM figure la disposition selon laquelle la CVIM ne s'applique qu'aux contrats conclus entre des parties situées dans d'autres États contractants de la CVIM, une réserve autorisée par la CVIM à l'article 95.
+Par conséquent, dans les contrats internationaux de vente de marchandises entre une entité américaine et une entité d'un État contractant, la CVIM s'applique à moins que la clause de choix de la loi applicable au contrat n'exclue expressément les dispositions de la CVIM.
+À l'inverse, dans les contrats « internationaux » de vente de marchandises entre une entité américaine et une entité d'un État non contractant, qui seront jugés par un tribunal américain, la CVIM ne s'appliquera pas et le contrat sera régi par le droit interne applicable conformément aux règles de droit international privé.
+--- Slide 7 ---
+Champ d'application (2) et exclusions spécifiques
+La CVIM s'applique uniquement aux marchandises et produits commerciaux
+À quelques exceptions près, elle ne s'applique pas aux biens personnels, familiaux ou domestiques
+Elle ne s'applique pas non plus aux enchères, aux navires, aux aéronefs, aux biens incorporels et aux services
+Il est important de noter que les parties à un contrat peuvent exclure ou modifier l'application de la CVIM
+La CVIM, par définition, ne régit pas tous les aspects des contrats de vente auxquels elle s'applique.[
+Les questions énumérées à son article 4 doivent être régies par le droit national applicable, en tenant dûment compte des règles de conflit de lois applicables au for
+Article 4 de la CVIM :
+« La présente Convention régit uniquement la formation du contrat de vente et les droits et obligations du vendeur et de l'acheteur découlant d'un tel contrat. En particulier, sauf disposition contraire expresse de la présente Convention, elle ne porte pas sur :
+a) la validité du contrat ou de l'une de ses dispositions ou de tout usage ;
+(b) l'effet que le contrat peut avoir sur la propriété des marchandises vendues. »
+--- Slide 8 ---
+Formation du contrat avec CISG
+Une offre de contrat doit être adressée à une personne, décrire les marchandises, leur quantité et leur prix, et indiquer l'intention de l'offrant d'être lié par l'acceptation.
+En outre, en l'absence de prix explicite ou de procédure permettant de déterminer implicitement le prix, les parties sont réputées avoir convenu d'un prix basé sur celui qui est généralement pratiqué au moment de la conclusion du contrat pour des biens similaires vendus dans des circonstances comparables
+En règle générale, une offre peut être révoquée à condition que le retrait parvienne au destinataire avant ou au moment de l'offre, ou avant que le destinataire n'ait envoyé son acceptation. Certaines offres ne peuvent être révoquées, par exemple lorsque le destinataire s'est raisonnablement fondé sur le caractère irrévocable de l'offre.
+La CVIM exige un acte positif pour indiquer l'acceptation ; le silence ou l'inaction ne constituent pas une acceptation.
+La CVIM tente de résoudre la situation courante dans laquelle la réponse du destinataire à une offre accepte l'offre initiale, mais tente de modifier les conditions.
+La CVIM stipule que toute modification des conditions initiales constitue un rejet de l'offre — il s'agit d'une contre-offre —, sauf si les conditions modifiées ne changent pas de manière substantielle les termes de l'offre.
+Les modifications apportées au prix, au paiement, à la qualité, à la quantité, à la livraison, à la responsabilité des parties et aux conditions d'arbitrage peuvent toutes modifier de manière substantielle les termes de l'offre.
+--- Slide 9 ---
+Obligations du vendeur en vertu de la CVIM
+Le vendeur doit livrer les marchandises, remettre tous les documents s'y rapportant et transférer la propriété des marchandises, conformément au contrat.
+Les marchandises doivent être conformes à la qualité, à la quantité et à la description requises par le contrat, être emballées de manière appropriée et convenir à l'usage prévu.
+Le vendeur est tenu de livrer des marchandises qui ne font pas l'objet de réclamations de tiers pour violation de droits de propriété industrielle ou intellectuelle dans l'État où les marchandises doivent être vendues
+La CVIM décrit le moment où le risque passe du vendeur à l'acheteur[ , mais il a été observé que, dans la pratique, la plupart des contrats définissent assez précisément les obligations de livraison du vendeur en adoptant un terme d'expédition établi, tel que FOB et CIF
+Article 36 de la CVIM :
+« (1) Le vendeur est responsable, conformément au contrat et à la présente Convention, de tout défaut de conformité existant au moment où le risque est transféré à l'acheteur, même si le défaut de conformité n'apparaît qu'après ce moment.
+(2) Le vendeur est également responsable du défaut de conformité qui survient après le moment indiqué au paragraphe précédent et qui résulte d'une violation de l'une de ses obligations, y compris d'une violation de toute garantie que les marchandises resteront, pendant un certain temps, aptes à l'usage normal ou à un usage particulier, ou qu'elles conserveront les qualités ou caractéristiques spécifiées. »
+--- Slide 10 ---
+Obligations de l'acheteur
+L'acheteur est tenu d'examiner rapidement les marchandises
+L'acheteur perd le droit de se prévaloir d'un défaut de conformité des marchandises s'il ne notifie pas au vendeur la nature du défaut de conformité dans un délai raisonnable après l'avoir découvert ou
+aurait dû la constater
+En tout état de cause, l'acheteur perd le droit d'invoquer un défaut de conformité des biens s'il ne le notifie pas au vendeur au plus tard dans un délai de deux ans à compter de la date à laquelle les biens ont été effectivement remis à l'acheteur, à moins que ce délai ne soit incompatible avec un délai de garantie contractuel.
+L'obligation de l'acheteur de payer le prix comprend l'exécution des mesures et le respect des formalités nécessaires, en vertu du contrat ou de la loi ou de la réglementation, pour permettre le paiement.
+Lorsqu'un contrat a été valablement conclu mais ne fixe pas ou ne prévoit pas expressément ou implicitement le prix, les parties sont réputées, sauf indication contraire, avoir fait référence implicitement au prix généralement pratiqué au moment de la conclusion du contrat pour des biens vendus dans des circonstances comparables dans le commerce concerné.
+--- Slide 11 ---
+Paiement du prix
+Si l'acheteur n'est pas tenu de payer le prix en un autre lieu déterminé, il doit le payer au vendeur :
+(a) au siège social du vendeur ; ou
+(b) si le paiement doit être effectué contre remise des marchandises ou des documents, au lieu où la remise a lieu.
+Article 58
+(1) Si l'acheteur n'est pas tenu de payer le prix à un autre moment déterminé, il doit le payer lorsque le vendeur met à la disposition de l'acheteur, conformément au contrat et à la présente Convention, soit les marchandises, soit les documents qui en permettent la disposition.
+Le vendeur peut subordonner la remise des marchandises ou des documents au paiement.
+(2) Si le contrat comporte le transport des marchandises, le vendeur peut expédier les marchandises à des conditions telles que les marchandises ou les documents qui en disposent ne soient remis à l'acheteur que contre paiement du prix.
+3) L'acheteur n'est pas tenu de payer le prix avant d'avoir eu la possibilité d'examiner les marchandises, à moins que les modalités de livraison ou de paiement convenues par les parties ne soient incompatibles avec cette possibilité.
+--- Slide 12 ---
+Recours en cas de rupture de contrat
+Les recours de l'acheteur et du vendeur dépendent de la nature de la violation du contrat.
+Si la violation est fondamentale, l'autre partie est alors privée de manière substantielle de ce qu'elle s'attendait à recevoir en vertu du contrat.
+À condition qu'un test objectif démontre que la violation n'était pas prévisible, le contrat peut être annulé ([ ) et la partie lésée peut réclamer des dommages-intérêts.
+Si la violation n'est pas fondamentale, le contrat n'est pas annulé et des recours peuvent être exercés, notamment une demande de dommages-intérêts, l'exécution en nature et l'ajustement du prix.
+La CVIM exonère une partie de sa responsabilité à l'égard d'une demande de dommages-intérêts lorsque l'inexécution est imputable à un empêchement indépendant de la volonté de la partie ou d'un sous-traitant tiers et qui ne pouvait être raisonnablement prévu.[57] Un tel événement extérieur peut être qualifié ailleurs de force majeure ou d'impossibilité d'exécution du contrat.

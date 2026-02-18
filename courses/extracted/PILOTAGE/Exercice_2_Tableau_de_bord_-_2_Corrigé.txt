@@ -1,0 +1,101 @@
+EXERCICE 2 sur le tableau de bord – SA Labopharma (adapté de Courcoureux
+M., Cuyaubère T., Muller J., Contrôle de Gestion, Nathan)
+CORRIGE
+Le travail qui vous est demandé consiste à exécuter le programme décrit dans la
+lettre de mission : il s’agit de faire l’esquisse de l’analyse permettant de créer un
+modèle de tableau de bord mensuel. Les idées suivantes peuvent être développées.
+I- Proposition d’un modèle de tableau de bord
+Le tableau de bord pourrait inclure différents types de données.
+1- Les données commerciales
+On peut proposer un tableau du type suivant :
+Ventes en €
+Réalisations
+Prévisions :
+Chiffre Chiffre
+Produits CA Cumulé Ecart (a-b)
+d’affaires du d’affaires
+(b)
+mois cumulé (a)
+Total
+Ce modèle de tableau peut être affiné avec, par exemple, un découpage en
+secteurs (zones géographiques). Cela permettrait de détecter les zones où un
+effort doit être réalisé en priorité.
+Exercice 2 sur le tableau de bord
+2- Des données sur la production
+a) Volumes produits
+Production
+Produits Unités (en quantités) Valeur (coût préétabli en €)
+Total
+b) Suivi des coûts contrôlables
+Il semble judicieux de mettre en place un système de coûts préétablis, ce qui
+permettrait de suivre mensuellement les écarts entre les prévisions et les coûts
+constatés à l’aide, par exemple, d’un tableau de type suivant :
+Suivi des couts et des écarts (en €)
+Eléments Produit X Produit Y Total
+Coût préétabli des matières (CPM)
+Coût constaté des matières (CCM)
+Ecart global sur matières
+Coût préétabli de la MOD (CPMOD)
+Coût constaté de la MOD (CCMOD)
+Ecart global sur MOD
+Autres coûts budgétés
+Autres coûts constatés
+Ecart sur autres coûts
+Total = Coût préétabli de la production
+constatée
+Total = Coût constaté
+Total = Ecart global relatif à la
+production constatée
+Exercice 2 sur le tableau de bord
+3- Des données comptables
+Des comptes de résultats mensuels doivent pouvoir être établis dans l’immédiat afin
+de mesurer la progression du résultat à l’intérieur de l’exercice, avec possibilité
+ultérieure d’envisager des comptes de résultat prévisionnels.
+4- Le suivi des stocks
+Le suivi des stocks peut s’effectuer à partir d’un tableau selon le modèle suivant :
+Suivi des stocks
+Quantité Coût unitaire Montant en €
+préétabli en €
+Matière 1
+Matière 2
+Total Matière
+Produit X
+Produit Y
+Total Produits
+Exercice 2 sur le tableau de bord
+5- Les données financières
+Voici un exemple de tableau possible.
+Données financières mensuelles
+J F M A M J J A S O N D
+Durée crédit clients
+Durée crédit fournisseurs
+BFR en valeur (€)
+Trésorerie
+1- Disponible fin de mois
+2- Position la plus haute
+3- Position la plus basse
+II- Informations nécessaires au tableau de bord
+Ces informations concernent notamment les éléments suivants.
+1- La comptabilité générale
+Elle devra assurer la production des documents utiles à la gestion. Elle pourra
+utiliser :
+− La méthode des abonnements ;
+− La méthode des inventaires permanents tenus par ordinateur.
+2- La comptabilité analytique
+Elle est actuellement insuffisante et devra être renforcée dans deux directions :
+− Sur le plan comptable : une comptabilité en coûts préétablis doit pouvoir être
+mise en place, notamment sur les coûts contrôlables, à partir d’une analyse
+technique portant sur les matières et la main d’œuvre. Cela permettra
+l’établissement d’une fiche de coûts préétablis par produit ;
+− Sur le plan informatique : le logiciel comptable doit être revu de façon à
+intégrer une ventilation analytique des principales charges.
+Exercice 2 sur le tableau de bord
+3- La tenue de stocks
+Les stocks de matières et de produits devront être tenus en quantités et en valeur
+aux coûts préétablis et sur ordinateur. Cela suppose la mise en place des
+documents correspondants : bons de réception et bons de sortie.
+En conclusion, l’ordinateur existant est sous-utilisé. Son emploi au niveau de la
+gestion des stocks devrait permettre une amélioration rapide.
+Le tableau de bord ainsi défini reste léger et sa mise en place pourra être
+progressive.
+Exercice 2 sur le tableau de bord

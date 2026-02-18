@@ -1,0 +1,15 @@
+Etude de cas à faire en groupe de 3 à 5 étudiants en classe (durant la séance 5)
+Cours de pilotage de la performance M1 S1
+SUJET
+Pour répartir la masse salariale par produit, il vous manque une clé de répartition !
+Répartition de la masse salariale par produit
+Clé de répartition = nb de personnes dédiées par produit
+Année N-1 Année N
+Pots
+Pots échappement cardans cardans
+échappement
+Cadres 100 50 100 52
+Non cadres 300 100 300 90
+Total 400 150 400 142
+(c) Sujet rédigé par Isabelle Lacombe, EM Normandie. A utiliser dans le cadre des cours à l’EM
+Normandie.

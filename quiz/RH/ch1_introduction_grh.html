@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Introduction à la GRH</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #a0e0c0; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #059669; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">RESSOURCES HUMAINES — QUIZ</div>
+        <h1>Cours 1 — Introduction à la GRH</h1>
+    </div>
+
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "Quelle est la double finalité de la GRH ?",
+        options: [
+            "A. Recrutement et formation",
+            "B. Efficacité (atteindre les objectifs) et efficience (optimiser les moyens)",
+            "C. Motivation et rémunération",
+            "D. Contrôle et évaluation des salariés"
+        ],
+        correct: 1,
+        explanation: "La GRH a une double finalité : l'efficacité (atteindre les objectifs de l'organisation) et l'efficience (optimiser les moyens mis en oeuvre pour y parvenir)."
+    },
+    {
+        q: "Selon Ferrary (2014), la GRH est un système managerial dont l'objectif est de mettre en oeuvre :",
+        options: [
+            "A. La dimension financière de la stratégie",
+            "B. La dimension commerciale de la stratégie",
+            "C. La dimension humaine de la stratégie",
+            "D. La dimension juridique de la stratégie"
+        ],
+        correct: 2,
+        explanation: "Ferrary (2014) définit la GRH comme un ensemble d'outils et de pratiques formant un système managerial cohérent dont l'objectif est de mettre en oeuvre la dimension humaine de la stratégie."
+    },
+    {
+        q: "Dans le modèle d'Ulrich (1997), quel rôle RH combine orientation 'futur' et axe 'personnes' ?",
+        options: [
+            "A. Expert administratif",
+            "B. Champion des salariés",
+            "C. Partenaire stratégique",
+            "D. Agent du changement"
+        ],
+        correct: 3,
+        explanation: "L'agent du changement se situe à l'intersection de l'axe 'futur' et de l'axe 'personnes'. Le partenaire stratégique combine 'futur' et 'processus', l'expert administratif combine 'présent' et 'processus', et le champion des salariés combine 'présent' et 'personnes'."
+    },
+    {
+        q: "Le CSE (Comité Social et Économique) a été créé par :",
+        options: [
+            "A. La loi El Khomri de 2016",
+            "B. Les ordonnances Macron du 22/09/2017",
+            "C. La loi Rebsamen de 2015",
+            "D. Les ordonnances Auroux de 1982"
+        ],
+        correct: 1,
+        explanation: "Le CSE est une instance unique créée par les ordonnances Macron du 22 septembre 2017. Il remplace les délégués du personnel (DP), le CHSCT et le comité d'entreprise (CE)."
+    },
+    {
+        q: "À partir de combien de salariés le CSE est-il obligatoire ?",
+        options: [
+            "A. 10 salariés",
+            "B. 11 salariés",
+            "C. 50 salariés",
+            "D. 300 salariés"
+        ],
+        correct: 1,
+        explanation: "Le CSE est obligatoire dès 11 salariés. C'est à partir de 50 salariés qu'il acquiert des attributions économiques élargies, et à partir de 50 salariés que des délégués syndicaux peuvent être désignés."
+    },
+    {
+        q: "Quelle est la fréquence de la négociation obligatoire sur l'égalité femmes/hommes et la QVT ?",
+        options: [
+            "A. Mensuelle",
+            "B. Triennale",
+            "C. Annuelle",
+            "D. Quinquennale"
+        ],
+        correct: 2,
+        explanation: "La négociation sur l'égalité F/H et la qualité de vie au travail (QVT) est annuelle, tout comme la négociation sur les rémunérations, le temps de travail et le partage de la valeur ajoutée. Seule la négociation sur les emplois et parcours (GPEC, 300+ salariés) est triennale."
+    },
+    {
+        q: "Dans l'approche ascendante (bottom-up) de la stratégie RH, quelle est la logique ?",
+        options: [
+            "A. La stratégie détermine les besoins RH",
+            "B. Les compétences détenues par les salariés influencent la stratégie de l'entreprise",
+            "C. La DRH impose ses choix à la direction générale",
+            "D. Les salariés votent la stratégie de l'entreprise"
+        ],
+        correct: 1,
+        explanation: "Dans l'approche ascendante (bottom-up), ce sont les compétences détenues par les salariés qui influencent et orientent la stratégie de l'entreprise. Southwest Airlines en est l'exemple emblématique : les salariés sont considérés comme la plus grande force de l'entreprise."
+    },
+    {
+        q: "Laquelle de ces affirmations décrit correctement la GRH comme 'fonction partagée' ?",
+        options: [
+            "A. La GRH est gérée exclusivement par la DRH",
+            "B. La GRH est externalisée à des cabinets de conseil",
+            "C. La GRH est exercée conjointement par la DRH et les managers opérationnels",
+            "D. La GRH relève uniquement de la direction générale"
+        ],
+        correct: 2,
+        explanation: "La GRH est une fonction partagée dont les acteurs principaux sont la DRH et les managers opérationnels. Au quotidien, le manager recrute, rémunère, évalue, forme et accompagne les carrières de ses collaborateurs."
+    },
+    {
+        q: "Quelle période marque l'émergence du management stratégique des RH (après 1980) ?",
+        options: [
+            "A. L'humain est considéré comme un coût à minimiser",
+            "B. L'humain est une ressource stratégique à mobiliser autour du projet de l'organisation",
+            "C. La GRH se limite à l'administration du personnel et aux procédures",
+            "D. La fonction RH disparaît au profit du management par objectifs"
+        ],
+        correct: 1,
+        explanation: "Après 1980, le management stratégique considère que l'humain 'est une ressource ET a des ressources'. L'objectif est de mobiliser les individus autour du projet de l'organisation. C'est une rupture avec les périodes précédentes (taylorisme, relations humaines, approche socio-technique)."
+    },
+    {
+        q: "Selon O. Lajous (ancien DRH Marine Nationale), pourquoi préfère-t-il parler de 'richesses humaines' plutôt que de 'ressources humaines' ?",
+        options: [
+            "A. Car le terme 'ressources' est juridiquement protégé",
+            "B. Car chaque personne est unique, porteuse de talents à reconnaître, développer et mettre en relation",
+            "C. Car la Marine Nationale utilise une terminologie militaire spécifique",
+            "D. Car le terme 'richesses' est plus valorisant sur un plan salarial"
+        ],
+        correct: 1,
+        explanation: "O. Lajous préfère parler de 'richesses humaines' car chaque personne est unique et porteuse de talents. La fonction RH a alors pour mission de reconnaître, développer et mettre en relation ces richesses — une vision humaniste de la GRH."
+    }
+];
+
+let current = 0, score = 0, answered = false;
+
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+
+    const area = document.getElementById('quiz-area');
+    area.innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">
+                ${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}
+            </div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>
+    `;
+    answered = false;
+}
+
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) {
+        document.getElementById('opt' + idx).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + idx).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function next() {
+    if (current < questions.length - 1) { current++; renderQuestion(); }
+    else { showResult(); }
+}
+
+function prev() {
+    if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    const nb = document.querySelector('.nav-buttons');
+    if (nb) nb.style.display = 'none';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+}
+
+function restartQuiz() {
+    current = 0; score = 0; answered = false;
+    document.getElementById('result-card').style.display = 'none';
+    document.getElementById('quiz-area').style.display = 'block';
+    renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

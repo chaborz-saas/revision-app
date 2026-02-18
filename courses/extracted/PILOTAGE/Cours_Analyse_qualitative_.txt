@@ -1,0 +1,353 @@
+ARAFET BOUHALLEB 2025
+METHODOLOGIE DU MÉMOIRE:
+ANALYSE DES DONNÉES
+QUALITATIVES
+LE CHOIX MÉTHODOLOGIQUE: L’ÉTUDE
+QUALITATIVE
+ Objectifs pédagogiques :
+ Comprendre la spécificité et l’intérêt des méthodes qualitatives en sciences de
+gestion.
+ Identifier les situations de recherche adaptées à une approche qualitative.
+ Différencier approche qualitative et approche quantitative.
+ Appréhender les étapes d’une étude qualitative complète.
+HISTOIRE DES MÉTHODES QUALITATIVES
+ Les origines (années 1950-1960)
+ Les sciences de gestion s’inspirent à l’origine des sciences sociales (sociologie,
+psychologie, anthropologie).
+ Les premières recherches qualitatives sont principalement des études de
+terrain et des études de cas.
+ Herbert Simon (1957, Administrative Behavior) :
+ Introduit l’idée de rationalité limitée et d’analyse comportementale des
+organisations ( empirique et exploratoire)
+HISTOIRE DES MÉTHODES QUALITATIVES
+ Structuration (années 1960-1970)
+•Apparition de l’étude de cas comme méthode formalisée pour la recherche en
+gestion.
+•Glaser and Strauss (1967) : création de la Grounded Theory, méthode
+inductive pour générer des concepts à partir des données.
+ Formalisation et rigueur (années 1980-1990)
+ Méthodes qualitatives mieux structurées pour renforcer fiabilité et validité.
+ Yin (1981, 1994) : méthodologie de l’étude de cas unique et multiple,
+incluant protocoles et stratégies d’analyse.
+ Eisenhardt (1989) : cadre méthodologique pour construire des théories à
+partir de cas multiples.
+DÉFINITION DES MÉTHODES QUALITATIVES
+ Les méthodes qualitatives sont des approches de recherche qui visent à
+comprendre en profondeur les phénomènes sociaux, organisationnels et
+humains. Elles se caractérisent par quatre dimensions principales :
+ Inductives : les concepts et catégories émergent directement des données
+collectées sur le terrain, plutôt que d’être imposés a priori.
+ Exemple: Étudier les pratiques RSE dans une PME pour identifier les stratégies
+réelles des managers sans présupposer qu’elles suivent un modèle standard.
+DÉFINITION DES MÉTHODES QUALITATIVES
+ Exploratoires : elles sont adaptées à des phénomènes complexes ou peu
+étudiés.
+ Quand on ne connaît pas encore toutes les dimensions du problème ou qu’il
+existe une grande variabilité contextuelle, l’approche qualitative permet de
+découvrir des facteurs cachés.
+ Comprendre comment les entrepreneurs sociaux décident des priorités dans
+un contexte économique instable.
+DÉFINITION DES MÉTHODES QUALITATIVES
+ Interprétatives : elles cherchent à comprendre le sens que les acteurs
+donnent à leurs actions et décisions. Les comportements ne peuvent pas
+toujours être mesurés objectivement ; leur signification dépend du contexte et
+de la perception des individus.
+ Étudier comment les membres d’un comité RSE interprètent la notion de
+responsabilité sociale dans leur organisation
+DÉFINITION DES MÉTHODES QUALITATIVES
+ Contextuelles : elles tiennent compte de l’environnement, de l’histoire et des
+interactions sociales.
+ La compréhension du phénomène nécessite une analyse des relations, du
+contexte organisationnel et des dynamiques sociales.
+ Étudier comment les pratiques RSE d’une entreprise familiale sont influencées
+par l’histoire de l’entreprise, la culture familiale et les relations avec les parties
+prenantes locales.
+QUAND CHOISIR LES MÉTHODES
+QUALITATIVES?
+ Pour observer et analyser de façon approfondie un phénomène
+ Pour comprendre et expliciter les perceptions et les agissements des
+personnes face à une situation.
+ Pour donner à voir des acteurs agissant
+ Pour faire apparaître du sens et non pas le mesurer
+ Quand le chercheur a en tête des questions, des grilles d’interprétation et non
+des modèles.
+En fonction des objectifs du chercheur, les deux méthodes (quanti et quali)
+peuvent être utilisées séparément mais elles peuvent aussi être associées dans
+une même recherche.
+PANORAMA DES PRINCIPALES MÉTHODES
+QUALITATIVES
+➢ La méthode ethnographique : observation globale et durable d’un
+phénomène ou d’une population. Contact direct du chercheur avec la
+réalité.
+➢ La recherche action : Le chercheur est aussi un intervenant. Richesse
+possible des informations collectées mais difficultés à prendre du recul.
+➢ L’expérimentation : test de l’effet d’une variable (ou de plusieurs) sur
+la variable à expliquer. Expérience en laboratoire ou « in vivo »
+➢ L’étude des « traces » : discours et dispositifs
+➢ L’enquête : voir ci-après 11
+L’ENQUÊTE QUALITATIVE : OBJECTIFS
+➢ Comprendre comment les acteurs agissent et interagissent. Démarche
+compréhensive.
+➢ Apporter des éléments directs et approfondis sur une réalité restreinte.
+➢ « Donner à voir », montrer, raconter des êtres humains.
+ Attention majeure portée aux discours des acteurs, et aux dispositifs mis en œuvre.
+ Collecte d’informations à partir de matériaux riches et variés : ethnographie, observation
+participante, ,,, au cœur desquelles l’entretien exploratoire occupe une place centrale
+LES MÉTHODES QUANTITATIVES
+ Les méthodes quantitatives constituent un ensemble d’approches
+scientifiques permettant de collecter, analyser et interpréter des
+données numériques dans le but de mesurer, quantifier, expliquer et
+prédire des phénomènes organisationnels ou managériaux.
+ Elles se distinguent par leur :
+ Rigueur : respect de protocoles précis pour assurer la validité des résultats.
+ Objectivité : les résultats sont indépendants de la subjectivité du chercheur.
+ Reproductibilité : les analyses peuvent être reproduites avec les mêmes
+données ou un échantillon similaire.
+LES MÉTHODES QUANTITATIVES
+ Les méthodes quantitatives visent à analyser des phénomènes organisationnels
+ou managériaux à partir de données mesurables, afin de produire des résultats
+fiables, objectifs et généralisables.
+ Mesurer des variables observables ou indicatrices
+ Quantifier des éléments mesurables liés aux comportements, processus ou
+performances.
+ Exemples : chiffre d’affaires, taux d’absentéisme, nombre de formations suivies,
+fréquence d’application d’une politique RSE.
+LES MÉTHODES QUANTITATIVES
+ Tester des hypothèses ou modèles
+ Vérifier la validité de relations théoriques entre variables.
+ Exemples : relation entre diversité du conseil d’administration et performance
+financière, effet d’une formation sur la productivité.
+ . Expliquer et analyser des relations entre variables
+ Identifier des corrélations, associations ou liens causaux.
+ Exemples : corrélation entre budget marketing et ventes, relation entre
+engagement des employés et satisfaction client.
+LES MÉTHODES QUANTITATIVES
+ Prédire des comportements ou tendances
+ Utiliser des modèles statistiques pour anticiper des évolutions futures.
+ Exemples : prévision des ventes, projection de la fidélité des clients, estimation
+de l’impact d’une politique managériale.
+APPLICATION
+ Travail en groupes (5 étudiants maximum) • Lire un texte introductif et identifier les
+avantages/inconvénients des méthodes qualitatives
+ Comparer les méthodes qualitatives et quantitatives ( avantages et limites)
+ • Choisir une problématique managériale à explorer durant le cours ( en se basant sur la
+littérature)
+ Références
+ Paillé & Mucchielli (2021), L'analyse qualitative en sciences humaines et sociales Ed. 5,
+Chapitre 1 (Fondements et spécificités de la recherche qualitative).
+ Raymond-Alain Thietart, Florence Allard-Poesi, Jacques Angot, Philippe Baumard, Antoine Blanc
+et al., Méthodes de recherche en management - 5e édition,
+APPLICATION
+ Choisir une problématique managériale à explorer durant le cours ( en se basant sur la
+littérature)
+ Sites à consulter:
+ Sciencedirect
+ EBSCO
+ Google Scholar
+ Cairn.info
+ Le sujet doit être d’actualité. Il est recommandé d’utiliser des références récentes
+MÉTHODOLOGIE QUALITATIVE (1/4)
+ 1.Choix du terrain
+ 2. Rédaction du guide d’entretien
+ 3. Réalisation des entretiens
+ 4. Retranscription
+ 5. Analyse
+METHODOLOGIE QUALITATIVE (2/4)
+ La Revue de littérature scientifique est une toile de fond pertinente pour
+structurer le guide d’entretien.
+ L’étude qualitative peut porter sur une ou plusieurs études de cas
+ Les enquêtes ou entretiens devront être menés avec rigueur, sans jamais déranger les
+personnes interrogées
+ Toute la démarche déployée (approche qualitative, personnes interviewées, questions
+posées, méthode d’analyse des données) doit être décrite en détail dans la section
+collecte des données (méthodologie suivie). Plusieurs pages doivent être consacrées à
+cette partie.
+ Si les personnes interrogées sont nommées, il faut recueillir au préalable leur
+autorisation écrite.
+METHODOLOGIE QUALITATIVE (3/4) /
+ENTRETIENS
+ Les personnes interrogées sont contactées par différents moyens : réseaux sociaux, réseau de
+recherche, réseau professionnel hors recherche, entreprise d’accueil
+ Les entretiens ne doivent pas être trop longs pour ne pas lasser les interlocuteurs
+ Idéalement un entretien dure 45 minutes
+ L’entretien peut être en face à face, par téléphone, skype…
+ L’enregistrement est conseillé avec l’accord de l’interviewé
+ Les entretiens doivent être intégralement retranscrits
+ Un travail de codage / dictionnaire des thèmes permet ensuite d’analyser l’information (codage
+manuel ou avec l’aide d’un logiciel spécifique)
+ L’objectif est d’identifier les thématiques principales et de les détailler tout en apportant des
+illustrations basées sur le codage des verbatim (extraits des entretiens).
+MÉTHODOLOGIE QUALITATIVE (4/4)
+ Le guide d’entretien doit respecter la logique de l’entonnoir.
+ Plan type :
+ Présentation de votre travail et des objectifs de l’entretien
+ Présentation de votre sujet
+ Préciser les objectifs de publication
+ Questions ouvertes ou fermées
+ Le guide d’entretien doit figurer dans la partie « Annexes » du mémoire et non pas
+dans la partie méthodologie.
+GRILLE D’ANALYSE
+ Un minimum de cinq entretiens est exigé
+ Les entretiens doivent être retranscrits intégralement et analysés manuellement
+ou bien avec un outil d’analyse de contenu.
+ Toutes les informations collectées doivent être analysées de manière
+thématique.
+ L’objectif est d’identifier les thématiques principales et de les détailler tout en
+apportant des illustrations basées sur le codage des verbatim (extraits des
+entretiens, dictionnaire des thèmes).
+TRANSCRIPTION INTÉGRALE
+ Exemple de format de transcription intégrale :
+ Entretien n°1 – Dirigeant – 06 octobre 2025
+Durée : (23---- 45 minutes)
+Lieu : (Anonymisez systématiquement les noms et lieux.
+ Transcripteur : [Nom ou code chercheur]
+ Numérotez les lignes ou les interventions (utile pour le codage).
+CODES
+DU TEXTE BRUT AUX AFFIRMATIONS : LE PIPELINE
+D’ANALYSE
+ Données → Unités de sens → Codes → Catégories → Thèmes → Récit →
+Affirmations
+ Deux façons de parcourir les données :
+ Vertical (intra-cas) : rester à l’intérieur d’une même interview ou observation
+pour préserver le contexte lors du codage initial.
+ Horizontal (inter-cas) : comparer les codes et motifs entre interviews ou
+groupes afin d’identifier les significations communes ou divergentes.
+ Garde-fous réflexifs : privilégier la cohérence conceptuelle plutôt que
+l’application stricte des procédures ; éviter la « dérive positiviste » (par exemple,
+considérer la fiabilité intercodeurs ou la validation par les participants comme des
+obligations universelles).
+UNITÉS DE SENS (CE QUE L’ON CODE RÉELLEMENT)
+ Définition : le plus petit segment de texte ou d’image qui exprime une idée
+unique pertinente par rapport à votre question.
+ Comment segmenter :
+ Préserver le contexte local (lire avant et après le segment).
+ Éviter de sur-découper ; conserver une unité suffisamment grande pour porter
+son sens.
+UNITÉS DE SENS (CE QUE L’ON CODE RÉELLEMENT)
+ Définition : le plus petit segment de texte ou d’image qui exprime une idée
+unique pertinente par rapport à votre question.
+ Comment segmenter :
+ Préserver le contexte local (lire avant et après le segment).
+ Éviter de sur-découper ; conserver une unité suffisamment grande pour porter
+son sens.
+CODAGE OUVERT, AXIAL ET SÉLECTIF
+•Codage ouvert : découper les données en unités de sens, attribuer des
+étiquettes provisoires et rester proche de la compréhension des participants.
+•Codage axial : relier les codes entre eux — conditions, interactions,
+conséquences — pour former des catégories et sous-catégories.
+•Codage sélectif : identifier une catégorie centrale qui intègre les autres
+catégories en un récit cohérent (storyline).
+RÈGLES PRATIQUES DE BASE POUR LE CODAGE
+OUVERT
+ Coder exactement ce qui est dit/fait (sémantique) et/ou ce qui est implicite/sous-entendu
+(latent), selon les besoins de votre projet.
+ Garder les noms de codes courts et descriptifs (les verbes aident : « gérer le risque », « rejeter
+la faute »).
+ Autoriser les codes qui se chevauchent ; ne pas imposer une hiérarchie trop tôt.Mettre de côté
+les segments incertains dans une liste « ?à vérifier » plutôt que de les ignorer.
+ Commencer un codebook léger (nom du code + définition courte + 2–3 citations exemplaires).
+CATEGORIES
+DES CODES AUX CATÉGORIES (MOUVEMENTS
+DU CODAGE AXIAL)
+ Regrouper les codes qui co-existent ou qui partagent des
+conditions/consequences.
+ Rédiger une note de catégorie en répondant à :
+ Idée centrale : qu’est-ce qui unit ces codes ?
+ Étendue : où cela ne s’applique-t-il pas ?
+ Relations : quelle catégorie cela soutient-il ou contredit-il ?
+ Surveiller les concepts organisateurs centraux — la graine des thèmes futurs.
+CODAGE SÉLECTIF ET INTÉGRATION
+ Choisir une catégorie centrale qui explique le mieux le processus/ phénomène
+observé dans vos données.
+ Relier les autres catégories à cette catégorie centrale (liens causaux, contextes,
+stratégies, résultats).
+ Esquisser un récit d’une page avec 2–3 extraits de données par catégorie
+montrant comment les éléments s’articulent.
+CONSTRUIRE DES CATÉGORIES ANALYTIQUES
+ROBUSTES
+ De bonnes catégories sont :
+ Conceptuellement claires (une seule idée), avec des limites explicites
+d’inclusion/exclusion.
+ Analytiquement utiles (expliquent quelque chose d’important — plus qu’un
+simple label de sujet).
+ Distinctes mais liées (recoupement minimal avec des catégories « sœurs »).
+ Test de validité : pouvez-vous résumer la catégorie en 2–3 phrases sans
+énumérer les codes ? Sinon, continuer à rédiger des notes et à scinder/fusionner les
+codes.
+ Lien avec les thèmes : les catégories qui pointent systématiquement vers un
+concept organisateur central sont des candidates à devenir des thèmes dans
+l’analyse thématique
+THEMES
+ANALYSE THÉMATIQUE RÉFLEXIVE (AT) : CE QUI
+COMPTE COMME UN THÈME
+ Thème ≠ simple catégorie de sujet.
+ Dans l’analyse thématique réflexive, un thème capture un sens partagé unifié par
+un concept organisateur central.
+ Options de structuration : thèmes ; éventuellement sous-thèmes ; parfois un
+thème global — mais attention à ne pas ajouter des couches au détriment de la
+profondeur analytique.
+RÉDIGER LES RÉSULTATS
+Carlos PLATA
+CE QUE FAIT UNE « BONNE RÉDACTION
+QUALITATIVE »
+ Raconte une histoire cohérente tout en respectant la complexité
+(multiples voix, contextes, tensions).
+ Montre comment vous savez : rend traçable la logique données → codes
+→ thèmes → affirmations.
+ Est conscient du public : langage, profondeur de la méthodologie et
+structure adaptés aux lecteurs (par ex. rapports académiques vs rapports
+pour praticiens).
+ Équilibre description et interprétation : une description riche (« thick
+description ») fait vivre les contextes ; l’analyse explique les motifs et le
+sens.
+ Convaincre de manière éthique : les affirmations sont justifiées, les
+limites reconnues, les participants protégés.
+Carlos PLATA
+STRUCTURER , UN ARTICLE OU UN PROJET : LE
+« NOYAU COMMUN »
+•Résumé (Abstract) : problème, contexte, approche, principaux résultats,
+importance.
+•Introduction : situer le problème ; préciser l’objectif, les questions de recherche
+et les enjeux académiques/pratiques.
+•Revue de littérature / cadres de référence : ce que l’on sait déjà ;
+lacune/contribution de votre étude ( pas trop détaillée)
+•Méthodologie : conception/approche, site/participants, collecte de données,
+rôle/positionnalité du chercheur, procédures d’analyse, critères de qualité/rigueur.
+•Résultats : thèmes, récits, cas, processus — étayés par des segments de données
+(citations, vignettes de notes de terrain, artefacts) ; interprétation minimale dans
+chaque thème.
+•Discussion : synthèse interprétative ; liens avec la théorie et les travaux
+antérieurs ; implications ; transférabilité ; limites ; recherches futures.
+•Conclusion : synthèse concise des enseignements clés ; importance des résultats ;
+prochaines étapes possibles.
+•Annexes : instruments, protocoles, cadres de codage, formulaires de
+consentement (selon pertinence).
+• Blaug, M. (1982), La méthodologie économique, Paris: Economica.
+• Bouchard, T J. (1976), " Field Research Methods: Interviewing, Questionnaires, Participant Observation, Systematic Observation,
+Unobstrusive Measures ", pp. 363-413 in: Marvin D. Dunette (Ed.), Handbook of Industrial and Organizational Psychology, Chicago:
+Rand McNally College Publishing Co.
+• Brabet, J. (1988), " Faut-il encore parler d’approche qualitative et d’approche quantitative ? ", Recherches et Applications en
+Marketing, Vol. III, N° 1, pp. 75-89.
+• Downey, K. H. et Ireland, D. R., (1979), " Quantitative versus Qualitative : Environment Assessment in Organizational Studies ",
+Administrative Science Quaterly, 24, pp. 630-637.
+• Glaser, B. G., & Strauss, A. L. (1967), The Discovery of Grounded Theory. New York : Aldine Publishing Company.
+• Grawitz, M. (1993), Méthodes des sciences sociales, Paris : Dalloz.
+• Jick, T. D., (1979), " Mixing Qualitative and Quantitative Methods: Triangulation in Action ", Administrative Science Quaterly, 24, 602-
+611.
+• Kuhn, T. (1970), The structure of scientific revolutions, Chicago: University of Chicago Press.
+• Lambin, J.-J. (1990), La recherche marketing, Paris : McGraw-Hill.
+• L4i0ncoln, Y., S. & Guba, E., G. (1985), Naturalistic inquiry, Beverly Hills, CA : Sage.Marshall, C. & Rossman, G., B. (1989), Designing
+Qualitative Research, Beverly Hills, CA : Sage.
+• Passeron, J.-C. (1991), Le raisonnement sociologique, l’espace non-poppérien du raisonnement naturel. Paris : Nathan.
+• Miles, A. M. & Huberman, A. M. (1984), Analysing qualitative data : A source book for new methods.
+Bervely Hills, CA : Sage. Traduction française (1991), Analyse des données qualitatives : Recueil de
+nouvelles méthodes. Bruxelles: De Boeck.
+• Silverman, D. (1993), Interpreting Qualitative Data, London : Sage.Stablein, Ralph (1996), "Data in
+Organization Studies", p. 509-525 in: S.R. Clegg, C. Hardy et W.R. Nord (Eds.), Handbook of
+Organization Studies, Londres: SAGE.
+• Stake, R. E. (1995), The Art of the Case Study Research. Thousand Oaks, CA : Sage.
+ Van Maanen, J. (Éd.)(1998). Qualitative studies in organizations. Thousand Oaks, CA: Sage publications.
+ Van Maanen, J. (Éd.)(1989). Qualitative methodology. Newbury Park, CA: Sage publications.
+ Wacheux, F. (1996). Méthodes qualitatives et recherche en gestion. Paris : Économica.
+• Webb, E. et Weick, K.E. (1979), " Unobstrusive Measures in Organizational Theory : A Reminder ",
+Administrative Science Quaterly, Vol. 24, p. 651-659.

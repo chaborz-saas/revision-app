@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Cours 1 : Analyse descriptive univariée</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #3b82f6; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #3b82f6; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(59,130,246,0.08); border-left: 3px solid #3b82f6; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #93c5fd; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #3b82f6; color: white; margin-left: auto; }
+        .btn-next:hover { background: #2563eb; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #3b82f6; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #3b82f6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #2563eb; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #3b82f6; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">ANALYSE QUANTITATIVE — QUIZ</div>
+        <h1>Cours 1 — Analyse descriptive univariée</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Quel est le seul indicateur de tendance centrale utilisable pour une variable qualitative nominale ?",
+        options: ["La moyenne", "La médiane", "Le mode", "L'écart-type"],
+        correct: 2,
+        explanation: "Le mode (valeur la plus fréquente) est le seul indicateur valide pour une variable qualitative nominale. La moyenne et la médiane n'ont aucun sens sur des catégories sans ordre ni valeur numérique."
+    },
+    {
+        q: "Quels graphiques sont adaptés à une variable qualitative ?",
+        options: ["Histogramme et boxplot", "Diagramme circulaire et diagramme en barres", "Boxplot et histogramme", "Nuage de points et courbe"],
+        correct: 1,
+        explanation: "Les variables qualitatives se représentent avec un diagramme circulaire (proportions) ou un diagramme en barres (comparaison de catégories). L'histogramme et le boxplot sont réservés aux variables quantitatives."
+    },
+    {
+        q: "La médiane est plus robuste que la moyenne car :",
+        options: ["Elle tient compte de toutes les valeurs dans le calcul", "Elle n'est pas influencée par les valeurs extrêmes (outliers)", "Elle est toujours supérieure à la moyenne", "Elle s'applique uniquement aux variables ordinales"],
+        correct: 1,
+        explanation: "La médiane divise l'échantillon en deux moitiés égales et n'est pas tirée par les valeurs extrêmes. C'est pourquoi on préfère la médiane au salaire moyen, par exemple, en présence de très hauts salaires."
+    },
+    {
+        q: "Si la médiane est inférieure à la moyenne, la distribution est :",
+        options: ["Symétrique (normale)", "Asymétrique à gauche (queue vers le bas)", "Asymétrique à droite (queue vers le haut)", "Bimodale"],
+        correct: 2,
+        explanation: "Quand médiane < moyenne, quelques valeurs élevées tirent la moyenne vers le haut, ce qui crée une queue à droite (distribution asymétrique positive). Exemple classique : les revenus ou les salaires."
+    },
+    {
+        q: "Quelle est la formule de la variance ?",
+        options: ["σ = Σ(xi - x̄) / n", "σ² = Σ(xi - x̄)² / n", "σ² = Max − Min", "σ = √(Σxi / n)"],
+        correct: 1,
+        explanation: "La variance σ² = Σ(xi − x̄)² / n est la moyenne des carrés des écarts à la moyenne. L'écart-type σ est la racine carrée de la variance, exprimé dans la même unité que la variable."
+    },
+    {
+        q: "Le coefficient de variation (CV) sert à :",
+        options: ["Calculer la moyenne pondérée de plusieurs groupes", "Mesurer la dispersion relative pour comparer des groupes d'unités différentes", "Identifier les valeurs aberrantes dans un jeu de données", "Calculer la corrélation entre deux variables"],
+        correct: 1,
+        explanation: "CV = (σ / x̄) × 100. Il exprime la dispersion en pourcentage de la moyenne, ce qui permet de comparer la variabilité de groupes mesurés dans des unités différentes (ex : salaires en euros vs âge en années)."
+    },
+    {
+        q: "Dans Jamovi, les 4 types de mesure disponibles sont :",
+        options: ["Nominal, Ordinal, Ratio, Intervalle", "Nominal, Ordinal, Continu, Identité", "Qualitatif, Quantitatif, Binaire, Discret", "Nominal, Binaire, Continu, Discret"],
+        correct: 1,
+        explanation: "Jamovi propose : Nominal (catégories sans ordre), Ordinal (catégories avec ordre), Continu (valeurs numériques), Identité (identifiant unique). Définir le bon type est crucial car il détermine les analyses disponibles."
+    },
+    {
+        q: "Pour analyser les statistiques descriptives dans Jamovi, on utilise :",
+        options: ["Analyses → Régression → Linéaire", "Analyses → T-Tests → Student", "Analyses → Exploration → Statistiques Descriptives", "Analyses → ANOVA → One-Way"],
+        correct: 2,
+        explanation: "Le chemin dans Jamovi est : Analyses → Exploration → Statistiques Descriptives. On glisse ensuite les variables, on coche les statistiques souhaitées (moyenne, médiane, écart-type...) et on ajoute des graphiques."
+    },
+    {
+        q: "Deux groupes ont la même moyenne de satisfaction (7/10). Que faut-il vérifier pour savoir s'ils sont vraiment similaires ?",
+        options: ["La taille de l'échantillon uniquement", "La dispersion (écart-type ou variance) de chaque groupe", "Le mode de chaque groupe", "Le type de variable uniquement"],
+        correct: 1,
+        explanation: "Même moyenne ne signifie pas même réalité. Il faut comparer la dispersion (écart-type, variance, quartiles). Un groupe très homogène (σ faible) et un groupe très hétérogène (σ élevé) peuvent avoir la même moyenne tout en étant très différents."
+    },
+    {
+        q: "Dans l'étude CaféEMN, la satisfaction moyenne est 7,77 avec σ = 0,91. Quelle conclusion peut-on tirer ?",
+        options: ["La satisfaction est faible et très dispersée", "La satisfaction est bonne et peu dispersée (groupe homogène)", "La satisfaction est élevée mais avec de fortes inégalités", "Les données ne sont pas exploitables sans la médiane"],
+        correct: 1,
+        explanation: "Un écart-type de 0,91 sur une échelle de 10 est faible, ce qui indique un groupe homogène : les clients ont des niveaux de satisfaction proches. La moyenne 7,77 traduit une bonne satisfaction générale. Pas besoin de segmenter ici."
+    }
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

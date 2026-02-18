@@ -1,0 +1,20 @@
+Exercice : Convention de service et calcul des management fees
+Corrigé
+1. Coût des services + marge
+Coût total : 120 000 + 80 000 + 150 000 + 100 000 = 450 000 €
+Marge de 5% : 450 000 × 5% = 22 500 €
+Total facturé pour les services : 450 000 + 22 500 = 472 500 €
+2. Management fees
+12 000 000 × 2% = 240 000 €
+3. Montant total à comptabiliser
+472 500 + 240 000 = 712 500 €
+4. Analyse des risques fiscaux
+- Prix de transfert : La convention doit respecter le principe de pleine concurrence (arm’s
+length).
+- Risque de requalification : Si les services ne sont pas effectivement rendus, les frais
+peuvent être rejetés par l’administration fiscale. Si le fisc considère que le chiffre
+d’affaires n’est pas une clé représentative des services rendus, il peut fixer une amende.
+- TVA intracommunautaire : Vérifier les règles d’autoliquidation et la territorialité des
+services (les deux entités sans dans l’UE, la TVA doit être liquidée au niveau de la
+société mère Pays-Bas)
+- Justificatifs : Conserver les preuves de prestation (rapports, emails, réunions, etc.).

@@ -1,0 +1,196 @@
+Cours Pilotage de la
+performance
+Cours de tronc commun M1
+S07 2025-2026
+Responsable de cours :
+Isabelle LACOMBE
+Enseignant :
+Renato PEREIRA
+renato.pereira01@em-normandie.fr
+Plan du cours Pilotage de la Performance
+1- Introduction
+1.1 Définition du pilotage de la performance
+1.2 Liens entre comptabilité de gestion et comptabilité générale
+1.3 La gouvernance d'entreprise et le contrôle de gestion. Le pilotage stratégique
+1.4 La notion de groupe, les cessions internes et management fees (frais de siège)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+3.2 Le cycle et le calendrier budgétaire
+3.3 Le contrôle budgétaire
+4- Tableaux de bord et indicateurs et reporting
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du périmètre de l’entité
+6- Conduite du changement
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reportingde durabilité (CSRD), le bilan carbone
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+• La Responsabilité Sociétale des Entreprises (RSE) est considérée comme un
+enjeu de société majeur dans tous les secteurs d’activité : elle vise à faire intégrer
+dans les responsabilités de l’entreprise les préoccupations sociales,
+environnementales et économiques, dans leurs activités et dans leurs
+interactions avec leurs parties-prenantes (partenaires, sous-traitants, …).
+• A l'heure actuelle, la plupart des entreprises publient des rapports intitulés
+«Responsabilité sociale de l'entreprise» ou «Développement durable», dans
+lesquels elles décrivent leurs engagements social et environnemental.
+Par exemple :
+CEGEDIM_URD_2020_Version PDF
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+Critères de performance économique, financière, sociale, environnementale
+• La responsabilité sociale de l’entreprise est de faire des profits » avait déclaré de manière
+volontairement provocante l’économiste néo-libéral Milton Friedman.
+• L’entreprise a-t-elle vocation à aller au-delà de sa seule fonction économique au profit de ses seuls
+propriétaires ?
+• Oui, répondent les tenants de la RSE, au nom de la variété des parties prenantes avec lesquelles
+l’entreprise (et toute organisation) entre en relation et sur lesquelles elle peut avoir un impact, positif par
+certains aspects (création d’emplois, paiement de salaires et d’impôts, etc.), négatif pour d’autres
+(accidents du travail, pollution, etc.).
+La RSE implique donc que l’organisation excède ses obligations minimales et accepte une responsabilité à
+l’égard de diverses parties prenantes, tant au niveau local qu’au niveau national, voire international.
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+Evolution de la réglementation européenne et française sur la RSE
+1. Livre vert sur la RSE (Europe) et loi NRE (Nouvelles Régulations Économiques) (2001) pour inciter les grandes
+entreprises às’engagerdansunedémarcheactivedeRSE.
+2. La loi issue du Grenelle 2 (2010) a élargi le périmètre des entreprises concernées par la loi NRE en incluant les
+sociétés noncotées dontle nombre desalariésestsupérieurà500
+3. La transposition en droit français (2017) de la directive européenne de 2014 dite NFRD (Non Financial Reporting
+Directive) a imposé aux entreprises un délai de publication des informations demandées et leur mise à disposition sur
+internet en complément de supports papier pour favoriser leur accessibilité. Cette nouvelle obligation de reporting à
+la charge de certaines grandes entreprises, consistant à établir et publier une « déclaration de performance extra-
+financière » (DPEF). Il s’agit d’un rapport sur la politique environnementale, sociale, sociétale et de gouvernance de la
+société,et surses résultatssous laforme d’indicateursdeperformance.
+4. LeRèglementdu18 juin2020 ditRèglement«Taxonomie»avec un cadre pourfavoriser les investissements durables.
+Il prévoit un système de classification pour déterminer si telle ou telle activité d’une entreprise peut être considérée
+comme « durable ». Les sociétés soumises à la DPEF sont tenues d’identifier et de classer leurs activités et de fournir
+les informations permettant d’apprécier celles qui pourront être considérées comme durables sur le plan
+environnemental, et dégager trois indicateurs clés: part de chiffre d’affaires provenant de ces activités, part des
+dépensesd’investissementetpartdes dépensesd’exploitationliéesauxactifsouprocessus associésàces activités.
+5. Directive CSRD (Corporate Sustainability Reporting Directive ou directive sur la publication d'informations en matière
+dedurabilité),adoptéeendécembre2022
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+La DPEF a remplacé depuis le 1er août
+2017 le rapport de responsabilité sociétale
+des entreprises (RSE). Le Code de commerce
+identifie quatre catégories d’informations que
+doit contenir la DPEF :
+• une description du modèle d’affaires ou
+modèle économique ;
+• une description des risques principaux
+encourus au sein de la société ;
+• une description de la stratégie d’entreprise
+mise en place pour gérer les risques ;
+• une présentation des résultats obtenus, à la
+suite de la mise œuvre de la stratégie.
+Source : Trébucqet Demersseman, 2023
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+Les six objectifs environnementaux des activités « durables »
+Les ratios verts de la taxonomie
+• La réglementation en matière de reporting
+Atténuation du
+sur les activités durables, s’enrichit avec le changement
+climatique
+règlement « Taxonomie » en 2023, et s’élargit
+à un plus grand nombre d’entreprises.
+Prévention et
+• L’objectif de la commission européenne est restauration de la Adaptation au
+changement
+biodiversité et des
+d’orienter les investissements des entreprises climatique
+écosystèmes
+vers des activités durables sur le plan
+environnemental. À cet effet, les entreprises
+concernées doivent rendre compte chaque
+année en publiant trois ratios financiers verts
+• % de chiffre d’affaires,
+• % des investissements Utilisation durable
+Prévention et
+de l’eau et des
+• Et % des dépenses opérationnelles de leurs réduction de la
+ressources
+pollution
+activités durables répondant à six objectifs marines
+environnementaux.
+Source : Selmer, 2024
+Economie
+circulaire
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+• La directive européenne CSRD (Corporate
+Sustainability Reporting Directive) n’a pas réformé la
+comptabilité financière, mais impose la publication
+de données quantitatives et qualitatives, en
+complément des états financiers.
+• Celle-ci nécessitera une approche fondée sur les
+techniques de l’ACV (analyse de cycle de vie) et du
+contrôle de gestion intégré, mais pas
+nécessairement comptables.
+• Il est probable qu’à terme, les pouvoirs publics
+chercheront à mieux réguler les questions ESG
+(écologiques, sociales, et de gouvernance) par le
+biais de politiques fiscales, ce qui reviendra à
+internaliser par le biais de taxes certains coûts
+sociétaux.
+Source :Trébucqet Demersseman, 2023
+http://les.cahiers-developpement-durable.be/outils/analyse-du-cycle-de-vie/
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+La CSRD
+• Elle intègre des obligations de reporting sur les plans de transition climatique des
+entreprises. Elle devait entrer progressivement en vigueur, à compter du 1er janvier 2024
+avec les premières publications attendues en 2025. Il devrait y avoir un resserrement
+progressif jusqu’en 2028 et une extension aux petites entreprises.
+• L’Autorité des marchés financiers (AMF) précise qu'« une importance particulière est
+accordée aux mesures à court terme qui sont les plus vérifiables et témoignent de
+l’action concrète de l’entreprise » (2023, p. 2). Les entreprises doivent appliquer les
+normes européennes de reporting en matière de durabilité (ESRS) et rendre compte des
+leviers de décarbonation, avec des descriptions qualitatives (nature et liste des actions
+clés à mener pour atteindre les objectifs) et quantitatives de ces leviers (les contributions
+respectives des actions à la trajectoire de décarbonation), ainsi que des informations sur
+le calendrier du processus de décarbonation. L’AMF est consciente que cette demande de
+reporting présente une difficulté pour les entreprises à rendre compte des ressources
+financières et humaines allouées au plan de décarbonation de l’entreprise, tant en
+termes d’investissements que de charges d’exploitation, et qu’il est possible de
+rapprocher les montants significatifs avec les états financiers.
+• En Europe, la CSRD a été assouplie par la Commission européenne le 26 février 2025 avec
+la directive Omnibus, qui réduit le nombre d’indicateurs, allonge les délais et met moins
+de pression sur les PME. Ce recul souligne le paradoxe de la RSE.
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+La CSRD
+Source :Selmer, 2023
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+Le bilan carbone
+• Le bilan carbone a été créé par l’ADEME en 2002
+(ADEME & ARCEP, 2023).
+• Le bilan carbone représente la quantité totale de
+dioxyde de carbone (CO2) et d'autres gaz à effet
+de serre (GES) émis, directement ou
+indirectement, par l'ensemble des activités.
+• Pour calculer l’émission CO2, on utilise le concept
+d'unité de mesure appelée "équivalent CO2"
+(CO2e), qui permet d'exprimer l'impact de
+chaque type de GES en termes de la quantité de
+CO2 qui aurait un potentiel de réchauffement
+global similaire.
+• Les facteurs d’émissions varient selon les pays : le
+Source : Selmer, 2024
+facteur d’émission associé au kWh électrique en
+Allemagne est de 400 kg de CO2eq, en France il
+est de 69, et en Angleterre ou en Espagne autour
+de 250 kg.
+7- Le contrôle de gestion et la RSE
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reporting de durabilité (CSRD), le bilan
+carbone
+• Exercice à réaliser en groupe

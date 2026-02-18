@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Révisions M1 — Synthèses & Fiches
 
-## Getting Started
+Plateforme de révision statique pour le M1 avec **23 synthèses** et **23 fiches de révision** couvrant 4 matières.
 
-First, run the development server:
+## Matières
+
+| Matière | Chapitres |
+|---------|-----------|
+| RH — GRH pour Manager | 5 chapitres |
+| Analyse Quantitative | 3 chapitres |
+| Droit — Ventes internationales | 7 chapitres |
+| Pilotage de la Performance | 8 chapitres |
+
+## Lancer le site
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Avec Python (le plus simple)
+python3 -m http.server 3000
+
+# Ou avec npx
+npx serve .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis ouvrir http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+index.html              # Page d'accueil
+syntheses/              # 23 synthèses complètes par chapitre
+fiches/                 # 23 fiches de révision condensées
+cours/                  # Fichiers sources (PDF, PPTX, DOCX)
+templates/              # Templates HTML de référence
+scripts_synthese/       # Script d'extraction Python
+```
 
-## Learn More
+## Backup
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+L'ancien projet SaaS est sauvegardé sur la branche `backup-ancien-saas`.

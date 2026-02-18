@@ -1,0 +1,26 @@
+**Cas pratique 1 : La vente de vins entre la France et l'Allemagne**
+
+**Énoncé :**
+
+La société **Château de la Loire**, productrice de vins français, conclut le 5 janvier 2024 un contrat de vente avec la société **Weinhandel GmbH**, un importateur allemand.\
+Le contrat prévoit la vente de **10 000 bouteilles de vin rouge millésime 2020** pour un prix total de **80 000 €**, livraison prévue **avant le 1er mars 2024**, **FOB Bordeaux**.
+
+Le contrat ne contient aucune clause de droit applicable.
+
+Le 10 février 2024, le vendeur expédie la marchandise. Celle-ci arrive en Allemagne le 20 février. Lors du dédouanement, **Weinhandel GmbH constate que près de 2 000 bouteilles présentent un goût de bouchon**, rendant le vin impropre à la vente.\
+L'acheteur en informe le vendeur **par e-mail le 25 mars 2024** et demande **une réduction du prix**.\
+Le vendeur refuse, estimant que la réclamation est tardive et que le vin était conforme lors de la livraison à Bordeaux.
+
+L'acheteur saisit un tribunal allemand pour obtenir la réduction du prix.
+
+------------------------------------------------------------------------
+
+**⚖️ Questions :**
+
+1.  Quelle loi est applicable au contrat de vente ?
+
+2.  Les marchandises sont-elles conformes au sens de la Convention de Vienne ?
+
+3.  La réclamation de l'acheteur est-elle recevable ?
+
+4.  Quels sont les recours possibles de l'acheteur selon la CVIM ?

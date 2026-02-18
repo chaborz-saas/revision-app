@@ -1,0 +1,33 @@
+**Cas pratique n°2 : Le retard de livraison des machines italiennes**
+
+**Énoncé :**
+
+La société **Techno Italia S.p.A.**, située à Milan (Italie), vend le 15 avril 2024 à la société **Mécafrance SARL**, basée à Lyon (France), **3 machines industrielles** destinées à la fabrication de pièces automobiles.\
+Le contrat prévoit :
+
+- un **prix total de 300 000 €**,
+
+- une **livraison DDP Lyon (Incoterms 2020)** avant le **30 juin 2024**,
+
+- aucun choix de loi applicable.
+
+Le 25 juin 2024, Techno Italia informe Mécafrance qu'en raison d'une pénurie de composants, la livraison sera retardée d'un mois.\
+Les machines n'arrivent finalement que le **2 août 2024**.
+
+Entre-temps, Mécafrance perd un important contrat avec un constructeur automobile à cause du retard de production. Elle refuse la livraison et réclame la **résolution du contrat** ainsi que des **dommages et intérêts** pour le préjudice subi.
+
+Le vendeur conteste, estimant que le retard ne constitue pas une violation essentielle au sens de la Convention de Vienne.
+
+------------------------------------------------------------------------
+
+**⚖️ Questions :**
+
+1.  La Convention de Vienne est-elle applicable ?
+
+2.  Le vendeur a-t-il manqué à ses obligations ?
+
+3.  Le retard constitue-t-il une « violation essentielle » permettant la résolution du contrat ?
+
+4.  Quels sont les droits et recours de l'acheteur ?
+
+5.  À quelle date les risques sont-ils transférés ?

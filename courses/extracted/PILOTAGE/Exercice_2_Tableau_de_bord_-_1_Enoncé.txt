@@ -1,0 +1,43 @@
+EXERCICE 2 sur le tableau de bord – SA Labopharma (adapté de Courcoureux
+M., Cuyaubère T., Muller J., Contrôle de Gestion, Nathan)
+ENONCE
+Vous êtes contrôleur de gestion, nouvellement embauché dans un laboratoire
+pharmaceutique (la société Labopharma). Les dirigeants de Labopharma en sont
+aussi les propriétaires, puisque le PDG possède ou contrôle 55% des actions et que
+le DG possède ou contrôle les 45% restants.
+Lors des discussions avec les dirigeants, une lettre de mission a été rédigée. Elle
+comprend trois parties : le diagnostic, la mise en place d’un système d’informations
+débouchant sur un tableau de bord et l’évaluation de l’entreprise dans la perspective
+de son éventuelle cession.
+Vous êtes personnellement chargé de la deuxième mission, pour laquelle les
+conseils suivants vous ont été donnés :
+1- Les objectifs
+Les dirigeants reconnaissent manquer actuellement d’un système leur permettant
+de suivre régulièrement la gestion. La comptabilité générale est bien tenue et
+permet un bon suivi des comptes de tiers et de trésorerie ainsi que
+l’établissement de documents annuels fiables. Mais il manque un système
+permettant un suivi mensuel des coûts (et écarts), des stocks, de l’activité et des
+principales données financières.
+L’entreprise Labopharma vient de se doter d’un ordinateur de moyenne
+puissance permettant la connexion de plusieurs terminaux. Cet équipement n’est
+actuellement utilisé que pour la facturation et la comptabilité générale ; il est donc
+largement sous-utilisé. Vous devrez donc déterminer les principes généraux d’un
+système d’informations et de tableau de bord. Il s’agit de définir les objectifs et les
+moyens à mettre en œuvre. La mise en place du système fera éventuellement
+l’objet d’un projet ultérieur.
+Exercice 2 sur le tableau de bord
+2- Les moyens
+Concrètement, vous devrez :
+- Elaborer un modèle de tableau de bord mensuel (cadre général) et préciser
+les informations devant y figurer ;
+- Pour les informations qui ne sont pas issues de la comptabilité générale, vous
+indiquerez les moyens permettant de les obtenir (fichiers informatique,
+documents internes à créer, etc.). A titre d’exemple, si la tenue des stocks sur
+l’ordinateur (actuellement non réalisée) est envisagée, il devra être précisé à
+partir de quels documents les mouvements seront enregistrés. Si ces
+documents n’existent pas, il suffira d’indiquer leur nécessité ; leur conception
+et leur circuit dans l’entreprise feront l’objet d’un projet ultérieur.
+En résumé, il s’agit de faire l’esquisse de l’analyse.
+Le travail qui vous est demandé consiste à exécuter le programme décrit dans la
+lettre de mission.
+Exercice 2 sur le tableau de bord

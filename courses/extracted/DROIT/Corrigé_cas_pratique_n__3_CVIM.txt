@@ -1,0 +1,94 @@
+**Corrigé du cas pratique n° 3 CVIM :**
+
+**1. Applicabilité de la Convention de Vienne**
+
+Les conditions de l'article 1 §1 (a) CVIM sont réunies :
+
+- Contrat de **vente internationale de marchandises** ;
+
+- Les parties ont leur établissement dans **deux États contractants** (France et Espagne) ;
+
+- Aucune exclusion du champ de la Convention.
+
+➡️ La **CVIM s'applique de plein droit**.
+
+------------------------------------------------------------------------
+
+**2. Obligation de paiement de l'acheteur**
+
+Selon l'**article 53 CVIM**, l'acheteur doit :
+
+- payer le prix ;
+
+- prendre livraison de la marchandise.
+
+Le **paiement à 30 jours** est prévu au contrat.\
+Le non-paiement au **1er avril 2024** constitue donc une **inexécution de ses obligations contractuelles**.
+
+➡️ L'acheteur est en **violation du contrat** (art. 53).
+
+------------------------------------------------------------------------
+
+**3. Résolution du contrat par le vendeur**
+
+L'article **64 §1 a** CVIM permet au vendeur de **déclarer le contrat résolu** :
+
+- si le manquement de l'acheteur **constitue une violation essentielle** (art. 25), ou
+
+- après avoir accordé un **délai supplémentaire raisonnable** pour s'exécuter (art. 63 §1), sans résultat.
+
+Ici :
+
+- Le vendeur a **mis en demeure** l'acheteur le **10 mai 2024**, lui laissant **10 jours** pour payer ;
+
+- Aucun paiement n'a suivi.
+
+➡️ Le vendeur peut donc **résoudre le contrat** (art. 64 §1 b).
+
+Même si le non-paiement n'est pas une « violation essentielle » à la base, **le défaut de paiement persistant après mise en demeure** autorise la résolution.
+
+------------------------------------------------------------------------
+
+**4. Autres recours du vendeur**
+
+Selon la CVIM :
+
+- **Article 62** : il peut **exiger le paiement du prix** (action en exécution) ;
+
+- **Article 74** : il peut demander **des dommages et intérêts** pour le préjudice subi ;
+
+- **Article 75** : s'il revend les biens, il peut réclamer la **différence entre le prix convenu et le prix de revente** ;
+
+- **Article 77** : il doit limiter son dommage (par ex. en retrouvant un autre acheteur).
+
+➡️ Le vendeur peut **cumuler** la résolution avec la **réparation du préjudice financier**.
+
+------------------------------------------------------------------------
+
+**5. Intérêts de retard**
+
+L'**article 78 CVIM** prévoit que :
+
+« Si une partie ne paie pas le prix ou toute autre somme due, l'autre partie a droit à des intérêts sur cette somme. »
+
+La Convention ne fixe **pas le taux d'intérêt** : il est donc déterminé selon le **droit applicable par renvoi du droit international privé** (souvent le taux du pays du créancier, ici la France).
+
+➡️ Le vendeur a droit à des **intérêts moratoires** à compter du **1er avril 2024**, date d'exigibilité du paiement.
+
+------------------------------------------------------------------------
+
+**🧩 Conclusion :**
+
+  -----------------------------------------------------------------------------------------
+  **Élément**        **Analyse**
+  ------------------ ----------------------------------------------------------------------
+  Droit applicable   Convention de Vienne (France / Espagne)
+
+  Manquement         Non-paiement du prix (art. 53)
+
+  Résolution         Possible après mise en demeure restée sans effet (art. 64 §1 b)
+
+  Recours            Exécution forcée, résolution, dommages et intérêts (art. 62, 74, 75)
+
+  Intérêts           Oui, art. 78 CVIM, taux déterminé selon le droit nationa
+  -----------------------------------------------------------------------------------------

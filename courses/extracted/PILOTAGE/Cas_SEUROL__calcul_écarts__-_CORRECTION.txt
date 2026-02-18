@@ -1,0 +1,165 @@
+Fichier Excel: Cas SEUROL (calcul écarts) - CORRECTION.xlsx
+Feuilles: ['Feuil1']
+
+=== Feuille: Feuil1 ===
+L'entreprise SEUROL vend du matériel Hi-Tech. Le directeur commercial est inquiet car le marché est très concurrentiel et les ventes sont inférieures aux objectifs. Si la vente de téléphones mobiles remplit ses promesses et se développe, un problème sur le nouveau modèle de tablette a conduit à un éfondrement des ventes. Heureusement, la vente d'enceintes blue-tooth se porte très bien et le réalisé est meilleur que ce qui avait été budgété.
+Si globalement le nombre d'unités vendues est en croissance, les tablettes qui sont un produit très rentable voient leurs ventes s'effondrer et le changement de mix produit va certainement diminuer la rentabilité de la société SEUROL et conduit à revoir le plan de production.
+ |  |  |  |  |  | 
+1- Tableaux des ventes : |  |  |  |  |  | 
+Ventes en volume = nb unités (budget) | Janvier | Février | Mars | Total T1 |  | 
+Téléphones mobiles | 1000 | 2000 | 2000 | 5000 |  | 
+Tablettes | 4000 | 2000 | 500 | 6500 |  | 
+Enceintes blue tooth | 5000 | 5000 | 5000 | 15000 |  | 
+Total | 10000 | 9000 | 7500 | 26500 |  | 
+Ventes en volume = nb unités (réalisé) | Janvier | Février | Mars | Total T1 |  | 
+Téléphones mobiles | 1000 | 2000 | 2000 | 5000 |  | 
+Tablettes | 2200 | 800 | 100 | 3100 |  | 
+Enceintes blue tooth | 5500 | 6000 | 6500 | 18000 |  | 
+Total | 8700 | 8800 | 8600 | 26100 |  | 
+2- Tableaux des prix de ventes : |  |  |  |  |  | 
+Prix unitaires | Prévus | Réalisé |  |  |  | 
+Téléphones mobiles | 600 | 550 |  |  |  | 
+Tablettes | 800 | 800 |  |  |  | 
+Enceintes blue tooth | 50 | 60 |  |  |  | 
+3- Tableaux du chiffre d'affaires : |  |  |  |  |  | 
+Chiffre d'affaires (budget) | Janvier | Février | Mars | Total T1 |  | 
+Téléphones mobiles | 600000 | 1200000 | 1200000 | 3000000 |  | 
+Tablettes | 3200000 | 1600000 | 400000 | 5200000 |  | 
+Enceintes blue tooth | 250000 | 250000 | 250000 | 750000 |  | 
+Total | 4050000 | 3050000 | 1850000 | 8950000 |  | 
+Chiffre d'affaires (réalisé) | Janvier | Février | Mars | Total T1 |  | 
+Téléphones mobiles | 550000 | 1100000 | 1100000 | 2750000 |  | 
+Tablettes | 1760000 | 640000 | 80000 | 2480000 |  | 
+Enceintes blue tooth | 330000 | 360000 | 390000 | 1080000 |  | 
+Total | 2640000 | 2100000 | 1570000 | 6310000 |  | 
+Le niveau de stocks d'enceintes blue tooth était faible et il va falloir relancer la production suite à une rupture de stocks. Cette réallocation des capacités de production a conduit à diminuer la production de tablettes qui aurait nécessité des ajustements pour résoudre les problèmes de qualité. |  |  |  |  |  | 
+4- Programme de production : |  |  |  |  |  | 
+Budget de production en nb d'unités | Janvier | Février | Mars | Total T1 |  | 
+Téléphones mobiles | 5000 | 5000 | 5000 | 15000 |  | 
+Tablettes | 500 | 500 | 500 | 1500 |  | 
+Enceintes blue tooth | 6000 | 6000 | 6000 | 18000 |  | 
+Total | 11500 | 11500 | 11500 | 34500 |  | 
+production en nb d'unités (réalisé) | Janvier | Février | Mars | Total T1 |  | 
+Téléphones mobiles | 5000 | 5000 | 5000 | 15000 |  | 
+Tablettes | 200 | 200 | 200 | 600 |  | 
+Enceintes blue tooth | 6200 | 6200 | 6200 | 18600 |  | 
+Total | 11400 | 11400 | 11400 | 34200 |  | 
+5- Atelier 1 de production : prévisions de temps de MOD par mois |  |  |  |  |  | 
+ | Qté standard de nb heures MOD / unité produit | Nb unités produites | Nb heures de MOD |  |  | 
+Téléphones mobiles | 0.16666666666666666 | 5000 | 833.3333333333333 |  |  | 
+Tablettes | 0.16666666666666666 | 500 | 83.33333333333333 |  |  | 
+Enceintes blue tooth | 0.16666666666666666 | 6000 | 1000 |  |  | 
+Total |  | 11500 | 1916.6666666666665 |  |  | 
+Coût horaire standard de l'heure de MOD travaillée |  |  |  |  |  | 
+Salaires mensuels du personnel de l'atelier / nb heures travaillées prévisionnelles |  |  |  |  |  | 
+12*1200/1917 | 8.763693270735525 |  |  |  |  | 
+6- Atelier 1 de production : temps de MOD réel par mois |  |  |  |  |  | 
+ | Qté réelle de nb heures MOD / unité produit | Nb unités produites | Nb heures de MOD |  |  | 
+Téléphones mobiles | 0.2 | 5000 | 1000 |  |  | 
+Tablettes | 0.2 | 200 | 40 |  |  | 
+Enceintes blue tooth | 0.2 | 6200 | 1240 |  |  | 
+Total |  | 11400 | 2280 |  |  | 
+Coût réel de l'heure de MOD = nb unités réelles produites X 0,2 heures par unité |  |  |  |  |  | 
+= | 11400 | * | 0.2 |  |  | 
+= | 2280 | heures consommées |  |  |  | 
+L'atelier 1 compte 12 ouvriers qui travaillent 160 heures par mois soit |  |  | 1920 | H |  | 
+Il faut donc payer  | 360 | heures supplémentaires payées 50% de plus soit |  |  | 13.145539906103288 | 
+Le coût moyen de l'heure effectivement travaillée est donc de |  | 1920 | * | 8.763693270735525 |  | 
+ | + | 360 | * | 13.145539906103288 |  | 
+ | / | 2280 |  |  |  | 
+ | = | 9.45556379210938 |  |  |  | 
+7- Charges indirectes de production : budget par mois et par trimestre |  |  |  |  |  | 
+Charges indirectes de production | Prévisions mensuelles | Prévisions total 1er trimestre |  |  |  | 
+Salaire dirigeants usine | 10000 | 30000 |  |  |  | 
+Amortissement machines | 15000 | 45000 |  |  |  | 
+Recherche et développement | 5000 | 15000 |  |  |  | 
+Loyer batiments | 10000 | 30000 |  |  |  | 
+Entretien | 5000 | 15000 |  |  |  | 
+Assurances | 2000 | 6000 |  |  |  | 
+Total | 47000 | 141000 |  |  |  | 
+8- Charges indirectes de production : dépenses réelles par mois et par trimestre |  |  |  |  |  | 
+Charges indirectes de production | Dépenses réelles mensuelles | Dépenses réelles total 1er trimestre |  |  |  | 
+Salaire dirigeants usine | 10000 | 30000 |  |  |  | 
+Amortissement machines | 15000 | 45000 |  |  |  | 
+Recherche et développement | 4000 | 12000 |  |  |  | 
+Loyer batiments | 10000 | 30000 |  |  |  | 
+Entretien | 3000 | 9000 |  |  |  | 
+Assurances | 2000 | 6000 |  |  |  | 
+Total | 44000 | 132000 |  |  |  | 
+Le contrôleur de gestion analyse les dépenses de production et indique que :
+- les charges suivantes sont fixes : salaire, amortissements, la R&D, le loyer, les assurances.
+- les frais d'entretien varient en fonction du nb d'heures machine. La fabrication d'une unité de produit utilise 0,25 h machine (2 500 heures machines sont utilisées chaque mois) |  |  |  |  |  | 
+9- Quantités de matières premières par produit |  |  |  |  |  | 
+Prévisions | Grammes/ unité | Nb unités produites | Coût du gramme | Coût de MP/ unité |  | 
+Téléphones mobiles | 10 | 5000 | 1 | 10 |  | 
+Tablettes | 15 | 500 | 1 | 15 |  | 
+Enceintes blue tooth | 8 | 6000 | 2 | 16 |  | 
+Réalisations | Grammes/ unité | Nb unités produites | Coût du gramme | Coût de MP/ unité |  | 
+Téléphones mobiles | 10 | 5000 | 0.9 | 9 |  | 
+Tablettes | 15 | 200 | 0.8 | 12 |  | 
+Enceintes blue tooth | 9 | 6200 | 2.1 | 18.900000000000002 |  | 
+10- Calcul du coût du production standard unitaire |  |  |  |  |  | 
+Prévisions | Téléphones mobiles | Tablettes | Enceintes blue tooth |  |  | 
+Matières premières | 10 | 15 | 16 |  |  | 
+MOD | 1.4606155451225873 | 1.4606155451225873 | 1.4606155451225873 |  |  | 
+Charges indirectes de production | 4.086956521739131 | 4.086956521739131 | 4.086956521739131 |  |  | 
+Total | 15.547572066861719 | 20.54757206686172 | 21.54757206686172 |  |  | 
+Réalisations | Téléphones mobiles | Tablettes | Enceintes blue tooth |  |  | 
+Matières premières | 9 | 12 | 18.900000000000002 |  |  | 
+MOD | 1.891112758421876 | 1.891112758421876 | 1.891112758421876 |  |  | 
+Charges indirectes de production | 3.8596491228070176 | 3.8596491228070176 | 3.8596491228070176 |  |  | 
+Total | 14.750761881228893 | 17.750761881228893 | 24.650761881228895 |  |  | 
+Questions : |  |  |  |  |  | 
+Analyser l'écart global de marge sur coût de production en le décomposant en : |  |  |  |  |  | 
+Ecart sur prix de vente des produits |  |  |  |  |  | 
+Ecart sur activité |  |  |  |  |  | 
+Ecart sur mix-produit |  |  |  |  |  | 
+Ecart sur coût de production |  |  |  |  |  | 
+ANALYSE D'ECARTS DE MARGE SUR COUT DE PRODUCTION DES PRODUITS VENDUS |  |  |  |  |  | 
+Il résulte de la combinaison de 4 phénomènes : |  |  |  |  |  | 
+- Les prix de vente prévus n'ont pas toujours été appliqués |  |  |  |  |  | 
+- L'activité globale a été inférieure aux prévisions |  |  |  |  |  | 
+- La répartition des ventes (mix) a été différente de celle prévue |  |  |  |  |  | 
+- Les coûts de production n'ont pas été respectés |  |  |  |  |  | 
+a) Ecart sur prix de vente par produit et global |  |  |  |  |  | 
+Les prix de vente n'ont pas été respectés pour les téléphones et les enceintes. |  |  |  |  |  | 
+Ecart sur prix = ( | Prix réalisé | - | prix prévu | ) | * | quantités réellement vendues
+Ecart sur prix des téléphones = ( | 550 | - | 600 | ) | * | 5000
+= | -250000 | Ecart défavorable |  |  |  | 
+Ecart sur prix des enceintes = ( | 60 | - | 50 | ) | * | 18000
+= | 180000 | Ecart favorable |  |  |  | 
+Au global, l'écart sur prix est défavorable de | -70000 |  |  |  |  | 
+b) Calcul de l'écart sur activité |  |  |  |  |  | 
+Au global cet écart sera défavorable car la société a vendu moins de produits que prévu |  |  |  |  |  | 
+Calcul de la marge standard unitaire moyenne |  |  |  |  |  | 
+Produit | Marge standard unitaire sur le coût de production | Part prévisionnelle du produit dans les ventes en volume | Décomposition de la marge standard unitaire moyenne |  |  | 
+Téléphones mobiles | 584.4524279331383 | 0.18867924528301888 | 110.27404300625253 |  |  | 
+Tablettes | 779.4524279331383 | 0.24528301886792453 | 191.18644458737356 |  |  | 
+Enceintes blue tooth | 28.45242793313828 | 0.5660377358490566 | 16.105147886682047 |  |  | 
+Total | 1392.357283799415 | 1 | 317.5656354803082 |  |  | 
+Ecart sur activité = (qtés réelles totales - qtés prévues totales) * marge standard unitaire moyenne |  |  |  |  |  | 
+26100 | - | 26500 | * | 317.5656354803082 |  | 
+= | -127026.25419212328 |  |  |  |  | 
+L'écart est défavorable. |  |  |  |  |  | 
+c) Calcul de l'écart sur mix produit |  |  |  |  |  | 
+Ecart sur mix produit = | (Q r - Q mix) * marge p |  |  |  |  | 
+Produit | Mix standard appliqué au total des ventes réelles en volume | Quantités réellement vendues | Marge standard unitaire sur coût de production | Ecart sur mix produit |  | 
+Téléphones mobiles | 4924.528301886793 | 5000 | 584.4524279331383 | 44109.61720250064 | favorable | 
+Tablettes | 6401.88679245283 | 3100 | 779.4524279331383 | -2573663.677137721 | défavorable | 
+Enceintes blue tooth | 14773.584905660377 | 18000 | 28.45242793313828 | 91799.34295408768 | favorable | 
+Total | 26100 | 26100 | 1392.357283799415 | -2437754.7169811325 | défavorable | 
+d) Ecart sur coût de production des produits vendus = (coûts de production unitaire p - coûts de production unitaire r) X quantités vendues r |  |  |  |  |  | 
+Téléphones mobiles = ( | 15.547572066861719 | - | 14.750761881228893 | ) * | 5000 | 
+= | 3984.0509281641266 | écart favorable |  |  |  | 
+Tablettes = ( | 20.54757206686172 | - | 17.750761881228893 | ) * | 3100 | 
+= | 8670.111575461759 | écart favorable |  |  |  | 
+Enceintes blue tooth = ( | 21.54757206686172 | - | 24.650761881228895 | ) * | 18000 | 
+= | -55857.41665860918 | écart défavorable |  |  |  | 
+Ecart global sur coût de production vendue | -43203.2541549833 | écart défavorable |  |  |  | 
+Nous pouvons maintenant constater la somme des écarts : |  |  |  |  |  | 
+Au global, l'écart sur prix est de | -70000 | défavorable |  |  |  | 
+L'écart sur activité est de | -127026.25419212328 | défavorable |  |  |  | 
+L'écart sur mix produit est de | -2437754.7169811325 | défavorable |  |  |  | 
+L'écart sur coût de production vendue | -43203.2541549833 | défavorable |  |  |  | 
+Un écart global défavorable | -2677984.225328239 | défavorable |  |  |  | 
+

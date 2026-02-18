@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthese — Pilotage Ch.4 : L'analyse des ecarts</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.75;
+            color: #2c3e50;
+            background: #fafafa;
+        }
+        h1 {
+            color: #1a5276;
+            border-bottom: 3px solid #2980b9;
+            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        h2 {
+            color: #2471a3;
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+        }
+        h3 { color: #2e86c1; font-size: 1.15rem; }
+        .definition {
+            background: #eaf2f8;
+            border-left: 4px solid #2980b9;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition strong { color: #1a5276; }
+        .formula {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .important {
+            background: #fdedec;
+            border-left: 4px solid #e74c3c;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .example {
+            background: #eafaf1;
+            border-left: 4px solid #27ae60;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        th { background: #2c3e50; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .source-link {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .source-link a { color: #2980b9; text-decoration: none; }
+        blockquote {
+            border-left: 3px solid #7f8c8d;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            color: #555;
+        }
+        .tree { font-family: monospace; white-space: pre; line-height: 1.4; font-size: 0.92rem; }
+    </style>
+</head>
+<body>
+
+<h1>Pilotage de la performance — Ch.4 : L'analyse des ecarts</h1>
+
+<h2>1. Le controle budgetaire et la logique des ecarts</h2>
+
+<p>Le controle budgetaire consiste a comparer de maniere permanente les resultats reels aux previsions chiffrees figurant au budget. Cette confrontation periodique poursuit quatre objectifs : rechercher les causes des ecarts constates, informer les differents niveaux hierarchiques, prendre les mesures correctives eventuellement necessaires, et apprecier l'activite des responsables budgetaires. On parle de <strong>gestion par exception</strong> : seuls les ecarts remarquables declenchent une analyse approfondie et des actions correctives.</p>
+
+<div class="definition">
+    <strong>Cout preetabli (ou cout standard) :</strong> Cout calcule a l'avance, permettant de comptabiliser les mouvements de valeurs et d'enregistrer les ecarts resultant de la difference entre les valeurs preetablies et les valeurs reelles. Le cout standard = quantite standard x cout unitaire standard.
+</div>
+
+<p>Les couts preetablis remplissent plusieurs fonctions : ils permettent une evaluation rapide de la production obtenue et des stocks, ils favorisent la gestion par exception en comparant reel et standard, et ils soutiennent le mode de gestion decentralisee en mesurant les performances des responsables operationnels.</p>
+
+<h3>Convention de signe des ecarts</h3>
+
+<div class="important">
+    <strong>Regle fondamentale :</strong> Un ecart est dit <strong>favorable</strong> lorsqu'il contribue positivement au resultat (recette reelle &gt; recette prevue, ou cout reel &lt; cout prevu). Un ecart est dit <strong>defavorable</strong> dans le cas contraire. Pour les couts, un ecart positif (reel &gt; prevu) est defavorable. Pour les recettes, un ecart positif est favorable.
+</div>
+
+<h2>2. Arborescence de decomposition de l'ecart sur resultat</h2>
+
+<p>L'ecart global sur resultat se decompose en un ecart sur chiffre d'affaires et un ecart sur couts. Chacune de ces branches se subdivise a son tour en sous-ecarts permettant d'identifier les causes precises des derives.</p>
+
+<div class="definition">
+    <strong>Arborescence complete :</strong>
+    <div class="tree">
+Ecart sur Resultat
+|
+|--- Ecart sur Chiffre d'affaires
+|    |--- Ecart sur Prix de vente
+|    |--- Ecart sur Quantites
+|         |--- Ecart sur volume d'activite
+|         |--- Ecart sur mix-produits
+|
+|--- Ecart sur Couts
+     |--- Ecart sur Charges directes
+     |    |--- Ecart sur Quantites (rendement)
+     |    |--- Ecart sur Prix
+     |
+     |--- Ecart sur Charges indirectes
+          |--- Ecart sur volume d'activite
+          |--- Ecart sur Quantites (rendement)
+          |--- Ecart de budget
+          |--- Ecart d'activite
+    </div>
+</div>
+
+<h2>3. Analyse des ecarts sur chiffre d'affaires</h2>
+
+<p>L'ecart sur chiffre d'affaires mesure la difference entre le chiffre d'affaires reel et le chiffre d'affaires prevu. Il se decompose en un ecart sur prix de vente et un ecart sur quantites, ce dernier pouvant lui-meme etre eclate en ecart de volume et ecart de composition (mix-produits).</p>
+
+<div class="formula">
+    <strong>Ecart sur CA :</strong><br>
+    CA reel - CA prevu = (Qr x Pr) - (Qp x Pp)
+</div>
+
+<div class="formula">
+    <strong>Ecart sur prix de vente :</strong> (Pr - Pp) x Qr<br>
+    <strong>Ecart sur quantite :</strong> (Qr - Qp) x Pp
+</div>
+
+<p>L'ecart sur quantite peut a son tour etre subdivise :</p>
+
+<div class="formula">
+    <strong>Ecart sur composition (mix) :</strong> (Qr - Qmix) x Pp<br>
+    <strong>Ecart sur volume :</strong> (Qmix - Qp) x Pp<br>
+    <em>ou Qmix = part previsionnelle du produit dans les ventes x total reel des ventes</em>
+</div>
+
+<h2>4. Analyse des ecarts de marge sur cout de production</h2>
+
+<p>Dans le cas SEUROL, l'ecart global de marge sur cout de production est decompose en quatre sous-ecarts : ecart sur prix de vente, ecart sur activite (volume global), ecart sur mix-produits et ecart sur cout de production. Cette decomposition permet d'isoler les phenomenes qui ont conjointement affecte la rentabilite.</p>
+
+<h3>4.1 Ecart sur prix de vente des produits</h3>
+
+<div class="formula">
+    <strong>Ecart sur prix = (Prix reel - Prix prevu) x Quantites reellement vendues</strong>
+</div>
+
+<div class="example">
+    <strong>Application SEUROL :</strong><br>
+    Les prix de vente n'ont pas ete respectes pour les telephones et les enceintes.
+    <table>
+        <tr><th>Produit</th><th>Prix prevu</th><th>Prix reel</th><th>Qte vendue</th><th>Ecart sur prix</th><th>Sens</th></tr>
+        <tr><td>Telephones mobiles</td><td>600</td><td>550</td><td>5 000</td><td>-250 000</td><td>Defavorable</td></tr>
+        <tr><td>Tablettes</td><td>800</td><td>800</td><td>3 100</td><td>0</td><td>--</td></tr>
+        <tr><td>Enceintes bluetooth</td><td>50</td><td>60</td><td>18 000</td><td>+180 000</td><td>Favorable</td></tr>
+        <tr><th colspan="4">Total ecart sur prix</th><th>-70 000</th><th>Defavorable</th></tr>
+    </table>
+</div>
+
+<h3>4.2 Ecart sur activite (volume global)</h3>
+
+<p>L'ecart sur activite mesure l'impact de la variation du volume global des ventes par rapport aux previsions. Il s'appuie sur la marge standard unitaire moyenne, calculee en ponderant la marge standard de chaque produit par sa part previsionnelle dans les ventes en volume.</p>
+
+<div class="formula">
+    <strong>Marge standard unitaire moyenne :</strong><br>
+    = Somme de [ Marge standard unitaire(i) x Part previsionnelle(i) ]
+</div>
+
+<div class="example">
+    <strong>Application SEUROL :</strong>
+    <table>
+        <tr><th>Produit</th><th>Marge std unitaire</th><th>Part prev. volume</th><th>Contribution a la marge moy.</th></tr>
+        <tr><td>Telephones</td><td>584,45</td><td>18,87 %</td><td>110,27</td></tr>
+        <tr><td>Tablettes</td><td>779,45</td><td>24,53 %</td><td>191,19</td></tr>
+        <tr><td>Enceintes</td><td>28,45</td><td>56,60 %</td><td>16,11</td></tr>
+        <tr><th>Total</th><th>--</th><th>100 %</th><th>317,57</th></tr>
+    </table>
+    <p>La marge standard unitaire de chaque produit est calculee comme : Prix de vente prevu - Cout de production standard unitaire (par exemple, pour les telephones : 600 - 15,55 = 584,45).</p>
+</div>
+
+<div class="formula">
+    <strong>Ecart sur activite = (Qte reelle totale - Qte prevue totale) x Marge standard unitaire moyenne</strong>
+</div>
+
+<div class="example">
+    <strong>Application SEUROL :</strong><br>
+    Ecart sur activite = (26 100 - 26 500) x 317,57 = <strong>-127 026</strong> (defavorable)<br>
+    La societe a vendu 400 unites de moins que prevu, ce qui explique cet ecart negatif.
+</div>
+
+<h3>4.3 Ecart sur mix-produits</h3>
+
+<p>L'ecart sur mix-produits isole l'impact du changement de composition des ventes. Meme si le volume global est proche du budget, une modification de la repartition entre produits a marge differente peut avoir un impact considerable sur la rentabilite.</p>
+
+<div class="formula">
+    <strong>Ecart sur mix = Somme de [ (Qte reelle(i) - Qte mix(i)) x Marge standard unitaire(i) ]</strong><br>
+    <em>ou Qte mix(i) = Part previsionnelle(i) x Total des ventes reelles</em>
+</div>
+
+<div class="example">
+    <strong>Application SEUROL :</strong>
+    <table>
+        <tr><th>Produit</th><th>Qte mix standard</th><th>Qte reelle</th><th>Marge std unit.</th><th>Ecart mix</th><th>Sens</th></tr>
+        <tr><td>Telephones</td><td>4 925</td><td>5 000</td><td>584,45</td><td>+44 110</td><td>Favorable</td></tr>
+        <tr><td>Tablettes</td><td>6 402</td><td>3 100</td><td>779,45</td><td>-2 573 664</td><td>Defavorable</td></tr>
+        <tr><td>Enceintes</td><td>14 774</td><td>18 000</td><td>28,45</td><td>+91 799</td><td>Favorable</td></tr>
+        <tr><th colspan="4">Total ecart mix</th><th>-2 437 755</th><th>Defavorable</th></tr>
+    </table>
+    <p>L'effondrement des ventes de tablettes (produit a forte marge de 779,45 par unite) au profit des enceintes bluetooth (faible marge de 28,45 par unite) explique cet ecart massivement defavorable. C'est le facteur le plus lourd dans la degradation de la rentabilite de SEUROL.</p>
+</div>
+
+<h3>4.4 Ecart sur cout de production des produits vendus</h3>
+
+<div class="formula">
+    <strong>Ecart sur cout de production = (Cout std unitaire - Cout reel unitaire) x Qte vendue reelle</strong><br>
+    <em>Si ecart &gt; 0, favorable (on a produit moins cher que prevu). Si ecart &lt; 0, defavorable.</em>
+</div>
+
+<div class="example">
+    <strong>Application SEUROL :</strong>
+    <table>
+        <tr><th>Produit</th><th>Cout std unit.</th><th>Cout reel unit.</th><th>Qte vendue</th><th>Ecart</th><th>Sens</th></tr>
+        <tr><td>Telephones</td><td>15,55</td><td>14,75</td><td>5 000</td><td>+3 984</td><td>Favorable</td></tr>
+        <tr><td>Tablettes</td><td>20,55</td><td>17,75</td><td>3 100</td><td>+8 670</td><td>Favorable</td></tr>
+        <tr><td>Enceintes</td><td>21,55</td><td>24,65</td><td>18 000</td><td>-55 857</td><td>Defavorable</td></tr>
+        <tr><th colspan="4">Total ecart sur cout de production</th><th>-43 203</th><th>Defavorable</th></tr>
+    </table>
+    <p>Les enceintes bluetooth ont coute plus cher a produire que prevu (18,90 de matieres premieres reelles au lieu de 16 prevues), ce qui tire l'ecart global vers le defavorable.</p>
+</div>
+
+<h3>4.5 Synthese de l'ecart global de marge</h3>
+
+<div class="important">
+    <strong>Verification : la somme des quatre ecarts reconstitue l'ecart global.</strong>
+    <table>
+        <tr><th>Composante</th><th>Montant</th><th>Sens</th></tr>
+        <tr><td>Ecart sur prix de vente</td><td>-70 000</td><td>Defavorable</td></tr>
+        <tr><td>Ecart sur activite</td><td>-127 026</td><td>Defavorable</td></tr>
+        <tr><td>Ecart sur mix-produits</td><td>-2 437 755</td><td>Defavorable</td></tr>
+        <tr><td>Ecart sur cout de production</td><td>-43 203</td><td>Defavorable</td></tr>
+        <tr><th>Ecart global</th><th>-2 677 984</th><th>Defavorable</th></tr>
+    </table>
+    <p>Le facteur dominant est l'ecart de mix-produits (91 % de l'ecart global), du a l'effondrement des ventes de tablettes.</p>
+</div>
+
+<h2>5. Analyse des ecarts sur charges directes</h2>
+
+<h3>5.1 Ecart sur matieres premieres</h3>
+
+<p>L'ecart economique sur matieres mesure la difference entre le cout reel des matieres consommees pour la production reelle et le cout preetabli de ces memes matieres pour cette production reelle. Il se decompose en un ecart sur quantites consommees (rendement) et un ecart sur prix d'achat.</p>
+
+<div class="formula">
+    <strong>Ecart economique sur matieres (EM) :</strong><br>
+    EM = Cout reel - Cout preetabli de la production reelle = (Qr x Pr) - (Qp x Pp)<br><br>
+    <strong>Decomposition :</strong><br>
+    Ecart sur quantites consommees = (Qr - Qp) x Pp<br>
+    Ecart sur prix d'achat = (Pr - Pp) x Qr
+</div>
+
+<div class="example">
+    <strong>Exercice du cours :</strong><br>
+    Norme : 4 kg a 8 euros/kg par unite. Production reelle : 5 000 unites ayant consomme 22 000 kg pour 198 000 euros.<br><br>
+    Qp = 4 x 5 000 = 20 000 kg ; Pr = 198 000 / 22 000 = 9 euros/kg<br><br>
+    <strong>Ecart sur quantites</strong> = (22 000 - 20 000) x 8 = 16 000 (defavorable)<br>
+    <strong>Ecart sur prix</strong> = (9 - 8) x 22 000 = 22 000 (defavorable)<br>
+    <strong>Ecart economique total</strong> = 16 000 + 22 000 = 38 000 (defavorable)
+</div>
+
+<p>Les causes d'ecart sur matieres consommees peuvent etre : mauvaise utilisation de la matiere, exces de rebuts, standards mal calcules, ecarts de composition, mauvais entretien. Les causes d'ecart sur prix incluent : mauvais choix de fournisseurs, mauvaises previsions de ventes entrainant de mauvaises previsions d'achats, et variation des prix du marche.</p>
+
+<div class="example">
+    <strong>Donnees SEUROL sur les matieres premieres (par mois) :</strong>
+    <table>
+        <tr><th>Produit</th><th>g/unite prevu</th><th>g/unite reel</th><th>Cout/g prevu</th><th>Cout/g reel</th><th>Cout MP/unite prevu</th><th>Cout MP/unite reel</th></tr>
+        <tr><td>Telephones</td><td>10</td><td>10</td><td>1,00</td><td>0,90</td><td>10,00</td><td>9,00</td></tr>
+        <tr><td>Tablettes</td><td>15</td><td>15</td><td>1,00</td><td>0,80</td><td>15,00</td><td>12,00</td></tr>
+        <tr><td>Enceintes</td><td>8</td><td>9</td><td>2,00</td><td>2,10</td><td>16,00</td><td>18,90</td></tr>
+    </table>
+    <p>Les enceintes bluetooth presentent un double ecart defavorable : surconsommation de matiere (9 g au lieu de 8 g) et hausse du prix au gramme (2,10 au lieu de 2,00). Pour les telephones et les tablettes, les prix au gramme ont baisse, creant un ecart favorable.</p>
+</div>
+
+<h3>5.2 Ecart sur main d'oeuvre directe (MOD)</h3>
+
+<p>L'ecart economique sur MOD se decompose en un ecart sur temps (rendement du travail) et un ecart sur taux horaire.</p>
+
+<div class="formula">
+    <strong>Ecart economique sur MOD (EMO) :</strong><br>
+    EMO = Cout reel - Cout preetabli de la production reelle = (Tr x Sr) - (Tp x Sp)<br><br>
+    <strong>Decomposition :</strong><br>
+    Ecart sur temps (rendement) = (Tr - Tp) x Sp<br>
+    Ecart sur taux horaire = (Sr - Sp) x Tr
+</div>
+
+<p>Les causes d'ecart sur temps incluent : chute de cadences, defaut d'encadrement, standards mal calcules. Les causes d'ecart sur taux horaire incluent : exces d'heures supplementaires, sur- ou sous-qualification de la main d'oeuvre, augmentations legales non prevues.</p>
+
+<div class="example">
+    <strong>Donnees SEUROL sur la MOD (atelier 1, par mois) :</strong><br><br>
+    <strong>Previsionnel :</strong> 12 ouvriers, temps standard de 1/6 h (10 min) par unite. Pour 11 500 unites/mois, cela donne 1 917 heures. Cout horaire standard = (12 x 1 200) / 1 917 = 7,51 euros/heure (soit 14 400 / 1 917).<br><br>
+    <em>Note : le cours utilise le calcul 12 x 1 200 / 1 917 = 8,76 euros/h.</em><br><br>
+    <strong>Reel :</strong> Temps reel de 0,2 h par unite. Pour 11 400 unites/mois, cela donne 2 280 heures. Les 12 ouvriers travaillent 160 h/mois = 1 920 h normales. L'excedent de 360 heures est paye en heures supplementaires a +50 % (taux = 13,15 euros/h).<br><br>
+    Cout moyen reel de l'heure = (1 920 x 8,76 + 360 x 13,15) / 2 280 = <strong>9,46 euros/h</strong><br><br>
+    L'ecart sur taux horaire est defavorable en raison des heures supplementaires. L'ecart sur rendement est egalement defavorable (0,2 h/unite reel au lieu de 0,167 h/unite prevu, soit +20 % de temps par unite).
+</div>
+
+<h2>6. Analyse des ecarts sur charges indirectes</h2>
+
+<p>Les charges indirectes de production se composent de charges fixes et de charges variables. Leur analyse fait intervenir la notion de <strong>budget flexible</strong>, c'est-a-dire un budget ajuste au niveau d'activite reellement constate.</p>
+
+<div class="example">
+    <strong>Donnees SEUROL sur les charges indirectes (par mois) :</strong>
+    <table>
+        <tr><th>Poste</th><th>Prevu/mois</th><th>Reel/mois</th><th>Nature</th></tr>
+        <tr><td>Salaire dirigeants usine</td><td>10 000</td><td>10 000</td><td>Fixe</td></tr>
+        <tr><td>Amortissement machines</td><td>15 000</td><td>15 000</td><td>Fixe</td></tr>
+        <tr><td>Recherche et developpement</td><td>5 000</td><td>4 000</td><td>Fixe</td></tr>
+        <tr><td>Loyer batiments</td><td>10 000</td><td>10 000</td><td>Fixe</td></tr>
+        <tr><td>Entretien</td><td>5 000</td><td>3 000</td><td>Variable</td></tr>
+        <tr><td>Assurances</td><td>2 000</td><td>2 000</td><td>Fixe</td></tr>
+        <tr><th>Total</th><th>47 000</th><th>44 000</th><th></th></tr>
+    </table>
+    <p>Les frais d'entretien varient en fonction des heures machine. Chaque unite produite utilise 0,25 h machine, soit 2 500 heures machine prevues par mois (pour les 11 500 unites budgetees) et une activite reelle inferieure (11 400 unites = 2 850 h machine).</p>
+    <p><strong>Au trimestre :</strong> charges indirectes prevues = 141 000 ; charges indirectes reelles = 132 000. L'ecart de 9 000 (favorable) provient essentiellement de la baisse des frais de R&D (-3 000/mois) et d'entretien (-2 000/mois).</p>
+</div>
+
+<h3>Structure du cout de production standard et reel unitaire</h3>
+
+<div class="example">
+    <strong>Cout de production unitaire SEUROL :</strong>
+    <table>
+        <tr><th>Composante</th><th>Telephones (std)</th><th>Telephones (reel)</th><th>Tablettes (std)</th><th>Tablettes (reel)</th><th>Enceintes (std)</th><th>Enceintes (reel)</th></tr>
+        <tr><td>Matieres premieres</td><td>10,00</td><td>9,00</td><td>15,00</td><td>12,00</td><td>16,00</td><td>18,90</td></tr>
+        <tr><td>MOD</td><td>1,46</td><td>1,89</td><td>1,46</td><td>1,89</td><td>1,46</td><td>1,89</td></tr>
+        <tr><td>Charges indirectes</td><td>4,09</td><td>3,86</td><td>4,09</td><td>3,86</td><td>4,09</td><td>3,86</td></tr>
+        <tr><th>Total</th><th>15,55</th><th>14,75</th><th>20,55</th><th>17,75</th><th>21,55</th><th>24,65</th></tr>
+    </table>
+    <p>Pour les telephones et les tablettes, le cout reel est inferieur au standard (ecart favorable). Pour les enceintes, la surconsommation de matieres premieres rencherit le cout au-dela du standard.</p>
+</div>
+
+<h2>7. Synthese methodologique : les etapes d'une analyse d'ecarts</h2>
+
+<div class="important">
+    <strong>Demarche en 5 etapes :</strong>
+    <ol>
+        <li><strong>Calculer l'ecart global</strong> entre le resultat (ou la marge) reel et le resultat (ou la marge) budgete.</li>
+        <li><strong>Decomposer l'ecart</strong> en sous-ecarts : prix de vente, volume d'activite, mix-produits, cout de production.</li>
+        <li><strong>Analyser chaque sous-ecart</strong> en identifiant ses composantes (pour les charges directes : quantites et prix ; pour les charges indirectes : budget, activite et rendement).</li>
+        <li><strong>Verifier la coherence</strong> : la somme des sous-ecarts doit reconstituer l'ecart global.</li>
+        <li><strong>Identifier les causes</strong> et proposer des actions correctives.</li>
+    </ol>
+</div>
+
+<h3>Tableau recapitulatif des formules</h3>
+
+<table>
+    <tr><th>Ecart</th><th>Formule</th></tr>
+    <tr><td>Ecart sur prix de vente</td><td>(Prix reel - Prix prevu) x Qte reelle vendue</td></tr>
+    <tr><td>Ecart sur activite</td><td>(Qte reelle totale - Qte prevue totale) x Marge std unitaire moyenne</td></tr>
+    <tr><td>Ecart sur mix-produits</td><td>Somme [ (Qr(i) - Qmix(i)) x Marge std(i) ]</td></tr>
+    <tr><td>Ecart sur cout de production</td><td>(Cout std unit. - Cout reel unit.) x Qte vendue reelle</td></tr>
+    <tr><td>Ecart sur matieres (quantites)</td><td>(Qr - Qp) x Prix prevu</td></tr>
+    <tr><td>Ecart sur matieres (prix)</td><td>(Pr - Pp) x Qte reelle</td></tr>
+    <tr><td>Ecart sur MOD (temps)</td><td>(Temps reel - Temps prevu) x Taux horaire prevu</td></tr>
+    <tr><td>Ecart sur MOD (taux)</td><td>(Taux reel - Taux prevu) x Temps reel</td></tr>
+</table>
+
+<div class="source-link">
+    <p>Source originale : <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Pilotage de la performance — Cours 3 &amp; Cas SEUROL</a></p>
+    <p>References : Alazard &amp; Separi, Controle de gestion, Ed. Dunod ; Selmer (2024) ; de Villarmois et al. (2022)</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Le Recrutement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #a0e0c0; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #059669; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">RESSOURCES HUMAINES — QUIZ</div>
+        <h1>Cours 2 — Le Recrutement</h1>
+    </div>
+
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "Quels sont les 3 objectifs du recrutement ?",
+        options: [
+            "A. Former, motiver, évaluer",
+            "B. Compenser les départs, accompagner les mouvements internes, accompagner le développement",
+            "C. Attirer, sélectionner, intégrer",
+            "D. Sourcer, tester, décider"
+        ],
+        correct: 1,
+        explanation: "Les 3 objectifs du recrutement sont : compenser les départs, accompagner les mouvements internes (mobilités), et accompagner le développement de l'organisation."
+    },
+    {
+        q: "Dans la proposition de valeur employeur (Mortensen & Edmondson, 2023), quel facteur correspond à la case 'court terme / collectif' ?",
+        options: [
+            "A. Avantages matériels",
+            "B. Opportunités de développement",
+            "C. Liens et communauté",
+            "D. Sens et raison d'être"
+        ],
+        correct: 2,
+        explanation: "La matrice de Mortensen & Edmondson distingue 4 facteurs : avantages matériels (court terme / individuel), opportunités de développement (long terme / individuel), liens et communauté (court terme / collectif), sens et raison d'être (long terme / collectif)."
+    },
+    {
+        q: "Selon l'APEC (2023), quel est le canal de recrutement le plus utilisé par les cadres ?",
+        options: [
+            "A. Le réseau de contacts (72-76 %)",
+            "B. Les réseaux sociaux professionnels (72-85 %)",
+            "C. L'offre d'emploi (83-94 %)",
+            "D. La cooptation (60-70 %)"
+        ],
+        correct: 2,
+        explanation: "Selon l'APEC 2023, l'offre d'emploi reste le canal le plus utilisé (83-94 %), devant les réseaux sociaux (72-85 %) et le réseau de contacts (72-76 %)."
+    },
+    {
+        q: "Quel outil de sélection présente la validité prédictive la plus élevée selon Guerrero (2023) ?",
+        options: [
+            "A. Les tests de personnalité",
+            "B. La graphologie",
+            "C. Les entretiens non structurés",
+            "D. Les mises en situation et simulations"
+        ],
+        correct: 3,
+        explanation: "Les mises en situation / simulations et les tests d'aptitudes / QI ont la validité prédictive la plus élevée. À l'opposé, la graphologie et la morphopsychologie ont une validité prédictive nulle."
+    },
+    {
+        q: "Quel biais cognitif désigne le fait que le recruteur attribue à un candidat des qualités (ou défauts) qu'il n'a pas en réalité, à partir d'une impression globale ?",
+        options: [
+            "A. La désirabilité sociale",
+            "B. L'effet d'inférence",
+            "C. L'effet de halo",
+            "D. Le biais de projection"
+        ],
+        correct: 2,
+        explanation: "L'effet de halo consiste à laisser une impression globale (positive ou négative) influencer l'évaluation de l'ensemble des caractéristiques du candidat. Le biais de projection consiste à rechercher un candidat qui nous ressemble, et l'effet d'inférence à déduire des traits de personnalité à partir d'indices superficiels."
+    },
+    {
+        q: "Quel est le principal avantage du recrutement interne par rapport au recrutement externe ?",
+        options: [
+            "A. Il apporte de nouvelles compétences extérieures",
+            "B. Il évite toute rivalité interne entre collègues",
+            "C. Il est plus rapide et moins coûteux avec un risque d'intégration plus faible",
+            "D. Il garantit une neutralité totale dans la décision"
+        ],
+        correct: 2,
+        explanation: "Le recrutement interne présente des délais plus courts, un coût moins élevé, un risque plus faible et une intégration plus facile. En contrepartie, il ne renouvelle pas les compétences et peut générer des frustrations chez les candidats non retenus."
+    },
+    {
+        q: "Selon les statistiques sur l'onboarding, quel pourcentage d'embauches en CDI se solde par un départ dans les 12 premiers mois ?",
+        options: [
+            "A. 15 %",
+            "B. 24 %",
+            "C. 36 %",
+            "D. 48 %"
+        ],
+        correct: 2,
+        explanation: "36 % des embauches en CDI se soldent par un départ dans les 12 premiers mois. Ce chiffre illustre l'importance cruciale de l'intégration (onboarding) pour la réussite du recrutement."
+    },
+    {
+        q: "Pourquoi la décision d'embauche n'est-elle rationnelle qu'en apparence ?",
+        options: [
+            "A. Les recruteurs ne lisent jamais les CV",
+            "B. La rationalité limitée (Simon) et les jeux de pouvoir internes (Crozier & Friedberg) la biaisent",
+            "C. Les tests psychométriques sont toujours subjectifs",
+            "D. Les candidats mentent systématiquement lors des entretiens"
+        ],
+        correct: 1,
+        explanation: "La décision d'embauche est rationnelle seulement en apparence car elle est soumise à la rationalité limitée des décideurs (Simon : on ne peut pas traiter toute l'information) et aux jeux de pouvoir internes (Crozier & Friedberg : les acteurs poursuivent leurs propres intérêts stratégiques)."
+    },
+    {
+        q: "Parmi les 4 dimensions du management de l'intégration, laquelle passe par un parrain ou tuteur ?",
+        options: [
+            "A. S'informer",
+            "B. S'intégrer socialement",
+            "C. S'adapter psychologiquement",
+            "D. Apprendre les comportements requis"
+        ],
+        correct: 2,
+        explanation: "L'adaptation psychologique du nouveau salarié repose sur le soutien d'un parrain, d'un tuteur ou de collègues bienveillants. Les autres dimensions passent par des livrets d'intégration (s'informer), des événements d'équipe (s'intégrer socialement) et le feedback du N+1 (comportements requis)."
+    },
+    {
+        q: "Selon le cadre juridique de la sélection des candidats, les méthodes utilisées doivent respecter 3 conditions. Laquelle de ces conditions est correcte ?",
+        options: [
+            "A. Elles doivent être confidentielles et non portées à la connaissance du candidat",
+            "B. Elles doivent être pertinentes et leurs résultats confidentiels, et être portées à la connaissance du candidat et du CSE",
+            "C. Elles peuvent inclure des questions sur la vie familiale et les convictions politiques",
+            "D. Elles doivent être validées par un cabinet de recrutement externe"
+        ],
+        correct: 1,
+        explanation: "Selon l'art. L.122-45, les méthodes de sélection doivent être portées à la connaissance du candidat et du CSE, pertinentes au regard de la finalité du poste, et leurs résultats confidentiels. Toute discrimination à l'embauche est interdite."
+    }
+];
+
+let current = 0, score = 0, answered = false;
+
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+
+    const area = document.getElementById('quiz-area');
+    area.innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">
+                ${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}
+            </div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>
+    `;
+    answered = false;
+}
+
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) {
+        document.getElementById('opt' + idx).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + idx).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function next() {
+    if (current < questions.length - 1) { current++; renderQuestion(); }
+    else { showResult(); }
+}
+
+function prev() {
+    if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    const nb = document.querySelector('.nav-buttons');
+    if (nb) nb.style.display = 'none';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+}
+
+function restartQuiz() {
+    current = 0; score = 0; answered = false;
+    document.getElementById('result-card').style.display = 'none';
+    document.getElementById('quiz-area').style.display = 'block';
+    renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

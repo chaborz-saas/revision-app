@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthese — Pilotage : La methode du cout cible (target costing)</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.75;
+            color: #2c3e50;
+            background: #fafafa;
+        }
+        h1 {
+            color: #1a5276;
+            border-bottom: 3px solid #2980b9;
+            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        h2 {
+            color: #2471a3;
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+        }
+        h3 { color: #2e86c1; font-size: 1.15rem; }
+        .definition {
+            background: #eaf2f8;
+            border-left: 4px solid #2980b9;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition strong { color: #1a5276; }
+        .formula {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .important {
+            background: #fdedec;
+            border-left: 4px solid #e74c3c;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .example {
+            background: #eafaf1;
+            border-left: 4px solid #27ae60;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        th { background: #2c3e50; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .source-link {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .source-link a { color: #2980b9; text-decoration: none; }
+        blockquote {
+            border-left: 3px solid #7f8c8d;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pilotage de la performance — La methode du cout cible (target costing)</h1>
+
+<h2>1. Le retournement de l'equation traditionnelle des couts</h2>
+
+<p>Dans l'approche classique de la comptabilite de gestion, l'entreprise calcule ses couts de production, y ajoute une marge, et en deduit un prix de vente. Cette logique traditionnelle se resume ainsi : <strong>Prix de vente = Cout + Marge</strong>. Le resultat est alors une consequence, une donnee subie par l'entreprise. Cette equation ne traduit aucune volonte d'agir sur les couts en amont.</p>
+
+<p>La methode du cout cible (ou <em>target costing</em>) renverse completement cette logique. Elle part du principe que le <strong>prix de vente est impose par le marche</strong> (les clients, la concurrence) et que la <strong>marge est un objectif strategique</strong> fixe par l'entreprise. Le cout devient alors la variable d'ajustement : il est limite par ces deux contraintes et doit etre maitrise des la phase de conception du produit.</p>
+
+<div class="definition">
+    <strong>Definition :</strong> Le <strong>cout cible</strong> (ou cout autorise) est le cout maximal admissible pour un produit, sous la double contrainte du prix de vente possible sur le marche et de la marge souhaitee par l'entreprise. Selon P. Lorino, il s'agit du cout qui repond a la nouvelle equation : <em>Cout cible = Prix de vente &minus; Profit cible</em>.
+</div>
+
+<h2>2. Les formules fondamentales</h2>
+
+<div class="formula">
+    <strong>Formule centrale :</strong><br>
+    <strong>Cout cible = Prix de vente HT &minus; Marge souhaitee</strong><br><br>
+    Ou de maniere equivalente :<br>
+    <strong>Cout cible = Prix de vente HT &times; (1 &minus; Taux de marge)</strong>
+</div>
+
+<p>Lorsque le prix est donne en TTC, il faut d'abord passer au HT :</p>
+
+<div class="formula">
+    <strong>Prix de vente HT = Prix de vente TTC / (1 + Taux de TVA)</strong><br><br>
+    Puis : <strong>Cout cible = Prix de vente HT &minus; (Taux de marge &times; Prix de vente HT)</strong>
+</div>
+
+<p>L'entreprise compare ensuite ce cout cible avec le <strong>cout estime</strong>, c'est-a-dire le cout auquel elle pense pouvoir fabriquer le produit (estime par le bureau d'etudes, le controle de gestion, etc.).</p>
+
+<div class="formula">
+    <strong>Ecart a resorber = Cout estime &minus; Cout cible</strong><br><br>
+    Si l'ecart est positif, le cout estime depasse le cout cible : l'entreprise doit reduire ses couts pour atteindre la rentabilite souhaitee.
+</div>
+
+<h2>3. La demarche complete du target costing</h2>
+
+<p>La methode du cout cible s'inscrit dans une demarche de progres continu et d'amelioration des processus. Elle suit plusieurs etapes : d'abord, l'entreprise identifie le prix de vente acceptable par le marche (etude de marche, analyse concurrentielle). Ensuite, elle definit l'objectif de marge (profit cible). Par soustraction, elle obtient le cout cible. Enfin, elle compare ce cout cible au cout estime et cherche a resorber l'ecart.</p>
+
+<div class="important">
+    <strong>Les deux ecarts a resorber (P. Lorino) :</strong><br>
+    <strong>Ecart 1</strong> = CE &minus; CC (Cout estime &minus; Cout cible)<br>
+    <strong>Ecart 2</strong> = CE &minus; (PV &minus; PC) (Cout estime &minus; (Prix de vente &minus; Profit cible))<br><br>
+    Ou : CE = cout estime, CC = cout cible, PV = prix de vente, PC = profit cible.<br>
+    Ces deux ecritures sont equivalentes puisque CC = PV &minus; PC.
+</div>
+
+<h2>4. L'analyse de la valeur et l'analyse fonctionnelle</h2>
+
+<p>Pour parvenir a reduire le cout estime jusqu'au cout cible, l'entreprise mobilise l'<strong>analyse de la valeur</strong>. Selon l'AFNOR, c'est une methode de competitivite organisee et creative, visant a la satisfaction du besoin de l'utilisateur par une demarche a la fois fonctionnelle, economique et pluridisciplinaire. La valeur se definit comme le rapport entre la satisfaction du besoin et les couts engages :</p>
+
+<div class="formula">
+    <strong>Valeur = Satisfaction du besoin / Couts</strong> (AFNOR)
+</div>
+
+<p>L'analyse de la valeur s'appuie sur l'<strong>analyse fonctionnelle</strong> du produit. Celle-ci identifie les differentes fonctions que le produit doit assumer et les hierarchise selon leur importance pour le client. Elle peut aboutir a :</p>
+<ul>
+    <li>La <strong>suppression de fonctions inutiles</strong> et des couts afferents.</li>
+    <li>La <strong>recherche de solutions techniques</strong> qui repondent le mieux aux fonctions utiles.</li>
+    <li>L'<strong>amelioration d'une fonction a cout constant</strong>.</li>
+    <li>La <strong>reduction des couts d'une fonction a service constant</strong>.</li>
+</ul>
+
+<h3>Decomposition du cout cible par composant</h3>
+
+<p>L'analyse fonctionnelle permet de decomposer le cout cible global en couts cibles par composant. La demarche est la suivante :</p>
+
+<ol>
+    <li>Identifier les <strong>fonctions</strong> du produit et leur <strong>degre d'importance</strong> pour le client (en %).</li>
+    <li>Determiner la <strong>contribution de chaque composant</strong> a chaque fonction (matrice composants/fonctions, issue d'etudes de marche).</li>
+    <li>Calculer le <strong>poids de chaque composant</strong> dans le cout cible en effectuant la somme ponderee : pour chaque composant, on multiplie le degre d'importance de chaque fonction par la contribution du composant a cette fonction, puis on somme.</li>
+    <li>Appliquer ces pourcentages au cout cible global pour obtenir le <strong>cout cible par composant</strong>.</li>
+    <li>Comparer avec le <strong>cout estime par composant</strong> pour identifier les ecarts a resorber prioritairement.</li>
+</ol>
+
+<h2>5. Exemple chiffre n&deg;1 : Societe AERONEF (exercice corrige)</h2>
+
+<p>La societe AERONEF fabrique des avions innovants. Les donnees sont les suivantes : prix cible TTC = 100 000 euros, TVA = 20 %, marge beneficiaire attendue = 20 % du prix de vente HT.</p>
+
+<h3>Etape 1 : Calcul du cout cible</h3>
+
+<div class="example">
+    <strong>Prix de vente HT</strong> = 100 000 / 1,2 = <strong>83 333,33 euros</strong><br>
+    <strong>Marge</strong> = 83 333,33 &times; 20 % = <strong>16 666,67 euros</strong><br>
+    <strong>Cout cible</strong> = 83 333,33 &minus; 16 666,67 = <strong>66 666,67 euros</strong>
+</div>
+
+<h3>Etape 2 : Decomposition par composant (analyse fonctionnelle)</h3>
+
+<p>Trois composants (Carlingue, Moteur, Equipement electronique) et trois fonctions (Confort 10 %, Vitesse 30 %, Facilite de pilotage 60 %). La matrice de contribution donne :</p>
+
+<table>
+    <tr>
+        <th>Fonction (poids)</th>
+        <th>Carlingue</th>
+        <th>Moteur</th>
+        <th>Equip. electronique</th>
+    </tr>
+    <tr>
+        <td>Confort (10 %)</td>
+        <td>40 %</td>
+        <td>10 %</td>
+        <td>50 %</td>
+    </tr>
+    <tr>
+        <td>Vitesse (30 %)</td>
+        <td>50 %</td>
+        <td>10 %</td>
+        <td>40 %</td>
+    </tr>
+    <tr>
+        <td>Facilite pilotage (60 %)</td>
+        <td>20 %</td>
+        <td>20 %</td>
+        <td>60 %</td>
+    </tr>
+</table>
+
+<div class="example">
+    <strong>Calcul du poids de chaque composant :</strong><br><br>
+    <strong>Carlingue</strong> = (10 % &times; 40 %) + (30 % &times; 50 %) + (60 % &times; 20 %) = 4 % + 15 % + 12 % = <strong>31 %</strong><br>
+    <strong>Moteur</strong> = (10 % &times; 10 %) + (30 % &times; 10 %) + (60 % &times; 20 %) = 1 % + 3 % + 12 % = <strong>16 %</strong><br>
+    <strong>Equip. electronique</strong> = (10 % &times; 50 %) + (30 % &times; 40 %) + (60 % &times; 60 %) = 5 % + 12 % + 36 % = <strong>53 %</strong>
+</div>
+
+<h3>Etape 3 : Cout cible par composant et ecarts</h3>
+
+<table>
+    <tr>
+        <th>Composant</th>
+        <th>Poids (%)</th>
+        <th>Cout cible (euros)</th>
+        <th>Cout estime (euros)</th>
+        <th>Ecart (euros)</th>
+    </tr>
+    <tr>
+        <td>Carlingue</td>
+        <td>31 %</td>
+        <td>20 667</td>
+        <td>30 000</td>
+        <td>+9 333</td>
+    </tr>
+    <tr>
+        <td>Moteur</td>
+        <td>16 %</td>
+        <td>10 667</td>
+        <td>40 000</td>
+        <td>+29 333</td>
+    </tr>
+    <tr>
+        <td>Equip. electronique</td>
+        <td>53 %</td>
+        <td>35 333</td>
+        <td>10 000</td>
+        <td>&minus;25 333</td>
+    </tr>
+    <tr>
+        <td><strong>Total</strong></td>
+        <td><strong>100 %</strong></td>
+        <td><strong>66 667</strong></td>
+        <td><strong>80 000</strong></td>
+        <td><strong>+13 333</strong></td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>Interpretation :</strong> Globalement, le cout estime (80 000 euros) depasse le cout cible (66 667 euros) de 13 333 euros. L'entreprise doit reduire ses couts. Le composant <strong>Moteur</strong> presente l'ecart le plus critique (+29 333 euros) : il faut y concentrer les efforts de reduction (changement de fournisseur, R&D pour optimiser la motorisation, etc.). L'equipement electronique, en revanche, est en dessous de son cout cible, offrant une marge de manoeuvre.
+</div>
+
+<h2>6. Exemple chiffre n&deg;2 : Cas STAGNET (fauteuil)</h2>
+
+<p>La societe STAGNET fabrique des fauteuils et souhaite lancer le modele "fautimousse". Les donnees s'etalent sur 5 ans (N+1 a N+5) avec des prix de vente decroissants (de 200 euros a 175 euros) et des taux de marge variables (de 40 % a 20 %). Huit composants sont identifies (ossature metallique, pieds en bois, agrafes, moteur electrique, tissu, coussin mousse memoire de forme, barre transversale, boutons).</p>
+
+<h3>Prix de vente moyen pondere et marge moyenne</h3>
+
+<p>Pour calculer le cout cible sur l'ensemble du cycle de vie du produit, on determine le prix de vente unitaire moyen pondere par les volumes de vente prevus sur les 5 annees :</p>
+
+<table>
+    <tr>
+        <th>Annee</th>
+        <th>Prix de vente</th>
+        <th>Volumes</th>
+        <th>Taux de marge</th>
+        <th>Marge unitaire</th>
+    </tr>
+    <tr>
+        <td>N+1</td>
+        <td>200 euros</td>
+        <td>1 500</td>
+        <td>40 %</td>
+        <td>80 euros</td>
+    </tr>
+    <tr>
+        <td>N+2</td>
+        <td>190 euros</td>
+        <td>2 000</td>
+        <td>30 %</td>
+        <td>57 euros</td>
+    </tr>
+    <tr>
+        <td>N+3</td>
+        <td>185 euros</td>
+        <td>2 100</td>
+        <td>30 %</td>
+        <td>55,50 euros</td>
+    </tr>
+    <tr>
+        <td>N+4</td>
+        <td>180 euros</td>
+        <td>1 800</td>
+        <td>20 %</td>
+        <td>36 euros</td>
+    </tr>
+    <tr>
+        <td>N+5</td>
+        <td>175 euros</td>
+        <td>1 400</td>
+        <td>20 %</td>
+        <td>35 euros</td>
+    </tr>
+</table>
+
+<p>Le cout estime total des composants est de <strong>150 euros</strong> par fauteuil.</p>
+
+<h3>Decomposition fonctionnelle</h3>
+
+<p>Le produit remplit deux familles de fonctions : les <strong>fonctions de confort</strong> (poids 3/5 = 60 % de la valeur) et les <strong>fonctions d'apparence</strong> (poids 2/5 = 40 % de la valeur). Le bureau d'etude etablit le poids de chaque composant dans ces deux groupes de fonctions, puis calcule le cout cible de chaque composant par somme ponderee de ses contributions.</p>
+
+<h3>Analyse de sensibilite (question 5 de l'enonce)</h3>
+
+<div class="example">
+    <strong>Modification envisagee :</strong> Une ossature metallique plus legere reduirait le cout de ce composant de 10 euros, mais imposerait une baisse du prix de vente de 8 euros. L'incidence nette sur le cout cible est une reduction du cout de 10 euros contre une perte de chiffre d'affaires de 8 euros, soit un gain net de 2 euros par unite. La modification est donc favorable.
+</div>
+
+<h3>Autres leviers de reduction des ecarts</h3>
+
+<p>Si l'ecart entre cout estime et cout cible persiste, STAGNET peut actionner plusieurs leviers : rechercher de nouveaux fournisseurs moins couteux, revoir la conception du produit (ingenierie de la valeur), modifier les materiaux utilises, optimiser les processus de production, ou encore negocier les volumes d'achat pour obtenir des economies d'echelle.</p>
+
+<h2>7. Exemple chiffre n&deg;3 : Exercice simplifie (sac de sport)</h2>
+
+<p>La societe X fabrique un sac de sport. Donnees : prix cible = 34,80 euros TTC, TVA 20 %, marge = 40 % du prix de vente HT. Cinq composants (armature aluminium, sac, bretelles, sangles, ceinture) et trois fonctions (ergonomie 50 %, contenance/poids 40 %, esthetique 10 %).</p>
+
+<div class="example">
+    <strong>Calcul :</strong><br>
+    Prix HT = 34,80 / 1,20 = <strong>29 euros</strong><br>
+    Marge = 29 &times; 40 % = <strong>11,60 euros</strong><br>
+    <strong>Cout cible = 29 &minus; 11,60 = 17,40 euros</strong><br><br>
+    Le cout estime total est de <strong>20,30 euros</strong>, soit un ecart de <strong>2,90 euros</strong> a resorber.
+</div>
+
+<h2>8. Avantages et limites de la methode</h2>
+
+<h3>Avantages</h3>
+<ul>
+    <li>La vision fonctionnelle attachee au produit implique une <strong>reflexion sur l'organisation</strong> et les processus de l'entreprise.</li>
+    <li>La methode part du client et du marche : elle oriente toute l'entreprise vers la satisfaction des besoins reels.</li>
+    <li>Elle favorise la <strong>collaboration pluridisciplinaire</strong> (bureau d'etudes, marketing, production, controle de gestion).</li>
+    <li>Elle s'integre dans une <strong>demarche de progres continu</strong> : reduction des couts, amelioration de la qualite, resolution de dysfonctionnements.</li>
+</ul>
+
+<h3>Limites</h3>
+
+<div class="important">
+    <strong>Limite principale :</strong> La methode ne prend en compte que les depenses en rapport direct avec le produit (matieres premieres, dechets et rebuts, main-d'oeuvre directe, etc.). Les <strong>frais generaux et frais de structure</strong> sont exclus du calcul, ce qui peut fausser l'analyse si ces charges sont significatives.
+</div>
+
+<h2>9. Les etapes de la demarche d'analyse de la valeur (synthese)</h2>
+
+<p>La methode du cout cible s'appuie sur une demarche structuree d'analyse de la valeur en six etapes :</p>
+
+<ol>
+    <li><strong>Definition des orientations d'analyse</strong></li>
+    <li><strong>Recherche d'informations</strong> externes (analyse de la concurrence) et internes (specifications du produit)</li>
+    <li><strong>Analyse fonctionnelle</strong> : identification et classement des besoins attendus par les clients</li>
+    <li><strong>Etude et evaluation</strong> des fonctionnalites existantes et de leur adaptation aux fonctionnalites attendues</li>
+    <li><strong>Recherche de solutions</strong> pour chaque fonction, proposition et selection</li>
+    <li><strong>Mise en oeuvre, suivi et bilan</strong></li>
+</ol>
+
+<div class="source-link">
+    <p>Source originale : <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours Pilotage de la performance — EM Normandie</a></p>
+    <p>References : Cours 6 (I. Lacombe, R. Pereira), Exercice AERONEF (corrige couts cibles), Cas STAGNET, Exercice simplifie cout cible, P. Lorino, AFNOR</p>
+</div>
+
+</body>
+</html>

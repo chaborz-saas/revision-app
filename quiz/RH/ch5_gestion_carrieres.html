@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — La Gestion de carrières</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #a0e0c0; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #059669; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">RESSOURCES HUMAINES — QUIZ</div>
+        <h1>Cours 5 — La Gestion de carrières</h1>
+    </div>
+
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "Selon Roger (1991), qu'est-ce que la gestion des carrières ?",
+        options: [
+            "A. L'ensemble des formations proposées aux salariés pour évoluer",
+            "B. Une action finalisée, organisée et animée pour définir la succession des affectations individuelles du personnel",
+            "C. La politique de mobilité géographique internationale de l'entreprise",
+            "D. Le processus de recrutement interne pour les postes d'encadrement"
+        ],
+        correct: 1,
+        explanation: "Roger (1991) définit la gestion des carrières comme une action finalisée, organisée et animée pour définir la succession des affectations individuelles du personnel. Elle constitue le point de rencontre entre les intérêts de l'organisation et ceux de l'individu."
+    },
+    {
+        q: "Dans la matrice de Ference (1977), quel profil correspond à un potentiel élevé et une performance faible ?",
+        options: [
+            "A. Les Étoiles",
+            "B. Les Piliers",
+            "C. Les Espoirs",
+            "D. Les Branches mortes"
+        ],
+        correct: 2,
+        explanation: "La matrice de Ference (1977) distingue : les Étoiles (potentiel élevé + performance élevée), les Espoirs (potentiel élevé + performance faible), les Piliers (potentiel faible + performance élevée), et les Branches mortes (potentiel faible + performance faible)."
+    },
+    {
+        q: "Quelle est la principale différence entre la carrière traditionnelle et les nouvelles carrières ?",
+        options: [
+            "A. La carrière traditionnelle valorise l'employabilité, les nouvelles valorisent l'ancienneté",
+            "B. La carrière traditionnelle est gérée par l'organisation seule ; les nouvelles relèvent d'une co-responsabilité individu/organisation",
+            "C. Les nouvelles carrières sont exclusivement verticales et hiérarchiques",
+            "D. La carrière traditionnelle est inter-entreprises, les nouvelles sont internes"
+        ],
+        correct: 1,
+        explanation: "La carrière traditionnelle est gérée par l'organisation (emploi long terme, promotion verticale, valorisation de l'ancienneté). Les nouvelles carrières (protéenne, sans frontières, nomade) reposent sur une co-responsabilité individu/organisation, valorisent l'employabilité et incluent la mobilité horizontale et géographique."
+    },
+    {
+        q: "Quel type de mobilité désigne un changement de fonction ou de métier sans modification du niveau hiérarchique ?",
+        options: [
+            "A. Mobilité verticale",
+            "B. Mobilité géographique",
+            "C. Mobilité latérale",
+            "D. Mobilité horizontale"
+        ],
+        correct: 3,
+        explanation: "La mobilité horizontale désigne un changement de fonction, de métier ou de service sans changement de niveau hiérarchique. La mobilité verticale implique un changement de niveau hiérarchique (promotion ou rétrogradation), et la mobilité géographique un changement de lieu de travail."
+    },
+    {
+        q: "Quelles sont les 3 nouvelles formes de carrière identifiées par Condomines (2020) et leurs auteurs respectifs ?",
+        options: [
+            "A. Carrière agile (Hall), carrière liquide (Arthur), carrière digitale (Cadin)",
+            "B. Carrière protéenne (Hall), carrière sans frontières (Arthur), carrière nomade (Cadin)",
+            "C. Carrière portfolio (Hall), carrière hybride (Arthur), carrière plurielle (Cadin)",
+            "D. Carrière flexible (Hall), carrière transversale (Arthur), carrière libre (Cadin)"
+        ],
+        correct: 1,
+        explanation: "Selon Condomines (2020), les 3 nouvelles formes de carrière sont : la carrière protéenne (Hall) — pilotée par l'individu selon ses valeurs —, la carrière sans frontières (Arthur) — qui transcende les limites d'une organisation —, et la carrière nomade (Cadin) — caractérisée par des transitions fréquentes entre employeurs."
+    },
+    {
+        q: "Quelle est la périodicité et le cadre légal de l'entretien professionnel ?",
+        options: [
+            "A. Facultatif, recommandé tous les ans",
+            "B. Obligatoire depuis 2014, tous les 2 ans, mené par un responsable RH",
+            "C. Obligatoire depuis 2016, tous les 3 ans, mené par le manager direct",
+            "D. Obligatoire depuis 2014, tous les 5 ans, mené par la direction générale"
+        ],
+        correct: 1,
+        explanation: "L'entretien professionnel est obligatoire depuis 2014, tous les 2 ans, mené par un responsable RH. Il porte sur l'évolution professionnelle, le suivi des actions de formation et de certification, et la réflexion sur l'avenir et le projet professionnel du salarié. Il ne doit pas empiéter sur l'entretien annuel d'évaluation."
+    },
+    {
+        q: "Dans la filière d'expertise, comment progresse la carrière du salarié ?",
+        options: [
+            "A. Par la prise de responsabilités managériales croissantes et l'encadrement d'équipes",
+            "B. Par le développement de compétences techniques approfondies, des projets complexes et des fonctions de référence",
+            "C. Uniquement par des promotions verticales dans la hiérarchie",
+            "D. Par des rotations géographiques internationales successives"
+        ],
+        correct: 1,
+        explanation: "La filière d'expertise permet une progression horizontale ou par spécialisation : développement de compétences techniques, prise en charge de projets complexes, fonctions de référence et formation des autres. C'est une alternative à la filière managériale pour les salariés non motivés par le pouvoir hiérarchique."
+    },
+    {
+        q: "Parmi les outils de gestion des carrières, lequel sert à articuler les besoins individuels avec les besoins de l'entreprise ?",
+        options: [
+            "A. L'organigramme de remplacement",
+            "B. Le bilan de compétences",
+            "C. L'entretien professionnel",
+            "D. Le référentiel de compétences"
+        ],
+        correct: 2,
+        explanation: "L'entretien professionnel (avec la revue de personnel et la formation) se situe dans la colonne 'articulation individu/entreprise'. Les organigrammes de remplacement et référentiels répondent aux besoins de l'entreprise, tandis que le bilan de compétences et les conseillers en mobilité servent les projets individuels."
+    },
+    {
+        q: "Quel est l'un des 2 enseignements majeurs de la conclusion du cours sur la gestion des carrières ?",
+        options: [
+            "A. La gestion des carrières doit être externalisée à des cabinets spécialisés",
+            "B. La qualité d'une politique de gestion des carrières dépend de la qualité de la circulation de l'information dans l'organisation",
+            "C. Seule la direction générale peut gérer les carrières des cadres dirigeants",
+            "D. La gestion des carrières est uniquement une responsabilité individuelle du salarié"
+        ],
+        correct: 1,
+        explanation: "Les 2 enseignements majeurs sont : 1) La carrière relève de plus en plus de la co-responsabilité individu/organisation. 2) La qualité d'une politique de gestion des carrières dépend de la qualité de la circulation de l'information dans l'organisation (transparence sur les opportunités, les critères de mobilité, etc.)."
+    },
+    {
+        q: "Quel facteur interne influence principalement la mobilité selon le contexte organisationnel ?",
+        options: [
+            "A. Le système éducatif et l'importance du diplôme",
+            "B. Les normes sociales liées aux métiers genrés",
+            "C. La taille et la structure de l'organisation",
+            "D. La législation et les conventions collectives"
+        ],
+        correct: 2,
+        explanation: "Parmi les facteurs internes influençant la mobilité (Livian, 2004) figurent : la taille de l'organisation, la structure organisationnelle, la culture organisationnelle, les orientations stratégiques et la politique RH. Le système éducatif, les normes sociales, la législation et les conventions collectives sont des facteurs externes."
+    }
+];
+
+let current = 0, score = 0, answered = false;
+
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+
+    const area = document.getElementById('quiz-area');
+    area.innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">
+                ${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}
+            </div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>
+    `;
+    answered = false;
+}
+
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) {
+        document.getElementById('opt' + idx).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + idx).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function next() {
+    if (current < questions.length - 1) { current++; renderQuestion(); }
+    else { showResult(); }
+}
+
+function prev() {
+    if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    const nb = document.querySelector('.nav-buttons');
+    if (nb) nb.style.display = 'none';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+}
+
+function restartQuiz() {
+    current = 0; score = 0; answered = false;
+    document.getElementById('result-card').style.display = 'none';
+    document.getElementById('quiz-area').style.display = 'block';
+    renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

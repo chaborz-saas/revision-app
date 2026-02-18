@@ -1,0 +1,521 @@
+Cours Pilotage de la
+performance
+Cours de tronc commun M1
+S07 2025-2026
+Responsable de cours :
+Isabelle LACOMBE
+Enseignant :
+Renato PEREIRA
+renato.pereira01@em-normandie.fr
+Plan du cours Pilotage de la Performance
+1- Introduction
+1.1 Définition du pilotage de la performance
+1.2 Liens entre comptabilité de gestion et comptabilité générale
+1.3 La gouvernance d'entreprise et le contrôle de gestion. Le pilotage stratégique
+1.4 La notion de groupe, les cessions internes et management fees (frais de siège)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+3.2 Le cycle et le calendrier budgétaire
+3.3 Le contrôle budgétaire
+4- Tableaux de bord et indicateurs et reporting
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du périmètre de l’entité
+6- Conduite du changement
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reportingde durabilité (CSRD), le bilan carbone
+6- Conduite du changement
+6.1 Le diagnostic de la situation de changement, les types de changement
+Le mythe de la « résistance au changement »
+• Certains dirigeants ou managers incriminent la résistance « naturelle » des
+hommes au changement :
+• force des habitudes des salariés,
+• opposition des cadres conservateurs,
+• immobilisme de l’administration,
+• manœuvres des concurrents,
+• œillères des syndicats, etc.
+• En réalité :
+• Il n’y a pas d’un côté les promoteurs du changement (détenteurs de la raison)
+• et de l’autre tous les autres.
+• Il y a (comme nous l’enseigne la sociologie des organisations), des groupes d’acteurs ayant à
+trouver ensemble des solutions face aux problèmes qu’ils ont à résoudre, chacun se
+comportant d’une manière rationnelle (c’est-à-dire orientée vers ses fins propres, telles qu’il
+les perçoit).
+6- Conduite du changement
+6.1 Le diagnostic de la situation de changement, les types de changement
+Le mythe de la « table rase »
+• Tout promoteur d’un changement convaincu de la justesse de son action porte en
+lui les germes d’un réformateur ambitieux. On parle de la « révolution »
+(technologique, économique, organisationnelle) et on considère, un peu
+rapidement parfois, que « plus rien ne sera comme avant ». Il faudrait alors
+toujours bouleverser les habitudes, penser différemment, rompre définitivement
+avec le passé (faire « table rase » du passé).
+• Or, les vraies « révolutions » sont rares, et de nombreux changements réussis
+associent habilement éléments d’innovation et préservation d’acquis antérieurs
+qui sont rarement tous mauvais.
+• Les deux mythes sont d’ailleurs souvent associés : c’est parce que l’on a conçu le
+changement comme une rupture totale, et qu’il a suscité de ce fait des réactions
+fortes de certains acteurs, que la notion de « résistance » est évoquée pour
+expliquer ses difficultés de mise en œuvre.
+6- Conduite du changement
+6.1 Le diagnostic de la situation de changement, les types de changement
+On distingue :
+• le changement qui prend place à l’intérieur d’un système (niveau 1) : on rétablit
+une norme ou on améliore son application
+• de celui qui modifie le système lui-même (niveau 2) : on change la norme elle-
+même. Ces changements sont plus rares car ils supposent souvent une
+intervention de l’extérieur du système (il est rare qu’une organisation soit capable
+d’elle-même de changer radicalement).
+D’autres proposent une gradation plus fine avec quatre paliers de changement : le
+réglage, la réforme, la rénovation et la refondation.
+6- Conduite du changement
+6.1 Le diagnostic de la situation de changement, les types de changement
+6- Conduite du changement
+6.2 Les styles de conduite du changement
+• Trois choix tactiques se présentent :
+• Va-t-on conduire le changement de manière globale, sur l’ensemble du problème, ou d’abord
+commencer par du local ?
+• Va-t-on impulser le changement d’en haut (top-down) ou le laisser remonter du bas (bottom-
+up) ?
+• Quel type de leadership va-t-on adopter, plutôt autoritaire ou plutôt consultatif ?
+6- Conduite du changement
+6.2 Les styles de conduite du changement
+Changement global ou graduel ?
+• Les promoteurs d’un changement peuvent décider de le mettre en place
+rapidement, sur l’ensemble de l’organisation concernée. Cette tactique a
+l’avantage de la rapidité et évite des périodes de doutes ou d’incertitudes. Tout le
+monde « bascule » dans le nouveau système en même temps. Ce choix s’impose
+s’il y a forte solidarité entre les parties (le passage à l’euro pouvait difficilement se
+faire graduellement).
+• À l’inverse, on peut préférer parfois une expérimentation locale, partielle, pour
+tester le nouveau système, et ensuite une extension progressive. Cette tactique
+permet de roder le système, de former les utilisateurs et de jouer sur
+l’exemplarité de la réussite locale pour convaincre les éventuels réticents avant
+l’extension générale
+6- Conduite du changement
+6.2 Les styles de conduite du changement
+Changement « par le haut » ou « par le bas » ?
+• Les projets de changement sont souvent impulsés par la
+direction générale (introduction du « juste à temps », des
+normes qualité, d’un nouveau système comptable, lancement
+d’un nouveau produit). Tout peut bien se passer si le projet
+est compris, la direction crédible, les moyens nécessaires
+dégagés. Mais ces projets peuvent aussi se heurter à de
+nombreux obstacles : réticences des managers intermédiaires
+(qui n’y voient pas le même intérêt, ou estiment ne pas avoir
+les ressources nécessaires pour s’en occuper), doutes des
+clients ou fournisseurs, passivité ou résistance des«
+exécutants ». Pour éviter ces risques, il faudra que ceux qui
+lancent le projet investissent du temps et de l’énergie dans la
+conviction de leurs partenaires et acceptent d’ouvrir le projet
+pour y intégrer des idées ou des modalités qui n’étaient peut-
+être pas vues au départ mais qui ont émergé au fil des
+contacts.
+• Parfois, les changements émergent du terrain : innovations
+techniques, nouvelles organisations, suggestions
+d’améliorations. Ils sont parfois portés avec enthousiasme par
+certains individus convaincus et peuvent aussi se heurter aux
+cadres intermédiaires (ou bien être relayés par eux s’ils sont
+également convaincus).
+• Les projets de changement longs et complexes alternent
+parfois avec des périodes « descendantes » et des périodes«
+remontantes».
+6- Conduite du changement
+6.2 Les styles de conduite du changement
+Les trois phases des processus de changement
+• en amont : il s’agit de « dégeler » la situation, de faire comprendre la nécessité du
+changement ;
+• au moment des décisions-clés : il s’agit alors de trancher, d’arbitrer ;
+• enfin après la prise de décisions : il s’agit alors de former, de faire assimiler, d’accompagner
+les individus. Les actions à mettre en œuvre sont évidemment différentes selon les phases,
+en sachant qu’une initiative ne garantit absolument pas une réussite totale (puisque chacune
+peut faire courir un risque). Il s’agit pour les promoteurs du changement de peser les risques
+et de trouver des compromis, plutôt que d’adopter des « recettes » toutes faites promettant
+un changement réussi.
+6- Conduite du changement
+6.2 Les styles de conduite du changement
+Style autoritaire ou participatif ?
+• La stratégie autoritaire : le projet est décidé, le processus de mise en œuvre est unilatéral,
+l’information donnée est souvent parcimonieuse. Cette stratégie permet une grande rapidité et a
+le mérite d’être claire. On peut s’attendre cependant soit à des réactions frontales (si l’opposition
+est forte), soit à un alignement d’acteurs passifs mais dont l’adhésion au changement est réduite.
+La pérennité du changement est donc douteuse.
+• La stratégie de persuasion : le projet est présenté, ses mérites sont vantés à travers une
+communication forte. On joue sur la conviction (éventuellement après une phase de consultation)
+ou la séduction. Cette stratégie peut être efficace mais les individus concernés restent, là aussi,
+assez passifs ; on sollicite leur adhésion à un projet tout fait et l’on peut donc s’interroger sur
+l’intégration durable du changement surtout une fois qu’ils en auront vu les effets concrets.
+• La stratégie de négociation : les acteurs recherchent ensemble un compromis entre d’un côté les
+intentions des promoteurs et de l’autre les points de vue des parties prenantes concernées. Le
+processus peut être lent et tendu. S’il aboutit, il permet de parvenir à un résultat réaliste puisqu’il
+aura intégré tout ou partie des intérêts des uns et des autres.
+• La stratégie participative : une information large est donnée et l’expression de tous est sollicitée
+pour aboutir à un projet consensuel. Le processus peut être lent et nécessiter un fort engagement
+des promoteurs.
+6- Conduite du changement
+6.2 Les styles de conduite du changement
+l’approche du « changement concerté » (mélange de négociation et de participation) :
+• Mise en œuvre d’une vision globale du changement (à partir d’un diagnostic de
+dysfonctionnements déjà largement participatif) et d’orchestrer, par le travail de
+nombreux groupes de projet, une reconception concertée de l’organisation ou du
+domaine considéré.
+• Ce sont les groupes eux-mêmes (au sein desquels se trouvent les membres de
+l’encadrement), à partir du diagnostic et en général avec l’aide d’un intervenant
+extérieur, qui formulent les solutions qui seront ensuite mises en œuvre. Le fait
+d’associer au projet tout ou partie du personnel ou des parties prenantes concernées par
+un changement est aujourd’hui largement accepté comme condition même de l’efficacité
+de ce changement.
+• Des stratégies présentées comme« participatives » ne sont en fait parfois que des
+stratégies de persuasion ou de manipulation déguisées (on cherche à « vendre » le
+changement sous une forme adroite), ou, au mieux, de la négociation qui n’ose pas dire
+son nom (ce qui évite d’avoir à reconnaître ouvertement l’existence d’opinions ou
+d’intérêts divergents).
+6- Conduite du changement
+6.3 Les leviers du changement
+• Il existe 4 leviers de changement
+6- Conduite du changement
+6.3 Les leviers du changement
+1- le levier humain
+levier essentiel avec quatre éléments :
+• l’emploi et la relation de travail (création ou suppressions d’emplois, transferts, types de
+contrats de travail) ;
+• les compétences du personnel (sur lesquelles on peut lancer des formations) ;
+• Le climat social et relationnel (le style de leadership, la réduction de la conflictualité, etc.) ;
+• les normes et valeurs en vigueur dans l’organisation (cultures professionnelles plus ou moins
+fortes, culture d’entreprise plus ou moins développée).
+Les décisions de GRH pouvant affecter l’emploi sont complexes et peuvent susciter des conflits.
+Quant aux actions pouvant jouer sur les comportements (et à plus forte raison sur les normes
+et valeurs), elles ne peuvent qu’avoir des effets à long terme. On ne change pas les mentalités
+d’un groupe par une décision unique, mais plutôt par un accompagnement durable et prenant
+de multiples formes (formation, dialogue, communication, etc.)
+6- Conduite du changement
+6.3 Les leviers du changement
+2- Le levier structurel
+• Ce levier est très souvent utilisé : la direction modifie les structures pour faire agir
+le management dans le sens des objectifs fixés. C’est un moyen de modifier la
+répartition du pouvoir au sein de l’entreprise (au profit d’une fonction, d’un
+nouveau dirigeant, etc.).
+• Au niveau de l’organisation du travail, c’est aussi une façon d’aboutir à des
+compétences nouvelles (par exemple plus polyvalentes) et de provoquer des
+comportements nouveaux (plus de réactivité, d’innovation, d’autonomie, etc.).
+6- Conduite du changement
+6.3 Les leviers du changement
+3- Le levier du système de gestion
+• Ce levier est fondamental. Les nouvelles stratégies et les organisations mises en
+place doivent être soutenues par un appareil gestionnaire qui les fait vivre et
+notamment un système d’objectifs et de contrôle, à partir duquel les individus
+sont évalués et d’où peuvent résulter des incitations et des réorientations, des
+récompenses ou des sanctions. Tout cela suppose l’élaboration, le stockage, le
+traitement et la diffusion de nombreuses informations, à travers des systèmes
+informatisés qui constituent le support de ces systèmes de gestion.
+6- Conduite du changement
+6.3 Les leviers du changement
+4- Le levier physique et technique
+• Ce levier concerne la localisation de l’entreprise, ses installations et ses
+technologies. Cet aspect s’inscrit dans un certain contexte spatial et historique
+(implantation traditionnelle de l’entreprise, main-d’œuvre locale, savoir-faire
+techniques reconnus) qui peut constituer un atout de l’entreprise mais qu’il peut
+être difficile de faire évoluer rapidement. Des actions de R et D ou de
+réorganisation de la production peuvent y contribuer. Mais on a vu que certaines
+stratégies de rupture pouvaient aussi consister à transférer géographiquement
+des activités, voire à céder des actifs à un endroit pour en acquérir d’autres
+ailleurs.
+6- Conduite du changement
+6.4 Suivi et gestion opérationnelle des projets de changements
+• Un accompagnement du changement est nécessaire pour faire le point
+régulièrement sur l’objectif à atteindre, les étapes de sa réalisation, la mesure du
+degré de convergence par rapport aux intentions initiales. Des comités de suivi,
+de pilotage, des enquêtes ponctuelles doivent être montés. Cet
+accompagnement a aussi pour but de soutenir la motivation des individus, et de
+les aider à résoudre les problèmes non prévus.
+• L’apprentissage sera considéré comme une bonne voie quand les individus se
+seront appropriés et auront adapté les nouvelles méthodes. C’est en modifiant le
+système, par rapport à leurs capacités réelles, que les individus le mettront à leur
+mesure. Même s’il s’agit seulement de connaissances, il est avéré que celles-ci ne
+se transmettent pas par transfert, mais par reconstruction chez les « formés ».
+Bien entendu, apprendre (ou changer) impose une certaine motivation. Les
+changements entièrement imposés sont possibles mais on peut douter de leur
+durabilité et de leur degré d’application réelle.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action
+- L’examen des différentes activités du processus est nécessaire pour détecter celles qui posent
+problème (dysfonctionnements récurrents), voire celles qui sont critiques dans l’obtention de
+la performance car vitales.
+- Les outils mobilisables sont :
+- QQOQCP
+- Brainstorming
+- Votes
+- Diagramme multicritère ou matrice de décision
+- Feuille de relevés/liste de contrôles
+- Le diagramme de Pareto
+- Le diagramme d’Ishikawa
+- Le Metaplan
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+- L’outil QQOQCP : Quoi ? Qui ? Où ? Quand ? Comment ? Pourquoi ?
+technique de recherche d’informations sur un problème et ses causes. Analyse d’une activité, une
+situation en adoptant une attitude interrogative systématique en posant les questions : Quoi ? Qui ?
+Où ? Quand ? Comment ? La réponse à chacune de ces questions peut être soumise à l’interrogation
+supplémentaire
+Modalités
+Quoi ? Qu’est-ce que c’est ? Que fait-on (objet, nature, quantité, etc.) ? Quelle phase du processus ?
+Quel constituant ?
+Qui ? Qui est concerné ? Quelles personnes ? Quelles équipes ? Quels bénéficiaires ?
+Où ? À quel endroit ? À quelle distance ? Dans quel secteur ?
+Quand ? À quel moment ? À quelle heure ? À quelle époque ? Pendant quelle période ? Depuis
+quand ?
+Comment ? Comment est-ce arrivé ? Comment le fait-on ? Avec quel procédé ? Comment le
+constate-t-on ?
+Pourquoi ? Toutes ces questions peuvent se combiner avec la question « Pourquoi ? » soit pour
+chercher les causes, soit pour indiquer les raisons, soit pour expliquer les intentions.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+- Remue méninges ou brainstorming
+façon de trouver rapidement des idées en groupe, par exemple pour choisir un problème à étudier,
+pour imaginer les causes possibles d’un problème, pour inventer des solutions. Permet d’impliquer
+chaque membre de l’équipe dans le processus et de faciliter une compréhension commune du
+thème.
+Modalités
+1. Production des idées
+• Préciser quel est l’objet de la recherche : à quelle question précise veut-on répondre ? Exemple :
+Comment organiser la diffusion des informations sur la qualité ?
+• Rappeler les six règles du remue-méninges :
+– se mettre en rouelibre : chacun dit tout ce qui lui passe par la tête. Pas de censure ;
+– ne jamais critiquer : pas d’appréciation, bonne ou mauvaise. Le jugement d’idées se fera plus tard ;
+– viserla quantité : un maximum d’idées en peu de temps ; le tri serafait plus tard ;
+– rebondir sur les idées des voisins ; ne pas hésiter à s’inspirer de ce que disent les autres pour trouver de
+nouvelles idées ;
+– tout noter : toutes les idées sont notées et affichées sur les murs pourles garder sous les yeux ;
+– faire produire des idées en respectant ces règles : c’est la phase de déballage.
+2. Exploitation des idées
+trier les idées, les apprécier, choisir celles que l’on veut développer.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+- Techniques de votes
+Modalités
+• Vote simple : pré-selection des problèmes à traiter, après une séance de brainstorming par
+exemple. Chaque membre de l’équipe a la possibilité de choisir un petit nombre de sujets
+qu’il estime prioritaires (3 à 5) et pour lesquels il vote. Le nombre de votes obtenus pour
+chaque sujet est ensuite compté. Les six ou huit sujets ayant obtenu le plus grand nombre de
+votes sont retenus.
+• Vote multiple : plusieurs votes simples avec élimination à chaque étape des sujets ayant
+obtenu le moins de voix.
+• Vote pondéré : sélection finale du problème ou de la solution, à partir des résultats d’un vote
+simple. Les sujets sont classés par ordre de priorité avec une pondération décroissante en
+fonction de leur classement. Par exemple : voter pour trois sujets en accordant trois points
+pour le plus important, deux pour le sujet classé en deuxième position, un pour celui classé
+en troisième position. Le sujet retenu est celui qui totalise le plus de points.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+- Diagramme multicritère ou matrice de décision
+Modalités
+- Dans une grille, énumérer les critères de décision sur la ligne supérieure.
+- Énumérer les thèmes dans la colonne de gauche (3 à 5) (par ex après un vote).
+- Définir une échelle d’évaluation (par exemple 3=élevé, 2=moyen, 1=faible).
+- Évaluer chaque thème selon chaque critère.
+- Le thème réalisant le score total le plus élevé aura la plus grande priorité.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+- Feuille de relevés/liste de contrôles
+sert à faire des comptages à partir d’une observation du terrain pour quantifier un phénomène, des
+événements.
+Modalités
+- Définir le champ de l’observation ainsi que la durée et la façon de faire
+- Informer le personnel des relevés qui vont être faits et des raisons de ces observations.
+- Préparer les feuilles de relevés à partir des hypothèses faites sur les phénomènes à observer.
+- Commander des relevés (et leur exploitation) par les personnes qui réalisent le travail.
+Précautions
+- Prévoir moins de huit rubriques et toujoursune rubrique « Autres ».
+- Définir une période d’observation significative, il faut souvent au moins une semaine.
+- Observer, dans un premier temps, les défauts et non les causes de ces défauts.
+- Si nécessaire, faire évoluer le contenu des rubriques de la feuille de relevés ; par ex., décomposer
+une rubrique en sous-rubriques.
+- Mettre en forme les résultats à l’aide du diagramme de Pareto pour classer les phénomènes
+observés par ordre d’importance et exploiter le relevé.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+- Diagramme de Pareto
+Graphique à colonnes classant les causes d’un problème en ordre décroissant afin de mettre en
+évidence les causes principales du problème. Il s’appuie sur la loi de 20/80 : 20 % des causes
+expliquent 80 % des problèmes du processus. C’est donc à ces causes qu’il faut s’attaquer en
+priorité.
+Ici, les deux
+premières causes,
+LFV et FAT, soit 33
+% des causes
+génèrent 78 % des
+erreurs de
+facturation
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+Diagramme d’ISHIKAWA ou diagramme Causes-Effet
+- arborescence visualisant le problème et ses causes potentielles. Il suit généralement une
+étape de brainstorming où l’on a recensé une liste de causes potentielles, permettant alors
+de les synthétiser et de les visualiser. Il peut également soutenir cette étape de brainstorming
+en aidant à la recherche des causes potentielles du problème. Deux méthodes de
+construction du digramme sont possibles
+Méthode des familles : les causes sont regroupées par familles
+• Les 5M : main d’œuvre, matériel/machine, Absenteisme
+matière, méthode, milieu ; Mqmotivation =
+baisse productivité
+• dans les services : personnes, politiques,
+procédures, équipements, locaux ;
+• familles adaptées au problème traité : par
+exemple la famille « client » est très
+intéressante dans les activités de service
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+Diagramme d’ISHIKAWA ou diagramme Causes-Effet (suite)
+Méthode du processus : visualise l’ensemble des causes potentielles concernant le problème
+analysé aux différentes étapes de réalisation d’un processus. Pour chaque activité concourant
+au processus, on s’interroge sur les causes potentielles du problème, éventuellement en
+remobilisant les différentes familles de causes.
+6- Conduite du changement
+6.5 Le management par les processus
+1. l’identification des activités critiques et des leviers d’action (suite)
+• Metaplan : Outil d’animation participatif et vivant qui permet à tous de s’exprimer également
+et de s’engager
+7 mots
+On pourrait le résumer Ecriture maxi
+à des gommettes de lisible … en fait, il s’agit d’animer
+1 idée
+à 6 m
+couleurs ou post its que par carte une réelle discussion par
+écrit
+l’on colle et déplace sur
+de grands panneaux... Pas grav les fot Métaplan 1 carte Bien utiliser cet outil
+d'ortograf par idée magique est plus
+compliqué que cela en a
+Pas de l’air
+Pas de mots
+censure
+isolés
+6- Conduite du changement
+6.5 Le management par les processus
+• Exemple de restitution METAPLAN
+Rôles tenus sur Contextes Outils &
+Problématiques projet et clients méthodologies
+clients traitées compétences rencontrés utilisés
+mises en œuvre
+6- Conduite du changement
+6.5 Le management par les processus
+2. la construction de plans d’action comprenant :
+– la liste des actions retenues
+– les responsables de chacune des actions
+– les acteurs concernés
+– la durée de l’action et sa date de démarrage
+– le budget nécessaire pour la réaliser
+– les indicateurs permettant d’évaluer l’état d’avancement du plan d’action et les
+résultats obtenus.
+L’avancement et les résultats des plans d’actions sont discutés régulièrement par
+l’équipe processus et le pilote du processus, afin de les réactualiser et de produire
+un retour d’expérience (un REX).
+6- Conduite du changement
+6.5 Le management par les processus
+3. La définition d’un tableau de bord pour le processus qui comprend :
+- les indicateurs de performance du processus
+- les indicateurs de performance des activités critiques
+- les indicateurs de performance mesurant les résultats des plans d’actions
+- les indicateurs de suivi mesurant l’avancement des plans d’actions
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+• Une démarche de progrès continu vise à gérer continuellement différents projets
+pour améliorer la performance de l’entreprise :
+réduction des coûts,
+industrialisation des processus,
+engagement qualité vis-à-vis des clients,
+résolution de dysfonctionnements.
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+• Il s’agit du retournement de l’équation traditionnelle des calculs de coûts (Résultat
+= prix de vente – marge)
+• Cette équation ne traduit pas la volonté d’agir mais plutôt une situation subie.
+• Le coût est limité par deux contraintes :
+- la contrainte du prix imposé par le marché
+- la contrainte de la politique de marge choisie par l'entreprise.
+• Le coût cible (ou coût autorisé) est défini comme le coût maximal admissible sous
+contraintes du prix de vente possible et de la marge souhaitée.
+• P. Lorino désigne par le terme « coût cible » le coût qui répond à cette nouvelle
+équation :
+Coût cible = prix de vente – profit cible
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+• La problématique du target costing consiste à résorber deux écarts :
+• Ecart 1 = CE – CC
+• Ecart 2 = CE – (PV – PC)
+• Où :
+• CE = coût estimé = c’est le coût auquel l’entreprise pense arriver (estimé par le contrôle de
+gestion, le bureau d’étude…)
+• CC = coût cible = c’est le coût auquel il faut arriver pour atteindre le niveau de marge
+souhaité
+• PV = prix de vente
+• PC = profit cible
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+• Exercice simplifié coûts cibles
+Exercice simplifié
+coûts cibles - Enoncé
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+La valeur
+• La valeur est le "jugement sur un produit", sur la base d'attentes et de motivation
+de l'utilisateur, exprimé par une grandeur qui croît lorsque, toutes chose égales
+par ailleurs, la satisfaction du besoin utilisateur augmente et/ou que la dépense
+afférente au produit diminue" AFNOR
+Valeur = Satisfaction du besoin
+Coûts
+L'analyse de la valeur
+• C'est " une méthode de compétitivité organisée et créative, visant à la
+satisfaction du besoin de l'utilisateur par une démarche spécifique de conception
+à la fois fonctionnelle, économique et pluridisciplinaire" AFNOR
+Fonction Produit Besoin
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+Méthode
+L'analyse de la valeur se fonde sur l'analyse fonctionnelle du produit :
+• La fonction est l'action d'un produit ou de l'un de ses constituants exprimée
+exclusivement en termes de finalités
+L'analyse fonctionnelle identifie les différentes fonctions que le produit doit
+assumer et les hiérarchise ; elle peut aboutir à la :
+• Suppression de fonctions inutiles et des coûts afférents
+• Recherche de solutions techniques qui répondent le mieux aux fonctions utiles et
+une étude de coûts de chaque solution. Deux méthodes d’optimisation de la
+fonction :
+• Amélioration d’une fonction à coût constant
+• Réduction des coûts de la fonction à service constant
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+Définition des orientations d'analyse
+Recherche d'informations externes (analyse de la concurrence) et
+internes (spécifications du produits)
+Analyse fonctionnelle
+Identification et classement des besoins attendus
+par les clients
+Étude et évaluation des fonctionnalités existantes et de leur
+adaptation aux fonctionnalités attendues
+Recherche de solution pour chaque fonction
+Proposition de solutions et sélection
+Mise en œuvre, suivi et bilan
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+• Cas d’application coûts cibles : Cas STAGNET
+Cas stagnet
+enoncé
+6- Conduite du changement
+6.6 Amélioration des processus : démarche de progrès continu, les coûts cibles et l'analyse de la valeur
+Avantage
+• La vision fonctionnelle attachée au produit implique une réflexion sur
+l’organisation
+Inconvénient
+• La méthode ne prend en compte que les dépenses en rapport direct avec le
+produit (mat. 1ère, déchets et rebus, MO directe, …). Les autres charges sont
+exclues (frais généraux, frais de structure)

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision -- Pilotage : Le controle de gestion sociale et masse salariale</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .hl-formula {
+            background: #fef9e7;
+            border: 1px solid #f39c12;
+            border-radius: 6px;
+            padding: 0.3rem 0.6rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            display: inline-block;
+            margin: 0.2rem 0;
+        }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-formula { background: #fef9e7; border-color: #f39c12; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "\2753 "; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Pilotage de la Performance</div>
+        <h1>Le controle de gestion sociale et la masse salariale</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definition essentielle</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Controle de gestion sociale</strong> (Martory, 2018) = systeme d'aide au <span class="hl-critical">pilotage social</span> de l'organisation, contribuant a la gestion des RH dans leurs <span class="hl-critical">performances</span> et leurs <span class="hl-critical">couts</span>. 4 outils : suivi masse salariale, bilan social, tableaux de bord sociaux, indicateurs sociaux.
+        </div>
+
+        <div class="section-title">Les 4 perimetres de la masse salariale</div>
+
+        <table class="compact-table">
+            <tr><th>Perimetre</th><th>Contenu</th></tr>
+            <tr><td><strong>Masse salariale</strong></td><td>Somme des remunerations percues (CDD + CDI)</td></tr>
+            <tr><td><strong>MS chargee</strong></td><td>+ charges sociales patronales + charges parafiscales</td></tr>
+            <tr><td><strong>Couts de personnel</strong></td><td>+ avantages en nature, primes non soumises, interim, sous-traitance</td></tr>
+            <tr><td><span class="hl-critical">Cout total du travail</span></td><td>+ recrutement, services medicaux, indemnites depart, primes non-concurrence</td></tr>
+        </table>
+
+        <div class="section-title">Le GVT -- Augmentations individuelles</div>
+
+        <table class="compact-table">
+            <tr><th>Lettre</th><th>Signification</th><th>Nature</th></tr>
+            <tr><td><span class="hl-critical">G</span></td><td>Glissement</td><td>Performance individuelle, merite (sans lien anciennete)</td></tr>
+            <tr><td><span class="hl-critical">V</span></td><td>Vieillissement</td><td>Anciennete (prime d'anciennete, grille automatique)</td></tr>
+            <tr><td><span class="hl-critical">T</span></td><td>Technicite</td><td>Amelioration qualification, changement de poste/niveau</td></tr>
+        </table>
+
+        <div class="section-title">Formules cles de la masse salariale</div>
+
+        <div class="block block-formula">
+            <div class="block-label">Formules</div>
+            <strong>Effet effectif :</strong><br>
+            <span class="hl-formula">Effet effectif = &Delta;effectif% &times; (1 + &Delta;remuneration moyenne%)</span>
+            <br><br>
+            <strong>Methode multiplicative :</strong><br>
+            <span class="hl-formula">(1 + &Delta;effectif) &times; (1 + &Delta;remuneration) = (1 + &Delta;masse salariale)</span>
+            <br><br>
+            <strong>Effet en masse vs. en niveau :</strong><br>
+            <span class="hl-formula">Effet en masse = Augmentation% &times; (nb mois restants / 12)</span>
+            <br><br>
+            <strong>Effet de report :</strong><br>
+            <span class="hl-formula">Report = (Cout annee pleine N+1 &minus; Cout en masse N) / MS de N</span>
+            <br><br>
+            <strong>Noria (en valeur) :</strong><br>
+            <span class="hl-formula">Noria = (SAM entrants &minus; SAM sortants) &times; Nb remplacants &times; prorata temporis</span>
+            <br><br>
+            <strong>Noria (en taux) :</strong><br>
+            <span class="hl-formula">Noria = &Delta;MS a structure cste &minus; (Augm. collectives + Report + GVT)</span>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            La Noria est generalement <span class="hl-critical">negative</span> (economie) : les sortants ages coutent plus cher que les entrants jeunes. Elle est positive uniquement quand la technicite des postes augmente fortement.
+        </div>
+
+        <div class="section-title">Decomposition de la variation totale de la MS</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Etape 1</span> : Neutraliser les variations d'activite &rarr; MS a activite constante</li>
+            <li><span class="hl-important">Etape 2</span> : Isoler l'effet effectif (volume) &rarr; MS a activite et effectifs constants</li>
+            <li><span class="hl-important">Etape 3</span> : Isoler l'effet de structure (deformation cadres/non-cadres)</li>
+            <li><span class="hl-important">Etape 4</span> : Isoler les augmentations collectives + report de N-1</li>
+            <li><span class="hl-important">Etape 5</span> : Ce qui reste = mesures individuelles (GVT + Noria)</li>
+        </ul>
+
+        <div class="section-title">Le bilan social</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            Obligatoire pour les entreprises de <span class="hl-critical">+ de 300 salaries</span>. Cree en <span class="hl-critical">1977</span>, precise par la loi NRE (2001), renforce par la loi PACTE (2019). Photographie sociale sur <span class="hl-critical">3 ans</span>, environ <span class="hl-critical">120 indicateurs</span>.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Chapitre</th><th>Contenu</th></tr>
+            <tr><td>1. Emploi</td><td>Effectifs, recrutements, departs, promotions, absenteisme, handicap</td></tr>
+            <tr><td>2. Remunerations</td><td>Salaires, charges sociales, primes, participation, interessement</td></tr>
+            <tr><td>3. Hygiene / Securite</td><td>Accidents du travail, maladies professionnelles</td></tr>
+            <tr><td>4. Conditions de travail</td><td>Duree et amenagement du temps de travail</td></tr>
+            <tr><td>5. Formation</td><td>Budget formation, salaries formes, heures, types</td></tr>
+            <tr><td>6. Relations pro.</td><td>Accords, elections, reunions CSE</td></tr>
+            <tr><td>7. Autres conditions</td><td>Oeuvres sociales, logement, mutuelle</td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Distinction</div>
+            <strong>Bilan social</strong> = document reglementaire, exhaustif, 120 indicateurs, vision macro sur 3 ans.
+            <br><strong>Tableau de bord social</strong> = outil de pilotage operationnel, nombre limite d'indicateurs pertinents adosses a une strategie et des plans d'action.
+        </div>
+
+        <div class="section-title">GEPP et negociation sociale</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">GEPP</span> remplace la GPEC : demarche permanente d'anticipation besoins/ressources RH</li>
+            <li>Obligatoire pour les entreprises de <span class="hl-critical">+ de 300 salaries</span></li>
+            <li>Loi du 5 sept. 2018 : CPF monetise (500 euros/an), PDC remplace plan de formation, OPCO remplacent OPCA</li>
+            <li>PSE : cout moyen ~30 000 euros/salarie</li>
+            <li>3 modes de reglement des conflits : <span class="hl-important">conciliation</span> (harmoniser), <span class="hl-important">mediation</span> (recommandation), <span class="hl-important">arbitrage</span> (sentence obligatoire)</li>
+        </ul>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelle est la definition du controle de gestion sociale selon Martory ?
+            <span class="answer">Systeme d'aide au pilotage social de l'organisation, contribuant a la gestion des RH dans leurs performances et leurs couts.</span>
+        </div>
+
+        <div class="flash-q">
+            Que signifie le sigle GVT et que designe chaque lettre ?
+            <span class="answer">G = Glissement (merite), V = Vieillissement (anciennete), T = Technicite (qualification). Ce sont les trois composantes des augmentations individuelles.</span>
+        </div>
+
+        <div class="flash-q">
+            Comment calcule-t-on la Noria en valeur ?
+            <span class="answer">Noria = (SAM des entrants - SAM des sortants) x Nombre de remplacants x prorata temporis. Elle est generalement negative (economie).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 7 familles (chapitres) du bilan social ?
+            <span class="answer">1) Emploi, 2) Remunerations et charges, 3) Hygiene et securite, 4) Autres conditions de travail, 5) Formation, 6) Relations professionnelles, 7) Autres conditions de vie relevant de l'entreprise.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre l'effet en masse et l'effet en niveau ?
+            <span class="answer">L'effet en niveau mesure la variation de salaire entre deux dates (ex : +4%). L'effet en masse mesure l'impact sur la masse salariale annuelle totale (ex : +4% au 01/10 = seulement +1% en masse car 4% x 3/12).</span>
+        </div>
+
+        <div class="flash-q">
+            A partir de combien de salaries le bilan social est-il obligatoire et sur combien d'annees porte-t-il ?
+            <span class="answer">Obligatoire a partir de 300 salaries. Il porte sur les 3 dernieres annees (annee ecoulee + 2 annees precedentes).</span>
+        </div>
+
+        <div class="flash-q">
+            Comment se decompose la variation totale de la masse salariale (les 4 effets) ?
+            <span class="answer">1) Variation d'activite, 2) Effet effectif (volume), 3) Augmentations generales/categorielles + report, 4) Mesures individuelles (GVT + structure + noria).</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que l'effet de report ?
+            <span class="answer">C'est l'incidence en masse, sur l'annee N+1, des mesures d'augmentation prises en cours d'annee N. Report = (Cout en annee pleine N+1 - Cout en masse pour N) / Masse salariale de N.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/PILOTAGE/ch6_cdg_sociale.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/Pilotage%20de%20la%20performance/">Cours original</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+Impossible d'afficher l'image liée. Le fichier a peut-être été déplacé, renommé ou supprimé. Vérifiez que la liaison pointe vers le fichier et l'emplacement corrects.
+Etude de cas sur le seuil de rentabilité
+Le CAS JIBI
+Enoncé :
+Deux sociétés travaillant dans le secteur du bâtiment (fabrication de briques) sont de taille
+comparable, mais n’ont pas la même structure de coûts car l’un sous-traite beaucoup alors que
+l’autre préfère internaliser sa production au maximum.
+Les comptes de résultat de l’année n se présentent de la façon suivante :
+Société A Société B
+Chiffre d’affaires 1 000 000 € 1 000 000 €
+Coûts variables 600 000 € 750 000 €
+Marge sur coûts variables 400 000 € 250 000 €
+Coûts fixes 200 000 € 50 000 €
+Résultat 200 000 € 200 000 €
+Ces deux sociétés vendent toute leur production dans l’année n de production (cycles cours). Elles
+produisent toutes les deux la même quantité de briques, soit 1 000 000.
+Questions :
+1. Donner des exemples de coûts variables et de coûts fixes.
+2. Selon vous, quelle est la société qui sous-traite et quelle est celle qui fait tout elle-même ?
+3. Calculez les seuils de rentabilité des deux sociétés en euros et en nombre d’unités vendues
+(en utilisant la méthode de la formule)
+4. Illustrez ces seuils de rentabilité par la méthode graphique
+5. Calculez les résultats des deux sociétés selon les deux hypothèses suivantes :
+a. Baisse de 10% du chiffre d’affaires
+b. Hausse de 10% du chiffre d’affaires
+Etude de cas sur le seuil de rentabilité – CAS JIBI – Isabelle Lacombe – EM Normandie

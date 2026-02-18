@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — DROIT Ch.6 : Transport international maritime</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "? "; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Droit</div>
+        <h1>Ch. 6 — Transport international maritime</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Definitions essentielles</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Contrat de transport maritime</strong> = contrat par lequel un transporteur s'engage, moyennant un <span class="hl-critical">fret</span>, a transporter des marchandises d'un port a un autre. Document : <span class="hl-critical">connaissement (B/L)</span>.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Contrat d'affretement</strong> = contrat de <span class="hl-important">location d'un navire</span>. L'affreteur paie un loyer au proprietaire. Concerne le vrac (petrole, cereales...). Document : charte-partie.
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Connaissement (B/L)</strong> = document emis par le transporteur. Double fonction : <span class="hl-critical">contractuelle</span> (materialise le contrat) + <span class="hl-critical">probatoire</span> (preuve de l'etat des marchandises). 3 originaux requis.
+        </div>
+
+        <div class="section-title">Les 4 acteurs cles</div>
+
+        <table class="compact-table">
+            <tr><th>Acteur</th><th>Role</th><th>Relation contractuelle</th></tr>
+            <tr><td><strong>Expediteur</strong></td><td>Veut faire transporter la marchandise (vendeur/acheteur)</td><td>Contrat de transport ou contrat avec transitaire</td></tr>
+            <tr><td><strong>Transporteur</strong></td><td>Transporte physiquement les marchandises</td><td>Contrat avec expediteur ou transitaire</td></tr>
+            <tr><td><strong>Transitaire</strong></td><td>Organise le transport complet + dedouanement</td><td>Partie au contrat de transport ; peut aussi etre transporteur</td></tr>
+            <tr><td><strong>Declarant en douane</strong></td><td>Accomplit les formalites douanieres</td><td>Contrat de mandat avec l'expediteur</td></tr>
+        </table>
+
+        <div class="section-title">3 types d'affretement</div>
+
+        <table class="compact-table">
+            <tr><th>Type</th><th>Gestion nautique</th><th>Gestion commerciale</th></tr>
+            <tr><td><span class="hl-critical">Coque nue (bare boat)</span></td><td>Affreteur</td><td>Affreteur</td></tr>
+            <tr><td><span class="hl-critical">Au voyage</span></td><td>Armateur</td><td>Armateur</td></tr>
+            <tr><td><span class="hl-critical">A temps</span></td><td>Armateur</td><td>Affreteur</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce memorisation</div>
+            Coque nue = tout pour l'affreteur (il gere tout). Au voyage = tout pour l'armateur (voyage specifique). A temps = partage (armateur navigue, affreteur exploite commercialement).
+        </div>
+
+        <div class="section-title">Responsabilite du transporteur maritime</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Convention applicable</div>
+            <span class="hl-critical">Convention de Bruxelles (1924)</span> = "Regles de La Haye". S'applique si : (1) B/L emis dans un Etat partie + (2) transport entre 2 ports de pays differents.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Mecanisme</th><th>Regle maritime</th></tr>
+            <tr><td><strong>Reserves - dommage apparent</strong></td><td><span class="hl-critical">Le jour de la livraison</span></td></tr>
+            <tr><td><strong>Reserves - dommage non apparent</strong></td><td><span class="hl-critical">3 jours</span> apres la livraison</td></tr>
+            <tr><td><strong>Effet des reserves dans les delais</strong></td><td>Presomption de responsabilite du transporteur (charge de la preuve inversee)</td></tr>
+            <tr><td><strong>Effet hors delai</strong></td><td>Presomption de livraison conforme (expediteur doit prouver)</td></tr>
+            <tr><td><strong>Prescription</strong></td><td><span class="hl-critical">1 an</span> a compter de la livraison</td></tr>
+            <tr><td><strong>Interruption de la prescription</strong></td><td>Reconnaissance de responsabilite par le transporteur OU action en justice</td></tr>
+        </table>
+
+        <div class="section-title">Limitation de responsabilite</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Formules a retenir</div>
+            <strong>Methode 1 :</strong> <span class="hl-critical">666,67 DTS par colis/unite</span><br>
+            <strong>Methode 2 :</strong> <span class="hl-critical">2 DTS par kg brut</span><br>
+            On retient la <span class="hl-important">limite la plus elevee</span> (favorable a l'expediteur).<br>
+            1 DTS = 1,23 EUR (unite de compte du FMI).
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Exemple calcul</div>
+            300 colis x 15 kg = 4 500 kg, valeur 400 000 EUR :<br>
+            Par poids : 4 500 x 2 x 1,23 = <strong>11 070 EUR</strong><br>
+            Par colis : 300 x 666,67 x 1,23 = <strong>246 001 EUR</strong><br>
+            Montant reclamable = <strong>246 001 EUR</strong> (la plus elevee).
+        </div>
+
+        <div class="section-title">Levee de la limitation</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-critical">Declaration de valeur</span> = nature + valeur declarees avant expedition et mentionnees sur le B/L => indemnisation integrale possible</li>
+            <li><span class="hl-critical">Faute inexcusable</span> = faute imprudente et consciente du transporteur (il savait que son comportement pouvait causer le dommage)</li>
+        </ul>
+
+        <div class="section-title">11 cas exceptionnels (exoneration du transporteur)</div>
+
+        <table class="compact-table">
+            <tr><th>N.</th><th>Cas exceptionnel</th></tr>
+            <tr><td>1</td><td>Innavigabilite soudaine du navire</td></tr>
+            <tr><td>2</td><td>Incendie (sauf negligence du transporteur)</td></tr>
+            <tr><td>3</td><td>Actes non imputables (ex : piraterie)</td></tr>
+            <tr><td>4</td><td>Greve et lock-out</td></tr>
+            <tr><td>5</td><td>Vice inherent a la marchandise</td></tr>
+            <tr><td>6</td><td>Faute de l'expediteur (emballage, marquage...)</td></tr>
+            <tr><td>7</td><td>Vices caches du navire</td></tr>
+            <tr><td>8</td><td>Acte de sauvetage (vies ou biens)</td></tr>
+            <tr><td>9</td><td>Faute maritime (navigation ou administration du navire)</td></tr>
+            <tr><td>10</td><td>Risques de la mer (interpretation stricte)</td></tr>
+            <tr><td>11</td><td>Fait du prince (decision autorite publique imprevisible)</td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">Attention</div>
+            Meme si le transporteur prouve un cas exceptionnel, l'expediteur peut <span class="hl-critical">prouver une faute du transporteur</span> pour reintroduire sa responsabilite (partage possible).
+        </div>
+
+        <div class="section-title">Responsabilite : transitaire vs declarant en douane</div>
+
+        <table class="compact-table">
+            <tr><th></th><th>Transitaire</th><th>Declarant en douane</th></tr>
+            <tr><td><strong>Convention internationale</strong></td><td>Aucune (droit national)</td><td>Aucune (droit national)</td></tr>
+            <tr><td><strong>Type d'obligation</strong></td><td><span class="hl-critical">Obligation de resultat</span></td><td>Obligation de moyens</td></tr>
+            <tr><td><strong>Responsabilite</strong></td><td>Ses actes + ceux de ses subordonnes</td><td><span class="hl-critical">Fautes personnelles uniquement</span> (a prouver)</td></tr>
+            <tr><td><strong>Contrat</strong></td><td>Contrat d'organisation de transport</td><td>Contrat de mandat</td></tr>
+        </table>
+
+        <div class="section-title">Comparaison maritime / routier / aerien</div>
+
+        <table class="compact-table">
+            <tr><th></th><th>Maritime</th><th>Routier</th><th>Aerien</th></tr>
+            <tr><td><strong>Convention</strong></td><td>Bruxelles 1924</td><td>CMR 1956</td><td>Montreal 1999</td></tr>
+            <tr><td><strong>Document</strong></td><td>B/L</td><td>Lettre CMR</td><td>LTA / AWB</td></tr>
+            <tr><td><strong>Reserves non apparent</strong></td><td><span class="hl-critical">3 j</span></td><td><span class="hl-critical">7 j</span></td><td><span class="hl-critical">Jour meme</span></td></tr>
+            <tr><td><strong>Prescription</strong></td><td>1 an</td><td>1 an</td><td>2 ans</td></tr>
+            <tr><td><strong>Limite resp.</strong></td><td>666,67 DTS/colis ou 2 DTS/kg</td><td>8,33 DTS/kg</td><td>19 DTS/kg</td></tr>
+            <tr><td><strong>Levee limite</strong></td><td>Declaration valeur OU faute inexcusable</td><td>Declaration valeur OU faute inexcusable</td><td>Declaration valeur uniquement</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quelles sont les deux fonctions du connaissement (B/L) ?
+            <span class="answer">Fonction contractuelle (materialise le contrat de transport) + Fonction probatoire (preuve de l'etat des marchandises a la prise en charge).</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les deux plafonds de limitation de responsabilite du transporteur maritime ?
+            <span class="answer">666,67 DTS par colis/unite OU 2 DTS par kg de fret brut. On retient le montant le plus eleve (favorable a l'expediteur).</span>
+        </div>
+
+        <div class="flash-q">
+            Dans quels cas la limitation de responsabilite du transporteur maritime est-elle levee ?
+            <span class="answer">1) Declaration de valeur faite avant l'expedition et mentionnee sur le B/L. 2) Faute inexcusable du transporteur (faute imprudente et consciente).</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le delai de prescription en transport maritime et quels evenements l'interrompent ?
+            <span class="answer">1 an a compter de la livraison. Interruption par : reconnaissance de responsabilite par le transporteur OU action en justice.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les delais pour formuler des reserves en transport maritime ?
+            <span class="answer">Dommage apparent : le jour de la livraison. Dommage non apparent : 3 jours apres la livraison.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre contrat de transport et contrat d'affretement ?
+            <span class="answer">Contrat de transport = B/L, transport de conteneurs. Contrat d'affretement = location de navire (coque nue, au voyage, a temps), pour le vrac.</span>
+        </div>
+
+        <div class="flash-q">
+            Qui assume la gestion nautique et commerciale dans un affretement a temps ?
+            <span class="answer">Gestion nautique : l'armateur (proprietaire). Gestion commerciale : l'affreteur.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference de responsabilite entre un transitaire et un declarant en douane en droit francais ?
+            <span class="answer">Le transitaire a une obligation de resultat (responsable de ses actes et de ceux de ses subordonnes). Le declarant en douane n'est responsable que de ses fautes personnelles, qui doivent etre prouvees.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/DROIT/ch6_transport_maritime.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/DROIT/">Cours original</a>
+    </div>
+</body>
+</html>

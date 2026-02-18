@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — L'Évaluation des salariés</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #a0e0c0; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #059669; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">RESSOURCES HUMAINES — QUIZ</div>
+        <h1>Cours 4 — L'Évaluation des salariés</h1>
+    </div>
+
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "Quels sont les 3 objets de l'évaluation individuelle du salarié ?",
+        options: [
+            "A. Ancienneté, assiduité, engagement",
+            "B. Performance, compétences et potentiel",
+            "C. Salaire, formation et mobilité",
+            "D. Motivation, satisfaction et fidélisation"
+        ],
+        correct: 1,
+        explanation: "Les 3 objets de l'évaluation sont : la Performance (quels résultats ?), les Compétences (comment y est-il parvenu ? — savoirs, savoir-faire, savoir-être), et le Potentiel (que peut-il devenir ? — capacités futures, difficile à évaluer)."
+    },
+    {
+        q: "L'entretien annuel d'évaluation est-il obligatoire ?",
+        options: [
+            "A. Oui, obligatoire dans toutes les entreprises dès 11 salariés",
+            "B. Non, sauf si la convention collective le prévoit",
+            "C. Oui, obligatoire dès 50 salariés par la loi",
+            "D. Non, il est remplacé par l'entretien professionnel depuis 2014"
+        ],
+        correct: 1,
+        explanation: "L'entretien annuel d'évaluation n'est pas obligatoire légalement, sauf si la convention collective applicable le prévoit. En pratique, 60 % des salariés y sont soumis, et 86 % dans les entreprises de plus de 500 salariés."
+    },
+    {
+        q: "Quelle est la tension fondamentale vécue par le manager lors de l'entretien d'évaluation ?",
+        options: [
+            "A. Entre l'intérêt du salarié et celui de l'actionnaire",
+            "B. Entre le rôle de juge (évaluer la performance) et le rôle de coach (accompagner le développement)",
+            "C. Entre les objectifs court terme et long terme",
+            "D. Entre les décisions de la DRH et celles de la direction générale"
+        ],
+        correct: 1,
+        explanation: "Le manager vit une tension fondamentale entre son rôle de juge (évaluer la performance passée et prendre des décisions RH objectives) et son rôle de coach (accompagner le développement, soutenir le collaborateur). Cette double posture peut créer un malaise vis-à-vis de l'équipe."
+    },
+    {
+        q: "Quelle est la principale différence entre l'entretien annuel et l'évaluation à 360° ?",
+        options: [
+            "A. L'entretien annuel est facultatif, le 360° est obligatoire",
+            "B. Le 360° est multi-sources (supérieur, pairs, subordonnés), l'entretien annuel oppose salarié et N+1 uniquement",
+            "C. Le 360° est utilisé pour tous les salariés, l'entretien annuel uniquement pour les cadres",
+            "D. L'entretien annuel évalue le potentiel, le 360° évalue uniquement la performance"
+        ],
+        correct: 1,
+        explanation: "L'entretien annuel oppose le salarié et son N+1 (supervisé par le N+2). Le 360° est multi-sources : il collecte des évaluations du supérieur, des pairs et des subordonnés. Il est surtout adapté aux cadres supérieurs et aux structures en réseau ou en mode projet."
+    },
+    {
+        q: "Parmi ces processus RH, lequel est directement déclenché par l'évaluation ?",
+        options: [
+            "A. Le recrutement externe uniquement",
+            "B. Recrutement, rémunération, formation et gestion de carrière",
+            "C. La paie et le calcul des congés payés",
+            "D. La négociation collective et les accords d'entreprise"
+        ],
+        correct: 1,
+        explanation: "L'évaluation est au coeur de la GRH car elle déclenche simultanément 4 processus : le recrutement (faut-il renforcer l'équipe ?), la rémunération (mérite une augmentation ?), la formation (quels besoins ?) et la gestion de carrière (quelle évolution ?). Les objectifs sont fixés selon la méthode SMART."
+    },
+    {
+        q: "Selon Grasser & Noël (2022), lequel de ces comportements risque de décrédibiliser le système d'évaluation ?",
+        options: [
+            "A. Fixer des objectifs SMART ambitieux mais atteignables",
+            "B. L'évaluateur ne différencie pas ses appréciations pour préserver l'unité de l'équipe",
+            "C. Associer l'évaluation à un plan de développement individuel",
+            "D. Impliquer le N+2 dans la supervision des entretiens"
+        ],
+        correct: 1,
+        explanation: "Selon Grasser & Noël (2022), plusieurs comportements décrédibilisent l'évaluation : un évaluateur qui ne différencie pas ses appréciations (pour éviter les conflits), des formations décidées mais non mises en oeuvre, des efforts non récompensés (contrôle de la masse salariale), et des compétences acquises mais non transmises."
+    },
+    {
+        q: "Quel acteur de l'évaluation a pour objectif de 's'exprimer sur sa situation, le management souhaité et ses aspirations' ?",
+        options: [
+            "A. La Direction générale",
+            "B. La DRH",
+            "C. Le Manager",
+            "D. Le Salarié"
+        ],
+        correct: 3,
+        explanation: "L'objectif du salarié dans l'évaluation est double : s'exprimer (sur sa situation, le management souhaité, ses aspirations) et être informé (sur la perception de son travail et sur les opportunités d'évolution). La Direction vise à piloter la performance, la DRH à maintenir l'équité, et le Manager à fixer les objectifs N+1."
+    },
+    {
+        q: "Qu'est-ce qu'un objectif SMART dans le contexte de l'entretien annuel ?",
+        options: [
+            "A. Un objectif fixé par la direction sans consultation du salarié",
+            "B. Un objectif Spécifique, Mesurable, Atteignable, Réaliste et Temporellement défini",
+            "C. Un objectif uniquement basé sur les résultats financiers de l'entreprise",
+            "D. Un objectif révisable tous les mois selon les résultats"
+        ],
+        correct: 1,
+        explanation: "SMART signifie : Spécifique (clairement défini), Mesurable (avec des indicateurs), Atteignable (réaliste au regard des moyens), Réaliste (aligné avec la stratégie), et Temporellement défini (avec une échéance). Ces objectifs sont fixés lors de l'entretien annuel pour la période N+1."
+    },
+    {
+        q: "Quels sont les 3 enjeux fondamentaux d'un bon système d'évaluation selon la conclusion du cours ?",
+        options: [
+            "A. Fréquence, anonymat, récompenses financières",
+            "B. Choix des critères, cohérence avec la GRH globale, professionnalisme des évaluateurs",
+            "C. Informatisation, standardisation, externalisation",
+            "D. Formation des évalués, objectivité des résultats, communication externe"
+        ],
+        correct: 1,
+        explanation: "Les 3 enjeux fondamentaux sont : le choix des critères d'évaluation (pertinents et acceptés), la cohérence avec les autres composantes de la GRH (rémunération, formation, carrières), et le professionnalisme des évaluateurs (préparation, réalisation et concrétisation des engagements pris)."
+    },
+    {
+        q: "Pourquoi les formations décidées lors de l'entretien annuel mais non mises en oeuvre constituent-elles un risque ?",
+        options: [
+            "A. Car elles augmentent inutilement la masse salariale",
+            "B. Car elles décrédibilisent l'ensemble du système d'évaluation et démotivent les salariés",
+            "C. Car elles créent des conflits entre le manager et la DRH",
+            "D. Car elles entraînent des sanctions légales pour l'entreprise"
+        ],
+        correct: 1,
+        explanation: "Lorsque des formations sont décidées lors de l'entretien mais jamais mises en oeuvre, cela crée un décalage entre les promesses (transparence, développement) et le vécu réel. Ce décalage décrédibilise l'ensemble du système et génère de la défiance et de la démotivation chez les salariés (Grasser & Noël, 2022)."
+    }
+];
+
+let current = 0, score = 0, answered = false;
+
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+
+    const area = document.getElementById('quiz-area');
+    area.innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">
+                ${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}
+            </div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>
+    `;
+    answered = false;
+}
+
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) {
+        document.getElementById('opt' + idx).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + idx).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function next() {
+    if (current < questions.length - 1) { current++; renderQuestion(); }
+    else { showResult(); }
+}
+
+function prev() {
+    if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    const nb = document.querySelector('.nav-buttons');
+    if (nb) nb.style.display = 'none';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+}
+
+function restartQuiz() {
+    current = 0; score = 0; answered = false;
+    document.getElementById('result-card').style.display = 'none';
+    document.getElementById('quiz-area').style.display = 'block';
+    renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

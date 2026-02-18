@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision -- DROIT Ch.3 : Formation et force obligatoire du contrat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Droit international des contrats</div>
+        <h1>Ch. 3 -- Formation et force obligatoire du contrat</h1>
+    </div>
+    <div class="fiche-body">
+
+        <!-- SECTION 1 : L'OFFRE -->
+        <div class="section-title">1. L'offre (art. 14-17 CVIM)</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Offre</strong> = proposition <span class="hl-critical">suffisamment precise</span> (marchandises + quantite + prix) adressee a une personne determinee, indiquant la volonte de l'offrant d'etre <span class="hl-critical">lie en cas d'acceptation</span> (art. 14).
+        </div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Proposition au public</span> = simple invitation a l'offre, sauf volonte contraire expresse (art. 14 &sect;2)</li>
+            <li><span class="hl-important">Prix implicite</span> (art. 55) : a defaut, prix generalement pratique pour marchandises similaires</li>
+        </ul>
+
+        <table class="compact-table">
+            <tr><th>Mecanisme</th><th>Moment</th><th>Regime</th></tr>
+            <tr><td><strong>Retractation</strong> (art. 15 &sect;2)</td><td>Avant reception par le destinataire</td><td><span class="hl-critical">Toujours possible</span>, meme offre irrevocable</td></tr>
+            <tr><td><strong>Revocation</strong> (art. 16)</td><td>Apres reception, avant acceptation</td><td>Possible SAUF : delai fixe ou confiance legitime du destinataire</td></tr>
+            <tr><td><strong>Caducite</strong> (art. 17)</td><td>Rejet par le destinataire</td><td>L'offre prend fin des reception du rejet</td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <span class="hl-critical">Offre irrevocable</span> dans deux cas (art. 16 &sect;2) : (a) delai fixe d'acceptation indique, ou (b) le destinataire pouvait raisonnablement la considerer comme irrevocable et a agi en consequence.
+        </div>
+
+        <!-- SECTION 2 : L'ACCEPTATION -->
+        <div class="section-title">2. L'acceptation (art. 18-22 CVIM)</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Acceptation</strong> = declaration ou comportement indiquant l'acquiescement a l'offre. <span class="hl-critical">Le silence ne vaut JAMAIS acceptation</span> (art. 18 &sect;1). Un acte positif est requis.
+        </div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Formes</span> : declaration expresse (lettre, e-mail) OU acte concluant (expedition, ouverture credit documentaire)</li>
+            <li><span class="hl-important">Delai</span> : dans le delai fixe par l'offrant, ou a defaut dans un delai raisonnable (art. 18 &sect;2)</li>
+            <li><span class="hl-important">Theorie de la reception</span> : le contrat est forme quand l'acceptation <span class="hl-critical">parvient a l'offrant</span> (art. 18 &sect;2 + 23)</li>
+            <li><span class="hl-important">Acceptation tardive</span> (art. 21) : produit ses effets si expediee normalement a temps, sauf refus rapide de l'offrant</li>
+        </ul>
+
+        <!-- SECTION 3 : BATAILLE DES FORMULAIRES -->
+        <div class="section-title">3. Acceptation avec modifications (art. 19) -- "Bataille des formulaires"</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Regle cle</div>
+            <table class="compact-table">
+                <tr><th>Situation</th><th>Qualification</th></tr>
+                <tr><td>Reponse avec <span class="hl-critical">modifications substantielles</span></td><td>= <strong>REJET + contre-offre</strong> (art. 19 &sect;1)</td></tr>
+                <tr><td>Reponse avec modifications <strong>non substantielles</strong></td><td>= Acceptation valable, sauf objection sans retard de l'offrant (art. 19 &sect;2)</td></tr>
+            </table>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">A retenir</div>
+            <strong>Modifications substantielles</strong> (art. 19 &sect;3) = celles portant sur : <span class="hl-critical">prix</span>, <span class="hl-critical">paiement</span>, <span class="hl-critical">qualite</span>, <span class="hl-critical">quantite</span>, <span class="hl-critical">livraison</span>, <span class="hl-critical">responsabilite</span>, <span class="hl-critical">arbitrage</span>.
+            <br><br>
+            Comparaison : la CVIM applique la regle du "miroir" ; l'UCC americain est plus souple (acceptation valable malgre conditions additionnelles).
+        </div>
+
+        <!-- SECTION 4 : FORCE OBLIGATOIRE -->
+        <div class="section-title">4. Force obligatoire -- Pacta sunt servanda</div>
+
+        <div class="block block-def">
+            <div class="block-label">Principe fondamental</div>
+            <span class="hl-critical">Pacta sunt servanda</span> : le contrat valablement forme lie les parties. Aucune modification/resiliation unilaterale possible. Modification = accord mutuel (art. 29 CVIM).
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Consequence</th><th>Signification</th></tr>
+            <tr><td><span class="hl-important">Irrevocabilite</span></td><td>Pas de modification/resiliation unilaterale</td></tr>
+            <tr><td><span class="hl-important">Intangibilite</span></td><td>Le juge ne peut alterer le contenu (sauf hardship exceptionnel)</td></tr>
+            <tr><td><span class="hl-important">Opposabilite</span></td><td>Invocable pour exiger l'execution ou sanctionner l'inexecution</td></tr>
+            <tr><td><span class="hl-important">Effet relatif</span></td><td>Effets entre parties uniquement (mais extension clause arbitrage a tiers impliques)</td></tr>
+        </table>
+
+        <!-- SECTION 5 : OBLIGATIONS -->
+        <div class="section-title">5. Obligations des parties</div>
+
+        <table class="compact-table">
+            <tr><th>Vendeur (art. 30-44)</th><th>Acheteur (art. 53-60)</th></tr>
+            <tr><td>Livrer les marchandises (lieu, date, modalites)</td><td>Payer le prix (lieu, moment convenus)</td></tr>
+            <tr><td>Conformite : quantite, qualite, description (art. 35)</td><td>Prendre livraison (art. 60)</td></tr>
+            <tr><td>Remettre les documents</td><td>Examiner dans un <span class="hl-critical">delai bref</span> (art. 38)</td></tr>
+            <tr><td>Transferer la propriete</td><td>Denoncer defauts dans un <span class="hl-critical">delai raisonnable</span> (art. 39)</td></tr>
+            <tr><td>Garantie contre eviction (art. 41-42)</td><td>Delai max : <span class="hl-critical">2 ans</span> apres remise (art. 39 &sect;2)</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Bonne foi &amp; cooperation</div>
+            Art. 7 &sect;1 CVIM : interpretation favorisant la <span class="hl-important">bonne foi dans le commerce international</span>. Art. 77 : <span class="hl-important">obligation de minimiser le dommage</span>. Principes UNIDROIT : devoir de bonne foi a chaque stade.
+        </div>
+
+        <!-- SECTION 6 : SANCTIONS -->
+        <div class="section-title">6. Sanctions de l'inexecution</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Violation essentielle (art. 25)</div>
+            = prive <span class="hl-critical">substantiellement</span> l'autre partie de ce qu'elle attendait, si la consequence etait <span class="hl-critical">previsible</span>. Ouvre droit a la <span class="hl-critical">resolution du contrat</span>.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Recours</th><th>Violation ordinaire</th><th>Violation essentielle</th></tr>
+            <tr><td>Execution forcee</td><td>Oui (art. 46/62)</td><td>Oui</td></tr>
+            <tr><td>Remplacement</td><td>Non</td><td>Oui (art. 46 &sect;2)</td></tr>
+            <tr><td>Reduction du prix</td><td>Oui (art. 50)</td><td>Oui</td></tr>
+            <tr><td>Dommages-interets</td><td>Oui (art. 74)</td><td>Oui</td></tr>
+            <tr><td><span class="hl-critical">Resolution</span></td><td>Seulement apres Nachfrist (art. 47/63)</td><td><span class="hl-critical">Oui (art. 49/64)</span></td></tr>
+            <tr><td>Interets de retard</td><td>Oui (art. 78)</td><td>Oui</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Nachfrist (delai supplementaire)</div>
+            Art. 47 (acheteur) / art. 63 (vendeur) : fixation d'un <span class="hl-important">delai supplementaire raisonnable</span>. A son expiration sans execution, la resolution devient possible meme sans violation essentielle.
+        </div>
+
+        <!-- SECTION 7 : FORCE MAJEURE vs HARDSHIP -->
+        <div class="section-title">7. Force majeure (art. 79 CVIM) vs. Hardship (UNIDROIT 6.2)</div>
+
+        <table class="compact-table">
+            <tr><th>Critere</th><th>Force majeure (art. 79)</th><th>Hardship (UNIDROIT 6.2)</th></tr>
+            <tr><td>Execution</td><td><span class="hl-critical">Impossible</span></td><td>Possible mais <span class="hl-critical">excessivement onereuse</span></td></tr>
+            <tr><td>Effet</td><td>Exoneration des D&amp;I</td><td>Renegociation puis juge</td></tr>
+            <tr><td>Negociation</td><td>Non prevue</td><td><span class="hl-critical">Obligatoire</span> sans retard</td></tr>
+            <tr><td>Pouvoir du juge</td><td>Constat d'exoneration</td><td>Resiliation OU adaptation du contrat</td></tr>
+            <tr><td>Suspension</td><td>Oui pendant empechement</td><td>Non automatique</td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Conditions du hardship (UNIDROIT 6.2.2)</div>
+            (a) Evenements <span class="hl-important">posterieurs</span> a la conclusion ;
+            (b) <span class="hl-important">Imprevisibles</span> raisonnablement ;
+            (c) <span class="hl-important">Hors controle</span> de la partie lesee ;
+            (d) Risque <span class="hl-important">non assume</span> par cette partie.
+        </div>
+
+        <!-- SECTION 8 : TRANSFERT DES RISQUES -->
+        <div class="section-title">8. Transfert des risques (art. 66-70 CVIM)</div>
+
+        <ul class="condensed-list">
+            <li>Contrat avec transport : risques transferes a la <span class="hl-critical">remise au premier transporteur</span> (art. 67 &sect;1)</li>
+            <li>En pratique : les <span class="hl-important">Incoterms</span> precisent le moment exact (FOB, CIF, DDP...)</li>
+            <li>Le vendeur reste responsable des defauts <span class="hl-important">anterieurs</span> au transfert des risques (art. 36)</li>
+            <li>Apres le transfert : l'acheteur supporte les risques et doit agir contre le transporteur</li>
+        </ul>
+
+        <!-- SECTION 9 : QUESTIONS FLASH -->
+        <div class="section-title">9. Questions flash</div>
+
+        <div class="flash-q">
+            Quelles sont les 3 conditions pour qu'une proposition constitue une offre au sens de la CVIM ?
+            <span class="answer">1) Precision suffisante (marchandises + quantite + prix). 2) Destinataire determine. 3) Volonte de l'offrant d'etre lie en cas d'acceptation (art. 14).</span>
+        </div>
+
+        <div class="flash-q">
+            Dans quels cas l'offre est-elle irrevocable selon la CVIM ?
+            <span class="answer">Deux cas (art. 16 &sect;2) : (a) l'offre indique un delai fixe pour l'acceptation ; (b) le destinataire pouvait raisonnablement considerer l'offre comme irrevocable et a agi en consequence.</span>
+        </div>
+
+        <div class="flash-q">
+            Le silence du destinataire vaut-il acceptation en CVIM ?
+            <span class="answer">Non, jamais. L'art. 18 &sect;1 exige un acte positif (declaration ou comportement concluant). Le silence ou l'inaction ne constituent pas une acceptation.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle theorie la CVIM adopte-t-elle pour le moment de formation du contrat ?
+            <span class="answer">La theorie de la reception : le contrat est forme quand l'acceptation parvient a l'offrant (art. 18 &sect;2 + art. 23). Difference avec la "mailbox rule" anglo-saxonne (formation des l'expedition).</span>
+        </div>
+
+        <div class="flash-q">
+            Une reponse modifiant le prix de l'offre constitue-t-elle une acceptation ?
+            <span class="answer">Non. Le prix fait partie des modifications substantielles (art. 19 &sect;3). La reponse est qualifiee de rejet et de contre-offre (art. 19 &sect;1).</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que le mecanisme du Nachfrist et quel est son interet ?
+            <span class="answer">C'est la fixation d'un delai supplementaire raisonnable pour l'execution (art. 47/63). A son expiration sans execution, la resolution du contrat est possible meme sans violation essentielle. Inspire du droit allemand.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre force majeure (art. 79 CVIM) et hardship (UNIDROIT) ?
+            <span class="answer">Force majeure = execution impossible, exoneration des D&I. Hardship = execution possible mais excessivement onereuse, droit a la renegociation puis saisine du juge qui peut adapter ou resilier le contrat.</span>
+        </div>
+
+        <div class="flash-q">
+            En FOB, a quel moment les risques sont-ils transferes a l'acheteur ?
+            <span class="answer">A la remise des marchandises au transporteur au port d'embarquement (art. 67 &sect;1 CVIM). Tout dommage survenant apres est a la charge de l'acheteur, qui peut agir contre le transporteur.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/DROIT/ch3_formation_force_obligatoire.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/DROIT/">Cours original</a>
+    </div>
+</body>
+</html>

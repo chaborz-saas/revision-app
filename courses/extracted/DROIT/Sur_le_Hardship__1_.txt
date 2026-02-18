@@ -1,0 +1,29 @@
+**PRINCIPES D\'UNIDROIT SUR LA DIFFICULTÉ EXTRÊME (Hardship)**
+
+**SECTION 2 : DIFFICULTÉ\**
+
+**Article 6.2.1 *(Respect du contrat)***
+
+***\***
+Lorsque l\'exécution d\'un contrat devient plus onéreuse pour l\'une des parties, celle-ci est néanmoins tenue d\'exécuter ses obligations sous réserve des dispositions suivantes relatives à la difficulté excessive.
+
+**Article 6.2.2 *(Définition de la situation difficile)***
+
+***\***
+Il y a difficulté lorsque la survenance d\'événements modifie fondamentalement l\'équilibre du contrat, soit parce que le coût de l\'exécution d\'une partie a augmenté, soit parce que la valeur de la prestation reçue par une partie a diminué, et\
+(a) les événements surviennent ou sont portés à la connaissance de la partie lésée après la conclusion du contrat ;\
+(b) les événements n\'auraient pas pu être raisonnablement pris en compte par la partie lésée au moment de la conclusion du contrat ;\
+(c) les événements échappent au contrôle de la partie lésée ; et\
+(d) le risque lié à ces événements n\'a pas été assumé par la partie lésée.
+
+**Article 6.2.3 *(Effets de la détresse)***
+
+***\***
+(1) En cas de difficultés, la partie lésée est en droit de demander une renégociation. La demande doit être faite sans retard injustifié et indiquer les motifs sur lesquels elle se fonde.\
+(2) La demande de renégociation ne donne pas en soi le droit à la partie lésée de suspendre l\'exécution de ses obligations.\
+(3) À défaut d\'accord dans un délai raisonnable, l\'une ou l\'autre partie peut saisir le tribunal.\
+(4) Si le tribunal constate l\'existence d\'un cas de force majeure, il peut, s\'il le juge raisonnable\
+(a) résilier le contrat à une date et selon des modalités à déterminer, ou\
+(b) adapter le contrat en vue de rétablir son équilibre.
+
+Les tribunaux étant très réticents à se substituer à une partie contractante, la solution du cas de force majeure ne s\'applique que dans des circonstances très exceptionnelles et particulières. Ce principe est appliqué de manière assez stricte, en particulier dans la common law et en droit français. Dans la tradition juridique germanique, une telle clause de force majeure ou de difficulté excessive n\'est pas obligatoire. En effet, le tribunal adoptera une approche objective (plus raisonnable) pour déterminer si une partie est dispensée de l\'exécution de ses obligations en raison de circonstances exceptionnelles.

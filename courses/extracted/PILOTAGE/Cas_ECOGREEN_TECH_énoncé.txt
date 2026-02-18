@@ -1,0 +1,326 @@
+Collection
+CCMP
+C0511
+EcoGreen Tech : la
+responsabilité sociale
+et environnementale
+au c½ur des outils de
+contrôle de gestion
+Auteur :
+Zouhour BEN HAMADI
+Etablissement créateur :
+EM NORMANDIE Campus Caen
+Licence accordée à / Licence granted to : SPECIMEN AUTEUR
+AUCUNE PARTIE DE CETTE PUBLICATION NE PEUT ETRE COPIÉE, STOCKÉE, TRANSMISE, TRADUITE, REPRODUITE OU DISTRIBUÉE SOUS
+QUELQUE FORME OU SUPPORT QUE CE SOIT SANS L'AUTORISATION DE CCMP, PROPRIÉTAIRE DES DROITS D'AUTEUR.
+NO PART OF THIS PUBLICATION MAY BE COPIED, STORED, TRANSMITTED, TRANSLATED, REPRODUCED OR DISTRIBUTED IN ANY FORM OR
+MEDIUM WHATSOEVER WITHOUT THE PERMISSION OF CCMP, THE COPYRIGHT OWNER.
+EcoGreen Tech : la responsabilité sociale et
+environnementale au cœur des outils de
+contrôle de gestion
+© CCMP 2024 — C0511
+Auteur(s) : Zouhour BEN HAMADI
+Établissement(s) créateur(s) : EM Normandie
+AUTEUR
+SOMMAIRE
+I. Présentation ...................................................................................................................... 3
+II. Contexte général et premiers questionnements .......................................................... 3
+III. Tableau de bord du service Achats ............................................R................................ 5
+IV. Tableau de bord de la production .............................................................................. 6
+V. Le projet de collaboration avec l’université de Bordeaux ......................................... 7
+A. Objectifs du Centre d’Innovation en Écotechnologie .......................................... 7
+B. Mise en œuvre ........................................................................................................... 7
+C. Bénéfices attendus ..............................................T...................................................... 8
+VI. Les défis du service Ressources humaines : ........................................................... 11
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 2
+AUTEUR
+EcoGreen Tech : la responsabilité sociale et
+environnementale au cœur des outils de
+contrôle de gestion
+I. Présentation
+EcoGreen Tech est une entreprise innovante dans le secteur de l’écotechnologie,
+spécialisée dans la création de solutions énergétiques durabUles. Fondée à Bordeaux,
+France, l’entreprise s’est rapidement établie comme un acteur clé dans le domaine des
+technologies vertes, grâce à ses avancées en matière d’efficacité énergétique et de
+réduction de l’empreinte carbone. Son activité principale repose sur le développement
+et la commercialisation de produits et services axés sur l’énergie renouvelable,
+notamment dans les domaines de l’énergie solaire et de l’éco‐efficience. Depuis sa
+création, EcoGreen Tech s’est engagée à promouvoir la transition énergétique et à
+soutenir l’emploi local dans une région touchée par la désindustrialisation, tout en
+établissant des partenariats stratégiques avec des institutions académiques et des
+acteurs industriels.
+Participants à la réunion CODIR :
+Président : Jean‐Pierre
+Directeur des Ressources humaines : Clara
+Directeur administratif et financier : Luc
+Responsable des achats : Damien
+Responsable de la production : Émilie
+Chef de projet innovations (collaboration avec l’université de Bordeaux) : Sarah
+Contrôleur de gestion : Romain
+II. Contexte général et premiers questionnements
+— Jean‐Pierre (Président) : « Bienvenue à tous. Aujourd’hui, nous allons aborder les
+défis actuels de notre entreprise EcoGreen Tech, en particulier ceux liés à nos initiatives
+d’énergies renouvelables et notre impact environnemental. Romain, peux‐tu
+commencer par nous présenter le tableau de bord financier ? »
+– Romain (Contrôleur de Gestion) : « Bien sûr, Jean‐Pierre. Notre situation financière
+actuelle montre une augmentation de 5 % de nos revenus par rapport à l’année
+dernière, principalement grâce à notre nouveau partenariat avec l’Université de
+Bordeaux sur le projet de recherche en énergie solaire. Cependant, nos coûts
+opérationnels ont également augmenté, en partie à cause des retards de livraison de
+nos nouveaux équipements de production éco‐efficiente. »
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 3
+AUTEUR
+— Luc (Directeur administratif et financier) : « Je voudrais ajouter que nos coûts de
+R&D ont également augmenté, ce qui est prévisible étant donné notre engagement
+dans l’innovation. Nous devons cependant veiller à maintenir notre rentabilité tout en
+investissant dans ces projets essentiels. »
+— Clara (Directrice des Ressources humaines) : « En parlant d’investissement, nous
+avons réussi à attirer des talents clés dans le secteur de l’écotechRnologie, mais nous
+devons rester vigilants quant à notre culture d’entreprise et à nos valeurs. L’équilibre
+entre l’innovation et le bien‐être des employés reste primordiUal. »
+— Damien (Responsable des Achats) : « Sur le front des achats, nous avons dû faire
+face à des augmentations de prix chez nos fournisseurs principaux. Cela impacte nos
+marges. Nous explorons des alternatives pour diversifier nos sources
+d’approvisionnement. »
+— Émilie (Responsable de la Production) : « LesU nouvelles lignes de production éco‐
+efficientes sont opérationnelles, mais nous avons rencontré des problèmes techniques
+initiaux qui ont affecté notre productivité. Nous travaillons sur des solutions et
+prévoyons une amélioration dans les prochains mois. »
+— Sarah (Chef de Projet collaboration avec l’Université de Bordeaux) : « Notre projet
+avance bien, mais nous devons intensifier nos efforts pour respecter les délais du
+premier prototype. La collaboration avec l’Université de Bordeaux est cruciale et
+prometteuse. » E
+— Jean‐Pierre : « Merci à tous pour vos mises à jour. Il est clair que nous faisons face
+à des défis, mais aussi à des opportunités significatives. Travaillons ensemble pour
+maximiser notre impact positif sur l’environnement tout en assurant la croissance et la
+rentabilité d’EcoGreen Tech. »
+1. Quelle est la raison principale de l’augmentation des revenus d’EcoGreen Tech cette
+année ?
+2. Comment la collaboration avec l’Université de Bordeaux aligne‐t‐elle EcoGreen Tech
+avec ses objectifs stratégiques à long terme, et quel impact cette collaboration a‐t‐elle
+sur la structure de coûts de l’entreprise ?
+3. Comment les retards de livraison ont‐ils affecté les coûts opérationnels d’EcoGreen
+Tech ?
+4. Quel impact les augmentations de prix chez les fournisseurs ont‐elles eu sur
+l’entreprise ?
+5. Quels sont les défis rencontrés par l’équipe de production avec les nouvelles lignes
+de production éco‐efficientes ?
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 4
+AUTEUR
+6. Étant donné les augmentations de prix des fournisseurs et la nécessité de diversifier
+les sources d’approvisionnement, comment EcoGreen Tech peut‐elle équilibrer le
+besoin de réduire les coûts avec son engagement envers la durabilité et l’éthique dans
+la chaîne d’approvisionnement ?
+III. Tableau de bord du service Achats
+Voici le tableau à compléter concernant le taux de non‐conformité des fournisseurs,
+compte tenu des non‐qualités enregistrées par les équipes d’achats et de production,
+depuis quelques mois, Romain avait décidé en collaboration avec Emilie et Damien de
+faire le suivi des fournisseurs. Le tableau présente le % de non‐conformité sur deux
+périodes T1 (Trimestre 1) et T2 (Trimestre 2). Les fournisseurs ont été informés du
+contrôle intensif mis en place sur la qualité de leurs produits.
+Taux de Non‐ Taux de Non‐
+Fournisseur Conformité T1 Conformité T2 Décision Justification
+Maintenir le
+Fournisseur A 2 % 1 % partenariat
+Fournisseur B 4 % 3 %
+Fournisseur C 7 % 12 %E
+Fournisseur D 5 % M5 %
+1. On vous demande de statuer sur les évolutions à apporter au tableau de bord associé
+au plan de surveillance des fournisseurs critiques (supprimer, réduire, maintenir ou
+augmenter le noEmbre de composants contrôlés à réception), d’envisager une
+adaptation du nombre de pièces à contrôler en fonction de la situation desdits
+fournisseurs ePt de justifier votre décision.
+Deux restitutions sont à faire dans la colonne « Votre décision » avec Jeu de
+4 étiquettes :
+ Supprimer le nombre de composants à contrôler
+ Réduire le nombre de composants à contrôler
+ Maintenir le nombre de composants à contrôler
+ Augmenter le nombre de composants à contrôler
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 5
+AUTEUR
+Avec Jeu de 3 étiquettes pour la taille du nouvel échantillon :
+ 1 composant/10
+ 1 composant/50
+ 4 composants/10
+2. Pourquoi a‐t‐on décidé de maintenir le partenariat avec le Fournisseur A malgré un
+taux de non‐conformité existant ?
+3. Quelles pourraient être les implications de la détérioration de la qualité des
+composants livrés par le Fournisseur C ?
+Que pourrait faire EcoGreen Tech avec les valeurs qu’elle prône face à des fournisseurs
+dont la qualité des produits ne s’améliore pas ? Pour yT répondre, Romain présente à la
+réunion un plan d’action portant sur 5 axes :
+ Communication et collaboration
+ Audit et évaluation rigoureux A
+ Plan d’amélioration continue
+ Critères de sélection des fournisseurs
+ Diversification des sources d’approvisionnement
+ Engagement envers la ResponsEabilité sociale d’Entreprise (RSE)
+4. Rédiger le plan d’action de Romain
+IV. Tableau de bord de la production
+Performance
+Indicateur actuelle Objectif Actions à entreprendre
+Taux de rendement
+synthétique 85 % 90 % Optimisation des processus
+Taux de pannes des Maintenance préventive
+équipements 15 % 10 % accrue
+Réduction des temps de
+Délais de production 95 % respectés 98 % changement
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 6
+AUTEUR
+1. Comment l’optimisation des processus pourrait‐elle aider à atteindre l’objectif de
+90 % pour le taux de rendement synthétique ?
+2. Quelle stratégie EcoGreen Tech pourrait‐elle adopter pour réduire les délais de
+production tout en maintenant la qualité ?
+3. Selon Emilie, un autre chiffre devient difficile à gérer à savRoir l’augmentation
+significative du taux de déchets dans le processus de fabrication, affectant à la fois les
+coûts opérationnels et l’image de durabilité de l’entreprise. Quelles pourraient être les
+causes sous‐jacentes de cette augmentation, et comment l’entreprise peut‐elle
+implémenter des solutions stratégiques et opérationnelles pour résoudre ce problème
+tout en restant alignée sur ses principes de durabilité et d’efficacité ?
+V. Le projet de collaboration avec l’université de Bordeaux
+— Sarah : « Je profite de notre réunion aujoUurd’hui pour vous présenter la
+collaboration mise en place entre EcoGreen Tech et l’Université de Bordeaux qui
+se concentre sur la création d’un Centre Ad’Innovation en Éco‐Technologie. Ce
+partenariat stratégique pourrait combiner les forces de l’industrie et de
+l’académie pour favoriser des avancées significatives dans le domaine des
+technologies durables. » N
+A. Objectifs du Centre d’InnoEvation en Écotechnologie
+Recherche appliquée : Développer des projets de recherche conjoints centrés sur les
+innovations en matière de technologies durables, notamment dans les domaines de
+l’énergie renouvelable, de l’efficacité énergétique, et des matériaux écoresponsables.
+Développement de talents : Former la prochaine génération d’ingénieurs, de
+chercheurs et de professionnels de l’écotechnologie, en offrant des opportunités de
+stages, de thèses, et de projets collaboratifs pour les étudiants.
+Transfert de technologie : Faciliter le transfert de découvertes académiques vers des
+applications iPndustrielles concrètes, en accélérant le passage de la recherche à la
+commercialisation.
+B. Mise en œuvre
+Établissement de laboratoires de recherche communs : Créer des laboratoires sur le
+campus de l’Université de Bordeaux et au sein d’EcoGreen Tech, où chercheurs et
+ingénieurs travaillent côte à côte.
+Programmes de financement conjoint : Mettre en place des programmes de bourses
+et de financements pour des projets de recherche spécifiques, soutenus conjointement
+par l’entreprise et l’université.
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 7
+AUTEUR
+Séminaires et ateliers : Organiser régulièrement des séminaires, des conférences et
+des ateliers où les experts de l’industrie et les universitaires peuvent partager des
+connaissances, des idées et des défis.
+Incubateur d’entreprises : Créer un incubateur pour encourager les étudiants et les
+chercheurs à développer des startups dans le domaine de l’écotechnologie, avec le
+soutien et le mentorat d’EcoGreen Tech. R
+C. Bénéfices attendus U
+Innovation accélérée : Le partenariat permettrait une innovation plus rapide grâce à
+la combinaison des ressources de recherche et des connaiEssances pratiques.
+Renforcement de la marque employeur : EcoGreen Tech bénéficierait d’une image
+renforcée en tant qu’employeur de choix dans le domaine de l’écotechnologie.
+Accès à de nouveaux talents : Un vivier de talents fraîchement formés et enthousiastes
+serait accessible pour l’embauche future.
+Avantages sociaux et environnementaux : Les avancées en écotechnologie issues de
+cette collaboration pourraient avoir un imp act positif significatif sur l’environnement
+et la société. N
+— Sarah : « Cette collaboration renforcée offre une plateforme unique pour
+l’innovation, l’éducation et le transfert de technologie, bénéficiant à la fois à
+EcoGreen Tech, à l’Université de Bordeaux, et à la communauté plus large. »
+1. Compléter le budget initial alloué par EcoGreen Tech pour la mise en place du
+Centre d’Innovation en Éco‐Technologie avec l’Université de Bordeaux, et comment
+ce budget est‐il réparti entre les différents postes de dépenses tels que la recherche, les
+infrastructures et le personnel ?
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 8
+AUTEUR
+Proposition budgétaire initiale pour la Collaboration EcoGreen Tech — Université de Bordeaux
+Budget
+alloué Pourcentage du
+Poste de Dépense (€) Budget total Description/Commentaire
+Financement des projets de
+Recherche recherche fondamentale en
+fondamentale 25 % écotechnoloUgie.
+Développement de CréatioEn et test de prototypes pour
+Prototypes et Tests 20 % les nouvelles technologies.
+Infrastructure et Mise en place des laboratoires et
+Équipements 15 % Uachat d’équipements spécialisés.
+Salaires et ASalaires des chercheurs, ingénieurs
+Ressources humaines 15 % et personnel de support.
+Collaborations et NFinancement de collaborations
+Partenariats 10 % externes, conférences et ateliers.
+Formations et
+Développement de Programmes de formation pour
+Talents 7,5 % étudiants et professionnels.
+Marketing et Promotion des innovations et des
+Communication 5 % résultats de la collaboration.
+Autres (ImprévusE, Budget réservé pour couvrir les
+etc.) 2,5 % dépenses imprévues.
+Total Budget alloué : 2 000 000 €
+2. Comment EcoGreen Tech peut‐elle suivre l’utilisation du budget de R&D alloué à la
+collaboration avec l’Université de Bordeaux, et quels sont les indicateurs clés utilisés
+pour évaluer l’efficacité des dépenses ?
+3. Quel impact financier la collaboration avec l’Université de Bordeaux a‐t‐elle sur les
+revenus et les coûts opérationnels d’EcoGreen Tech, et comment cet impact est‐il
+mesuré et rapporté ?
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 9
+AUTEUR
+4. Comment EcoGreen Tech prévoit‐elle d’ajuster ses allocations budgétaires futures
+pour la collaboration, en fonction des résultats obtenus et des opportunités
+émergentes ?
+5. Voici le tableau présentant une analyse des Écarts du Budget Collaboration
+EcoGreen Tech — Université de Bordeaux
+Budget
+alloué Dépenses Écart U
+Poste de Dépense (€) réelles (€) (€) Commentaire
+Recherche
+fondamentale 450 000
+Développement de
+Prototypes et Tests 420 000
+Infrastructure et
+Équipements 310 000
+Salaires et
+Ressources
+humaines 280 000
+Collaborations et
+Partenariats 200 000
+Formations et C
+Développement de
+Talents 160 000
+Marketing et
+Communication 90 000
+Autres (Imprévus,
+etc.) 60 000
+Compléter et commenter le tableau.
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 10
+AUTEUR
+VI. Les défis du service Ressources humaines :
+— Clara : « EcoGreen Tech est confrontée à plusieurs défis RH et nous nous
+efforçons de maintenir notre engagement envers l’innovation et le
+développement durable. D’une part, nous avons réussi à attirer des talents clés
+dans le secteur de l’écotechnologie, mais d’autre part, nous devons veiller à
+intégrer ces nouveaux talents tout en préservant une culture d’eRntreprise saine et
+un environnement de travail motivant pour tous les employés. »
+Les nouveaux employés, souvent issus d’universités de renom ou d’autres entreprises
+leaders dans le secteur, apportent avec eux des compétences spécialisées et des attentes
+élevées en matière d’innovation et de responsabilité sociEale de l’entreprise. Cela crée
+une dynamique où les employés historiques peuvent se sentir dépassés ou moins
+valorisés. Je suis consciente que la gestion de cette divTersité de talents et d’attentes est
+cruciale pour le succès à long terme d’EcoGreen Tech.
+1. Comment Clara peut‐elle intégrer efficacement les nouveaux talents tout en
+préservant la motivation et le sentiment d’appartenance des employés existants ?
+2. Quelles stratégies Clara peut‐elle adopter pour gérer les attentes élevées des
+nouveaux employés en matière d’innovatio n et de responsabilité sociale ?
+3. EcoGreen Tech peut‐elle s’assurer que sa culture d’entreprise reste inclusive et
+positive face à l’introduction de nouveaux talents et compétences ?
+4. En se basant sur le tableau de bord social d’EcoGreen Tech, qui indique une
+augmentation de 20 % de l’effectif total suite à l’intégration de nouveaux talents
+spécialisés, quel est l’impact de cette croissance sur les indicateurs de satisfaction et de
+fidélisation des employés, et quelles mesures Clara, la Directrice des Ressources
+humaines, devrait‐elle envisager pour optimiser ces indicateurs ?
+© CCMP 2024 – C0511 – EcoGreen Tech : la responsabilité sociale et environnementale au cœur des outils de
+contrôle de gestion – Zouhour BEN HAMADI – EM Normandie 11
+AUTEUR

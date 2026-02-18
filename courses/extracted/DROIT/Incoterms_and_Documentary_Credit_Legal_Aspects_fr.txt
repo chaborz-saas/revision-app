@@ -1,0 +1,624 @@
+--- Slide 1 ---
+Ventes internationales et transport international de marchandises
+INCOTERMS et documents Crédit
+Philippe Corruble EMN
+Avocat
+Stream avocats & Solicitors
+Barreau du Havre
+Ventes internationales – 2023
+--- Slide 2 ---
+Ventes internationales : quels outils juridiques ?
+Ventes internationales : introduction
+Ventes internationales – 2023
+--- Slide 3 ---
+Vendre un bien implique deux mouvements :
+Un transfert d'argent
+Un transfert de propriété du bien
+Ventes internationales : introduction
+Ventes internationales – 2023
+--- Slide 4 ---
+D'un point de vue juridique, un contrat de vente est conclu lorsque les parties s'accordent sur deux points :
+Les biens qui seront vendus
+Le prix de ces biens.
+Mais quelles difficultés peuvent surgir dans un contexte international, même lorsque les parties se sont mises d'accord sur ces deux points ?
+Ventes internationales : introduction
+Ventes internationales – 2023
+--- Slide 5 ---
+Même si un vendeur et un acheteur parviennent à conclure un contrat de vente, quelles difficultés peuvent-ils rencontrer ?
+Ventes internationales : introduction
+Ventes internationales – 2023
+--- Slide 6 ---
+Deux traders de pays différents qui ne se connaissent pas bien :
+Ne se comprennent pas bien
+Ne se font pas entièrement confiance.
+Deux outils juridiques peuvent résoudre ces problèmes. Lesquels ?
+Ventes internationales : introduction
+Ventes internationales – 2023
+--- Slide 7 ---
+Pour pallier un manque de compréhension :
+Incoterms (termes commerciaux internationaux) = contrats de vente standardisés à l'échelle internationale.
+Pour pallier le manque de confiance :
+Crédits documentaires et autres méthodes de paiement.
+Ventes internationales : introduction
+Ventes internationales – 2023
+--- Slide 8 ---
+Incoterms
+Modes de paiement
+Ventes internationales : programme
+Ventes internationales – 2023
+--- Slide 9 ---
+Introduction
+A – Incoterms 2020
+B – Incoterms et négociation
+C – Les Incoterms dans la pratique
+D – Test
+I. Incoterms
+Ventes internationales – 2023
+--- Slide 10 ---
+Incoterms : définition ?
+I - Incoterms : introduction
+Ventes internationales – 2023
+--- Slide 11 ---
+Incoterms = Termes commerciaux internationaux.
+Contrats de vente internationaux standardisés conçus et régulièrement modifiés par la Chambre de commerce internationale (CCI).
+11 termes, identifiés par 3 lettres (EXW, FOB, CIF…)
+Outils destinés aux vendeurs, acheteurs, exportateurs, importateurs, agents logistiques, autorités douanières
+Commerce international et transport international
+Non obligatoire (au choix des parties)
+I - Incoterms : introduction
+Ventes internationales – 2023
+--- Slide 12 ---
+Vendeurs et acheteurs : quelques problèmes lors des transactions
+- Ne parlent pas la même langue
+- Culture différente
+Sont séparés par des milliers de kilomètres
+Différents points de vue sur leurs obligations dans le cadre d'un contrat de vente
+I - Incoterms : introduction
+Ventes internationales – 2023
+--- Slide 13 ---
+Incoterms : problèmes résolus
+- Les entreprises se comprennent immédiatement
+- Elles définissent les obligations essentielles des parties impliquées dans le contrat de vente international
+- Elles établissent un contrat de vente simplifié contenant des clauses fondamentales
+I - Incoterms : introduction
+Ventes internationales – 2023
+--- Slide 14 ---
+Les Incoterms sont utiles pour déterminer deux choses :
+Où se produit le transfert des risques ?
+Comment les frais de transport sont-ils pris en charge par les parties ?
+I - Incoterms : introduction
+Ventes internationales – 2023
+--- Slide 15 ---
+Attention ! Les Incoterms ne précisent pas :
+Les conditions du contrat de vente
+Les conditions de paiement
+La loi applicable à la transaction
+Les spécifications du bien
+Les interdictions d'exportation et d'importation
+I - Incoterms : introduction
+Ventes internationales – 2023
+--- Slide 16 ---
+A – Incoterms 2020
+I - Incoterms
+Ventes internationales – 2023
+--- Slide 17 ---
+A – Incoterms 2020 : classification
+Ventes internationales – 2023
+Les Incoterms peuvent être classés en trois catégories :
+- ventes au départ / ventes à l'arrivée
+4 groupes : groupe E ; groupe F ; groupe C ; groupe D
+Transport maritime et fluvial / Transport multimodal et tous modes
+--- Slide 18 ---
+Vente au départ / vente à l'arrivée :
+Vente au départ : le transfert des risques liés au transport des marchandises s'effectue dans le pays du vendeur. Ces risques sont donc principalement supportés par l'acheteur.
+Vente à l'arrivée : le transfert des risques a lieu dans le pays de l'acheteur (après le transport principal). Ces risques sont donc principalement supportés par le vendeur.
+A – Incoterms 2020 : classification
+Ventes internationales – 2023
+--- Slide 19 ---
+E ; F ; C ; D :
+Groupe E : le vendeur met les marchandises à la disposition de l'acheteur, dans ses propres locaux, à l'usine =&gt; EXW.
+- Groupe F : le transport principal est commandé et payé par l'acheteur, le vendeur se charge uniquement de remettre les marchandises à un transporteur désigné par l'acheteur =&gt; FCA ; FAS ; FOB.
+- Groupe C : le transport principal est commandé par le vendeur, qui en supporte les frais mais pas les risques encourus pendant le transport =&gt; CFR ; CIF ; CPT ; CIP.
+- Groupe D : le vendeur supporte tous les frais et risques liés à l'acheminement des marchandises jusqu'au lieu de destination désigné =&gt; DAP ; DPU ; DDP.
+A – Incoterms 2020 : classification
+Ventes internationales – 2023
+--- Slide 20 ---
+Transport maritime et fluvial : FAS (franco le long du navire), FOB (franco à bord), CFR (coût et fret), CIF (coût, assurance et fret).
+Transport multimodal et tous modes de transport : EXW (départ usine), FCA (franco transporteur), CPT (transport payé jusqu'à), CIP (transport et assurance payés jusqu'à), DAP (livré à destination), DPU (livré à destination déchargé), DDP (livré droits acquittés)
+A – Incoterms 2020 : classification
+Ventes internationales – 2023
+--- Slide 21 ---
+Lieu de livraison : usine du vendeur.
+Obligation du vendeur : mettre les marchandises à la disposition de l'acheteur.
+Mais : pas de dédouanement à l'exportation, pas de contrat de transport, pas de contrat d'assurance.
+Une fois que les marchandises ont été mises à la disposition de l'acheteur à cet endroit, l'acheteur assume l'entière responsabilité de leur enlèvement et supporte tous les frais et risques y afférents.
+EXW : Ex Works
+Ventes internationales – 2023
+--- Slide 22 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs à toutes les formalités de dédouanement. | Il appartient à l'acheteur d'effectuer et de payer toutes les formalités de dédouanement.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesée, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit donner à l'acheteur toute notification nécessaire pour lui permettre de prendre livraison des marchandises. | Si l'acheteur a le droit de choisir le moment et l'heure de la livraison, il doit en informer le vendeur suffisamment à l'avance.
+EXW : Au départ de l'usine
+Ventes internationales – 2023
+--- Slide 23 ---
+Lieu de livraison : usine du vendeur (le vendeur charge les marchandises sur le moyen de transport de l'acheteur) / autre lieu (le vendeur prépare les marchandises pour le déchargement).
+Obligations du vendeur : dédouaner les marchandises pour l'exportation.
+Mais : pas de contrat de transport, pas de contrat d'assurance.
+FCA : Franco transporteur
+Ventes internationales – 2023
+--- Slide 24 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur suffisamment à l'avance que les marchandises ont été livrées  ou que le transporteur n'a pas pris les marchandises dans le délai convenu. | L'acheteur doit informer le vendeur : du nom du transporteur désigné dans un délai suffisant pour permettre au vendeur de livrer les marchandises ; du délai de livraison choisi ; du mode de transport à utiliser par le transporteur, y compris les exigences en matière de sécurité liées au transport ; du lieu où les marchandises seront réceptionnées dans le lieu de livraison désigné.
+FCA : Franco transporteur
+Ventes internationales – 2023
+--- Slide 25 ---
+Lieu de livraison : le long du navire, au port de chargement désigné.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + livrer les marchandises le long du navire désigné par l'acheteur au port de chargement désigné.
+Mais : pas de contrat de transport, pas de contrat d'assurance.
+FAS : Franco le long du navire
+Ventes internationales – 2023
+--- Slide 26 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur suffisamment à l'avance que les marchandises ont été livrées ou que le navire n'a pas pris livraison des marchandises dans le délai convenu. | L'acheteur doit informer le vendeur suffisamment à l'avance de toute exigence en matière de sécurité liée au transport, du nom du navire, du point de chargement et, le cas échéant, de la date de livraison choisie dans le délai convenu.
+FAS : Franco le long du navire
+Ventes internationales – 2023
+--- Slide 27 ---
+Lieu de livraison : à bord du navire, au port de chargement désigné.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + livrer les marchandises à bord du navire désigné par l'acheteur au port de chargement désigné + dédouaner les marchandises pour l'exportation.
+Mais : pas de contrat de transport, pas de contrat d'assurance.
+FOB : Franco à bord
+Ventes internationales – 2023
+--- Slide 28 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur suffisamment à l'avance que les marchandises ont été livrées ou que le navire n'a pas pris livraison des marchandises dans le délai convenu. | L'acheteur doit informer le vendeur suffisamment à l'avance de toute exigence en matière de sécurité liée au transport, du nom du navire, du point de chargement et, le cas échéant, de la date de livraison choisie dans le délai convenu.
+FOB : Franco à bord
+Ventes internationales – 2023
+--- Slide 29 ---
+Lieu de livraison : à bord du navire, au port de chargement désigné.
+Obligations du vendeur : livrer les marchandises à bord du navire au port de chargement désigné + dédouaner les marchandises pour l'exportation + conclure le contrat de transport principal.
+Mais : pas de contrat d'assurance.
+CFR : Coût et fret
+Ventes internationales – 2023
+--- Slide 30 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur que les marchandises ont été livrées.
+Le vendeur doit donner à l'acheteur toute notification nécessaire pour lui permettre de réceptionner les marchandises. | Si l'acheteur a le droit de déterminer le délai d'expédition des marchandises et/ou le lieu de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+CFR : Coût et fret
+Ventes internationales – 2023
+--- Slide 31 ---
+Lieu de livraison : à bord du navire, au port de chargement désigné.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + livrer les marchandises à bord du navire au port de chargement + conclure le contrat de transport principal + conclure le contrat d'assurance.
+CIF : Coût, assurance et fret
+Ventes internationales – 2023
+--- Slide 32 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur que les marchandises ont été livrées.
+Le vendeur doit donner à l'acheteur toute notification nécessaire pour lui permettre de réceptionner les marchandises. | Si l'acheteur est en droit de déterminer le moment de l'expédition des marchandises et/ou le point de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+CIF : Coût, assurance et fret
+Ventes internationales – 2023
+--- Slide 33 ---
+Lieu de livraison : lieu de destination désigné, dès que les marchandises sont remises au transporteur.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + conclure le contrat de transport principal.
+Mais : aucune obligation de conclure un contrat d'assurance.
+CPT : Transport payé jusqu'à
+Ventes internationales – 2023
+--- Slide 34 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur que les marchandises ont été livrées.
+Le vendeur doit donner à l'acheteur toute notification nécessaire pour lui permettre de réceptionner les marchandises. | Si l'acheteur est en droit de déterminer le moment de l'expédition des marchandises et/ou le point de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+CPT : Transport payé jusqu'à
+Ventes internationales – 2023
+--- Slide 35 ---
+Lieu de livraison : lieu de destination désigné.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + conclure le contrat de transport principal + conclure le contrat d'assurance lié au transport jusqu'au lieu de destination désigné.
+Remarque : les frais de déchargement au lieu de destination convenu sont à la charge du vendeur uniquement si le contrat de transport le prévoit.
+CIP : Transport et assurance payés jusqu'à (1)
+Ventes internationales – 2023
+--- Slide 36 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit informer l'acheteur que les marchandises ont été livrées.
+Le vendeur doit donner à l'acheteur toute notification nécessaire pour lui permettre de réceptionner les marchandises. | Si l'acheteur est en droit de déterminer le moment de l'expédition des marchandises et/ou le point de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+CIP : Transport et assurance payés jusqu'à (2)
+Ventes internationales – 2023
+--- Slide 37 ---
+ | Vendeur | Acheteur
+Assurance | Le vendeur doit souscrire à ses frais une assurance sur la marchandise.
+À la demande de l'acheteur, le vendeur doit fournir, aux frais de l'acheteur, toute couverture supplémentaire, si elle est disponible, telle que la couverture conforme aux clauses de guerre de l'Institut et/ou aux clauses de grève de l'Institut.
+L'assurance doit couvrir au minimum le prix prévu dans le contrat majoré de 10 % (soit 110 %) et être libellée dans la devise du contrat.
+L'assurance doit couvrir les marchandises depuis le point de livraison jusqu'au lieu de destination désigné au minimum.
+Le vendeur doit fournir à l'acheteur la police ou le certificat d'assurance. | L'acheteur n'a aucune obligation envers le vendeur de souscrire un contrat d'assurance. Toutefois, l'acheteur doit fournir au vendeur, sur demande, toutes les informations nécessaires pour que ce dernier puisse souscrire toute assurance supplémentaire demandée par l'acheteur.
+CIP : Transport et assurance payés jusqu'à (3)
+Ventes internationales – 2023
+--- Slide 38 ---
+Lieu de livraison : lieu de destination désigné.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + mettre les marchandises à la disposition de l'acheteur sur le moyen de transport à l'arrivée, prêtes à être déchargées au lieu de destination désigné + conclure le contrat de transport principal.
+Mais : pas de contrat d'assurance.
+DAP = CPT + risques.
+DAP : Livraison à destination
+Ventes internationales – 2023
+--- Slide 39 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesée, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit donner à l'acheteur tout préavis nécessaire pour lui permettre de réceptionner les marchandises. | Si l'acheteur est en droit de déterminer le moment de l'expédition des marchandises et/ou le point de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+DAP : Livraison à destination
+Ventes internationales – 2023
+--- Slide 40 ---
+Lieu de livraison : au lieu de destination désigné (terminal ou autre), lorsque les marchandises sont déchargées du moyen de transport et mises à la disposition de l'acheteur au lieu de destination convenu (terminal ou autre).
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + conclure le contrat de transport principal.
+Mais : pas de contrat d'assurance.
+DPU : Livraison au lieu de destination, déchargé
+Ventes internationales – 2023
+--- Slide 41 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation : le vendeur doit effectuer et payer toutes les formalités de dédouanement à l'exportation.
+Importation : le vendeur doit aider l'acheteur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'importation. | Exportation : l'acheteur doit aider le vendeur, à la demande de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Importation : l'acheteur doit effectuer et payer toutes les formalités.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit donner à l'acheteur tout préavis nécessaire pour lui permettre de réceptionner les marchandises. | Si l'acheteur est en droit de déterminer le moment de l'expédition des marchandises et/ou le point de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+DPU : Livraison à destination, déchargé
+Ventes internationales – 2023
+--- Slide 42 ---
+Lieu de livraison : lieu de destination désigné.
+Obligations du vendeur : dédouaner les marchandises pour l'exportation + conclure le contrat de transport principal + conclure le contrat d'assurance + dédouaner les marchandises pour l'importation.
+Mais : aucune obligation de conclure un contrat d'assurance + aucun déchargement final.
+DDP : Rendu droits acquittés
+Ventes internationales – 2023
+--- Slide 43 ---
+ | Vendeur | Acheteur
+Dédouanement à l'exportation/à l'importation | Exportation et importation : le vendeur doit effectuer et prendre en charge toutes les formalités de dédouanement à l'exportation et à l'importation requises par les pays d'exportation et d'importation. | Exportation et importation : l'acheteur doit aider le vendeur, à la demande, aux risques et aux frais de ce dernier, à obtenir tous les documents ou informations relatifs aux formalités de dédouanement à l'exportation.
+Contrôle / emballage / marquage | Le vendeur doit :
+Prendre en charge le coût de toutes les opérations de contrôle (contrôle de la qualité, mesure, pesage, comptage)
+Emballer et marquer les marchandises de manière appropriée pour leur transport. | L'acheteur n'a aucune obligation envers le vendeur.
+Avis | Le vendeur doit donner à l'acheteur toute notification nécessaire pour lui permettre de recevoir les marchandises. | Si l'acheteur est en droit de déterminer le moment de l'expédition des marchandises et/ou le point de réception des marchandises dans le port de destination désigné, il doit en informer le vendeur suffisamment à l'avance.
+DDP : Rendu droits acquittés
+Ventes internationales – 2023
+--- Slide 44 ---
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+Résumé
+Ventes internationales – 2023
+--- Slide 45 ---
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+Résumé
+Ventes internationales – 2023
+--- Slide 46 ---
+B – Incoterms et négociation
+Quelques conseils à garder à l'esprit lors de l'utilisation/la négociation des incoterms
+I - Incoterms
+Ventes internationales – 2023
+--- Slide 47 ---
+Comment connaître l'incoterm choisi ?
+Incoterms et contrat de vente
+Incoterms et assurance
+Incoterms et TVA
+Incoterms et douanes
+B – Incoterms et négociation
+Ventes internationales – 2023
+--- Slide 48 ---
+Vous achetez des marchandises. La vente est conclue sans contrat écrit, mais vous souhaitez connaître l'incoterm choisi.
+1) Comment connaître l'incoterm choisi ?
+Ventes internationales – 2023
+--- Slide 49 ---
+Vous devez lire la facture commerciale. La facture commerciale est un document contraignant. Elle contient de nombreuses informations sur la vente, y compris l'incoterm choisi.
+1) Comment connaître l'incoterm choisi ?
+Ventes internationales – 2023
+--- Slide 50 ---
+Les Incoterms ne déterminent pas toutes les conditions de la vente. Les Incoterms ne concernent que deux aspects : le moment du transfert des risques (à la livraison) et la répartition des frais de transport.
+Par conséquent, n'oubliez pas de convenir des autres conditions de la vente :
+clause de juridiction
+loi applicable
+les conditions de paiement
+sanctions en cas d'inexécution du contrat.
+Si ces aspects de la vente ne sont pas déterminés par les parties, il sera nécessaire de se référer aux règles du droit international privé en cas de litige.
+2) Incoterms et contrat de vente
+Ventes internationales – 2023
+--- Slide 51 ---
+La question de l'assurance est-elle toujours traitée par les incoterms ?
+3) Incoterms et assurance
+Ventes internationales – 2023
+--- Slide 52 ---
+Seuls deux incoterms mentionnent la question de l'assurance : CIP et CIF.    Les autres incoterms ne prévoient aucune obligation d'assurance. Ils ne prévoient que le moment du transfert des risques (livraison), la partie qui conclut le contrat principal de transport et les questions de dédouanement.
+3) Incoterms et assurance
+Ventes internationales – 2023
+--- Slide 53 ---
+Vous ne devez jamais penser qu'une fois l'incoterm choisi, tous les problèmes sont résolus. La conclusion d'un contrat d'assurance n'est pas obligatoire, mais elle peut s'avérer très utile.
+Lorsque vous vendez ou achetez une cargaison particulièrement importante, demandez conseil à un souscripteur de votre compagnie d'assurance transport ou à votre courtier spécialisé.
+3) Incoterms et assurance
+Ventes internationales – 2023
+--- Slide 54 ---
+Qu'est-ce que la TVA ?
+4) Incoterms et TVA
+Ventes internationales – 2023
+--- Slide 55 ---
+« La taxe sur la valeur ajoutée, ou TVA, dans l'Union européenne est une taxe générale sur la consommation, à large assiette, qui frappe la valeur ajoutée aux biens et services. Elle s'applique plus ou moins à tous les biens et services achetés et vendus pour être utilisés ou consommés dans l'Union européenne. Ainsi, les biens vendus à l'exportation ou les services vendus à des clients étrangers ne sont normalement pas soumis à la TVA. À l'inverse, les importations sont taxées afin de garantir l'équité du système pour les producteurs de l'UE, qui peuvent ainsi concurrencer à armes égales sur le marché européen les fournisseurs situés en dehors de l'Union. »
+Commission européenne (ec.europa.eu)
+4) Incoterms et TVA
+Ventes internationales – 2023
+--- Slide 56 ---
+Les opérations soumises à la TVA sont les « livraisons » de biens. Le lieu de livraison détermine le pays qui taxe la vente. La livraison des biens est définie juridiquement comme « le transfert du pouvoir de disposer d'un bien corporel en tant que propriétaire ». Dans le cadre d'une vente internationale, ce transfert a lieu au moment de la livraison des biens au sens des incoterms.
+4) Incoterms et TVA
+Ventes internationales – 2023
+--- Slide 57 ---
+Exercice : Je travaille pour le parfumeur français Guerlain. Je vends pour 100 000 dollars de marchandises à une entreprise chinoise. Nous choisissons l'incoterm EXW. Que dois-je faire concernant la TVA ?
+4) Incoterms et TVA
+Ventes internationales – 2023
+--- Slide 58 ---
+Selon le terme EXW, la livraison a légalement lieu à la sortie de l'usine du vendeur. Dans ce cas, la vente imposable a lieu en France. Je devrais donc être soumis à la TVA française de 20 %. Cependant, l'Union européenne ne taxe que les importations, elle ne taxe pas les exportations. Je ne suis donc pas soumis à la TVA.
+Je dois toutefois prouver à l'administration douanière (Direction générale des douanes et des droits indirects) que j'ai exporté les marchandises. Comment puis-je le faire, puisque je ne suis pas chargé de conclure le contrat de transport dans le cadre de l'incoterm EXW ?
+4) Incoterms et TVA
+Ventes internationales – 2023
+--- Slide 59 ---
+Pour prouver que les marchandises ont bien été exportées hors de l'UE, je dois produire des certificats de sortie (« Document Administratif Unique, DAU ») ou d'autres preuves alternatives. Cette preuve est difficile à fournir dans le cadre de ventes EXW, car je ne maîtrise ni la chaîne logistique ni le dédouanement à l'exportation. Je dois donc m'assurer que l'acheteur m'envoie les documents de sortie.
+Conclusion : lorsque j'exporte vers un pays tiers, je dois toujours choisir un incoterm dans lequel je suis responsable du dédouanement, afin de pouvoir facilement démontrer à l'administration que ma vente est exonérée de TVA.
+4) Incoterms et TVA
+Ventes internationales – 2023
+--- Slide 60 ---
+5) Incoterms et douanes
+Droits de douane = pourcentage de la valeur en douane.
+TVA = pourcentage de la somme de la valeur en douane et des droits de douane.
+Ventes internationales – 2023
+--- Slide 61 ---
+Valeur en douane : prix de vente + frais de transport et d'assurance + frais de manutention.
+Le lieu de livraison mentionné dans l'incoterm est essentiel pour calculer la valeur en douane, car il identifie le lieu à partir duquel les frais de transport sont à la charge de l'acheteur. Ces frais de transport sont pris en compte dans le calcul de la valeur en douane.
+5) Incoterms et douanes
+Ventes internationales – 2023
+--- Slide 62 ---
+Selon l'Incoterm choisi, l'assurance relative au transport des marchandises n'est pas toujours incluse dans le prix facturé. Lorsque l'assurance n'est pas incluse dans le prix de vente, seule l'assurance relative au transport principal doit être ajoutée au prix payé pour le calcul de la valeur en douane. Toutefois, si le vendeur inclut l'assurance transport intracommunautaire dans le prix facturé des marchandises, ces frais d'assurance ne peuvent être déduits du prix facturé.
+5) Incoterms et douanes
+Ventes internationales – 2023
+--- Slide 63 ---
+Les grandes entreprises qui utilisent les Incoterms pour acheter des marchandises ont souvent un service achats.
+Les acheteurs de ce service ont une connaissance approfondie des Incoterms.
+Si vous souhaitez travailler dans un tel service, vous devez garder les Incoterms à l'esprit.
+5) Incoterms et service achats
+Ventes internationales – 2023
+--- Slide 64 ---
+Exercice 1st - Instructions
+Je suis responsable de la logistique chez Citroën. Les Citroën C5 sont fabriquées en Chine. Nous les commercialisons principalement dans les pays de l'UE et affrétons généralement des navires rouliers. Nous apprécions travailler avec le transporteur maritime HÖEGH AUTOLINER. Récemment, un concessionnaire automobile au Mexique, qui développe son activité, m'a contacté car il souhaite que nous lui vendions plusieurs dizaines de Citroën C5. Quels critères dois-je prendre en compte pour choisir l'incoterm ?
+C – Les incoterms dans la pratique
+Ventes internationales – 2023
+--- Slide 65 ---
+1 Exercice «st » - Directives
+Critères :
+Incoterm lié au domaine maritime
+J'ai déjà une relation commerciale avec un transporteur maritime avec lequel je peux facilement négocier.
+Je n'ai jamais vendu de voiture au Mexique. Je n'ai aucune idée du fonctionnement de l'administration de ce pays. Il me serait difficile de dédouaner les marchandises à l'importation au Mexique.
+C – Les Incoterms en pratique
+Ventes internationales – 2023
+--- Slide 66 ---
+Exercice 1st e - Réponse
+CIF (Coût, assurance et fret) :
+Cet incoterm est conçu pour le transport maritime.
+C'est un avantage pour moi d'avoir l'obligation de conclure le contrat de transport et le contrat d'assurance pour le transport principal. Je travaille habituellement avec le transporteur HÖEGH AUTOLINER. Je suis donc en mesure de négocier des tarifs bas et de négocier rapidement. Cela facilitera et fluidifiera la vente au concessionnaire mexicain.
+Dans une vente CIF, le vendeur n'est pas tenu de dédouaner les marchandises à l'importation dans le pays du vendeur. C'est un soulagement pour moi, car je ne connais pas les douanes mexicaines.
+C – Les Incoterms dans la pratique
+Ventes internationales – 2023
+--- Slide 67 ---
+Exercice 2 «nd » – Instructions
+Je participe à la création d'une entreprise de commerce électronique. Je suis responsable de la logistique. Nous souhaitons vendre nos produits dans le monde entier. Je réfléchis avec l'avocat de l'entreprise à nos conditions générales de vente. Nous aimerions choisir l'incoterm le plus adapté à notre activité et l'insérer dans nos conditions générales de vente. Quels critères devons-nous prendre en compte ?
+C – Les incoterms dans la pratique
+Ventes internationales – 2023
+--- Slide 68 ---
+Exercice « 2nd » – Directives
+Critères :
+Nos clients sont des particuliers et n'ont donc aucune connaissance particulière du commerce international.
+Nous voulons offrir à nos clients un service aussi simple que possible.
+Avec la pratique, nous apprendrons à connaître les formalités douanières et les obligations de nombreux pays.
+C – Les Incoterms dans la pratique
+Ventes internationales – 2023
+--- Slide 69 ---
+Exercice 2nd e – Réponse
+DDP (Delivered Duty Paid) :
+Nous nous occupons de tous les contrats de transport. Les clients n'ont pas besoin de comprendre la chaîne logistique.
+Les clients n'ont rien d'autre à faire que de payer. C'est la solution la plus simple pour eux.
+Nous nous occupons du dédouanement à l'importation dans les pays des clients. Nous sommes des professionnels du commerce et espérons être reconnus et agréés par les différentes administrations douanières.
+C – Les Incoterms en pratique
+Ventes internationales – 2023
+--- Slide 70 ---
+rdExercice sur les 3 incoterms – Instructions
+Je dirige un chantier naval français. Nous construisons et vendons des yachts et des voiliers. Je négocie avec un client américain qui dirige une entreprise. Cette entreprise américaine exploite commercialement des bateaux sur le territoire américain. Quel incoterm devons-nous choisir ?
+C – Les incoterms dans la pratique
+Ventes internationales – 2023
+--- Slide 71 ---
+Exercice « 3rd » – Directives
+Critères :
+Mon client a l'habitude de faire transporter des bateaux de petite et moyenne taille sur des navires plus grands. Il connaît bien un transporteur spécialisé dans ce domaine.
+Je dois être en mesure de présenter à l'administration douanière française la preuve que j'ai bien exporté le voilier afin d'être exonéré de la TVA.
+Le transport ne peut être effectué que par voie maritime.
+C – Les Incoterms en pratique
+Ventes internationales – 2023
+--- Slide 72 ---
+Exercice « 3rd » – Proposition
+FAS (franco le long du navire) :
+Je n'ai pas besoin de conclure un contrat de transport maritime. Je laisse mon client faire affaire avec son partenaire commercial habituel.
+Cet incoterm est adapté au transport maritime.
+Avec l'incoterm FAS, en tant que vendeur, je dois dédouaner le navire pour l'exportation. L'accomplissement de ces formalités me garantit d'avoir la preuve que j'ai exporté le yacht, afin d'être exonéré de la TVA.
+Possibilité : FCA. Le risque est transféré plus tôt.
+C – Les Incoterms en pratique
+Ventes internationales – 2023
+--- Slide 73 ---
+Que sont les incoterms maritimes ?
+C – Questions (1)
+Ventes internationales – 2023
+--- Slide 74 ---
+FAS, FOB, CFR, CIF
+C – Questions (1)
+Ventes internationales – 2023
+--- Slide 75 ---
+Quels sont les incoterms qui s'appliquent aux ventes à l'arrivée ?
+C – Questions (2)
+Ventes internationales – 2023
+--- Slide 76 ---
+DAP, DPU, DDP
+C – Questions (2)
+Ventes internationales – 2023
+--- Slide 77 ---
+C – Questions (3)
+Ventes internationales – 2023
+Pouvez-vous nommer cet incoterm ?
+--- Slide 78 ---
+C – Questions (3)
+Ventes internationales – 2023
+Franco le long du navire (FAS)
+--- Slide 79 ---
+C – Questions (3)
+Ventes internationales – 2023
+Pouvez-vous nommer cet incoterm ?
+--- Slide 80 ---
+C – Questions (3)
+Ventes internationales – 2023
+Coût et assurance payés jusqu'à (CIP)
+--- Slide 81 ---
+A – Obligation de facturation
+B – Liberté de fixer les conditions de paiement
+C – Crédit documentaire
+II – Modes de paiement
+Ventes internationales – 2023
+--- Slide 82 ---
+En droit français, le Code de commerce impose l'obligation d'émettre une facture (article L.441-9).
+En cas de vente de biens ou de services à titre professionnel, le vendeur doit établir une facture commerciale. Il est tenu d'envoyer cette facture à l'acheteur au moment de la livraison ou de la prestation, et l'acheteur doit la réclamer.
+La facture doit être établie en double exemplaire lorsqu'elle est émise sur support papier. Le vendeur et l'acheteur doivent chacun en conserver un exemplaire.
+A – Obligation de facturation
+Ventes internationales – 2023
+--- Slide 83 ---
+Ventes internationales : les parties sont libres de choisir les modalités de paiement. Cette liberté comporte également un risque : les parties doivent communiquer clairement et ne rien oublier !
+Quels aspects du paiement les parties doivent-elles convenir ?
+B – Liberté de fixer les conditions de paiement
+Ventes internationales – 2023
+--- Slide 84 ---
+B – Liberté de fixer les conditions de paiement
+Ventes internationales – 2023
+Conditions de paiement à déterminer :
+la devise du contrat
+le lieu de paiement. En France, le lieu de paiement est normalement le pays de la banque du vendeur, mais il est courant que ce lieu soit situé à l'étranger (c'est notamment le cas pour les crédits documentaires qui peuvent être effectués à la caisse de la banque émettrice ou à la caisse d'une banque notificatrice située à l'étranger
+la date de paiement
+le mode de paiement : l'envoi d'une simple facture peut suffire à garantir le paiement à la date convenue, si les parties se connaissent bien et se font confiance.
+Soyez vigilant dans les pays où des sanctions sont appliquées.
+--- Slide 85 ---
+Toutefois, si l'exportateur a besoin d'une garantie de paiement, les parties peuvent recourir à un crédit documentaire.
+B – Liberté de fixer les conditions de paiement
+Ventes internationales – 2023
+--- Slide 86 ---
+Qu'est-ce qu'un crédit documentaire ?
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 87 ---
+Crédit documentaire :
+« Dans le commerce international, accord par lequel une banque d'un pays importateur s'engage à payer les marchandises exportées lorsqu'elle reçoit les documents attestant que celles-ci ont été expédiées. »
+Dictionnaire Cambridge
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 88 ---
+« Crédit »
+À la demande de l'acheteur, la banque de l'acheteur s'engage à payer le vendeur. La banque de l'acheteur accorde ainsi un crédit à l'acheteur...
+« Documentaire »
+... mais la banque de l'acheteur ne paiera le vendeur que si celui-ci présente des documents conformes aux stipulations de l'ouverture du crédit.
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 89 ---
+Qui sont les acteurs d'un crédit documentaire ?
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 90 ---
+- Le demandeur (l'acheteur)
+- La banque émettrice (la banque de l'acheteur)
+- Le bénéficiaire (le vendeur)
+- La banque notificatrice (la banque du vendeur)
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 91 ---
+C – Crédit documentaire
+Ventes internationales – 2023
+Cultofsea.com
+--- Slide 92 ---
+Pourquoi utilisons-nous le crédit documentaire ?
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 93 ---
+Le crédit documentaire a été conçu pour sécuriser les transactions commerciales internationales :
+L'importateur a la garantie que le paiement ne sera effectué qu'à condition que le vendeur respecte ses obligations contractuelles.
+L'exportateur est assuré d'être payé dans les délais.
+Le crédit documentaire est utile pour les entreprises qui effectuent des transactions commerciales avec des pays à risque ou avec de nouveaux clients.
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 94 ---
+Mais les crédits documentaires ne sont pas si faciles à utiliser…
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 95 ---
+Le crédit documentaire est une technique coûteuse. Il est donc nécessaire de prêter attention à certains aspects.
+Le vendeur doit respecter trois délais principaux :
+le délai d'expédition des marchandises : il est fixé en fonction de la date à laquelle l'acheteur souhaite disposer des marchandises, en tenant compte des délais de transit et de l'incoterm choisi
+le délai d'envoi des documents : sauf indication contraire dans l'ouverture du crédit documentaire, le délai de présentation des documents est de 21 jours après la date d'expédition
+la date de validité du crédit documentaire : tous les crédits doivent stipuler une date de validité extrême (date limite de l'engagement de la banque émettrice)
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 96 ---
+Un crédit documentaire est un type de lettre de crédit.
+Une lettre de crédit peut être utilisée à des fins de compensation ou de paiement, tandis qu'un crédit documentaire ne peut être utilisé qu'à des fins de paiement.
+Une lettre de crédit peut être directe (une seule banque) ou indirecte (deux banques), tandis qu'un crédit documentaire est toujours indirect.
+La lettre de crédit implique que le transfert d'argent aura lieu après une simple remise de documents, tandis que le crédit documentaire implique que le transfert d'argent aura lieu après une vérification effective du contenu des documents remis.
+C – Crédit documentaire
+Ventes internationales – 2023
+--- Slide 97 ---
+https://iccwbo.org/resources-for-business/incoterms-rules/incoterms-2020/
+Merci !
+Conclusion
+Ventes internationales – 2023

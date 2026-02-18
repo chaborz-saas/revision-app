@@ -1,0 +1,205 @@
+Correction du Partiel : Analyse des données quantitatives
+Année : 2025/2026
+Track : Anglo
+Exercice 1 (3 points)
+FeelWell, une entreprise spécialisée dans les solutions numériques de bien-être, a lancé une
+nouvelle version de son application mobile il y a trois mois. Afin d'évaluer l'impact de cette mise
+à jour, l'équipe marketing a analysé les notes de satisfaction globale attribuées par 480
+utilisateurs sur une échelle de 10 points (1 = très insatisfait, 10 = très satisfait).
+L'équipe chargée des données a ensuite généré le graphique ci-dessus à l'aide de Jamovi. Vous
+devez :
+1. L'identifier, le nommer et le décrire en termes d'apparence générale (forme, symétrie et
+dispersion). (1,5 point)
+• Graphique : les notes de satisfaction variables sur une échelle de 1 à 10. Il s'agit d'une donnée
+quantitative, le graphique approprié est donc un histogramme.
+• Apparence générale : unimodale (un seul pic) avec la fréquence la plus élevée : 5-6.
+• Forme et symétrie : la distribution est proche d'une forme symétrique
+• Dispersion : la plupart des notes sont concentrées entre 4 et 7, et la dispersion est modérée
+2. Indiquez la relation attendue entre la moyenne, la médiane et le mode si la distribution est
+parfaitement symétrique. (0,5 point)
+Moyenne = Médiane = Mode. Dans ce cas, nous pouvons en déduire que la forme de la
+distribution est symétrique (ou en forme de cloche).
+3. Expliquez pourquoi il faut être prudent lorsqu'on utilise la moyenne comme mesure
+représentative de la satisfaction et donnez un exemple de situation où cela pourrait être trompeur.
+(1 point)
+• La moyenne est sensible aux valeurs extrêmes et peut être trompeuse lorsque la distribution
+est asymétrique (ou s'il existe des sous-groupes distincts).
+• Si la plupart des utilisateurs déclarent être assez satisfaits (6-7) de la nouvelle version de
+l'application, mais qu'un petit groupe d'utilisateurs insatisfaits lui attribue des notes très faibles
+(1-2) en raison de problèmes techniques, la note moyenne de satisfaction peut baisser, suggérant
+une satisfaction modérée, même si la majorité des utilisateurs sont satisfaits. Dans ce cas, la
+médiane fournit une mesure plus représentative de la satisfaction globale.
+Exercice 2 (8 points)
+1. La même entreprise, FeelWell, cherche désormais à comprendre les relations entre les
+habitudes d'utilisation des applications par les utilisateurs, leur état psychologique et leurs
+contributions financières.
+2. L'équipe chargée des données a mené une enquête auprès de 480 utilisateurs actifs afin
+d'examiner comment certaines dimensions spécifiques de l'utilisation et de la perception
+influencent les dépenses mensuelles dans l'application (abonnements premium, achats de
+contenu, services personnalisés).
+Les variables mesurées sont les suivantes :
+Variable Type Description
+Utilisation … Temps moyen passé chaque semaine sur l'application (en heures)
+(heures)
+Engagement … Score d'engagement numérique (0-100) mesurant la fréquence et
+l'intensité de l'interaction avec les fonctionnalités de l'application
+Stress … Niveau de stress perçu (1 = très faible, 10 = très élevé)
+Satisfaction … Score de satisfaction global (1-10)
+Dépenses (€) … Montant mensuel dépensé sur l'application
+Sortie Jamovi – Matrice de corrélation
+Variables Utilisation Engagement Stress Satisfaction
+(heures)
+Utilisation
+(heures)
+Engagement 0.66**
+Stress 0.29** 0.41**
+Satisfaction 0.51** 0.63** -0.39**
+Dépenses (€) 0.62** 0.68** 0.16* 0.55**
+(**p-value < .001; * p-value < .05)
+Questions
+1. Quels tests statistiques sont utilisés dans ce contexte ? Justifiez votre choix. (0,5 point)
+• Toutes les variables sont quantitatives et continues, et l'objectif est d'examiner la force et la
+direction des relations linéaires entre l'utilisation, les perceptions, les états psychologiques et les
+dépenses. Nous utilisons le test de corrélation de Pearson.
+2. Interprétez trois relations fortes observées et expliquez leur importance pour la start-up.
+Formulez les hypothèses correspondantes. (2,5 points)
+Relation 1 : Engagement vs dépenses
+H0 : Il n'y a pas de relation linéaire (pas de corrélation) entre l'engagement et les dépenses.
+H1 : Il existe une relation linéaire significative (corrélation significative) entre l'engagement et les
+dépenses.
+• Résultat : r = 0,68, p < 0,001
+• Décision : Puisque p < 0,05, H0 est rejetée et H1 est acceptée.
+• Interprétation : Il existe une corrélation forte et positive entre l'engagement et les
+dépenses. Les utilisateurs plus engagés sont plus susceptibles de s'abonner à des
+fonctionnalités premium et d'acheter du contenu supplémentaire, ce qui fait de
+l'engagement un facteur clé de revenus pour la start-up.
+Relation 2 : Utilisation (heures) vs dépenses
+H0 : Il n'y a pas de relation linéaire (pas de corrélation) entre le temps d'utilisation et les
+dépenses.
+H1 : Il existe une relation linéaire significative (corrélation significative) entre le temps
+d'utilisation et les dépenses.
+• Résultat : r = 0,62, p < 0,001
+• Décision : puisque p < 0,05, H0 est rejetée et H1 est acceptée.
+• Interprétation : il existe une corrélation forte et positive entre le temps d'utilisation et les
+dépenses. Les utilisateurs qui passent plus de temps sur l'application ont tendance à
+dépenser plus d'argent, probablement en raison d'une exposition plus importante aux
+services payants et à la valeur perçue.
+Relation 3 : Satisfaction vs Engagement
+H0 : Il n'y a pas de relation linéaire (pas de corrélation) entre la satisfaction et l'engagement.
+H1 : Il existe une relation linéaire significative (corrélation significative) entre la satisfaction et
+l'engagement.
+• Résultat : r = 0,63, p < 0,001
+• Décision : Puisque p < 0,05, H0 est rejetée et H1 est acceptée.
+• Interprétation : il existe une corrélation forte et positive entre la satisfaction et
+l'engagement. Les utilisateurs plus satisfaits interagissent plus fréquemment et plus
+profondément avec l'application, renforçant ainsi la création de valeur à long terme pour
+la start-up.
+3. Identifiez une relation trompeuse et expliquez pourquoi elle pourrait conduire à une erreur de
+gestion. (1 point)
+Relation : stress vs dépenses
+• Résultat observé : r = 0,16 et p < 0,05.
+• Pourquoi cela est trompeur : bien que la relation soit statistiquement significative, la
+corrélation est très faible, ce qui indique un effet pratique négligeable.
+• Risque d'erreur managériale : les managers pourraient conclure à tort qu'une
+augmentation du stress des utilisateurs entraîne une augmentation des dépenses. Une
+telle interprétation néglige la faiblesse de l'effet et pourrait conduire à des décisions
+préjudiciables, telles que la mise en place de mécanismes basés sur la pression qui
+réduisent la satisfaction et nuisent à la fidélité à long terme des clients.
+4. Que signifie une relation négative dans le contexte de la fidélité des clients ? (1 point)
+Dans cette étude, la corrélation négative entre le stress et la satisfaction (r = - 0,39) indique qu'un
+stress perçu plus élevé est associé à une satisfaction plus faible. La satisfaction étant un facteur
+clé de la fidélité des clients, un stress accru peut réduire cette fidélité.
+5. Quelles recommandations managériales proposeriez-vous ? (2 points)
+• Renforcer l'engagement des utilisateurs, car il est fortement et positivement lié aux
+dépenses (r = 0,68). L'amélioration des fonctionnalités interactives et personnalisées
+peut augmenter les revenus.
+• Encourager le temps d'utilisation de l'application, car une utilisation plus intensive est
+associée à des dépenses plus élevées (r = 0,62), en promouvant des expériences
+utilisateur régulières et à valeur ajoutée.
+• Réduire les facteurs de stress dans l'application, car le stress a un impact négatif sur la
+satisfaction (r = −0,39), ce qui peut affaiblir la fidélité des clients et la valeur à long
+terme.
+• Éviter de s'appuyer sur des relations faibles (stress-dépenses, r = 0,16), car elles ont une
+pertinence managériale limitée.
+6. Si vous deviez approfondir cette analyse, quelle méthode statistique complémentaire
+suggéreriez-vous pour tester les effets combinés de ces variables sur les dépenses ? (1 point)
+Méthode : régression linéaire multiple
+- Variable prédite (ou variable dépendante) = dépenses.
+- Variables prédictives (ou variables indépendantes) : utilisation, engagement, stress et
+satisfaction
+Justification : la régression linéaire multiple teste l'effet combiné de toutes les variables sur les
+dépenses et estime la contribution unique de chaque variable prédictive (ou variable
+indépendante) tout en contrôlant les autres.
+Exercice 3 (9 points)
+Afin de mieux comprendre les facteurs influençant les dépenses de santé des ménages aux
+États-Unis, une étude a été menée. Les variables suivantes ont été prises en compte :
+• Âge : âge du bénéficiaire principal
+• Statut tabagique : fumeur/non-fumeur
+• Nombre d'enfants
+• Sexe : homme/femme
+Prédicteur Estimation Erreur t p Estimation
+standard standard
+Ordonnée à -2883,0 572,0 -5,040 < ,001 -
+l'origine
+Âge 273,1 12,4 21,981 < ,001 0,317
+Statut tabagique :
+Fumeur 23836,9 433,2 55,021 < ,001 1,968
+Nombre d'enfants 486,2 144,8 3,358 < ,001 0,048
+Sexe :
+Masculin 61,3 349,7 0,175 0,861 0,005
+Test de modèle général
+Modèle R R² R² ajusté F ddl1 ddl2 p
+1 0.851 0.724 0.723 873 4 1333 < .001
+Questions
+1. Quelle méthode est appliquée ? Justifiez votre réponse. (0,5 point)
+La variable dépendante (dépenses de santé des ménages) est continue, et l'analyse vise à estimer
+les effets simultanés de plusieurs prédicteurs (quantitatifs et qualitatifs) sur ce résultat.
+2. Quelles variables ont un impact significatif sur les dépenses de santé ? Interprétez-les et
+expliquez-les. Le niveau de risque est de 5 % (2,5 points).
+• Âge ; B = 273,1, p < 0,001 = significatif
+Interprétation : toutes les autres variables étant constantes, chaque année
+supplémentaire augmente les dépenses de santé des ménages de 273,10 dollars en
+moyenne. Cela reflète les besoins accrus en matière de soins de santé à mesure que les
+individus vieillissent.
+• Tabagisme (fumeur vs non-fumeur), B = 23 836,9, p < 0,001 = significatif
+Interprétation : le fait d'être fumeur est associé à une augmentation moyenne de 23
+836,90 $ des dépenses de santé par rapport à un non-fumeur, toutes choses égales par
+ailleurs. Le tabagisme augmente donc considérablement les coûts des soins de santé.
+• Nombre d'enfants, B = 486,2, p < 0,001 = significatif
+Interprétation : chaque enfant supplémentaire augmente les dépenses de santé du
+ménage de 486,20 $ en moyenne, ce qui reflète des besoins plus élevés en matière de
+soins de santé pour la famille.
+• Sexe (homme vs femme), B = 61,3, p = 0,861 > 0,05. non significatif
+Interprétation : le sexe n'a pas d'effet statistiquement significatif sur les dépenses de
+santé du ménage.
+3. Quelle variable a le plus d'influence sur les dépenses de santé ? (1 point)
+L'estimation standardisée la plus élevée est associée au tabagisme (β = 1,968), ce qui
+indique que le tabagisme a l'influence relative la plus forte sur les dépenses de santé parmi tous
+les prédicteurs du modèle. Les coefficients standardisés étant exprimés sur une échelle
+commune, ils permettent une comparaison directe et significative de l'importance relative des
+prédicteurs mesurés dans différentes unités.
+4. Interprétez la qualité globale du modèle. Est-elle suffisamment élevée pour permettre une
+prédiction ? (1 point)
+• Le modèle est statistiquement significatif (F = 873, p < 0,001), ce qui indique que les
+prédicteurs expliquent conjointement les dépenses de santé.
+• Le coefficient de détermination est élevé (R² = 0,724), ce qui signifie que 72,4 % de la
+variance des dépenses de santé est expliquée par le modèle.
+• Conclusion : la qualité globale du modèle est très élevée et suffisante pour permettre une
+prédiction fiable.
+5. Proposez deux recommandations managériales ou opérationnelles cohérentes avec ces
+résultats. (2,5 points)
+Agir sur le tabagisme en tant que principal facteur de coût
+Étant donné que le tabagisme a l'effet le plus important sur les dépenses de santé (impact
+positif important et très significatif), les organismes de santé/assureurs devraient donner la
+priorité aux programmes de prévention et d'arrêt du tabagisme (dépistage, conseil, incitations,
+prise en charge des thérapies de substitution nicotinique).
+6. Si vous deviez améliorer le modèle, quelles variables supplémentaires incluriez-vous et
+pourquoi ? (1,5 point)
+• Niveau de revenu : pour tenir compte des différences d'accès aux services de santé et de
+capacité de paiement, qui influencent directement les dépenses de santé.
+• Présence de maladies chroniques (par exemple, diabète, troubles cardiovasculaires) : pour
+prendre en compte les coûts médicaux à long terme et récurrents qui ne s'expliquent pas
+uniquement par l'âge.
+• Caractéristiques de la couverture d'assurance maladie (type de régime, niveau de
+remboursement) : pour refléter les variations dans l'utilisation des soins de santé et le
+comportement en matière de dépenses.

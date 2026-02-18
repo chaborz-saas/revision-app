@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Analyse Quanti Cours 3 : ANOVA et tests statistiques</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .hl-formula {
+            background: #fef9e7;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.93rem;
+        }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-formula { background: #fef9e7; border-color: #f39c12; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "? "; font-weight: bold; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Analyse Quantitative</div>
+        <h1>Cours 3 — ANOVA et tests statistiques</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Rappel : quel test pour quelle relation ?</div>
+
+        <table class="compact-table">
+            <tr><th>Variables</th><th>Relation</th><th>Test</th></tr>
+            <tr><td>Quali + Quali</td><td>Association</td><td>Khi-deux, V de Cramer</td></tr>
+            <tr><td>Quanti + Quanti</td><td>Correlation</td><td><span class="hl-important">Pearson</span></td></tr>
+            <tr><td>Quali (2 gr.) + Quanti</td><td>Comparaison</td><td><span class="hl-critical">Test t</span></td></tr>
+            <tr><td>Quali (3+ gr.) + Quanti</td><td>Comparaison</td><td><span class="hl-critical">ANOVA</span></td></tr>
+        </table>
+
+        <div class="section-title">Logique du test d'hypothese</div>
+
+        <div class="block block-def">
+            <div class="block-label">Schema universel</div>
+            <span class="hl-critical">H<sub>0</sub></span> = pas de relation (innocent) | <span class="hl-critical">H<sub>1</sub></span> = relation existe (coupable)<br>
+            <strong>p-value &le; 0,05</strong> &rarr; on rejette H<sub>0</sub> (significatif) | <strong>p-value &gt; 0,05</strong> &rarr; on ne rejette pas H<sub>0</sub>
+        </div>
+
+        <div class="section-title">Le test t de Student (2 groupes)</div>
+
+        <ul class="condensed-list">
+            <li>Compare les moyennes de <span class="hl-important">2 groupes</span> (1 quanti + 1 quali a 2 modalites)</li>
+            <li>H<sub>0</sub> : &mu;<sub>1</sub> = &mu;<sub>2</sub> | H<sub>1</sub> : &mu;<sub>1</sub> &ne; &mu;<sub>2</sub></li>
+        </ul>
+
+        <div class="block block-formula">
+            <div class="block-label">Formule</div>
+            <span class="hl-formula">t = (&mu;1 - &mu;2) / &radic;(s1&sup2;/n1 + s2&sup2;/n2)</span><br>
+            p-value = 2 &times; P(T &ge; |t|)
+        </div>
+
+        <div class="section-title">L'ANOVA : pourquoi et comment</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Piege a eviter</div>
+            Multiplier les tests t deux a deux &rarr; <span class="hl-critical">inflation du risque d'erreur</span>. L'ANOVA resout ce probleme en un seul test global.
+        </div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Question centrale</span> : la variabilite vient-elle des groupes ou du hasard ?</li>
+            <li>Decomposition : <span class="hl-critical">Variance Totale = Variance Inter-groupes + Variance Intra-groupes</span></li>
+            <li>H<sub>0</sub> : toutes les moyennes sont egales | H<sub>1</sub> : au moins une moyenne differe</li>
+        </ul>
+
+        <div class="section-title">Formules ANOVA</div>
+
+        <div class="block block-formula">
+            <div class="block-label">Decomposition des sommes de carres</div>
+            <span class="hl-formula">SCT = SCE + SCR</span><br><br>
+            <span class="hl-formula">SCE (inter)</span> = &sum; n<sub>j</sub>(&bar;X<sub>j</sub> - &bar;X)<sup>2</sup><br>
+            <span class="hl-formula">SCR (intra)</span> = &sum;&sum;(X<sub>ij</sub> - &bar;X<sub>j</sub>)<sup>2</sup><br>
+            <span class="hl-formula">SCT (totale)</span> = &sum;&sum;(X<sub>ij</sub> - &bar;X)<sup>2</sup>
+        </div>
+
+        <div class="block block-formula">
+            <div class="block-label">Statistique F</div>
+            <span class="hl-formula">F = (SCE / (k-1)) / (SCR / (N-k))</span><br>
+            k = nombre de groupes, N = effectif total<br>
+            Plus <span class="hl-critical">F est grand</span>, plus l'effet est probable
+        </div>
+
+        <div class="section-title">Test de Levene + lecture des resultats</div>
+
+        <table class="compact-table">
+            <tr><th>Levene p-value</th><th>Conclusion</th><th>Test a lire</th></tr>
+            <tr><td><span class="hl-critical">&gt; 0,05</span></td><td>Variances homogenes</td><td><span class="hl-important">Fisher (F classique)</span></td></tr>
+            <tr><td><span class="hl-critical">&le; 0,05</span></td><td>Variances non homogenes</td><td><span class="hl-important">Welch</span></td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">Point cle</div>
+            L'ANOVA dit <strong>s'il y a</strong> une difference, mais <span class="hl-critical">ne dit pas entre quels groupes</span>. Il faut un <span class="hl-critical">test post-hoc (Tukey)</span> pour identifier les paires.
+        </div>
+
+        <div class="section-title">ANOVA a un facteur vs deux facteurs</div>
+
+        <table class="compact-table">
+            <tr><th>Critere</th><th>1 facteur (One-way)</th><th>2 facteurs (Two-way)</th></tr>
+            <tr><td>Variables quali</td><td>1 (3+ modalites)</td><td>2 variables quali</td></tr>
+            <tr><td>Questions</td><td>1 effet principal</td><td>2 effets principaux + 1 interaction</td></tr>
+            <tr><td>Exemple</td><td>Ventes selon prix</td><td>Satisfaction selon canal + fidelite</td></tr>
+        </table>
+
+        <div class="section-title">Test t vs ANOVA : comparaison rapide</div>
+
+        <table class="compact-table">
+            <tr><th>Critere</th><th>Test t</th><th>ANOVA</th></tr>
+            <tr><td>Nb groupes</td><td><span class="hl-critical">2</span></td><td><span class="hl-critical">3+</span></td></tr>
+            <tr><td>Statistique</td><td>t</td><td>F</td></tr>
+            <tr><td>H<sub>0</sub></td><td>&mu;1 = &mu;2</td><td>&mu;1 = &mu;2 = ... = &mu;k</td></tr>
+            <tr><td>Post-hoc</td><td>Non necessaire</td><td><span class="hl-important">Tukey</span></td></tr>
+        </table>
+
+        <div class="section-title">Exercices types (examen)</div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Exercice type 1 : e-commerce</div>
+            Panier moyen selon type de client (4 groupes) &rarr; F = 18,7 ; p &lt; 0,001 &rarr; <span class="hl-critical">effet significatif</span>. Tukey : tous les groupes different. Premium (68 &euro;) = segment le plus strategique.
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">Exercice type 2 : performance RH</div>
+            Performance selon service (5 groupes) &rarr; F = 9,85 ; p &lt; 0,001 &rarr; <span class="hl-critical">effet significatif</span>. IT (82) et Finance (78) se distinguent. Tukey : IT &ne; Marketing, RH, Ventes ; Finance &ne; RH.
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Pourquoi ne pas multiplier les tests t au lieu de faire une ANOVA ?
+            <span class="answer">Multiplier les tests t entraine une inflation du risque d'erreur de type I. L'ANOVA permet un test global en une seule fois.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la question centrale de l'ANOVA ?
+            <span class="answer">La variabilite observee est-elle due aux groupes (facteur etudie) ou simplement au hasard ?</span>
+        </div>
+
+        <div class="flash-q">
+            Que faire si le test de Levene donne p &le; 0,05 ?
+            <span class="answer">Les variances ne sont pas homogenes : il faut lire le test de Welch au lieu du test de Fisher classique.</span>
+        </div>
+
+        <div class="flash-q">
+            L'ANOVA est significative (p &lt; 0,05). Que faire ensuite ?
+            <span class="answer">Un test post-hoc (Tukey) pour identifier quelles paires de groupes different significativement, car l'ANOVA ne dit pas quels groupes different.</span>
+        </div>
+
+        <div class="flash-q">
+            Donnez la formule de la statistique F.
+            <span class="answer">F = (SCE / (k-1)) / (SCR / (N-k)) = Variance inter-groupes / Variance intra-groupes. Plus F est grand, plus l'effet est probable.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference entre ANOVA a un facteur et a deux facteurs ?
+            <span class="answer">Un facteur : 1 variable quali (3+ groupes). Deux facteurs : 2 variables quali, ce qui permet de tester 2 effets principaux + 1 effet d'interaction.</span>
+        </div>
+
+        <div class="flash-q">
+            Que signifie SCT = SCE + SCR ?
+            <span class="answer">La variance totale (SCT) se decompose en variance expliquee par les groupes (SCE, inter) + variance residuelle a l'interieur des groupes (SCR, intra).</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/ANALYSE_QUANTI/ch3_anova.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/ANALYSE%20QUANTI/Cours%203.pdf">Cours original (PDF)</a>
+    </div>
+</body>
+</html>

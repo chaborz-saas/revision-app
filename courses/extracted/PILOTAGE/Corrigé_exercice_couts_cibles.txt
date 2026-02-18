@@ -1,0 +1,103 @@
+Fichier Excel: Corrigé exercice couts cibles.xlsx
+Feuilles: ['Sujet', 'correction']
+
+=== Feuille: Sujet ===
+La société AERONEF fabrique et commercialise des avions. Elle souhaite développer des avions très innovants avec de nouvelles motorisations |  |  |  |  |  | 
+Composants | Fonctions |  |  |  |  | 
+Carlingue | Confort |  |  |  |  | 
+Moteur | Vitesse |  |  |  |  | 
+Equipement électronique | Facilité de Pilotage |  |  |  |  | 
+Prix cible TTC : | 100000 | TVA : | 0.2 |  |  | 
+Marge bénéficiaire attendue :  | 0.2 | du prix de vente HT |  |  |  | 
+Degré d’importance des fonctions (analyse fonctionnelle) : |  |  |  |  |  | 
+Fonctions | Pourcentage |  |  |  |  | 
+Confort | 0.1 |  |  |  |  | 
+Vitesse | 0.3 |  |  |  |  | 
+Facilité de Pilotage | 0.6 |  |  |  |  | 
+Contribution de chaque composant à la satisfaction des fonctions (résultats issus d'une étude de marché) : |  |  |  |  |  | 
+Fonctions | Composants |  |  |  |  | 
+ | Carlingue | Moteur | Equipement électronique |  |  | 
+Confort | 0.4 | 0.1 | 0.5 |  |  | 
+Vitesse | 0.5 | 0.1 | 0.4 |  |  | 
+Facilité de Pilotage | 0.2 | 0.2 | 0.6 |  |  | 
+Coût estimé de chaque composant (résultats issus d'une analyse du bureau d'études de l'entreprise) : |  |  |  |  |  | 
+ | Carlingue | Moteur | Equipement électronique | Total |  | 
+Coût estimé | 30000 | 40000 | 10000 | 80000 |  | 
+Questions : |  |  |  |  |  | 
+1)      Calculez le coût cible |  |  |  |  |  | 
+2)      Déterminez la part de chaque composant dans la structure du coût cible |  |  |  |  |  | 
+3)      Calculez le coût cible par composant et évaluez l’écart avec le coût estimé |  |  |  |  |  | 
+4)    Commentez cet écart : que doit faire l'entreprise ? |  |  |  |  |  | 
+1)      Calculez le coût cible (1,5 points) |  |  |  |  |  | 
+2)      Déterminez la part en pourcentage de chaque composant dans la structure du coût cible (1 point) |  |  |  |  |  | 
+Fonctions | Composants |  |  |  |  | 
+ | Carlingue | Moteur | Equipement électronique |  |  | 
+Confort |  |  |  |  |  | 
+Vitesse |  |  |  |  |  | 
+Facilité de Pilotage |  |  |  |  |  | 
+Total |  |  |  |  |  | 
+3)      Calculez le coût cible par composant et évaluez l’écart avec le coût estimé (1,5 points) |  |  |  |  |  | 
+Coût cible global =  |  |  |  |  |  | 
+Coût estimé global  =  |  |  |  |  |  | 
+Composants | Coût cible |  | Coût estimé | Ecart |  | 
+ | En % | En euros | En euros | En euros |  | 
+Carlingue |  |  |  |  |  | 
+Moteur |  |  |  |  |  | 
+Equipement électronique |  |  |  |  |  | 
+Total |  |  |  |  |  | 
+4)    Commentez cet écart : que doit faire l'entreprise ? (1 point) |  |  |  |  |  | 
+
+=== Feuille: correction ===
+La société AERONEF fabrique et commercialise des avions. Elle souhaite développer des avions très innovants avec de nouvelles motorisations |  |  |  |  |  | 
+Les données de l'étude sont : |  |  |  |  |  | 
+Composants | Fonctions |  |  |  |  | 
+Carlingue | Confort |  |  |  |  | 
+Moteur | Vitesse |  |  |  |  | 
+Equipement électronique | Facilité de Pilotage |  |  |  |  | 
+Prix cible TTC : | 100000 | TVA : | 0.2 |  |  | 
+Marge bénéficiaire attendue :  | 0.2 | du prix de vente HT |  |  |  | 
+Degré d’importance des fonctions (analyse fonctionnelle) : |  |  |  |  |  | 
+Fonctions | Pourcentage |  |  |  |  | 
+Confort | 0.1 |  |  |  |  | 
+Vitesse | 0.3 |  |  |  |  | 
+Facilité de Pilotage | 0.6 |  |  |  |  | 
+Contribution de chaque composant à la satisfaction des fonctions (résultats issus d'une étude de marché) : |  |  |  |  |  | 
+Fonctions | Composants |  |  |  |  | 
+ | Carlingue | Moteur | Equipement électronique |  |  | 
+Confort | 0.4 | 0.1 | 0.5 |  |  | 
+Vitesse | 0.5 | 0.1 | 0.4 |  |  | 
+Facilité de Pilotage | 0.2 | 0.2 | 0.6 |  |  | 
+Coût estimé de chaque composant (résultats issus d'une analyse du bureau d'études de l'entreprise) : |  |  |  |  |  | 
+ | Carlingue | Moteur | Equipement électronique | Total |  | 
+Coût estimé | 30000 | 40000 | 10000 | 80000 |  | 
+Questions : |  |  |  |  |  | 
+1)      Calculez le coût cible |  |  |  |  |  | 
+2)      Déterminez la part de chaque composant dans la structure du coût cible |  |  |  |  |  | 
+3)      Calculez le coût cible par composant et évaluez l’écart avec le coût estimé |  |  |  |  |  | 
+4)    Commentez cet écart : que doit faire l'entreprise ? |  |  |  |  |  | 
+1)      Calculez le coût cible (1,5 points) |  |  |  |  |  | 
+Prix de vente | –  | marge  |  |  | = | = coût cible
+100000 | –  | 100000 | x | 0.2 | = | 66666.66666666667
+1.2 |  | 1.2 |  |  |  | 
+2)      Déterminez la part en pourcentage de chaque composant dans la structure du coût cible (1 point) |  |  |  |  |  | 
+Fonctions | Composants |  |  |  |  | 
+ | Carlingue | Moteur | Equipement électronique |  |  | 
+Confort | 0.04000000000000001 | 0.010000000000000002 | 0.05 |  |  | 
+Vitesse | 0.15 | 0.03 | 0.12 |  |  | 
+Facilité de Pilotage | 0.12 | 0.12 | 0.36 |  |  | 
+Total | 0.31 | 0.16 | 0.53 |  |  | 
+3)      Calculez le coût cible par composant et évaluez l’écart avec le coût estimé (1,5 points) |  |  |  |  |  | 
+Coût cible global =  | 66666.66666666667 |  |  |  |  | 
+Coût estimé =  | 80000 |  |  |  |  | 
+Ecart = coût estimé – coût cible = | 13333.333333333328 |  |  |  |  | 
+Composants | Coût cible |  | Coût estimé | Ecart |  | 
+ | En % | En euros | En euros | En euros |  | 
+Carlingue | 0.31 | 20666.666666666668 | 30000 | 9333.333333333332 |  | 
+Moteur | 0.16 | 10666.666666666668 | 40000 | 29333.333333333332 |  | 
+Equipement électronique | 0.53 | 35333.333333333336 | 10000 | -25333.333333333336 |  | 
+Total | 1 | 66666.66666666667 | 80000 | 13333.333333333328 |  | 
+4)    Commentez cet écart : que doit faire l'entreprise ? (1 point) |  |  |  |  |  | 
+Globalement, le coût estimé est supérieur de 13 333,33 € donc l'entreprise doit réduire ses coûts. |  |  |  |  |  | 
+Elle doit travailler en priorité sur le moteur dont le coût estimé est très supérieur au coût cible. |  |  |  |  |  | 
+L'entreprise peut chercher un nouveau fournisseur de moteur, mais aussi faire de la recherche et développement pour optimiser sa motorisation et en baisser ainsi le coût. |  |  |  |  |  | 
+

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision -- DROIT Ch.1 : Les contrats internationaux</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "\2753 "; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Droit international</div>
+        <h1>Ch. 1 -- Les contrats internationaux -- Principes generaux</h1>
+    </div>
+    <div class="fiche-body">
+
+        <!-- ======== LOI APPLICABLE ======== -->
+        <div class="section-title">1. Loi applicable : Reglement Rome I</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Rome I</strong> = Reglement (CE) n&deg; 593/2008 du 17 juin 2008. Applicable dans l'EEE, a <span class="hl-critical">application universelle</span> (y compris parties hors UE). S'applique a tout contrat commercial.
+        </div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-critical">Liberte de choix</span> : les parties choisissent librement la loi applicable (choix illimite)</li>
+            <li>Choix <span class="hl-important">expres recommande</span> pour eviter toute ambiguite</li>
+            <li><span class="hl-critical">Dispositions imperatives</span> (art. 9) : s'appliquent toujours, quelle que soit la loi choisie</li>
+        </ul>
+
+        <div class="section-title">Loi applicable en l'absence de choix (art. 4)</div>
+
+        <table class="compact-table">
+            <tr><th>Type de contrat</th><th>Loi applicable</th></tr>
+            <tr><td>Vente de biens</td><td>Residence du <span class="hl-critical">vendeur</span></td></tr>
+            <tr><td>Prestation de services</td><td>Residence du <span class="hl-critical">prestataire</span></td></tr>
+            <tr><td>Franchise</td><td>Residence du <span class="hl-critical">franchise</span></td></tr>
+            <tr><td>Distribution</td><td>Residence du <span class="hl-critical">distributeur</span></td></tr>
+            <tr><td>Vente aux encheres</td><td>Lieu de la vente</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Regle subsidiaire</div>
+            Art. 4.2 : loi du pays de la partie executant la <span class="hl-critical">prestation caracteristique</span>.
+        </div>
+
+        <div class="section-title">Exceptions : contrats proteges</div>
+
+        <table class="compact-table">
+            <tr><th>Contrat</th><th>Article</th><th>Protection</th></tr>
+            <tr><td>Travail</td><td>Art. 8</td><td>Loi du lieu de travail habituel ; choix ne peut <span class="hl-critical">priver le travailleur</span> de ses protections</td></tr>
+            <tr><td>Consommation</td><td>Art. 6</td><td>Loi de la <span class="hl-critical">residence du consommateur</span> ; choix ne peut priver de ses protections</td></tr>
+            <tr><td>Transport</td><td>Art. 5</td><td>Dispositions specifiques</td></tr>
+            <tr><td>Assurance</td><td>Art. 7</td><td>Dispositions specifiques</td></tr>
+        </table>
+
+        <!-- ======== COMPETENCE JURIDICTIONNELLE ======== -->
+        <div class="section-title">2. Competence juridictionnelle : Bruxelles I</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Bruxelles I</strong> = Reglement 44/2001, modifie par <span class="hl-important">Reglement 1215/2012</span> (applicable depuis le 10/01/2015). <span class="hl-critical">Supprime le privilege de juridiction</span> des ressortissants.
+        </div>
+
+        <ul class="condensed-list">
+            <li>Principe : tribunal du <span class="hl-critical">domicile du defendeur</span> (Etat membre)</li>
+            <li>Alternative : tribunal du <span class="hl-important">lieu d'execution</span> (livraison des biens / fourniture des services)</li>
+            <li>Consommateur : peut agir a son domicile ; professionnel ne peut agir que devant le tribunal du <span class="hl-critical">domicile du consommateur</span></li>
+            <li>Execution : toute decision d'un Etat membre est executable dans les autres (sauf contrariete a l'ordre public)</li>
+        </ul>
+
+        <div class="block block-attention">
+            <div class="block-label">Attention</div>
+            <strong>Clause attributive de competence</strong> : valable et opposable dans toute l'UE. Mais <span class="hl-critical">interdite</span> pour : contrats de travail, d'assurance, de consommation.
+        </div>
+
+        <!-- ======== ARBITRAGE ======== -->
+        <div class="section-title">3. L'arbitrage international</div>
+
+        <table class="compact-table">
+            <tr><th>Forme</th><th>Caracteristiques</th></tr>
+            <tr><td><span class="hl-important">Institutionnel</span></td><td>Organise par une institution (CCI, LCIA...)</td></tr>
+            <tr><td><span class="hl-important">Ad hoc</span></td><td>Organise directement par les parties</td></tr>
+        </table>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Paris</span> = 1er forum d'arbitrage au monde</li>
+            <li>Clause compromissoire = <span class="hl-critical">validite et efficacite propres</span> (autonomie)</li>
+            <li>Principe de <span class="hl-critical">competence-competence</span> : l'arbitre statue sur sa propre competence (art. 1448 et 1506 CPC)</li>
+            <li>Extension possible aux <span class="hl-important">tiers impliques</span> dans l'execution du contrat (CA Paris, 18/12/2018)</li>
+            <li>Hors UE : <span class="hl-critical">Convention de New York du 10/06/1958</span> (170+ Etats signataires)</li>
+        </ul>
+
+        <!-- ======== HARDSHIP ======== -->
+        <div class="section-title">4. Hardship (difficulte excessive) -- Principes UNIDROIT</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Hardship</strong> = evenements qui <span class="hl-critical">modifient fondamentalement l'equilibre du contrat</span> (cout augmente ou valeur de la prestation diminue). 4 conditions cumulatives : (a) evenements <span class="hl-important">posterieurs</span> au contrat, (b) <span class="hl-important">imprevisibles</span>, (c) <span class="hl-important">hors controle</span>, (d) <span class="hl-important">risque non assume</span>.
+        </div>
+
+        <ul class="condensed-list">
+            <li>Principe de base (art. 6.2.1) : <span class="hl-critical">obligation d'executer</span> malgre la difficulte</li>
+            <li>Droit de <span class="hl-important">demander la renegociation</span> (sans retard injustifie)</li>
+            <li>Pas de suspension d'execution pendant la renegociation</li>
+            <li>A defaut d'accord : saisine du tribunal qui peut (a) <span class="hl-critical">resilier</span> ou (b) <span class="hl-critical">adapter</span> le contrat</li>
+        </ul>
+
+        <table class="compact-table">
+            <tr><th>Tradition juridique</th><th>Approche du hardship</th></tr>
+            <tr><td>Common law</td><td>Application <span class="hl-critical">tres stricte</span></td></tr>
+            <tr><td>Droit francais</td><td>Application <span class="hl-critical">stricte</span></td></tr>
+            <tr><td>Tradition germanique</td><td>Approche plus <span class="hl-important">souple et objective</span> ; pas de clause obligatoire</td></tr>
+        </table>
+
+        <!-- ======== QUESTIONS FLASH ======== -->
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quel reglement determine la loi applicable aux contrats internationaux dans l'UE ?
+            <span class="answer">Le Reglement Rome I (CE) n&deg; 593/2008 du 17 juin 2008, a application universelle.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle loi s'applique a un contrat de vente en l'absence de choix des parties ?
+            <span class="answer">La loi du pays ou le vendeur a sa residence habituelle (Rome I, art. 4.1.a).</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est le principe de competence du Reglement Bruxelles I et quelle est l'alternative en matiere contractuelle ?
+            <span class="answer">Tribunal du domicile du defendeur (principe). Alternative : tribunal du lieu d'execution de l'obligation (lieu de livraison ou de fourniture des services).</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que le principe de competence-competence en arbitrage ?
+            <span class="answer">L'arbitre a priorite pour statuer sur sa propre competence. Le tribunal etatique doit se declarer incompetent sauf clause nulle ou manifestement inapplicable (art. 1448 et 1506 CPC).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 4 conditions cumulatives du hardship selon UNIDROIT ?
+            <span class="answer">(a) Evenements posterieurs au contrat, (b) imprevisibles, (c) hors du controle de la partie lesee, (d) risque non assume par la partie lesee.</span>
+        </div>
+
+        <div class="flash-q">
+            Dans quels 3 types de contrats une clause attributive de competence est-elle interdite ?
+            <span class="answer">Contrats de travail, contrats d'assurance, contrats de consommation.</span>
+        </div>
+
+        <div class="flash-q">
+            Que peut faire le tribunal en cas de hardship constate, a defaut d'accord entre les parties ?
+            <span class="answer">Il peut (a) resilier le contrat a une date et selon des modalites a determiner, ou (b) adapter le contrat pour retablir son equilibre.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/DROIT/ch1_contrats_internationaux.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/DROIT/">Cours original</a>
+    </div>
+</body>
+</html>

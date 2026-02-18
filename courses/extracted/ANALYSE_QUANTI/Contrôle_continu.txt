@@ -1,0 +1,96 @@
+Contrôle continu
+Le travail de contrôle continu doit être réalisé en groupe de 3 à 4 étudiants.
+Le descriptif du travail est en-dessous de ce message.
+Chaque équipe est tenue de produire un seul rendu commun. Le travail final devra être déposé
+sur Upward au plus tard le 15 février à 23h59.
+Le document à soumettre devra impérativement :
+• être au format PDF
+• ne pas dépasser 6 pages (taille 11, page de garde pas comprise).
+Concernant les données à analyser, vous avez deux possibilités :
+• utiliser l’un des jeux de données proposés sur Upward (Données_banque_clients,
+Données_ecommerce, Données_employés et Données_marketing).
+• ou sélectionner un autre jeu de données de votre choix, à condition qu’il respecte
+strictement le contexte et les critères méthodologiques présentés dans le document de
+travail continu (nombre de variables qualitatives et quantitatives, nombre
+d’observations).
+Enoncé
+I) Contexte général
+Vous êtes analyste au sein du département Business Analytics d’une entreprise de services (ex.
+e-commerce, banque, distribution ou RH).
+La direction souhaite mieux comprendre ses clients / employés / performances commerciales à
+partir de données existantes afin d’orienter ses décisions stratégiques.
+Votre mission consiste à :
+• Réaliser des analyses statistiques de ces données à l’aide de JAMOVI
+• Interpréter les résultats
+• Formuler des recommandations managériales
+II) Analyses statistiques à réaliser
+1) Analyse univariée
+Pour les variables quantitatives
+• Moyenne, médiane, écart-type
+• Histogramme
+• Boîte à moustaches (Boxplot)
+Pour les variables qualitatives
+• Fréquences et Pourcentages
+Objectif : comprendre la structure et la distribution des données.
+2) Analyse bivariée
+2.1) Relation entre deux variables quantitatives
+Analyses demandées
+• Nuage de points
+• Test de corrélation (Pearson)
+Interprétation :
+• Sens de la relation
+• Force de la relation
+• Significativité statistique
+2.2) Relation entre deux variables qualitatives
+Analyses demandées
+• Test du Khi-deux
+• V de Cramer (intensité de la relation)
+Interprétation:
+• Existence ou non d’une relation
+• Intensité de la relation
+2.3) Relation entre une variable quantitative et une variable qualitative
+Tests statistiques
+• Test t de Student (si 2 modalités)
+• ANOVA à un seul facteur (si plus de 2 modalités)
+Vérifications :
+• Différences significatives entre groupes
+• Analyse post-hoc (si ANOVA significative)
+III) Interprétation des résultats
+Pour chaque test statistique :
+• Reformuler l’hypothèse nulle (H₀)
+• Interpréter la p-value
+• Interpréter les résultats en langage non-statistique
+• Relier les résultats au contexte business
+IV) Recommandations managériales
+Les recommandations doivent être :
+• Basées exclusivement sur les résultats de votre analyse
+• Réalistes et applicables
+• Orientées décision (marketing, RH, stratégie, finance…)
+Exemple
+« Les clients premium dépensent significativement plus que les clients standards (ANOVA, p <
+0,05). L’entreprise pourrait développer des offres personnalisées pour renforcer la fidélité de ce
+segment. »
+V) Captures d’écran obligatoires
+Il faut inclure :
+• Les menus utilisés dans JAMOVI
+• Les tableaux de résultats
+• Les graphiques générés
+Structure du rapport attendu
+• Introduction & contexte
+• Présentation du data set
+• Analyse univariée (avec Interprétation)
+• Analyses bivariées (avec Interprétation)
+• Analyse ANOVA (si la variable qualitative contient plus que deux modalités - avec
+Interprétation)
+• Recommandations managériales
+• Conclusion
+VI) Contraintes sur le jeu de données (si vous sélectionnez un jeu de données qui n’a pas
+été proposé sur Upward)
+Chaque jeu de données doit contenir au minimum :
+• Deux variables quantitatives (ex. âge, revenu, dépenses, score, salaire, performance, etc.)
+• Deux variables qualitatives (ex. genre, type de service, satisfaction, type de contrat, pays,
+etc.)
+• Au moins 50 observations
+Propositions de Liens pour trouver des jeu de données :
+• https://www.kaggle.com/datasets
+• https://datasetsearch.research.google.com/

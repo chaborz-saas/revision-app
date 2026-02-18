@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — RH Cours 2 : Le Recrutement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #2980b9; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q::before { content: "\2753 "; }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #2980b9; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Ressources Humaines</div>
+        <h1>Cours 2 — Le Recrutement</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Objectifs et enjeux du recrutement</div>
+
+        <div class="block block-def">
+            <div class="block-label">A retenir</div>
+            <strong>3 objectifs</strong> : <span class="hl-critical">compenser les departs</span>, <span class="hl-critical">accompagner les mouvements internes</span>, <span class="hl-critical">accompagner le developpement</span> de l'organisation.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Enjeux employeurs</th><th>Enjeux candidats</th><th>Enjeux societe</th></tr>
+            <tr><td>Financiers, politiques, image</td><td>Evaluation, selection</td><td>Marche de l'emploi, juridiques, ethiques</td></tr>
+        </table>
+
+        <div class="section-title">Proposition de valeur employeur (Mortensen & Edmondson, 2023)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Incontournable</div>
+            <table class="compact-table">
+                <tr><th></th><th>Court terme</th><th>Long terme</th></tr>
+                <tr><td><strong>Individuel</strong></td><td><span class="hl-critical">Avantages materiels</span> (salaire, flexibilite...)</td><td><span class="hl-critical">Opportunites de developpement</span> (formation, evolution)</td></tr>
+                <tr><td><strong>Collectif</strong></td><td><span class="hl-critical">Liens et communaute</span> (appartenance, culture)</td><td><span class="hl-critical">Sens et raison d'etre</span> (ambitions, impact societal)</td></tr>
+            </table>
+        </div>
+
+        <div class="section-title">Etape 1 — Identification des besoins</div>
+
+        <ul class="condensed-list">
+            <li><span class="hl-important">Formulation de la demande</span> : emane du N+1</li>
+            <li><span class="hl-important">Analyse de la demande</span> : par les RH — le poste est-il necessaire ? Solutions alternatives ?</li>
+            <li><strong>Profil du poste</strong> : intitule, position, missions, remuneration, perspectives</li>
+            <li><strong>Profil du candidat</strong> : formation, experiences, competences (theoriques, techniques, comportementales), caracteristiques specifiques</li>
+        </ul>
+
+        <div class="section-title">Etape 2 — Le sourcing</div>
+
+        <table class="compact-table">
+            <tr><th>Recrutement interne</th><th>Recrutement externe</th></tr>
+            <tr><td>Delai + court, cout - eleve</td><td>Renouvellement des competences</td></tr>
+            <tr><td>Evolution pour les salaries</td><td>Nouvelles experiences</td></tr>
+            <tr><td>Risque + faible, integration + facile</td><td>Pas de rivalites internes, demarche + neutre</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Astuce</div>
+            <strong>Faire ou faire faire ?</strong> Recours aux <span class="hl-important">cabinets de recrutement</span> privilegie pour les profils specifiques ou de haut niveau.
+        </div>
+
+        <ul class="condensed-list">
+            <li><strong>Canaux internes</strong> : site internet, Intranet, portails RH, bourses d'emploi</li>
+            <li><strong>Canaux externes — marche</strong> : jobboards (APEC, France Travail, Cadremploi), salons, candidatures spontanees</li>
+            <li><strong>Canaux externes — reseaux</strong> : LinkedIn, relations, <span class="hl-important">cooptation</span></li>
+        </ul>
+
+        <div class="block block-def">
+            <div class="block-label">Chiffres cles — APEC 2023</div>
+            Top 3 canaux cadres : <span class="hl-critical">Offre d'emploi</span> (83-94%) > <span class="hl-critical">Reseaux sociaux</span> (72-85%) > <span class="hl-critical">Reseau de contacts</span> (72-76%)
+        </div>
+
+        <div class="section-title">Etape 3 — Selection des candidats</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Cadre juridique</div>
+            Methodes de selection doivent etre : <span class="hl-critical">portees a la connaissance du candidat et du CSE</span>, <span class="hl-critical">pertinentes</span> au regard de la finalite, resultats <span class="hl-critical">confidentiels</span>. Interdiction de la <span class="hl-critical">discrimination a l'embauche</span> (art. L.122-45).
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Type de test</th><th>Objectif</th></tr>
+            <tr><td>Psychometrique</td><td>Mesurer des aptitudes</td></tr>
+            <tr><td>Psychologique</td><td>Cerner la personnalite</td></tr>
+            <tr><td>De situation</td><td>Evaluer la capacite a effectuer une tache</td></tr>
+        </table>
+
+        <table class="compact-table">
+            <tr><th>Outil</th><th>Validite predictive</th></tr>
+            <tr><td>Mises en situation / Simulations</td><td><span class="hl-critical">Elevee</span></td></tr>
+            <tr><td>Tests d'aptitudes, QI</td><td><span class="hl-critical">Elevee</span></td></tr>
+            <tr><td>Entretiens structures</td><td><span class="hl-important">Assez bonne</span></td></tr>
+            <tr><td>References</td><td><span class="hl-important">Assez bonne</span></td></tr>
+            <tr><td>Tests de personnalite</td><td>Faible</td></tr>
+            <tr><td>Graphologie, morphopsychologie</td><td><strong>Nulle</strong></td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Biais cognitifs a connaitre</div>
+            <strong>Recruteur</strong> : <span class="hl-important">effet de halo</span>, <span class="hl-important">biais de projection</span>, <span class="hl-important">effet d'inference</span><br>
+            <strong>Candidat</strong> : <span class="hl-important">desirabilite sociale</span>
+        </div>
+
+        <div class="block block-def">
+            <div class="block-label">Decision d'embauche</div>
+            Acte rationnel <span class="hl-critical">seulement en apparence</span> : rationalite limitee (<span class="hl-important">Simon</span>) + jeux de pouvoir (<span class="hl-important">Crozier & Friedberg</span>).
+        </div>
+
+        <div class="section-title">Etape 4 — Integration (onboarding)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">Chiffre cle</div>
+            <span class="hl-critical">36% des embauches en CDI</span> se soldent par un depart dans les 12 premiers mois.
+        </div>
+
+        <ul class="condensed-list">
+            <li><strong>Enjeux</strong> : reussite du recrutement, maitrise du turnover, couts financiers, transmission de la culture</li>
+            <li><strong>Courbe de sous-efficacite</strong> : phase d'adaptation puis maitrise progressive du poste</li>
+        </ul>
+
+        <table class="compact-table">
+            <tr><th>Dimension</th><th>Moyens</th></tr>
+            <tr><td>S'informer</td><td>Livret d'integration, formation, stages</td></tr>
+            <tr><td>S'integrer socialement</td><td>Equipes, lieux de socialisation, evenements</td></tr>
+            <tr><td>S'adapter psychologiquement</td><td>Parrain, tuteur, collegues</td></tr>
+            <tr><td>Comportements requis</td><td>Feedback N+1, contact avec les « anciens »</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quels sont les 3 objectifs du recrutement ?
+            <span class="answer">Compenser les departs, accompagner les mouvements internes, accompagner le developpement de l'organisation.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 4 facteurs de la proposition de valeur employeur (Mortensen & Edmondson) ?
+            <span class="answer">Avantages materiels, opportunites de developpement, liens et communaute, sens et raison d'etre.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels outils de selection ont la validite predictive la plus elevee (Guerrero, 2023) ?
+            <span class="answer">Les mises en situation / simulations et les tests d'aptitudes / QI.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les biais cognitifs du recruteur lors de la selection ?
+            <span class="answer">Effet de halo, biais de projection, effet d'inference.</span>
+        </div>
+
+        <div class="flash-q">
+            Quel pourcentage d'embauches en CDI se soldent par un depart dans les 12 mois ?
+            <span class="answer">36 %.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 4 dimensions du management de l'integration ?
+            <span class="answer">S'informer, s'integrer socialement, s'adapter psychologiquement, apprendre les comportements requis.</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi la decision d'embauche n'est-elle rationnelle qu'en apparence ?
+            <span class="answer">Rationalite limitee des decideurs (Simon) et jeux de pouvoir internes (Crozier & Friedberg).</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/RH/ch2_recrutement.html">Synthese complete</a> |
+        <a href="https://github.com/chaborz-saas/revision-app/blob/master/cours/RH/cour%202.pdf">Cours original (PDF)</a>
+    </div>
+</body>
+</html>

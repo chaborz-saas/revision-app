@@ -1,0 +1,329 @@
+Cours Pilotage de la
+performance
+Cours de tronc commun M1
+S07 2025-2026
+Responsable de cours :
+Isabelle LACOMBE
+Enseignant :
+Renato PEREIRA
+renato.pereira01@em-normandie.fr
+Plan du cours Pilotage de la Performance
+1- Introduction
+1.1 Définition du pilotage de la performance
+1.2 Liens entre comptabilité de gestion et comptabilité générale
+1.3 La gouvernance d'entreprise et le contrôle de gestion. Le pilotage stratégique
+1.4 La notion de groupe, les cessions internes et management fees (frais de siège)
+2- Suivi de la masse salariale et contrôle de gestion sociale
+3- L’élaboration et le contrôle budgétaire
+3.1 Le modèle de simulation, le business plan, le budget, le rolling forecast
+3.2 Le cycle et le calendrier budgétaire
+3.3 Le contrôle budgétaire
+4- Tableaux de bord et indicateurs et reporting
+5- Plan de performance, lean management, la gestion de la croissance. Gestion du périmètre de l’entité
+6- Conduite du changement
+7- Le contrôle de gestion et la RSE
+7.1 De la finance verte à la finance RSE durable
+7.2 La performance extra-financière : la taxonomie et les ratios verts, le reportingde durabilité (CSRD), le bilan carbone
+4- Tableaux de bord et indicateurs et reporting
+4.1 Contrôle de gestion et pilotage de la performance globale
+Une performance globale et multi-critères
+L’efficacité définie comme la capacité d’une entreprise à atteindre ses objectifs
+analysés par rapport à son environnement, ou encore comme « son aptitude à faire
+ce qu’il faut ».
+L’efficience définie comme la capacité d’une entreprise à utiliser le mieux possible
+ses ressources ou encore à « faire bien ». C’est le fait de maximiser la quantité
+obtenue de produits (biens ou services) à partir d’une quantité donnée de
+ressources. Ex : la rentabilité (rapport d’un bénéfice à des capitaux investis) ou la
+productivité (rapport d’un volume obtenu à un volume consommé).
+4- Tableaux de bord et indicateurs et reporting
+4.1 Contrôle de gestion et pilotage de la performance globale
+Le contrôle de gestion s’est focalisé sur la maîtrise des coûts (voire leur réduction).
+La maîtrise de la valeur des produits offerts par l’entreprise apparaît ; elle mesure
+l’utilité pour le marché, les clients internes et externes, la société, des produits et
+prestations proposés.
+Les déterminants de la valeur du produit pour le client :
+• La qualité de conception : les fonctions du produit apportent-elles de la valeur pour le client
+? Existe-t-il des écarts entre les attentes du client et leurs traductions dans les spécifications
+du produit ? L’entreprise connaît-elle les attentes des clients ?
+• La qualité de production : la réalisation du produit est-elle conforme à ses spécifications ?
+• Les délais de mise à disposition du produit (production, distribution). Sont-ils acceptables
+par le client ?
+• L’existence et la qualité des services annexes au produit, tels le service après-vente, les
+services de financement, les services d’information et de conseils, etc.
+Il s’agit maintenant de piloter le couple valeur-coûts.
+4- Tableaux de bord et indicateurs et reporting
+4.1 Contrôle de gestion et pilotage de la performance globale
+• Définition des tableaux de bord :
+le tableau de bord est « un outil qui répond mieux aux besoins d’un pilotage rapide,
+permanent sur un ensemble de variables tant financières, quantitatives que
+qualitatives ». Il semble nécessaire pour piloter toutes les dimensions de la
+performance pour toutes les parties prenantes de l’entreprise, avec un système
+d’information qui intègre des variables diversifiées. Le tableau de bord est un
+document rassemblant de manière claire et synthétique, un ensemble
+d’informations organisé sur des variables choisies pour aider à décider, à
+coordonner, à contrôler les actions d’un service, d’une fonction, d’une équipe.
+Source: Alazard & Separi, Contrôle de gestion, Ed. Dunod, Expert sup (2013) 5
+4- Tableaux de bord et indicateurs et reporting
+4.1 Contrôle de gestion et pilotage de la performance globale
+Rôles d’un tableau de bord
+1. Instrument de contrôle et de comparaison
+Le tableau de bord permet de contrôler les réalisations par rapport aux objectifs fixés dans le cadre de la démarche
+budgétaire. Il doit permettre de diagnostiquer les points faibles et de faire apparaitre ce qui est anormal et qui a un
+impact sur le résultat de l’entreprise.
+2. Aide à la décision
+La connaissance des points faibles doit obligatoirement être complétée par une analyse des causes de ces
+phénomènes et par la mise en œuvre d’actions correctives suivieset menées à leur terme.
+Le tableau de bord doit aider :
+• Pour une prise de décision «en temps réel» dans l’entreprise
+• Pour une prise de décision répartie
+• Pour des informations adaptées à chaque décideur
+• Pour le pilotage d’objectifs diversifiés
+3. Outil de dialogue et de communication
+Le tableau de bord doit permettre au subordonné de commenter les résultats de son action, les faiblesses et les
+points forts. Il permet de justifier des demandes de moyens supplémentaires ou des directives plus précises. Le
+supérieur hiérarchique doit coordonner les actions correctives entreprises en privilégiant l recherche d’un optimum
+global plutôt que des optimisations partielles. Le tableau de bord apporte un langage commun, fédérateur au sein de
+l’entreprise.
+Source: Alazard & Separi, Contrôle de gestion, Ed. Dunod, Expert sup (2013) 6
+4- Tableaux de bord et indicateurs et reporting
+4.1 Contrôle de gestion et pilotage de la performance globale
+• Le tableau de bord est défini par, et pour une entité, un service, une fonction sur
+un périmètre défini pour ses besoins de suivi d’exploitation. Le tableau de bord
+est un outil de pilotage tourné vers l’action. Un bon tableau de bord comprend
+des données financières et d’autres indicateurs (qualité, délai, suivi
+d’avancement…).
+• Le reporting est mis en place au sein d’un groupe pour remonter les données
+principalement financières de chaque entité à la direction générale. Il n’est pas
+construit comme un support à l’action, mais il permet plutôt de vérifier a
+posteriori si les objectifs délégués aux responsables sont atteints. S’il permet une
+cohérence d’ensemble, il ne répond pas toujours aux besoins des managers.
+• Tableaux de bord et reportings peuvent cohabiter mais il faut veiller à la
+cohérence des indicateurs et de leurs définitions.
+Source: Alazard & Separi, Contrôle de gestion, Ed. Dunod, Expert sup (2013) 7
+4- Tableaux de bord et indicateurs et reporting
+4.1 Contrôle de gestion et pilotage de la performance globale
+Différentes catégories d’indicateur ou KPI (Key Performance Indicator)
+• Financiers (marge, résultat, chiffre d’affaires) ou physiques (quantités produites,
+taux de rebut, nombre de réclamations)
+• D’objectifs (nombre de brevets déposés, nombre de ventes réalisées) et de
+moyens (budget de formation, investissement en R&D)
+• Rétrospectifs (ventes, production) par opposition à avancés ou prospectifs
+(commande qui donnera ensuite lieu à une vente) pour anticiper la performance
+future.
+Source: de Villarmoiset al. (2022) 8
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Principe de conception 1- La cohérence avec l’organigramme et une logique de « poupées russes » (articulation)
+Le découpage des tableaux de bord doit respecter le découpage des responsabilités et des lignes hiérarchiques.
+Des tableaux de bord synthétiques
+Direction
+pour la Direction Générale sur les
+générale
+axes stratégiques
+Des tableaux de bord
+Direction des Direction des
+Direction de la Direction des plus détaillés pour les
+ressources systèmes …
+production ventes services n-1 de la DG
+Atelier 1 Agence 1 humaine … s d’information P SBAW cale e e arsc d r r sn i M be A o a ol e a o 4 v n d r s en n m P o db a ru u r : u r af i a o g g. ar C M d y jo p h e a u r e p a o c r s i r t ts t i i h c t C a A o o e e l a h n nv r s E V ep n Pv m m T o i o 2 er a t A a r R l f a p u al 0 or R g v PPPP t l i c E l m n o e h da & 0 rrrr oee u N oooo n e u Py r xD e s 4 R f dddd cc Ie a D p a RD n t .... g & v PPPP d te es ve c vvvv a i i - O RRRR x e o e t D voooo n / / / r IIII n p . D M llll d i d P nP i P vvvv uuuu s e a E e aaaa mmmm r tr r i c i A U n mr m i to n o o o o rrrr o u e eeee c N C iiii n r s aaaa pr d d pd c s i vvvv e T nnnn . e. e. e U lt l t aaaa o o cccc s s c sc sc I i l F rrrr eeee y n y O a o o o .... ( d e ( (( e A b (((( (((( s ks ks k k N %%%% %%%% e e e C € € t €t €t o s s s x ss )))) )))) r ) )) ) T VO UR LU IN M M M Ga a 1 E 2 7 Y 2 21 1 1 Y r r --- --- 50 00 12 / 531 c c 531 0 0 T 0 30 0 0 T %% 0% V %%% %%% 00 Ch h % % D 0 00 0 0 D , A - - 0 A0 0R 3 3 B I L A EM MN B B ---- ---- 3 a a 1 3333 3333 2 7C u 2 31 1 1 u , Mr r 0 ,,,, ,,,, 12 5 5555 c c 5555 d d 5 5 5 02 1 1 E 30 00 Ah h 0000 0000 g g % % 0 00 0 0 %, %%%% %%%% - - 9 & Ne e 0 0 t t 4 4 A P G R M M E ---- ---- M M 4 I 4444 4444 a a 2 7 M 2 31 1 1 , ,,,, ,,,, r r o o 2 V 12 7 8 c c 2222 2222 5 45 1 1 n n 00 0 E A h h 0000 0000 % % 0 20 3 3 %%%% %%%% - - t t % N R 0 0 h h 4 4 T IA D N M M---- ---- 3 I 1 C 3333 a a3333 V 3 8 Y 3 31 1 1 Y , r r 0 ,,,, ,,,, 12 9 E 9999 c c9999 0 0 IT 0 45 1 1 T 40 S 0000 h h0000 % % 00 D 0 00 7 7 D , %%%% - -%%%% % I 10 0 O4 4 N          & & T T P P   r r o o e e s s n n i i t t d d       i i o o n n    * PP: M ----- rrN 1122 32211- oo Ia e 0505 05 050505 nPP jj r w ee drl c aocc u h p n M jtt se - r nt O0 58o cr NN i d nt 4i S a u g5** T c l t I P d M R e PP v O O e o D l s o R    U p iTt m C ioA e T Nnn IO T t N T R V A 6486 A 0000 N R %%%% S IAD V Na L E t 6486 C a e R 0000s E %%%% S t o u A (f P M p L c d r 46 86 or o a P 00 00 en g t %% %%e a R th r : t Oe i)o sJ 48 6 6 n Es 00 2 0 0 : C 8 % % %% 1 T / 5 0 S 2 / / 6 68 4 0 0 0 000 4 4 % %%% / 04 a e d v t ’a e l c e c t i s d o u e n i s v i i n d d e i s c a p t l e a u n r s s
+Des tableaux de bord
+très détaillés pour les
+Atelier 2 Agence 2
+services n-2 de la DG
+avec des indicateurs
+opérationnels (ex :
+Maintenance Administration
+coûts, qualité, délai)
+industrielle des ventes
+Source: Alazard & Separi, Contrôle de gestion, Ed. Dunod, Expert sup (2013)
+t ln n p b r r y vc ugc ra a au a p eoee uJ O M M ND J J A S M F A P SBAW cale e e arsc d r r sn i M be A o a ol e o 4 va n d r s en n m P o db a ru u r : u a r f i a o g g. ar C M d y jo p h e a u r e p a o c r s i r t t s t i h i c t Ca A o o e e la h n n v r s E V ep n P m v m T o i o 2 e r a t A a r R l f a al p u 0 or Rg v PPPP t l i c E n l m o e h da & 0 rrrr o ee u N oooo n e u Py r x sD e 4 R f dddd cc Ie a D p a RD t n .... g & v PPPP e d t se e c v vvvv a i i - O RRRR x eo t e D voooo n / / / r IIII n . p D M llll d i d P P nP i vvvv uuuu s e E a e aaaa mmmm r r tr ic i A U m n r m i to n o o o o rrrr o u e eeee c N C iiii n r s aaaa pr p d d d cs i vvvv e T nnnn . . e. e e U lt l t aaaa o o cccc s s c c sc s I i l F rrrr eeee y y n Oo a o o .... ( d e ( ( e ( A b (((( (((( s s ks k k k N %%%% %%%% e e e C € € t t €t € o s s s s s x )))) )))) r) )) ) T VO UR LU IN M M M Ga a 1 E 2 7 Y 221 1 1 Y r r --- --- 50 00 1 2 / c c 531 531 0 0 T 030 0 0 T %% 0% V %%% %%% 0 0 Ch h % % D 000 0 0 D , A - - 0 A0 0R 3 3 B I L A EM MN B B ---- ---- 3 a a 1 3333 3333 2 7C u 231 1 1 u , Mr r 0 ,,,, ,,,, 1 2 5 5555 c c 5555 d d 5 5 502 1 1 E 30 0 0 Ah h 0000 0000 g g % % 000 0 0 %, %%%% %%%% - - 9 & Ne e 0 0 t t 4 4 A P G R M M E ---- ---- M M 4 I 4444 4444 a a 2 7 M 231 1 1 , ,,,, ,,,, r r o o 2 V 1 2 7 8 c c 2222 2222 545 1 1 n n 0 0 0 E A 0000 0000 h h % % 020 3 3 %%%% %%%% - - t t % N R 0 0 h h 4 4 T IA D N M M---- ---- 3 I 1 C 3333 a a3333 V 3 8 Y 331 1 1 Y , r r 0 ,,,, ,,,, 1 2 9 E 9999 c c9999 0 0 IT 045 1 1 T 40 S 0000 h h0000 % % 0 0 D 000 7 7 D , %%%% - -%%%% % I 10 0 O4 4 N        & & T T P P   r r o o e e s s n n i i t t d d      i i o o n n    * PP: M ----- rrN 1122 32211- oo Ia e 0505 055 05050 PnP jj r w dree l c oa cc u h p M jn tt se - r n O t0 58o cr NN i d tn 4S i a u 5g T **c l t I P d M R e PP v O O e o D l s o R    U p iTt m C ioA e T Nnn IO T t N T R V A 6486 A 0000 N R %%%% S IAD V Na L E t 6486 C a e R 0000s E %%%% S t o u A (fM P p L c d r6 86 4 or o a P 0 00 0 en g t % %% % e a R th r : t Oe i)o sJ 846 6 n Es 00 2 0 0 : C 8 % % %% 1 T / 5 0 S 2 / / 6 68 4 0 0 0 000 4 4 % %%% / 04 PBVg t vPaVlu/eP r(dk.€C)osts (%) PV/Prd.Costs (%)-----012345 54321%%%%%% %%%%% t ln n p b r r y vc ug r c a a au a p eoee uJ O M M ND J J A S M F A PBVg t vPaVlu/eP r(dk.€C)osts (%) PV/Prd.Costs (%)-----012345 54321%%%%%% %%%%%
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Principe de conception 2- La rapidité d’élaboration et de transmission
+• Dans le domaine du pilotage de la performance, la rapidité doit l’emporter sur la
+précision.
+• La notion de rapidité est relative : une industrie à cycles longs (ex : sidérurgie, industrie
+nucléaire) n’aura pas les mêmes enjeux de rapidité qu’une société high tech ou la grande
+distribution par exemple.
+• Le tableau de bord a un rôle d’alerte vis-à-vis des responsables concernés. Ceux-ci
+doivent mettre en œuvre des actions correctives rapides et efficaces.
+• La culture d’entreprise joue aussi un rôle important. Les anglo-saxons utilisent souvent le
+terme de « rapport flash ». Certaines entreprises ont un niveau de délégation assez fort
+et déclinent les plans d’action jusqu’à des niveaux très opérationnels.
+Source: Alazard & Separi, Contrôle de gestion, Ed. Dunod, Expert sup (2013) 10
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Principe de conception 3- Respecter la forme et le contenu
+Les tableaux de bord contiennent généralement 4 à 5 zones :
+ IInnddiiqquueerr ccllaaiirreemmeenntt llaa ppéérriiooddee
+eett llee ppéérriimmèèttrree ccoonncceerrnnéé ppaarr llee
+ttaabblleeaauu ddee bboorrdd !!
+Tableau de bord du centre
+Résultats Objectifs Ecarts
+Rubrique 1
+- Indicateur 1a
+- Indicateur 1b
+Rubrique 2
+- Indicateur 2a
+- Indicateur 2b
+Zone « paramètres Zone Zone Zone
+économiques » «résultats » «objectifs » «écarts »
+Les indicateurs peuvent Les résultats réels Généralement définis Ecarts entre
+être financiers, peuvent être par au moment du budget résultats et
+volumétriques, de qualité, période (ex : (ils se rapportent à la objectifs en
+de délai… Chaque mensuels) ou période considérée. valeur absolue
+rubrique doit représenter cumulés depuis le Ex : budget ou ou relative (%).
+un poids ou un enjeu début de l’année estimé/forecast
+important (YTD) mensualisé) 11
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Principe de conception 4- Respecter la forme pour les indicateurs
+1. Les écarts : ils peuvent être en valeur absolue ou en valeur relative. Exemple de formule d’un écart entre deux périodes
+(cid:3023)(cid:3028)(cid:3039)(cid:3032)(cid:3048)(cid:3045) (cid:2879)(cid:3049)(cid:3028)(cid:3039)(cid:3032)(cid:3048)(cid:3045)
+envaleurrelative: 𝐸𝑐𝑎𝑟𝑡 = (cid:3041) (cid:3041) (cid:2869) = 𝑥%
+(cid:2879)
+(cid:3023)(cid:3028)(cid:3039)(cid:3032)(cid:3048)(cid:3045)
+(cid:3041) (cid:2869)
+(cid:2879)
+2. Les ratios : ce sont des rapports de grandeurs significatives du fonctionnement de l’entreprise. Leur évolution dans le
+temps et l’espace donnent des indications sur la performance. Il faut définir le rapport de telle sorte qu’une
+augmentationduratio soit signed’uneaméliorationdelasituation.
+(cid:3004)(cid:3035)(cid:3036)(cid:3033)(cid:3033)(cid:3045)(cid:3032) (cid:3031)(cid:4594)(cid:3028)(cid:3033)(cid:3033)(cid:3028)(cid:3036)(cid:3045)(cid:3032)(cid:3046)
+Exemplederatio pourunDirecteurCommercial=
+(cid:3015)(cid:3042)(cid:3040)(cid:3029)(cid:3045)(cid:3032) (cid:3031)(cid:3032) (cid:3049)(cid:3032)(cid:3041)(cid:3031)(cid:3032)(cid:3048)(cid:3045)(cid:3046)
+3. Lesgraphiques : untypeparfamilledephénomèneobservé
+Processing : Clean days par activité
+2 3 5 0 PBT T&SC P JA N W B S +10 % 1 9 0 8 0 0 0 % % % + + + + + + + + + + + + 2 2 3 0 5 0 PNB T&SC France
+1 2 5 0 C PB ha T rges 6 7 0 0 % % 1 1 5 0 6,4 6,4 8 6,4 6,4 8 6,4 6,4 8
+1 5 0 5 4 0 0 % % 5 9,9 9,9 11 9,9 9,9 11 9,9 9,9 11
+Jan. 2011 Fev. 2011 Mar. 2011 RéNa-l1iséRéaliséObjectif RéNa-l1iséRéaliséObjectif RéNa-l1iséRéaliséObjectif
+Jan. 2011 Fev. 2011 Mar. 2011 Export Red & Blue Export White Import Remdoc White +Objectif Jan. 2011 CA F E ev. 2011 CBC Mar. 2011
+Les courbes pour les évolutions Les histogrammes pour les comparaisons Les histogrammes empilés pour les
+comparaisons avec une décomposition
+4. Lesclignotants enfonctiondeseuils(les flèches,les feux,les jauges, lamétéo)
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Exercice 1 : quelle représentation pour quel cas ? (1/2)
+Question 1 : quelle représentation pour comparer l’évolution des effectifs de la division A entre le
+31/12/n-1 (1 271) et le 31/12/n (1 228) (tableau de bord de type RH) ?
+Réponse A : l’écart en valeur absolue
+Ecart= effectifs de la division au 31/12/n – effectifs de la division au 31/12/n-1
+= 1 228 – 1 271
+= - 43
+Réponse B : l’écart en valeur relative
+effectif −effectif
+n n 1
+Ecart en valeur relative = − = x%
+effectif
+n 1
+(cid:2869) (cid:2870)(cid:2870)(cid:2876) (cid:2879)(cid:2869) (cid:2870)(cid:2875)(cid:2869)
+Ecart en valeur relative =
+(cid:2869) (cid:2870)(cid:2875)(cid:2869)
+= -3,4%
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Exercice 1 : quelle représentation pour quel cas ? (2/2)
+Réponse C : le diagramme d’écart ou waterfall
+Evolution des effectifs de la division A -En niveau
+1.400
+1.350
+13 20
+1.300 60
+1.250
+1.200
+1.271
+1.150 1.228 1.242
+1.100
+1.050
+Effectifs Flux autres Recrut externe retraites Autres sorties Flux division A SortieTemp Entree temp Effectifs Budget Effectifs
+31/12/n-1 divisions vers vers autres 31/12/n 31/12/n
+division A division A divisions division A division A
+Il permet de détailler et visualiser les causes d’écart.
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Principe de conception 5- Choisir des indicateurs simples et mesurables
+• Les indicateurs ont pour fonction :
+• Le suivi des actions, activités, processus
+• L’évaluation d’une action
+• Le diagnostic d’une situation, d’un problème
+• La veille et surveillance d’environnements et de changements.
+• Les indicateurs doivent être simples, compréhensibles et mesurables.
+• Il est nécessaire de faire évoluer régulièrement les indicateurs : pour les adapter aux enjeux
+actuels de l’entreprise, pour gommer les effets pervers (habitude, lassitude ou contournement
+des managers).
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+• Dans un tableau de bord, il est nécessaire de se comparer à une référence pour apprécier sa performance.
+Cette référence peut être :
+• Soi même : on se compare dans le temps,
+• Ses pairs: on se compare à des régions similaires, des fonctions proches,
+• Les meilleurs : on s’évalue par rapport aux meilleurs de sa catégorie (exemple : top 10 ou top/flop = classement)
+• La moyenne : est-on au dessus ou en dessous de sa catégorie ?
+• Une source externe : le benchmark permet de se comparer à un leader du marché (concurrent) ou à des entreprises
+de secteur différent mais ayant les mêmes fonctions.
+• Exemple : L’APQC (American Productivity and QualityCenter) est un organisme sans but lucratif spécialisé dans la recherche de
+Best Practices, la mesure de la performance entre entreprises, et la gestion des connaissances. C’est la plus grande base de
+données de Benchmarks et de Best Practices sur le marché.
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+Méthode d’élaboration des tableaux de bord
+• On peut par exemple utiliser la méthode OVAR (Objectifs, Variables d’Action,
+Responsables).
+• Il est nécessaire de partir de missions (Objectifs) et facteurs clés de succès pour
+définir les indicateurs.
+• Cas d’application :
+• Exercice 1 Tableau de bord
+Exercice Tableau
+de bord - 1 Enoncé
+• Exercice 2 Tableau de bord (suivant l’avancement du cours)
+Exercice 2 Tableau
+de bord - 1 Enoncé
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+En résumé
+Un tableau de bord, c’est : Un tableau de bord, ce n’est pas :
+ 
+Un document synthétique Une bibliothèque d’indicateurs
+Ex : 15 priorités, 30 indicateurs maximum ! Le tableau de bord de pilotage ne se substitue pas
+aux reportings
+Des principes d’usages définis, partagés et
+acceptés, s’intégrant dans les modes de 
+Un outil chargé d’apporter toutes les réponses
+management
+Le tableau de bord sert à poser les questions et les
+Ex: support d’un CODIR, support aux revues
+enjeux, qui doivent être instruits précisément
+d’activité…
+ Un outil capable de desservir des niveaux de
+Des principes de responsabilité définis, partagés
+management différents
+et acceptés
+Des tableaux de bord peuvent en revanche être
+Ex : un porteur unique par indicateur, chargé de
+«cascadé » , certains objectifs stratégiques étant
+justifier l’évolution
+alors déclinés en sous objectifs
+Un processde production 
+Un simple évaluation de l’atteinte des objectifs
+Ex : des maquettes permettant d’automatiser au
+budgétés
+maximum la production du tableau de bord, des
+Le management par le «progrès» permet de
+responsables de la remontée des données et des
+compléter la vision réalisé / objectif
+commentaires, un responsable de la
+consolidation…
+4- Tableaux de bord et indicateurs et reporting
+4.2 Les facteurs clés de succès d'une organisation, les indicateurs et clés de performance (KPI)
+• Jusqu’à il y a peu, les tableaux de bord rencontraient 4 limites :
+- Pas assez adaptés aux spécificités de chaque service
+- Pas assez reliés aux actions de pilotage dans une approche transversale
+- Élaborés de manière séquentielle, avec retard
+- Ponctuels, dans une optique de contrôle.
+• L’amélioration passe par :
+- Une vision cohérente par rapport aux objectifs
+- Une mesure de performance multicritères sur l’effort accompli et sur l’effort à accomplir
+- Un signalement des dysfonctionnements
+- Une possibilité de simulation
+- Un outil de communication et de coopération entre les acteurs
+- Une intégration de plusieurs dimensions : opérationnel passé, stratégique prospectif, social, sociétal;

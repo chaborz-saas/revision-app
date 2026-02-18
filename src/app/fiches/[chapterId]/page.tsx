@@ -9,7 +9,6 @@ import {
   FileText,
   ChevronLeft,
   ChevronRight,
-  RefreshCw,
   ArrowLeft,
   Sparkles,
   Loader2,
@@ -198,7 +197,7 @@ export default function FicheDetailPage() {
         </Card>
       ) : chapter.resume ? (
         <div>
-          <div className="flex items-center justify-between mb-4">
+          <div className="mb-4">
             <p className="text-xs text-zinc-500">
               Genere le{' '}
               {new Date(chapter.resume.created_at).toLocaleDateString('fr-FR', {
@@ -207,15 +206,6 @@ export default function FicheDetailPage() {
                 year: 'numeric',
               })}
             </p>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleGenerate}
-              icon={<RefreshCw size={14} />}
-              loading={generating}
-            >
-              Regenerer
-            </Button>
           </div>
           <Card className="prose-revision">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>

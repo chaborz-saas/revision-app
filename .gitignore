@@ -34,9 +34,6 @@ yarn-error.log*
 /data/*.db-wal
 /data/*.txt
 
-# course PDFs/docs (too large for git)
-/cours/
-
 # vercel
 .vercel
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.3 — L'Expérience Client</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f9a8b8; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #c0392b; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #e94560; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">MARKETING RELATIONNEL — QUIZ</div>
+        <h1>Ch.3 — L'Expérience Client</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+  {q:"Selon Lemon et Verhoef (2016), le parcours client comprend combien d'étapes ?", options:["2 étapes","3 étapes","4 étapes","5 étapes"], correct:1, explanation:"3 étapes : avant l'achat / l'achat lui-même / le post-achat. Chaque étape comprend plusieurs points de contact."},
+  {q:"Quelle est la différence entre multicanal et omnicanal ?", options:["Ce sont deux mots pour la même chose","Multicanal = plusieurs canaux séparés / Omnicanal = expérience unifiée et fluide entre tous les canaux","Multicanal = digital uniquement / Omnicanal = physique + digital","L'omnicanal est plus ancien que le multicanal"], correct:1, explanation:"Multicanal = l'entreprise est présente sur plusieurs canaux mais ils fonctionnent séparément. Omnicanal = expérience 'sans couture', le client passe d'un canal à l'autre sans rupture."},
+  {q:"Quels profils de clients (Herhausen et al.) nécessitent un parcours fluide pour être fidèles ?", options:["Les accros du physique et les pragmatiques en ligne","Les intensifs en ligne et les accros du physique","Les enthousiastes multicanaux et les O2O","Tous les profils sans exception"], correct:2, explanation:"Les enthousiastes multicanaux et les O2O (online-to-offline) sont fidèles seulement si le produit est bon ET le parcours fluide. Les autres profils sont fidèles dès que le produit satisfait."},
+  {q:"Que signifie '80% des demandes clients concernent 20% des sujets' pour les chatbots ?", options:["Les chatbots ne peuvent répondre qu'à 20% des demandes","Il y a un fort potentiel d'automatisation des réponses les plus fréquentes","80% des clients préfèrent les chatbots aux humains","Les chatbots coûtent 80% moins cher que les humains"], correct:1, explanation:"Si 80% des demandes portent sur 20% des sujets, on peut automatiser ces réponses fréquentes avec un chatbot, libérant les humains pour les cas complexes."},
+  {q:"Pourquoi les chatbots sont-ils particulièrement utiles pour les e-commerçants ?", options:["Ils remplacent totalement les équipes SAV","60% des achats en ligne se font le soir/weekend, hors heures de travail → disponibilité 24h/24","Ils sont gratuits à développer","Ils augmentent automatiquement le panier moyen"], correct:1, explanation:"60% des achats e-commerce se font en dehors des heures de bureau. Un chatbot assure une présence permanente et répond immédiatement à ces moments clés."},
+  {q:"Quels sont les deux grands types de chatbots ?", options:["Chatbot vocal et chatbot écrit","Chatbot B2B et chatbot B2C","Ruled-based chatbot et AI chatbot","Chatbot simple et chatbot complexe"], correct:2, explanation:"Ruled-based = répond selon des règles prédéfinies (arbre de décision). AI chatbot = utilise l'IA pour comprendre le langage naturel et s'adapter."},
+  {q:"Quel est l'apport du métavers pour le marketing relationnel ?", options:["Réduire les coûts de production","Personnaliser l'expérience, gamifier le parcours client, outil de différenciation","Remplacer les magasins physiques","Automatiser les commandes"], correct:1, explanation:"Le métavers offre 3 avantages relationnels : personnalisation de l'expérience, gamification du parcours client, et différenciation face aux concurrents."},
+  {q:"Qui choisit le parcours dans une stratégie omnicanale ?", options:["L'entreprise impose le parcours optimal","L'algorithme détermine le meilleur canal","Le client choisit son parcours, la marque s'adapte","Le vendeur guide toujours le client"], correct:2, explanation:"L'omnicanal part du principe que c'est le CLIENT qui choisit son parcours. La marque doit rendre service en offrant une expérience fluide quel que soit ce choix."}
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

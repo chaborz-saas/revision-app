@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche — Customer Lifetime Value (CLV)</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+.fiche-header { background: linear-gradient(135deg, #e94560 0%, #c0392b 100%); color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0; }
+.fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+.fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+.fiche-body { background: white; padding: 1.8rem 2rem; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto; }
+.section-title { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e8eaf0; text-transform: uppercase; letter-spacing: 1px; }
+.block-def { background: #f0f4ff; border-left: 4px solid #4361ee; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.block-def strong { color: #4361ee; }
+.block-attention { background: #fff4f0; border-left: 4px solid #e63946; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.block-attention::before { content: "⚠ ATTENTION — "; font-weight: 700; color: #e63946; }
+.block-astuce { background: #f0fff4; border-left: 4px solid #2dc653; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.block-astuce::before { content: "✓ ASTUCE — "; font-weight: 700; color: #2dc653; }
+.compact-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.85rem; }
+.compact-table th { background: #1a1a2e; color: white; padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; }
+.compact-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #e8eaf0; }
+.compact-table tr:nth-child(even) td { background: #f8f9ff; }
+.flash-q { background: #1a1a2e; color: white; padding: 0.6rem 1rem; border-radius: 8px; margin: 0.5rem 0 0.2rem; font-weight: 600; font-size: 0.9rem; }
+.flash-a { background: #f8f9ff; padding: 0.6rem 1rem; border-radius: 0 0 8px 8px; margin-bottom: 0.8rem; font-size: 0.88rem; border: 1px solid #e8eaf0; border-top: none; }
+.source-footer { margin-top: 2rem; padding: 0.8rem; background: #f8f9ff; border-radius: 8px; font-size: 0.8rem; color: #666; }
+.source-footer a { color: #4361ee; text-decoration: none; }</style>
+</head>
+<body>
+<div style="max-width:900px;margin:0 auto;">
+  <div class="fiche-header">
+    <div class="matiere">Marketing Relationnel — Chapitre 5</div>
+    <h1>Customer Lifetime Value (CLV)</h1>
+  </div>
+  <div class="fiche-body">
+    
+    <div class="section-title">1. Définitions clés</div>
+    <div class="block-def"><strong>CLV (Customer Lifetime Value)</strong> = valeur actualisée du flux de profit futur attendu issu des transactions avec le client tout au long de sa vie</div>
+    <div class="block-def"><strong>Loi 80/20/30 (Sherden)</strong> = 20% des clients font 80% des revenus, mais la moitié de ces gains est perdue à cause des 30% de clients non rentables</div>
+
+    <div class="section-title">2. Formules</div>
+    <div class="block-def"><strong>Méthode simplifiée :</strong> CLV = Marge/achat × Achats/an × Durée (années) − Coûts marketing</div>
+    <div class="block-def">Exemple boulangerie : 5€ × 3 visites/semaine × 52 semaines × 8 ans = 6 240€</div>
+    <div class="block-def">Exemple streaming : 10€ marge × 4 achats/an × 3 ans − 20€ coût acquisition = 100€</div>
+
+    <div class="section-title">3. Apport stratégique</div>
+    <table class="compact-table">
+      <thead><tr><th>Situation</th><th>Action recommandée</th></tr></thead>
+      <tbody>
+        <tr><td>CLV moyenne &lt; coût d'acquisition</td><td>Réduire les coûts d'acquisition OU améliorer la fidélisation</td></tr>
+        <tr><td>CLV forte mais durée courte</td><td>Travailler la rétention (programmes, expérience client)</td></tr>
+        <tr><td>Clients non rentables (30%)</td><td>Augmenter les prix, ajuster l'offre ou différencier les niveaux de service</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">4. Erreurs à éviter</div>
+    <div class="block-attention">Ne pas confondre CA et marge. La CLV se calcule sur la MARGE, pas sur le chiffre d'affaires</div>
+    <div class="block-attention">Ne pas oublier les coûts (acquisition, fidélisation, SAV) dans le calcul</div>
+    <div class="block-attention">Le panier moyen le plus élevé ≠ CLV la plus forte. La durée et la fréquence comptent autant</div>
+
+    <div class="section-title">5. Flash questions</div>
+    <div class="flash-q">Calculez la CLV : marge 15€, 6 achats/an, 4 ans, coût acquisition 30€</div>
+    <div class="flash-a">15 × 6 × 4 − 30 = 330€</div>
+    <div class="flash-q">Qu'est-ce que la loi 80/20/30 de Sherden ?</div>
+    <div class="flash-a">20% des clients font 80% des revenus, mais la moitié est perdue à cause des 30% de clients non rentables</div>
+    <div class="flash-q">Pourquoi utiliser la marge et non le CA pour calculer la CLV ?</div>
+    <div class="flash-a">Le CA ne reflète pas la rentabilité réelle. La marge correspond au gain effectif pour l'entreprise.</div>
+
+    <div class="source-footer">
+      📄 <a href="../../syntheses/MARKETING_RELATIONNEL/ch5_clv.html">Synthèse complète</a>
+      &nbsp;|&nbsp;
+      📘 <a href="../../cours/Marketing%20Relationnel/La%20valeur%20%C3%A0%20vie%20des%20clients%20ou%20CLV.pptx" target="_blank">Cours PPT</a>
+      &nbsp;|&nbsp;
+      <a href="../../index.html">← Accueil</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

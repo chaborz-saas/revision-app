@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche — L'Expérience Client</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+.fiche-header { background: linear-gradient(135deg, #e94560 0%, #c0392b 100%); color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0; }
+.fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+.fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+.fiche-body { background: white; padding: 1.8rem 2rem; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto; }
+.section-title { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e8eaf0; text-transform: uppercase; letter-spacing: 1px; }
+.block-def { background: #f0f4ff; border-left: 4px solid #4361ee; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.block-def strong { color: #4361ee; }
+.block-attention { background: #fff4f0; border-left: 4px solid #e63946; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.block-attention::before { content: "⚠ ATTENTION — "; font-weight: 700; color: #e63946; }
+.block-astuce { background: #f0fff4; border-left: 4px solid #2dc653; padding: 0.8rem 1rem; margin: 0.6rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.block-astuce::before { content: "✓ ASTUCE — "; font-weight: 700; color: #2dc653; }
+.compact-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.85rem; }
+.compact-table th { background: #1a1a2e; color: white; padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; }
+.compact-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #e8eaf0; }
+.compact-table tr:nth-child(even) td { background: #f8f9ff; }
+.flash-q { background: #1a1a2e; color: white; padding: 0.6rem 1rem; border-radius: 8px; margin: 0.5rem 0 0.2rem; font-weight: 600; font-size: 0.9rem; }
+.flash-a { background: #f8f9ff; padding: 0.6rem 1rem; border-radius: 0 0 8px 8px; margin-bottom: 0.8rem; font-size: 0.88rem; border: 1px solid #e8eaf0; border-top: none; }
+.source-footer { margin-top: 2rem; padding: 0.8rem; background: #f8f9ff; border-radius: 8px; font-size: 0.8rem; color: #666; }
+.source-footer a { color: #4361ee; text-decoration: none; }</style>
+</head>
+<body>
+<div style="max-width:900px;margin:0 auto;">
+  <div class="fiche-header">
+    <div class="matiere">Marketing Relationnel — Chapitre 3</div>
+    <h1>L'Expérience Client</h1>
+  </div>
+  <div class="fiche-body">
+    
+    <div class="section-title">1. Définitions clés</div>
+    <div class="block-def"><strong>Parcours client</strong> (Lemon &amp; Verhoef, 2016) = processus suivi par un client à travers toutes les étapes et tous les points de contact qui forment l'expérience client</div>
+    <div class="block-def"><strong>Omnicanal</strong> = stratégie qui offre une expérience fluide "sans couture" sur tous les canaux, quel que soit le parcours choisi par le client</div>
+
+    <div class="section-title">2. Les 5 profils de clients (Herhausen et al., 2019)</div>
+    <table class="compact-table">
+      <thead><tr><th>Profil</th><th>Description</th><th>Fidélité si…</th></tr></thead>
+      <tbody>
+        <tr><td>Accros du physique</td><td>Achètent uniquement en magasin</td><td>Satisfaits du produit</td></tr>
+        <tr><td>Pragmatiques en ligne</td><td>Online pour praticité</td><td>Satisfaits du produit</td></tr>
+        <tr><td>Intensifs en ligne</td><td>Tout en ligne</td><td>Satisfaits du produit</td></tr>
+        <tr><td>Enthousiastes multicanaux</td><td>Tous les canaux</td><td>Satisfaits ET parcours fluide</td></tr>
+        <tr><td>O2O (online-to-offline)</td><td>Cherchent en ligne, achètent en magasin</td><td>Satisfaits ET parcours fluide</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">3. Les outils digitaux</div>
+    <table class="compact-table">
+      <thead><tr><th>Outil</th><th>Définition</th><th>Apport relationnel</th></tr></thead>
+      <tbody>
+        <tr><td>Objets connectés</td><td>Objets avec identité virtuelle connectés à Internet</td><td>Collecte données continue, personnalisation</td></tr>
+        <tr><td>Chatbots</td><td>Système de dialogue simulant une conversation humaine</td><td>Disponibilité 24h/24, automatise 80% des demandes</td></tr>
+        <tr><td>Réalité augmentée/VR</td><td>Immersion 3D</td><td>Visualisation produit, expérience en magasin</td></tr>
+        <tr><td>Métavers</td><td>Espace virtuel immersif</td><td>Personnalisation, gamification, différenciation</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">4. À retenir sur les chatbots</div>
+    <div class="block-astuce">80% des demandes clients concernent 20% des sujets → fort potentiel d'automatisation</div>
+    <div class="block-astuce">60% des achats en ligne se font le soir/weekend → chatbot = disponibilité permanente</div>
+
+    <div class="section-title">5. À ne pas confondre</div>
+    <div class="block-attention">Multicanal ≠ Omnicanal. Le multicanal = plusieurs canaux séparés. L'omnicanal = expérience unifiée et fluide entre tous les canaux</div>
+
+    <div class="section-title">6. Flash questions</div>
+    <div class="flash-q">Définissez le parcours client</div>
+    <div class="flash-a">Processus suivi par un client à travers toutes les étapes et points de contact qui forment l'expérience (Lemon &amp; Verhoef, 2016)</div>
+    <div class="flash-q">Quels profils de clients exigent un parcours fluide pour être fidèles ?</div>
+    <div class="flash-a">Les enthousiastes multicanaux et les O2O (online-to-offline)</div>
+    <div class="flash-q">Quelle est la différence entre multicanal et omnicanal ?</div>
+    <div class="flash-a">Multicanal = canaux séparés / Omnicanal = expérience unifiée et fluide entre tous les canaux</div>
+
+    <div class="source-footer">
+      📄 <a href="../../syntheses/MARKETING_RELATIONNEL/ch3_experience_client.html">Synthèse complète</a>
+      &nbsp;|&nbsp;
+      📘 <a href="../../cours/Marketing%20Relationnel/4%20Lexp%C3%A9rience%20client%20(3).pptx" target="_blank">Cours PPT</a>
+      &nbsp;|&nbsp;
+      <a href="../../index.html">← Accueil</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

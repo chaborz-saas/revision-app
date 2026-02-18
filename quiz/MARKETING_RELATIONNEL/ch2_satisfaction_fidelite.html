@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.2 — Satisfaction & Fidélité</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f9a8b8; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #c0392b; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #e94560; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">MARKETING RELATIONNEL — QUIZ</div>
+        <h1>Ch.2 — Satisfaction & Fidélité</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">🎯</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+  {q:"Selon Oliver, la satisfaction naît de :", options:["La qualité intrinsèque du produit","La comparaison entre attentes préalables et expérience de consommation","Le prix payé par le client","La notoriété de la marque"], correct:1, explanation:"La satisfaction = comparaison attentes vs expérience. Si expérience > attentes → satisfaction. Si expérience < attentes → insatisfaction."},
+  {q:"Qu'est-ce que le risque de 'surpromesse' ?", options:["Promettre trop peu pour mieux surprendre","Gonfler les attentes du client au point qu'une bonne expérience génère quand même de l'insatisfaction","Offrir trop d'avantages au client","Promettre des promotions impossibles à tenir"], correct:1, explanation:"Si on promet trop (pub exagérée, vendeur enthousiaste), on élève les attentes. Même une bonne expérience peut décevoir si les attentes étaient irréalistes."},
+  {q:"Lequel N'EST PAS une mesure directe de la satisfaction ?", options:["Enquête de satisfaction","Client mystère","Taux de défection","Questionnaire NPS"], correct:2, explanation:"Le taux de défection est une mesure INDIRECTE (comportement observé). Les mesures directes interrogent explicitement le client sur sa satisfaction."},
+  {q:"En marketing, la 'part de client' (taux de nourriture) mesure :", options:["Le nombre de produits achetés par le client","La proportion des achats du client réalisés chez nous vs ses achats totaux dans la catégorie","La satisfaction du client","Le chiffre d'affaires généré par client"], correct:1, explanation:"Le taux de nourriture = achats chez nous / achats totaux du client dans la catégorie. Ex: un client dépense 200€/mois en vêtements dont 80€ chez nous → taux = 40%."},
+  {q:"Aux USA, 90% des automobilistes sont satisfaits de leur marque. Quel % la remplace par la même marque ?", options:["90%","70%","50%","35%"], correct:3, explanation:"Seulement 35% ! C'est l'illustration parfaite que satisfaction ≠ fidélité. Un client satisfait peut quand même changer de marque."},
+  {q:"Quelle est la différence entre fidélité objective et subjective ?", options:["La fidélité objective concerne les femmes, la subjective les hommes","Objective = comportements de rachat / Subjective = attachement émotionnel et mental","Objective = mesurable / Subjective = non mesurable","Il n'y a pas de différence"], correct:1, explanation:"Fidélité objective = ce que le client FAIT (rachète). Fidélité subjective = ce que le client RESSENT (attachement, confiance). La vraie fidélité combine les deux."},
+  {q:"Pour quels clients le lien satisfaction-fidélité est-il le plus fort ?", options:["Les clients moyennement satisfaits","Les clients ayant des attentes minimales","Les clients aux positions extrêmes (très satisfaits ou très insatisfaits)","Les clients les plus anciens"], correct:2, explanation:"Les positions extrêmes sont les plus prédictives : les très satisfaits sont les plus fidèles, les très insatisfaits partent définitivement. Les 'moyens' sont les plus volatiles."},
+  {q:"Pourquoi un client satisfait peut-il être infidèle ? (plusieurs raisons, choisissez la mauvaise)", options:["Recherche de variété","Satisfaction ne veut pas dire préférence","Sollicitations d'autres marques","Prix plus élevé chez le concurrent"], correct:3, explanation:"Un prix plus élevé chez le concurrent est une raison de rester fidèle, pas de partir ! Les vraies raisons d'infidélité malgré la satisfaction : variété, préférence différente, offres concurrentes attractives."}
+];
+let current = 0, score = 0, answered = false;
+function renderQuestion() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
+        </div>`;
+    answered = false;
+}
+function answer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
+function prev() { if (current > 0) { current--; renderQuestion(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
+renderQuestion();
+</script>
+</body>
+</html>

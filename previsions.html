@@ -18,44 +18,36 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
-        /* Navigation tabs */
-        .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .tab { padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #808090; transition: all 0.2s; }
-        .tab:hover { background: rgba(245,158,11,0.1); color: #f59e0b; border-color: rgba(245,158,11,0.3); }
-        .tab.active { background: rgba(245,158,11,0.15); color: #f59e0b; border-color: #f59e0b; }
+        /* Disclaimer */
+        .disclaimer { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; text-align: center; }
+        .disclaimer .title { font-size: 0.85rem; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+        .disclaimer .text { font-size: 0.82rem; color: #808090; line-height: 1.5; }
+
+        /* Leak banner */
+        .leak-banner { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 2rem; text-align: center; }
+        .leak-banner .text { font-size: 0.85rem; color: #fbbf24; }
 
         /* Matiere section */
-        .matiere-section { margin-bottom: 2.5rem; display: none; }
-        .matiere-section.visible { display: block; }
-        .matiere-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .matiere-title .emoji { font-size: 1.3rem; }
+        .matiere-section { margin-bottom: 2rem; }
+        .matiere-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
 
-        /* Prediction cards */
-        .pred-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
-        .pred-card .pred-text { font-size: 0.92rem; color: #d0d0d8; line-height: 1.6; }
-        .pred-card .pred-text strong { color: white; }
+        /* Simple list items */
+        .rumeur { padding: 0.6rem 0; font-size: 0.9rem; color: #d0d0d8; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .rumeur:last-child { border-bottom: none; }
 
-        /* Badges de probabilité */
-        .badge { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; margin-right: 0.5rem; vertical-align: middle; }
-        .badge-hot { background: rgba(239,68,68,0.2); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
-        .badge-likely { background: rgba(245,158,11,0.2); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
-        .badge-maybe { background: rgba(59,130,246,0.2); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
-        .badge-skip { background: rgba(107,114,128,0.2); color: #9ca3af; border: 1px solid rgba(107,114,128,0.3); }
+        .badge { display: inline-block; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; margin-right: 0.4rem; vertical-align: middle; }
+        .badge-probable { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+        .badge-exclu { background: rgba(107,114,128,0.15); color: #9ca3af; border: 1px solid rgba(107,114,128,0.25); }
 
-        /* Info exam */
-        .exam-info { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 10px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: #fbbf24; }
-        .exam-info strong { color: #f59e0b; }
+        .legend { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: #606070; }
 
-        /* Légende */
-        .legend { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.75rem; }
-
-        /* Section insights */
+        /* Insights */
         .insights-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
         .insights-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
         .insights-header h2 { font-size: 1.1rem; font-weight: 700; }
-
-        .btn-insight { background: linear-gradient(135deg, #f59e0b, #d97706); color: #1a1a2e; border: none; border-radius: 8px; padding: 0.6rem 1.2rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s; }
+        .btn-insight { background: linear-gradient(135deg, #f59e0b, #d97706); color: #1a1a2e; border: none; border-radius: 8px; padding: 0.6rem 1.2rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
         .btn-insight:hover { opacity: 0.85; }
+        .empty-feed { text-align: center; color: #606070; font-size: 0.85rem; padding: 2rem; }
 
         /* Modal */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
@@ -70,23 +62,6 @@
         .btn-cancel { background: rgba(255,255,255,0.08); color: #d0d0d8; border: none; border-radius: 8px; padding: 0.6rem 1.2rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
         .btn-send { background: #f59e0b; color: #1a1a2e; border: none; border-radius: 8px; padding: 0.6rem 1.2rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
         .modal-thanks { display: none; text-align: center; padding: 1rem; }
-        .modal-thanks .big { font-size: 2rem; margin-bottom: 0.5rem; }
-
-        /* Insight feed */
-        .insight-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.8rem 1rem; margin-bottom: 0.6rem; }
-        .insight-meta { font-size: 0.7rem; color: #606070; margin-bottom: 0.3rem; display: flex; gap: 0.5rem; align-items: center; }
-        .insight-text { font-size: 0.88rem; color: #d0d0d8; }
-        .insight-votes { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .vote-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #808090; transition: all 0.2s; }
-        .vote-btn:hover { background: rgba(245,158,11,0.1); color: #f59e0b; }
-        .vote-btn.voted { background: rgba(245,158,11,0.15); color: #f59e0b; border-color: rgba(245,158,11,0.3); }
-
-        .empty-feed { text-align: center; color: #606070; font-size: 0.85rem; padding: 2rem; }
-
-        @media (max-width: 600px) {
-            .tabs { gap: 0.3rem; }
-            .tab { font-size: 0.7rem; padding: 0.4rem 0.7rem; }
-        }
     </style>
 </head>
 <body>
@@ -94,347 +69,112 @@
 <div class="hero-prev">
     <a href="index.html" class="back-link">← Retour à l'accueil</a>
     <h1>🔮 Prévisions du <span>Goat</span></h1>
-    <p>Ce que les profs ont dit — ce qui va (sûrement) tomber</p>
+    <p>Bruits de couloir & rumeurs sur les partiels</p>
 </div>
 
 <div class="container">
 
+    <div class="disclaimer">
+        <div class="title">⚠️ Disclaimer</div>
+        <div class="text">Rien ici n'est officiel. Ce sont des bruits de couloir, des rumeurs et des suppositions basées sur ce qui a été dit en cours. Aucune certitude. Révisez tout votre cours, ne vous basez pas uniquement sur cette page. Si un vrai leak de partiel tombe, il sera posté ici.</div>
+    </div>
+
+    <div class="leak-banner">
+        <div class="text">📢 Un partiel a leaké ? Envoie-le via le bouton <strong>"Partager un insight"</strong> en bas — il sera publié ici.</div>
+    </div>
+
     <div class="legend">
-        <span><span class="badge badge-hot">🔥 QUASI SÛR</span> Confirmé par le prof</span>
-        <span><span class="badge badge-likely">⚡ PROBABLE</span> Fortement probable</span>
-        <span><span class="badge badge-maybe">💡 POSSIBLE</span> Mentionné en cours</span>
-        <span><span class="badge badge-skip">❌ PAS AU PARTIEL</span> Exclu par le prof</span>
+        <span><span class="badge badge-probable">PROBABLE</span> Rumeur qui revient souvent</span>
+        <span><span class="badge badge-exclu">PAS PROBABLE</span> A priori exclu</span>
     </div>
 
-    <div class="tabs">
-        <div class="tab active" onclick="showMatiere('all')">Tout</div>
-        <div class="tab" onclick="showMatiere('droit')">⚖️ Droit</div>
-        <div class="tab" onclick="showMatiere('quanti')">📊 Analyse Quanti</div>
-        <div class="tab" onclick="showMatiere('pilotage')">📈 Pilotage</div>
-        <div class="tab" onclick="showMatiere('grh')">👥 GRH</div>
-        <div class="tab" onclick="showMatiere('quali')">🔬 Analyse Quali</div>
-        <div class="tab" onclick="showMatiere('marketing')">💼 Marketing</div>
-        <div class="tab" onclick="showMatiere('leadership')">🎯 Leadership</div>
-        <div class="tab" onclick="showMatiere('strategie')">🌱 Stratégie Durable</div>
-        <div class="tab" onclick="showMatiere('anglais')">🇬🇧 Anglais</div>
-        <div class="tab" onclick="showMatiere('geoeco')">🌍 Géoéco</div>
+    <!-- DROIT -->
+    <div class="matiere-section">
+        <div class="matiere-title">⚖️ Droit</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Rome I, Bruxelles I bis, Convention de Vienne</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Force majeure, hardship</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Incoterms : EXW, FAS, FOB, DDP, CIF — allocation des risques et coûts de transport</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Agents commerciaux, responsabilité produits, clauses abusives</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Droit des transports — rôles et responsabilités des acteurs</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Étude de cas type Connemara (mais plus courte, sans annexes)</div>
     </div>
 
-    <!-- ==================== DROIT ==================== -->
-    <div class="matiere-section visible" data-matiere="droit">
-        <div class="matiere-title"><span class="emoji">⚖️</span> <span style="color:#f59e0b;">Droit</span></div>
-
-        <div class="exam-info">
-            <strong>Format :</strong> 4-5 questions de cours + étude de cas (~10pts chaque). Le case study est plus court que Connemara, pas d'annexes, pas de questions précises — il faut identifier les problèmes juridiques et raisonner avec les textes de loi.
-        </div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Rome I</strong> — la loi applicable et la manière dont elle est déterminée
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Bruxelles I bis</strong> — détermination de la juridiction compétente en cas de litige
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Convention de Vienne</strong> — éléments essentiels
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>5 cas de force majeure + hardship</strong>
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Allocation of risk & transportation cost</strong> — connaître EXW, FAS, FOB, DDP, CIF
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                <strong>Agents commerciaux</strong> — définition, rôle (mentionné dans le programme Franco)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                <strong>Responsabilité du fait des produits</strong> — définition, fonctionnement (Franco)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                <strong>Clauses abusives</strong> — définition, objectif (Franco)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                <strong>Droit des transports</strong> — rôles et responsabilités des différents acteurs (dernière séance, dense)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Méthode juridique</strong> : 1) Identifier le problème → 2) Identifier les règles de droit → 3) Appliquer les règles au cas
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-skip">❌ PAS AU PARTIEL</span>
-                <strong>Anglo track :</strong> Art et acompte, agents commerciaux, produits défectueux, Incoterms (détails) — <em>exclu explicitement par le prof Anglo</em>
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-maybe">💡 POSSIBLE</span>
-                Se baser sur la <strong>correction Anglo fournie sur Upward</strong> — recommandé fortement par le prof
-            </div>
-        </div>
+    <!-- ANALYSE QUANTI -->
+    <div class="matiere-section">
+        <div class="matiere-title">📊 Analyse Quantitative</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Stat descriptive — identification de variables, lecture de tableau</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Analyse bivariée — tests, interprétation, hypothèses</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Régression linéaire — bien connaître le modèle et le vocabulaire</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Histogramme et boxplot — lecture et interprétation</div>
+        <div class="rumeur"><span class="badge badge-exclu">PAS PROBABLE</span> ANOVA</div>
+        <div class="rumeur"><span class="badge badge-exclu">PAS PROBABLE</span> Régression logistique</div>
     </div>
 
-    <!-- ==================== ANALYSE QUANTI ==================== -->
-    <div class="matiere-section visible" data-matiere="quanti">
-        <div class="matiere-title"><span class="emoji">📊</span> <span style="color:#3b82f6;">Analyse Quantitative</span></div>
-
-        <div class="exam-info">
-            <strong>Format Franco :</strong> Exercice 1 (3 questions, stat descriptive, tableau + Jamovi) | Exercice 2 (5 questions, 8pts, analyse bivariée) | Exercice 3 (5 questions, 9pts, autre méthode)
-        </div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Statistique descriptive</strong> — identification de variables (quali/quanti), lecture de tableau + analyse Jamovi
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Analyse bivariée</strong> — tests avec étoiles (1, 2, 3 étoiles), interprétation des données, formulation d'hypothèses
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Régression linéaire</strong> — apprendre par cœur le modèle avec le bon vocabulaire (le prof insiste)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                <strong>Histogramme et boxplot</strong> — bien revoir leur lecture et interprétation
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-skip">❌ PAS AU PARTIEL</span>
-                <strong>Régression logistique</strong> — confirmé exclu
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-skip">❌ PAS AU PARTIEL</span>
-                <strong>ANOVA</strong> — confirmé pas au partiel
-            </div>
-        </div>
+    <!-- PILOTAGE -->
+    <div class="matiere-section">
+        <div class="matiere-title">📈 Pilotage de la Performance</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Coût cible — exercice pratique</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Masse salariale — calcul évolution, effet d'effectif, rémunération moyenne</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Questions de cours type « à quoi sert le coût cible ? »</div>
+        <div class="rumeur"><span class="badge badge-exclu">PAS PROBABLE</span> RSE</div>
     </div>
 
-    <!-- ==================== PILOTAGE ==================== -->
-    <div class="matiere-section visible" data-matiere="pilotage">
-        <div class="matiere-title"><span class="emoji">📈</span> <span style="color:#8b5cf6;">Pilotage de la Performance</span></div>
-
-        <div class="exam-info">
-            <strong>Format :</strong> 2 exercices (5pts chacun) + 2 questions de cours (5pts chacune). Questions de cours type : « à quoi sert le coût cible ? qu'est-ce que la masse salariale ? comment l'optimiser ? »
-        </div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Coût cible</strong> — exercice pratique
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Masse salariale</strong> — calcul évolution en € et %, effet d'effectif, évolution de la rémunération moyenne, commentaires
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                Exercices types sur <strong>Upward</strong> — à refaire en priorité
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-skip">❌ PAS AU PARTIEL</span>
-                <strong>RSE</strong> — confirmé exclu
-            </div>
-        </div>
+    <!-- GRH -->
+    <div class="matiere-section">
+        <div class="matiere-title">👥 GRH</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Cas pratique global — recrutement, rémunération, évaluation, carrières, diversité</div>
     </div>
 
-    <!-- ==================== GRH ==================== -->
-    <div class="matiere-section visible" data-matiere="grh">
-        <div class="matiere-title"><span class="emoji">👥</span> <span style="color:#10b981;">GRH</span></div>
-
-        <div class="exam-info">
-            <strong>Format :</strong> Cas pratique couvrant tous les grands volets du cours
-        </div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Cas pratique global</strong> — recrutement, rémunération, évaluation, carrières, diversité — tous les volets seront présents
-            </div>
-        </div>
+    <!-- ANALYSE QUALI -->
+    <div class="matiere-section">
+        <div class="matiere-title">🔬 Analyse Qualitative</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Les différentes méthodes qualitatives et leurs objectifs</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Codage (ouvert/axial/sélectif) et analyse des données</div>
     </div>
 
-    <!-- ==================== ANALYSE QUALI ==================== -->
-    <div class="matiere-section visible" data-matiere="quali">
-        <div class="matiere-title"><span class="emoji">🔬</span> <span style="color:#8e44ad;">Analyse Qualitative</span></div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Méthodes qualitatives</strong> — connaître les différentes méthodes, objectifs, entretiens, focus groups, observation
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Codage et analyse des données</strong> — types de codage (ouvert/axial/sélectif), processus d'analyse, articulation codes ↔ catégories
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                Réviser les <strong>slides du cours + le travail rendu</strong> + lecture des 2 ouvrages (intro + chapitre 1) — « largement suffisant » selon le prof
-            </div>
-        </div>
+    <!-- MARKETING -->
+    <div class="matiere-section">
+        <div class="matiere-title">💼 Marketing Relationnel</div>
+        <div class="rumeur" style="color:#606070;">Pas de rumeur pour le moment — partage un insight si t'as une info</div>
     </div>
 
-    <!-- ==================== MARKETING ==================== -->
-    <div class="matiere-section visible" data-matiere="marketing">
-        <div class="matiere-title"><span class="emoji">💼</span> <span style="color:#f97316;">Marketing Relationnel</span></div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-maybe">💡 POSSIBLE</span>
-                Pas de leak spécifique pour le moment — <strong>partager un insight si tu as des infos !</strong>
-            </div>
-        </div>
+    <!-- LEADERSHIP -->
+    <div class="matiere-section">
+        <div class="matiere-title">🎯 Leadership</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Coaching vs Accompagnement</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Management du conflit, communication supportive</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Sources d'influence, pouvoir et communication</div>
     </div>
 
-    <!-- ==================== LEADERSHIP ==================== -->
-    <div class="matiere-section visible" data-matiere="leadership">
-        <div class="matiere-title"><span class="emoji">🎯</span> <span style="color:#06b6d4;">Leadership</span></div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Coaching vs Accompagnement</strong> — question type : « est-ce qu'on prend du coaching ou de l'accompagnement ? »
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Management du conflit</strong> + <strong>Communication supportive</strong>
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Sources d'influence, pouvoir et communication</strong>
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                Cours du 18/12 — <strong>beaucoup de notions</strong>, à bien réviser
-            </div>
-        </div>
+    <!-- STRATEGIE DURABLE -->
+    <div class="matiere-section">
+        <div class="matiere-title">🌱 Stratégie Durable & Éthique</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Développement durable — définitions, tensions de durabilité</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Diagnostic stratégique (SWOT, PESTEL, Porter, BMC Durable)</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Pensée paradoxale, carte de polarité, logique marchande vs civique</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Gestion du changement — VRIO, parties prenantes, faisabilité</div>
     </div>
 
-    <!-- ==================== STRATEGIE DURABLE ==================== -->
-    <div class="matiere-section visible" data-matiere="strategie">
-        <div class="matiere-title"><span class="emoji">🌱</span> <span style="color:#22c55e;">Stratégie d'Affaire Durable & Éthique</span></div>
-
-        <div class="exam-info">
-            <strong>Format :</strong> 2 questions de cours (4pts chacune) + 1 question de synthèse (12pts) — il faut bien maîtriser son sujet
-        </div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Introduction au DD</strong> — définition, enjeux, tensions de durabilité (court terme vs long terme, coûts vs impact, discours vs pratiques)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Diagnostic de durabilité stratégique (HBS)</strong> — SWOT, PESTEL, 5 forces de Porter, diagnostic interne, Business Model Canvas Durable avec ODD
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Pensée paradoxale & carte de polarité</strong> — reconnaître et accepter les tensions. Logique marchande vs logique civique (Boltanski & Thévenot). Innovation ambidextre (exploration vs exploitation)
-            </div>
-        </div>
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>Gestion du changement</strong> — théorie basée sur les ressources, théorie des parties prenantes, analyse VRIO, analyse d'acceptabilité, analyse de faisabilité, méthode du consultant
-            </div>
-        </div>
+    <!-- ANGLAIS -->
+    <div class="matiere-section">
+        <div class="matiere-title">🇬🇧 Anglais</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> TOEIC Reading + essay (écrire une lettre)</div>
     </div>
 
-    <!-- ==================== ANGLAIS ==================== -->
-    <div class="matiere-section visible" data-matiere="anglais">
-        <div class="matiere-title"><span class="emoji">🇬🇧</span> <span style="color:#ef4444;">Anglais</span></div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-hot">🔥 QUASI SÛR</span>
-                <strong>TOEIC Reading</strong> + <strong>Essay question</strong> (écrire une lettre)
-            </div>
-        </div>
+    <!-- GEOECO -->
+    <div class="matiere-section">
+        <div class="matiere-title">🌍 Géoéconomie</div>
+        <div class="rumeur"><span class="badge badge-probable">PROBABLE</span> Openbook avec ChatGPT — note dispo sur Upward 1 semaine avant</div>
     </div>
 
-    <!-- ==================== GEOECO ==================== -->
-    <div class="matiere-section visible" data-matiere="geoeco">
-        <div class="matiere-title"><span class="emoji">🌍</span> <span style="color:#a855f7;">Géoéconomie</span></div>
-
-        <div class="exam-info">
-            <strong>Format :</strong> Openbook — avec script ChatGPT à rendre. Avoir un compte ChatGPT (gratuit suffit) + historique des conversations activé + partager le lien public.
-        </div>
-
-        <div class="pred-card">
-            <div class="pred-text">
-                <span class="badge badge-likely">⚡ PROBABLE</span>
-                Note disponible sur <strong>Upward 1 semaine avant l'épreuve</strong> — à étudier absolument
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== INSIGHTS ==================== -->
+    <!-- INSIGHTS -->
     <div class="insights-section">
         <div class="insights-header">
             <h2>💡 Insights de la classe</h2>
             <button class="btn-insight" onclick="openModal()">+ Partager un insight</button>
         </div>
-
         <div id="insight-feed">
-            <div class="empty-feed">Aucun insight pour le moment — sois le premier à partager une info !</div>
+            <div class="empty-feed">Aucun insight pour le moment — sois le premier à partager une info</div>
         </div>
     </div>
 
@@ -445,10 +185,9 @@
     <div class="modal">
         <div id="modal-form-area">
             <h3>💡 Partager un insight</h3>
-            <p style="font-size:0.82rem;color:#808090;">Une info de prof, une rumeur, un indice sur ce qui va tomber ? Partage-le !</p>
-
+            <p style="font-size:0.82rem;color:#808090;">Une rumeur, une info de prof, un leak ? Partage-le ici.</p>
             <form id="insightForm" action="https://formspree.io/f/mojnldpv" method="POST">
-                <label>Matière concernée</label>
+                <label>Matière</label>
                 <select name="matiere_insight" required>
                     <option value="" disabled selected>Choisir...</option>
                     <option value="Droit">⚖️ Droit</option>
@@ -456,19 +195,16 @@
                     <option value="Pilotage">📈 Pilotage</option>
                     <option value="GRH">👥 GRH</option>
                     <option value="Analyse Quali">🔬 Analyse Quali</option>
-                    <option value="Marketing Relationnel">💼 Marketing Relationnel</option>
+                    <option value="Marketing Relationnel">💼 Marketing</option>
                     <option value="Leadership">🎯 Leadership</option>
                     <option value="Stratégie Durable">🌱 Stratégie Durable</option>
                     <option value="Anglais">🇬🇧 Anglais</option>
-                    <option value="Géoéconomie">🌍 Géoéconomie</option>
+                    <option value="Géoéconomie">🌍 Géoéco</option>
                 </select>
-
-                <label>Ton insight</label>
-                <textarea name="insight_message" placeholder="Ex : Le prof de pilotage a dit que les tableaux de bord ne seraient pas au partiel..." required></textarea>
-
+                <label>Ton info</label>
+                <textarea name="insight_message" placeholder="Ex : le prof de pilotage a dit que les tableaux de bord seraient pas au partiel..." required></textarea>
                 <input type="hidden" name="_subject" value="[Prévisions du Goat] Nouvel insight">
                 <input type="text" name="_gotcha" style="display:none">
-
                 <div class="modal-buttons">
                     <button type="button" class="btn-cancel" onclick="closeModal()">Annuler</button>
                     <button type="submit" class="btn-send">Envoyer 🚀</button>
@@ -476,56 +212,34 @@
             </form>
         </div>
         <div class="modal-thanks" id="modal-thanks">
-            <div class="big">🫡</div>
-            <div style="font-size:1.5rem;font-weight:800;color:white;">MONSTRE</div>
-            <div style="color:#808090;margin-top:0.5rem;font-size:0.85rem;">Insight reçu — je l'ajoute dès que possible.</div>
+            <div style="font-size:2.5rem;">🫡</div>
+            <div style="font-size:1.5rem;font-weight:800;color:white;margin-top:0.5rem;">MONSTRE</div>
+            <div style="color:#808090;margin-top:0.5rem;font-size:0.85rem;">Reçu — je regarde ça.</div>
             <button class="btn-cancel" onclick="closeModal()" style="margin-top:1rem;">Fermer</button>
         </div>
     </div>
 </div>
 
 <script>
-// === TABS / FILTER ===
-function showMatiere(m) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
-    document.querySelectorAll('.matiere-section').forEach(s => {
-        if (m === 'all') s.classList.add('visible');
-        else s.classList.toggle('visible', s.dataset.matiere === m);
-    });
-}
-
-// === MODAL ===
 function openModal() {
     document.getElementById('modal').classList.add('open');
     document.getElementById('modal-form-area').style.display = 'block';
     document.getElementById('modal-thanks').style.display = 'none';
 }
-function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-}
-document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-// === FORM SUBMIT (Formspree) ===
-const insightForm = document.getElementById('insightForm');
-insightForm.addEventListener('submit', async function(e) {
+document.getElementById('insightForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = new FormData(insightForm);
+    const form = this;
     try {
-        const res = await fetch(insightForm.action, {
-            method: 'POST', body: data,
-            headers: { 'Accept': 'application/json' }
-        });
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
         if (res.ok) {
             document.getElementById('modal-form-area').style.display = 'none';
             document.getElementById('modal-thanks').style.display = 'block';
-            insightForm.reset();
+            form.reset();
         }
-    } catch(err) {
-        alert('Erreur réseau — réessaie dans un moment.');
-    }
+    } catch(err) { alert('Erreur réseau — réessaie.'); }
 });
 </script>
 

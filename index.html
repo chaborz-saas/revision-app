@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Révisions M1 — Synthèses & Fiches</title>
+    <title>Revision pour le peuple</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12,854 +12,110 @@
             background: #0f0f1a;
             color: #e0e0e0;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            padding: 3rem 2rem;
+        .landing {
             text-align: center;
-            border-bottom: 3px solid #e94560;
+            padding: 2rem;
         }
-        .hero h1 {
-            font-size: 2.2rem;
+        .landing h1 {
+            font-size: 2.5rem;
             font-weight: 800;
             color: white;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
-        .hero p {
-            color: #a0a0b0;
+        .landing .sub {
+            color: #808090;
             font-size: 1rem;
+            margin-bottom: 3rem;
         }
-        .stats {
+        .tracks {
             display: flex;
-            justify-content: center;
             gap: 2rem;
-            margin-top: 1.5rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
-        .stat {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            text-align: center;
-        }
-        .stat .number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #e94560;
-        }
-        .stat .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #808090;
-            margin-top: 0.2rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .matiere {
-            margin-bottom: 2.5rem;
-        }
-        .matiere-header {
+        .track {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid;
-        }
-        .matiere-header .emoji { font-size: 1.5rem; }
-        .matiere-header h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-        .matiere-header .count {
-            margin-left: auto;
-            font-size: 0.8rem;
-            color: #808090;
-            background: rgba(255,255,255,0.05);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-        }
-        .rh .matiere-header { border-color: #10b981; }
-        .rh .matiere-header h2 { color: #10b981; }
-        .aq .matiere-header { border-color: #3b82f6; }
-        .aq .matiere-header h2 { color: #3b82f6; }
-        .droit .matiere-header { border-color: #f59e0b; }
-        .droit .matiere-header h2 { color: #f59e0b; }
-        .pilotage .matiere-header { border-color: #8b5cf6; }
-        .pilotage .matiere-header h2 { color: #8b5cf6; }
-
-        .chapters {
-            display: grid;
-            gap: 0.6rem;
-        }
-        .chapter {
-            display: flex;
-            align-items: center;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 10px;
-            padding: 0.8rem 1.2rem;
-            transition: all 0.2s;
-        }
-        .chapter:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.12);
-        }
-        .chapter .num {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #606070;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            min-width: 30px;
-        }
-        .chapter .title {
-            flex: 1;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #d0d0d8;
-        }
-        .chapter .links {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .chapter .links a {
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 0.35rem 0.8rem;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-        .btn-synthese {
-            background: rgba(41, 128, 185, 0.15);
-            color: #5dade2;
-            border: 1px solid rgba(41, 128, 185, 0.3);
-        }
-        .btn-synthese:hover {
-            background: rgba(41, 128, 185, 0.3);
-        }
-        .btn-fiche {
-            background: rgba(233, 69, 96, 0.15);
-            color: #e94560;
-            border: 1px solid rgba(233, 69, 96, 0.3);
-        }
-        .btn-fiche:hover {
-            background: rgba(233, 69, 96, 0.3);
-        }
-        .btn-quiz {
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        .btn-quiz:hover {
-            background: rgba(16, 185, 129, 0.3);
-        }
-        .sous-categorie {
-            margin-top: 1rem;
-            padding: 0.6rem 1rem;
-            background: rgba(255,255,255,0.02);
-            border-left: 3px solid rgba(255,255,255,0.1);
-            border-radius: 0 8px 8px 0;
-        }
-        .sous-categorie-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #606070;
-            margin-bottom: 0.6rem;
-            font-weight: 700;
-        }
-        .badge-leack {
-            display: inline-block;
-            background: rgba(233, 69, 96, 0.2);
-            color: #e94560;
-            font-size: 0.65rem;
-            padding: 0.1rem 0.5rem;
-            border-radius: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-left: 0.4rem;
-            vertical-align: middle;
-        }
-        /* === FEEDBACK SECTION === */
-        .feedback-section {
-            max-width: 1000px;
-            margin: 0 auto 2rem;
-            padding: 0 2rem;
-        }
-        .feedback-box {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 2.5rem 3rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            min-width: 240px;
         }
-        .feedback-box h3 {
-            font-size: 1.1rem;
+        .track:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+        }
+        .track .flag {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .track .track-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #e0e0e0;
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .feedback-box p {
-            font-size: 0.85rem;
-            color: #606070;
-            margin-bottom: 1.5rem;
-        }
-        .feedback-form {
-            display: grid;
-            gap: 1rem;
-        }
-        .feedback-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        .feedback-form label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #808090;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-        .feedback-form select,
-        .feedback-form input,
-        .feedback-form textarea {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 0.7rem 1rem;
-            color: #e0e0e0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .feedback-form select option {
-            background: #1a1a2e;
-            color: #e0e0e0;
-        }
-        .feedback-form select:focus,
-        .feedback-form input:focus,
-        .feedback-form textarea:focus {
-            border-color: rgba(233, 69, 96, 0.5);
-        }
-        .feedback-form textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        .stars-row {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        .stars-row input[type="radio"] { display: none; }
-        .stars-row label {
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: #333;
-            text-transform: none;
-            letter-spacing: 0;
-            margin: 0;
-            transition: color 0.15s;
-        }
-        .stars-row input[type="radio"]:checked ~ label,
-        .stars-row label:hover,
-        .stars-row label:hover ~ label {
-            color: #f59e0b;
-        }
-        .stars-row { flex-direction: row-reverse; }
-        .stars-row label:hover,
-        .stars-row label:hover ~ label { color: #f59e0b; }
-        .feedback-submit {
-            background: linear-gradient(135deg, #e94560, #c0392b);
             color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 0.8rem 2rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            justify-self: start;
+            margin-bottom: 0.3rem;
         }
-        .feedback-submit:hover { opacity: 0.85; }
-        .feedback-thanks {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-            color: #10b981;
-            font-weight: 600;
-            font-size: 1rem;
+        .track .track-desc {
+            font-size: 0.85rem;
+            color: #808090;
         }
-        @media (max-width: 600px) {
-            .feedback-row { grid-template-columns: 1fr; }
+        .track-franco { border-color: rgba(233,69,96,0.3); }
+        .track-franco:hover { border-color: #e94560; box-shadow: 0 8px 30px rgba(233,69,96,0.15); }
+        .track-anglo { border-color: rgba(59,130,246,0.3); }
+        .track-anglo:hover { border-color: #3b82f6; box-shadow: 0 8px 30px rgba(59,130,246,0.15); }
+        .bottom-links {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            color: #505060;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        .bottom-links a {
+            color: #606070;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
         }
-        @media (max-width: 600px) {
-            .chapter { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .chapter .links { width: 100%; }
-            .chapter .links a { flex: 1; text-align: center; }
-            .stats { gap: 1rem; }
+        .bottom-links a:hover { color: #f59e0b; }
+        @media (max-width: 550px) {
+            .tracks { flex-direction: column; align-items: center; }
+            .track { min-width: 200px; width: 100%; }
+            .landing h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>Révision pour le peuple</h1>
-    <p>fais par félix le goat</p>
-    <a href="previsions.html" style="display:inline-block;margin-top:1rem;background:linear-gradient(135deg,#f59e0b,#d97706);color:#1a1a2e;text-decoration:none;padding:0.6rem 1.5rem;border-radius:10px;font-weight:700;font-size:0.9rem;">🔮 Prévisions du Goat</a>
-</div>
+<div class="landing">
+    <h1>Revision pour le peuple</h1>
+    <p class="sub">fais par felix le goat</p>
 
-<div class="container">
-
-    <!-- RH -->
-    <div class="matiere rh">
-        <div class="matiere-header">
-            <span class="emoji">📗</span>
-            <h2>Ressources Humaines — GRH pour Manager</h2>
-            <span class="count">5 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Introduction à la GRH</span>
-                <div class="links">
-                    <a href="syntheses/RH/ch1_introduction_grh.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/RH/ch1_introduction_grh.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/RH/ch1_introduction_grh.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">Le Recrutement</span>
-                <div class="links">
-                    <a href="syntheses/RH/ch2_recrutement.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/RH/ch2_recrutement.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/RH/ch2_recrutement.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">La Rémunération</span>
-                <div class="links">
-                    <a href="syntheses/RH/ch3_remuneration.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/RH/ch3_remuneration.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/RH/ch3_remuneration.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.4</span>
-                <span class="title">L'Évaluation des salariés</span>
-                <div class="links">
-                    <a href="syntheses/RH/ch4_evaluation.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/RH/ch4_evaluation.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/RH/ch4_evaluation.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.5</span>
-                <span class="title">La Gestion de carrières</span>
-                <div class="links">
-                    <a href="syntheses/RH/ch5_gestion_carrieres.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/RH/ch5_gestion_carrieres.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/RH/ch5_gestion_carrieres.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
+    <div class="tracks">
+        <a href="fr/index.html" class="track track-franco">
+            <div class="flag">🇫🇷</div>
+            <div class="track-title">Track Franco</div>
+            <div class="track-desc">Cours en francais</div>
+        </a>
+        <a href="en/index.html" class="track track-anglo">
+            <div class="flag">🇬🇧</div>
+            <div class="track-title">Track Anglo</div>
+            <div class="track-desc">Courses in English</div>
+        </a>
     </div>
 
-    <!-- ANALYSE QUANTI -->
-    <div class="matiere aq">
-        <div class="matiere-header">
-            <span class="emoji">📊</span>
-            <h2>Analyse des Données Quantitatives</h2>
-            <span class="count">4 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Analyse descriptive univariée</span>
-                <div class="links">
-                    <a href="syntheses/ANALYSE_QUANTI/ch1_analyse_descriptive.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/ANALYSE_QUANTI/ch1_analyse_descriptive.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/ANALYSE_QUANTI/ch1_analyse_descriptive.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">Relations entre deux variables (bivariée)</span>
-                <div class="links">
-                    <a href="syntheses/ANALYSE_QUANTI/ch2_analyse_bivariee.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/ANALYSE_QUANTI/ch2_analyse_bivariee.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/ANALYSE_QUANTI/ch2_analyse_bivariee.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">ANOVA et tests statistiques</span>
-                <div class="links">
-                    <a href="syntheses/ANALYSE_QUANTI/ch3_anova.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/ANALYSE_QUANTI/ch3_anova.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/ANALYSE_QUANTI/ch3_anova.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
-        <!-- Leack Prof -->
-        <div class="sous-categorie">
-            <div class="sous-categorie-title">Leack Prof <span class="badge-leack">Partiel</span></div>
-            <div class="chapters">
-                <div class="chapter">
-                    <span class="num">Leack</span>
-                    <span class="title">Résumé du cours + Correction Partiel 2025/2026</span>
-                    <div class="links">
-                        <a href="syntheses/ANALYSE_QUANTI/leack_prof/leack_partiel.html" class="btn-synthese">Synthèse</a>
-                        <a href="fiches/ANALYSE_QUANTI/leack_prof/leack_partiel.html" class="btn-fiche">Fiche</a>
-                        <a href="quiz/ANALYSE_QUANTI/leack_prof/leack_partiel.html" class="btn-quiz">Quiz</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="bottom-links">
+        <a href="previsions.html">🔮 Previsions du Goat</a>
     </div>
-
-    <!-- DROIT -->
-    <div class="matiere droit">
-        <div class="matiere-header">
-            <span class="emoji">⚖️</span>
-            <h2>Droit — Ventes internationales & Contrats</h2>
-            <span class="count">7 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Les contrats internationaux — Principes généraux</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch1_contrats_internationaux.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch1_contrats_internationaux.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch1_contrats_internationaux.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">La CVIM — Convention de Vienne</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch2_cvim.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch2_cvim.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch2_cvim.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">Formation et force obligatoire du contrat</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch3_formation_force_obligatoire.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch3_formation_force_obligatoire.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch3_formation_force_obligatoire.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.4</span>
-                <span class="title">Droit du contrat de vente</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch4_contrat_vente.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch4_contrat_vente.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch4_contrat_vente.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.5</span>
-                <span class="title">Incoterms et crédit documentaire</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch5_incoterms.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch5_incoterms.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch5_incoterms.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.6</span>
-                <span class="title">Transport international maritime</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch6_transport_maritime.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch6_transport_maritime.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch6_transport_maritime.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.7</span>
-                <span class="title">L'agent commercial</span>
-                <div class="links">
-                    <a href="syntheses/DROIT/ch7_agent_commercial.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/DROIT/ch7_agent_commercial.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/DROIT/ch7_agent_commercial.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PILOTAGE -->
-    <div class="matiere pilotage">
-        <div class="matiere-header">
-            <span class="emoji">📈</span>
-            <h2>Pilotage de la Performance</h2>
-            <span class="count">8 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Introduction au pilotage de la performance</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch1_introduction.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch1_introduction.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch1_introduction.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">La méthode des coûts et seuil de rentabilité</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch2_couts_seuil_rentabilite.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch2_couts_seuil_rentabilite.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch2_couts_seuil_rentabilite.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">La méthode du coût cible (target costing)</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch3_cout_cible.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch3_cout_cible.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch3_cout_cible.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.4</span>
-                <span class="title">L'analyse des écarts</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch4_analyse_ecarts.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch4_analyse_ecarts.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch4_analyse_ecarts.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.5</span>
-                <span class="title">Les tableaux de bord</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch5_tableaux_bord.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch5_tableaux_bord.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch5_tableaux_bord.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.6</span>
-                <span class="title">Le contrôle de gestion sociale & masse salariale</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch6_cdg_sociale.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch6_cdg_sociale.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch6_cdg_sociale.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.7</span>
-                <span class="title">Lean management et Mudas</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch7_lean_mudas.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch7_lean_mudas.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch7_lean_mudas.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.8</span>
-                <span class="title">Analyse qualitative (méthodologie mémoire)</span>
-                <div class="links">
-                    <a href="syntheses/PILOTAGE/ch8_analyse_qualitative.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/PILOTAGE/ch8_analyse_qualitative.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/PILOTAGE/ch8_analyse_qualitative.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ANALYSE QUALITATIVE -->
-    <div class="matiere" style="--accent:#8e44ad;">
-        <div class="matiere-header" style="border-color:#8e44ad;">
-            <span class="emoji">🔬</span>
-            <h2 style="color:#8e44ad;">Analyse Qualitative (Méthodologie mémoire)</h2>
-            <span class="count">3 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Méthodes qualitatives vs quantitatives</span>
-                <div class="links">
-                    <a href="syntheses/ANALYSE_QUALITATIVE/ch1_methodes_quali_vs_quanti.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/ANALYSE_QUALITATIVE/ch1_methodes_quali_vs_quanti.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/ANALYSE_QUALITATIVE/ch1_methodes_quali_vs_quanti.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">Méthodologie de l'enquête qualitative</span>
-                <div class="links">
-                    <a href="syntheses/ANALYSE_QUALITATIVE/ch2_methodologie_enquete.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/ANALYSE_QUALITATIVE/ch2_methodologie_enquete.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/ANALYSE_QUALITATIVE/ch2_methodologie_enquete.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">Codage & Analyse thématique</span>
-                <div class="links">
-                    <a href="syntheses/ANALYSE_QUALITATIVE/ch3_codage_analyse_thematique.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/ANALYSE_QUALITATIVE/ch3_codage_analyse_thematique.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/ANALYSE_QUALITATIVE/ch3_codage_analyse_thematique.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MARKETING RELATIONNEL -->
-    <div class="matiere" style="--accent:#f97316;">
-        <div class="matiere-header" style="border-color:#f97316;">
-            <span class="emoji">💼</span>
-            <h2 style="color:#f97316;">Marketing Relationnel</h2>
-            <span class="count">7 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Introduction & origines du marketing relationnel</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch1_intro_marketing_relationnel.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch1_intro_marketing_relationnel.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch1_intro_marketing_relationnel.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">Le lien satisfaction / fidélité</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch2_satisfaction_fidelite.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch2_satisfaction_fidelite.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch2_satisfaction_fidelite.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">L'expérience client</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch3_experience_client.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch3_experience_client.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch3_experience_client.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.4</span>
-                <span class="title">Programmes de fidélisation & KPI</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch4_programmes_fidelisation.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch4_programmes_fidelisation.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch4_programmes_fidelisation.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.5</span>
-                <span class="title">Customer Lifetime Value (CLV)</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch5_clv.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch5_clv.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch5_clv.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.6</span>
-                <span class="title">Big Data, IA & marketing relationnel</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch6_bigdata_ia.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch6_bigdata_ia.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch6_bigdata_ia.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.7</span>
-                <span class="title">La Matrice Tétraclasse</span>
-                <div class="links">
-                    <a href="syntheses/MARKETING_RELATIONNEL/ch7_matrice_tetraclasse.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/MARKETING_RELATIONNEL/ch7_matrice_tetraclasse.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/MARKETING_RELATIONNEL/ch7_matrice_tetraclasse.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- STRATÉGIE DURABLE & ÉTHIQUE -->
-    <div class="matiere" style="--accent:#27ae60;">
-        <div class="matiere-header" style="border-color:#27ae60;">
-            <span class="emoji">🌱</span>
-            <h2 style="color:#27ae60;">Stratégie Durable & Éthique</h2>
-            <span class="count">5 chapitres</span>
-        </div>
-        <div class="chapters">
-            <div class="chapter">
-                <span class="num">Ch.1</span>
-                <span class="title">Enjeux climatiques & empreinte carbone</span>
-                <div class="links">
-                    <a href="syntheses/STRATEGIE_DURABLE/ch1_enjeux_climatiques.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/STRATEGIE_DURABLE/ch1_enjeux_climatiques.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/STRATEGIE_DURABLE/ch1_enjeux_climatiques.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.2</span>
-                <span class="title">Véhicule électrique & idées reçues</span>
-                <div class="links">
-                    <a href="syntheses/STRATEGIE_DURABLE/ch2_vehicule_electrique.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/STRATEGIE_DURABLE/ch2_vehicule_electrique.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/STRATEGIE_DURABLE/ch2_vehicule_electrique.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.3</span>
-                <span class="title">Innovation & transition bas carbone</span>
-                <div class="links">
-                    <a href="syntheses/STRATEGIE_DURABLE/ch3_innovation_transition.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/STRATEGIE_DURABLE/ch3_innovation_transition.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/STRATEGIE_DURABLE/ch3_innovation_transition.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.4</span>
-                <span class="title">Économie du climat & financement</span>
-                <div class="links">
-                    <a href="syntheses/STRATEGIE_DURABLE/ch4_economie_climat.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/STRATEGIE_DURABLE/ch4_economie_climat.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/STRATEGIE_DURABLE/ch4_economie_climat.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-            <div class="chapter">
-                <span class="num">Ch.5</span>
-                <span class="title">Énergie, souveraineté & régulation</span>
-                <div class="links">
-                    <a href="syntheses/STRATEGIE_DURABLE/ch5_energie_souverainete.html" class="btn-synthese">Synthèse</a>
-                    <a href="fiches/STRATEGIE_DURABLE/ch5_energie_souverainete.html" class="btn-fiche">Fiche</a>
-                    <a href="quiz/STRATEGIE_DURABLE/ch5_energie_souverainete.html" class="btn-quiz">Quiz</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- ===== FEEDBACK SECTION ===== -->
-<div class="feedback-section">
-    <div class="feedback-box">
-        <h3>💬 Suggérer une amélioration</h3>
-        <p>Tu veux ajouter du contenu, corriger une erreur ou améliorer une fiche ? Laisse un message — je lis tout.</p>
-
-        <form class="feedback-form" id="feedbackForm"
-              action="https://formspree.io/f/mojnldpv"
-              method="POST">
-
-            <div class="feedback-row">
-                <div>
-                    <label for="fb-matiere">Matière concernée</label>
-                    <select name="matiere" id="fb-matiere" required>
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="Analyse Quantitative">📊 Analyse Quantitative</option>
-                        <option value="RH – GRH pour Manager">👥 RH — GRH pour Manager</option>
-                        <option value="Droit">⚖️ Droit</option>
-                        <option value="Pilotage de la Performance">📈 Pilotage de la Performance</option>
-                        <option value="Marketing Relationnel">💼 Marketing Relationnel</option>
-                        <option value="Analyse Qualitative">🔬 Analyse Qualitative</option>
-                        <option value="Stratégie Durable">🌱 Stratégie Durable & Éthique</option>
-                        <option value="Général / Site">🌐 Général / Site</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="fb-type">Type de retour</label>
-                    <select name="type" id="fb-type" required>
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="Erreur à corriger">❌ Erreur à corriger</option>
-                        <option value="Contenu manquant">➕ Contenu manquant</option>
-                        <option value="Amélioration fiche">✏️ Amélioration fiche/synthèse</option>
-                        <option value="Bug affichage">🐛 Bug / affichage</option>
-                        <option value="Autre">💡 Autre suggestion</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <label>Note globale du site</label>
-                <div class="stars-row">
-                    <input type="radio" name="note" id="s5" value="5"><label for="s5" title="5">★</label>
-                    <input type="radio" name="note" id="s4" value="4"><label for="s4" title="4">★</label>
-                    <input type="radio" name="note" id="s3" value="3"><label for="s3" title="3">★</label>
-                    <input type="radio" name="note" id="s2" value="2"><label for="s2" title="2">★</label>
-                    <input type="radio" name="note" id="s1" value="1"><label for="s1" title="1">★</label>
-                </div>
-            </div>
-
-            <div>
-                <label for="fb-message">Ton message</label>
-                <textarea name="message" id="fb-message"
-                    placeholder="Ex : Dans la fiche Leack Prof, la correction de l'exo 2 manque de détails sur le V de Cramér..."
-                    required></textarea>
-            </div>
-
-            <input type="text" name="_gotcha" style="display:none">
-            <input type="hidden" name="_subject" value="[Révision App] Nouveau feedback">
-
-            <button type="submit" class="feedback-submit">Envoyer 🚀</button>
-        </form>
-        <div class="feedback-thanks" id="feedbackThanks">
-            <div style="font-size:3rem;margin-bottom:0.5rem;">🫡</div>
-            <div style="font-size:1.8rem;font-weight:800;color:white;letter-spacing:2px;">MONSTRE</div>
-            <div style="font-size:0.9rem;color:#808090;margin-top:0.5rem;">Message reçu — je regarde ça.</div>
-        </div>
-    </div>
-</div>
-
-<script>
-const form = document.getElementById('feedbackForm');
-form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const data = new FormData(form);
-    try {
-        const res = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-            form.style.display = 'none';
-            document.getElementById('feedbackThanks').style.display = 'block';
-        }
-    } catch(err) {
-        alert('Erreur réseau — réessaie dans un moment.');
-    }
-});
-</script>
-
-<div class="footer">
-    Machine de Guerre — 24 chapitres, 48 synthèses & fiches, 24 quiz interactifs
 </div>
 
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

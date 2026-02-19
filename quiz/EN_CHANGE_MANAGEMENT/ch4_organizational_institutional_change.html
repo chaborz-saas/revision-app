@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.4 — Organizational and Institutional Change</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .nav-buttons { display: flex; justify-content: flex-end; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; }
+        .btn-next:hover { background: #0d9668; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">CHANGE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 4 &mdash; Organizational and Institutional Change</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div class="result-score"><span id="final-score"></span>/<span id="final-total"></span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+</div>
+<script>
+const questions = [
+    { q: "What are the three root causes that prevent firms from exploiting sustainability opportunities?", options: ["A. Lack of technology, lack of demand, lack of talent", "B. Market failures, behavioral biases, and organizational inertia", "C. Government regulations, high costs, and consumer apathy", "D. Supply chain complexity, competition, and globalization"], correct: 1, explanation: "The three barriers are: (1) Market failures (unpriced externalities, distorted ROI), (2) Behavioral biases (bounded rationality, status-quo bias, risk aversion), and (3) Organizational inertia (silos, quarterly incentives, weak sustainability authority). Together they create a 'capability-intention gap.'" },
+    { q: "What is the 'capability-intention gap'?", options: ["A. The difference between a firm's actual and reported emissions", "B. The disconnect between a firm's desire to be sustainable and its structural capacity to execute", "C. The gap between executive salaries and sustainability budgets", "D. The difference between consumer preferences and product offerings"], correct: 1, explanation: "The capability-intention gap occurs when firms want to be sustainable but lack the organizational structure, incentives, cross-functional integration, and measurement systems to actually execute. Desire without structural capacity produces no results." },
+    { q: "In the context of Lean/Six Sigma applied to sustainability, what is an 'improvement half-life'?", options: ["A. The time it takes for a product to degrade by half", "B. The time needed to halve a defect, measuring the organization's learning rate", "C. Half the time between sustainability audits", "D. The period during which a sustainability investment breaks even"], correct: 1, explanation: "The improvement half-life is the time required to halve a defect (whether a CO2 emission, injury, or toxic release). It measures an organization's learning rate and absorptive capacity. Faster half-lives indicate stronger learning organizations." },
+    { q: "According to Peter Senge's system dynamics, what is the difference between B4 (working harder) and B5 (working smarter)?", options: ["A. B4 focuses on innovation; B5 focuses on cost-cutting", "B. B4 increases short-term output but depletes capacity; B5 invests in training for sustained performance", "C. B4 is for startups; B5 is for mature firms", "D. B4 involves top management; B5 involves only workers"], correct: 1, explanation: "B4 (working harder) increases short-term output but leads to burnout and depleted long-term capacity. B5 (working smarter) invests in training, process redesign, and capability building for sustained performance improvement. Most firms stay trapped in B4 under quarterly pressure." },
+    { q: "What happened at Rana Plaza in 2013, and what was the key sustainability lesson?", options: ["A. An oil spill in the Gulf of Mexico; lesson: better safety standards needed", "B. A garment factory collapse killing 1,100+ workers; lesson: voluntary CSR is insufficient for systemic risks", "C. A financial scandal at a major bank; lesson: transparency in reporting is essential", "D. A nuclear accident; lesson: technology risk management matters"], correct: 1, explanation: "The Rana Plaza building collapse in Bangladesh killed over 1,100 garment workers. It was caused by unsafe buildings, weak regulation, and relentless cost-cutting by Western retailers. The key lesson: outsourced risks return as reputation loss and supply disruption. Voluntary CSR does not equal protection; systemic change requires regulation, auditing, and collective action." },
+    { q: "In system dynamics, what must managers do when balancing loops dominate reinforcing loops?", options: ["A. Accept the status quo and wait for market conditions to improve", "B. Identify and amplify reinforcing loops while weakening the drag forces", "C. Eliminate all balancing loops through regulation", "D. Focus exclusively on cost reduction"], correct: 1, explanation: "Change fails when balancing loops (fear, budget cuts, resistance, fatigue) dominate reinforcing loops (investment, innovation, profit, reinvestment). The managerial task is to amplify reinforcing loops and weaken balancing loop drag forces. Sustainability must be treated as continuous reinvestment." },
+    { q: "What factor is the strongest predictor of sustainability maturity in organizations?", options: ["A. Firm size and market capitalization", "B. Industry sector and geography", "C. Leadership intensity (CEO/Board commitment, cross-functional integration, measurement systems)", "D. The number of sustainability employees"], correct: 2, explanation: "Research shows that sector or size do NOT predict sustainability success. Leadership intensity does. The three key drivers are: (1) Leadership commitment with CEO/Board visibility, (2) Cross-functional integration (sustainability in procurement, R&D, HR, finance), and (3) Measurement systems with quantified ESG KPIs linked to incentives." },
+    { q: "What is the progression model for sustainability as strategic transformation?", options: ["A. Compliance, Reporting, Certification", "B. Efficiency, Resilience, Regeneration", "C. Awareness, Planning, Implementation", "D. Cost reduction, Revenue growth, Market expansion"], correct: 1, explanation: "The strategic transformation progression is: Efficiency (doing things better) to Resilience (building adaptive capacity) to Regeneration (restoring and creating positive impact). This represents a fundamental shift from minimizing harm to actively rebuilding natural and social capital." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

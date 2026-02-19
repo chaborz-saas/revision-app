@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Performance Management Ch 2: Decisions and Relevant Costs</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
+.container{max-width:750px;margin:0 auto}
+.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
+.back-link:hover{color:#10b981}
+.quiz-header{text-align:center;margin-bottom:2rem}
+.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
+.quiz-header p{color:#aaa;font-size:.9rem}
+.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
+.score-bar span{font-size:.95rem}
+.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
+.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
+.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:.6rem}
+.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
+.option:hover:not(:disabled){border-color:#10b981;background:#162229}
+.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
+.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
+.option:disabled{cursor:default}
+.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
+.nav-buttons{text-align:right;margin-top:1rem}
+.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
+.btn-next{background:#10b981;color:#0f0f1a}
+.btn-next:hover:not(:disabled){background:#0ea472}
+.btn-next:disabled{opacity:.4;cursor:default}
+.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
+#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
+#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
+#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
+#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+<div class="quiz-header">
+<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
+<p>Chapter 2: Decisions and Relevant Costs</p>
+</div>
+<div class="score-bar">
+<span>Question <span id="current-q">1</span>/8</span>
+<span>Score: <span id="score">0</span></span>
+</div>
+<div class="progress-bg"><div class="progress" id="progress"></div></div>
+<div id="quiz-area"></div>
+<div id="result-card">
+<h2>Quiz Complete!</h2>
+<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+<div class="result-msg" id="result-msg"></div>
+<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+</div>
+</div>
+<script>
+const questions = [
+  {q:"You bought a car at auction for &pound;5,000. You have been offered &pound;6,000 for it. What is the cost of keeping the car?",options:["&pound;5,000 (the purchase price)","&pound;6,000 (the opportunity cost)","&pound;1,000 (the difference)","&pound;0 (you already own it)"],correct:1,explanation:"The relevant cost of keeping the car is the opportunity cost of &pound;6,000 &mdash; the amount you forgo by not selling. The &pound;5,000 purchase price is a sunk cost and irrelevant to the decision."},
+  {q:"Which of the following is NOT a condition for a cost to be relevant?",options:["It must relate to the business objective","It must be a future cost","It must vary with the decision","It must be a past cost that has already been incurred"],correct:3,explanation:"Relevant costs must be (1) related to the objective, (2) a future cost, and (3) vary with the decision. Past (sunk) costs are irrelevant because they cannot be changed regardless of the decision made."},
+  {q:"A garage has idle mechanics during a quiet period. A new job requires 7 hours of mechanic time at &pound;15/hour. What is the relevant labour cost?",options:["&pound;105 (7 hours &times; &pound;15)","&pound;0 (mechanics are paid regardless)","&pound;15 per hour","&pound;210 (double time for special work)"],correct:1,explanation:"When there is spare capacity, the relevant cost of labour is &pound;0. The mechanics will be paid their wages whether they work on this job or not, so the labour cost does not change with the decision."},
+  {q:"Material Q is in constant use by the business. 100 units are in stock (historic cost &pound;62/unit, current purchase cost &pound;64/unit, sale value &pound;50/unit). What is the relevant cost per unit?",options:["&pound;62 (historic cost)","&pound;64 (replacement cost)","&pound;50 (sale value)","&pound;0 (already in stock)"],correct:1,explanation:"For materials in regular use, the relevant cost is the current replacement cost (&pound;64). Using them on this job means they must be replaced for other ongoing work, so the true cost is what must be paid to buy them again."},
+  {q:"A business holds surplus material T with no other use and disposal costs of &pound;160. What is the relevant cost of using this material?",options:["&pound;0","&pound;160 additional cost","&minus;&pound;160 (a saving on disposal costs)","The historic purchase price"],correct:2,explanation:"Material T has no other use and no sale value, but disposing of it costs &pound;160. Using it on the job saves the disposal cost, making the relevant cost negative (&minus;&pound;160), i.e., a net saving."},
+  {q:"Wesfarmers bought Homebase for &pound;340 million and later sold it for &pound;1. What type of cost is the &pound;340 million when deciding on the sale price?",options:["An opportunity cost","A relevant cost","A sunk (irrelevant) cost","A committed cost"],correct:2,explanation:"The &pound;340 million purchase price is a sunk cost &mdash; it was incurred in the past and cannot be recovered. When deciding whether and at what price to sell, only future costs and benefits are relevant."},
+  {q:"A skilled worker is redeployed from other work that generates &pound;60/hour in revenue. The worker's pay rate is &pound;15/hour. What is the relevant cost per hour?",options:["&pound;15 (the wage rate)","&pound;60 (the opportunity cost)","&pound;75 (wage + opportunity cost)","&pound;45 (revenue minus wage)"],correct:1,explanation:"The relevant cost is &pound;60 per hour &mdash; the opportunity cost of the revenue forgone from the other work. The worker's wage is paid regardless and is not a differential cost. The &pound;60 represents what the garage loses by not doing the other work."},
+  {q:"140 units of material S can substitute for 225 units of material V (priced at &pound;10/unit). What is the relevant cost of using S?",options:["The historic cost of S","The sale value of S","&pound;2,250 (225 &times; &pound;10, the purchase saved on V)","The replacement cost of S"],correct:2,explanation:"The relevant cost of using material S is the benefit of the next best alternative. If S is used for substitution, it saves the purchase of 225 units of V at &pound;10 each = &pound;2,250. This is the opportunity cost of diverting S to the current job instead."}
+];
+let current=0,score=0,answered=[];
+function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
+function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
+function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
+function nextQ(){current++;renderQ();}
+function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
+function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

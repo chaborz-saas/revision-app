@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Performance Management Ch 6: Budgeting</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
+.container{max-width:750px;margin:0 auto}
+.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
+.back-link:hover{color:#10b981}
+.quiz-header{text-align:center;margin-bottom:2rem}
+.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
+.quiz-header p{color:#aaa;font-size:.9rem}
+.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
+.score-bar span{font-size:.95rem}
+.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
+.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
+.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:.6rem}
+.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
+.option:hover:not(:disabled){border-color:#10b981;background:#162229}
+.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
+.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
+.option:disabled{cursor:default}
+.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
+.nav-buttons{text-align:right;margin-top:1rem}
+.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
+.btn-next{background:#10b981;color:#0f0f1a}
+.btn-next:hover:not(:disabled){background:#0ea472}
+.btn-next:disabled{opacity:.4;cursor:default}
+.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
+#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
+#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
+#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
+#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+<div class="quiz-header">
+<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
+<p>Chapter 6: Budgeting</p>
+</div>
+<div class="score-bar">
+<span>Question <span id="current-q">1</span>/8</span>
+<span>Score: <span id="score">0</span></span>
+</div>
+<div class="progress-bg"><div class="progress" id="progress"></div></div>
+<div id="quiz-area"></div>
+<div id="result-card">
+<h2>Quiz Complete!</h2>
+<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+<div class="result-msg" id="result-msg"></div>
+<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+</div>
+</div>
+<script>
+const questions = [
+  {q:"What is the key difference between a budget and a forecast?",options:["A budget is always more accurate than a forecast","A budget shows intention to achieve targets; a forecast predicts future conditions","Forecasts are prepared by managers; budgets are not","A forecast covers a longer period than a budget"],correct:1,explanation:"A budget is a plan showing an intention or determination to achieve targets. A forecast is a prediction of the future state of the environment. Forecasts inform budgets, but they are fundamentally different."},
+  {q:"Which of the following is NOT one of the five main uses of budgets?",options:["Promote forward thinking","Motivate performance","Eliminate all business risks","Provide a system of authorisation"],correct:2,explanation:"The five uses are: promote forward thinking, help coordinate the business, motivate performance, provide a system of control, and provide a system of authorisation. Budgets cannot eliminate all business risks."},
+  {q:"In a cash budget, why is depreciation excluded?",options:["Because it is always zero","Because it is too difficult to calculate","Because depreciation is not a cash flow","Because it only applies to service businesses"],correct:2,explanation:"Depreciation is a non-cash expense. It represents the allocation of an asset's cost over time but does not involve any actual cash payment, so it must be excluded from the cash budget."},
+  {q:"What is a limiting factor (key factor) in budgeting?",options:["The largest cost item in the budget","A constraint that restricts the business's ability to achieve its objectives","The budget with the longest preparation time","The financial target set by senior management"],correct:1,explanation:"A limiting factor is a constraint (such as sales demand, labour, materials, or capacity) that limits what the business can achieve. The budget process should start with the limiting factor."},
+  {q:"Zero-base budgeting (ZBB) requires that:",options:["All budgets start from the previous year's figures","Only variable costs are budgeted","All spending must be justified from a zero base","Fixed costs are ignored"],correct:2,explanation:"ZBB rests on the philosophy that all spending must be justified from scratch (zero base), rather than simply adjusting last year's figures. This promotes a more questioning approach and efficient resource use."},
+  {q:"A business sells goods on one month's credit. January sales are 52,000. When will the cash be received?",options:["January","February","March","Spread over January and February"],correct:1,explanation:"With one month's credit, cash from January sales is received in February. The credit period creates a one-month time lag between the sale and the cash receipt."},
+  {q:"What is Activity-Based Budgeting (ABB)?",options:["A budget that only covers production activities","Budgeting based on cost-driving activities rather than business functions","A budget prepared using zero-base principles","A budget that excludes overhead costs"],correct:1,explanation:"ABB extends the principles of ABC to budgeting. Budgets are based on cost-driving activities rather than traditional business functions, leading to more accurate budgets with closer links between costs and management responsibilities."},
+  {q:"Which of the following is a feature of the 'Beyond Budgeting' approach?",options:["Fixed annual targets with no revision","Centralised top-down decision making","Rolling forecasts and KPIs with decentralised management","Incremental budgeting based on previous year"],correct:2,explanation:"Beyond Budgeting replaces traditional fixed budgets with rolling forecasts, KPIs, decentralised participative management, a network structure, and rewards linked to performance improvement."}
+];
+let current=0,score=0,answered=[];
+function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
+function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
+function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
+function nextQ(){current++;renderQ();}
+function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
+function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — HRM Ch 2: Compensation & Evaluation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
+        .quiz-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .back-link { color: #10b981; text-decoration: none; font-size: 0.95rem; }
+        .back-link:hover { text-decoration: underline; }
+        .quiz-header { text-align: center; margin: 1.5rem 0; }
+        .matiere { color: #10b981; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .quiz-header h1 { font-size: 1.8rem; color: #fff; margin-top: 0.5rem; }
+        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
+        .score-display span { color: #10b981; font-weight: 700; }
+        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.1rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.75rem; }
+        .option { background: #16213e; border: 2px solid #233554; color: #e0e0e0; padding: 1rem; border-radius: 8px; cursor: pointer; font-size: 0.95rem; text-align: left; transition: all 0.2s ease; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
+        .option:disabled { cursor: not-allowed; }
+        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; }
+        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-left: 3px solid #10b981; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #a7f3d0; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn { padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-next { background: #10b981; color: #fff; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .result-card { display: none; background: #1a1a2e; border-radius: 12px; padding: 3rem; text-align: center; }
+        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-restart:hover { background: #059669; }
+        @media (max-width: 768px) { .quiz-container { padding: 1rem; } .quiz-header h1 { font-size: 1.4rem; } }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">HRM FOR MANAGERS &mdash; QUIZ</div>
+        <h1>Chapter 2 &mdash; Compensation &amp; Evaluation</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+<script>
+const questions = [
+    { q: "Which of the following is NOT one of the four main elements of compensation?", options: ["A. Direct pay", "B. Statutory benefits", "C. Employee referral bonuses", "D. Deferred compensation"], correct: 2, explanation: "The four elements are: Direct pay, Statutory benefits, In-kind benefits, and Deferred compensation. Employee referral bonuses are not a separate category in the compensation structure." },
+    { q: "Mandatory profit-sharing (participation) applies to companies with:", options: ["A. 10+ employees and any profit", "B. 50+ employees and net profits exceeding 5% of equity", "C. 100+ employees regardless of profits", "D. Any company that voluntarily opts in"], correct: 1, explanation: "Mandatory profit-sharing (participation), created in 1967, applies to companies with 50 or more employees when net profits exceed 5% of equity (shareholder assets)." },
+    { q: "In France, the approximate employer contribution rate on top of gross salary is:", options: ["A. 15%", "B. 25%", "C. 42%", "D. 60%"], correct: 2, explanation: "The employer contribution is approximately 42% of gross salary. Combined with the employee's social contributions (~25% of net to reach gross), this determines the total payroll cost." },
+    { q: "What is the severance pay for a CDD (fixed-term contract)?", options: ["A. 5% of gross salary", "B. 10% of gross salary", "C. 15% of gross salary", "D. No severance pay is required"], correct: 1, explanation: "CDD severance pay is 10% of gross salary earned during the contract. For example, 3 months at 2,000 euros gross = 600 euros severance." },
+    { q: "According to Peretti, which wage policy type focuses on reducing fixed salary and increasing variable pay?", options: ["A. Competitiveness through quality", "B. Financial market imperatives", "C. Competitiveness through costs", "D. Social welfare approach"], correct: 2, explanation: "Competitiveness through costs aims to reduce fixed salary expenses and link pay more closely to performance, with a larger share of compensation becoming variable." },
+    { q: "What does B.A.R.S. stand for in evaluation tools?", options: ["A. Basic Annual Review System", "B. Behaviorally Anchored Rating Scales", "C. Balanced Assessment Rating Standards", "D. Business Achievement Review Scores"], correct: 1, explanation: "B.A.R.S. stands for Behaviorally Anchored Rating Scales. These scales use specific behavioral examples as anchors for each rating level, which reduces subjectivity and leniency in evaluations." },
+    { q: "Which of the following is NOT a criticism of evaluation systems mentioned in the course?", options: ["A. Unfair and imprecise judgments", "B. Administrative burden", "C. Too expensive to implement", "D. Demotivating for employees"], correct: 2, explanation: "The five main criticisms are: Unfair/imprecise, Administrative burden, Contradictory goals, No real performance boost, and Demotivating. Cost of implementation is not specifically listed." },
+    { q: "What are the four qualities of a good compensation policy?", options: ["A. Legal, Transparent, Fixed, Simple", "B. Competitive, Flexible, Fair, Motivating", "C. Generous, Uniform, Automatic, Permanent", "D. Hierarchical, Performance-based, Deferred, Indexed"], correct: 1, explanation: "A good compensation policy must be: Competitive (match industry standards), Flexible (adapt to changes), Fair (equitable pay), and Motivating (reward effort and results)." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

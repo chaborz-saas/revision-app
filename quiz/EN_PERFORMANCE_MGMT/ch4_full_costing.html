@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Performance Management Ch 4: Full Costing</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
+.container{max-width:750px;margin:0 auto}
+.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
+.back-link:hover{color:#10b981}
+.quiz-header{text-align:center;margin-bottom:2rem}
+.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
+.quiz-header p{color:#aaa;font-size:.9rem}
+.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
+.score-bar span{font-size:.95rem}
+.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
+.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
+.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:.6rem}
+.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
+.option:hover:not(:disabled){border-color:#10b981;background:#162229}
+.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
+.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
+.option:disabled{cursor:default}
+.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
+.nav-buttons{text-align:right;margin-top:1rem}
+.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
+.btn-next{background:#10b981;color:#0f0f1a}
+.btn-next:hover:not(:disabled){background:#0ea472}
+.btn-next:disabled{opacity:.4;cursor:default}
+.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
+#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
+#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
+#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
+#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+<div class="quiz-header">
+<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
+<p>Chapter 4: Full Costing</p>
+</div>
+<div class="score-bar">
+<span>Question <span id="current-q">1</span>/8</span>
+<span>Score: <span id="score">0</span></span>
+</div>
+<div class="progress-bg"><div class="progress" id="progress"></div></div>
+<div id="quiz-area"></div>
+<div id="result-card">
+<h2>Quiz Complete!</h2>
+<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+<div class="result-msg" id="result-msg"></div>
+<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+</div>
+</div>
+<script>
+const questions = [
+  {q:"A factory produced 120 completed gnomes and 15 that are 80% complete. Total cost is &pound;5,280. What is the cost per equivalent unit?",options:["&pound;39.11","&pound;40.00","&pound;44.00","&pound;48.00"],correct:1,explanation:"Equivalent units = 120 + (15 &times; 80%) = 120 + 12 = 132. Cost per equivalent unit = &pound;5,280 / 132 = &pound;40.00. The WIP units are converted to their equivalent completed units before dividing."},
+  {q:"Monthly overheads are &pound;10,000 and total direct labour hours are 1,000. A job uses 3 labour hours. What overhead is charged to the job?",options:["&pound;10","&pound;30","&pound;100","&pound;3,333"],correct:1,explanation:"Overhead recovery rate = &pound;10,000 / 1,000 hours = &pound;10 per direct labour hour. Overhead charged to the job = 3 hours &times; &pound;10 = &pound;30."},
+  {q:"What is the difference between 'allocating' and 'apportioning' overheads?",options:["Allocating is for variable costs; apportioning is for fixed costs","Allocating assigns costs specific to one centre; apportioning shares costs across multiple centres","Allocating uses machine hours; apportioning uses labour hours","There is no difference; they are synonyms"],correct:1,explanation:"Cost allocation assigns indirect costs that relate directly to a specific cost centre. Cost apportionment shares general overheads that relate to more than one cost centre, using a fair basis such as floor area or number of employees."},
+  {q:"Which of the following is the most appropriate basis for apportioning rent costs to departments?",options:["Number of employees","Machine hours","Floor area occupied","Direct labour cost"],correct:2,explanation:"Rent relates to the space used, so floor area (square metres) is the most logical basis for apportioning rent costs between departments. Other bases would not reflect actual space consumption."},
+  {q:"Production = 6,000 units, Sales = 4,000 units. Fixed overhead = &pound;3/unit. Which costing method gives higher profit?",options:["Variable (marginal) costing","Absorption costing","Both give the same profit","Cannot be determined"],correct:1,explanation:"When inventory increases (production > sales), absorption costing gives higher profit. The difference = 2,000 units &times; &pound;3 = &pound;6,000 more profit under absorption. This is because fixed overheads are deferred in closing inventory under absorption costing."},
+  {q:"Under variable (marginal) costing, how are fixed manufacturing overheads treated?",options:["Included in the cost of each product unit","Treated as a period expense, charged in full to the period incurred","Ignored completely","Split equally between production and administration"],correct:1,explanation:"Under variable costing, only variable production costs are treated as product costs. Fixed manufacturing overheads are treated as a period expense and charged in full to the income statement in the period they are incurred, not absorbed into inventory."},
+  {q:"Marine Suppliers Ltd has total overheads of &pound;41,700 and 6,000 direct labour hours. A sail job requires 6 hours and 20 sqm of cloth at &pound;25/sqm plus 6 hours of labour at &pound;20/hr. What is the full cost?",options:["&pound;620.00","&pound;661.70","&pound;724.25","&pound;700.00"],correct:1,explanation:"Direct materials = 20 &times; &pound;25 = &pound;500. Direct labour = 6 &times; &pound;20 = &pound;120. Overhead rate = &pound;41,700 / 6,000 = &pound;6.95/hr. Overheads = 6 &times; &pound;6.95 = &pound;41.70. Full cost = &pound;500 + &pound;120 + &pound;41.70 = &pound;661.70."},
+  {q:"Is it true that a direct cost is always a variable cost?",options:["Yes, direct costs always vary with output","No, direct/indirect relates to traceability while variable/fixed relates to behaviour","Yes, because direct costs are always materials and labour","No, but only in service industries"],correct:1,explanation:"Direct/indirect classification depends on whether a cost can be traced to a specific cost unit. Variable/fixed classification depends on how the cost behaves with changes in activity level. These are independent classifications. A cost can be direct and fixed (e.g. a supervisor dedicated to one product line)."}
+];
+let current=0,score=0,answered=[];
+function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
+function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
+function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
+function nextQ(){current++;renderQ();}
+function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
+function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

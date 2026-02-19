@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.3 — From Rhetoric to Strategy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .nav-buttons { display: flex; justify-content: flex-end; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; }
+        .btn-next:hover { background: #0d9668; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">CHANGE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 3 &mdash; From Rhetoric to Strategy</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div class="result-score"><span id="final-score"></span>/<span id="final-total"></span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+</div>
+<script>
+const questions = [
+    { q: "According to Porter & Kramer (2006), which type of sustainability issue offers the highest systemic leverage?", options: ["A. Generic issues", "B. Value-chain impacts", "C. Competitive-context issues", "D. Philanthropic issues"], correct: 2, explanation: "Competitive-context issues shape the structural conditions that determine long-term competitiveness (infrastructure, skills, environmental regulation). They offer the highest systemic leverage because they change the 'rules of the game' for the entire industry." },
+    { q: "What is 'double materiality'?", options: ["A. Measuring both revenue and profit margins", "B. Combining financial materiality (sustainability impact on firm) with environmental materiality (firm impact on environment)", "C. Using two different ESG rating agencies", "D. Applying both qualitative and quantitative methods"], correct: 1, explanation: "Double materiality considers both directions: how sustainability issues affect the company's finances (financial materiality) AND how the company's operations affect the environment and society (environmental materiality). Tools include GRI and SASB frameworks." },
+    { q: "What is the main weakness shared by all four traditional rationales for sustainability (moral, stewardship, attention, reputation)?", options: ["A. They are too expensive to implement", "B. They answer 'why' to act but not 'how' to create value", "C. They only apply to large corporations", "D. They require government approval"], correct: 1, explanation: "All four rationales motivate action but do not explain how to create strategic value. The moral logic lacks priorities; stewardship is vague without metrics; attention is reactive; reputation risks greenwashing. The result is fragmented CSR with weak authority and unclear impact." },
+    { q: "What is the evolution path from CSR to CSM?", options: ["A. CSR (mandatory) to ESG (voluntary) to CSM (automated)", "B. CSR (voluntary/narrative) to ESG (investor compliance) to CSM (data-driven strategic management)", "C. CSR (government-led) to ESG (NGO-led) to CSM (AI-driven)", "D. CSR (local) to ESG (national) to CSM (global)"], correct: 1, explanation: "The evolution is: CSR (voluntary and narrative-based) to ESG (investor compliance and reporting frameworks) to CSM (Corporate Sustainability Management: data-driven strategic management using indices, life-cycle tools, incentives, and continuous feedback loops)." },
+    { q: "In Porter & Kramer's Shared Value framework, what does 'reconceiving products and markets' mean?", options: ["A. Reducing product prices to compete globally", "B. Innovating solutions that address unmet social needs while creating new markets", "C. Rebranding existing products as green", "D. Exiting unprofitable product lines"], correct: 1, explanation: "Reconceiving products and markets means designing offerings that solve genuine social or environmental problems (e.g., microgrids for remote communities, affordable nutrition in emerging markets). The gain is both new markets and positive social impact." },
+    { q: "How does climate change affect ExxonMobil differently from Best Buy, according to the course?", options: ["A. Both face generic issues", "B. ExxonMobil faces a value-chain issue; Best Buy faces a competitive-context issue", "C. ExxonMobil faces a competitive-context issue (core model at risk); Best Buy faces a generic issue", "D. They face identical challenges"], correct: 2, explanation: "For Best Buy (retail), climate is a generic issue (store efficiency, brand). For ExxonMobil (energy), climate is a competitive-context issue because the company's core business model is at risk from decarbonization. Strategy must be firm-specific." },
+    { q: "What is the 'inside-out' perspective in strategic sustainability?", options: ["A. Addressing external conditions that affect competitiveness", "B. Reducing harms from the firm's own operations (waste, emissions, labour)", "C. Outsourcing sustainability to external consultants", "D. Focusing on customer-facing sustainability communications"], correct: 1, explanation: "Inside-out means reducing harms generated by the firm's own operations (waste, emissions, labour conditions). Outside-in means addressing external conditions (infrastructure, health, water) that affect the firm's competitiveness. Strategic integration combines both perspectives." },
+    { q: "What lesson does the HUL Project Shakti case illustrate?", options: ["A. CSR donations are the most effective sustainability strategy", "B. Rural markets are too risky for large corporations", "C. Social inclusion can be a supply-chain innovation, not just CSR", "D. Technology is the only driver of sustainability in developing countries"], correct: 2, explanation: "HUL's Project Shakti trained 120,000+ rural women in India as micro-entrepreneurs selling HUL products. It turned social exclusion into market infrastructure: income and empowerment for women + rural distribution reach for HUL. Inclusion became a supply-chain innovation." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

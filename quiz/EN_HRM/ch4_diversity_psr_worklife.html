@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — HRM Ch 4: Diversity, Psychosocial Risks & Work-Life Balance</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
+        .quiz-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .back-link { color: #10b981; text-decoration: none; font-size: 0.95rem; }
+        .back-link:hover { text-decoration: underline; }
+        .quiz-header { text-align: center; margin: 1.5rem 0; }
+        .matiere { color: #10b981; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .quiz-header h1 { font-size: 1.8rem; color: #fff; margin-top: 0.5rem; }
+        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
+        .score-display span { color: #10b981; font-weight: 700; }
+        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.1rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.75rem; }
+        .option { background: #16213e; border: 2px solid #233554; color: #e0e0e0; padding: 1rem; border-radius: 8px; cursor: pointer; font-size: 0.95rem; text-align: left; transition: all 0.2s ease; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
+        .option:disabled { cursor: not-allowed; }
+        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; }
+        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-left: 3px solid #10b981; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #a7f3d0; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn { padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-next { background: #10b981; color: #fff; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .result-card { display: none; background: #1a1a2e; border-radius: 12px; padding: 3rem; text-align: center; }
+        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-restart:hover { background: #059669; }
+        @media (max-width: 768px) { .quiz-container { padding: 1rem; } .quiz-header h1 { font-size: 1.4rem; } }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">HRM FOR MANAGERS &mdash; QUIZ</div>
+        <h1>Chapter 4 &mdash; Diversity, PSR &amp; Work-Life Balance</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+<script>
+const questions = [
+    { q: "According to the Rixain Law (2021), what percentage of executive positions must be held by women by 2030?", options: ["A. 25%", "B. 30%", "C. 40%", "D. 50%"], correct: 2, explanation: "The Rixain Law requires at least 30% women in leadership by 2026, increasing to 40% by 2030. Non-compliance can result in penalties of up to 1% of the total wage bill." },
+    { q: "According to INSEE (2023), how much higher is the average salary of men compared to women in France?", options: ["A. 10.5%", "B. 15.8%", "C. 22.2%", "D. 30.1%"], correct: 2, explanation: "The average salary of men in France is 22.2% higher than that of women. Additionally, women represent 47% of the active workforce but only 34% of managerial positions and 14% of executive roles." },
+    { q: "In DiMaggio and Powell's framework, which type of isomorphism involves legal obligations and penalties?", options: ["A. Mimetic isomorphism", "B. Normative isomorphism", "C. Coercive isomorphism", "D. Voluntary isomorphism"], correct: 2, explanation: "Coercive isomorphism involves legal obligations and penalties. Normative isomorphism relates to organizational culture and professional norms. Mimetic isomorphism involves imitating successful organizations or leaders." },
+    { q: "Professional burnout (burn-out) is defined as:", options: ["A. Chronic suffering from lack of stimulation at work", "B. Physical, emotional, and mental exhaustion from prolonged emotionally demanding situations", "C. An imbalance between perceived demands and perceived resources", "D. Psychological harassment in the workplace"], correct: 1, explanation: "Burnout is defined as physical, emotional, and mental exhaustion resulting from prolonged involvement in emotionally demanding work situations (Schaufeli & Greenglass, 2001). Option A describes bore-out, option C describes stress." },
+    { q: "What percentage of GDP do psychosocial risks cost in France?", options: ["A. 0.8%", "B. 1.5%", "C. 2.6%", "D. 4.2%"], correct: 2, explanation: "According to Mozart Consulting, psychosocial risks cost 2.6% of GDP in France. PSRs also account for 48% of sick leaves in large companies and contribute to 400 work-related suicides per year." },
+    { q: "The Right to Disconnect was established by which law?", options: ["A. Rixain Law (2021)", "B. Avenir Professionnel Law (2018)", "C. Labor Law of August 8, 2016", "D. Labor Code Reform (2014)"], correct: 2, explanation: "The Right to Disconnect was established by the Labor Law of August 8, 2016. It aims to protect the balance between personal and professional life by ensuring employees are not expected to respond to work communications outside working hours." },
+    { q: "According to survey data, what percentage of employees consider work-life balance an important issue?", options: ["A. 65%", "B. 72%", "C. 85%", "D. 92%"], correct: 3, explanation: "92% of employees consider work-life balance an important or very important issue. Yet only 12% are satisfied with their work-life balance, and 60% say their employer does not do much to help." },
+    { q: "At the team level, which approach to diversity management involves 'promoting new norms' for collaboration?", options: ["A. Coercive isomorphism at micro level", "B. Normative isomorphism at micro level", "C. Mimetic isomorphism at micro level", "D. Strategic isomorphism at micro level"], correct: 1, explanation: "At the micro (team) level, normative isomorphism involves promoting new norms such as humor policies, meeting schedules, and common rules for collaboration. Coercive sanctions illegal behaviors, and mimetic involves setting an example." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

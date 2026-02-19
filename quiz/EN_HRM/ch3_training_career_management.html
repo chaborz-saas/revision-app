@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — HRM Ch 3: Training & Career Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
+        .quiz-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .back-link { color: #10b981; text-decoration: none; font-size: 0.95rem; }
+        .back-link:hover { text-decoration: underline; }
+        .quiz-header { text-align: center; margin: 1.5rem 0; }
+        .matiere { color: #10b981; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .quiz-header h1 { font-size: 1.8rem; color: #fff; margin-top: 0.5rem; }
+        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
+        .score-display span { color: #10b981; font-weight: 700; }
+        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.1rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.75rem; }
+        .option { background: #16213e; border: 2px solid #233554; color: #e0e0e0; padding: 1rem; border-radius: 8px; cursor: pointer; font-size: 0.95rem; text-align: left; transition: all 0.2s ease; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
+        .option:disabled { cursor: not-allowed; }
+        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; }
+        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-left: 3px solid #10b981; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #a7f3d0; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn { padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-next { background: #10b981; color: #fff; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .result-card { display: none; background: #1a1a2e; border-radius: 12px; padding: 3rem; text-align: center; }
+        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-restart:hover { background: #059669; }
+        @media (max-width: 768px) { .quiz-container { padding: 1rem; } .quiz-header h1 { font-size: 1.4rem; } }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">HRM FOR MANAGERS &mdash; QUIZ</div>
+        <h1>Chapter 3 &mdash; Training &amp; Career Management</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+<script>
+const questions = [
+    { q: "What is the annual credit amount for the Personal Training Account (CPF)?", options: ["A. 250 euros per year, up to 2,500 euros", "B. 500 euros per year, up to 5,000 euros", "C. 1,000 euros per year, up to 10,000 euros", "D. 750 euros per year, up to 7,500 euros"], correct: 1, explanation: "The CPF, created in 2014, credits 500 euros per year (at 15 euros per hour of training) up to a maximum ceiling of 5,000 euros. Credits are kept for life regardless of employment changes." },
+    { q: "What is the minimum professional experience required for Validation of Prior Experience (VAE)?", options: ["A. 6 months", "B. 1 year", "C. 2 years", "D. 3 years"], correct: 1, explanation: "VAE allows any person engaged in working life to obtain all or part of a diploma or professional title by having at least one year of professional experience validated by a jury." },
+    { q: "Companies with 11 or more employees must contribute what percentage of payroll to professional training?", options: ["A. 0.25%", "B. 0.55%", "C. 1%", "D. 2%"], correct: 2, explanation: "Companies with 11+ employees must contribute 1% of payroll to professional training (paid to OPCOs). Companies with up to 10 employees contribute 0.55%." },
+    { q: "In Meignant's typology, which conception of training is strategically aligned with company objectives?", options: ["A. Tax Training", "B. Goldmine Training", "C. Safety Training", "D. Development Training"], correct: 3, explanation: "Development Training is the most strategic conception, aligned with company objectives and aimed at developing skills for future roles. Tax Training merely complies with legal minimums." },
+    { q: "A lateral move to a different function without hierarchical promotion is called:", options: ["A. Vertical mobility", "B. Horizontal mobility", "C. Geographical mobility", "D. Diagonal mobility"], correct: 1, explanation: "Horizontal mobility refers to a lateral move (change of function or job without hierarchical promotion). Vertical mobility involves hierarchical level changes, and geographical mobility involves location changes." },
+    { q: "In the Ference Matrix, an employee with high potential but low current performance is classified as:", options: ["A. Star", "B. Pillar", "C. Dead Wood", "D. Rising Star"], correct: 3, explanation: "Rising Stars have high potential but low current performance. They need development and support to reach their full potential. Stars are high in both, Pillars are high performance/low potential, Dead Wood is low in both." },
+    { q: "Who typically conducts the Career Development Interview (mandatory since 2014)?", options: ["A. The direct manager", "B. An external consultant", "C. An HR manager", "D. The CEO"], correct: 2, explanation: "The Career Development Interview is generally conducted by an HR manager rather than the direct manager. It takes place at least every two years and covers career plan, training, employability, and professional future." },
+    { q: "Which body replaced OPCAs in 2019 for managing company training contributions?", options: ["A. CSE (Social and Economic Committee)", "B. OPCOs (Skills Operators)", "C. GPEC (Strategic Workforce Planning)", "D. CPF (Personal Training Account)"], correct: 1, explanation: "OPCOs (Operateurs de Competences / Skills Operators) replaced OPCAs (Approved Joint Collecting Bodies) in 2019. Companies pay their mandatory training contributions to the OPCO to which they belong." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

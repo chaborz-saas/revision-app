@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — SEBS Ch 2: Mineral Resources, GHG & Pollution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        .quiz-container { max-width: 750px; margin: 0 auto; }
+        .back-link { color: #888; text-decoration: none; font-size: 0.85rem; }
+        .back-link:hover { color: #10b981; }
+        .quiz-header { text-align: center; margin: 1.5rem 0; }
+        .matiere { color: #10b981; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .quiz-header h1 { font-size: 1.5rem; margin-top: 0.5rem; color: #fff; }
+        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
+        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.5s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: flex; flex-direction: column; gap: 0.7rem; }
+        .option { background: #252540; border: 2px solid #333; border-radius: 10px; padding: 1rem; text-align: left; color: #e0e0e0; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #2a2a4a; }
+        .option.correct { border-color: #10b981; background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .option.wrong { border-color: #ef4444; background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { display: none; background: #252540; border-left: 4px solid #10b981; padding: 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.5; color: #ccc; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn { padding: 0.7rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-next { background: #10b981; color: #fff; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .result-card { display: none; text-align: center; background: #1a1a2e; padding: 2.5rem; border-radius: 12px; }
+        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; border: none; padding: 0.8rem 2.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-restart:hover { background: #059669; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+        <div class="quiz-header">
+            <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
+            <h1>Chapter 2 &mdash; Mineral Resources, GHG &amp; Pollution</h1>
+        </div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div id="quiz-area"></div>
+        <div class="result-card" id="result-card">
+            <div style="font-size:2rem">&#127919;</div>
+            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-msg" id="result-msg"></div>
+            <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+            <br><br>
+            <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+        </div>
+    </div>
+    <script>
+const questions = [
+    { q: "What would be Earth's average temperature without the greenhouse effect?", options: ["A. 0 degrees C", "B. -18 degrees C", "C. 10 degrees C", "D. -5 degrees C"], correct: 1, explanation: "Without the greenhouse effect, Earth would be frozen at -18 degrees C. The natural greenhouse effect raises it to about 15 degrees C, enabling human societies to develop." },
+    { q: "How fast is current climate change compared to natural changes?", options: ["A. About 10 times faster", "B. About 50 times faster", "C. About 100 times faster", "D. About the same speed"], correct: 2, explanation: "Current warming is approximately 5 degrees C/century compared to natural rates of 0.05 degrees C/century — nearly 100 times faster. This unprecedented speed is the core problem." },
+    { q: "What is eutrophication?", options: ["A. Excessive CO2 in the atmosphere", "B. Nutrient enrichment of water bodies causing algal blooms and oxygen depletion", "C. Acidification of ocean water", "D. Plastic accumulation in river systems"], correct: 1, explanation: "Eutrophication is the excessive enrichment of water bodies with nutrients (nitrogen and phosphorus), leading to algal blooms, oxygen depletion, and ecosystem damage, mainly from agricultural runoff." },
+    { q: "What is the Jevons Paradox?", options: ["A. Higher efficiency always leads to lower consumption", "B. Increased efficiency can lead to increased consumption due to the rebound effect", "C. Renewable energy always replaces fossil fuels", "D. Economic growth automatically reduces pollution"], correct: 1, explanation: "The Jevons Paradox states that when technology makes resource use more efficient, the resulting savings may lead to increased consumption rather than decreased consumption — the rebound effect." },
+    { q: "What percentage of pollution-related deaths occur in developing countries?", options: ["A. 50%", "B. 70%", "C. 80%", "D. 90%"], correct: 3, explanation: "90% of pollution-related deaths occur in developing countries, highlighting the severe inequality in the health impacts of pollution globally." },
+    { q: "What are the three fundamental principles of the circular economy?", options: ["A. Extract, Manufacture, Dispose", "B. Reduce, Reuse, Recycle", "C. Design, Produce, Sell", "D. Innovate, Scale, Profit"], correct: 1, explanation: "The circular economy is built on three principles: Reduce (minimize resource use), Reuse (extend product life through repair/refurbishment), and Recycle (convert waste into new resources)." },
+    { q: "Why are critical metals a major concern for the energy transition?", options: ["A. They are too expensive to extract", "B. They are concentrated geopolitically and have low recycling rates", "C. They cannot be used in renewable technologies", "D. They are available in unlimited quantities"], correct: 1, explanation: "Critical metals like rare earths, cobalt, and lithium are essential for batteries, solar panels, and wind turbines, but are concentrated in few countries (e.g., China, DRC) and have very low recycling rates." },
+    { q: "What differentiates a circular economy from a linear economy?", options: ["A. A circular economy focuses on maximizing production speed", "B. A circular economy follows 'Extract, Manufacture, Use, Dispose'", "C. A circular economy aims to recover and regenerate at all lifecycle stages", "D. A circular economy eliminates the need for any manufacturing"], correct: 2, explanation: "The linear economy follows 'Extract, Manufacture, Use, Dispose.' The circular economy shifts to 'Recover and Regenerate' at all stages, transforming the mindset from mass consumption to optimal use." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
+    else score++;
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+    </script>
+    <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

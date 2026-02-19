@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary — Performance Management Ch 3: CVP Analysis</title>
+    <style>
+        body{font-family:'Georgia',serif;max-width:820px;margin:0 auto;padding:2rem;line-height:1.75;color:#2c3e50;background:#fafafa}
+        h1{color:#1a5276;border-bottom:3px solid #2980b9;padding-bottom:.5rem;font-size:1.8rem}
+        h2{color:#2471a3;margin-top:2.5rem;font-size:1.4rem}
+        h3{color:#2e86c1;font-size:1.15rem}
+        .definition{background:#eaf2f8;border-left:4px solid #2980b9;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 8px 8px 0}
+        .formula{background:#fef9e7;border-left:4px solid #f39c12;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 8px 8px 0}
+        .important{background:#fdedec;border-left:4px solid #e74c3c;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 8px 8px 0}
+        .example{background:#eafaf1;border-left:4px solid #27ae60;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 8px 8px 0}
+        table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem}
+        th,td{border:1px solid #bdc3c7;padding:.6rem .8rem;text-align:left}
+        th{background:#2c3e50;color:white}
+        tr:nth-child(even){background:#f8f9fa}
+        .back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
+        .back-link:hover{color:#2980b9}
+    </style>
+</head>
+<body>
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <h1>Summary &mdash; Performance Management Ch 3: CVP Analysis</h1>
+
+    <h2>1. Cost Classification and Behaviour</h2>
+
+    <h3>Direct vs Indirect Costs</h3>
+    <div class="definition">
+        <strong>Direct cost:</strong> Can be traced directly to a cost object (e.g. raw materials for a product).<br>
+        <strong>Indirect cost:</strong> Cannot be easily traced to a specific cost object (e.g. factory rent).
+    </div>
+
+    <h3>Product vs Period Costs</h3>
+    <div class="definition">
+        <strong>Product costs:</strong> Costs assigned to goods, included in inventory valuation.<br>
+        <strong>Period costs:</strong> Charged to a time period, not to products (e.g. admin salaries).
+    </div>
+
+    <h3>Cost Behaviour</h3>
+    <div class="important">
+        <strong>Fixed costs:</strong> Independent of the level of activity (e.g. rent).<br>
+        <strong>Variable costs:</strong> Vary directly with the level of activity (e.g. raw materials).<br>
+        <strong>Semi-variable (semi-fixed) costs:</strong> A mixture of fixed and variable components (e.g. electricity with a standing charge plus usage).
+    </div>
+
+    <h3>High-Low Method for Estimating Semi-Variable Costs</h3>
+    <div class="formula">
+        <strong>Variable cost per unit = (Highest total cost - Lowest total cost) / (Highest volume - Lowest volume)</strong><br><br>
+        <strong>Fixed cost = Total cost - (Variable cost per unit &times; Volume)</strong>
+    </div>
+
+    <div class="example">
+        <strong>Example:</strong> Lowest quarter: 100,000 units, &pound;80,000 total. Highest quarter: 180,000 units, &pound;120,000 total.<br>
+        Variable cost = &pound;40,000 / 80,000 = <strong>&pound;0.50 per unit</strong><br>
+        Fixed cost = &pound;80,000 - (100,000 &times; &pound;0.50) = <strong>&pound;30,000 per quarter</strong>
+    </div>
+
+    <h2>2. Key CVP Components</h2>
+
+    <div class="formula">
+        <strong>CVP Income Statement Structure:</strong><br>
+        Sales Revenue (Volume &times; Selling Price)<br>
+        <em>Less:</em> Variable Costs (Volume &times; Variable Cost per Unit)<br>
+        = <strong>Contribution Margin</strong> (Volume &times; Contribution per Unit)<br>
+        <em>Less:</em> Fixed Costs<br>
+        = <strong>Profit</strong><br><br>
+        <strong>Contribution Margin % = (Contribution / Revenue) &times; 100</strong><br>
+        <strong>Profit Margin % = (Profit / Revenue) &times; 100</strong>
+    </div>
+
+    <h2>3. Break-Even Point (BEP)</h2>
+
+    <div class="definition">
+        <strong>Break-even point:</strong> The level of output at which total contribution margin exactly equals total fixed costs, meaning profit is zero.
+    </div>
+
+    <div class="formula">
+        <strong>BEP (units) = Fixed Costs / Contribution per Unit</strong><br><br>
+        where Contribution per Unit = Selling Price per Unit - Variable Cost per Unit
+    </div>
+
+    <div class="example">
+        <strong>Example &mdash; Basket making:</strong><br>
+        Fixed costs = &pound;500/month. Selling price = &pound;14. Variable costs: materials &pound;2 + labour &pound;10 = &pound;12.<br>
+        Contribution per unit = &pound;14 - &pound;12 = <strong>&pound;2</strong><br>
+        BEP = &pound;500 / &pound;2 = <strong>250 units per month</strong>
+    </div>
+
+    <h2>4. Margin of Safety</h2>
+
+    <div class="formula">
+        <strong>Margin of Safety (units) = Planned Volume - BEP Volume</strong><br><br>
+        <strong>Margin of Safety (%) = [(Planned Volume - BEP Volume) / Planned Volume] &times; 100</strong>
+    </div>
+
+    <div class="example">
+        <strong>Example:</strong> Planned sales = 500 units. BEP = 250 units.<br>
+        Margin of safety = 250 units = <strong>50%</strong><br><br>
+        With new machine: BEP = 429 units. Margin of safety = 71 units = <strong>14.2%</strong>
+    </div>
+
+    <h2>5. Target Profit Analysis</h2>
+
+    <div class="formula">
+        <strong>Volume for Target Profit = (Fixed Costs + Target Profit) / Contribution per Unit</strong>
+    </div>
+
+    <div class="example">
+        <strong>Example:</strong> Target profit = &pound;4,000. Fixed costs = &pound;500. Contribution = &pound;2/unit.<br>
+        Volume = (&pound;500 + &pound;4,000) / &pound;2 = <strong>2,250 units</strong>
+    </div>
+
+    <h2>6. Operating Gearing</h2>
+
+    <div class="definition">
+        <strong>Operating gearing:</strong> The extent to which total costs are fixed rather than variable. Higher gearing means profits are more sensitive to changes in volume &mdash; both upside and downside risk increase.
+    </div>
+
+    <div class="example">
+        <strong>Example:</strong> Without machine (low gearing): doubling volume from 500 to 1,000 units triples profit.<br>
+        With machine (high gearing): same doubling increases profit 8 times. But the break-even point is also higher (429 vs 250 units).
+    </div>
+
+    <h2>7. Weaknesses of Break-Even Analysis</h2>
+
+    <div class="important">
+        <ul>
+            <li>Assumes <strong>linear relationships</strong> between cost, revenue, and volume (not always realistic)</li>
+            <li>There may be <strong>stepped fixed costs</strong> at different activity levels</li>
+            <li>Fixed costs are not truly fixed over all volumes</li>
+            <li>Difficult for <strong>multi-product businesses</strong> to allocate fixed costs</li>
+            <li>Economists note that selling more may require <strong>price reductions</strong> and that <strong>economies/diseconomies of scale</strong> affect costs</li>
+        </ul>
+    </div>
+
+    <h2>8. Marginal Analysis for Decision Making</h2>
+
+    <p>When making short-term decisions, focus on contribution (revenue minus variable costs). Fixed costs are only relevant if the decision changes them.</p>
+
+    <h3>8.1 Assessing Contracts</h3>
+    <div class="formula">
+        <strong>Accept if: Revenue from contract > Relevant variable costs</strong><br>
+        (i.e. the contract makes a positive contribution)
+    </div>
+
+    <h3>8.2 Scarce Resources (Limiting Factor)</h3>
+    <div class="formula">
+        <strong>Step 1:</strong> Confirm the resource is scarce (total demand exceeds supply)<br>
+        <strong>Step 2:</strong> Calculate contribution per unit of scarce resource for each product<br>
+        <strong>Step 3:</strong> Rank products and allocate scarce resource starting from highest contribution per unit of scarce resource
+    </div>
+
+    <div class="example">
+        <strong>Example:</strong> 148 machine hours available. B17 gives &pound;4.00/hr (rank 1), B14 gives &pound;3.75/hr (rank 2), B22 gives &pound;2.75/hr (rank 3).<br>
+        Produce all 20 B17 (60 hrs), then 22 B14 (88 hrs). Total contribution = &pound;570.
+    </div>
+
+    <h3>8.3 Make-or-Buy Decisions</h3>
+    <div class="formula">
+        <strong>With spare capacity:</strong> Compare variable cost of making vs buying price<br>
+        <strong>Without spare capacity:</strong> Add opportunity cost to variable cost of making, then compare to buying price
+    </div>
+
+    <h3>8.4 Closing/Continuing a Department</h3>
+    <div class="important">
+        <strong>Rule:</strong> Do NOT close a department that makes a positive contribution, even if it shows an accounting loss after fixed cost allocation. If fixed costs cannot be avoided, closing the department worsens overall profit by the amount of contribution lost.
+    </div>
+
+    <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

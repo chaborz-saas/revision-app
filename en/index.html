@@ -37,35 +37,146 @@
             margin-bottom: 0.5rem;
         }
         .back-link:hover { color: #3b82f6; }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+        }
+        .stat .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+        .stat .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #808090;
+            margin-top: 0.2rem;
+        }
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
         }
-        .coming-soon {
-            text-align: center;
-            padding: 5rem 2rem;
+        .matiere {
+            margin-bottom: 2.5rem;
         }
-        .coming-soon .emoji { font-size: 4rem; margin-bottom: 1.5rem; }
-        .coming-soon h2 {
-            font-size: 1.5rem;
+        .matiere-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+        .matiere-header .emoji { font-size: 1.5rem; }
+        .matiere-header h2 {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: white;
-            margin-bottom: 0.8rem;
         }
-        .coming-soon p {
+        .matiere-header .count {
+            margin-left: auto;
+            font-size: 0.8rem;
             color: #808090;
-            font-size: 0.95rem;
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.6;
+            background: rgba(255,255,255,0.05);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
         }
+        .rm .matiere-header { border-color: #8e44ad; }
+        .rm .matiere-header h2 { color: #8e44ad; }
+        .cm .matiere-header { border-color: #1abc9c; }
+        .cm .matiere-header h2 { color: #1abc9c; }
+        .geo .matiere-header { border-color: #c0392b; }
+        .geo .matiere-header h2 { color: #c0392b; }
+        .hrm .matiere-header { border-color: #e67e22; }
+        .hrm .matiere-header h2 { color: #e67e22; }
+        .pm .matiere-header { border-color: #3b82f6; }
+        .pm .matiere-header h2 { color: #3b82f6; }
+        .sebs .matiere-header { border-color: #27ae60; }
+        .sebs .matiere-header h2 { color: #27ae60; }
+
+        .chapters {
+            display: grid;
+            gap: 0.6rem;
+        }
+        .chapter {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            transition: all 0.2s;
+        }
+        .chapter:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.12);
+        }
+        .chapter .num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #606070;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 30px;
+        }
+        .chapter .title {
+            flex: 1;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #d0d0d8;
+        }
+        .chapter .links {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .chapter .links a {
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .btn-synthese {
+            background: rgba(41, 128, 185, 0.15);
+            color: #5dade2;
+            border: 1px solid rgba(41, 128, 185, 0.3);
+        }
+        .btn-synthese:hover { background: rgba(41, 128, 185, 0.3); }
+        .btn-fiche {
+            background: rgba(233, 69, 96, 0.15);
+            color: #e94560;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        .btn-fiche:hover { background: rgba(233, 69, 96, 0.3); }
+        .btn-quiz {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .btn-quiz:hover { background: rgba(16, 185, 129, 0.3); }
         .footer {
             text-align: center;
             padding: 2rem;
             color: #505060;
             font-size: 0.8rem;
             border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        @media (max-width: 600px) {
+            .chapter { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .chapter .links { width: 100%; }
+            .stats { gap: 1rem; }
         }
 
         /* PEDRO SPLASH */
@@ -121,18 +232,364 @@
     <a href="../index.html" class="back-link">&larr; Back to home</a>
     <h1>Revision for the people</h1>
     <p>English Track — made by felix le goat</p>
-</div>
-
-<div class="container">
-    <div class="coming-soon">
-        <div class="emoji">🇬🇧</div>
-        <h2>Courses coming soon</h2>
-        <p>The English track is being prepared. Summaries, revision sheets and quizzes will appear here as soon as the courses are added. Stay tuned!</p>
+    <div class="stats">
+        <div class="stat">
+            <div class="number">6</div>
+            <div class="label">Courses</div>
+        </div>
+        <div class="stat">
+            <div class="number">30</div>
+            <div class="label">Chapters</div>
+        </div>
+        <div class="stat">
+            <div class="number">90</div>
+            <div class="label">Resources</div>
+        </div>
     </div>
 </div>
 
+<div class="container">
+
+    <!-- RELATIONSHIP MARKETING -->
+    <div class="matiere rm">
+        <div class="matiere-header">
+            <span class="emoji">💜</span>
+            <h2>Relationship Marketing</h2>
+            <span class="count">5 chapters</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">Ch1</span>
+                <span class="title">Fundamentals, Satisfaction & Customer Experience</span>
+                <div class="links">
+                    <a href="../syntheses/EN_RELATIONSHIP_MARKETING/ch1_fundamentals.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_RELATIONSHIP_MARKETING/ch1_fundamentals.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_RELATIONSHIP_MARKETING/ch1_fundamentals.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch2</span>
+                <span class="title">Complaints Management</span>
+                <div class="links">
+                    <a href="../syntheses/EN_RELATIONSHIP_MARKETING/ch2_complaints.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_RELATIONSHIP_MARKETING/ch2_complaints.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_RELATIONSHIP_MARKETING/ch2_complaints.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch3</span>
+                <span class="title">Loyalty Programs & Customer Value</span>
+                <div class="links">
+                    <a href="../syntheses/EN_RELATIONSHIP_MARKETING/ch3_loyalty_programs_customer_value.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_RELATIONSHIP_MARKETING/ch3_loyalty_programs_customer_value.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_RELATIONSHIP_MARKETING/ch3_loyalty_programs_customer_value.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch4</span>
+                <span class="title">AI & Relationship Marketing</span>
+                <div class="links">
+                    <a href="../syntheses/EN_RELATIONSHIP_MARKETING/ch4_ai_relationship_marketing.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_RELATIONSHIP_MARKETING/ch4_ai_relationship_marketing.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_RELATIONSHIP_MARKETING/ch4_ai_relationship_marketing.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch5</span>
+                <span class="title">The Dark Side of Relationship Marketing</span>
+                <div class="links">
+                    <a href="../syntheses/EN_RELATIONSHIP_MARKETING/ch5_dark_side.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_RELATIONSHIP_MARKETING/ch5_dark_side.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_RELATIONSHIP_MARKETING/ch5_dark_side.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHANGE MANAGEMENT FOR SUSTAINABILITY -->
+    <div class="matiere cm">
+        <div class="matiere-header">
+            <span class="emoji">🌿</span>
+            <h2>Change Management for Sustainability</h2>
+            <span class="count">4 chapters</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">Ch1</span>
+                <span class="title">Standard Economy & Environment</span>
+                <div class="links">
+                    <a href="../syntheses/EN_CHANGE_MANAGEMENT/ch1_standard_economy_environment.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_CHANGE_MANAGEMENT/ch1_standard_economy_environment.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_CHANGE_MANAGEMENT/ch1_standard_economy_environment.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch2</span>
+                <span class="title">Introduction to Sustainable Management</span>
+                <div class="links">
+                    <a href="../syntheses/EN_CHANGE_MANAGEMENT/ch2_introduction_sustainable_management.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_CHANGE_MANAGEMENT/ch2_introduction_sustainable_management.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_CHANGE_MANAGEMENT/ch2_introduction_sustainable_management.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch3</span>
+                <span class="title">From Rhetoric to Strategy</span>
+                <div class="links">
+                    <a href="../syntheses/EN_CHANGE_MANAGEMENT/ch3_rhetoric_to_strategy.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_CHANGE_MANAGEMENT/ch3_rhetoric_to_strategy.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_CHANGE_MANAGEMENT/ch3_rhetoric_to_strategy.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch4</span>
+                <span class="title">Organizational & Institutional Change</span>
+                <div class="links">
+                    <a href="../syntheses/EN_CHANGE_MANAGEMENT/ch4_organizational_institutional_change.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_CHANGE_MANAGEMENT/ch4_organizational_institutional_change.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_CHANGE_MANAGEMENT/ch4_organizational_institutional_change.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GEOECONOMICS -->
+    <div class="matiere geo">
+        <div class="matiere-header">
+            <span class="emoji">🌍</span>
+            <h2>Geoeconomics</h2>
+            <span class="count">4 chapters</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">Ch1</span>
+                <span class="title">Geopolitical Foundations & Geoeconomics</span>
+                <div class="links">
+                    <a href="../syntheses/EN_GEOECONOMICS/ch1_geopolitical_foundations.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_GEOECONOMICS/ch1_geopolitical_foundations.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_GEOECONOMICS/ch1_geopolitical_foundations.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch2</span>
+                <span class="title">Actors, Flows & Scales of Analysis</span>
+                <div class="links">
+                    <a href="../syntheses/EN_GEOECONOMICS/ch2_actors_flows_scales.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_GEOECONOMICS/ch2_actors_flows_scales.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_GEOECONOMICS/ch2_actors_flows_scales.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch3</span>
+                <span class="title">The Company as a Geoeconomic Actor</span>
+                <div class="links">
+                    <a href="../syntheses/EN_GEOECONOMICS/ch3_company_geoeconomic_actor.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_GEOECONOMICS/ch3_company_geoeconomic_actor.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_GEOECONOMICS/ch3_company_geoeconomic_actor.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch4</span>
+                <span class="title">Sustainability, Trade Policy & Geoeconomics</span>
+                <div class="links">
+                    <a href="../syntheses/EN_GEOECONOMICS/ch4_sustainability_trade_policy.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_GEOECONOMICS/ch4_sustainability_trade_policy.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_GEOECONOMICS/ch4_sustainability_trade_policy.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HRM FOR MANAGERS -->
+    <div class="matiere hrm">
+        <div class="matiere-header">
+            <span class="emoji">🧑‍💼</span>
+            <h2>HRM for Managers</h2>
+            <span class="count">4 chapters</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">Ch1</span>
+                <span class="title">Introduction to HRM & Recruitment</span>
+                <div class="links">
+                    <a href="../syntheses/EN_HRM/ch1_introduction_hrm_recruitment.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_HRM/ch1_introduction_hrm_recruitment.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_HRM/ch1_introduction_hrm_recruitment.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch2</span>
+                <span class="title">Compensation & Evaluation</span>
+                <div class="links">
+                    <a href="../syntheses/EN_HRM/ch2_compensation_evaluation.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_HRM/ch2_compensation_evaluation.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_HRM/ch2_compensation_evaluation.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch3</span>
+                <span class="title">Training & Career Management</span>
+                <div class="links">
+                    <a href="../syntheses/EN_HRM/ch3_training_career_management.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_HRM/ch3_training_career_management.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_HRM/ch3_training_career_management.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch4</span>
+                <span class="title">Diversity, PSR & Work-Life Balance</span>
+                <div class="links">
+                    <a href="../syntheses/EN_HRM/ch4_diversity_psr_worklife.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_HRM/ch4_diversity_psr_worklife.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_HRM/ch4_diversity_psr_worklife.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERFORMANCE MANAGEMENT -->
+    <div class="matiere pm">
+        <div class="matiere-header">
+            <span class="emoji">📊</span>
+            <h2>Performance Management</h2>
+            <span class="count">8 chapters</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">Ch1</span>
+                <span class="title">Introduction to Management Accounting</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch1_intro_management_accounting.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch1_intro_management_accounting.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch1_intro_management_accounting.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch2</span>
+                <span class="title">Short-term Decisions & Relevant Costs</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch2_decisions_relevant_costs.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch2_decisions_relevant_costs.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch2_decisions_relevant_costs.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch3</span>
+                <span class="title">Cost-Volume-Profit (CVP) Analysis</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch3_cvp_analysis.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch3_cvp_analysis.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch3_cvp_analysis.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch4</span>
+                <span class="title">Full Costing</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch4_full_costing.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch4_full_costing.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch4_full_costing.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch5</span>
+                <span class="title">Costing & Cost Management</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch5_costing_cost_management.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch5_costing_cost_management.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch5_costing_cost_management.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch6</span>
+                <span class="title">Budgeting</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch6_budgeting.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch6_budgeting.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch6_budgeting.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch7</span>
+                <span class="title">Standard Costing & Variance Analysis</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch7_variance_analysis.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch7_variance_analysis.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch7_variance_analysis.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch8</span>
+                <span class="title">Strategic Management Accounting</span>
+                <div class="links">
+                    <a href="../syntheses/EN_PERFORMANCE_MGMT/ch8_strategic_management_accounting.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_PERFORMANCE_MGMT/ch8_strategic_management_accounting.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_PERFORMANCE_MGMT/ch8_strategic_management_accounting.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUSTAINABLE & ETHICAL BUSINESS STRATEGY -->
+    <div class="matiere sebs">
+        <div class="matiere-header">
+            <span class="emoji">♻️</span>
+            <h2>Sustainable & Ethical Business Strategy</h2>
+            <span class="count">5 chapters</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">Ch1</span>
+                <span class="title">Climate & Energy Fundamentals</span>
+                <div class="links">
+                    <a href="../syntheses/EN_SEBS/ch1_climate_energy_fundamentals.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_SEBS/ch1_climate_energy_fundamentals.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_SEBS/ch1_climate_energy_fundamentals.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch2</span>
+                <span class="title">Resources, GHG & Pollution</span>
+                <div class="links">
+                    <a href="../syntheses/EN_SEBS/ch2_resources_ghg_pollution.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_SEBS/ch2_resources_ghg_pollution.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_SEBS/ch2_resources_ghg_pollution.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch3</span>
+                <span class="title">Innovation & Leveraging</span>
+                <div class="links">
+                    <a href="../syntheses/EN_SEBS/ch3_innovation_leveraging.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_SEBS/ch3_innovation_leveraging.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_SEBS/ch3_innovation_leveraging.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch4</span>
+                <span class="title">New Business Models for a Sustainable World</span>
+                <div class="links">
+                    <a href="../syntheses/EN_SEBS/ch4_new_business_models.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_SEBS/ch4_new_business_models.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_SEBS/ch4_new_business_models.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+            <div class="chapter">
+                <span class="num">Ch5</span>
+                <span class="title">Can Public Policies Help?</span>
+                <div class="links">
+                    <a href="../syntheses/EN_SEBS/ch5_public_policies.html" class="btn-synthese">Summary</a>
+                    <a href="../fiches/EN_SEBS/ch5_public_policies.html" class="btn-fiche">Sheet</a>
+                    <a href="../quiz/EN_SEBS/ch5_public_policies.html" class="btn-quiz">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <div class="footer">
-    English Track — Coming soon
+    English Track — Revision for the people
 </div>
 
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

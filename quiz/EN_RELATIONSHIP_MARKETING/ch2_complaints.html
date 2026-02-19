@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Relationship Marketing Ch2: Complaints Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
+        <h1>Chapter 2 &mdash; Complaints: Last Chance Relationships</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {q:"What are the two categories of costs associated with customer dissatisfaction?", options:["A. Fixed costs and variable costs","B. Direct costs and opportunity costs","C. Production costs and marketing costs","D. Internal costs and external costs"], correct:1, explanation:"Direct costs include warranties, indemnities, and handling. Opportunity costs include lost revenue from departing customers and negative word-of-mouth deterring prospects."},
+    {q:"What is the correct sequence of the complaints management process?", options:["A. Analysis > Collection > Response > Corrective > Prevention","B. Response > Collection > Analysis > Prevention > Corrective","C. Collection & Centralization > Analysis & Validation > Response > Corrective Action > Progress Actions","D. Corrective Action > Response > Analysis > Collection > Prevention"], correct:2, explanation:"The 5-step process goes: 1) Collection & Centralization, 2) Analysis & Validation, 3) Providing Response, 4) Corrective Action, 5) Progress Actions (preventive)."},
+    {q:"What is the Ishikawa Diagram used for in complaints management?", options:["A. Measuring customer satisfaction scores","B. Root-cause analysis using the 6 Ms framework","C. Calculating the attrition rate","D. Designing loyalty programs"], correct:1, explanation:"The Ishikawa (Fishbone) Diagram identifies root causes across 6 domains: Man, Machine, Method, Material, Measurement, Milieu (Environment)."},
+    {q:"According to Pareto analysis applied to complaints, approximately:", options:["A. 50% of cause types generate 50% of complaints","B. 80% of cause types generate 20% of complaints","C. 20% of cause types generate 80% of complaints","D. 10% of cause types generate 90% of complaints"], correct:2, explanation:"Pareto's 80/20 rule: approximately 20% of cause types generate 80% of consequences. This helps prioritize where to invest prevention resources."},
+    {q:"A standard compensation grid is built collaboratively by which departments?", options:["A. IT, HR, and Legal","B. Sales, Finance, and Quality","C. Marketing, Production, and R&D","D. Customer Service, IT, and Logistics"], correct:1, explanation:"The compensation grid should be built jointly by Sales (customer knowledge), Finance (budget control), and Quality (standards), to ensure consistency and fairness."},
+    {q:"What percentage of dissatisfied customers typically express their complaints?", options:["A. About 50%","B. About 25%","C. About 5%","D. About 75%"], correct:2, explanation:"Only about 5% of dissatisfied customers complain spontaneously. The vast majority (95%) leave without warning, making complaints just the tip of the iceberg."},
+    {q:"What is the difference between corrective and preventive actions?", options:["A. Corrective = for future customers; Preventive = for current customers","B. Corrective = fixes the individual case; Preventive = removes root causes to prevent recurrence","C. They are the same thing","D. Corrective = financial compensation only; Preventive = apology only"], correct:1, explanation:"Corrective actions fix the specific customer's problem (exchange, refund). Preventive actions remove the root causes so similar problems do not recur for any customer."},
+    {q:"The attrition rate formula is:", options:["A. Total revenue / Number of customers","B. Number of complaints / Total customers","C. Number of customers lost over the period / Number of customers at the start","D. Number of new customers / Number of lost customers"], correct:2, explanation:"Attrition Rate = Customers lost during the period / Customers at the start of the period. It measures the rate at which a company loses its customers."}
+];
+let current = 0, score = 0, answered = false;
+function renderQ() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            <div></div>
+            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
+        </div>`;
+    answered = false;
+}
+function selectOption(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

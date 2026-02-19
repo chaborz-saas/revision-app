@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — SEBS Ch 5: Public Policies</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        .quiz-container { max-width: 750px; margin: 0 auto; }
+        .back-link { color: #888; text-decoration: none; font-size: 0.85rem; }
+        .back-link:hover { color: #10b981; }
+        .quiz-header { text-align: center; margin: 1.5rem 0; }
+        .matiere { color: #10b981; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .quiz-header h1 { font-size: 1.5rem; margin-top: 0.5rem; color: #fff; }
+        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
+        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.5s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: flex; flex-direction: column; gap: 0.7rem; }
+        .option { background: #252540; border: 2px solid #333; border-radius: 10px; padding: 1rem; text-align: left; color: #e0e0e0; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #2a2a4a; }
+        .option.correct { border-color: #10b981; background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .option.wrong { border-color: #ef4444; background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { display: none; background: #252540; border-left: 4px solid #10b981; padding: 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.5; color: #ccc; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn { padding: 0.7rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-next { background: #10b981; color: #fff; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .result-card { display: none; text-align: center; background: #1a1a2e; padding: 2.5rem; border-radius: 12px; }
+        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; border: none; padding: 0.8rem 2.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-restart:hover { background: #059669; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+        <div class="quiz-header">
+            <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
+            <h1>Chapter 5 &mdash; Public Policies</h1>
+        </div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div id="quiz-area"></div>
+        <div class="result-card" id="result-card">
+            <div style="font-size:2rem">&#127919;</div>
+            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-msg" id="result-msg"></div>
+            <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+            <br><br>
+            <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+        </div>
+    </div>
+    <script>
+const questions = [
+    { q: "What is the key difference between 'Carbon Neutral' and 'Net Zero'?", options: ["A. They mean exactly the same thing", "B. Carbon neutral focuses on compensation/offsetting; net zero requires deep emission reductions across all scopes", "C. Net zero only applies to governments, carbon neutral to companies", "D. Carbon neutral is more ambitious than net zero"], correct: 1, explanation: "Carbon neutral allows a company to offset emissions through external projects without deep internal transformation. Net zero requires major reductions across the entire value chain (Scope 1, 2, and 3), with only minimal remaining offsets. Net zero is much more ambitious and science-based." },
+    { q: "What does 'double materiality' mean in CSRD?", options: ["A. Companies must report twice a year", "B. Companies must report both how sustainability issues affect them AND how they affect people and the environment", "C. Two different companies must verify each report", "D. Reports must cover both past and future performance"], correct: 1, explanation: "Double materiality means reporting from two perspectives: financial materiality (how sustainability issues affect the company) and impact materiality (how the company affects people and the environment). This is a core innovation of CSRD." },
+    { q: "What are the three emission scopes under the GHG Protocol?", options: ["A. Scope 1: CO2, Scope 2: methane, Scope 3: other gases", "B. Scope 1: direct emissions, Scope 2: indirect energy emissions, Scope 3: other indirect emissions", "C. Scope 1: domestic, Scope 2: European, Scope 3: international", "D. Scope 1: past, Scope 2: present, Scope 3: projected"], correct: 1, explanation: "Scope 1 covers direct emissions from owned sources. Scope 2 covers indirect energy emissions (purchased electricity). Scope 3 covers all other indirect emissions in the value chain (supply chain, commuting, product use). Scope 3 is typically the largest share." },
+    { q: "If emissions had started being reduced in 2000, what annual reduction rate would have been needed?", options: ["A. ~1% per year", "B. ~2% per year", "C. ~5% per year", "D. ~9% per year"], correct: 1, explanation: "If serious mitigation had started in 2000, only ~2% annual reduction would have been needed — manageable with moderate policy changes. Starting in 2019 requires ~5%, and waiting 10 more years would require ~9% — nearly impossible without massive disruption." },
+    { q: "What are the four key principles of the EU Taxonomy?", options: ["A. Profitability, scalability, innovation, compliance", "B. Substantial contribution, DNSH, minimum social safeguards, technical screening criteria", "C. Carbon neutrality, green investment, social equity, transparency", "D. Emission reduction, offsetting, reporting, verification"], correct: 1, explanation: "The EU Taxonomy's four principles are: Substantial Contribution (advance one of six environmental objectives), Do No Significant Harm (DNSH), Minimum Social Safeguards (workers' rights), and Technical Screening Criteria (EU-defined compliance standards)." },
+    { q: "What is 'Absolute Zero' in the context of climate policy?", options: ["A. The same as net zero", "B. Zero emissions with no reliance on any CO2 removal or offsetting", "C. Zero economic growth to achieve zero emissions", "D. The minimum emission level achievable with current technology"], correct: 1, explanation: "Absolute Zero means reaching zero emissions with no reliance on CO2 removal technologies — no offsets, no carbon capture, just zero emissions produced. It is the most stringent target, contrasting with both carbon neutral and net zero which allow some compensation." },
+    { q: "What is the purpose of the CSRD?", options: ["A. To set carbon prices across Europe", "B. To mandate sustainability reporting for large companies", "C. To ban fossil fuel investments", "D. To redistribute profits to green startups"], correct: 1, explanation: "The CSRD (Corporate Sustainability Reporting Directive) makes sustainability reporting mandatory for large companies. It requires disclosure on environmental, social, and governance topics using the double materiality principle, initially targeting about 50,000 companies in Europe." },
+    { q: "What significant change does the 2025 Omnibus proposal introduce?", options: ["A. It accelerates the CSRD timeline", "B. It adds more companies to CSRD requirements", "C. It reduces the number of companies covered and simplifies requirements", "D. It merges CSRD with SFDR into one regulation"], correct: 2, explanation: "The 2025 Omnibus proposal suggests a drastic reduction in the number of companies covered by CSRD, with big simplifications of reporting requirements. The CSDDD is also impacted. This reflects political pushback about regulatory burden and creates uncertainty about EU sustainability regulation." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
+    else score++;
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+    </script>
+    <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Geoeconomics Ch 1: Geopolitical Foundations and Geoeconomics</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .back-link { color: #10b981; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+        .back-link:hover { text-decoration: underline; }
+        .quiz-header { text-align: center; margin-bottom: 2rem; }
+        .matiere { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.5rem; }
+        h1 { font-size: 1.8rem; color: #fff; }
+        .score-display { text-align: center; font-size: 1rem; color: #aaa; margin-bottom: 1rem; }
+        .progress-bar { width: 100%; height: 6px; background: #1e1e2f; border-radius: 3px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { height: 100%; background: #10b981; border-radius: 3px; transition: width 0.4s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+        .question-text { font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: #16213e; border: 2px solid #1e3a5f; padding: 1rem 1.25rem; border-radius: 8px; color: #e0e0e0; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
+        .option:disabled { cursor: not-allowed; opacity: 0.85; }
+        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; font-weight: 600; }
+        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
+        .explanation { display: none; margin-top: 1.25rem; padding: 1rem; background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.95rem; color: #a7f3d0; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn-next { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .result-card { display: none; text-align: center; background: #1a1a2e; border-radius: 12px; padding: 3rem 2rem; }
+        .result-score { font-size: 3rem; color: #10b981; font-weight: 700; margin: 1rem 0; }
+        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+        .btn-restart:hover { background: #059669; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">GEOECONOMICS &mdash; QUIZ</div>
+        <h1>Chapter 1 &mdash; Geopolitical Foundations and Geoeconomics</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+
+<script>
+const questions = [
+    { q: "According to Lacoste (2008), what is geopolitics?", options: ["A. The study of economic flows between nations", "B. The study of rivalries for power and/or influence over a given territory", "C. The analysis of international trade agreements", "D. The comparison of military budgets worldwide"], correct: 1, explanation: "Geopolitics is defined as the study of rivalries for power and/or influence over a given territory (Lacoste, 2008)." },
+    { q: "What are the three key dimensions of any geopolitical analysis?", options: ["A. Economy, Military, Culture", "B. Trade, Finance, Technology", "C. Territory, Actors, Issue/Stake/Conflict", "D. State, Market, Society"], correct: 2, explanation: "The three key dimensions are Territory, Actors, and Issue/Stake/Conflict, forming the framework for understanding any geopolitical situation." },
+    { q: "What distinguishes internal actors from external actors in a geopolitical conflict?", options: ["A. Internal actors are always states, external actors are never states", "B. Internal actors are directly involved in the issue; external actors can influence it from outside", "C. Internal actors use hard power; external actors use soft power", "D. Internal actors are military; external actors are economic"], correct: 1, explanation: "Internal actors are directly in opposition through crises/conflicts on a territory. External actors have relations with internal actors or other interests and may impact the issue from outside." },
+    { q: "Who coined the concept of geoeconomics?", options: ["A. Yves Lacoste (1976)", "B. Edward Luttwak (1990)", "C. Joseph Nye (2004)", "D. Samuel Huntington (1996)"], correct: 1, explanation: "Edward Luttwak introduced the concept of geoeconomics in 1990, defining it as the use of economic instruments by States for strategic purposes." },
+    { q: "Which of the following best describes hard power?", options: ["A. The ability to influence through cultural attraction and ideological appeal", "B. The capacity to shape international norms through multilateral negotiations", "C. The ability to influence another actor through coercive force (military, economic, technological)", "D. The power derived from media control and public opinion"], correct: 2, explanation: "Hard power is the ability to influence another actor through coercive force including military, economic, and technological means. Soft power relies on non-coercive cultural and ideological influence." },
+    { q: "In the South China Sea conflict, what is China's key discursive lever for claiming sovereignty?", options: ["A. The Monroe Doctrine", "B. The Nine-Dash Line", "C. The Belt and Road Initiative", "D. The Shanghai Cooperation Organization"], correct: 1, explanation: "China uses the 'Nine-Dash Line' historical sovereignty discourse to justify its claims over the South China Sea, alongside military tools like artificial island construction and naval deployment." },
+    { q: "What is a key difference between geopolitics and geoeconomics?", options: ["A. Geopolitics focuses on economic flows; geoeconomics focuses on territory", "B. Geopolitics uses explicit force; geoeconomics uses indirect economic constraints", "C. Geoeconomics is only relevant during wartime", "D. Geopolitics involves non-state actors; geoeconomics involves only states"], correct: 1, explanation: "Geopolitics emphasizes explicit use of force and territorial control, while geoeconomics relies on indirect forms of economic constraint such as sanctions, trade manipulation, and resource control." },
+    { q: "Which of the following is NOT a geoeconomic lever?", options: ["A. Economic sanctions and embargoes", "B. Export controls on sensitive technologies", "C. Military invasion and territorial occupation", "D. Conditional access to critical resources (e.g., rare earths)"], correct: 2, explanation: "Military invasion is a classical geopolitical lever based on direct coercive force. Geoeconomic levers include sanctions, export controls, trade agreements, energy diplomacy, and resource access conditions." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Relationship Marketing Ch5: The Dark Side of RM</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
+        <h1>Chapter 5 &mdash; The Dark Side of Relationship Marketing</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {q:"'CRM is essentially about Information Systems and IT.' This statement is:", options:["A. True -- CRM software is the core of CRM","B. False -- technology is only a support to strategy, marketing must drive CRM","C. True -- without IT, CRM cannot exist","D. Partially true -- IT and marketing are equally important"], correct:1, explanation:"This is Pitfall 1. Technology is only a support to strategy. The marketing department should specify what the CRM system should do. Buying software alone is not doing CRM."},
+    {q:"In the 'cake analogy' for Pitfall 2, what does the cake represent?", options:["A. The loyalty program","B. The CRM software","C. The basic quality of the product or service","D. The marketing budget"], correct:2, explanation:"The cake = basic quality of the product/service. Relationship Marketing = icing on the cake. Without a good cake (quality), the icing (RM) is useless and even irritating to customers."},
+    {q:"Why is a purely top-down RM approach (brand to customer) a pitfall?", options:["A. Because it is too expensive","B. Because customers also have things to say and policies based only on control don't work","C. Because regulators forbid it","D. Because it generates too much data"], correct:1, explanation:"Pitfall 3: Customers have feedback, claims, and suggestions. If the company does not listen, involvement stays limited. Social media amplifies this need for bidirectional communication."},
+    {q:"What happens when a relationship program focuses only on boosting immediate sales through promotions?", options:["A. Long-term customer value increases","B. Sales remain stable permanently","C. Sales spike during promos but drop immediately when they stop","D. Customer satisfaction increases permanently"], correct:2, explanation:"Pitfall 4: Promotional campaigns create short-term spikes, but sales drop when promotions end. True relationship programs build cognitive and emotional connections for sustained increasing income."},
+    {q:"The 'personalization paradox' refers to:", options:["A. Personalization being too expensive for companies","B. Consumers wanting personalized experiences but being uncomfortable with the data collection required","C. Personalized products being lower quality","D. AI being unable to deliver personalization"], correct:1, explanation:"The personalization paradox: consumers simultaneously want personalized experiences AND are uncomfortable with how much data companies collect to deliver them."},
+    {q:"Which consumer strategy involves only buying during promotional periods and never at full price?", options:["A. Program hopping","B. Serial switching","C. Cherry-picking","D. Reward gaming"], correct:2, explanation:"Cherry-picking means consumers only respond to promotions and discounts, never buying at regular prices. This reduces the profitability of RM programs."},
+    {q:"Why is 'RM is a stable activity' a pitfall?", options:["A. Because RM budgets are always changing","B. Because RM relies heavily on data, which is a constantly evolving field along with technology and consumer behavior","C. Because competitor pricing changes daily","D. Because employees frequently leave"], correct:1, explanation:"Pitfall 5: RM relies on data (constantly evolving), technology (rapidly changing), consumer behaviors (shifting), and regulations (e.g., GDPR). Strategies must be continuously adapted."},
+    {q:"According to the course, consumers' perception of GDPR is:", options:["A. Very positive -- they feel fully protected","B. Neutral -- they are not aware of GDPR","C. Negative -- they do not perceive GDPR as effective protection, finding consent forms confusing and feeling little real control","D. Mixed -- they support it but want it to be stricter"], correct:2, explanation:"Surveys show consumers do not perceive GDPR as effective protection. They find consent forms confusing, feel they have little real control, and believe companies still find ways to collect data."}
+];
+let current = 0, score = 0, answered = false;
+function renderQ() {
+    const q = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('quiz-area').innerHTML = `
+        <div class="question-card">
+            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-text">${q.q}</div>
+            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
+            <div class="explanation" id="explanation">${q.explanation}</div>
+        </div>
+        <div class="nav-buttons">
+            <div></div>
+            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
+        </div>`;
+    answered = false;
+}
+function selectOption(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() {
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+}
+function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Geoeconomics Ch 4: Sustainability, Trade Policy, and Geoeconomics</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .back-link { color: #10b981; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+        .back-link:hover { text-decoration: underline; }
+        .quiz-header { text-align: center; margin-bottom: 2rem; }
+        .matiere { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.5rem; }
+        h1 { font-size: 1.8rem; color: #fff; }
+        .score-display { text-align: center; font-size: 1rem; color: #aaa; margin-bottom: 1rem; }
+        .progress-bar { width: 100%; height: 6px; background: #1e1e2f; border-radius: 3px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { height: 100%; background: #10b981; border-radius: 3px; transition: width 0.4s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+        .question-text { font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: #16213e; border: 2px solid #1e3a5f; padding: 1rem 1.25rem; border-radius: 8px; color: #e0e0e0; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
+        .option:disabled { cursor: not-allowed; opacity: 0.85; }
+        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; font-weight: 600; }
+        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
+        .explanation { display: none; margin-top: 1.25rem; padding: 1rem; background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.95rem; color: #a7f3d0; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn-next { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .result-card { display: none; text-align: center; background: #1a1a2e; border-radius: 12px; padding: 3rem 2rem; }
+        .result-score { font-size: 3rem; color: #10b981; font-weight: 700; margin: 1rem 0; }
+        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+        .btn-restart:hover { background: #059669; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">GEOECONOMICS &mdash; QUIZ</div>
+        <h1>Chapter 4 &mdash; Sustainability, Trade Policy, and Geoeconomics</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
+</div>
+
+<script>
+const questions = [
+    { q: "According to the course, what is 'territorial acceptability'?", options: ["A. A government's approval of a company's tax filings", "B. The degree to which a company's presence and activities are accepted by local community and stakeholders", "C. The legal permit required to operate in a foreign country", "D. A company's ability to acquire territory through purchase"], correct: 1, explanation: "Territorial acceptability refers to the degree to which a company's presence and activities are accepted by local communities, institutions, and stakeholders. Without it, companies face protests, regulatory obstacles, and reputational damage." },
+    { q: "What are 'gray zones' in geoeconomic terms?", options: ["A. Areas where trade tariffs are set to zero", "B. Neutral territories between two warring states", "C. Areas with weak State governance where companies face risks of corruption, violence, and exploitation", "D. Economic free zones with no regulatory oversight"], correct: 2, explanation: "Gray zones are territories with weak State governance where companies operate alongside risks of corruption, violence, and exploitation (De Villa et al., 2015). Companies must adopt robust ethical policies when operating in such areas." },
+    { q: "Which of the following is NOT a critique of free trade presented in the course?", options: ["A. It may lead to substantial sectoral losses in open economies", "B. It can exacerbate social inequalities", "C. It eliminates all forms of international competition", "D. It may create excessive dependence on foreign suppliers"], correct: 2, explanation: "Free trade actually increases international competition. The critiques are: sectoral losses, exacerbated inequalities, excessive dependence on foreign suppliers, and failure to account for environmental/social externalities." },
+    { q: "What is the 'infant industry argument' for protectionism?", options: ["A. Permanently banning all foreign imports in a sector", "B. Temporarily protecting a developing sector to allow it to become competitive", "C. Subsidizing only industries run by young entrepreneurs", "D. Taxing industries that employ child labor"], correct: 1, explanation: "The infant industry argument justifies temporarily protecting a developing sector to allow it to become competitive before opening it to international competition. It is one of the main economic justifications for protectionism." },
+    { q: "When were the UN Sustainable Development Goals (SDGs) adopted?", options: ["A. 2000, as part of the Millennium Development Goals", "B. 2010, at the Copenhagen Climate Summit", "C. 2015, as part of the 2030 Agenda for Sustainable Development", "D. 2020, in response to the COVID-19 pandemic"], correct: 2, explanation: "The SDGs were adopted in 2015 by all UN Member States as part of the 2030 Agenda for Sustainable Development, comprising 17 goals and 169 targets." },
+    { q: "Which four SDGs does the course specifically recommend focusing on for exam purposes?", options: ["A. SDGs 1, 3, 4, 5 (Poverty, Health, Education, Gender)", "B. SDGs 2, 6, 7, 10 (Hunger, Water, Energy, Inequalities)", "C. SDGs 8, 9, 11, 12 (Work, Industry, Cities, Consumption)", "D. SDGs 13, 14, 15, 16 (Climate, Oceans, Land, Peace)"], correct: 1, explanation: "The course specifies focusing on SDG 2 (Zero Hunger), SDG 6 (Clean Water and Sanitation), SDG 7 (Affordable and Clean Energy), and SDG 10 (Reduced Inequalities) for exam purposes." },
+    { q: "What is the fundamental trade policy dilemma according to the course?", options: ["A. Whether to trade with allies or adversaries", "B. Whether to invest in manufacturing or services", "C. A complex political choice between efficiency, equity, and sovereignty", "D. Whether to use tariffs or quotas"], correct: 2, explanation: "Trade policies represent complex political choices between efficiency (free trade maximizes output), equity (distributional effects on workers and regions), and sovereignty (national control over strategic sectors). There is no universally optimal policy." },
+    { q: "How should sustainability be integrated into geoeconomic recommendations?", options: ["A. By ignoring environmental concerns and focusing only on profit", "B. By checking whether recommendations align with free trade or protectionism, and whether they align with the SDGs", "C. By automatically choosing the most protectionist option available", "D. By delegating all sustainability decisions to the United Nations"], correct: 1, explanation: "The course recommends two key questions: (1) Does dialogue with governments align with free trade or protectionist policies? (2) Do all recommendations align with the SDGs? This ensures geoeconomic strategies incorporate sustainability considerations." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision Sheet — Change Management Ch 2: Introduction to Sustainable Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #1abc9c; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+<div style="max-width:900px;margin:0 auto;">
+<a href="../../en/index.html" style="display:inline-block;margin-bottom:1rem;color:#1abc9c;text-decoration:none;font-size:0.85rem;font-family:Inter,sans-serif;">&larr; Back to dashboard</a>
+</div>
+
+<div style="max-width:900px;margin:0 auto;">
+    <div class="fiche-header">
+        <div class="matiere">Change Management for Sustainability</div>
+        <h1>Chapter 2 &mdash; Introduction to Sustainable Management</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Four Dimensions of Environmental Performance</div>
+        <table class="compact-table">
+            <tr><th>Dimension</th><th>Focus</th><th>Key Goal</th></tr>
+            <tr><td>1. Carbon</td><td>GHG emissions (operations, logistics, energy)</td><td>Decarbonize production &amp; supply chains</td></tr>
+            <tr><td>2. Energy</td><td>Efficiency + share of renewables</td><td>More value with less energy</td></tr>
+            <tr><td>3. Water</td><td>Usage, treatment, recycling</td><td>Preserve resources, minimize water stress</td></tr>
+            <tr><td>4. Waste</td><td>Material efficiency, circularity</td><td>Linear &rarr; circular model</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">Key Insight</div>
+            Valayden (PRISM&ndash;Sorbonne): composite environmental performance index combining all four dimensions into one measurable, comparable score.
+        </div>
+
+        <div class="section-title">The Decoupling Challenge (Kaya Identity)</div>
+        <div class="block block-def">
+            <div class="block-label">Formula</div>
+            CO<sub>2</sub> = Pop &times; (GDP/Pop) &times; (Energy/GDP) &times; (CO<sub>2</sub>/Energy)<br>
+            Managers control only: <span class="hl-critical">energy intensity</span> and <span class="hl-critical">carbon intensity</span>.<br>
+            Goal: <strong>absolute decoupling</strong> &mdash; reduce total emissions while growing economically.
+        </div>
+
+        <div class="section-title">What Drives Real Improvement</div>
+        <ul class="condensed-list">
+            <li><strong>Cleaner Production:</strong> Prevent pollution at source, not treat afterward</li>
+            <li><strong>Learning Curves:</strong> Costs drop ~20% every time cumulative output doubles</li>
+            <li><strong>Governance &amp; Incentives:</strong> Link pay to auditable environmental metrics</li>
+        </ul>
+
+        <div class="section-title">Case: Orsted's Transformation</div>
+        <ul class="condensed-list">
+            <li>2006: 85% fossil-dependent (DONG Energy); ~1/3 of Denmark's CO<sub>2</sub></li>
+            <li>2014: oil price collapse exposed fossil assets as risky</li>
+            <li>Strategic shift: sold fossil plants, invested in offshore wind</li>
+            <li>2019: 86% renewables; profits UP; #1 Global 100 Sustainability Index (2020)</li>
+        </ul>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Stranded asset</strong>: investment that loses value earlier than expected due to environmental, market, or policy change. NPV collapses when cash flows fall or risk rises.
+        </div>
+
+        <div class="section-title">When Green Becomes Profitable</div>
+        <table class="compact-table">
+            <tr><th>Driver</th><th>Mechanism</th></tr>
+            <tr><td>Falling clean-tech costs</td><td>Learning curves make renewables cheaper than fossil fuels</td></tr>
+            <tr><td>Carbon pricing</td><td>Taxes/ETS increase real cost of pollution; early movers win</td></tr>
+            <tr><td>Investor pressure</td><td>ESG funds, CSRD, TCFD influence capital access</td></tr>
+            <tr><td>Innovation dividend</td><td>Efficiency + circular design = cost savings + new revenue</td></tr>
+        </table>
+
+        <div class="section-title">Sustainability: Definition &amp; Dimensions</div>
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Brundtland (1987):</strong> "Development that meets present needs without compromising future generations' ability to meet their own needs."<br>
+            <strong>Triple Bottom Line:</strong> People + Planet + Profit &mdash; interdependent, not separate.
+        </div>
+
+        <div class="section-title">Diagnosing Unsustainability</div>
+        <ul class="condensed-list">
+            <li>Fossil fuel use: 8x since 1950; global energy still ~80% fossil</li>
+            <li>CO<sub>2</sub> emissions: 37 billion tonnes in 2023 (record high); &gt;420 ppm</li>
+            <li>~50% of habitable land converted for agriculture</li>
+            <li><strong>Planetary boundaries</strong> (Rockstrom, 2009): several already transgressed (climate, biodiversity, nutrient cycles)</li>
+            <li><strong>Strong sustainability:</strong> natural capital is non-substitutable</li>
+        </ul>
+
+        <div class="block block-attention">
+            <div class="block-label">Warning</div>
+            <strong>Greenwashing:</strong> Many firms use sustainability branding without changing core operations. Credibility crisis = abundant discourse, little decarbonization.
+        </div>
+
+        <div class="section-title">Systemic Change Tools</div>
+        <table class="compact-table">
+            <tr><th>Instrument</th><th>Effect</th></tr>
+            <tr><td>Carbon pricing</td><td>Internalize emission costs</td></tr>
+            <tr><td>Extended Producer Responsibility</td><td>Firms accountable for end-of-life</td></tr>
+            <tr><td>Mandatory ESG Disclosure</td><td>Shift investor behavior</td></tr>
+            <tr><td>Green Finance &amp; Taxonomies</td><td>Lower capital costs for sustainable projects</td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <strong>Porter Hypothesis:</strong> Well-designed regulation enhances competitiveness by stimulating innovation.
+        </div>
+
+        <div class="section-title">Circular Economy</div>
+        <ul class="condensed-list">
+            <li>Linear: Take &rarr; Make &rarr; Use &rarr; Dispose (assumes infinite resources)</li>
+            <li>Circular: Reuse, Remanufacture, Recycle, Regenerate</li>
+            <li>Central ratio: <strong>Resource Productivity = Value Added / Material Input</strong></li>
+            <li>Cradle-to-Cradle: waste = food; Ellen MacArthur: biological vs. technical loops</li>
+        </ul>
+
+        <div class="section-title">Rethinking Growth</div>
+        <ul class="condensed-list">
+            <li>Tim Jackson: well-being = social trust + meaning, not consumption volume</li>
+            <li>Kate Raworth: "Doughnut" = safe space between social foundation &amp; ecological ceiling</li>
+            <li>Herman Daly: steady-state economy &mdash; quantitative limits, qualitative improvement</li>
+        </ul>
+
+        <div class="section-title">From CSR to Shared Value (Porter &amp; Kramer, 2011)</div>
+        <table class="compact-table">
+            <tr><th>Mechanism</th><th>Description</th></tr>
+            <tr><td>Reconceive products &amp; markets</td><td>Design for unmet social needs</td></tr>
+            <tr><td>Redefine value-chain productivity</td><td>Eliminate waste, energy loss</td></tr>
+            <tr><td>Enable cluster development</td><td>Invest in supplier &amp; community infrastructure</td></tr>
+        </table>
+
+        <div class="section-title">Lewin's Change Model (1947)</div>
+        <ul class="condensed-list">
+            <li><strong>Unfreeze:</strong> Question norms and incentives</li>
+            <li><strong>Move:</strong> Experiment and institutionalize new practices</li>
+            <li><strong>Refreeze (flexible):</strong> Embed routines, keep adaptive capacity</li>
+        </ul>
+
+        <div class="section-title">Four Logics of Sustainability Action</div>
+        <table class="compact-table">
+            <tr><th>Logic</th><th>Driver</th><th>Limitation</th></tr>
+            <tr><td>Moral</td><td>Ethics, intergenerational duty</td><td>No priorities or trade-offs</td></tr>
+            <tr><td>Stewardship</td><td>Triple Bottom Line</td><td>Vague without metrics</td></tr>
+            <tr><td>Attention</td><td>Stakeholder pressure</td><td>Reactive, short-term</td></tr>
+            <tr><td>Reputation</td><td>Legitimacy, brand</td><td>Greenwashing risk</td></tr>
+        </table>
+
+        <div class="flash-q">
+            <strong>Q: What differentiates peripheral from strategic sustainability?</strong>
+            <span class="answer">Peripheral = isolated CSR, donations, symbolic (reputation management). Strategic = embedded in core operations, product design, procurement (value creation under ecological constraints).</span>
+        </div>
+
+        <div class="flash-q">
+            <strong>Q: What is absolute decoupling?</strong>
+            <span class="answer">Reducing total emissions in absolute terms while the economy continues to grow &mdash; not just improving the ratio of emissions per unit of GDP.</span>
+        </div>
+
+        <div class="flash-q">
+            <strong>Q: What key lesson does the Orsted case teach?</strong>
+            <span class="answer">Sustainability is smart strategy when markets, technology, and regulation align toward low-carbon systems. Leadership commitment + strategic reallocation + governance &amp; measurement = successful transformation.</span>
+        </div>
+
+    </div>
+
+    <div class="source-footer">
+        Change Management for Sustainability &mdash; Ananda Valayden, PhD
+    </div>
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

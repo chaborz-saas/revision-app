@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — SEBS Ch 4: New Business Models for a Sustainable World</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        .quiz-container { max-width: 750px; margin: 0 auto; }
+        .back-link { color: #888; text-decoration: none; font-size: 0.85rem; }
+        .back-link:hover { color: #10b981; }
+        .quiz-header { text-align: center; margin: 1.5rem 0; }
+        .matiere { color: #10b981; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .quiz-header h1 { font-size: 1.5rem; margin-top: 0.5rem; color: #fff; }
+        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
+        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.5s ease; }
+        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: flex; flex-direction: column; gap: 0.7rem; }
+        .option { background: #252540; border: 2px solid #333; border-radius: 10px; padding: 1rem; text-align: left; color: #e0e0e0; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+        .option:hover:not(:disabled) { border-color: #10b981; background: #2a2a4a; }
+        .option.correct { border-color: #10b981; background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .option.wrong { border-color: #ef4444; background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { display: none; background: #252540; border-left: 4px solid #10b981; padding: 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.5; color: #ccc; }
+        .nav-buttons { text-align: center; margin-top: 1rem; }
+        .btn { padding: 0.7rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-next { background: #10b981; color: #fff; }
+        .btn-next:hover:not(:disabled) { background: #059669; }
+        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+        .result-card { display: none; text-align: center; background: #1a1a2e; padding: 2.5rem; border-radius: 12px; }
+        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #ccc; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; border: none; padding: 0.8rem 2.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn-restart:hover { background: #059669; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+        <div class="quiz-header">
+            <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
+            <h1>Chapter 4 &mdash; New Business Models for a Sustainable World</h1>
+        </div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div id="quiz-area"></div>
+        <div class="result-card" id="result-card">
+            <div style="font-size:2rem">&#127919;</div>
+            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-msg" id="result-msg"></div>
+            <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+            <br><br>
+            <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+        </div>
+    </div>
+    <script>
+const questions = [
+    { q: "What does the ASI framework for sustainable transport stand for?", options: ["A. Automate, Standardize, Implement", "B. Avoid, Shift, Improve", "C. Accelerate, Sustain, Integrate", "D. Assess, Strategize, Innovate"], correct: 1, explanation: "ASI stands for: Avoid (reduce the need for transport), Shift (move to less carbon-intensive modes like rail, cycling), and Improve (make remaining transport more efficient, e.g., electric vehicles)." },
+    { q: "What are the three benefits of biochar?", options: ["A. Generates electricity, purifies water, reduces noise", "B. Stable carbon storage, clean energy source, soil quality improvement", "C. Replaces concrete, filters air, produces biofuel", "D. Reduces methane, captures CO2, generates hydrogen"], correct: 1, explanation: "Biochar provides three benefits: it locks carbon in soil for centuries (stable carbon), its production generates usable energy (clean energy source), and it enhances soil fertility, water retention, and microbial activity." },
+    { q: "What are the two pillars for rethinking the energy system?", options: ["A. Fossil fuels and nuclear power", "B. Wind energy and solar panels", "C. De-carbonated electricity and new molecules (hydrogen)", "D. Energy storage and grid expansion"], correct: 2, explanation: "The solution for rethinking energy rests on two pillars: de-carbonated electricity (clean power generation from renewables and nuclear) and new molecules (especially decarbonated hydrogen)." },
+    { q: "What is agrivoltaism?", options: ["A. Using agricultural waste to generate electricity", "B. Combining agricultural production with solar energy on the same land", "C. Powering agricultural machinery with batteries", "D. Converting farmland entirely to solar panels"], correct: 1, explanation: "Agrivoltaism combines agricultural production with solar energy generation on the same land. Remarkably, French nuclear power production is equivalent to agrivoltaism applied to just 2% of cultivated area." },
+    { q: "What is the 'economy of service functionality'?", options: ["A. Selling products at lower prices through mass production", "B. Selling the service a product provides instead of the product itself", "C. Providing free products with paid support services", "D. Outsourcing all manufacturing to service companies"], correct: 1, explanation: "The economy of service functionality means companies sell the service the product provides (e.g., warmth, mobility) rather than the product itself. This shifts incentives toward durability, repairability, and efficiency." },
+    { q: "What is bioremediation?", options: ["A. Using chemicals to clean contaminated sites", "B. Using living organisms to clean up contaminated environments", "C. Replacing damaged ecosystems with artificial ones", "D. Preventing pollution through stricter regulations"], correct: 1, explanation: "Bioremediation uses living organisms (bacteria, fungi, plants) to clean up contaminated environments, removing pollutants from soil, water, and air through natural biological processes." },
+    { q: "What innovation addresses steel production's carbon footprint?", options: ["A. Building fewer steel structures", "B. Direct reduction of iron by hydrogen instead of coal", "C. Importing steel from cleaner countries", "D. Using recycled plastic instead of steel"], correct: 1, explanation: "The key innovation for decarbonizing steel production is the direct reduction of iron by hydrogen (replacing coal/coke in the process). Additionally, carbon fibers can replace steel in some applications." },
+    { q: "What is 'Agriculture 4.0'?", options: ["A. Returning to traditional farming methods", "B. Farming exclusively in greenhouses", "C. Using digital technologies, sensors, drones, and AI for precision farming", "D. Replacing all farms with laboratory-grown food"], correct: 2, explanation: "Agriculture 4.0 uses digital technologies, sensors, drones, AI, and precision farming to optimize agricultural production while minimizing environmental impact — producing more with less waste." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
+    else score++;
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+    </script>
+    <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

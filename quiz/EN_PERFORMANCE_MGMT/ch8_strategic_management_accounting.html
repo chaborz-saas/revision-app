@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Performance Management Ch 8: Strategic Management Accounting</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
+.container{max-width:750px;margin:0 auto}
+.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
+.back-link:hover{color:#10b981}
+.quiz-header{text-align:center;margin-bottom:2rem}
+.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
+.quiz-header p{color:#aaa;font-size:.9rem}
+.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
+.score-bar span{font-size:.95rem}
+.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
+.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
+.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:.6rem}
+.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
+.option:hover:not(:disabled){border-color:#10b981;background:#162229}
+.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
+.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
+.option:disabled{cursor:default}
+.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
+.nav-buttons{text-align:right;margin-top:1rem}
+.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
+.btn-next{background:#10b981;color:#0f0f1a}
+.btn-next:hover:not(:disabled){background:#0ea472}
+.btn-next:disabled{opacity:.4;cursor:default}
+.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
+#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
+#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
+#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
+#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+<div class="quiz-header">
+<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
+<p>Chapter 8: Strategic Management Accounting, Divisionalisation &amp; Transfer Pricing</p>
+</div>
+<div class="score-bar">
+<span>Question <span id="current-q">1</span>/8</span>
+<span>Score: <span id="score">0</span></span>
+</div>
+<div class="progress-bg"><div class="progress" id="progress"></div></div>
+<div id="quiz-area"></div>
+<div id="result-card">
+<h2>Quiz Complete!</h2>
+<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+<div class="result-msg" id="result-msg"></div>
+<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+</div>
+</div>
+<script>
+const questions = [
+  {q:"What distinguishes Strategic Management Accounting from conventional management accounting?",options:["It focuses only on internal costs","It is outward-looking and focused on outperforming competition","It only deals with budgeting","It ignores strategic objectives"],correct:1,explanation:"SMA is outward-looking (considering external factors), concerned with outperforming competition, and focused on monitoring progress towards strategic objectives, unlike conventional management accounting which tends to be inward-looking."},
+  {q:"The EVA formula is: EVA = NOPAT - (R x C). What does 'R' represent?",options:["Revenue growth rate","Required rate of return from investors (cost of capital)","Return on investment for the division","Restructuring cost ratio"],correct:1,explanation:"In the EVA formula, R is the required rate of return from investors, also known as the cost of capital. It represents the minimum return that investors expect on the capital they have invested in the business."},
+  {q:"Which of the following is NOT one of the four balanced scorecard perspectives?",options:["Financial","Customer","Competitor","Learning and Growth"],correct:2,explanation:"The four perspectives of the balanced scorecard are: Financial, Customer, Internal Business Processes, and Learning & Growth. 'Competitor' is not a BSC perspective, though competitor analysis is part of SMA."},
+  {q:"A company has NOPAT of 50m, capital invested of 200m, and a cost of capital of 10%. What is its EVA?",options:["30m","20m","50m","40m"],correct:0,explanation:"EVA = NOPAT - (R x C) = 50m - (10% x 200m) = 50m - 20m = 30m. A positive EVA of 30m means the business is generating returns that exceed its cost of capital."},
+  {q:"What is penetration pricing?",options:["Setting the highest possible price for a new product","Pricing a new product low to gain market share, then raising the price later","Gradually reducing price over time","Setting price equal to marginal cost"],correct:1,explanation:"Penetration pricing involves selling a new product at a relatively low price to capture market share and discourage competitors. Once established as the market leader, prices are raised to more profitable levels."},
+  {q:"A division has profit of 80,000 and investment of 500,000. The cost of capital is 12%. What is its Residual Income (RI)?",options:["20,000","80,000","-20,000","60,000"],correct:0,explanation:"RI = Divisional Profit - (Investment x Cost of Capital) = 80,000 - (500,000 x 12%) = 80,000 - 60,000 = 20,000. A positive RI means the division is generating more than the minimum required return."},
+  {q:"When a selling division has spare capacity, what is the ideal minimum transfer price?",options:["Full cost plus a profit margin","The market price","The variable cost of production","The negotiated price agreed by both divisions"],correct:2,explanation:"When a division has spare capacity, the opportunity cost of the internal transfer is just the variable cost, since there are no external sales being forgone. Therefore, the minimum acceptable transfer price is the variable cost."},
+  {q:"Why might ROI lead a divisional manager to reject a profitable investment?",options:["ROI always underestimates profit","The investment might lower the division's existing ROI even if it exceeds the cost of capital","ROI ignores all fixed costs","ROI cannot be calculated for investment centres"],correct:1,explanation:"If a division currently has a high ROI (e.g., 25%), a new project with an ROI of 18% would lower the division's overall ROI even though 18% exceeds the cost of capital (e.g., 15%). The manager may reject the project to protect their performance metric."}
+];
+let current=0,score=0,answered=[];
+function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
+function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
+function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
+function nextQ(){current++;renderQ();}
+function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
+function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

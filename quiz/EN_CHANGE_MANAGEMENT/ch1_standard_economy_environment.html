@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.1 — The Standard Economy and the Environment</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .nav-buttons { display: flex; justify-content: flex-end; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; }
+        .btn-next:hover { background: #0d9668; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">CHANGE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 1 &mdash; The Standard Economy and the Environment</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div class="result-score"><span id="final-score"></span>/<span id="final-total"></span></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+</div>
+<script>
+const questions = [
+    { q: "What does 'oikonomia' literally mean in Greek?", options: ["A. Science of wealth", "B. Management of a home/household", "C. Power of the market", "D. Division of labour"], correct: 1, explanation: "Oikonomia comes from oikos (home) + nomos (law/rules of management). Aristotle defined it as the discipline of moderation for satisfying basic human needs within a household." },
+    { q: "What did the Physiocrats believe was the sole source of wealth?", options: ["A. Labour and manufacturing", "B. Gold and precious metals", "C. The land and agriculture", "D. International trade"], correct: 2, explanation: "Physiocrats believed only agriculture produces 'net wealth.' Industry and trade were considered 'sterile' because they transform wealth without creating new surplus. Physiocracy means 'power of nature.'" },
+    { q: "According to Jean-Baptiste Say (1803), why were natural resources not a subject of economic science?", options: ["A. They were too expensive to measure", "B. They were considered inexhaustible because they were free", "C. They belonged to governments, not markets", "D. They had too high an exchange value"], correct: 1, explanation: "Say wrote that natural resources are 'inexhaustible because otherwise we would not obtain them for free.' Classical economists viewed nature as having no intrinsic value, acquiring worth only through human labour." },
+    { q: "What is 'marginal utility' in neoclassical economics?", options: ["A. The total satisfaction from all units consumed", "B. The cost of producing one additional unit", "C. The additional satisfaction from consuming one more unit of a good", "D. The exchange value determined by labour"], correct: 2, explanation: "Marginal utility is the additional satisfaction obtained by consuming one more unit. It is decreasing: the first glass of water when thirsty gives high utility; the tenth gives very low or negative utility." },
+    { q: "What did the Dictator Game experiment demonstrate about human behaviour?", options: ["A. People always maximize their own wealth", "B. People are purely rational maximizers", "C. Most people share money with strangers, showing altruism exists", "D. Economic decisions are always based on cost-benefit analysis"], correct: 2, explanation: "In the Dictator Game, most people give some money to unknown strangers (often 2-5 out of 10), proving that humans do not always act out of pure self-interest. This challenges the homo economicus model." },
+    { q: "What is a 'Pareto optimum'?", options: ["A. A situation where everyone has equal wealth", "B. A situation where no one can be made better off without making someone worse off", "C. A market where supply always equals demand", "D. The maximum possible GDP for an economy"], correct: 1, explanation: "Pareto optimum means it is impossible to improve someone's situation without worsening someone else's. Importantly, this does NOT mean the distribution is fair or equal. It only means you cannot 'do better' without harming someone." },
+    { q: "According to Keynes, what was wrong with the laissez-faire approach?", options: ["A. Markets always lead to overproduction", "B. Supply never creates its own demand", "C. Markets left alone do not necessarily reach economic optimum; imbalances can persist", "D. The state should control all means of production"], correct: 2, explanation: "Keynes observed the 1930s crisis and concluded that markets left to their own devices do not necessarily lead to equilibrium. Imbalances between supply and demand (unemployment, recession) can be long-lasting, requiring state intervention." },
+    { q: "What is the 'free rider problem' in the context of public goods?", options: ["A. Firms that avoid paying taxes", "B. People who consume a public good without paying their fair share of its cost", "C. Companies that monopolize natural resources", "D. Governments that subsidize private businesses"], correct: 1, explanation: "The free rider problem occurs because public goods are non-excludable: it is impossible to prevent someone from benefiting even if they don't pay. Free riders consume more or pay less than their fair share. This is why governments use taxation to finance public goods." }
+];
+let current = 0, score = 0, answered = [];
+function renderQ() {
+    if (current >= questions.length) { showResult(); return; }
+    const qd = questions[current];
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
+    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
+    qd.options.forEach((o, i) => {
+        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
+    });
+    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
+    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    document.getElementById('quiz-area').innerHTML = html;
+    if (answered[current] !== undefined) { showAnswered(); }
+}
+function selectOption(idx) {
+    if (answered[current] !== undefined) return;
+    answered[current] = idx;
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
+    else { score++; }
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+function showAnswered() {
+    const qd = questions[current];
+    document.getElementById('opt' + qd.correct).classList.add('correct');
+    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    document.getElementById('expl').style.display = 'block';
+    document.getElementById('nextBtn').disabled = false;
+}
+function nextQ() { current++; renderQ(); }
+function showResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.querySelector('.nav-buttons')?.remove();
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('final-total').textContent = questions.length;
+    const pct = score / questions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+}
+function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

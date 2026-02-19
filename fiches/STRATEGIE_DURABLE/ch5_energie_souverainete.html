@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Strategie Durable : Energie, souverainete & regulation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #27ae60; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #27ae60; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Strategie Durable & Ethique — M1</div>
+        <h1>Chapitre 5 — Energie, souverainete & regulation</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Relation energie-PIB</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            Historiquement, croissance PIB = croissance consommation energie (relation quasi lineaire).
+            <br><span class="hl-critical">~42 % de l'energie primaire mondiale est perdue</span> (chaleur residuelle) avant l'usage final.
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Decouplage possible grace a</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Electrification</span> : moteur electrique ~90-95 % rendement vs thermique ~25-30 %</li>
+                <li><span class="hl-critical">Pompes a chaleur</span> : COP 3-5 (1 kWh elec = 3-5 kWh chaleur)</li>
+                <li>Isolation : reduire le besoin a la source</li>
+                <li>Economie des services : tertiaire moins energivore</li>
+            </ul>
+        </div>
+
+        <div class="section-title">Double contrainte carbone</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Les 2 contraintes simultanees</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Budget carbone limite</span> : ~300-500 GtCO2 restantes pour +1,5 degC. Chaque tonne emise reduit ce budget</li>
+                <li><span class="hl-critical">Stocks fossiles limites</span> : petrole, gaz, charbon = ressources finies. Pic petrolier conventionnel deja passe</li>
+            </ul>
+            Les deux contraintes convergent : <span class="hl-critical">sortir des fossiles le plus vite possible</span>. La contrainte climatique impose de le faire plus vite que la seule rarete.
+        </div>
+
+        <div class="section-title">Durabilite = souverainete</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; These centrale</div>
+            <span class="hl-critical">La France ne sera souveraine que lorsqu'elle sera neutre en carbone.</span>
+            <br>Dependance fossile = vulnerabilite geopolitique.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Acteur</th><th>Levier geopolitique fossile</th></tr>
+            <tr><td><span class="hl-important">Russie / Poutine</span></td><td>Gaz russe comme arme : coupures, chantage energetique (Ukraine)</td></tr>
+            <tr><td><span class="hl-important">Arabie Saoudite</span></td><td>Influence disproportionnee via OPEP, fixation des prix petrole</td></tr>
+            <tr><td><span class="hl-important">Trump / USA</span></td><td>Gaz de schiste comme levier, pression sur allies pour GNL americain</td></tr>
+            <tr><td>Algerie</td><td>Gaz pour Europe du Sud = levier diplomatique</td></tr>
+            <tr><td><span class="hl-important">Chine</span></td><td>Domine chaines de valeur cleantech (solaire, batteries, raffinage metaux)</td></tr>
+        </table>
+
+        <div class="section-title">Nouvelles dependances : fossiles &rarr; metaux</div>
+
+        <table class="compact-table">
+            <tr><th>Critere</th><th>Dependance fossile</th><th>Dependance metaux</th></tr>
+            <tr><td>Nature</td><td>Brule = detruit</td><td><span class="hl-critical">Recyclable a l'infini</span></td></tr>
+            <tr><td>Geographie</td><td>Concentree (MO, Russie)</td><td>Plus diversifiee</td></tr>
+            <tr><td>Flux vs stock</td><td>Flux perpetuel d'importation</td><td><span class="hl-critical">Stock initial puis recyclage</span></td></tr>
+            <tr><td>Volume</td><td>Milliards de tonnes/an</td><td>Millions de tonnes/an</td></tr>
+            <tr><td>Recyclabilite</td><td>0 %</td><td><span class="hl-critical">80-95 %</span></td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Provenance metaux critiques</div>
+            <ul class="condensed-list">
+                <li><span class="hl-important">Lithium</span> : Australie, Chili, Argentine, Chine</li>
+                <li><span class="hl-important">Cobalt</span> : RDC (70 % mondial)</li>
+                <li><span class="hl-important">Nickel</span> : Indonesie, Philippines, Russie</li>
+                <li><span class="hl-important">Cuivre</span> : Chili, Perou, RDC</li>
+                <li><span class="hl-important">Terres rares</span> : Chine (60 % production, 90 % raffinage)</li>
+            </ul>
+        </div>
+
+        <div class="section-title">Dilemme du prisonnier climatique</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition — Free rider</div>
+            Chaque pays a interet a <span class="hl-critical">ne pas reduire</span> ses emissions (croissance fossile) pendant que les autres font l'effort = <span class="hl-critical">passager clandestin</span>. Mais si tous raisonnent ainsi = catastrophe pour tous.
+        </div>
+
+        <table class="compact-table">
+            <tr><th></th><th>B coopere</th><th>B ne coopere pas</th></tr>
+            <tr><td><span class="hl-important">A coopere</span></td><td>Meilleur collectif : climat stabilise</td><td>A paie, B profite (free rider)</td></tr>
+            <tr><td><span class="hl-important">A ne coopere pas</span></td><td>A profite, B paie</td><td>Pire : catastrophe pour tous</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Strategie Tit-for-Tat (donnant-donnant)</div>
+            Commencer par cooperer, puis imiter l'adversaire au tour precedent. Favorise la cooperation sur le long terme.
+            <br>Application climat : <span class="hl-critical">transparence</span> (MRV), <span class="hl-critical">confiance</span> (NDC Accord de Paris), <span class="hl-critical">retorsions credibles</span> (CBAM), <span class="hl-critical">repetition</span> (COP annuelles).
+        </div>
+
+        <div class="section-title">CSRD (Corporate Sustainability Reporting Directive)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Reglementation cle</div>
+            Directive UE imposant un reporting extra-financier detaille (E, S, G). Remplace la NFRD.
+            <br>Normes : <span class="hl-critical">ESRS</span>. Audit par tiers independant. Principe de <span class="hl-critical">double materialite</span>.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Calendrier CSRD</th><th>Entreprises concernees</th></tr>
+            <tr><td>2024 (donnees 2023)</td><td>Grandes entreprises deja soumises NFRD (>500 salaries)</td></tr>
+            <tr><td>2025 (donnees 2024)</td><td>Autres grandes (>250 sal. ou >40M CA ou >20M bilan)</td></tr>
+            <tr><td>2026 (donnees 2025)</td><td>PME cotees</td></tr>
+        </table>
+
+        <div class="block block-def">
+            <div class="block-label">Contenu CSRD</div>
+            <ul class="condensed-list">
+                <li>Bilan carbone complet (scopes 1, 2, 3)</li>
+                <li>Strategie de transition vers neutralite carbone</li>
+                <li>Risques et opportunites climatiques</li>
+                <li>Impact biodiversite, enjeux sociaux, gouvernance</li>
+            </ul>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Double materialite</div>
+            L'entreprise rend compte de : 1) l'impact de l'environnement <span class="hl-critical">sur elle</span> (risques financiers) ET 2) son impact <span class="hl-critical">sur l'environnement</span>.
+        </div>
+
+        <div class="section-title">CBAM (Carbon Border Adjustment Mechanism)</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Reglementation cle</div>
+            Mecanisme d'ajustement carbone aux frontieres UE. Les importateurs paient un prix carbone equivalent a l'EU-ETS.
+            <br>Objectif : eviter les <span class="hl-critical">fuites de carbone</span> (delocalisation vers pays sans prix carbone).
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Secteurs couverts par le CBAM</th></tr>
+            <tr><td>Acier et fer | Ciment | Aluminium | Engrais azotes | Electricite | Hydrogene</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Logique du CBAM</div>
+            Acier UE paie ~80 euros/tCO2 (EU-ETS) &rarr; acier importe de Chine doit payer un ajustement equivalent. Retablit l'equite concurrentielle + incite les partenaires a se decarboner = <span class="hl-critical">retorsion credible du tit-for-tat climatique</span>.
+        </div>
+
+        <div class="section-title">Synthese des outils de politique climatique</div>
+
+        <table class="compact-table">
+            <tr><th>Outil</th><th>Type</th><th>Mecanisme</th></tr>
+            <tr><td><span class="hl-important">Taxe carbone</span></td><td>Prix</td><td>Fixe prix/tCO2, marche ajuste quantites</td></tr>
+            <tr><td><span class="hl-important">EU-ETS</span></td><td>Quantite</td><td>Fixe plafond emissions, marche determine prix</td></tr>
+            <tr><td><span class="hl-critical">CBAM</span></td><td>Frontieres</td><td>Egalise prix carbone pour importations</td></tr>
+            <tr><td><span class="hl-critical">CSRD</span></td><td>Transparence</td><td>Reporting ESG obligatoire</td></tr>
+            <tr><td>Normes/interdictions</td><td>Reglementation</td><td>Fin thermiques 2035 UE, Euro 7</td></tr>
+            <tr><td>Subventions</td><td>Soutien</td><td>Bonus VE, MaPrimeRenov', IRA</td></tr>
+            <tr><td>Accords internationaux</td><td>Cooperation</td><td>Accord de Paris, NDC, COP</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quel pourcentage de l'energie primaire mondiale est perdue avant l'usage final ?
+            <span class="answer">Environ 42 %. Pertes principalement lors de la conversion (centrales thermiques ~33-40 % rendement), du transport (pertes en ligne) et de l'utilisation finale (moteurs thermiques ~25-30 %).</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que la double contrainte carbone ?
+            <span class="answer">1) Budget carbone limite (~300-500 GtCO2 restantes pour +1,5 degC). 2) Stocks fossiles limites (pic petrolier conventionnel deja passe). Les deux convergent : sortir des fossiles le plus vite possible.</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi la durabilite rime-t-elle avec la souverainete ?
+            <span class="answer">La dependance fossile = vulnerabilite geopolitique (Russie/gaz, Arabie Saoudite/petrole, etc.). La France ne sera souveraine que neutre en carbone : fin de la dependance aux importations fossiles, autonomie via nucleaire + ENR.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la difference fondamentale entre dependance fossile et dependance metaux ?
+            <span class="answer">Le petrole est brule (detruit, 0 % recyclable, flux perpetuel). Les metaux sont recyclables (80-95 %), constituent un stock initial puis le recyclage alimente la production. La dependance aux metaux est structurellement moins grave.</span>
+        </div>
+
+        <div class="flash-q">
+            Expliquez le dilemme du prisonnier applique au climat.
+            <span class="answer">Chaque pays a interet individuellement a ne pas reduire (free rider). Mais si tous font cela = catastrophe. Solution : strategie tit-for-tat (cooperation initiale + imitation). Favorisee par transparence, confiance, retorsions credibles (CBAM), repetition (COP).</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que la CSRD ? Quel est le principe de double materialite ?
+            <span class="answer">Corporate Sustainability Reporting Directive : reporting extra-financier obligatoire (normes ESRS, audit independant). Double materialite : l'entreprise rend compte de l'impact de l'environnement sur elle (risques) ET de son impact sur l'environnement.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que le CBAM et quels secteurs couvre-t-il ?
+            <span class="answer">Carbon Border Adjustment Mechanism : les importateurs UE paient un prix carbone equivalent a l'EU-ETS. Evite les fuites de carbone. Secteurs : acier, ciment, aluminium, engrais, electricite, hydrogene. C'est la retorsion credible du tit-for-tat climatique.</span>
+        </div>
+
+        <div class="flash-q">
+            Citez les 7 outils de politique climatique et leur type.
+            <span class="answer">Taxe carbone (prix), EU-ETS (quantite), CBAM (frontieres), CSRD (transparence), normes/interdictions (reglementation), subventions (soutien), accords internationaux (cooperation multilaterale).</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/STRATEGIE_DURABLE/ch5_energie_souverainete.html">Synthese complete</a>
+    </div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

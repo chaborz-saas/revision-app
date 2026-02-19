@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Strategie Durable : Enjeux climatiques & empreinte carbone</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #27ae60; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #27ae60; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Strategie Durable & Ethique — M1</div>
+        <h1>Chapitre 1 — Enjeux climatiques & empreinte carbone</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Les 4 constats fondamentaux</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Incontournable</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Le climat se rechauffe a un rythme sans precedent</span></li>
+                <li><span class="hl-critical">Le rechauffement est entierement cause par l'homme</span> (plus aucun debat scientifique)</li>
+                <li><span class="hl-critical">Les consequences sont potentiellement dramatiques</span></li>
+                <li><span class="hl-critical">La peur est raisonnable, mais tout n'est pas perdu</span> (des solutions existent)</li>
+            </ul>
+        </div>
+
+        <div class="section-title">L'effet de serre</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            Phenomene naturel : GES retiennent le rayonnement infrarouge. Sans lui : -18 degC. Le probleme = <span class="hl-critical">renforcement par les emissions anthropiques</span> de CO2, CH4, N2O, gaz fluores.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Gaz</th><th>Sources</th><th>Pouvoir rechauffement</th></tr>
+            <tr><td><span class="hl-important">CO2</span></td><td>Combustion fossiles, deforestation</td><td>1 (reference)</td></tr>
+            <tr><td><span class="hl-important">CH4 (methane)</span></td><td>Elevage, gaz naturel, rizieres</td><td>~80 (sur 20 ans)</td></tr>
+            <tr><td>N2O</td><td>Agriculture (engrais azotes)</td><td>~270 (sur 100 ans)</td></tr>
+            <tr><td>Gaz fluores</td><td>Climatisation, industrie</td><td>Tres eleve (milliers)</td></tr>
+        </table>
+
+        <div class="section-title">Accord de Paris & trajectoires</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Chiffres cles</div>
+            Objectif : <span class="hl-critical">+1,5 degC max</span> (bien en dessous de +2 degC)
+            <br>Trajectoire actuelle : <span class="hl-critical">+2,5 degC a +3 degC</span>
+            <br>Pour +1,5 degC : -45 % emissions d'ici 2030, neutralite carbone 2050
+        </div>
+
+        <div class="section-title">Empreinte carbone du Francais moyen</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Chiffres a retenir</div>
+            Empreinte actuelle : <span class="hl-critical">~9-10 tCO2eq/an</span>
+            <br>Objectif 2050 : <span class="hl-critical">~2 tCO2eq/an</span> (diviser par 5)
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Poste</th><th>Part</th><th>Sources principales</th></tr>
+            <tr><td><span class="hl-critical">Transport</span></td><td>~25-30 %</td><td>Voiture, avion</td></tr>
+            <tr><td><span class="hl-critical">Alimentation</span></td><td>~20-25 %</td><td>Viande bovine, laitiers</td></tr>
+            <tr><td><span class="hl-critical">Logement</span></td><td>~20-25 %</td><td>Chauffage gaz/fioul</td></tr>
+            <tr><td>Biens et services</td><td>~15-20 %</td><td>Electronique, textile</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Particularite France</div>
+            Electricite decarbonee (~50-60 g CO2/kWh grace au nucleaire) vs Allemagne (~300-400 g). Mais petrole et gaz dominent encore dans transport et chauffage.
+        </div>
+
+        <div class="section-title">Scenarios ADEME Transition(s) 2050</div>
+
+        <table class="compact-table">
+            <tr><th>Scenario</th><th>Philosophie</th><th>Levier dominant</th></tr>
+            <tr><td><span class="hl-important">S1 Generation frugale</span></td><td>Transformation modes de vie, sobriete forte</td><td>Sobriete</td></tr>
+            <tr><td><span class="hl-important">S2 Cooperation territoriale</span></td><td>Circuits courts, economie circulaire</td><td>Sobriete + efficacite</td></tr>
+            <tr><td><span class="hl-important">S3 Technologies vertes</span></td><td>Innovation, electrification massive</td><td>Efficacite + bas-carbone</td></tr>
+            <tr><td><span class="hl-important">S4 Pari reparateur</span></td><td>Captage CO2, paris technos</td><td>Technologie (risque)</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Point cle</div>
+            <span class="hl-critical">Aucun scenario n'atteint la neutralite sans un minimum de sobriete.</span> La question n'est pas « sobriete OU technologie ? » mais « quelle combinaison ? ».
+        </div>
+
+        <div class="section-title">Les 3 leviers de la transition</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Les 3 leviers (complementaires, non substituables)</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Sobriete</span> : reduire la demande (moins de km, moins de viande). Levier le plus immediat et le moins couteux</li>
+                <li><span class="hl-critical">Efficacite energetique</span> : faire autant avec moins (isolation, PAC, moteurs performants)</li>
+                <li><span class="hl-critical">Energie bas-carbone</span> : nucleaire, eolien, solaire, hydraulique = substituer les fossiles</li>
+            </ul>
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Secteur</th><th>Technologies cles</th></tr>
+            <tr><td>Transport</td><td>VE, hydrogene vert, biocarburants, report modal</td></tr>
+            <tr><td>Batiment</td><td>PAC, isolation, renovation energetique</td></tr>
+            <tr><td>Industrie</td><td>Electrification, H2 vert, captage CO2, circulaire</td></tr>
+            <tr><td>Agriculture</td><td>Agroecologie, reduction cheptel, methanisation</td></tr>
+            <tr><td>Energie</td><td>Nucleaire, eolien, solaire PV, stockage, smart grids</td></tr>
+        </table>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quels sont les 4 constats fondamentaux sur le climat ?
+            <span class="answer">1) Rechauffement sans precedent, 2) Entierement cause par l'homme, 3) Consequences potentiellement dramatiques, 4) Peur raisonnable mais tout n'est pas perdu.</span>
+        </div>
+
+        <div class="flash-q">
+            Quel est l'objectif de l'Accord de Paris ? Ou va-t-on actuellement ?
+            <span class="answer">Objectif : +1,5 degC max. Trajectoire actuelle : +2,5 degC a +3 degC. Pour +1,5 degC : -45 % d'ici 2030 et neutralite carbone 2050.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est l'empreinte carbone d'un Francais moyen et son objectif 2050 ?
+            <span class="answer">~9-10 tCO2eq/an actuellement. Objectif : ~2 tCO2eq/an d'ici 2050 (diviser par 5).</span>
+        </div>
+
+        <div class="flash-q">
+            Citez les 4 scenarios ADEME Transition(s) 2050.
+            <span class="answer">S1 Generation frugale (sobriete forte), S2 Cooperation territoriale (circuits courts), S3 Technologies vertes (innovation, electrification), S4 Pari reparateur (captage CO2, paris technos).</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 3 leviers de la transition bas carbone ?
+            <span class="answer">1) Sobriete (reduire la demande), 2) Efficacite energetique (faire autant avec moins), 3) Energie bas-carbone (substituer les fossiles par nucleaire/ENR). Les trois sont complementaires et non substituables.</span>
+        </div>
+
+        <div class="flash-q">
+            Quels sont les 3 principaux postes de l'empreinte carbone d'un Francais ?
+            <span class="answer">Transport (~25-30 %), alimentation (~20-25 %) et logement (~20-25 %). Le transport est le premier poste, tire par la voiture individuelle et l'avion.</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi aucun scenario ADEME ne fonctionne sans sobriete ?
+            <span class="answer">Meme le scenario S4 (le plus technophile) necessite des changements de modes de production. Les technologies seules ne suffisent pas a atteindre la neutralite carbone dans les delais impartis.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/STRATEGIE_DURABLE/ch1_enjeux_climatiques.html">Synthese complete</a>
+    </div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

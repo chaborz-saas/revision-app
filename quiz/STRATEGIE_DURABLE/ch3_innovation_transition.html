@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.3 — Innovation &amp; transition bas carbone</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">STRAT&Eacute;GIE DURABLE &amp; &Eacute;THIQUE &mdash; QUIZ</div>
+        <h1>Ch.3 &mdash; Innovation &amp; transition bas carbone</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:3rem;">&#127793;</div>
+        <div class="result-score" id="final-score"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restart()">Recommencer</button>
+    </div>
+</div>
+<script>
+const questions = [
+  {q:"Quelle organisation a d&eacute;velopp&eacute; &agrave; l'origine l'&eacute;chelle TRL (Technology Readiness Level) ?", o:["L'Union Europ&eacute;enne","L'ADEME","La NASA","Le MIT"], a:2, e:"L'&eacute;chelle TRL a &eacute;t&eacute; d&eacute;velopp&eacute;e par la NASA dans les ann&eacute;es 1970 pour &eacute;valuer la maturit&eacute; technologique. Elle va de TRL 1 (principes fondamentaux observ&eacute;s) &agrave; TRL 9 (syst&egrave;me op&eacute;rationnel en conditions r&eacute;elles)."},
+  {q:"Que mesure l'ARL (Adoption Readiness Level) ?", o:["La maturit&eacute; technologique d'une innovation","Le niveau de pr&ecirc;t du march&eacute; et de la soci&eacute;t&eacute; &agrave; adopter une innovation","Le co&ucirc;t de d&eacute;veloppement d'une technologie","La dur&eacute;e de vie d'un produit innovant"], a:1, e:"L'ARL compl&egrave;te le TRL en &eacute;valuant non pas la maturit&eacute; technique, mais la capacit&eacute; du march&eacute;, des utilisateurs et de la soci&eacute;t&eacute; &agrave; adopter l'innovation. Une technologie peut &ecirc;tre TRL 9 mais ARL faible si le march&eacute; n'est pas pr&ecirc;t."},
+  {q:"Quelle est la diff&eacute;rence entre une innovation incr&eacute;mentale et une innovation radicale ?", o:["L'incr&eacute;mentale co&ucirc;te moins cher que la radicale","L'incr&eacute;mentale am&eacute;liore l'existant, la radicale cr&eacute;e une rupture","L'incr&eacute;mentale est plus rapide &agrave; d&eacute;velopper","Il n'y a pas de diff&eacute;rence significative"], a:1, e:"L'innovation incr&eacute;mentale am&eacute;liore progressivement un produit ou proc&eacute;d&eacute; existant (ex : am&eacute;lioration de l'autonomie d'une batterie). L'innovation radicale introduit une rupture fondamentale (ex : passage du moteur thermique au moteur &eacute;lectrique)."},
+  {q:"La courbe en S de diffusion de l'innovation d&eacute;crit :", o:["L'&eacute;volution du co&ucirc;t d'une technologie dans le temps","Le cycle de vie d'une entreprise innovante","L'adoption progressive d'une innovation : lente au d&eacute;but, rapide au milieu, puis saturation","La courbe de production industrielle"], a:2, e:"La courbe en S mod&eacute;lise la diffusion d'une innovation : adoption lente par les early adopters, puis acc&eacute;l&eacute;ration rapide quand la majorit&eacute; adopte, et enfin saturation quand le march&eacute; est mature."},
+  {q:"Qu'est-ce qu'une courbe d'apprentissage (learning curve) dans le contexte de l'innovation ?", o:["La dur&eacute;e n&eacute;cessaire pour former les employ&eacute;s","La baisse des co&ucirc;ts unitaires &agrave; mesure que la production cumul&eacute;e augmente","L'augmentation de la complexit&eacute; technologique dans le temps","Le temps d'adaptation des consommateurs"], a:1, e:"La courbe d'apprentissage montre que chaque doublement de la production cumul&eacute;e entra&icirc;ne une baisse pr&eacute;visible du co&ucirc;t unitaire. C'est ce qui explique la chute spectaculaire du prix des panneaux solaires et des batteries."},
+  {q:"Selon le sc&eacute;nario Net Zero de l'AIE, parmi ces secteurs, lequel est consid&eacute;r&eacute; comme &laquo; hard to abate &raquo; (difficile &agrave; d&eacute;carboner) ?", o:["Le secteur bancaire","La production d'&eacute;lectricit&eacute; solaire","L'aviation long-courrier","Le commerce en ligne"], a:2, e:"L'aviation, l'acier, le ciment, le transport maritime et les camions sont des secteurs &laquo; hard to abate &raquo; car ils d&eacute;pendent de proc&eacute;d&eacute;s tr&egrave;s &eacute;nergivores ou de carburants difficiles &agrave; remplacer. L'aviation long-courrier est particuli&egrave;rement complexe en raison de la densit&eacute; &eacute;nerg&eacute;tique requise."},
+  {q:"Quels sont les 4 types de nature d'innovation ?", o:["Produit, proc&eacute;d&eacute;, organisationnelle, marketing","Technique, financi&egrave;re, sociale, environnementale","Mat&eacute;rielle, logicielle, humaine, digitale","Locale, nationale, europ&eacute;enne, mondiale"], a:0, e:"Les 4 natures d'innovation sont : produit (nouveau bien ou service), proc&eacute;d&eacute; (nouvelle m&eacute;thode de production), organisationnelle (nouvelle fa&ccedil;on d'organiser le travail) et marketing (nouvelle strat&eacute;gie commerciale). On y ajoute parfois l'innovation sociale."},
+  {q:"Un TRL de 5 correspond &agrave; :", o:["Un principe scientifique observ&eacute; en laboratoire","Une technologie valid&eacute;e en environnement repr&eacute;sentatif","Un prototype test&eacute; en conditions r&eacute;elles","Un syst&egrave;me pleinement op&eacute;rationnel et commercialis&eacute;"], a:1, e:"TRL 5 signifie que la technologie a &eacute;t&eacute; valid&eacute;e dans un environnement repr&eacute;sentatif (proche des conditions r&eacute;elles mais encore contr&ocirc;l&eacute;). TRL 1 = principe observ&eacute;, TRL 7 = prototype en conditions r&eacute;elles, TRL 9 = syst&egrave;me op&eacute;rationnel."}
+];
+let current=0, score=0, answered=[];
+function render(){
+    const quest=questions[current];
+    document.getElementById('current-q').textContent=current+1;
+    document.getElementById('score').textContent=score;
+    document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';
+    let html='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+quest.q+'</div><div class="options">';
+    quest.o.forEach((opt,i)=>{
+        const disabled=answered[current]!==undefined?'disabled':'';
+        let cls='option';
+        if(answered[current]!==undefined){if(i===quest.a)cls+=' correct';else if(i===answered[current])cls+=' wrong';}
+        html+='<button class="'+cls+'" onclick="answer('+i+')" '+disabled+'>'+opt+'</button>';
+    });
+    html+='</div><div class="explanation" id="expl"'+(answered[current]!==undefined?' style="display:block"':'')+'>'+quest.e+'</div></div>';
+    html+='<div class="nav-buttons">';
+    if(current>0)html+='<button class="btn btn-back" onclick="prev()">&larr; Pr&eacute;c&eacute;dent</button>';
+    if(answered[current]!==undefined&&current<questions.length-1)html+='<button class="btn btn-next" onclick="next()">Suivant &rarr;</button>';
+    if(answered[current]!==undefined&&current===questions.length-1)html+='<button class="btn btn-next" onclick="showResult()">Voir le r&eacute;sultat &rarr;</button>';
+    html+='</div>';
+    document.getElementById('quiz-area').innerHTML=html;
+}
+function answer(i){if(answered[current]!==undefined)return;answered[current]=i;if(i===questions[current].a)score++;render();}
+function next(){current++;render();}
+function prev(){current--;render();}
+function showResult(){
+    document.getElementById('quiz-area').style.display='none';
+    document.getElementById('result-card').style.display='block';
+    const pct=Math.round(score/questions.length*100);
+    document.getElementById('final-score').textContent=score+'/'+questions.length;
+    document.getElementById('result-msg').textContent=pct>=75?'Excellent ! Tu ma\u00eetrises le sujet \uD83D\uDD25':pct>=50?'Pas mal ! Relis les points faibles \uD83D\uDCAA':'Continue \u00e0 r\u00e9viser, tu vas y arriver \uD83D\uDCDA';
+}
+function restart(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';render();}
+render();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

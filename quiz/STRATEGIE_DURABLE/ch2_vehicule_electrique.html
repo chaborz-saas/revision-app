@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.2 — V&eacute;hicule &eacute;lectrique &amp; id&eacute;es re&ccedil;ues</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">STRAT&Eacute;GIE DURABLE &amp; &Eacute;THIQUE &mdash; QUIZ</div>
+        <h1>Ch.2 &mdash; V&eacute;hicule &eacute;lectrique &amp; id&eacute;es re&ccedil;ues</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:3rem;">&#127793;</div>
+        <div class="result-score" id="final-score"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restart()">Recommencer</button>
+    </div>
+</div>
+<script>
+const questions = [
+  {q:"Les batteries de v&eacute;hicules &eacute;lectriques contiennent-elles des terres rares ?", o:["Oui, en grande quantit&eacute;","Oui, mais en faible quantit&eacute;","Non, les batteries n'utilisent pas de terres rares","Seulement les batteries chinoises"], a:2, e:"C'est une id&eacute;e re&ccedil;ue majeure : les batteries lithium-ion (NMC ou LFP) ne contiennent PAS de terres rares. Les terres rares sont utilis&eacute;es dans certains moteurs &eacute;lectriques (aimants permanents), mais pas dans les batteries elles-m&ecirc;mes."},
+  {q:"Quelle est la dur&eacute;e de vie moyenne garantie d'une batterie de v&eacute;hicule &eacute;lectrique ?", o:["3 ans / 50 000 km","5 ans / 100 000 km","8 ans / 160 000 km","15 ans / 300 000 km"], a:2, e:"Les constructeurs garantissent g&eacute;n&eacute;ralement les batteries 8 ans ou 160 000 km. Les batteries LFP (Lithium Fer Phosphate) peuvent supporter jusqu'&agrave; 6 000 cycles de charge, soit bien au-del&agrave; de la dur&eacute;e de vie du v&eacute;hicule."},
+  {q:"Quel est le taux de recyclage atteignable pour les mat&eacute;riaux des batteries &eacute;lectriques ?", o:["Environ 30 %","Environ 50 %","Environ 75 %","Jusqu'&agrave; 95 %"], a:3, e:"Les proc&eacute;d&eacute;s actuels de recyclage des batteries permettent de r&eacute;cup&eacute;rer jusqu'&agrave; 95 % des mat&eacute;riaux (lithium, cobalt, nickel, mangan&egrave;se). Cela r&eacute;duit fortement le besoin en extraction mini&egrave;re primaire."},
+  {q:"&laquo; Il vaut mieux garder sa vieille voiture thermique que d'acheter un v&eacute;hicule &eacute;lectrique. &raquo; Cette affirmation est :", o:["Vraie, car fabriquer un VE &eacute;met beaucoup de CO2","Vraie, car les vieilles voitures sont plus robustes","Fausse, car un VE compense ses &eacute;missions de fabrication en 2-3 ans d'utilisation","Fausse, car les vieilles voitures ne polluent pas"], a:2, e:"M&ecirc;me en tenant compte des &eacute;missions de fabrication (notamment la batterie), un VE compense son &laquo; dette carbone &raquo; en 2 &agrave; 3 ans d'utilisation gr&acirc;ce &agrave; ses &eacute;missions quasi nulles &agrave; l'usage. Garder un v&eacute;hicule thermique revient &agrave; continuer d'&eacute;mettre du CO2 chaque kilom&egrave;tre."},
+  {q:"Qu'est-ce que le V2G (Vehicle-to-Grid) ?", o:["Un syst&egrave;me de navigation pour v&eacute;hicules &eacute;lectriques","La capacit&eacute; d'un VE &agrave; renvoyer de l'&eacute;lectricit&eacute; vers le r&eacute;seau","Un label de qualit&eacute; pour les bornes de recharge","Un protocole de recharge rapide"], a:1, e:"Le V2G (Vehicle-to-Grid) permet aux v&eacute;hicules &eacute;lectriques de renvoyer de l'&eacute;lectricit&eacute; stock&eacute;e dans leur batterie vers le r&eacute;seau. Loin de provoquer des blackouts, les VE peuvent ainsi servir de stockage tampon et stabiliser le r&eacute;seau &eacute;lectrique."},
+  {q:"Concernant le co&ucirc;t total de possession (TCO) d'un v&eacute;hicule &eacute;lectrique :", o:["Il est plus &eacute;lev&eacute; qu'un v&eacute;hicule thermique sur toute la dur&eacute;e de vie","Il est &eacute;quivalent &agrave; un v&eacute;hicule thermique","Il est moins &eacute;lev&eacute; qu'un v&eacute;hicule thermique (entretien, &eacute;nergie, d&eacute;cote)","Il d&eacute;pend uniquement du prix d'achat"], a:2, e:"Le TCO (Total Cost of Ownership) d'un VE est inf&eacute;rieur &agrave; celui d'un v&eacute;hicule thermique : co&ucirc;t d'&eacute;nergie plus faible (&eacute;lectricit&eacute; vs carburant), entretien r&eacute;duit (moins de pi&egrave;ces d'usure), et d&eacute;cote moindre."},
+  {q:"Quel mat&eacute;riau utilis&eacute; dans les batteries est associ&eacute; &agrave; des probl&egrave;mes de travail des enfants, et quelle est la tendance ?", o:["Le lithium, et le probl&egrave;me s'aggrave","Le cobalt, mais la tendance est &agrave; la r&eacute;duction et aux solutions (batteries LFP sans cobalt)","Le nickel, et il n'y a aucune solution","Les terres rares, et le recyclage r&egrave;gle le probl&egrave;me"], a:1, e:"Le cobalt (extrait principalement en RDC) est associ&eacute; &agrave; des probl&egrave;mes de travail infantile. Cependant, les solutions existent : batteries LFP sans cobalt, tra&ccedil;abilit&eacute; de la cha&icirc;ne d'approvisionnement, et r&eacute;duction progressive de la quantit&eacute; de cobalt dans les batteries NMC."},
+  {q:"Les v&eacute;hicules &eacute;lectriques risquent-ils de provoquer des blackouts &eacute;lectriques ?", o:["Oui, le r&eacute;seau ne peut pas supporter la charge","Oui, surtout en hiver","Non, la charge est g&eacute;rable et le V2G peut m&ecirc;me stabiliser le r&eacute;seau","Non, car les VE consomment tr&egrave;s peu d'&eacute;lectricit&eacute;"], a:2, e:"Le risque de blackout est un mythe. La recharge peut &ecirc;tre pilot&eacute;e (charge intelligente aux heures creuses) et le V2G permet aux VE de restituer de l'&eacute;lectricit&eacute; au r&eacute;seau lors des pics de demande, contribuant ainsi &agrave; sa stabilit&eacute;."}
+];
+let current=0, score=0, answered=[];
+function render(){
+    const quest=questions[current];
+    document.getElementById('current-q').textContent=current+1;
+    document.getElementById('score').textContent=score;
+    document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';
+    let html='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+quest.q+'</div><div class="options">';
+    quest.o.forEach((opt,i)=>{
+        const disabled=answered[current]!==undefined?'disabled':'';
+        let cls='option';
+        if(answered[current]!==undefined){if(i===quest.a)cls+=' correct';else if(i===answered[current])cls+=' wrong';}
+        html+='<button class="'+cls+'" onclick="answer('+i+')" '+disabled+'>'+opt+'</button>';
+    });
+    html+='</div><div class="explanation" id="expl"'+(answered[current]!==undefined?' style="display:block"':'')+'>'+quest.e+'</div></div>';
+    html+='<div class="nav-buttons">';
+    if(current>0)html+='<button class="btn btn-back" onclick="prev()">&larr; Pr&eacute;c&eacute;dent</button>';
+    if(answered[current]!==undefined&&current<questions.length-1)html+='<button class="btn btn-next" onclick="next()">Suivant &rarr;</button>';
+    if(answered[current]!==undefined&&current===questions.length-1)html+='<button class="btn btn-next" onclick="showResult()">Voir le r&eacute;sultat &rarr;</button>';
+    html+='</div>';
+    document.getElementById('quiz-area').innerHTML=html;
+}
+function answer(i){if(answered[current]!==undefined)return;answered[current]=i;if(i===questions[current].a)score++;render();}
+function next(){current++;render();}
+function prev(){current--;render();}
+function showResult(){
+    document.getElementById('quiz-area').style.display='none';
+    document.getElementById('result-card').style.display='block';
+    const pct=Math.round(score/questions.length*100);
+    document.getElementById('final-score').textContent=score+'/'+questions.length;
+    document.getElementById('result-msg').textContent=pct>=75?'Excellent ! Tu ma\u00eetrises le sujet \uD83D\uDD25':pct>=50?'Pas mal ! Relis les points faibles \uD83D\uDCAA':'Continue \u00e0 r\u00e9viser, tu vas y arriver \uD83D\uDCDA';
+}
+function restart(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';render();}
+render();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Strategie Durable : Economie du climat & financement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #27ae60; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #27ae60; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Strategie Durable & Ethique — M1</div>
+        <h1>Chapitre 4 — Economie du climat & financement</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Dommages climatiques sur l'economie</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition — Cout social du carbone (SCC)</div>
+            Valeur monetaire des dommages causes par 1 tCO2 supplementaire.
+            <br><span class="hl-critical">Rennert et al. (Nature, 2022) : ~185 $/tCO2</span> (3-4x plus que les estimations precedentes)
+        </div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Canaux de dommages</div>
+            <ul class="condensed-list">
+                <li>Destructions directes (inondations, tempetes, canicules)</li>
+                <li>Perte de productivite (stress thermique, rendements agricoles)</li>
+                <li>Couts de sante</li>
+                <li><span class="hl-critical">Depreciation du patrimoine</span> (immobilier, infrastructures)</li>
+                <li>Perturbation des chaines d'approvisionnement</li>
+            </ul>
+        </div>
+
+        <div class="section-title">PIB vs PIN : limites du PIB</div>
+
+        <table class="compact-table">
+            <tr><th>Indicateur</th><th>Ce qu'il mesure</th><th>Limite climatique</th></tr>
+            <tr><td><span class="hl-important">PIB</span></td><td>Valeur ajoutee totale produite</td><td>Ignore depreciation capital naturel, comptabilise positivement la reconstruction post-catastrophe</td></tr>
+            <tr><td><span class="hl-important">PIN</span></td><td>PIB - depreciation capital fixe</td><td>Plus fidele, mais n'integre pas le capital naturel</td></tr>
+            <tr><td><span class="hl-critical">Epargne nette ajustee</span></td><td>PIN + education - epuisement ressources - dommages pollution</td><td>Si negative = le pays s'appauvrit malgre un PIB en hausse</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Paradoxe du PIB</div>
+            Un ouragan detruit une ville &rarr; bien-etre baisse, mais reconstruction fait <span class="hl-critical">augmenter le PIB</span>. Le PIB peut croitre alors que la richesse reelle (patrimoine naturel + construit) diminue.
+        </div>
+
+        <div class="section-title">Internaliser les externalites negatives</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition — Externalite negative</div>
+            Cout impose a des tiers sans participation a la transaction. Les emissions CO2 = externalite negative par excellence : l'emetteur ne paie pas pour les dommages climatiques.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Approche</th><th>Mecanisme</th><th>Exemples</th></tr>
+            <tr><td><span class="hl-critical">Taxe carbone (prix)</span></td><td>L'Etat fixe le prix/tCO2, le marche ajuste les quantites</td><td>TICPE (~45 euros/tCO2 FR), taxe carbone suedoise (~120 euros)</td></tr>
+            <tr><td><span class="hl-critical">Marche de quotas (quantite)</span></td><td>L'Etat fixe le plafond d'emissions, le marche determine le prix</td><td>EU-ETS (~50-100 euros/tCO2)</td></tr>
+        </table>
+
+        <div class="section-title">Cout de la tCO2 evitee</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Formule cle</div>
+            <span class="hl-critical">Cout tCO2 evitee = (Cout bas carbone - Cout fossile) / (Emissions fossile - Emissions bas carbone)</span>
+            <br>Si resultat negatif = « <span class="hl-critical">no regret</span> » (la solution verte est deja moins chere)
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Action</th><th>Cout tCO2 evitee</th><th>Commentaire</th></tr>
+            <tr><td>Chaudiere gaz &rarr; PAC</td><td><span class="hl-critical">Souvent negatif</span></td><td>No regret : rentable sans prix du carbone</td></tr>
+            <tr><td>Chaudiere gaz &rarr; Granules</td><td>Faible a modere</td><td>Investissement modere</td></tr>
+            <tr><td>Isolation exterieure</td><td>30-100 euros/tCO2</td><td>Investissement initial eleve, rentabilise sur duree</td></tr>
+            <tr><td>208 thermique &rarr; electrique</td><td>Variable selon km/an</td><td>TCO souvent favorable en France</td></tr>
+        </table>
+
+        <div class="section-title">Le Green Premium</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            <span class="hl-critical">Green premium</span> = surcout de la solution bas carbone vs equivalent fossile. Tend a diminuer grace aux courbes d'apprentissage et economies d'echelle.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Technologie</th><th>Green premium</th></tr>
+            <tr><td>Electricite solaire vs charbon</td><td><span class="hl-critical">Negatif</span> (solaire deja moins cher dans beaucoup de regions)</td></tr>
+            <tr><td>VE vs thermique (achat)</td><td>Encore positif (~5-10k euros) mais en baisse rapide</td></tr>
+            <tr><td>Acier vert (H2) vs classique</td><td>Eleve (~20-40 %)</td></tr>
+            <tr><td>SAF vs kerosene</td><td>Tres eleve (x2 a x5)</td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Cercle vertueux</div>
+            Subventions/mandats &rarr; deploiement &rarr; courbe d'apprentissage &rarr; baisse des couts &rarr; <span class="hl-critical">competitif sans subvention</span>. Justifie l'investissement precoce dans les technologies propres.
+        </div>
+
+        <div class="section-title">Financement : cycle du capital-risque</div>
+
+        <table class="compact-table">
+            <tr><th>Stade</th><th>Montant</th><th>Objectif</th><th>Retour attendu</th></tr>
+            <tr><td><span class="hl-important">Pre-seed / Seed</span></td><td>100k-2M</td><td>Preuve de concept, prototypes, equipe</td><td>x10 a x100</td></tr>
+            <tr><td><span class="hl-important">Serie A</span></td><td>2M-15M</td><td>Product-market fit, premiere traction</td><td>x5 a x15</td></tr>
+            <tr><td><span class="hl-important">Serie B</span></td><td>15M-50M</td><td>Passage a l'echelle, expansion geo</td><td>x3 a x7</td></tr>
+            <tr><td><span class="hl-important">Serie C+</span></td><td>50M+</td><td>Scale massif, preparation IPO/exit</td><td>x2 a x5</td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Specificites cleantech</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Capital-intensif</span> (usines, equipements) vs software pur</li>
+                <li><span class="hl-critical">Cycles plus longs</span> (5-10 ans vs 3-5 ans software)</li>
+                <li>Forte <span class="hl-critical">dependance reglementaire</span> (prix carbone, subventions)</li>
+                <li><span class="hl-critical">Vallee de la mort</span> entre TRL 6 (demo) et TRL 8 (industrialisation)</li>
+            </ul>
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Quel est le cout social du carbone selon Rennert et al. (2022) ?
+            <span class="answer">Environ 185 $/tCO2 (Nature, 2022). C'est 3 a 4 fois plus que les estimations precedentes du gouvernement americain.</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi le PIB est-il un indicateur trompeur dans le contexte climatique ?
+            <span class="answer">Il ignore la depreciation du capital naturel, comptabilise positivement la reconstruction post-catastrophe, et ne prend pas en compte les externalites negatives. Un ouragan fait baisser le bien-etre mais augmenter le PIB.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que l'epargne nette ajustee ? Que signifie une valeur negative ?
+            <span class="answer">Indicateur Banque Mondiale = PIN + education - epuisement ressources - dommages pollution. Si negative : le pays s'appauvrit reellement meme si le PIB croit.</span>
+        </div>
+
+        <div class="flash-q">
+            Donnez la formule du cout de la tCO2 evitee. Que signifie un resultat negatif ?
+            <span class="answer">Cout tCO2 evitee = (Cout bas carbone - Cout fossile) / (Emissions fossile - Emissions bas carbone). Resultat negatif = « no regret » : la solution verte est deja moins chere que la fossile.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que le green premium ? Donnez un exemple ou il est deja negatif.
+            <span class="answer">Surcout de la solution bas carbone vs equivalent fossile. Deja negatif pour l'electricite solaire vs charbon dans de nombreuses regions (le solaire est moins cher). Tend a baisser via courbes d'apprentissage.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelles sont les 2 approches pour internaliser les externalites carbone ?
+            <span class="answer">1) Taxe carbone (approche prix) : l'Etat fixe le prix, le marche ajuste les quantites. 2) Marche de quotas (approche quantite, ex : EU-ETS) : l'Etat fixe le plafond, le marche determine le prix.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que la « vallee de la mort » des cleantech ?
+            <span class="answer">Gap de financement entre TRL 6 (demonstration) et TRL 8 (industrialisation). Les startups ne trouvent pas les montants necessaires pour la premiere usine. Comble par des fonds specialises (Breakthrough Energy, EIC) et le soutien public.</span>
+        </div>
+
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/STRATEGIE_DURABLE/ch4_economie_climat.html">Synthese complete</a>
+    </div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Ch.4 — &Eacute;conomie du climat &amp; financement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
+        .btn-back:hover { background: rgba(255,255,255,0.15); }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">STRAT&Eacute;GIE DURABLE &amp; &Eacute;THIQUE &mdash; QUIZ</div>
+        <h1>Ch.4 &mdash; &Eacute;conomie du climat &amp; financement</h1>
+    </div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:3rem;">&#127793;</div>
+        <div class="result-score" id="final-score"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restart()">Recommencer</button>
+    </div>
+</div>
+<script>
+const questions = [
+  {q:"Quel est l'ordre de grandeur du co&ucirc;t social du carbone (Social Cost of Carbon) ?", o:["10-20 &euro;/tCO2","50-100 &euro;/tCO2","250-300 &euro;/tCO2","1 000 &euro;/tCO2"], a:2, e:"Le co&ucirc;t social du carbone est estim&eacute; entre 250 et 300 &euro; par tonne de CO2. Il repr&eacute;sente l'ensemble des dommages (sant&eacute;, agriculture, infrastructures, biodiversit&eacute;) caus&eacute;s par l'&eacute;mission d'une tonne suppl&eacute;mentaire de CO2."},
+  {q:"Qu'est-ce que le &laquo; green premium &raquo; (surprime verte) ?", o:["Une subvention gouvernementale pour les entreprises vertes","Le surco&ucirc;t d'une solution bas-carbone par rapport &agrave; son &eacute;quivalent fossile","Le b&eacute;n&eacute;fice financier li&eacute; &agrave; la transition &eacute;cologique","Une taxe sur les produits polluants"], a:1, e:"Le green premium est le surco&ucirc;t que repr&eacute;sente une solution bas-carbone par rapport &agrave; la solution fossile &eacute;quivalente. Par exemple, le surco&ucirc;t de l'acier vert vs l'acier classique. L'objectif est de r&eacute;duire ce premium gr&acirc;ce aux courbes d'apprentissage."},
+  {q:"Quand le co&ucirc;t de la tonne de CO2 &eacute;vit&eacute;e est n&eacute;gatif, cela signifie que :", o:["La mesure co&ucirc;te tr&egrave;s cher &agrave; mettre en &oelig;uvre","La mesure est techniquement impossible","La mesure est rentable : elle fait &eacute;conomiser de l'argent tout en r&eacute;duisant les &eacute;missions","L'&eacute;mission de CO2 augmente"], a:2, e:"Un co&ucirc;t n&eacute;gatif de la tonne de CO2 &eacute;vit&eacute;e signifie que la mesure est RENTABLE. Par exemple, les pompes &agrave; chaleur (PAC) et les v&eacute;hicules &eacute;lectriques (VE) ont un co&ucirc;t n&eacute;gatif : ils r&eacute;duisent les &eacute;missions ET font &eacute;conomiser de l'argent sur leur dur&eacute;e de vie."},
+  {q:"Parmi ces mesures, laquelle a un co&ucirc;t de tonne de CO2 &eacute;vit&eacute;e n&eacute;gatif (donc rentable) ?", o:["La capture et stockage de carbone (CCS)","L'hydrog&egrave;ne vert pour l'industrie","La pompe &agrave; chaleur (PAC)","La compensation carbone par reforestation"], a:2, e:"La pompe &agrave; chaleur a un co&ucirc;t n&eacute;gatif de la tonne de CO2 &eacute;vit&eacute;e : elle co&ucirc;te moins cher &agrave; l'usage qu'un chauffage fossile. Le v&eacute;hicule &eacute;lectrique est &eacute;galement dans ce cas. L'isolation des b&acirc;timents a un co&ucirc;t l&eacute;g&egrave;rement positif mais reste tr&egrave;s rentable."},
+  {q:"Comment les courbes d'apprentissage r&eacute;duisent-elles le green premium ?", o:["Par des subventions gouvernementales croissantes","Par la baisse des co&ucirc;ts li&eacute;e &agrave; l'augmentation des volumes de production cumul&eacute;s","Par la d&eacute;localisation de la production","Par la r&eacute;duction de la qualit&eacute; des produits"], a:1, e:"Les courbes d'apprentissage montrent que chaque doublement de la production cumul&eacute;e entra&icirc;ne une baisse pr&eacute;visible des co&ucirc;ts (typiquement 15-25 %). C'est ce m&eacute;canisme qui a rendu le solaire et les batteries comp&eacute;titifs, r&eacute;duisant progressivement le green premium."},
+  {q:"Dans le cycle de financement d'une startup climat, que repr&eacute;sente la &laquo; Series A &raquo; ?", o:["Le premier investissement des fondateurs (love money)","Le financement d'amor&ccedil;age (seed)","Le premier tour de financement institutionnel pour acc&eacute;l&eacute;rer la croissance","L'introduction en bourse (IPO)"], a:2, e:"La Series A est le premier tour de financement institutionnel majeur. Elle suit le seed (amor&ccedil;age) et pr&eacute;c&egrave;de les Series B et C. Elle sert &agrave; acc&eacute;l&eacute;rer la croissance une fois le produit valid&eacute; sur le march&eacute;."},
+  {q:"Pourquoi parle-t-on de &laquo; valeur de l'action climatique &raquo; ?", o:["Parce que les actions climat sont cot&eacute;es en bourse","Parce que les b&eacute;n&eacute;fices de l'action climatique (dommages &eacute;vit&eacute;s) d&eacute;passent largement les co&ucirc;ts de la transition","Parce que le changement climatique cr&eacute;e de la valeur &eacute;conomique","Parce que les taxes carbone g&eacute;n&egrave;rent des revenus fiscaux"], a:1, e:"La valeur de l'action climatique r&eacute;side dans le fait que le co&ucirc;t de la transition (investissements dans le bas-carbone) est largement inf&eacute;rieur au co&ucirc;t des dommages climatiques &eacute;vit&eacute;s. Agir co&ucirc;te moins cher que ne rien faire."},
+  {q:"Quel est l'impact des dommages climatiques sur l'&eacute;conomie mondiale ?", o:["Impact n&eacute;gligeable, inf&eacute;rieur &agrave; 0,1 % du PIB","Impact mod&eacute;r&eacute;, environ 1 % du PIB","Impact massif : pertes de productivit&eacute;, destruction d'infrastructures, co&ucirc;ts sanitaires majeurs","Impact positif pour certains pays nordiques"], a:2, e:"Les dommages climatiques sont consid&eacute;rables : perte de productivit&eacute; agricole, destruction d'infrastructures par les &eacute;v&eacute;nements extr&ecirc;mes, co&ucirc;ts sanitaires, migrations forc&eacute;es. C'est pourquoi le co&ucirc;t social du carbone est estim&eacute; entre 250 et 300 &euro;/tCO2."}
+];
+let current=0, score=0, answered=[];
+function render(){
+    const quest=questions[current];
+    document.getElementById('current-q').textContent=current+1;
+    document.getElementById('score').textContent=score;
+    document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';
+    let html='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+quest.q+'</div><div class="options">';
+    quest.o.forEach((opt,i)=>{
+        const disabled=answered[current]!==undefined?'disabled':'';
+        let cls='option';
+        if(answered[current]!==undefined){if(i===quest.a)cls+=' correct';else if(i===answered[current])cls+=' wrong';}
+        html+='<button class="'+cls+'" onclick="answer('+i+')" '+disabled+'>'+opt+'</button>';
+    });
+    html+='</div><div class="explanation" id="expl"'+(answered[current]!==undefined?' style="display:block"':'')+'>'+quest.e+'</div></div>';
+    html+='<div class="nav-buttons">';
+    if(current>0)html+='<button class="btn btn-back" onclick="prev()">&larr; Pr&eacute;c&eacute;dent</button>';
+    if(answered[current]!==undefined&&current<questions.length-1)html+='<button class="btn btn-next" onclick="next()">Suivant &rarr;</button>';
+    if(answered[current]!==undefined&&current===questions.length-1)html+='<button class="btn btn-next" onclick="showResult()">Voir le r&eacute;sultat &rarr;</button>';
+    html+='</div>';
+    document.getElementById('quiz-area').innerHTML=html;
+}
+function answer(i){if(answered[current]!==undefined)return;answered[current]=i;if(i===questions[current].a)score++;render();}
+function next(){current++;render();}
+function prev(){current--;render();}
+function showResult(){
+    document.getElementById('quiz-area').style.display='none';
+    document.getElementById('result-card').style.display='block';
+    const pct=Math.round(score/questions.length*100);
+    document.getElementById('final-score').textContent=score+'/'+questions.length;
+    document.getElementById('result-msg').textContent=pct>=75?'Excellent ! Tu ma\u00eetrises le sujet \uD83D\uDD25':pct>=50?'Pas mal ! Relis les points faibles \uD83D\uDCAA':'Continue \u00e0 r\u00e9viser, tu vas y arriver \uD83D\uDCDA';
+}
+function restart(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';render();}
+render();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

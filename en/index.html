@@ -166,6 +166,70 @@
             border: 1px solid rgba(16, 185, 129, 0.3);
         }
         .btn-quiz:hover { background: rgba(16, 185, 129, 0.3); }
+        /* FEEDBACK */
+        .feedback-section {
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+        }
+        .feedback-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+        .feedback-box h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 0.4rem;
+        }
+        .feedback-box p {
+            font-size: 0.85rem;
+            color: #606070;
+            margin-bottom: 1.5rem;
+        }
+        .feedback-form { display: grid; gap: 1rem; }
+        .feedback-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .feedback-form label {
+            font-size: 0.75rem; font-weight: 600; color: #808090;
+            text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.4rem;
+        }
+        .feedback-form select,
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+            padding: 0.7rem 1rem; color: #e0e0e0; font-family: 'Inter', sans-serif;
+            font-size: 0.88rem; outline: none; transition: border-color 0.2s;
+        }
+        .feedback-form select option { background: #1a1a2e; color: #e0e0e0; }
+        .feedback-form select:focus,
+        .feedback-form input:focus,
+        .feedback-form textarea:focus { border-color: rgba(59,130,246,0.5); }
+        .feedback-form textarea { resize: vertical; min-height: 100px; }
+        .stars-row { display: flex; gap: 0.5rem; align-items: center; flex-direction: row-reverse; }
+        .stars-row input[type="radio"] { display: none; }
+        .stars-row label {
+            font-size: 1.6rem; cursor: pointer; color: #333;
+            text-transform: none; letter-spacing: 0; margin: 0; transition: color 0.15s;
+        }
+        .stars-row input[type="radio"]:checked ~ label,
+        .stars-row label:hover,
+        .stars-row label:hover ~ label { color: #f59e0b; }
+        .feedback-submit {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white; border: none; border-radius: 8px;
+            padding: 0.8rem 2rem; font-family: 'Inter', sans-serif;
+            font-size: 0.9rem; font-weight: 600; cursor: pointer;
+            transition: opacity 0.2s; justify-self: start;
+        }
+        .feedback-submit:hover { opacity: 0.85; }
+        .feedback-thanks {
+            display: none; text-align: center; padding: 2rem;
+            color: #10b981; font-weight: 600; font-size: 1rem;
+        }
+        @media (max-width: 600px) { .feedback-row { grid-template-columns: 1fr; } }
         .footer {
             text-align: center;
             padding: 2rem;
@@ -573,6 +637,94 @@
     </div>
 
 </div>
+
+<div class="feedback-section">
+    <div class="feedback-box">
+        <h3>💬 Suggest an improvement</h3>
+        <p>Want to add content, fix an error or improve a sheet? Leave a message — I read everything.</p>
+
+        <form class="feedback-form" id="feedbackForm"
+              action="https://formspree.io/f/mojnldpv"
+              method="POST">
+
+            <div class="feedback-row">
+                <div>
+                    <label for="fb-matiere">Course</label>
+                    <select name="matiere" id="fb-matiere" required>
+                        <option value="" disabled selected>Choose...</option>
+                        <option value="Relationship Marketing (EN)">💜 Relationship Marketing</option>
+                        <option value="Change Management (EN)">🌿 Change Management</option>
+                        <option value="Geoeconomics (EN)">🌍 Geoeconomics</option>
+                        <option value="HRM for Managers (EN)">🧑‍💼 HRM for Managers</option>
+                        <option value="Performance Management (EN)">📊 Performance Management</option>
+                        <option value="SEBS (EN)">♻️ Sustainable & Ethical Business Strategy</option>
+                        <option value="General / Site (EN)">🌐 General / Site</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fb-type">Feedback type</label>
+                    <select name="type" id="fb-type" required>
+                        <option value="" disabled selected>Choose...</option>
+                        <option value="Error to fix">❌ Error to fix</option>
+                        <option value="Missing content">➕ Missing content</option>
+                        <option value="Sheet improvement">✏️ Sheet / summary improvement</option>
+                        <option value="Bug / display">🐛 Bug / display issue</option>
+                        <option value="Other">💡 Other suggestion</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label>Overall site rating</label>
+                <div class="stars-row">
+                    <input type="radio" name="note" id="s5" value="5"><label for="s5" title="5">★</label>
+                    <input type="radio" name="note" id="s4" value="4"><label for="s4" title="4">★</label>
+                    <input type="radio" name="note" id="s3" value="3"><label for="s3" title="3">★</label>
+                    <input type="radio" name="note" id="s2" value="2"><label for="s2" title="2">★</label>
+                    <input type="radio" name="note" id="s1" value="1"><label for="s1" title="1">★</label>
+                </div>
+            </div>
+
+            <div>
+                <label for="fb-message">Your message</label>
+                <textarea name="message" id="fb-message"
+                    placeholder="Ex: In the Performance Management Ch3 sheet, the CVP formula is missing..."
+                    required></textarea>
+            </div>
+
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_subject" value="[Revision App] English Track Feedback">
+
+            <button type="submit" class="feedback-submit">Send 🚀</button>
+        </form>
+        <div class="feedback-thanks" id="feedbackThanks">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🫡</div>
+            <div style="font-size:1.8rem;font-weight:800;color:white;letter-spacing:2px;">LEGEND</div>
+            <div style="font-size:0.9rem;color:#808090;margin-top:0.5rem;">Message received — I'll check it out.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const form = document.getElementById('feedbackForm');
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+        const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+            form.style.display = 'none';
+            document.getElementById('feedbackThanks').style.display = 'block';
+        }
+    } catch(err) {
+        alert('Network error — try again in a moment.');
+    }
+});
+</script>
 
 <div class="footer">
     English Track — Revision for the people

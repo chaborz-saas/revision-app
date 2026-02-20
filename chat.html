@@ -120,6 +120,9 @@
             transition: opacity 0.5s ease;
         }
         #splash.hidden { opacity: 0; pointer-events: none; }
+        #splash.gone { display: none; }
+        #main-content { display: none; }
+        #main-content.visible { display: contents; }
         .splash-gif {
             width: min(480px, 90vw);
             border-radius: 16px;
@@ -159,6 +162,7 @@
     <button class="btn-enter" onclick="enterChat()">Accéder au chat →</button>
 </div>
 
+<div id="main-content">
 <!-- HERO -->
 <div class="hero">
     <div class="hero-top">
@@ -214,6 +218,8 @@
     </div>
 </div>
 
+</div><!-- /main-content -->
+
 <!-- MODAL AUTH -->
 <div class="modal-overlay" id="modal-auth">
     <div class="modal">
@@ -254,8 +260,12 @@
 <script>
 function enterChat() {
     const splash = document.getElementById('splash');
+    const main = document.getElementById('main-content');
+    // Show the main content immediately
+    main.classList.add('visible');
+    // Fade out splash then remove it
     splash.classList.add('hidden');
-    setTimeout(() => splash.style.display = 'none', 500);
+    setTimeout(() => splash.classList.add('gone'), 500);
 }
 </script>
 

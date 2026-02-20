@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const app = initializeApp({
@@ -318,10 +318,12 @@ const TAG_CLASSES = {
 
 // AUTH
 onAuthStateChanged(auth, u => {
-    user = u;
+    user = (u && u.emailVerified) ? u : null;
     renderAuthBar();
-    document.getElementById('not-logged').style.display = u ? 'none' : '';
-    document.getElementById('input-logged').style.display = u ? 'flex' : 'none';
+    document.getElementById('not-logged').style.display = user ? 'none' : '';
+    document.getElementById('input-logged').style.display = user ? 'flex' : 'none';
+    // Si connecté mais pas vérifié → déco silencieuse
+    if (u && !u.emailVerified) signOut(auth);
 });
 
 function renderAuthBar() {
@@ -359,7 +361,15 @@ window.doLogin = async () => {
     const email = document.getElementById('login-email').value.trim();
     const pass = document.getElementById('login-pass').value;
     if (!email||!pass) { showErr('err-login','Remplis tous les champs.'); return; }
-    try { await signInWithEmailAndPassword(auth, email, pass); window.closeAuthModal(); }
+    try {
+        const c = await signInWithEmailAndPassword(auth, email, pass);
+        if (!c.user.emailVerified) {
+            await signOut(auth);
+            showErr('err-login','Vérifie ton email avant de te connecter. Regarde tes spams !');
+            return;
+        }
+        window.closeAuthModal();
+    }
     catch(e) { showErr('err-login', frErr(e.code)); }
 };
 window.doRegister = async () => {
@@ -371,7 +381,24 @@ window.doRegister = async () => {
     try {
         const c = await createUserWithEmailAndPassword(auth, email, pass);
         await updateProfile(c.user, { displayName: name });
+        await sendEmailVerification(c.user);
+        await signOut(auth);
         window.closeAuthModal();
+        // Afficher un message de confirmation
+        document.getElementById('modal-auth').classList.add('open');
+        document.getElementById('form-register').innerHTML = `
+            <div style="text-align:center;padding:1rem 0">
+                <div style="font-size:2rem;margin-bottom:1rem">📧</div>
+                <h2 style="margin-bottom:0.8rem">Vérifie ton email !</h2>
+                <p style="color:#808090;font-size:0.88rem;line-height:1.6">
+                    Un email de vérification a été envoyé à<br>
+                    <strong style="color:#e0e0e0">${email}</strong><br><br>
+                    Clique sur le lien dans l'email, puis connecte-toi.
+                </p>
+                <div class="modal-footer" style="justify-content:center;margin-top:1.5rem">
+                    <button class="btn-primary" onclick="window.closeAuthModal();window.switchAuthTab('login')">OK, me connecter</button>
+                </div>
+            </div>`;
     } catch(e) { showErr('err-reg', frErr(e.code)); }
 };
 

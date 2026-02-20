@@ -130,15 +130,26 @@
             box-shadow: 0 0 60px rgba(233,69,96,0.15);
             display: block;
         }
+        .splash-video-wrap {
+            position: relative;
+            width: min(480px, 90vw);
+        }
         .splash-title {
             font-size: 1.6rem; font-weight: 800; color: white;
             text-align: center; letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
         }
         .splash-title span { color: #e94560; }
-        .splash-sub {
-            color: #606075; font-size: 0.85rem; text-align: center;
-            margin-top: -1rem;
+        .splash-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            border-radius: 0 0 16px 16px;
+            padding: 1.5rem 1rem 1rem;
+            color: #c0c0cc; font-size: 0.82rem; text-align: center;
+            line-height: 1.6;
         }
+        .splash-overlay strong { color: #e0e0e0; }
+        .splash-overlay .splash-merci { color: #606075; font-size: 0.74rem; display: block; margin-top: 0.4rem; }
         .btn-enter {
             background: linear-gradient(135deg, #e94560, #c0354a);
             color: white; border: none; border-radius: 12px;
@@ -155,11 +166,15 @@
 
 <!-- SPLASH SCREEN -->
 <div id="splash">
-    <div>
-        <div class="splash-title">Chat <span>Q&A</span></div>
-        <div class="splash-sub">Bon carême / ramadan et bonnes révisions.<br>Posez vos questions, utilisez <strong style="color:#e0e0e0">#matière</strong> pour vous organiser, et partagez vos infos ici.<br><br><span style="color:#505065;font-size:0.78rem;">Merci pour le chat.</span></div>
+    <div class="splash-title">Chat <span>Q&A</span></div>
+    <div class="splash-video-wrap">
+        <video class="splash-video" id="splash-video" src="assets/chat-preview.mp4" autoplay playsinline muted></video>
+        <div class="splash-overlay">
+            Bon carême / ramadan et bonnes révisions.<br>
+            Posez vos questions, utilisez <strong>#matière</strong> pour vous organiser, et partagez vos infos ici.
+            <span class="splash-merci">Merci pour le chat.</span>
+        </div>
     </div>
-    <video class="splash-video" id="splash-video" src="assets/chat-preview.mp4" autoplay playsinline muted></video>
     <button class="btn-enter" onclick="enterChat()">Accéder au chat →</button>
 </div>
 

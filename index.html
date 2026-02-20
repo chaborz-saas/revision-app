@@ -16,81 +16,61 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 2rem 1rem;
         }
-        .landing {
-            text-align: center;
-            padding: 2rem;
-        }
-        .landing h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 0.3rem;
-        }
-        .landing .sub {
-            color: #808090;
-            font-size: 1rem;
-            margin-bottom: 3rem;
-        }
-        .tracks {
+        .landing { text-align: center; width: 100%; max-width: 700px; }
+        .landing h1 { font-size: 2.2rem; font-weight: 800; color: white; margin-bottom: 0.3rem; }
+        .landing .sub { color: #606070; font-size: 0.9rem; margin-bottom: 3rem; }
+
+        .cards {
             display: flex;
-            gap: 2rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-        .track {
+        .card {
             display: flex;
             flex-direction: column;
             align-items: center;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 20px;
-            padding: 2.5rem 3rem;
+            padding: 2rem 2.2rem;
             text-decoration: none;
-            transition: all 0.3s;
-            min-width: 240px;
+            transition: all 0.25s;
+            min-width: 190px;
+            flex: 1;
+            max-width: 220px;
         }
-        .track:hover {
+        .card:hover {
             background: rgba(255,255,255,0.07);
-            border-color: rgba(255,255,255,0.2);
             transform: translateY(-4px);
         }
-        .track .flag {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .track .track-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.3rem;
-        }
-        .track .track-desc {
-            font-size: 0.85rem;
-            color: #808090;
-        }
-        .track-franco { border-color: rgba(233,69,96,0.3); }
-        .track-franco:hover { border-color: #e94560; box-shadow: 0 8px 30px rgba(233,69,96,0.15); }
-        .track-anglo { border-color: rgba(59,130,246,0.3); }
-        .track-anglo:hover { border-color: #3b82f6; box-shadow: 0 8px 30px rgba(59,130,246,0.15); }
-        .bottom-links {
+        .card .icon { font-size: 2.8rem; margin-bottom: 0.9rem; }
+        .card .card-title { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.25rem; }
+        .card .card-desc { font-size: 0.78rem; color: #808090; }
+
+        .card-franco { border-color: rgba(233,69,96,0.3); }
+        .card-franco:hover { border-color: #e94560; box-shadow: 0 8px 30px rgba(233,69,96,0.15); }
+
+        .card-anglo { border-color: rgba(59,130,246,0.3); }
+        .card-anglo:hover { border-color: #3b82f6; box-shadow: 0 8px 30px rgba(59,130,246,0.15); }
+
+        .card-general { border-color: rgba(168,85,247,0.3); }
+        .card-general:hover { border-color: #a855f7; box-shadow: 0 8px 30px rgba(168,85,247,0.15); }
+
+        .disclaimer {
             margin-top: 2.5rem;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            color: #505060;
+            font-size: 0.75rem;
+            max-width: 480px;
+            line-height: 1.6;
         }
-        .bottom-links a {
-            color: #606070;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-        .bottom-links a:hover { color: #f59e0b; }
+
         @media (max-width: 550px) {
-            .tracks { flex-direction: column; align-items: center; }
-            .track { min-width: 200px; width: 100%; }
-            .landing h1 { font-size: 1.8rem; }
+            .cards { flex-direction: column; align-items: center; }
+            .card { min-width: 220px; width: 100%; max-width: 320px; }
+            .landing h1 { font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -100,21 +80,25 @@
     <h1>Revision pour le peuple</h1>
     <p class="sub">fais par felix le goat</p>
 
-    <div class="tracks">
-        <a href="fr/index.html" class="track track-franco">
-            <div class="flag">🇫🇷</div>
-            <div class="track-title">Track Franco</div>
-            <div class="track-desc">Cours du track francais</div>
+    <div class="cards">
+        <a href="fr/index.html" class="card card-franco">
+            <div class="icon">🇫🇷</div>
+            <div class="card-title">Track Franco</div>
+            <div class="card-desc">Cours du track français</div>
         </a>
-        <a href="en/index.html" class="track track-anglo">
-            <div class="flag">🇬🇧</div>
-            <div class="track-title">Track Anglo</div>
-            <div class="track-desc">Cours du track anglais</div>
+        <a href="en/index.html" class="card card-anglo">
+            <div class="icon">🇬🇧</div>
+            <div class="card-title">Track Anglo</div>
+            <div class="card-desc">Cours du track anglais</div>
+        </a>
+        <a href="chat.html" class="card card-general">
+            <div class="icon">💬</div>
+            <div class="card-title">Chat Q&A</div>
+            <div class="card-desc">Pose tes questions par matière</div>
         </a>
     </div>
 
-    <p style="margin-top: 2rem; color: #606070; font-size: 0.8rem; max-width: 450px; line-height: 1.5;">Les fiches, syntheses et quiz du Track Franco comme du Track Anglo sont realises uniquement a partir des vrais cours uploades par les etudiants. Rien ne vient de l'exterieur.</p>
-
+    <p class="disclaimer">Les fiches, syntheses et quiz du Track Franco comme du Track Anglo sont realises uniquement a partir des vrais cours uploades par les etudiants. Rien ne vient de l'exterieur.</p>
 </div>
 
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

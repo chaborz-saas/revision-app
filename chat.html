@@ -116,18 +116,19 @@
             background: #0f0f1a;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            gap: 2rem;
-            transition: opacity 0.5s ease;
+            gap: 1.5rem;
+            transition: opacity 0.4s ease;
         }
         #splash.hidden { opacity: 0; pointer-events: none; }
         #splash.gone { display: none; }
-        #main-content { display: none; }
-        #main-content.visible { display: contents; }
-        .splash-gif {
+        #main-content { visibility: hidden; position: absolute; width: 100%; }
+        #main-content.visible { visibility: visible; position: static; }
+        .splash-video {
             width: min(480px, 90vw);
             border-radius: 16px;
             border: 2px solid rgba(233,69,96,0.35);
             box-shadow: 0 0 60px rgba(233,69,96,0.15);
+            display: block;
         }
         .splash-title {
             font-size: 1.6rem; font-weight: 800; color: white;
@@ -136,7 +137,7 @@
         .splash-title span { color: #e94560; }
         .splash-sub {
             color: #606075; font-size: 0.85rem; text-align: center;
-            margin-top: -1.2rem;
+            margin-top: -1rem;
         }
         .btn-enter {
             background: linear-gradient(135deg, #e94560, #c0354a);
@@ -158,7 +159,7 @@
         <div class="splash-title">💬 Chat <span>Q&A</span></div>
         <div class="splash-sub">Pose tes questions, partage tes révisions</div>
     </div>
-    <img class="splash-gif" src="assets/chat-preview.gif" alt="Aperçu du chat" />
+    <video class="splash-video" id="splash-video" src="assets/chat-preview.mp4" autoplay playsinline muted></video>
     <button class="btn-enter" onclick="enterChat()">Accéder au chat →</button>
 </div>
 
@@ -261,12 +262,19 @@
 function enterChat() {
     const splash = document.getElementById('splash');
     const main = document.getElementById('main-content');
-    // Show the main content immediately
-    main.classList.add('visible');
-    // Fade out splash then remove it
+    // Fade out splash
     splash.classList.add('hidden');
-    setTimeout(() => splash.classList.add('gone'), 500);
+    // Show chat after fade
+    setTimeout(() => {
+        splash.classList.add('gone');
+        main.classList.add('visible');
+    }, 400);
 }
+// Auto-enter when video ends
+document.addEventListener('DOMContentLoaded', () => {
+    const vid = document.getElementById('splash-video');
+    if (vid) vid.addEventListener('ended', enterChat);
+});
 </script>
 
 <!-- FIREBASE -->

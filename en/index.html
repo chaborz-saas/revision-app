@@ -292,6 +292,12 @@
 </head>
 <body>
 
+<div class="pedro-splash" id="pedroSplash">
+    <img src="pierre.png" alt="Pierre" class="pedro-img">
+    <div class="pedro-text">Merci Pierre 🫡</div>
+    <div class="pedro-sub">loading the anglo vibes...</div>
+</div>
+
 <div class="hero">
     <a href="../index.html" class="back-link">&larr; Back to home</a>
     <h1>Revision for the people</h1>
@@ -718,6 +724,10 @@ form.addEventListener('submit', async function(e) {
 <div class="footer">
     English Track — Revision for the people
 </div>
+
+<script>
+setTimeout(function() { var splash = document.getElementById('pedroSplash'); if (splash) splash.remove(); }, 3500);
+</script>
 
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

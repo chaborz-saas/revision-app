@@ -109,9 +109,55 @@
             .hero h1 { font-size: 1.4rem; }
             .messages { padding: 0.8rem; }
         }
+
+        /* SPLASH SCREEN */
+        #splash {
+            position: fixed; inset: 0; z-index: 999;
+            background: #0f0f1a;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 2rem;
+            transition: opacity 0.5s ease;
+        }
+        #splash.hidden { opacity: 0; pointer-events: none; }
+        .splash-gif {
+            width: min(480px, 90vw);
+            border-radius: 16px;
+            border: 2px solid rgba(233,69,96,0.35);
+            box-shadow: 0 0 60px rgba(233,69,96,0.15);
+        }
+        .splash-title {
+            font-size: 1.6rem; font-weight: 800; color: white;
+            text-align: center; letter-spacing: -0.5px;
+        }
+        .splash-title span { color: #e94560; }
+        .splash-sub {
+            color: #606075; font-size: 0.85rem; text-align: center;
+            margin-top: -1.2rem;
+        }
+        .btn-enter {
+            background: linear-gradient(135deg, #e94560, #c0354a);
+            color: white; border: none; border-radius: 12px;
+            padding: 0.85rem 2.5rem; font-size: 1rem; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(233,69,96,0.35);
+        }
+        .btn-enter:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(233,69,96,0.45); }
+        .btn-enter:active { transform: translateY(0); }
     </style>
 </head>
 <body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+    <div>
+        <div class="splash-title">💬 Chat <span>Q&A</span></div>
+        <div class="splash-sub">Pose tes questions, partage tes révisions</div>
+    </div>
+    <img class="splash-gif" src="assets/chat-preview.gif" alt="Aperçu du chat" />
+    <button class="btn-enter" onclick="enterChat()">Accéder au chat →</button>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -203,6 +249,15 @@
         </div>
     </div>
 </div>
+
+<!-- SPLASH LOGIC -->
+<script>
+function enterChat() {
+    const splash = document.getElementById('splash');
+    splash.classList.add('hidden');
+    setTimeout(() => splash.style.display = 'none', 500);
+}
+</script>
 
 <!-- FIREBASE -->
 <script type="module">

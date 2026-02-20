@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Geoeconomics Ch 2: Actors, Flows, and Scales of Analysis</title>
+    <title>Quiz — Geoeconomics Ch2: Actors, Flows, and Scales</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
-        .back-link { color: #10b981; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
-        .back-link:hover { text-decoration: underline; }
-        .quiz-header { text-align: center; margin-bottom: 2rem; }
-        .matiere { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.5rem; }
-        h1 { font-size: 1.8rem; color: #fff; }
-        .score-display { text-align: center; font-size: 1rem; color: #aaa; margin-bottom: 1rem; }
-        .progress-bar { width: 100%; height: 6px; background: #1e1e2f; border-radius: 3px; margin-bottom: 2rem; overflow: hidden; }
-        .progress-fill { height: 100%; background: #10b981; border-radius: 3px; transition: width 0.4s ease; }
-        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
-        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-        .question-text { font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
-        .options { display: flex; flex-direction: column; gap: 0.75rem; }
-        .option { background: #16213e; border: 2px solid #1e3a5f; padding: 1rem 1.25rem; border-radius: 8px; color: #e0e0e0; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s; }
-        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
-        .option:disabled { cursor: not-allowed; opacity: 0.85; }
-        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; font-weight: 600; }
-        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
-        .explanation { display: none; margin-top: 1.25rem; padding: 1rem; background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.95rem; color: #a7f3d0; }
-        .nav-buttons { text-align: center; margin-top: 1rem; }
-        .btn-next { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
-        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
-        .btn-next:hover:not(:disabled) { background: #059669; }
-        .result-card { display: none; text-align: center; background: #1a1a2e; border-radius: 12px; padding: 3rem 2rem; }
-        .result-score { font-size: 3rem; color: #10b981; font-weight: 700; margin: 1rem 0; }
-        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
-        .btn-restart { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
-        .btn-restart:hover { background: #059669; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
     </style>
 </head>
 <body>
@@ -44,79 +47,42 @@
         <div class="matiere">GEOECONOMICS &mdash; QUIZ</div>
         <h1>Chapter 2 &mdash; Actors, Flows, and Scales of Analysis</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
         <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     </div>
 </div>
-
 <script>
 const questions = [
-    { q: "In the TikTok vs. USA case, what law did the US Congress pass in 2024?", options: ["A. Digital Markets Act", "B. Protecting Americans from Foreign Adversary Controlled Applications Act (PAFACA)", "C. National Data Protection Act", "D. Foreign Technology Restriction Act"], correct: 1, explanation: "The PAFACA (Protecting Americans from Foreign Adversary Controlled Applications Act) was passed in 2024, requiring TikTok to divest from ByteDance or face a nationwide ban." },
-    { q: "In the Foxconn/Apple vs. China case, what type of flows are primarily at stake?", options: ["A. Tourism and cultural flows", "B. Material flows (components, iPhones), financial flows, and knowledge flows", "C. Migration and demographic flows", "D. Energy and water flows"], correct: 1, explanation: "The Foxconn/Apple case involves material flows (semiconductors, batteries, screens, iPhones), financial flows (taxation, profits, penalties), and knowledge flows (manufacturing expertise transfer)." },
-    { q: "Why did the Lukoil vs. Ukraine dispute escalate into a broader diplomatic conflict?", options: ["A. Lukoil refused to pay transit fees", "B. Ukraine used control over energy transit flows as strategic leverage during wartime", "C. Hungary and Slovakia declared war on Ukraine", "D. The EU imposed new tariffs on Russian oil"], correct: 1, explanation: "Ukraine restricted Lukoil's oil transit through the Druzhba pipeline, using control over energy flows as leverage. Hungary and Slovakia, dependent on Russian crude, protested, creating a diplomatic dispute within the EU." },
-    { q: "According to the course, what gives multinational corporations their geoeconomic power?", options: ["A. Their military capabilities", "B. Their control over global value chains", "C. Their ability to declare war on states", "D. Their direct control over national currencies"], correct: 1, explanation: "MNCs derive their geoeconomic power from control over global value chains (Bednarski et al., 2023). They influence geopolitics through location, sourcing, and lobbying decisions." },
-    { q: "What are the three interconnected levels of geopolitical/geoeconomic analysis?", options: ["A. Micro, meso, macro economics", "B. Classical geopolitics, critical geopolitics, geoeconomics", "C. Military, diplomatic, cultural analysis", "D. Local, national, international governance"], correct: 1, explanation: "The three levels are: (1) Classical geopolitics (State struggles for territorial control), (2) Critical geopolitics (identity issues and discourse analysis), and (3) Geoeconomics (competition over flows, networks, resources)." },
-    { q: "What is a key limitation of classical geopolitics according to the course?", options: ["A. It ignores military power", "B. It focuses too much on non-state actors", "C. It is state-centric and deterministic, poorly suited to hybrid conflicts", "D. It overestimates the role of economic flows"], correct: 2, explanation: "Classical geopolitics is criticized for being state-centric and deterministic, underestimating the role of representations, ideologies, and non-state actors, and being poorly suited to contemporary hybrid conflicts." },
-    { q: "In the Tesla Gigafactory Berlin-Brandenburg case, what are the two local geopolitical scales at stake?", options: ["A. German federal level and EU level only", "B. Local (Grunheide: land use, water, environment) and broader European markets (EV flows and investments)", "C. US-China trade relations and NATO military strategy", "D. Brandenburg state politics and United Nations environmental policy"], correct: 1, explanation: "The local scale involves Grunheide (land use, water resources, environmental protection). The broader geoeconomic scale involves European markets supplied by the Gigafactory, where flows of vehicles and investments are impacted." },
-    { q: "According to critical geopolitics, what role do media and cultural productions play?", options: ["A. They are irrelevant to geopolitical dynamics", "B. They only serve as entertainment without political impact", "C. They shape geopolitical representations and narratives, fueling geopolitical imagination", "D. They exclusively serve state propaganda"], correct: 2, explanation: "Critical geopolitics holds that media play a role in constructing geopolitical narratives (Dodds, 2007). Films, TV series, video games, and literature fuel geopolitical imagination. Maps and visualizations convey ideological messages." }
+    {q:"In the TikTok vs. USA case, what did the PAFACA law (2024) require of ByteDance?", options:["Paying a special technology tax to the US Treasury","Divesting from TikTok or facing a nationwide ban","Sharing its algorithm source code with the FBI","Relocating its headquarters to Washington, D.C."], correct:1, explanation:"The Protecting Americans from Foreign Adversary Controlled Applications Act (PAFACA) required ByteDance to divest from TikTok or face a nationwide ban. In 2025, the Supreme Court upheld the law, prioritizing national security."},
+    {q:"In the Foxconn/Apple vs. China case (2023), what types of flows are primarily at stake?", options:["Tourism and cultural exchange flows","Migration and demographic flows","Energy flows and water resources","Material flows (components, iPhones), financial flows, and knowledge flows"], correct:3, explanation:"The Foxconn/Apple case involves material flows (semiconductors, batteries, screens, iPhones), financial flows (taxation, profits, penalties from regulatory actions), and knowledge flows (transfer of manufacturing expertise)."},
+    {q:"In the Lukoil vs. Ukraine dispute, why did the conflict escalate into a broader diplomatic issue?", options:["Ukraine used control over energy transit flows through the Druzhba pipeline as strategic leverage during wartime","Lukoil refused to pay any transit fees to Ukraine","Hungary and Slovakia imposed counter-sanctions on Ukraine","The EU decided to increase purchases of Russian oil"], correct:0, explanation:"Ukraine restricted Lukoil's oil transit through the Druzhba pipeline as wartime leverage. Hungary and Slovakia, heavily dependent on Russian crude, protested, escalating a commercial transit issue into a diplomatic dispute."},
+    {q:"According to the course, what gives multinational corporations (MNCs) their geoeconomic power?", options:["Their military capabilities and defense contracts","Their ability to print national currencies","Their control over global value chains, location choices, sourcing, and lobbying","Their exclusive relationship with the United Nations"], correct:2, explanation:"MNCs derive geoeconomic power from control over global value chains (Bednarski et al., 2023). They influence geopolitics through their choices of location, sourcing, and lobbying (Flint, 2021)."},
+    {q:"Which of the following is TRUE about classical geopolitics according to the course?", options:["It is rooted in 19th-century strategic geography and is State-centric, focusing on borders and armed conflicts","It primarily analyzes non-state actors and cultural identity","It rejects the importance of territorial control","It was developed in the 21st century as a response to globalization"], correct:0, explanation:"Classical geopolitics is rooted in 19th-century strategic geography (Ratzel, Mackinder, Spykman). It is State-centric, focusing on borders, resources, and armed conflicts between States for territorial control."},
+    {q:"What is a key limitation of classical geopolitics identified in the course?", options:["It focuses too much on economic flows","It is state-centric and deterministic, poorly suited to contemporary hybrid conflicts","It overestimates the role of non-state actors","It ignores the existence of territorial borders"], correct:1, explanation:"Classical geopolitics is criticized for being state-centric and deterministic (Kuus, 2017), underestimating representations, ideologies, and non-state actors, and being poorly suited to contemporary hybrid conflicts."},
+    {q:"In the Tesla Gigafactory Berlin-Brandenburg case, what was the main source of local conflict?", options:["Disputes over German labor laws","Competition with Chinese EV manufacturers","Disagreements about Tesla's stock price","Environmental opposition to deforestation and water consumption in Grunheide"], correct:3, explanation:"Environmental activist groups opposed the Gigafactory expansion in Grunheide due to deforestation and water consumption concerns. They protested, attempted site intrusions, and even claimed responsibility for sabotage disrupting electricity supply."},
+    {q:"According to critical geopolitics, what role do media and cultural productions play?", options:["They are irrelevant to geopolitical dynamics","They only serve state propaganda purposes","They shape geopolitical representations and narratives, fueling geopolitical imagination through films, TV, and literature","They exclusively provide neutral factual information"], correct:2, explanation:"Critical geopolitics holds that media construct geopolitical narratives (Dodds, 2007). Films, TV series, video games, and literature fuel geopolitical imagination. Maps and visualizations convey ideological messages."},
+    {q:"In the Airbnb vs. New York City case (2023), what did Local Law 18 introduce?", options:["Strict registration requirements for short-term rentals, significantly reducing Airbnb listings","A complete ban on all forms of tourism accommodation","Tax exemptions for Airbnb hosts in Manhattan","Mandatory hotel partnerships for all platform-based rentals"], correct:0, explanation:"NYC implemented Local Law 18 in 2023, introducing strict registration requirements for short-term rentals. This significantly reduced Airbnb listings and created a test case for regulating the platform economy at the local level."},
+    {q:"According to the course, how is power measured in a geoeconomic context?", options:["Exclusively by the size of a country's military","By the ability to influence global norms, flows, and networks","Only by GDP per capita","By the number of embassies a country maintains"], correct:1, explanation:"In a geoeconomic context, power is measured by the ability to influence global norms (Kuus, 2017). It includes economic, normative, and technological influence (Flint, 2021), and relies on networks like cables, roads, and logistical platforms."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => {
-        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
-    });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
-    else { score++; }
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

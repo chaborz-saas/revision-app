@@ -1,120 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.6 — Big Data, IA & Marketing Relationnel</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
-        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
-        .quiz-container { max-width: 800px; margin: 0 auto; }
-        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
-        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
-        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
-        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
-        .options { display: grid; gap: 0.6rem; }
-        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
-        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
-        .option:disabled { cursor: default; }
-        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f9a8b8; display: none; }
-        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
-        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #e94560; color: white; margin-left: auto; }
-        .btn-next:hover { background: #c0392b; }
-        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
-        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
-        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
-        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #e94560; }
-    </style>
-</head>
-<body>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Quiz — Ch.6 — Big Data, IA &amp; Marketing Relationnel</title><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1.5rem}.quiz-header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);padding:1.5rem 2rem;border-radius:16px;margin-bottom:1.5rem;border-bottom:3px solid #e94560}.quiz-header .matiere{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:#e94560;margin-bottom:.3rem}.quiz-header h1{font-size:1.3rem;font-weight:700;color:#fff}.quiz-container{max-width:800px;margin:0 auto}.progress-bar{background:rgba(255,255,255,.1);border-radius:10px;height:6px;margin-bottom:1.5rem}.progress-fill{background:#e94560;height:100%;border-radius:10px;transition:width .3s}.score-display{text-align:center;font-size:.85rem;color:#808090;margin-bottom:1rem}.timer{text-align:center;font-size:.85rem;color:#f59e0b;margin-bottom:.5rem;font-weight:600}.question-card{background:#1a1a2e;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;margin-bottom:1rem}.question-num{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:#e94560;margin-bottom:.8rem;font-weight:700}.question-text{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:1.5rem;line-height:1.5}.options{display:grid;gap:.6rem}.option{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.9rem 1.2rem;cursor:pointer;transition:all .2s;font-size:.92rem;color:#d0d0d8;text-align:left;width:100%}.option:hover:not(:disabled){background:rgba(233,69,96,.1);border-color:rgba(233,69,96,.4);color:#fff}.option.correct{background:rgba(16,185,129,.2);border-color:#10b981;color:#10b981;font-weight:600}.option.wrong{background:rgba(233,69,96,.2);border-color:#e94560;color:#e94560}.option:disabled{cursor:default}.explanation{background:rgba(233,69,96,.08);border-left:3px solid #e94560;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.88rem;color:#f9a8b8;display:none}.nav-buttons{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:1rem}.btn{padding:.7rem 1.5rem;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer;border:none;transition:all .2s}.btn-next{background:#e94560;color:#fff;margin-left:auto}.btn-next:hover{background:#c0392b}.btn-next:disabled{background:rgba(255,255,255,.1);color:#606070;cursor:default}.btn-back{background:rgba(255,255,255,.08);color:#d0d0d8}.btn-back:hover{background:rgba(255,255,255,.15)}.result-card{background:#1a1a2e;border-radius:16px;padding:3rem 2rem;text-align:center;display:none}.result-score{font-size:3.5rem;font-weight:800;color:#e94560;margin:1rem 0}.result-msg{font-size:1.1rem;color:#d0d0d8;margin-bottom:2rem}.btn-restart{background:#e94560;color:#fff;padding:.8rem 2rem;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;border:none}.back-link{display:inline-block;color:#808090;font-size:.8rem;text-decoration:none;margin-bottom:1rem}.back-link:hover{color:#e94560}</style></head><body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
-    <div class="quiz-header">
-        <div class="matiere">MARKETING RELATIONNEL — QUIZ</div>
-        <h1>Ch.6 — Big Data, IA & Marketing Relationnel</h1>
-    </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
-    <div id="quiz-area"></div>
-    <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
-        <div class="result-msg" id="result-msg"></div>
-        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
-        <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
-    </div>
+<a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+<div class="quiz-header"><div class="matiere">MARKETING RELATIONNEL &mdash; QUIZ</div><h1>Ch.6 &mdash; Big Data, IA &amp; Marketing Relationnel</h1></div>
+<div class="timer" id="timer">&#9202; 00:00</div>
+<div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+<div id="quiz-area"></div>
+<div class="result-card" id="result-card"><div style="font-size:2rem">&#127919;</div><div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div><div class="result-msg" id="result-msg"></div><button class="btn-restart" onclick="restartQuiz()">Recommencer</button><br><br><a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a></div>
 </div>
 <script>
-const questions = [
-  {q:"Selon Huang et al. (2023), quel type d'IA reconnaît les émotions des clients ?", options:["IA mécanique","IA de réflexion","IA émotionnelle","IA générative"], correct:2, explanation:"IA mécanique = tâches / IA de réflexion = analyse données / IA émotionnelle = reconnaît les émotions (analyse de sentiments, détection d'émotions faciales)."},
-  {q:"Selon Huang & Rust (2022), l'IA dans le marketing relationnel :", options:["Remplace totalement les humains","Complète plutôt qu'elle ne remplace les humains","N'a aucun impact sur la relation client","Remplace uniquement les managers"], correct:1, explanation:"L'intelligence collaborative H+IA : l'IA prend les tâches mécaniques et analytiques, les humains gardent l'empathie, l'intuition et le contexte relationnel."},
-  {q:"Pour quel type de travail l'IA remplace-t-elle vraiment les humains ?", options:["Travail émotionnel","Travail créatif","Travail mécanique","Travail stratégique"], correct:2, explanation:"Le travail mécanique (caisses enregistreuses, tri des emails, réponses FAQ standard) est généralement remplaçable par l'IA. Le travail émotionnel et de réflexion est augmenté, pas remplacé."},
-  {q:"Qu'est-ce que l'IA générative ?", options:["Un système autonome qui agit","Une IA qui crée du contenu (texte, image, voix)","Un algorithme de recommandation","Un système de tarification dynamique"], correct:1, explanation:"IA générative = crée du contenu (ChatGPT, Mistral, MidJourney, Sora...). À distinguer des agents intelligents qui sont des systèmes autonomes qui agissent."},
-  {q:"L'étude Choi & Yi (2025) montre que les agents IA sont plus efficaces que les humains pour :", options:["La gestion des réclamations","Les achats de produits verts/écologiques","La vente de produits premium","La fidélisation des meilleurs clients"], correct:1, explanation:"Les agents IA déclenchent un plus grand investissement personnel du consommateur → il se sent plus responsable et engagé → plus de décisions d'achat vert."},
-  {q:"Quel exemple illustre l'IA en magasin pour réduire les frictions à l'achat ?", options:["Les chatbots en ligne","La caisse mobile","Les newsletters personnalisées","Les programmes à points"], correct:1, explanation:"La caisse mobile (scan & go) élimine les files d'attente en caisse — friction majeure en magasin. Nike Fit utilise l'IA pour choisir les tailles en magasin."},
-  {q:"Que doivent devenir les marketeurs relationnels à l'ère de l'IA ?", options:["Des spécialistes en data science","Des 'architectes de l'intelligence hybride'","Des développeurs d'applications","Des experts en réalité virtuelle"], correct:1, explanation:"La formulation de Huang & Rust : les marketeurs doivent orchestrer la collaboration H+IA, être des 'architectes de l'intelligence hybride' plutôt que de tout déléguer à l'IA."},
-  {q:"La technologie en magasin doit améliorer le parcours de :", options:["Uniquement les clients","Uniquement les employés","Les clients ET les employés simultanément","Les actionnaires"], correct:2, explanation:"Double impact technologique : si on améliore le parcours client sans penser aux employés (ou inversement), l'un des deux se dégrade et l'ensemble s'effondre."}
+const questions=[
+{q:"Selon Huang et al. (2023), quels sont les 3 types d\u2019IA ?",options:["IA rapide, IA lente, IA hybride","IA m\u00e9canique, IA de r\u00e9flexion, IA \u00e9motionnelle","IA g\u00e9n\u00e9rative, IA pr\u00e9dictive, IA descriptive","IA cloud, IA edge, IA embarqu\u00e9e"],correct:1,explanation:"Huang et al. distinguent : IA m\u00e9canique (ex\u00e9cution), IA de r\u00e9flexion (analyse), IA \u00e9motionnelle (reconnaissance des \u00e9motions)."},
+{q:"Un chatbot qui r\u00e9pond aux FAQ est un exemple d\u2019IA :",options:["\u00c9motionnelle","De r\u00e9flexion","M\u00e9canique","G\u00e9n\u00e9rative"],correct:2,explanation:"Les chatbots de FAQ ex\u00e9cutent des t\u00e2ches routini\u00e8res : c\u2019est de l\u2019IA m\u00e9canique."},
+{q:"Selon Huang & Rust (2022), l\u2019IA remplace l\u2019humain pour quel type de travail ?",options:["Le travail \u00e9motionnel","Le travail de r\u00e9flexion strat\u00e9gique","Le travail m\u00e9canique (t\u00e2ches routini\u00e8res)","Le travail cr\u00e9atif"],correct:2,explanation:"L\u2019IA remplace l\u2019humain pour le travail m\u00e9canique (caisses auto, tri) et augmente l\u2019humain pour la r\u00e9flexion et l\u2019\u00e9motionnel."},
+{q:"Vrai ou faux : l\u2019IA remplace compl\u00e8tement l\u2019humain dans les interactions \u00e0 forte valeur \u00e9motionnelle.",options:["Vrai, l\u2019IA \u00e9motionnelle est plus efficace","Faux, l\u2019IA augmente l\u2019humain mais ne le remplace pas pour les interactions \u00e9motionnelles complexes","Vrai, les clients pr\u00e9f\u00e8rent toujours parler \u00e0 une IA","Faux, l\u2019IA n\u2019a aucune capacit\u00e9 \u00e9motionnelle"],correct:1,explanation:"L\u2019IA transforme le marketing relationnel mais ne remplace pas les humains dans les interactions \u00e0 forte valeur \u00e9motionnelle."},
+{q:"L\u2019\u00e9tude Choi & Yi (2025) montre que les agents IA sont plus efficaces que les humains pour :",options:["Vendre des produits de luxe","Encourager les achats \u00e9cologiques aupr\u00e8s des consommateurs peu sensibilis\u00e9s","N\u00e9gocier des contrats complexes","G\u00e9rer les r\u00e9clamations \u00e9motionnelles"],correct:1,explanation:"L\u2019\u00e9tude (766 participants) montre que l\u2019IA est plus efficace que l\u2019humain pour encourager les achats verts, surtout chez les consommateurs peu sensibilis\u00e9s."},
+{q:"Combien de participants comptait l\u2019\u00e9tude Choi & Yi (2025) sur l\u2019IA et les achats \u00e9cologiques ?",options:["200","500","766","1 200"],correct:2,explanation:"L\u2019\u00e9tude comptait 766 participants soumis \u00e0 des interactions avec agents IA vs humains."},
+{q:"Nike Fit utilise l\u2019IA pour :",options:["G\u00e9n\u00e9rer des publicit\u00e9s personnalis\u00e9es","Scanner les pieds et recommander la taille exacte de chaussures","Remplacer les vendeurs en magasin","Cr\u00e9er des chaussures sur mesure en impression 3D"],correct:1,explanation:"Nike Fit scanne les pieds via l\u2019application mobile pour recommander la taille exacte, r\u00e9duisant les retours et am\u00e9liorant la satisfaction."},
+{q:"Quelle est la formule du marketing relationnel augment\u00e9 selon le cours ?",options:["Big Data + Machine Learning + Automatisation","Donn\u00e9es massives + IA contextuelle + Expertise humaine + \u00c9thique de l\u2019usage","CRM + ERP + Data Lake","Chatbot + Email marketing + Publicit\u00e9 cibl\u00e9e"],correct:1,explanation:"Marketing relationnel augment\u00e9 = Donn\u00e9es massives + IA contextuelle + Expertise humaine + \u00c9thique de l\u2019usage."},
+{q:"Lequel N\u2019EST PAS une technologie IA d\u00e9ploy\u00e9e en magasin ?",options:["Rayons intelligents avec promotions automatiques","Caisse mobile","R\u00e9alit\u00e9 augment\u00e9e pour l\u2019essayage virtuel","Remplacement total du personnel par des robots"],correct:3,explanation:"Les technologies en magasin incluent rayons intelligents, caisse mobile et r\u00e9alit\u00e9 augment\u00e9e. Le remplacement total du personnel n\u2019est pas l\u2019objectif."},
+{q:"Orange utilise l\u2019IA dans son service client de quelle mani\u00e8re ?",options:["Uniquement des chatbots, sans humains","Chatbots pour les t\u00e2ches de routine, transfert automatique aux humains pour les demandes complexes","Uniquement des conseillers humains","IA qui prend les d\u00e9cisions seule sans intervention humaine"],correct:1,explanation:"Orange utilise des chatbots pour les t\u00e2ches de routine (FAQ, suivi) et transf\u00e8re automatiquement les demandes complexes ou \u00e9motionnelles \u00e0 des conseillers humains."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return;
-    answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current=0,score=0,answered=false,timerInterval,seconds=0;function startTimer(){seconds=0;clearInterval(timerInterval);timerInterval=setInterval(()=>{seconds++;const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F2 '+m+':'+s},1000)}function renderQuestion(){const q=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';document.getElementById('quiz-area').innerHTML=`<div class="question-card"><div class="question-num">Question ${current+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options">${q.options.map((opt,i)=>`<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div><div class="explanation" id="explanation">${q.explanation}</div></div><div class="nav-buttons">${current>0?'<button class="btn btn-back" onclick="prev()">&larr; Pr\u00e9c\u00e9dent</button>':'<div></div>'}<button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant &rarr;</button></div>`;answered=false}function answer(idx){if(answered)return;answered=true;const q=questions[current];document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(idx===q.correct){document.getElementById('opt'+idx).classList.add('correct');score++}else{document.getElementById('opt'+idx).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct')}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score}function next(){if(current<questions.length-1){current++;renderQuestion()}else{showResult()}}function prev(){if(current>0){current--;renderQuestion()}}function showResult(){clearInterval(timerInterval);document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=.8?'\uD83C\uDFC6 Excellent !':pct>=.6?'\uD83D\uDC4D Bien ! Encore un effort.':'\uD83D\uDCDA R\u00e9vise la synth\u00e8se et r\u00e9essaie !'}function restartQuiz(){current=0;score=0;answered=false;document.getElementById('result-card').style.display='none';startTimer();renderQuestion()}startTimer();renderQuestion();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
+</body></html>

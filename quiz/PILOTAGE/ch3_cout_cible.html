@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Coût cible (Target Costing)</title>
+    <title>Quiz — Le cout cible (target costing)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
-        <h1>Le coût cible (Target Costing)</h1>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
+        <h1>Le cout cible (target costing)</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelle est la formule du coût cible (target costing) ?",
-        options: ["Coût cible = Coût estimé + Marge souhaitée", "Coût cible = Prix de vente HT - Profit cible", "Coût cible = Prix de vente TTC - Charges fixes", "Coût cible = CA prévisionnel × (1 - taux de marge)"],
-        correct: 1,
-        explanation: "Coût cible = Prix de vente HT - Profit cible (marge souhaitée). C'est le retournement de l'équation traditionnelle : on fixe le coût comme objectif au lieu de le subir."
-    },
-    {
-        q: "Quelle est la différence fondamentale entre l'approche classique et le target costing ?",
-        options: ["L'approche classique est proactive, le target costing est réactif", "L'approche classique calcule le prix à partir du coût ; le target costing fixe le coût à partir du prix de marché", "Il n'y a pas de différence fondamentale, seule la terminologie change", "L'approche classique s'applique aux services, le target costing à l'industrie"],
-        correct: 1,
-        explanation: "Approche classique : PV = Coût + Marge (logique subie). Target costing : Coût cible = PV - Profit cible (logique proactive). On part du marché pour déterminer le coût maximal admissible."
-    },
-    {
-        q: "Dans l'exercice AERONEF (Prix TTC = 100 000 €, TVA 20 %, marge = 20 % du PV HT), quel est le coût cible ?",
-        options: ["80 000 €", "75 000 €", "66 667 €", "70 000 €"],
-        correct: 2,
-        explanation: "PV HT = 100 000 / 1,2 = 83 333 €. Profit cible = 83 333 × 20 % = 16 667 €. Coût cible = 83 333 - 16 667 = 66 667 €."
-    },
-    {
-        q: "Dans l'exercice AERONEF, quel composant présente l'écart le plus critique ?",
-        options: ["La carlingue (écart +9 333 €)", "Le moteur (écart +29 333 €)", "L'équipement électronique (écart -25 333 €)", "L'ensemble du produit de façon équilibrée"],
-        correct: 1,
-        explanation: "Le moteur présente l'écart le plus critique : coût estimé 40 000 € vs coût cible 10 667 € = écart de +29 333 €. C'est le composant prioritaire pour la réduction des coûts."
-    },
-    {
-        q: "Que signifie un écart positif entre coût estimé et coût cible ?",
-        options: ["L'entreprise est plus efficiente que prévu", "Le coût estimé dépasse le coût cible : il faut réduire les coûts", "La marge sera supérieure à l'objectif", "Le prix de vente doit être révisé à la hausse"],
-        correct: 1,
-        explanation: "Écart = Coût estimé - Coût cible. Si écart > 0, le coût estimé dépasse le coût cible : l'entreprise doit trouver des pistes de réduction (fournisseurs, redesign, optimisation processus)."
-    },
-    {
-        q: "Comment calcule-t-on le poids d'un composant dans la décomposition du coût cible ?",
-        options: ["En divisant le coût du composant par le coût total estimé", "Par la somme pondérée : poids de chaque fonction × contribution du composant à cette fonction", "En appliquant le taux de marge au coût estimé du composant", "En comparant le coût cible au coût estimé composant par composant"],
-        correct: 1,
-        explanation: "Poids du composant = somme pondérée (poids de chaque fonction × contribution du composant à cette fonction). On applique ensuite ce pourcentage au coût cible global pour obtenir le coût cible par composant."
-    },
-    {
-        q: "Selon l'AFNOR, quelle est la formule de la valeur en analyse de la valeur ?",
-        options: ["Valeur = Coûts / Satisfaction du besoin", "Valeur = Satisfaction du besoin / Coûts", "Valeur = Prix de vente - Coût de revient", "Valeur = Fonctionnalités × Qualité"],
-        correct: 1,
-        explanation: "Valeur = Satisfaction du besoin / Coûts (formule AFNOR). L'analyse de la valeur vise soit à améliorer la satisfaction à coût constant, soit à réduire le coût à service constant."
-    },
-    {
-        q: "Quelle est la principale limite du coût cible selon le cours ?",
-        options: ["Il est trop complexe à calculer pour les PME", "Il ne prend en compte que les coûts directs (matières, MOD, déchets) et exclut les frais généraux", "Il impose un prix de vente que le marché n'accepte pas toujours", "Il ne peut s'appliquer qu'à l'industrie automobile"],
-        correct: 1,
-        explanation: "La principale limite est que le coût cible ne prend en compte que les dépenses en rapport direct avec le produit (matières premières, MOD, déchets). Les frais généraux et frais de structure en sont exclus."
-    },
-    {
-        q: "Combien d'étapes compte la démarche d'analyse de la valeur selon le cours ?",
-        options: ["4 étapes", "5 étapes", "6 étapes", "7 étapes"],
-        correct: 2,
-        explanation: "L'analyse de la valeur compte 6 étapes : 1) Définir les orientations, 2) Rechercher des informations, 3) Analyse fonctionnelle, 4) Évaluer les fonctionnalités, 5) Proposer et sélectionner des solutions, 6) Mise en œuvre et bilan."
-    },
-    {
-        q: "Dans l'exercice du sac de sport (Prix TTC = 34,80 €, TVA 20 %, marge = 40 % du PV HT), quel est le coût cible ?",
-        options: ["20,88 €", "17,40 €", "14,50 €", "23,20 €"],
-        correct: 1,
-        explanation: "PV HT = 34,80 / 1,20 = 29 €. Profit cible = 29 × 40 % = 11,60 €. Coût cible = 29 - 11,60 = 17,40 €. L'écart avec le coût estimé (20,30 €) est de 2,90 € à résorber."
-    }
+{q:"Quelle est la formule centrale du cout cible ?", options:["Cout cible = Cout estime - Marge souhaitee","Cout cible = Prix de vente HT - Marge souhaitee","Cout cible = Prix de vente HT + Marge souhaitee","Cout cible = Marge souhaitee / Prix de vente HT"], correct:1, explanation:"Cout cible = Prix de vente HT - Marge souhaitee. Le prix est impose par le marche et la marge est un objectif strategique."},
+{q:"Dans l'exercice AERONEF, quel est le cout cible de l'avion (prix TTC = 100 000 euros, TVA 20 %, marge 20 % du HT) ?", options:["60 000 euros","66 667 euros","80 000 euros","83 333 euros"], correct:1, explanation:"PV HT = 100 000 / 1,2 = 83 333. Marge = 83 333 x 20 % = 16 667. Cout cible = 83 333 - 16 667 = 66 667 euros."},
+{q:"Quelle est la principale limite de la methode du cout cible selon le cours ?", options:["Elle est trop complexe a mettre en oeuvre","Elle ne prend en compte que les depenses en rapport direct avec le produit, excluant les frais generaux","Elle ne peut s'appliquer qu'aux produits industriels","Elle ignore totalement le prix du marche"], correct:1, explanation:"La limite principale est que la methode exclut les frais generaux et frais de structure du calcul, ce qui peut fausser l'analyse si ces charges sont significatives."},
+{q:"Dans l'approche traditionnelle des couts, comment est determine le prix de vente ?", options:["Prix de vente = Cout + Marge","Prix de vente = Marche - Marge","Prix de vente = Cout cible + Profit cible","Prix de vente = Cout estime / (1 + Taux de marge)"], correct:0, explanation:"L'approche traditionnelle suit la logique Prix de vente = Cout + Marge. Le target costing renverse cette equation."},
+{q:"Dans le cas AERONEF, quel composant presente l'ecart le plus critique entre cout cible et cout estime ?", options:["La carlingue (+9 333 euros)","L'equipement electronique (-25 333 euros)","Le moteur (+29 333 euros)","Tous les composants ont le meme ecart"], correct:2, explanation:"Le moteur a un cout estime de 40 000 euros pour un cout cible de 10 667 euros, soit un ecart de +29 333 euros. C'est la ou concentrer les efforts de reduction."},
+{q:"Selon l'AFNOR, comment se definit la valeur dans l'analyse de la valeur ?", options:["Valeur = Couts / Satisfaction du besoin","Valeur = Prix de vente - Couts","Valeur = Satisfaction du besoin / Couts","Valeur = Profit / Investissement"], correct:2, explanation:"Selon l'AFNOR, Valeur = Satisfaction du besoin / Couts. L'objectif est de maximiser ce rapport."},
+{q:"Combien d'etapes comporte la demarche d'analyse de la valeur dans le cours ?", options:["4 etapes","5 etapes","6 etapes","8 etapes"], correct:2, explanation:"La demarche d'analyse de la valeur comporte 6 etapes : orientations, recherche d'informations, analyse fonctionnelle, etude/evaluation, recherche de solutions, mise en oeuvre/suivi/bilan."},
+{q:"Dans l'exercice du sac de sport, quel est le cout cible (prix TTC 34,80 euros, TVA 20 %, marge 40 % du HT) ?", options:["14,40 euros","17,40 euros","20,30 euros","29,00 euros"], correct:1, explanation:"PV HT = 34,80 / 1,20 = 29 euros. Marge = 29 x 40 % = 11,60 euros. Cout cible = 29 - 11,60 = 17,40 euros."},
+{q:"Que mesure l'ecart a resorber dans la methode du cout cible ?", options:["La difference entre le prix de vente et le cout cible","La difference entre le cout estime et le cout cible","La difference entre la marge reelle et la marge souhaitee","La difference entre le prix TTC et le prix HT"], correct:1, explanation:"Ecart a resorber = Cout estime - Cout cible. Si l'ecart est positif, l'entreprise doit reduire ses couts pour atteindre la rentabilite souhaitee."},
+{q:"Dans l'analyse fonctionnelle du cas AERONEF, quel composant a le poids le plus eleve dans le cout cible ?", options:["La carlingue (31 %)","Le moteur (16 %)","L'equipement electronique (53 %)","Tous les composants ont le meme poids"], correct:2, explanation:"L'equipement electronique represente 53 % du cout cible, car il contribue fortement a la fonction Facilite de pilotage (60 % de l'importance) avec 60 % de contribution."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

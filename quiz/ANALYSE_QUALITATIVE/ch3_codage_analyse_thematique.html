@@ -3,98 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.3 — Codage & Analyse thématique</title>
+    <title>Quiz — Analyse Qualitative Ch3: Codage & Analyse thematique</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #8e44ad; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #8e44ad; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(142,68,173,0.1); border-color: rgba(142,68,173,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(142,68,173,0.08); border-left: 3px solid #8e44ad; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #c39bd3; display: none; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #8e44ad; color: white; margin-left: auto; }
-        .btn-next:hover { background: #6c3483; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #8e44ad; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #8e44ad; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #8e44ad; }
+        .back-link:hover { color: #10b981; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">ANALYSE QUALITATIVE — QUIZ</div>
-        <h1>Ch.3 — Codage & Analyse thématique</h1>
+        <div class="matiere">Analyse Qualitative &mdash; QUIZ</div>
+        <h1>Chapitre 3 &mdash; Codage & Analyse thematique</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
-        <br><br><a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Quel est le pipeline complet de l'analyse qualitative ?",options:["Données → Hypothèses → Tests → Résultats","Données → Unités de sens → Codes → Catégories → Thèmes → Récit → Affirmations","Données → Statistiques → Graphiques → Conclusions","Données → Codage → Publication"],correct:1,explanation:"Le pipeline : Données → Unités de sens → Codes → Catégories → Thèmes → Récit → Affirmations. Chaque étape construit sur la précédente."},
-  {q:"Le codage ouvert consiste à :",options:["Identifier la catégorie centrale du phénomène","Découper les données en unités de sens et attribuer des étiquettes provisoires","Relier les codes entre eux par des liens causaux","Rédiger le récit final de la recherche"],correct:1,explanation:"Codage ouvert = découper les données brutes en unités de sens et leur attribuer des étiquettes provisoires, en restant proche de ce que disent les participants."},
-  {q:"Le codage axial a pour objectif de :",options:["Créer des codes bruts","Relier les codes entre eux pour former des catégories","Identifier le thème central","Rédiger l'abstract de l'article"],correct:1,explanation:"Codage axial = relier les codes (conditions, interactions, conséquences) pour former des catégories et sous-catégories cohérentes."},
-  {q:"Un thème en analyse thématique réflexive est :",options:["Un simple label de sujet","Un sens partagé unifié par un concept organisateur central","Un regroupement alphabétique de codes","Un résumé de chaque entretien"],correct:1,explanation:"Un thème ≠ simple catégorie de sujet. Un thème capture un SENS PARTAGÉ unifié par un concept organisateur central — c'est plus profond qu'une catégorie."},
-  {q:"L'analyse verticale (intra-cas) consiste à :",options:["Comparer les codes entre différentes interviews","Rester dans une même interview pour préserver le contexte","Analyser les données statistiquement","Croiser les résultats avec la littérature"],correct:1,explanation:"Vertical (intra-cas) = rester dans une même interview pour préserver le contexte. Horizontal (inter-cas) = comparer entre interviews pour identifier des motifs communs."},
-  {q:"Quelles sont les caractéristiques de bonnes catégories ?",options:["Longues, détaillées et exhaustives","Conceptuellement claires, analytiquement utiles, distinctes mais liées","Nombreuses et très spécifiques","Identiques aux codes initiaux"],correct:1,explanation:"Bonnes catégories = 1) Conceptuellement claires (1 idée) 2) Analytiquement utiles (expliquent quelque chose) 3) Distinctes mais reliées aux autres."},
-  {q:"Que faire avec les segments de texte dont le codage est incertain ?",options:["Les ignorer et passer au suivant","Les supprimer du corpus","Les mettre dans une liste 'à vérifier'","Les coder aléatoirement"],correct:2,explanation:"Ne JAMAIS ignorer les segments incertains. Les mettre de côté dans une liste 'à vérifier' pour y revenir plus tard avec plus de recul."},
-  {q:"Le codage sélectif consiste à :",options:["Sélectionner les meilleurs entretiens","Identifier UNE catégorie centrale qui intègre les autres en un récit cohérent","Sélectionner les codes les plus fréquents","Choisir entre méthode quali et quanti"],correct:1,explanation:"Codage sélectif = identifier LA catégorie centrale qui explique le mieux le phénomène et relier toutes les autres catégories autour d'elle (storyline)."}
+    {q:"Quel est le pipeline complet de l'analyse qualitative ?",options:["Donnees → Hypotheses → Tests → Resultats","Donnees → Statistiques → Graphiques → Conclusions","Donnees → Unites de sens → Codes → Categories → Themes → Recit → Affirmations","Donnees → Codage → Publication"],correct:2,explanation:"Le pipeline : Donnees → Unites de sens → Codes → Categories → Themes → Recit → Affirmations. Chaque etape construit sur la precedente."},
+    {q:"Le codage ouvert consiste a :",options:["Identifier la categorie centrale du phenomene","Relier les codes entre eux par des liens causaux","Rediger le recit final de la recherche","Decouper les donnees en unites de sens et attribuer des etiquettes provisoires"],correct:3,explanation:"Codage ouvert = decouper les donnees brutes en unites de sens et leur attribuer des etiquettes provisoires, en restant proche de ce que disent les participants."},
+    {q:"Le codage axial a pour objectif de :",options:["Creer des codes bruts","Identifier le theme central","Relier les codes entre eux pour former des categories","Rediger l'abstract de l'article"],correct:2,explanation:"Codage axial = relier les codes (conditions, interactions, consequences) pour former des categories et sous-categories coherentes."},
+    {q:"Un theme en analyse thematique reflexive est :",options:["Un sens partage unifie par un concept organisateur central","Un simple label de sujet","Un regroupement alphabetique de codes","Un resume de chaque entretien"],correct:0,explanation:"Un theme ≠ simple categorie de sujet. Un theme capture un SENS PARTAGE unifie par un concept organisateur central — c'est plus profond qu'une categorie."},
+    {q:"L'analyse verticale (intra-cas) consiste a :",options:["Comparer les codes entre differentes interviews","Analyser les donnees statistiquement","Croiser les resultats avec la litterature","Rester dans une meme interview pour preserver le contexte"],correct:3,explanation:"Vertical (intra-cas) = rester dans une meme interview pour preserver le contexte. Horizontal (inter-cas) = comparer entre interviews pour identifier des motifs communs."},
+    {q:"Quelles sont les caracteristiques de bonnes categories ?",options:["Longues, detaillees et exhaustives","Nombreuses et tres specifiques","Identiques aux codes initiaux","Conceptuellement claires, analytiquement utiles, distinctes mais liees"],correct:3,explanation:"Bonnes categories = 1) Conceptuellement claires (1 idee) 2) Analytiquement utiles (expliquent quelque chose) 3) Distinctes mais reliees aux autres."},
+    {q:"Que faire avec les segments de texte dont le codage est incertain ?",options:["Les ignorer et passer au suivant","Les mettre dans une liste 'a verifier'","Les supprimer du corpus","Les coder aleatoirement"],correct:1,explanation:"Ne JAMAIS ignorer les segments incertains. Les mettre de cote dans une liste 'a verifier' pour y revenir plus tard avec plus de recul."},
+    {q:"Le codage selectif consiste a :",options:["Selectionner les meilleurs entretiens","Selectionner les codes les plus frequents","Choisir entre methode quali et quanti","Identifier UNE categorie centrale qui integre les autres en un recit coherent"],correct:3,explanation:"Codage selectif = identifier LA categorie centrale qui explique le mieux le phenomene et relier toutes les autres categories autour d'elle (storyline)."},
+    {q:"L'analyse horizontale (inter-cas) permet de :",options:["Approfondir un seul entretien","Comparer plusieurs entretiens pour identifier des motifs recurrents","Calculer des frequences statistiques","Valider les hypotheses initiales"],correct:1,explanation:"L'analyse horizontale (inter-cas) compare les donnees entre differents entretiens pour identifier des motifs communs, des convergences et des divergences."},
+    {q:"Quelle est la difference entre code et categorie ?",options:["Il n'y a pas de difference","Le code est plus abstrait que la categorie","La categorie regroupe plusieurs codes sous un concept plus abstrait","Le code est synonyme de theme"],correct:2,explanation:"Un code est une etiquette descriptive proche des donnees. Une categorie est un regroupement de codes sous un concept plus abstrait et analytique."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current+1)/questions.length*100)+'%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current+1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((o,i)=>`<button class="option" onclick="answer(${i})" id="opt${i}">${o}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current>0?'<button class="btn btn-back" onclick="prev()">← Précédent</button>':'<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx){if(answered)return;answered=true;const q=questions[current];document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(idx===q.correct){document.getElementById('opt'+idx).classList.add('correct');score++;}else{document.getElementById('opt'+idx).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
-function next(){if(current<questions.length-1){current++;renderQuestion();}else{showResult();}}
-function prev(){if(current>0){current--;renderQuestion();}}
-function showResult(){document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.8?'🏆 Excellent ! Tu maîtrises ce chapitre.':p>=0.6?'👍 Bien ! Encore un peu de révision.':'📚 Révise la synthèse et réessaie !';}
-function restartQuiz(){current=0;score=0;answered=false;document.getElementById('result-card').style.display='none';renderQuestion();}
-renderQuestion();
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'">'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

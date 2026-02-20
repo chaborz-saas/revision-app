@@ -46,13 +46,15 @@
             <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
             <h1>Chapter 5 &mdash; Public Policies</h1>
         </div>
-        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span> &mdash; <span id="timer">&#9201; 00:00</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
         <div id="quiz-area"></div>
         <div class="result-card" id="result-card">
             <div style="font-size:2rem">&#127919;</div>
-            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-score"><span id="final-score">0</span>/10</div>
             <div class="result-msg" id="result-msg"></div>
+            <div id="result-time"></div>
+            <br>
             <button class="btn-restart" onclick="restartQuiz()">Restart</button>
             <br><br>
             <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
@@ -60,62 +62,26 @@
     </div>
     <script>
 const questions = [
-    { q: "What is the key difference between 'Carbon Neutral' and 'Net Zero'?", options: ["A. They mean exactly the same thing", "B. Carbon neutral focuses on compensation/offsetting; net zero requires deep emission reductions across all scopes", "C. Net zero only applies to governments, carbon neutral to companies", "D. Carbon neutral is more ambitious than net zero"], correct: 1, explanation: "Carbon neutral allows a company to offset emissions through external projects without deep internal transformation. Net zero requires major reductions across the entire value chain (Scope 1, 2, and 3), with only minimal remaining offsets. Net zero is much more ambitious and science-based." },
-    { q: "What does 'double materiality' mean in CSRD?", options: ["A. Companies must report twice a year", "B. Companies must report both how sustainability issues affect them AND how they affect people and the environment", "C. Two different companies must verify each report", "D. Reports must cover both past and future performance"], correct: 1, explanation: "Double materiality means reporting from two perspectives: financial materiality (how sustainability issues affect the company) and impact materiality (how the company affects people and the environment). This is a core innovation of CSRD." },
-    { q: "What are the three emission scopes under the GHG Protocol?", options: ["A. Scope 1: CO2, Scope 2: methane, Scope 3: other gases", "B. Scope 1: direct emissions, Scope 2: indirect energy emissions, Scope 3: other indirect emissions", "C. Scope 1: domestic, Scope 2: European, Scope 3: international", "D. Scope 1: past, Scope 2: present, Scope 3: projected"], correct: 1, explanation: "Scope 1 covers direct emissions from owned sources. Scope 2 covers indirect energy emissions (purchased electricity). Scope 3 covers all other indirect emissions in the value chain (supply chain, commuting, product use). Scope 3 is typically the largest share." },
-    { q: "If emissions had started being reduced in 2000, what annual reduction rate would have been needed?", options: ["A. ~1% per year", "B. ~2% per year", "C. ~5% per year", "D. ~9% per year"], correct: 1, explanation: "If serious mitigation had started in 2000, only ~2% annual reduction would have been needed — manageable with moderate policy changes. Starting in 2019 requires ~5%, and waiting 10 more years would require ~9% — nearly impossible without massive disruption." },
-    { q: "What are the four key principles of the EU Taxonomy?", options: ["A. Profitability, scalability, innovation, compliance", "B. Substantial contribution, DNSH, minimum social safeguards, technical screening criteria", "C. Carbon neutrality, green investment, social equity, transparency", "D. Emission reduction, offsetting, reporting, verification"], correct: 1, explanation: "The EU Taxonomy's four principles are: Substantial Contribution (advance one of six environmental objectives), Do No Significant Harm (DNSH), Minimum Social Safeguards (workers' rights), and Technical Screening Criteria (EU-defined compliance standards)." },
-    { q: "What is 'Absolute Zero' in the context of climate policy?", options: ["A. The same as net zero", "B. Zero emissions with no reliance on any CO2 removal or offsetting", "C. Zero economic growth to achieve zero emissions", "D. The minimum emission level achievable with current technology"], correct: 1, explanation: "Absolute Zero means reaching zero emissions with no reliance on CO2 removal technologies — no offsets, no carbon capture, just zero emissions produced. It is the most stringent target, contrasting with both carbon neutral and net zero which allow some compensation." },
-    { q: "What is the purpose of the CSRD?", options: ["A. To set carbon prices across Europe", "B. To mandate sustainability reporting for large companies", "C. To ban fossil fuel investments", "D. To redistribute profits to green startups"], correct: 1, explanation: "The CSRD (Corporate Sustainability Reporting Directive) makes sustainability reporting mandatory for large companies. It requires disclosure on environmental, social, and governance topics using the double materiality principle, initially targeting about 50,000 companies in Europe." },
-    { q: "What significant change does the 2025 Omnibus proposal introduce?", options: ["A. It accelerates the CSRD timeline", "B. It adds more companies to CSRD requirements", "C. It reduces the number of companies covered and simplifies requirements", "D. It merges CSRD with SFDR into one regulation"], correct: 2, explanation: "The 2025 Omnibus proposal suggests a drastic reduction in the number of companies covered by CSRD, with big simplifications of reporting requirements. The CSDDD is also impacted. This reflects political pushback about regulatory burden and creates uncertainty about EU sustainability regulation." }
+    {q:"What is the key difference between 'Carbon Neutral' and 'Net Zero'?",options:["They mean exactly the same thing","Carbon neutral focuses on compensation/offsetting; net zero requires deep emission reductions across all scopes","Net zero only applies to governments, not companies","Carbon neutral is more ambitious than net zero"],correct:1,explanation:"Carbon neutral allows offsetting emissions through external projects without deep transformation. Net zero requires major reductions across the entire value chain (Scope 1, 2, and 3), with only minimal remaining offsets. Net zero is much more ambitious and science-based."},
+    {q:"What does 'double materiality' mean in the context of CSRD?",options:["Companies must report in two different languages","Companies must report both how sustainability issues affect them AND how they affect people and the environment","Two separate auditing firms must verify each report","Reports must cover both financial and non-financial subsidiaries"],correct:1,explanation:"Double materiality means reporting from two perspectives: financial materiality (how sustainability issues affect the company) and impact materiality (how the company affects people and the environment). This is a core innovation of the CSRD."},
+    {q:"Under the GHG Protocol, which scope typically represents the largest share of a company's total emissions?",options:["Scope 1 — direct emissions from owned sources","Scope 2 — indirect energy emissions from purchased electricity","Scope 3 — other indirect emissions across the value chain","All three scopes are always equal"],correct:2,explanation:"Scope 3 typically represents the largest share, covering everything in the value chain: employee commuting, supply chain, product use, waste disposal, and non-energy purchases. Scopes 1 and 2 cover only direct emissions and purchased energy."},
+    {q:"If mitigation had started in 2000, approximately what annual emission reduction rate would have been needed?",options:["~2% per year","~5% per year","~9% per year","~15% per year"],correct:0,explanation:"Starting in 2000, only ~2% annual reduction was needed — manageable with moderate policy changes. Starting in 2019 requires ~5%. Waiting 10 more years of constant emissions would require ~9% — nearly impossible without massive economic disruption."},
+    {q:"Which of the following is NOT one of the six environmental objectives of the EU Taxonomy?",options:["Climate change mitigation","Circular economy promotion","Maximizing economic growth","Biodiversity and ecosystem restoration"],correct:2,explanation:"The six objectives are: Climate Change Mitigation, Climate Change Adaptation, Water and Marine Resources Protection, Circular Economy Promotion, Pollution Prevention, and Biodiversity and Ecosystem Restoration. Maximizing economic growth is not an environmental objective of the taxonomy."},
+    {q:"What is 'Absolute Zero' in climate policy?",options:["The same concept as net zero but with a different name","Zero emissions with no reliance on any CO2 removal or offsetting technologies","The temperature at which all carbon emissions freeze","A voluntary carbon reduction target for small businesses"],correct:1,explanation:"Absolute Zero means zero emissions produced with no reliance on CO2 removal technologies — no offsets, no carbon capture. It is the most stringent target, contrasting with carbon neutral (allows compensation) and net zero (allows minimal offsetting)."},
+    {q:"According to the IEA scenarios, which is the only scenario consistent with limiting global warming?",options:["Current Policies (business-as-usual)","Stated Policies (middle ambition)","Sustainable Development (climate-aligned)","None of the scenarios can limit warming"],correct:2,explanation:"Only the Sustainable Development scenario is compatible with the Paris Agreement: coal, oil, and gas decline sharply while renewables grow significantly and CO2 emissions drop steeply. The other scenarios lead to insufficient reductions."},
+    {q:"The European Green Deal targets a GHG reduction of what percentage by 2030?",options:["30%","40%","55%","80%"],correct:2,explanation:"The European Green Deal targets a 55% reduction in greenhouse gas emissions by 2030, with the goal of reaching net zero by 2050. It also includes sectoral constraints such as ending production of new combustion engine cars by 2035."},
+    {q:"What significant change does the 2025 Omnibus proposal introduce regarding CSRD?",options:["It accelerates the CSRD reporting timeline significantly","It adds more companies and stricter penalties","It drastically reduces the number of companies covered and simplifies requirements","It merges CSRD with the EU Taxonomy into one regulation"],correct:2,explanation:"The 2025 Omnibus proposal suggests a drastic reduction in companies covered by CSRD and big simplifications of reporting requirements. The CSDDD is also impacted. This reflects political pushback about regulatory burden on businesses."},
+    {q:"In the IEA Net Zero Emissions scenario, what percentage of global electricity generation do solar PV and wind provide by 2050?",options:["About 30%","About 50%","Nearly 70%","Over 90%"],correct:2,explanation:"In the NZE scenario, solar PV and wind become the leading sources of electricity globally before 2030 and together provide nearly 70% of global generation by 2050. Total energy supply falls by 7% between 2020 and 2030 in this scenario."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
-    else score++;
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
     </script>
     <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

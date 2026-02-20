@@ -46,13 +46,15 @@
             <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
             <h1>Chapter 2 &mdash; Mineral Resources, GHG &amp; Pollution</h1>
         </div>
-        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span> &mdash; <span id="timer">&#9201; 00:00</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
         <div id="quiz-area"></div>
         <div class="result-card" id="result-card">
             <div style="font-size:2rem">&#127919;</div>
-            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-score"><span id="final-score">0</span>/10</div>
             <div class="result-msg" id="result-msg"></div>
+            <div id="result-time"></div>
+            <br>
             <button class="btn-restart" onclick="restartQuiz()">Restart</button>
             <br><br>
             <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
@@ -60,62 +62,26 @@
     </div>
     <script>
 const questions = [
-    { q: "What would be Earth's average temperature without the greenhouse effect?", options: ["A. 0 degrees C", "B. -18 degrees C", "C. 10 degrees C", "D. -5 degrees C"], correct: 1, explanation: "Without the greenhouse effect, Earth would be frozen at -18 degrees C. The natural greenhouse effect raises it to about 15 degrees C, enabling human societies to develop." },
-    { q: "How fast is current climate change compared to natural changes?", options: ["A. About 10 times faster", "B. About 50 times faster", "C. About 100 times faster", "D. About the same speed"], correct: 2, explanation: "Current warming is approximately 5 degrees C/century compared to natural rates of 0.05 degrees C/century — nearly 100 times faster. This unprecedented speed is the core problem." },
-    { q: "What is eutrophication?", options: ["A. Excessive CO2 in the atmosphere", "B. Nutrient enrichment of water bodies causing algal blooms and oxygen depletion", "C. Acidification of ocean water", "D. Plastic accumulation in river systems"], correct: 1, explanation: "Eutrophication is the excessive enrichment of water bodies with nutrients (nitrogen and phosphorus), leading to algal blooms, oxygen depletion, and ecosystem damage, mainly from agricultural runoff." },
-    { q: "What is the Jevons Paradox?", options: ["A. Higher efficiency always leads to lower consumption", "B. Increased efficiency can lead to increased consumption due to the rebound effect", "C. Renewable energy always replaces fossil fuels", "D. Economic growth automatically reduces pollution"], correct: 1, explanation: "The Jevons Paradox states that when technology makes resource use more efficient, the resulting savings may lead to increased consumption rather than decreased consumption — the rebound effect." },
-    { q: "What percentage of pollution-related deaths occur in developing countries?", options: ["A. 50%", "B. 70%", "C. 80%", "D. 90%"], correct: 3, explanation: "90% of pollution-related deaths occur in developing countries, highlighting the severe inequality in the health impacts of pollution globally." },
-    { q: "What are the three fundamental principles of the circular economy?", options: ["A. Extract, Manufacture, Dispose", "B. Reduce, Reuse, Recycle", "C. Design, Produce, Sell", "D. Innovate, Scale, Profit"], correct: 1, explanation: "The circular economy is built on three principles: Reduce (minimize resource use), Reuse (extend product life through repair/refurbishment), and Recycle (convert waste into new resources)." },
-    { q: "Why are critical metals a major concern for the energy transition?", options: ["A. They are too expensive to extract", "B. They are concentrated geopolitically and have low recycling rates", "C. They cannot be used in renewable technologies", "D. They are available in unlimited quantities"], correct: 1, explanation: "Critical metals like rare earths, cobalt, and lithium are essential for batteries, solar panels, and wind turbines, but are concentrated in few countries (e.g., China, DRC) and have very low recycling rates." },
-    { q: "What differentiates a circular economy from a linear economy?", options: ["A. A circular economy focuses on maximizing production speed", "B. A circular economy follows 'Extract, Manufacture, Use, Dispose'", "C. A circular economy aims to recover and regenerate at all lifecycle stages", "D. A circular economy eliminates the need for any manufacturing"], correct: 2, explanation: "The linear economy follows 'Extract, Manufacture, Use, Dispose.' The circular economy shifts to 'Recover and Regenerate' at all stages, transforming the mindset from mass consumption to optimal use." }
+    {q:"Which of the following is NOT a reason why critical metals face supply risks?",options:["Geological scarcity","Geopolitical concentration in a few countries","Lack of substitutes","High recycling rates ensuring abundant supply"],correct:3,explanation:"Critical metals face supply risks due to geological scarcity, geopolitical concentration (e.g., China for rare earths, DRC for cobalt), and lack of substitutes. Their recycling rates are actually alarmingly LOW, not high."},
+    {q:"According to UNEP (2011), which group of metals has a recycling rate above 50%?",options:["Lithium, beryllium, germanium","Rare earth elements, gallium, indium","Iron/steel, copper, aluminum, gold, silver, platinum","Magnesium, manganese, chromium"],correct:2,explanation:"Iron/steel, copper, aluminum, gold, silver, and platinum have recycling rates above 50%. Many metals critical to the energy transition like lithium and rare earths have very low recycling rates (below 10%)."},
+    {q:"Without the natural greenhouse effect, what would Earth's average temperature be?",options:["-18 degrees C","0 degrees C","10 degrees C","15 degrees C"],correct:0,explanation:"Without the greenhouse effect, Earth would be frozen at -18 degrees C. The natural greenhouse effect warms the planet to habitable temperatures, but human emissions are dangerously reinforcing this effect."},
+    {q:"Current climate change is occurring at approximately what speed compared to natural variations?",options:["About 5 times faster","About 10 times faster","About 50 times faster","Almost 100 times faster"],correct:3,explanation:"Current warming occurs at nearly 100 times faster than natural changes. During the interglacial period, temperatures changed at about 0.05 degrees C per century; now we face approximately 5 degrees C per century."},
+    {q:"A tech company needs cobalt for its batteries. Where is cobalt production most geopolitically concentrated?",options:["Australia","Chile","Democratic Republic of Congo (DRC)","Canada"],correct:2,explanation:"Cobalt is heavily concentrated in the DRC. Geopolitics plays a major role in critical metal supply — many essential metals are concentrated in just a few countries, creating significant supply chain vulnerabilities."},
+    {q:"What is eutrophication?",options:["The gradual warming of ocean surfaces due to greenhouse gases","Excessive enrichment of water bodies with nutrients causing algal blooms and oxygen depletion","The process by which plastics break down into microplastics","The natural regeneration of depleted soil ecosystems"],correct:1,explanation:"Eutrophication is excessive enrichment of water bodies with nutrients (especially nitrogen and phosphorus), leading to algal blooms, oxygen depletion, and ecosystem damage, primarily caused by agricultural runoff and wastewater."},
+    {q:"Which statement about plastic pollution is TRUE?",options:["Plastics fully degrade in nature within 50 years","Most plastic waste is captured before reaching the sea","Rivers are the main conduits for plastic entering oceans","Microplastics do not enter food chains"],correct:2,explanation:"Rivers are the main conduits for plastic entering oceans. Plastics never fully degrade — they break into microplastics that contaminate ecosystems and food chains indefinitely."},
+    {q:"The Jevons Paradox describes a phenomenon where increased resource efficiency leads to what outcome?",options:["Decreased consumption as resources become more valuable","Stable consumption because savings offset increased use","Increased consumption because the resource becomes cheaper or more attractive","Complete elimination of waste through better technology"],correct:2,explanation:"The Jevons Paradox (rebound effect) states that when efficiency improves, the resource becomes cheaper or more attractive, often leading to increased rather than decreased consumption — offsetting the efficiency gains."},
+    {q:"Which of the following is NOT a fundamental principle of the circular economy?",options:["Reduce","Reuse","Recycle","Relocate"],correct:3,explanation:"The three fundamental principles of the circular economy are Reduce, Reuse, and Recycle. Relocate is not one of the principles, although local production can support sustainability goals."},
+    {q:"According to the course, what percentage of pollution-related deaths occur in developing countries?",options:["50%","70%","80%","90%"],correct:3,explanation:"90% of pollution-related deaths occur in developing countries. This highlights the deep inequity of environmental damage — those least responsible for pollution often suffer its worst health consequences."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
-    else score++;
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
     </script>
     <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

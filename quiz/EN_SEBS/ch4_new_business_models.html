@@ -46,13 +46,15 @@
             <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
             <h1>Chapter 4 &mdash; New Business Models for a Sustainable World</h1>
         </div>
-        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span> &mdash; <span id="timer">&#9201; 00:00</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
         <div id="quiz-area"></div>
         <div class="result-card" id="result-card">
             <div style="font-size:2rem">&#127919;</div>
-            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-score"><span id="final-score">0</span>/10</div>
             <div class="result-msg" id="result-msg"></div>
+            <div id="result-time"></div>
+            <br>
             <button class="btn-restart" onclick="restartQuiz()">Restart</button>
             <br><br>
             <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
@@ -60,62 +62,26 @@
     </div>
     <script>
 const questions = [
-    { q: "What does the ASI framework for sustainable transport stand for?", options: ["A. Automate, Standardize, Implement", "B. Avoid, Shift, Improve", "C. Accelerate, Sustain, Integrate", "D. Assess, Strategize, Innovate"], correct: 1, explanation: "ASI stands for: Avoid (reduce the need for transport), Shift (move to less carbon-intensive modes like rail, cycling), and Improve (make remaining transport more efficient, e.g., electric vehicles)." },
-    { q: "What are the three benefits of biochar?", options: ["A. Generates electricity, purifies water, reduces noise", "B. Stable carbon storage, clean energy source, soil quality improvement", "C. Replaces concrete, filters air, produces biofuel", "D. Reduces methane, captures CO2, generates hydrogen"], correct: 1, explanation: "Biochar provides three benefits: it locks carbon in soil for centuries (stable carbon), its production generates usable energy (clean energy source), and it enhances soil fertility, water retention, and microbial activity." },
-    { q: "What are the two pillars for rethinking the energy system?", options: ["A. Fossil fuels and nuclear power", "B. Wind energy and solar panels", "C. De-carbonated electricity and new molecules (hydrogen)", "D. Energy storage and grid expansion"], correct: 2, explanation: "The solution for rethinking energy rests on two pillars: de-carbonated electricity (clean power generation from renewables and nuclear) and new molecules (especially decarbonated hydrogen)." },
-    { q: "What is agrivoltaism?", options: ["A. Using agricultural waste to generate electricity", "B. Combining agricultural production with solar energy on the same land", "C. Powering agricultural machinery with batteries", "D. Converting farmland entirely to solar panels"], correct: 1, explanation: "Agrivoltaism combines agricultural production with solar energy generation on the same land. Remarkably, French nuclear power production is equivalent to agrivoltaism applied to just 2% of cultivated area." },
-    { q: "What is the 'economy of service functionality'?", options: ["A. Selling products at lower prices through mass production", "B. Selling the service a product provides instead of the product itself", "C. Providing free products with paid support services", "D. Outsourcing all manufacturing to service companies"], correct: 1, explanation: "The economy of service functionality means companies sell the service the product provides (e.g., warmth, mobility) rather than the product itself. This shifts incentives toward durability, repairability, and efficiency." },
-    { q: "What is bioremediation?", options: ["A. Using chemicals to clean contaminated sites", "B. Using living organisms to clean up contaminated environments", "C. Replacing damaged ecosystems with artificial ones", "D. Preventing pollution through stricter regulations"], correct: 1, explanation: "Bioremediation uses living organisms (bacteria, fungi, plants) to clean up contaminated environments, removing pollutants from soil, water, and air through natural biological processes." },
-    { q: "What innovation addresses steel production's carbon footprint?", options: ["A. Building fewer steel structures", "B. Direct reduction of iron by hydrogen instead of coal", "C. Importing steel from cleaner countries", "D. Using recycled plastic instead of steel"], correct: 1, explanation: "The key innovation for decarbonizing steel production is the direct reduction of iron by hydrogen (replacing coal/coke in the process). Additionally, carbon fibers can replace steel in some applications." },
-    { q: "What is 'Agriculture 4.0'?", options: ["A. Returning to traditional farming methods", "B. Farming exclusively in greenhouses", "C. Using digital technologies, sensors, drones, and AI for precision farming", "D. Replacing all farms with laboratory-grown food"], correct: 2, explanation: "Agriculture 4.0 uses digital technologies, sensors, drones, AI, and precision farming to optimize agricultural production while minimizing environmental impact — producing more with less waste." }
+    {q:"What does the ASI framework for sustainable transportation stand for?",options:["Automate, Standardize, Implement","Avoid, Shift, Improve","Accelerate, Sustain, Integrate","Assess, Strategize, Innovate"],correct:1,explanation:"ASI stands for: Avoid (reduce the need for transport through remote work, local production), Shift (move to less carbon-intensive modes like rail and cycling), and Improve (make remaining transport more efficient with electric vehicles, better engines)."},
+    {q:"Biochar is a charcoal-like substance with multiple benefits. Which of the following is NOT one of its three advantages?",options:["Stable form of carbon that locks carbon in soil for centuries","Clean source of energy during production","Improvement of soil quality and fertility","Replacement of fossil fuels in electricity generation"],correct:3,explanation:"Biochar offers three benefits: stable carbon storage in soil, clean energy generation during production, and soil quality improvement. Replacing fossil fuels in electricity generation is not one of its specific advantages."},
+    {q:"According to the course, what are the two pillars for rethinking the energy system?",options:["Fossil fuels and nuclear power","Wind energy and solar panels","De-carbonated electricity and new molecules (especially hydrogen)","Energy storage and grid expansion"],correct:2,explanation:"The solution for rethinking the energy system rests on two pillars: de-carbonated electricity (clean power generation from renewables and nuclear) and new molecules (especially decarbonated hydrogen)."},
+    {q:"A company pays for the energy savings achieved in its building rather than buying heating equipment. This is an example of which concept?",options:["Carbon offsetting","Economy of service functionality","Greenwashing","Vertical integration"],correct:1,explanation:"This describes the Economy of Service Functionality — paying for the result (energy savings) rather than the product (equipment). The Energy Performance Contract concept dates back to 1937 and exemplifies selling service instead of products."},
+    {q:"What is agrivoltaism?",options:["Using agricultural waste to generate electricity","Combining agricultural production with solar energy generation on the same land","Powering agricultural machinery with batteries","Converting all farmland to solar panel installations"],correct:1,explanation:"Agrivoltaism combines agricultural production with solar energy generation on the same land. Remarkably, French nuclear power production is equivalent to agrivoltaism applied to just 2% of French cultivated area."},
+    {q:"Which innovation addresses steel production's massive carbon footprint?",options:["Building fewer steel structures","Direct reduction of iron by hydrogen instead of coal/coke","Importing steel from countries with cleaner grids","Using recycled plastic as a steel substitute"],correct:1,explanation:"The key innovation for decarbonizing steel is the direct reduction of iron by hydrogen, replacing coal/coke. Additionally, carbon fibers can replace steel in some applications, offering lighter and less energy-intensive alternatives."},
+    {q:"What is bioremediation?",options:["Using chemicals to neutralize contaminated soil","Using living organisms (bacteria, fungi, plants) to clean up contaminated environments","Replacing damaged ecosystems with artificial habitats","Genetic modification of crops to resist pollution"],correct:1,explanation:"Bioremediation uses living organisms (bacteria, fungi, plants) to remove pollutants from soil, water, and air through natural biological processes, offering a sustainable approach to environmental cleanup."},
+    {q:"Which statement about the 'New Abundance' concept (BCG) is TRUE?",options:["Resource constraints are irrelevant to business strategy","Companies should ignore physical constraints and focus only on financial ones","Resource constraints should be seen as strategic opportunities for competitive advantage","Abundance means unlimited access to all natural resources"],correct:2,explanation:"The New Abundance concept holds that resource constraints should be seen as strategic opportunities. Companies that adapt their business models to work within physical constraints (resources, energy, climate) gain competitive advantages, while those that ignore them face existential risks."},
+    {q:"What does 'proteins out of thin air' refer to in the context of food innovation?",options:["Growing protein-rich crops in vertical farms","Producing protein from CO2, water, and electricity using microorganisms","Extracting protein from atmospheric nitrogen","Synthesizing protein in zero-gravity environments"],correct:1,explanation:"This emerging technology produces protein from CO2, water, and electricity using microorganisms, potentially revolutionizing food production with minimal land and water use."},
+    {q:"Which is NOT one of the sustainable design principles mentioned in the course?",options:["Adjustable — products that adapt to different needs","Repairable — designed for easy repair to extend lifespan","Disposable — designed for single use and easy replacement","Sustainable — built to last with durable materials"],correct:2,explanation:"The sustainable design principles are Adjustable, Repairable, and Sustainable (built to last). Disposable design is the opposite of sustainable design — the course advocates for durability and longevity, not single-use products."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
-    else score++;
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
     </script>
     <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.2 — Introduction to Sustainable Management</title>
+    <title>Quiz — Change Management Ch2: Introduction to Sustainable Management</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -22,17 +23,18 @@
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
         .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
-        .nav-buttons { display: flex; justify-content: flex-end; margin-top: 1.5rem; gap: 1rem; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #10b981; color: white; }
-        .btn-next:hover { background: #0d9668; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #10b981; }
@@ -45,74 +47,97 @@
         <div class="matiere">CHANGE MANAGEMENT &mdash; QUIZ</div>
         <h1>Chapter 2 &mdash; Introduction to Sustainable Management</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div class="timer" id="timer">⏱ 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div class="result-score"><span id="final-score"></span>/<span id="final-total"></span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
-        <button class="btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     </div>
 </div>
 <script>
 const questions = [
-    { q: "What are the four dimensions of environmental performance in Valayden's composite index?", options: ["A. Carbon, Energy, Water, Waste", "B. Emissions, Biodiversity, Land Use, Recycling", "C. Profit, People, Planet, Purpose", "D. Climate, Pollution, Resources, Equity"], correct: 0, explanation: "The four pillars are Carbon (GHG emissions), Energy (efficiency + renewable share), Water (usage and recycling), and Waste (material efficiency and circularity). Together they form a measurable composite score." },
-    { q: "In the Kaya Identity, which two ratios can managers directly control?", options: ["A. Population growth and GDP per capita", "B. Energy intensity (Energy/GDP) and carbon intensity (CO2/Energy)", "C. GDP per capita and population density", "D. Total emissions and population growth"], correct: 1, explanation: "The Kaya Identity breaks CO2 into: Population x GDP/Pop x Energy/GDP x CO2/Energy. Managers can influence energy intensity (how much energy per unit of GDP) and carbon intensity (how much CO2 per unit of energy), but not population or GDP per capita directly." },
-    { q: "What was Orsted (formerly DONG Energy) before its transformation?", options: ["A. A renewable energy startup from 2010", "B. A Danish company 85% dependent on coal and gas", "C. A Norwegian oil producer", "D. A German nuclear energy provider"], correct: 1, explanation: "In 2006, Orsted (then DONG Energy) was 85% dependent on fossil fuels, producing nearly one-third of Denmark's CO2 emissions. The 2014 oil price collapse was the catalyst for their strategic pivot to offshore wind." },
-    { q: "What is a 'stranded asset'?", options: ["A. An asset that has been abandoned by its owner", "B. An investment that loses value earlier than expected due to environmental, market, or policy change", "C. A natural resource that cannot be extracted", "D. A financial derivative tied to fossil fuel prices"], correct: 1, explanation: "A stranded asset is an investment whose value collapses earlier than expected because of shifts in regulation, technology, or market conditions. Coal plants becoming unprofitable as renewables get cheaper is a prime example." },
-    { q: "What is the Brundtland definition of sustainable development (1987)?", options: ["A. Growth that maximizes GDP while reducing poverty", "B. Development that meets present needs without compromising future generations' ability to meet their own needs", "C. Economic activity that produces zero waste and zero emissions", "D. A balance between profits and environmental regulations"], correct: 1, explanation: "The Brundtland Commission (1987) defined sustainable development as meeting present needs without compromising future generations. This introduces the concept of intergenerational equity and holistic balance between economic, environmental, and social progress." },
-    { q: "What does the 'Strong Sustainability Principle' state?", options: ["A. Economic capital can always substitute for natural capital", "B. Natural capital is non-substitutable; critical ecological functions cannot be replaced by economic capital", "C. Technology will eventually solve all environmental problems", "D. Sustainability requires zero economic growth"], correct: 1, explanation: "Strong sustainability holds that natural capital is non-substitutable. Once critical ecological functions degrade (e.g., climate stability, biodiversity), economic or manufactured capital cannot replace them. This contrasts with weak sustainability, which allows substitution." },
-    { q: "Which framework proposes a 'safe and just space' between a social foundation and an ecological ceiling?", options: ["A. Triple Bottom Line (Elkington)", "B. Prosperity Without Growth (Tim Jackson)", "C. Doughnut Economics (Kate Raworth)", "D. Steady-State Economy (Herman Daly)"], correct: 2, explanation: "Kate Raworth's Doughnut Economics (2017) visualizes sustainability as a space between a social foundation (basic human needs) and an ecological ceiling (planetary boundaries). Operating within this 'doughnut' ensures both well-being and environmental stability." },
-    { q: "According to the Porter Hypothesis, what effect can well-designed environmental regulation have?", options: ["A. It always increases costs and reduces competitiveness", "B. It can enhance competitiveness by stimulating innovation", "C. It has no effect on business performance", "D. It only benefits large multinational corporations"], correct: 1, explanation: "The Porter Hypothesis argues that well-designed environmental regulation can actually enhance competitiveness by forcing firms to innovate, find efficiency gains, and develop cleaner technologies that ultimately reduce costs and open new markets." }
+    {q:"In the Kaya Identity, which two ratios can managers directly control?", options:["Population and GDP per capita","Energy intensity and carbon intensity","GDP per capita and population growth","Total CO₂ and total population"], correct:1, explanation:"The Kaya Identity breaks CO₂ into four factors. Managers can only control the last two: energy intensity (Energy/GDP) and carbon intensity (CO₂/Energy)."},
+    {q:"What was Ørsted (formerly DONG Energy) primarily dependent on in 2006?", options:["Nuclear power and hydroelectricity","Solar panels and battery storage","Coal and gas, producing nearly one-third of Denmark's CO₂","Offshore wind and tidal energy"], correct:2, explanation:"In 2006, Ørsted was 85% dependent on coal and gas, producing nearly one-third of Denmark's CO₂ emissions. By 2019 it had shifted to 86% renewables."},
+    {q:"The Brundtland definition of sustainability (1987) centers on which core principle?", options:["Maximizing short-term shareholder returns","Meeting present needs without compromising future generations' ability to meet theirs","Achieving zero economic growth to protect the environment","Eliminating all industrial activity in developing nations"], correct:1, explanation:"The Brundtland Commission defined sustainable development as meeting present needs without compromising the ability of future generations to meet their own needs, emphasizing intergenerational equity."},
+    {q:"Which of the following is NOT one of the four dimensions of environmental performance described in the course?", options:["Carbon","Biodiversity","Water","Waste"], correct:1, explanation:"The four dimensions are Carbon, Energy, Water, and Waste. Biodiversity, while important, is not one of the four dimensions in Valayden's composite environmental performance index."},
+    {q:"A 'stranded asset' is best described as:", options:["An investment that increases in value due to environmental regulation","A financial asset that loses value earlier than expected because of environmental, market, or policy change","A government bond backed by fossil fuel revenue","A renewable energy project that has not yet been built"], correct:1, explanation:"A stranded asset is an investment that loses its value earlier than expected due to environmental, market, or policy change — such as coal plants becoming unprofitable as clean tech gets cheaper."},
+    {q:"According to Dorothy Leonard, 'organizational myopia' occurs when:", options:["Firms invest too much in research and development","Firms fail to adapt because strengths harden into weaknesses through cognitive lock-in","New employees resist the corporate culture","Government regulations prevent firms from innovating"], correct:1, explanation:"Leonard's concept of organizational myopia describes how firms' strengths can harden into weaknesses due to cognitive lock-in, sunk-cost bias, and incentive misalignment, preventing adaptation."},
+    {q:"The Porter Hypothesis states that:", options:["Regulation always reduces competitiveness","Well-designed regulation can enhance competitiveness by stimulating innovation","Environmental costs should never be internalized","Free markets solve all environmental problems"], correct:1, explanation:"The Porter Hypothesis argues that well-designed environmental regulation can actually enhance competitiveness by stimulating innovation, rather than being purely a cost burden."},
+    {q:"In the circular economy, the central ratio 'Resource Productivity' is defined as:", options:["Total revenue divided by number of employees","Material input divided by waste output","Value added divided by material input","Energy consumed divided by CO₂ emitted"], correct:2, explanation:"In the circular economy paradigm, Resource Productivity = Value Added / Material Input. This measures how much economic value is created per unit of resources consumed."},
+    {q:"Walmart's Project Gigaton aimed to avoid how much CO₂ by 2030 across its supply chain?", options:["100 million tonnes","500 million tonnes","1 gigaton (1 billion tonnes)","10 gigatons"], correct:2, explanation:"Launched in 2017, Project Gigaton's goal was to avoid 1 gigaton of CO₂ by 2030 across suppliers — equal to Japan's yearly emissions — tackling Scope 3 emissions across six areas."},
+    {q:"The three steps of Lewin's Change Model (1947) are:", options:["Plan, Do, Check","Unfreeze, Move, Refreeze","Diagnose, Intervene, Evaluate","Awareness, Adoption, Routinization"], correct:1, explanation:"Lewin's model consists of Unfreeze (question norms), Move (experiment and institutionalize new practices), and Refreeze (embed new routines while keeping adaptive capacity alive)."}
 ];
-let current = 0, score = 0, answered = [];
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '⏱ ' + m + ':' + s;
+    }, 1000);
+}
+function shuffleOptions(q) {
+    const indices = q.options.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const shuffled = indices.map(i => q.options[i]);
+    const newCorrect = indices.indexOf(q.correct);
+    return { ...q, options: shuffled, correct: newCorrect };
+}
 function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
+    const q = shuffleOptions(questions[current]);
+    questions[current]._shuffled = q;
     document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
     document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => {
-        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
-    });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>';
+    answered = false;
 }
 function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
-    else { score++; }
+    if (answered) return;
+    answered = true;
+    const q = questions[current]._shuffled;
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
+    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
+    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
     document.getElementById('score').textContent = score;
 }
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
 function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
+    clearInterval(timerInterval);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
+    document.getElementById('quiz-area').innerHTML = '';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
+    document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's';
     const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
+    document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.';
 }
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer();
 renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.5 — &Eacute;nergie, souverainet&eacute; &amp; r&eacute;gulation</title>
+    <title>Quiz — Strategie Durable Ch5: Energie, souverainete & regulation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,26 +15,26 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
         .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
-        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
         .btn-next { background: #27ae60; color: white; margin-left: auto; }
         .btn-next:hover { background: #1e8449; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #27ae60; }
@@ -42,65 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">STRAT&Eacute;GIE DURABLE &amp; &Eacute;THIQUE &mdash; QUIZ</div>
-        <h1>Ch.5 &mdash; &Eacute;nergie, souverainet&eacute; &amp; r&eacute;gulation</h1>
+        <div class="matiere">Strategie & Developpement Durable &mdash; QUIZ</div>
+        <h1>Chapitre 5 &mdash; Energie, souverainete & regulation</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:3rem;">&#127793;</div>
-        <div class="result-score" id="final-score"></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
-        <button class="btn-restart" onclick="restart()">Recommencer</button>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Quelle proportion de l'&eacute;nergie primaire mondiale est gaspill&eacute;e (perdue sous forme de chaleur, friction, etc.) ?", o:["Environ 10 %","Environ 25 %","Environ 42 %","Environ 70 %"], a:2, e:"Environ 42 % de l'&eacute;nergie primaire mondiale est gaspill&eacute;e, principalement sous forme de chaleur perdue dans les moteurs thermiques, les centrales &eacute;lectriques et les proc&eacute;d&eacute;s industriels. C'est un gisement majeur d'efficacit&eacute; &eacute;nerg&eacute;tique."},
-  {q:"Qu'est-ce que la &laquo; double contrainte carbone &raquo; ?", o:["R&eacute;duire les &eacute;missions tout en maintenant la croissance &eacute;conomique","La n&eacute;cessit&eacute; de r&eacute;duire &agrave; la fois les &eacute;missions de CO2 ET la d&eacute;pendance aux &eacute;nergies fossiles (risque d'approvisionnement)","Payer &agrave; la fois la taxe carbone et le co&ucirc;t des &eacute;nergies renouvelables","La double taxation des entreprises polluantes"], a:1, e:"La double contrainte carbone d&eacute;signe le fait que les &eacute;nergies fossiles posent &agrave; la fois un probl&egrave;me climatique (&eacute;missions de GES) ET un probl&egrave;me de souverainet&eacute; (d&eacute;pendance &agrave; des ressources finies import&eacute;es). Les deux contraintes poussent dans la m&ecirc;me direction : la d&eacute;carbonation."},
-  {q:"Selon le cours, quand la France sera-t-elle v&eacute;ritablement souveraine sur le plan &eacute;nerg&eacute;tique ?", o:["Quand elle aura atteint 100 % de nucl&eacute;aire","Quand elle sera carbon neutre (plus de d&eacute;pendance aux fossiles import&eacute;s)","Quand elle aura sign&eacute; suffisamment d'accords commerciaux","Quand le prix du p&eacute;trole sera stable"], a:1, e:"La France ne sera v&eacute;ritablement souveraine que lorsqu'elle sera carbon neutre, car sa d&eacute;pendance aux &eacute;nergies fossiles import&eacute;es (p&eacute;trole, gaz) la rend vuln&eacute;rable aux chocs g&eacute;opolitiques et aux fluctuations de prix."},
-  {q:"Qu'est-ce que le m&eacute;canisme CBAM (Carbon Border Adjustment Mechanism) ?", o:["Une taxe sur les &eacute;missions des avions aux fronti&egrave;res europ&eacute;ennes","Un m&eacute;canisme d'ajustement carbone aux fronti&egrave;res taxant les importations selon leur contenu carbone","Un fonds europ&eacute;en de financement de la transition","Un label carbone obligatoire pour les produits import&eacute;s"], a:1, e:"Le CBAM est le m&eacute;canisme europ&eacute;en d'ajustement carbone aux fronti&egrave;res. Il taxe les produits import&eacute;s en fonction de leur contenu en carbone, afin d'&eacute;viter les fuites de carbone (d&eacute;localisation de la production vers des pays moins r&eacute;glementants)."},
-  {q:"Qu'est-ce que la directive CSRD ?", o:["Une norme technique pour les panneaux solaires","Une directive europ&eacute;enne imposant un reporting de durabilit&eacute; aux entreprises","Un m&eacute;canisme de compensation carbone","Une r&eacute;glementation sur les v&eacute;hicules &eacute;lectriques"], a:1, e:"La CSRD (Corporate Sustainability Reporting Directive) est une directive europ&eacute;enne qui impose aux entreprises de publier un rapport d&eacute;taill&eacute; sur leur impact environnemental, social et de gouvernance (ESG), selon des normes standardis&eacute;es."},
-  {q:"Dans la th&eacute;orie des jeux appliqu&eacute;e au climat, qu'est-ce que le &laquo; dilemme du prisonnier &raquo; illustre ?", o:["La difficult&eacute; de financer la recherche climatique","Le risque que chaque pays attende que les autres agissent, menant &agrave; l'inaction collective","La comp&eacute;tition entre entreprises vertes","Le conflit entre g&eacute;n&eacute;rations sur la politique climatique"], a:1, e:"Le dilemme du prisonnier illustre pourquoi la coop&eacute;ration climatique est difficile : chaque pays a individuellement int&eacute;r&ecirc;t &agrave; ne pas agir (free-riding) pendant que les autres r&eacute;duisent leurs &eacute;missions. La strat&eacute;gie &laquo; tit-for-tat &raquo; (coop&eacute;rer puis r&eacute;ciprocit&eacute;) est une solution possible."},
-  {q:"Quel changement de d&eacute;pendance la transition &eacute;nerg&eacute;tique entra&icirc;ne-t-elle ?", o:["D'une d&eacute;pendance aux fossiles vers une d&eacute;pendance aux m&eacute;taux critiques","D'une d&eacute;pendance &eacute;nerg&eacute;tique vers une ind&eacute;pendance totale","D'une d&eacute;pendance aux &Eacute;tats-Unis vers une d&eacute;pendance &agrave; la Chine","D'une d&eacute;pendance technique vers une d&eacute;pendance financi&egrave;re"], a:0, e:"La transition &eacute;nerg&eacute;tique fait passer d'une d&eacute;pendance aux &eacute;nergies fossiles (p&eacute;trole, gaz) vers une d&eacute;pendance aux m&eacute;taux critiques (lithium, cobalt, cuivre, terres rares) n&eacute;cessaires aux technologies bas-carbone. Cela pose de nouveaux enjeux de souverainet&eacute;."},
-  {q:"Historiquement, le lien entre &eacute;nergie et PIB est :", o:["Inversement proportionnel : moins d'&eacute;nergie = plus de PIB","Lin&eacute;aire : plus de PIB = plus de consommation d'&eacute;nergie","Inexistant : il n'y a aucune corr&eacute;lation","Exponentiel : le PIB cro&icirc;t beaucoup plus vite que l'&eacute;nergie"], a:1, e:"Historiquement, le lien &eacute;nergie-PIB est lin&eacute;aire : la croissance &eacute;conomique s'est toujours accompagn&eacute;e d'une hausse de la consommation d'&eacute;nergie. Le d&eacute;fi de la transition est de d&eacute;coupler ces deux grandeurs gr&acirc;ce &agrave; l'efficacit&eacute; &eacute;nerg&eacute;tique et la sobri&eacute;t&eacute;."}
+    {q:"Quelle proportion de l'energie primaire mondiale est gaspillee (perdue sous forme de chaleur, friction, etc.) ?",options:["Environ 10 %","Environ 25 %","Environ 70 %","Environ 42 %"],correct:3,explanation:"Environ 42 % de l'energie primaire mondiale est gaspillee, principalement sous forme de chaleur perdue dans les moteurs thermiques et centrales. C'est un gisement majeur d'efficacite energetique."},
+    {q:"Qu'est-ce que la 'double contrainte carbone' ?",options:["Reduire les emissions tout en maintenant la croissance economique","Payer a la fois la taxe carbone et le cout des renouvelables","La necessite de reduire les emissions de CO2 ET la dependance aux fossiles (ressources finies)","La double taxation des entreprises polluantes"],correct:2,explanation:"La double contrainte carbone designe le fait que les fossiles posent a la fois un probleme climatique (emissions de GES) et un probleme de souverainete (dependance a des ressources finies importees). Les deux contraintes poussent vers la decarbonation."},
+    {q:"Quand la France sera-t-elle veritablement souveraine sur le plan energetique ?",options:["Quand elle aura atteint 100 % de nucleaire","Quand le prix du petrole sera stable","Quand elle sera carbon neutre (plus de dependance aux fossiles importes)","Quand elle aura signe suffisamment d'accords commerciaux"],correct:2,explanation:"La France ne sera souveraine que lorsqu'elle sera carbon neutre, car sa dependance aux fossiles importes la rend vulnerable aux chocs geopolitiques et aux fluctuations de prix."},
+    {q:"Qu'est-ce que le mecanisme CBAM (Carbon Border Adjustment Mechanism) ?",options:["Une taxe sur les emissions des avions aux frontieres europeennes","Un fonds europeen de financement de la transition","Un mecanisme d'ajustement carbone aux frontieres taxant les importations selon leur contenu carbone","Un label carbone obligatoire pour les produits importes"],correct:2,explanation:"Le CBAM taxe les produits importes en fonction de leur contenu carbone, afin d'eviter les fuites de carbone (delocalisation vers des pays sans prix du carbone). C'est aussi la 'retorsion credible' du tit-for-tat climatique."},
+    {q:"Qu'est-ce que la directive CSRD ?",options:["Une norme technique pour les panneaux solaires","Une reglementation sur les vehicules electriques","Un mecanisme de compensation carbone","Une directive europeenne imposant un reporting de durabilite aux entreprises"],correct:3,explanation:"La CSRD impose aux entreprises un reporting detaille sur leur impact ESG (environnement, social, gouvernance) selon les normes ESRS. Le principe de double materialite s'applique : impact de l'environnement sur l'entreprise ET impact de l'entreprise sur l'environnement."},
+    {q:"Dans la theorie des jeux appliquee au climat, qu'illustre le 'dilemme du prisonnier' ?",options:["La difficulte de financer la recherche climatique","Le conflit entre generations sur la politique climatique","Le risque que chaque pays attende que les autres agissent, menant a l'inaction collective","La competition entre entreprises vertes"],correct:2,explanation:"Le dilemme du prisonnier illustre le probleme du passager clandestin (free rider) : chaque pays est tente de ne pas agir pendant que les autres reduisent leurs emissions. La strategie 'tit-for-tat' et les COP favorisent la cooperation."},
+    {q:"Quel changement de dependance la transition energetique entraine-t-elle ?",options:["D'une dependance aux fossiles vers une dependance aux metaux critiques","D'une dependance energetique vers une independance totale","D'une dependance technique vers une dependance financiere","D'une dependance aux USA vers une dependance a la Chine"],correct:0,explanation:"La transition fait passer d'une dependance aux fossiles (petrole, gaz) vers une dependance aux metaux critiques (lithium, cobalt, cuivre, terres rares). Mais cette nouvelle dependance est fondamentalement differente : les metaux sont recyclables, pas le petrole brule."},
+    {q:"Historiquement, le lien entre energie et PIB est :",options:["Inversement proportionnel : moins d'energie = plus de PIB","Inexistant : il n'y a aucune correlation","Lineaire : plus de PIB = plus de consommation d'energie","Exponentiel : le PIB croit beaucoup plus vite que l'energie"],correct:2,explanation:"Historiquement, le lien energie-PIB est lineaire : la croissance s'est toujours accompagnee d'une hausse de la consommation d'energie. Le defi est de decoupler ces deux grandeurs grace a l'efficacite et la sobriete."},
+    {q:"Quel est le rendement d'un moteur electrique compare a un moteur thermique ?",options:["Electrique ~25 % vs thermique ~90 %","Electrique ~50 % vs thermique ~50 %","Electrique ~90-95 % vs thermique ~25-30 %","Electrique ~60 % vs thermique ~40 %"],correct:2,explanation:"Un moteur electrique a un rendement de 90-95 % contre 25-30 % pour un moteur thermique. Cette difference explique pourquoi l'electrification reduit mecaniquement la demande d'energie primaire."},
+    {q:"Quelle strategie de la theorie des jeux favorise la cooperation climatique internationale ?",options:["La strategie du cavalier seul (free riding)","La strategie de defection systematique","La strategie du bluff","La strategie 'tit-for-tat' (donnant-donnant) : cooperer puis reciprocite"],correct:3,explanation:"Le 'tit-for-tat' consiste a cooperer d'abord, puis a imiter le comportement de l'autre. Si l'autre coopere, on coopere. Si l'autre triche, on retorque. Les COP et le CBAM sont des outils de cette logique."}
 ];
-let current=0, score=0, answered=[];
-function render(){
-    const quest=questions[current];
-    document.getElementById('current-q').textContent=current+1;
-    document.getElementById('score').textContent=score;
-    document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';
-    let html='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+quest.q+'</div><div class="options">';
-    quest.o.forEach((opt,i)=>{
-        const disabled=answered[current]!==undefined?'disabled':'';
-        let cls='option';
-        if(answered[current]!==undefined){if(i===quest.a)cls+=' correct';else if(i===answered[current])cls+=' wrong';}
-        html+='<button class="'+cls+'" onclick="answer('+i+')" '+disabled+'>'+opt+'</button>';
-    });
-    html+='</div><div class="explanation" id="expl"'+(answered[current]!==undefined?' style="display:block"':'')+'>'+quest.e+'</div></div>';
-    html+='<div class="nav-buttons">';
-    if(current>0)html+='<button class="btn btn-back" onclick="prev()">&larr; Pr&eacute;c&eacute;dent</button>';
-    if(answered[current]!==undefined&&current<questions.length-1)html+='<button class="btn btn-next" onclick="next()">Suivant &rarr;</button>';
-    if(answered[current]!==undefined&&current===questions.length-1)html+='<button class="btn btn-next" onclick="showResult()">Voir le r&eacute;sultat &rarr;</button>';
-    html+='</div>';
-    document.getElementById('quiz-area').innerHTML=html;
-}
-function answer(i){if(answered[current]!==undefined)return;answered[current]=i;if(i===questions[current].a)score++;render();}
-function next(){current++;render();}
-function prev(){current--;render();}
-function showResult(){
-    document.getElementById('quiz-area').style.display='none';
-    document.getElementById('result-card').style.display='block';
-    const pct=Math.round(score/questions.length*100);
-    document.getElementById('final-score').textContent=score+'/'+questions.length;
-    document.getElementById('result-msg').textContent=pct>=75?'Excellent ! Tu ma\u00eetrises le sujet \uD83D\uDD25':pct>=50?'Pas mal ! Relis les points faibles \uD83D\uDCAA':'Continue \u00e0 r\u00e9viser, tu vas y arriver \uD83D\uDCDA';
-}
-function restart(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';render();}
-render();
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'">'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

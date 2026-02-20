@@ -3,167 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — La CVIM : Convention de Vienne</title>
+    <title>Quiz — La CVIM — Convention de Vienne</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
         .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f4a0b0; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
-        .btn-next:hover { background: #d97706; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #d63851; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #f59e0b; }
+        .back-link:hover { color: #e94560; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">DROIT — QUIZ</div>
-        <h1>Ch. 2 — La CVIM : Convention de Vienne</h1>
+        <div class="matiere">DROIT DES AFFAIRES INTERNATIONALES &mdash; QUIZ</div>
+        <h1>Ch.2 : La CVIM &mdash; Convention de Vienne</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelles sont les 3 conditions cumulatives d'application de la CVIM par voie directe (art. 1 §1 a) ?",
-        options: ["Vente de services + parties dans des États différents + États contractants", "Vente de marchandises + parties dans des États différents + ces États sont contractants", "Vente de marchandises + acheteur professionnel + contrat écrit", "Vente internationale + arbitrage prévu + prix supérieur à 500 $"],
-        correct: 1,
-        explanation: "Les 3 conditions cumulatives de la voie directe : 1) vente de marchandises, 2) parties établies dans des États différents, 3) ces États sont tous deux des États contractants (art. 1 §1 a CVIM)."
-    },
-    {
-        q: "Le silence d'un destinataire vaut-il acceptation sous la CVIM ?",
-        options: ["Oui, si le délai fixé par l'offrant est écoulé", "Oui, en cas de relations commerciales établies entre les parties", "Non, jamais : un acte positif est toujours requis", "Oui, si la pratique habituelle entre les parties le prévoit"],
-        correct: 2,
-        explanation: "La CVIM est formelle : le silence ne vaut jamais acceptation (art. 18 §1). Un acte positif est toujours requis — déclaration expresse ou comportement concluant (ex. expédition des marchandises)."
-    },
-    {
-        q: "Quel est le délai maximal absolu pour notifier un défaut de conformité selon l'art. 39 CVIM ?",
-        options: ["6 mois après la remise des marchandises", "1 an après la remise des marchandises", "2 ans après la remise des marchandises", "5 ans après la remise des marchandises"],
-        correct: 2,
-        explanation: "L'art. 39 §2 CVIM fixe un délai butoir de 2 ans à compter de la remise effective des marchandises. L'acheteur doit notifier dans un délai raisonnable après découverte (pratique : 2 à 4 semaines) et en tout état de cause avant 2 ans."
-    },
-    {
-        q: "À quel moment les risques sont-ils transférés à l'acheteur lorsque la vente implique un transport (art. 67 §1 CVIM) ?",
-        options: ["Lors de la conclusion du contrat", "Lors de la remise des marchandises au premier transporteur", "Lors de l'arrivée des marchandises à destination", "Lors du paiement du prix par l'acheteur"],
-        correct: 1,
-        explanation: "Selon l'art. 67 §1 CVIM, les risques sont transférés lors de la remise des marchandises au premier transporteur. En pratique, le moment exact est précisé par l'Incoterm choisi (FOB, CIF, DDP...)."
-    },
-    {
-        q: "Qu'est-ce qu'une violation essentielle au sens de l'article 25 CVIM ?",
-        options: ["Toute violation d'une obligation principale du contrat", "Une violation qui prive substantiellement l'autre partie de ce qu'elle attendait, si cette conséquence était prévisible", "Une violation entraînant un retard de livraison supérieur à 30 jours", "Une violation commise intentionnellement par une partie"],
-        correct: 1,
-        explanation: "La violation essentielle (art. 25) prive l'autre partie de manière substantielle de ce qu'elle attendait du contrat, à condition que ce résultat ait été prévisible (test objectif). Elle ouvre le droit à la résolution et au remplacement."
-    },
-    {
-        q: "Quelles ventes sont expressément exclues du champ d'application de la CVIM ?",
-        options: ["Ventes d'équipements industriels, de logiciels et de véhicules", "Ventes aux consommateurs, aux enchères, de navires/aéronefs, d'immobilier et d'électricité", "Ventes à crédit, avec paiement différé ou par lettre de change", "Ventes entre entreprises de moins de 50 salariés"],
-        correct: 1,
-        explanation: "La CVIM exclut de son champ : les ventes aux consommateurs, les ventes aux enchères, les navires et aéronefs, l'immobilier, les instruments financiers et l'électricité (art. 2 CVIM)."
-    },
-    {
-        q: "En cas de vente FOB, l'acheteur peut-il réclamer au vendeur le remplacement de marchandises endommagées pendant le transport ?",
-        options: ["Oui, le vendeur reste toujours responsable jusqu'à livraison finale", "Oui, si l'acheteur notifie le défaut dans les 2 semaines", "Non, les risques ont été transférés au chargement : l'acheteur agit contre le transporteur", "Non, sauf si le dommage était antérieur à l'expédition"],
-        correct: 2,
-        explanation: "En FOB, les risques sont transférés au chargement à bord. Les dommages survenus pendant le transport sont supportés par l'acheteur, qui doit agir contre le transporteur. Le vendeur n'est responsable que des défauts antérieurs au transfert des risques (art. 46 §2 + art. 67)."
-    },
-    {
-        q: "Quelle est la différence principale entre la CVIM et l'UCC américain concernant la forme écrite ?",
-        options: ["La CVIM exige un écrit, l'UCC non", "La CVIM n'exige aucun écrit ; l'UCC exige un écrit si le prix est ≥ 500 $ (Statute of Frauds)", "Les deux exigent un écrit pour les ventes supérieures à 1 000 $", "L'UCC n'exige aucune forme ; la CVIM impose la signature électronique"],
-        correct: 1,
-        explanation: "La CVIM ne pose aucune exigence de forme écrite. L'UCC américain impose un écrit (Statute of Frauds) pour les contrats dont le prix est égal ou supérieur à 500 $. C'est une différence fondamentale entre les deux systèmes."
-    },
-    {
-        q: "Quel recours l'acheteur peut-il exercer en cas de simple défaut de conformité (sans violation essentielle) ?",
-        options: ["La résolution du contrat et le remplacement des marchandises", "Uniquement la réparation des marchandises", "La réduction du prix et/ou les dommages-intérêts, mais pas la résolution", "Aucun recours si les marchandises ont été acceptées"],
-        correct: 2,
-        explanation: "En l'absence de violation essentielle, l'acheteur peut demander la réduction du prix (art. 50) et/ou des dommages-intérêts (art. 74), mais ne peut pas résoudre le contrat ni exiger le remplacement. Ces derniers recours nécessitent une violation essentielle."
-    },
-    {
-        q: "La CVIM régit-elle le transfert de propriété des marchandises ?",
-        options: ["Oui, elle organise le transfert de propriété selon l'Incoterm choisi", "Oui, la propriété est transférée en même temps que les risques", "Non, le transfert de propriété est expressément exclu de son champ (art. 4b)", "Non, sauf si les parties l'ont expressément prévu au contrat"],
-        correct: 2,
-        explanation: "L'art. 4b CVIM exclut expressément de son champ les effets du contrat sur la propriété des marchandises. Le transfert de propriété est régi par le droit national désigné par les règles de conflit de lois."
-    }
+    {q:"La CVIM a ete signee le 11 avril 1980. Combien de pays l'avaient ratifiee en decembre 2023 ?",options:["55 pays","77 pays","97 pays","127 pays"],correct:2,explanation:"En decembre 2023, la CVIM avait ete ratifiee par 97 pays, representant environ les deux tiers du commerce mondial."},
+    {q:"Lequel de ces biens n'est PAS exclu du champ d'application de la CVIM ?",options:["Des actions boursieres","Des machines industrielles","De l'electricite","Un navire de croisiere"],correct:1,explanation:"La CVIM s'applique aux marchandises commerciales comme les machines industrielles. Les actions, l'electricite et les navires sont expressement exclus."},
+    {q:"Selon la CVIM, le silence ou l'inaction du destinataire d'une offre constitue-t-il une acceptation ?",options:["Oui, si l'offrant le precise dans son offre","Oui, apres un delai raisonnable sans reponse","Non, un acte positif est toujours requis","Oui, si les parties ont des relations commerciales anterieures"],correct:2,explanation:"La CVIM pose un principe clair : le silence ou l'inaction ne constituent jamais une acceptation. Un acte positif est toujours requis (art. 18 par.1)."},
+    {q:"Un acheteur recoit des marchandises le 15 mars et decouvre un defaut de conformite. Selon la jurisprudence, quel est le delai raisonnable pour notifier le vendeur (art. 39) ?",options:["48 heures","1 semaine maximum","2 a 4 semaines","6 mois"],correct:2,explanation:"La pratique jurisprudentielle retient generalement un delai de 2 a 4 semaines comme delai raisonnable de notification au sens de l'article 39 CVIM."},
+    {q:"Les Etats-Unis ont ratifie la CVIM avec une reserve au titre de l'article 95. Quelle en est la consequence ?",options:["La CVIM ne s'applique qu'aux contrats de plus de 500 dollars","La CVIM ne s'applique pas aux ventes de services","La CVIM ne s'applique que si l'autre partie est aussi dans un Etat contractant","La CVIM ne s'applique pas aux ventes avec clause d'arbitrage"],correct:2,explanation:"La reserve de l'article 95 signifie que les Etats-Unis n'appliquent la CVIM qu'aux contrats entre parties situees dans des Etats contractants (voie directe uniquement)."},
+    {q:"Selon l'article 67 par.1 CVIM, lorsque le contrat implique un transport sans lieu de livraison determine, les risques sont transferes a l'acheteur :",options:["Au moment de la conclusion du contrat","Lorsque les marchandises sont remises au premier transporteur","A l'arrivee des marchandises chez l'acheteur","Au moment du paiement du prix"],correct:1,explanation:"L'article 67 par.1 CVIM prevoit que les risques sont transferes a l'acheteur lorsque les marchandises sont remises au premier transporteur."},
+    {q:"Vrai ou faux : La CVIM regit le transfert de propriete des marchandises vendues.",options:["Vrai, c'est l'objet principal de la Convention","Faux, la CVIM ne porte pas sur le transfert de propriete","Vrai, mais uniquement entre Etats membres de l'UE","Faux, sauf si les parties le prevoient dans le contrat"],correct:1,explanation:"L'article 4 CVIM exclut expressement le transfert de propriete de son champ. Cette question releve du droit national applicable."},
+    {q:"Un acheteur recoit des marchandises non conformes. Selon la CVIM, dans quel cas peut-il exiger la livraison de remplacement ?",options:["Des que le defaut est constate, quelle que soit sa gravite","Uniquement en cas de violation essentielle du contrat","Uniquement si le vendeur accepte de proceder au remplacement","Uniquement si le defaut a ete notifie dans les 48 heures"],correct:1,explanation:"L'article 46 par.2 CVIM prevoit que l'acheteur ne peut exiger la livraison de remplacement que si le defaut de conformite constitue une violation essentielle du contrat (art. 25)."},
+    {q:"Quel est le delai butoir au-dela duquel l'acheteur perd tout droit d'invoquer un defaut de conformite (art. 39 par.2) ?",options:["6 mois a compter de la decouverte du defaut","1 an a compter de la livraison","2 ans a compter de la remise effective des marchandises","5 ans a compter de la conclusion du contrat"],correct:2,explanation:"L'article 39 par.2 CVIM fixe un delai butoir de 2 ans a compter de la remise effective des marchandises, sauf garantie contractuelle incompatible."},
+    {q:"Le Royaume-Uni n'a pas ratifie la CVIM. Lequel de ces pays est egalement non signataire ?",options:["L'Allemagne","L'Inde","Le Japon","L'Australie"],correct:1,explanation:"Parmi les grands pays commercants non signataires figurent le Royaume-Uni, l'Inde, l'Afrique du Sud et le Nigeria. L'Allemagne, le Japon et l'Australie ont ratifie la CVIM."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

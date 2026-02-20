@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -33,6 +34,7 @@
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #10b981; }
@@ -42,15 +44,17 @@
 <div class="quiz-container">
     <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     <div class="quiz-header">
-        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
+        <div class="matiere">Relationship Marketing &mdash; QUIZ</div>
         <h1>Chapter 4 &mdash; AI &amp; Relationship Marketing</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
@@ -59,39 +63,58 @@
 </div>
 <script>
 const questions = [
-    {q:"What is 'Mechanical AI' according to the 3 levels of AI framework (Huang et al., 2023)?", options:["A. AI that recognizes emotions","B. AI that analyzes data patterns","C. AI that executes tasks (e.g., chatbots, dynamic pricing)","D. AI that creates original content"], correct:2, explanation:"Mechanical AI (Level A) executes predefined tasks like chatbots and dynamic pricing. It is the most basic level. Thinking AI analyzes data, and Feeling AI recognizes emotions."},
-    {q:"What distinguishes an Intelligent Agent from a simple chatbot?", options:["A. It can only answer FAQs","B. It is autonomous, perceives its environment, makes decisions, and learns from experience","C. It only works offline","D. It requires human supervision for every action"], correct:1, explanation:"Intelligent Agents are autonomous systems that perceive their environment (e.g., via camera), make independent decisions (e.g., face recognition), act, and learn from experience."},
-    {q:"Which Generative AI tool is described as open-source with European values?", options:["A. ChatGPT","B. Sora","C. Mistral","D. Synthesia"], correct:2, explanation:"Mistral is an open-source LLM known for being fast, high-performance, and aligned with European values. It is a European alternative to ChatGPT."},
-    {q:"In the Grewal et al. (2023) framework for in-store technology, the two key dimensions are:", options:["A. Cost and Revenue","B. Efficiency and Enhancement","C. Speed and Accuracy","D. Innovation and Tradition"], correct:1, explanation:"The framework evaluates in-store tech on two dimensions: Efficiency (faster, cheaper, smoother) and Enhancement (richer, more engaging experiences). Both must be served."},
-    {q:"What is Collaborative Intelligence in the context of CRM?", options:["A. Multiple AI systems working together without humans","B. Combining human strengths (empathy, intuition) with AI strengths (speed, pattern recognition)","C. Customers collaborating with each other online","D. Using only human intelligence for customer service"], correct:1, explanation:"Collaborative Intelligence combines human strengths (empathy, context, moral values) with AI strengths (speed, volume, pattern recognition). The goal is to be an architect of hybrid intelligence."},
-    {q:"According to the course conclusions, what is a key success factor for AI in Relationship Marketing?", options:["A. Low cost of implementation","B. Maximum automation with no human intervention","C. Trust between customers and AI systems","D. Using only the latest technology"], correct:2, explanation:"Trust is identified as the key success factor for AI in Relationship Marketing. Without customer trust, AI-powered relationship tools will not be effective."},
-    {q:"Sephora's ColorIQ, which scans skin tones to match foundation shades, is best classified as:", options:["A. Mechanical AI only","B. Thinking AI (analyzes data to make recommendations)","C. Feeling AI (recognizes emotions)","D. Not AI at all"], correct:1, explanation:"Sephora ColorIQ uses Thinking AI: it analyzes skin tone data and makes intelligent product recommendations based on that analysis."},
-    {q:"Schumpeter's 'Creative Destruction' theory, applied to AI and CRM, suggests that:", options:["A. AI will completely destroy all customer relationships","B. Old CRM practices are being destroyed and replaced by new AI-powered approaches","C. Destruction of value is inevitable and cannot be prevented","D. AI has no impact on established business practices"], correct:1, explanation:"Schumpeter's Creative Destruction theory explains how capitalism constantly revolutionizes from within. Applied to CRM, AI is destroying old practices while creating new, more efficient approaches."}
+    {q:"According to Huang et al. (2023), which level of AI recognizes emotions?", options:["Mechanical AI (Level A)","Thinking AI (Level B)","Feeling AI (Level C)","General AI (Level D)"], correct:2, explanation:"Level C is Feeling AI, which recognizes emotions (e.g., sentiment analysis, facial emotion detection). Level A (Mechanical) executes tasks, and Level B (Thinking) analyzes data."},
+    {q:"Which generative AI tool is described as an open-source LLM with European values?", options:["ChatGPT","Sora","Mistral","Synthesia"], correct:2, explanation:"Mistral is described as an open-source LLM that is fast and has European values. Its limitation is fewer built-in tools compared to other options."},
+    {q:"Sephora ColorIQ, which scans skin tone to match foundation shades, is an example of which type of AI?", options:["Mechanical AI only","Thinking AI (analyzes data to make recommendations)","Feeling AI only","It does not use AI"], correct:1, explanation:"Sephora ColorIQ is an example of Thinking AI because it analyzes data (skin tone scans) to make personalized recommendations for foundation shades."},
+    {q:"According to Grewal et al. (Journal of Retailing 2023), in-store technology should be analyzed along which two dimensions?", options:["Cost and speed","Efficiency and Enhancement","Online and offline","Hardware and software"], correct:1, explanation:"Grewal et al. state that in-store technology should be analyzed along Efficiency (making processes faster, cheaper, smoother) and Enhancement (making experiences richer, more engaging, more memorable)."},
+    {q:"What is a key strength of AI in collaborative intelligence compared to humans?", options:["Empathy and moral values","Creative problem-solving and judgment","Speed, volume processing, and pattern recognition","Context understanding and intuition"], correct:2, explanation:"AI strengths include speed, volume processing, pattern recognition, 24/7 availability, consistency, data analysis at scale, and prediction. Humans excel at empathy, context understanding, intuition, and creative problem-solving."},
+    {q:"Which of the following is NOT an application of Generative AI in customer relationships mentioned in the course?", options:["Hyper-personalized email marketing","AI-generated customer service responses with memory of past conversations","Fully autonomous sales negotiations without human oversight","Voice agents for loyalty programs"], correct:2, explanation:"The course mentions hyper-personalized email marketing, AI-generated customer service responses with conversation memory, and voice agents for loyalty programs. Fully autonomous sales negotiations without human oversight is not listed."},
+    {q:"What does Schumpeter's theory of Creative Destruction imply for CRM?", options:["CRM should remain unchanged to maintain stability","Old CRM practices are being destroyed and replaced by new AI-powered approaches","AI will completely eliminate the need for human marketers","Technology has no impact on relationship marketing"], correct:1, explanation:"Schumpeter's Creative Destruction theory states that new technologies constantly revolutionize the economic structure from within, destroying old practices and creating new ones. This applies to AI's transformation of CRM."},
+    {q:"According to the course conclusions, what must relationship marketers become?", options:["Pure data scientists","Architects of hybrid intelligence","AI programmers","Traditional marketing specialists"], correct:1, explanation:"One of the four key takeaways is that relationship marketers must become 'architects of hybrid intelligence,' combining human strengths and AI strengths rather than being basic users of AI."},
+    {q:"The ITRI smart store in Taiwan uses which technologies for its 24-hour 'grab and go' concept?", options:["Only traditional barcode scanners","Face recognition and sensors","Virtual reality headsets only","Manual checkout with AI pricing"], correct:1, explanation:"The ITRI smart store in Taiwan uses face recognition and sensors for 24-hour 'grab and go' shopping, combining Mechanical and Thinking AI and approaching Feeling AI."},
+    {q:"Which of the four key conclusions states that technology must be aligned with both the customer journey AND which other journey?", options:["The competitor journey","The supplier journey","The employee journey","The shareholder journey"], correct:2, explanation:"One of the four key takeaways is that technology must be aligned with BOTH the customer journey AND the employee journey, recognizing that both perspectives matter for successful implementation."}
 ];
-let current = 0, score = 0, answered = false;
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+function shuffleOptions(q) {
+    const indices = q.options.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const shuffled = indices.map(i => q.options[i]);
+    const newCorrect = indices.indexOf(q.correct);
+    return { ...q, options: shuffled, correct: newCorrect };
+}
 function renderQ() {
-    const q = questions[current];
+    const q = shuffleOptions(questions[current]);
+    questions[current]._shuffled = q;
     document.getElementById('current-q').textContent = current + 1;
     document.getElementById('total-q').textContent = questions.length;
     document.getElementById('score').textContent = score;
     document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            <div></div>
-            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
-        </div>`;
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>';
     answered = false;
 }
 function selectOption(idx) {
     if (answered) return;
     answered = true;
-    const q = questions[current];
+    const q = questions[current]._shuffled;
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
     if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
     else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
@@ -101,15 +124,20 @@ function selectOption(idx) {
 }
 function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
 function showResult() {
+    clearInterval(timerInterval);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
     document.getElementById('quiz-area').innerHTML = '';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
+    document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's';
     const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+    document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.';
 }
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer();
 renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -8,162 +8,81 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
         .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f4a0b0; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
-        .btn-next:hover { background: #d97706; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #d63851; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #f59e0b; }
+        .back-link:hover { color: #e94560; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">DROIT — QUIZ</div>
-        <h1>Ch. 7 — L'agent commercial</h1>
+        <div class="matiere">DROIT DES AFFAIRES INTERNATIONALES &mdash; QUIZ</div>
+        <h1>Ch.7 : L'agent commercial</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelle est la définition légale de l'agent commercial selon l'art. L134-1 du Code de commerce ?",
-        options: ["Salarié chargé de représenter son employeur dans une zone géographique", "Mandataire indépendant chargé à titre permanent de négocier et, le cas échéant, de conclure des contrats au nom et pour le compte de commettants", "Distributeur exclusif qui achète et revend les produits en son nom propre", "Intermédiaire salarié responsable du développement commercial d'une région"],
-        correct: 1,
-        explanation: "Art. L134-1 C. com. : l'agent commercial est un mandataire indépendant, chargé à titre permanent de négocier et, le cas échéant, de conclure des contrats (vente, achat, location, prestation de services) au nom et pour le compte de commettants. Il peut être personne physique ou morale."
-    },
-    {
-        q: "Quel arrêt de la CJUE a élargi la notion de « négociation » pour l'agent commercial, et quelle en est la portée ?",
-        options: ["CJUE 2015 : la négociation exige désormais un pouvoir de signature du contrat", "CJUE, 4 juin 2020, Trendsetteuse / DCA : le pouvoir de modifier les prix n'est plus exigé ; informer, conseiller et discuter suffit", "Cour de cassation 2018 : la négociation requiert obligatoirement un mandat écrit", "CJUE 2012 : la négociation inclut la gestion des stocks du commettant"],
-        correct: 1,
-        explanation: "CJUE, 4 juin 2020, Trendsetteuse / DCA (C-828/18) : la Cour a élargi la notion de négociation. Il n'est plus nécessaire que l'agent ait le pouvoir de modifier les prix. Il suffit qu'il informe, conseille et discute pour favoriser la conclusion des contrats."
-    },
-    {
-        q: "Quels sont les délais de préavis applicables en cas de résiliation d'un contrat d'agence selon l'art. L134-11 ?",
-        options: ["1 mois quelle que soit l'ancienneté", "1 mois (1ère année), 3 mois (2ème année), 6 mois (3ème année et +)", "1 mois (1ère année), 2 mois (2ème année), 3 mois (3ème année et +)", "2 mois minimum, augmentant d'1 mois par année supplémentaire"],
-        correct: 2,
-        explanation: "Selon l'art. L134-11 : 1 mois de préavis pour la 1ère année, 2 mois pour la 2ème année, 3 mois pour la 3ème année et les suivantes. Les parties ne peuvent convenir de délais plus courts. Exception : pas de préavis en cas de faute grave ou force majeure."
-    },
-    {
-        q: "À combien la jurisprudence française évalue-t-elle généralement l'indemnité de cessation de contrat (art. L134-12) ?",
-        options: ["1 année de commissions", "2 années de commissions", "3 années de commissions", "6 mois de commissions"],
-        correct: 1,
-        explanation: "La jurisprudence française évalue généralement l'indemnité de cessation à 2 années de commissions. L'agent doit notifier son intention de demander cette indemnité dans un délai d'1 an après la résiliation, sous peine de perdre ce droit."
-    },
-    {
-        q: "Dans quels cas l'indemnité de cessation n'est-elle PAS due à l'agent commercial (art. L134-13) ?",
-        options: ["En cas de résiliation par le commettant après 5 ans de contrat", "En cas de faute grave de l'agent, de résiliation à l'initiative de l'agent (sauf causes imputables au commettant), ou de cession du contrat à un tiers", "En cas de faillite du commettant", "Si le chiffre d'affaires de l'agent a baissé deux années consécutives"],
-        correct: 1,
-        explanation: "L'indemnité n'est pas due dans 3 cas (art. L134-13) : 1) faute grave de l'agent, 2) résiliation à l'initiative de l'agent (sauf causes imputables au commettant, ou âge/infirmité/maladie), 3) cession du contrat à un tiers avec accord du commettant."
-    },
-    {
-        q: "Quelle est la durée maximale d'une clause de non-concurrence post-contractuelle pour un agent commercial ?",
-        options: ["1 an après la cessation du contrat", "2 ans après la cessation du contrat", "3 ans après la cessation du contrat", "5 ans après la cessation du contrat"],
-        correct: 1,
-        explanation: "Selon l'art. L134-14 C. com., la clause de non-concurrence doit être rédigée par écrit, porter sur le secteur géographique et le type de biens/services, et ne peut dépasser 2 ans après la cessation du contrat."
-    },
-    {
-        q: "Quand la commission de l'agent commercial est-elle acquise et quand est-elle payée ?",
-        options: ["Acquise à la signature du contrat avec le client, payée dans les 30 jours", "Acquise dès que le commettant (ou le tiers) a exécuté la transaction ; payée au plus tard le dernier jour du mois suivant le trimestre d'acquisition", "Acquise après livraison, payée trimestriellement selon facturation", "Acquise à la mise en demeure du client, payée annuellement"],
-        correct: 1,
-        explanation: "Art. L134-7 : la commission est acquise dès que le commettant a exécuté la transaction ou aurait dû l'exécuter (ou dès que le tiers a exécuté sa part). Elle est payée au plus tard le dernier jour du mois suivant le trimestre d'acquisition."
-    },
-    {
-        q: "Dans le cas LH Wind, pourquoi le choix de la loi californienne dans le contrat de Diego est-il défavorable à l'agent ?",
-        options: ["Car le droit californien prévoit une indemnité inférieure au droit français", "Car le droit californien ne prévoit ni préavis ni indemnité de cessation, alors que le droit français aurait donné 3 mois de préavis et ~2 ans de commissions", "Car le droit californien impose un délai de prescription plus court pour agir", "Car le droit californien interdit les clauses de non-concurrence"],
-        correct: 1,
-        explanation: "Le contrat de Diego désigne la loi californienne (art. 189), qui ne prévoit ni préavis ni indemnité de cessation. Sous droit français, Diego aurait eu droit à 3 mois de préavis (ancienneté 14 ans) et environ 2 années de commissions à titre d'indemnité, soit une somme très significative."
-    },
-    {
-        q: "Quelle directive européenne a harmonisé le statut de l'agent commercial dans l'UE ?",
-        options: ["Directive 91/250/CEE du 14 mai 1991 sur les logiciels", "Directive 86/653/CEE du 18 décembre 1986 relative aux agents commerciaux indépendants", "Directive 2000/35/CE du 29 juin 2000 sur les retards de paiement", "Directive 2005/29/CE sur les pratiques commerciales déloyales"],
-        correct: 1,
-        explanation: "La directive 86/653/CEE du 18 décembre 1986 a harmonisé le statut de l'agent commercial indépendant dans l'UE. Elle a été transposée en France par la loi du 25 juin 1991, codifiée aux art. L134-1 à L134-16 du Code de commerce."
-    },
-    {
-        q: "Un CDD d'agence commerciale continue à être exécuté après sa date d'expiration : quelle en est la conséquence juridique ?",
-        options: ["Le contrat prend fin automatiquement à expiration, l'agent perd tous ses droits", "Le CDD est transformé de plein droit en CDI à durée indéterminée", "Le commettant doit verser une indemnité de 3 mois de commission", "Le contrat est prorogé pour une durée identique à la durée initiale"],
-        correct: 1,
-        explanation: "Si un CDD d'agence commerciale est exécuté après son expiration sans qu'il soit mis fin, il est transformé de plein droit en contrat à durée indéterminée (CDI). L'agent bénéficie alors des droits à préavis et à indemnité de cessation attachés au CDI."
-    }
+    {q:"Selon l'article L134-1 du Code de commerce, l'agent commercial est juridiquement un :",options:["Salarie du commettant","Mandataire exerçant en profession independante","Sous-traitant lie par un contrat de prestation de services","Associe du commettant dans une societe en participation"],correct:1,explanation:"L'article L134-1 definit l'agent commercial comme un mandataire qui exerce en qualite de profession independante, sans etre lie par un contrat de travail, charge de negocier et conclure des contrats au nom et pour le compte de commettants."},
+    {q:"Depuis l'arret CJUE du 4 juin 2020 (affaire Trendsetteuse / DCA), est-il necessaire que l'agent commercial puisse modifier les prix pour etre qualifie comme tel ?",options:["Oui, la negociation des prix reste une condition essentielle","Non, la negociation peut consister en des informations, conseils et discussions favorisant la vente","Oui, mais uniquement dans les pays de common law","Non, mais uniquement si l'agent est une personne morale"],correct:1,explanation:"La CJUE a juge en 2020 qu'il n'est plus necessaire que l'agent ait le pouvoir de modifier les prix. La negociation peut consister en informations, conseils et discussions favorisant la conclusion de transactions."},
+    {q:"Vrai ou faux : L'agent commercial peut representer une societe concurrente de l'un de ses commettants sans l'accord de celui-ci.",options:["Vrai, la liberte commerciale le permet sans restriction","Faux, l'agent ne peut representer un concurrent qu'avec l'accord du commettant concerne","Vrai, a condition d'en informer les deux commettants","Faux, l'agent ne peut representer qu'un seul commettant a la fois"],correct:1,explanation:"L'article L134-3 du Code de commerce prevoit que l'agent peut representer de nouveaux commettants, mais ne peut representer une societe concurrente qu'avec l'accord du commettant concerne."},
+    {q:"Quel est le montant de l'indemnite de cessation de contrat generalement retenu par la jurisprudence francaise ?",options:["Six mois de commissions","Un an de commissions","Deux annees de commissions","Trois annees de commissions"],correct:2,explanation:"Bien que la loi ne fixe pas de montant, la jurisprudence francaise evalue generalement l'indemnite compensatrice a deux annees de commissions."},
+    {q:"Quel est le delai de preavis pour resilier un contrat d'agent commercial a duree indeterminee apres 5 ans de collaboration ?",options:["1 mois","2 mois","3 mois","6 mois"],correct:2,explanation:"Le preavis est de 1 mois la premiere annee, 2 mois la deuxieme et 3 mois a partir de la troisieme annee et au-dela. Apres 5 ans, le preavis est donc de 3 mois (art. L134-11)."},
+    {q:"Dans lequel de ces cas l'indemnite de cessation n'est PAS due a l'agent commercial ?",options:["Le commettant resilie le contrat pour reorganiser son reseau commercial","L'agent prend l'initiative de la resiliation en raison de son age avance","Le contrat est resilie a cause d'une faute grave de l'agent","Le commettant cree une filiale pour remplacer l'agent"],correct:2,explanation:"L'article L134-13 prevoit que l'indemnite n'est pas due en cas de faute grave de l'agent. En revanche, la reorganisation du reseau ou la creation d'une filiale par le commettant ne dispensent pas de l'indemnite."},
+    {q:"La commission de l'agent commercial est payee au plus tard le :",options:["Dernier jour du mois suivant celui ou elle a ete acquise","15 du mois suivant le trimestre au cours duquel elle a ete acquise","Dernier jour du mois suivant le trimestre au cours duquel elle a ete acquise","Dernier jour de l'annee civile en cours"],correct:2,explanation:"L'article L134-9 prevoit que la commission est payee au plus tard le dernier jour du mois suivant le trimestre au cours duquel elle a ete acquise."},
+    {q:"Quelle est la duree maximale d'une clause de non-concurrence post-contractuelle dans un contrat d'agent commercial ?",options:["6 mois","1 an","2 ans","5 ans"],correct:2,explanation:"L'article L134-14 prevoit que la clause de non-concurrence post-contractuelle ne peut exceder une duree de 2 ans apres la cessation du contrat."},
+    {q:"Scenario : Dans le cas LH Wind, BOT Inc. resilie le contrat de Volante apres 14 ans sans preavis. Le contrat designait la loi californienne. Quel est le probleme juridique principal ?",options:["La loi californienne interdit la resiliation sans motif","La loi californienne n'accorde ni preavis ni indemnite, contrairement au droit francais","Le contrat ne pouvait pas designer une loi etrangere","La loi californienne impose une indemnite de 3 ans de commissions"],correct:1,explanation:"Le probleme central est que la loi californienne, contrairement au droit francais, n'accorde ni preavis obligatoire ni indemnite de fin de contrat a l'agent commercial. Le choix de la loi applicable a des consequences majeures sur les droits de l'agent."},
+    {q:"Vrai ou faux : Un contrat d'agent commercial a duree determinee qui continue d'etre execute apres son expiration est repute transforme en contrat a duree indeterminee.",options:["Vrai, c'est la regle prevue par l'article L134-11","Faux, le contrat prend fin automatiquement a son terme","Vrai, mais uniquement avec l'accord ecrit des deux parties","Faux, un nouveau contrat doit etre signe"],correct:0,explanation:"L'article L134-11 du Code de commerce prevoit qu'un CDD d'agent commercial qui continue d'etre execute par les deux parties apres son expiration est repute transforme en CDI. Cette regle protege l'agent contre la precarite."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

@@ -8,162 +8,81 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
         .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f4a0b0; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
-        .btn-next:hover { background: #d97706; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #d63851; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #f59e0b; }
+        .back-link:hover { color: #e94560; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">DROIT — QUIZ</div>
-        <h1>Ch. 4 — Le contrat de vente internationale (CVIM)</h1>
+        <div class="matiere">DROIT DES AFFAIRES INTERNATIONALES &mdash; QUIZ</div>
+        <h1>Ch.4 : Le contrat de vente internationale (CVIM)</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelles sont les 3 obligations fondamentales du vendeur selon l'art. 30 CVIM ?",
-        options: ["Livrer, assurer et dédouaner les marchandises", "Livrer les marchandises, remettre les documents, transférer la propriété", "Emballer, livrer et garantir les marchandises pendant 2 ans", "Livrer, facturer et obtenir le paiement dans les 30 jours"],
-        correct: 1,
-        explanation: "Selon l'art. 30 CVIM, le vendeur a 3 obligations fondamentales : 1) livrer les marchandises, 2) remettre les documents relatifs aux marchandises, 3) transférer la propriété des marchandises."
-    },
-    {
-        q: "Que couvre l'obligation de conformité du vendeur selon l'art. 35 CVIM ?",
-        options: ["Uniquement la quantité et le prix indiqués dans la facture", "La quantité, la qualité, la description, l'emballage et l'aptitude à l'usage prévu", "Seulement la conformité aux normes techniques du pays du vendeur", "La conformité aux spécifications douanières et sanitaires"],
-        correct: 1,
-        explanation: "L'art. 35 CVIM impose que les marchandises correspondent en quantité, qualité et description au contrat, soient correctement emballées et conviennent à l'usage prévu (ordinaire ou spécifiquement porté à la connaissance du vendeur)."
-    },
-    {
-        q: "Que se passe-t-il si l'acheteur ne notifie pas un défaut de conformité dans un délai raisonnable après découverte ?",
-        options: ["Il doit verser une pénalité au vendeur", "Il perd le droit d'invoquer le défaut et ne peut exercer aucun recours (art. 39)", "Il conserve ses droits pendant 5 ans supplémentaires", "Il peut toujours demander la réduction du prix uniquement"],
-        correct: 1,
-        explanation: "Art. 39 §1 CVIM : si l'acheteur ne notifie pas le défaut dans un délai raisonnable après découverte (pratique jurisprudentielle : 2 à 4 semaines), il perd le droit d'invoquer le défaut et tous ses recours associés."
-    },
-    {
-        q: "Le vendeur peut-il résoudre le contrat pour non-paiement sans mise en demeure préalable ?",
-        options: ["Oui, il peut toujours résoudre immédiatement en cas de non-paiement", "Seulement si le non-paiement constitue une violation essentielle ; sinon, il doit d'abord accorder un Nachfrist", "Non, il faut toujours attendre 3 mois avant toute résolution", "Oui, si le contrat prévoit une clause pénale"],
-        correct: 1,
-        explanation: "Le vendeur ne peut résoudre directement que si le non-paiement constitue une violation essentielle (art. 64 §1 a). Sinon, il doit d'abord accorder un délai supplémentaire raisonnable (Nachfrist, art. 63), puis résoudre si ce délai expire sans résultat (art. 64 §1 b)."
-    },
-    {
-        q: "Quelles sont les 3 conditions cumulatives de la force majeure selon l'art. 79 CVIM ?",
-        options: ["Événement imprévu + dommage grave + notification immédiate", "Empêchement indépendant de la volonté + imprévisible à la conclusion + insurmontable dans ses conséquences", "Force majeure + hardship + renégociation impossible", "Grève + guerre + catastrophe naturelle uniquement"],
-        correct: 1,
-        explanation: "Les 3 conditions cumulatives de l'art. 79 CVIM : 1) empêchement indépendant de la volonté de la partie, 2) imprévisible au moment de la conclusion du contrat, 3) insurmontable dans ses conséquences. La force majeure n'exonère que des dommages-intérêts, pas des autres recours."
-    },
-    {
-        q: "Quel recours l'acheteur NE peut-il PAS exercer en cas de simple violation non essentielle ?",
-        options: ["Les dommages-intérêts (art. 74)", "La réduction du prix (art. 50)", "La résolution du contrat (art. 49)", "L'exécution forcée (art. 46 §1)"],
-        correct: 2,
-        explanation: "La résolution du contrat (art. 49) nécessite soit une violation essentielle, soit l'expiration d'un Nachfrist sans exécution. En l'absence de violation essentielle, l'acheteur peut demander l'exécution forcée, la réparation, la réduction du prix ou des dommages-intérêts."
-    },
-    {
-        q: "Selon la CVIM, où l'acheteur doit-il payer le prix en l'absence de stipulation contraire ?",
-        options: ["Au domicile de l'acheteur (prix quérable)", "Au siège du vendeur (prix portable) ou au lieu de remise si paiement contre documents", "Au lieu de livraison des marchandises", "Sur un compte bancaire neutre tiers"],
-        correct: 1,
-        explanation: "Art. 57 CVIM : le prix est payable au siège du vendeur (règle du prix portable) ou au lieu de remise des marchandises/documents si le paiement est conditionné à cette remise. Le prix est donc portable et non quérable."
-    },
-    {
-        q: "Dans le cas d'une vente de vins français vers l'Allemagne, l'acheteur notifie un goût de bouchon 1 mois après réception. Que se passe-t-il ?",
-        options: ["L'acheteur a tous ses recours car le délai de 2 ans n'est pas écoulé", "La notification dans un délai raisonnable est discutable : 1 mois peut être tardif, l'acheteur risque de perdre ses recours", "Le vendeur est automatiquement responsable car le défaut est évident", "L'acheteur peut réduire le prix mais pas résoudre le contrat"],
-        correct: 1,
-        explanation: "Selon la jurisprudence CVIM, le délai raisonnable de notification est généralement de 2 à 4 semaines. Un délai d'1 mois est susceptible d'être qualifié de tardif, ce qui ferait perdre à l'acheteur le droit d'invoquer le défaut (art. 39 §1)."
-    },
-    {
-        q: "Comment sont calculés les dommages-intérêts selon l'art. 74 CVIM ?",
-        options: ["Uniquement la valeur marchande des marchandises défectueuses", "Perte subie + gain manqué, limités à ce qui était prévisible au moment de la conclusion du contrat", "Un forfait de 10 % du prix du contrat par défaut constaté", "Selon le barème fixé par les Principes UNIDROIT"],
-        correct: 1,
-        explanation: "Art. 74 CVIM : les dommages-intérêts couvrent la perte subie et le gain manqué, mais sont limités à ce que la partie en défaut avait ou aurait dû prévoir au moment de la conclusion du contrat comme conséquence possible de la violation."
-    },
-    {
-        q: "Quelle obligation s'impose à la partie lésée concernant son propre préjudice selon l'art. 77 CVIM ?",
-        options: ["Elle doit engager immédiatement une procédure judiciaire", "Elle doit accepter les marchandises défectueuses sans réserve", "Elle a l'obligation de minimiser son dommage (obligation de mitigation)", "Elle doit constituer une provision comptable pour le litige"],
-        correct: 2,
-        explanation: "Art. 77 CVIM : la partie qui invoque la violation du contrat a l'obligation de prendre les mesures raisonnables pour limiter sa perte. Si elle néglige cette obligation, la partie en défaut peut demander une réduction des dommages-intérêts."
-    }
+    {q:"Quelles sont les trois obligations fondamentales du vendeur sous la CVIM (art. 30) ?",options:["Livrer les marchandises, remettre les documents et transferer la propriete","Livrer les marchandises, garantir le paiement et assurer le transport","Emballer les biens, fournir une assurance et payer les droits de douane","Fabriquer les biens, les livrer et en assurer la maintenance"],correct:0,explanation:"L'article 30 CVIM impose au vendeur trois obligations : livrer les marchandises, remettre les documents s'y rapportant et transferer la propriete des biens."},
+    {q:"Scenario : Des bouteilles de vin presentent un gout de bouchon. Sur quel article de la CVIM l'acheteur peut-il fonder sa reclamation pour defaut de conformite ?",options:["Article 25 (violation essentielle)","Article 35 (obligation de conformite)","Article 67 (transfert des risques)","Article 79 (force majeure)"],correct:1,explanation:"L'article 35 CVIM impose que les marchandises soient conformes en qualite, quantite et description. Des bouteilles impropres a la consommation constituent un manquement a cette obligation de conformite."},
+    {q:"Vrai ou faux : Selon la CVIM, le prix est dit 'portable', ce qui signifie que c'est au vendeur de venir chercher le paiement chez l'acheteur.",options:["Vrai, le vendeur doit se deplacer pour obtenir le paiement","Faux, c'est a l'acheteur de faire les diligences pour que le paiement parvienne au vendeur","Vrai, sauf si le contrat prevoit un paiement par virement","Faux, le paiement s'effectue toujours au lieu de livraison"],correct:1,explanation:"Le prix est dit 'portable' au sens ou c'est a l'acheteur de faire les diligences necessaires pour que le paiement parvienne au vendeur (generalement au siege social du vendeur)."},
+    {q:"En vente FOB Le Havre, a quel moment les risques sont-ils transferes a l'acheteur ?",options:["Au moment de la conclusion du contrat","Lorsque les marchandises sont chargees a bord du navire au port de depart","A l'arrivee des marchandises dans le port de destination","Au moment du paiement du prix par l'acheteur"],correct:1,explanation:"En clause FOB, le transfert des risques s'opere lorsque les marchandises sont chargees a bord du navire au port de depart convenu (ici Le Havre)."},
+    {q:"Un acheteur ne paie pas a l'echeance contractuelle de 30 jours. Ses difficultes de tresorerie constituent-elles une excuse valable au sens de la CVIM ?",options:["Oui, les difficultes financieres exonerent temporairement l'acheteur","Oui, si l'acheteur notifie le vendeur dans un delai raisonnable","Non, les difficultes de tresorerie ne constituent pas une excuse valable","Non, sauf si l'acheteur invoque le hardship"],correct:2,explanation:"Les difficultes de tresorerie de l'acheteur ne constituent pas une excuse valable au sens de la CVIM. Le non-paiement reste une violation de l'article 53, ouvrant droit aux recours du vendeur."},
+    {q:"Lequel de ces recours n'est PAS disponible pour l'acheteur en cas de violation NON essentielle du contrat ?",options:["Demande de dommages-interets (art. 74)","Reduction proportionnelle du prix (art. 50)","Livraison de remplacement (art. 46 par.2)","Execution en nature (art. 46 par.1)"],correct:2,explanation:"La livraison de remplacement (art. 46 par.2) n'est possible qu'en cas de violation essentielle. En cas de violation non essentielle, l'acheteur peut demander des dommages-interets, la reduction du prix ou l'execution en nature."},
+    {q:"Selon l'article 77 CVIM, la partie lesee a une obligation importante. Laquelle ?",options:["Notifier le defaut dans les 24 heures","Minimiser le prejudice en prenant des mesures raisonnables","Saisir obligatoirement un tribunal arbitral","Accepter une livraison de remplacement si elle est proposee"],correct:1,explanation:"L'article 77 CVIM impose a la partie lesee de prendre les mesures raisonnables pour limiter (minimiser) le prejudice resultant de la violation du contrat, sous peine de voir l'indemnisation reduite."},
+    {q:"Chez Amazon, a quel moment le contrat de vente est-il definitivement forme ?",options:["Au moment du clic sur 'Commander'","A la reception de l'e-mail de confirmation de commande","Au moment de l'expedition effective du produit","Au moment de la livraison au domicile du client"],correct:2,explanation:"Chez Amazon, la commande constitue une offre d'achat. L'e-mail de confirmation n'est qu'un accuse de reception. Le contrat se forme au moment de l'expedition effective, materialise par l'e-mail de confirmation d'expedition."},
+    {q:"Le vendeur francais Electro-France met en demeure l'acheteur espagnol TecnoSol avec un delai de 10 jours (art. 63). A l'expiration de ce delai sans paiement, le vendeur peut :",options:["Uniquement exiger le paiement du prix","Uniquement declarer le contrat resolu","Cumuler la resolution du contrat et des dommages-interets","Suspendre l'execution sans autre recours"],correct:2,explanation:"Apres expiration du delai supplementaire (Nachfrist) sans resultat, le vendeur peut declarer le contrat resolu (art. 64 par.1 b) ET reclamer des dommages-interets (art. 74). Le cumul resolution + dommages-interets est possible."},
+    {q:"Vrai ou faux : L'exoneration pour force majeure (art. 79 CVIM) dispense la partie defaillante de tous les recours, y compris la resolution du contrat.",options:["Vrai, la force majeure met fin a toutes les obligations","Faux, l'exoneration ne s'applique qu'aux dommages-interets, les autres recours restent ouverts","Vrai, a condition que l'empechement soit notifie dans les 48 heures","Faux, la force majeure n'existe pas dans la CVIM"],correct:1,explanation:"L'exoneration de l'article 79 CVIM ne porte que sur les dommages-interets. Les autres recours (resolution, reduction du prix) restent ouverts. De plus, la partie doit notifier l'empechement dans un delai raisonnable (art. 79 par.4)."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

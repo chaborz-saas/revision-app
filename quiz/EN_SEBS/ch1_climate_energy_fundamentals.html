@@ -46,13 +46,15 @@
             <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
             <h1>Chapter 1 &mdash; Climate &amp; Energy Fundamentals</h1>
         </div>
-        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span> &mdash; <span id="timer">&#9201; 00:00</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
         <div id="quiz-area"></div>
         <div class="result-card" id="result-card">
             <div style="font-size:2rem">&#127919;</div>
-            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-score"><span id="final-score">0</span>/10</div>
             <div class="result-msg" id="result-msg"></div>
+            <div id="result-time"></div>
+            <br>
             <button class="btn-restart" onclick="restartQuiz()">Restart</button>
             <br><br>
             <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
@@ -60,62 +62,26 @@
     </div>
     <script>
 const questions = [
-    { q: "What is the definition of sustainable development according to the EU (2008)?", options: ["A. Maximizing GDP growth for every generation", "B. Meeting the needs of current generations without compromising future generations' ability to meet theirs", "C. Ensuring zero carbon emissions across all industries", "D. Preserving natural environments by halting all economic activity"], correct: 1, explanation: "The EU 2008 definition emphasizes meeting current needs without compromising future generations, integrating economic, social, and environmental considerations." },
-    { q: "How many of the 9 planetary boundaries have already been exceeded?", options: ["A. 3", "B. 4", "C. 6", "D. 9"], correct: 2, explanation: "Six out of nine planetary boundaries are already exceeded: climate change, biosphere integrity, biogeochemical flows, land-system change, freshwater use, and novel entities." },
-    { q: "What is the Anthropocene?", options: ["A. A new type of renewable energy source", "B. A proposed geological epoch where human activity dominates planetary systems", "C. An international agreement on climate change", "D. A biodiversity measurement scale"], correct: 1, explanation: "The Anthropocene is a proposed geological epoch highlighting the period where human activity became the dominant influence on climate, ecosystems, and geology, popularized by Paul Crutzen." },
-    { q: "What is the correct formula relating energy, power, and time?", options: ["A. Power (kW) = Energy (kWh) x Time (h)", "B. Energy (kWh) = Power (kW) / Time (h)", "C. Energy (kWh) = Power (kW) x Time (h)", "D. Time (h) = Power (kW) x Energy (kWh)"], correct: 2, explanation: "Energy measured in kilowatt-hours equals power in kilowatts multiplied by time in hours. Power is the rate, energy is the total amount." },
-    { q: "What is the 'carbon double constraint' for fossil fuels?", options: ["A. High cost and low efficiency", "B. Scarcity of reserves and greenhouse gas emissions", "C. Geopolitical risks and transport difficulty", "D. Intermittency and storage problems"], correct: 1, explanation: "Fossil fuels face a double challenge: they are limited in reserves (scarcity) and their combustion produces greenhouse gas emissions contributing to climate change." },
-    { q: "What is the recommended priority order for addressing the energy challenge?", options: ["A. Renewable energy, then efficiency, then sobriety", "B. Efficiency, then sobriety, then renewables", "C. Sobriety, then energy efficiency, then renewable energy", "D. Nuclear energy, then fossil fuels, then renewables"], correct: 2, explanation: "The course emphasizes: first sobriety (reducing needs), then energy efficiency (doing more with less), then renewable energy. This order maximizes impact." },
-    { q: "How long does it take to form fertile soil in a temperate climate?", options: ["A. 500 years", "B. 2,000 years", "C. 16,000 years", "D. 100,000 years"], correct: 2, explanation: "On average, it takes about 16,000 years to form fertile soil in a temperate climate, highlighting the irreversibility of soil degradation." },
-    { q: "According to the 'Lake, Fish and Fishermen' parable, what determines whether a system collapses?", options: ["A. The initial number of fish in the lake", "B. The balance between human exploitation and natural regeneration capacity", "C. The depth and temperature of the lake", "D. The type of technology used by fishermen"], correct: 1, explanation: "Sustainability depends on maintaining balance between human exploitation (fishing pressure) and natural regeneration capacity. Exceeding this balance leads to collapse." }
+    {q:"According to the EU (2008), sustainable development meets current needs without compromising future generations. Which of the following is NOT one of the three pillars of sustainable development?",options:["Social","Economy","Technology","Environment"],correct:2,explanation:"The three pillars of sustainable development are Social, Economy, and Environment. Technology is not a pillar — it is a tool that supports development across all three pillars."},
+    {q:"How many of the 9 planetary boundaries defined by Rockstrom et al. have already been exceeded?",options:["3","5","9","6"],correct:3,explanation:"Six out of nine planetary boundaries are exceeded: climate change, biosphere integrity, biogeochemical flows, land-system change, freshwater use, and novel entities."},
+    {q:"Which planetary boundary is currently still within safe limits?",options:["Biosphere integrity","Land-system change","Ocean acidification","Novel entities"],correct:2,explanation:"Ocean acidification and stratospheric ozone depletion remain within safe limits. The others listed here — biosphere integrity, land-system change, and novel entities — have all been exceeded."},
+    {q:"The Anthropocene concept was popularized by Nobel Prize-winning scientist Paul Crutzen. What does it highlight?",options:["The period when renewable energy became dominant","A geological epoch where human activity dominates planetary systems","The era of industrial automation and AI","The transition from agricultural to service-based economies"],correct:1,explanation:"The Anthropocene is a proposed geological epoch highlighting the period when human activity became the dominant influence on climate, ecosystems, and geology."},
+    {q:"In the 'Lake, Fish and Fishermen' parable, which scenario leads to system collapse?",options:["Fish stocks decline but stabilize at a low level","Fish and boat numbers fluctuate in cycles","Both populations stabilize through regulation","Overfishing surpasses the lake's natural renewal capacity"],correct:3,explanation:"The third scenario describes collapse: when fishing pressure (human exploitation) exceeds the lake's natural regeneration capacity, both fish stocks and the fishing fleet collapse."},
+    {q:"What is the correct relationship between energy, power, and time?",options:["Energy (kWh) = Power (kW) x Time (h)","Power (kW) = Energy (kWh) x Time (h)","Energy (kWh) = Power (kW) / Time (h)","Time (h) = Power (kW) x Energy (kWh)"],correct:0,explanation:"Energy measured in kilowatt-hours equals power in kilowatts multiplied by time in hours. Power is like speed, energy is like distance."},
+    {q:"According to the course, how long does it take to form fertile soil in a temperate climate?",options:["500 years","2,000 years","16,000 years","100,000 years"],correct:2,explanation:"It takes approximately 16,000 years to form fertile soil in a temperate climate, which underscores why soil degradation is essentially irreversible on a human timescale."},
+    {q:"Which statement about renewable energy challenges is TRUE?",options:["Renewables have higher energy density than fossil fuels","Solar radiation on Earth equals 10,000 times human consumption, but capture remains a challenge","Wind and solar energy can already be stored at scale","Intermittency is a minor issue easily solved by current technology"],correct:1,explanation:"Solar radiation reaching the ground equals 10,000 times human consumption, but capturing and converting it efficiently at scale remains the main challenge. Intermittency is THE main problem with renewables, not a minor one."},
+    {q:"What is the recommended priority order for addressing the energy challenge?",options:["Renewable energy, then efficiency, then sobriety","Sobriety, then energy efficiency, then renewable energy","Nuclear energy, then fossil fuels, then renewables","Energy efficiency, then sobriety, then renewables"],correct:1,explanation:"The course emphasizes the priority order: Sobriety (reducing needs) first, then Energy Efficiency (doing more with less), then Renewable Energy. This sequence maximizes overall impact."},
+    {q:"A company wants to measure its environmental impact. According to the circular economy Sankey diagram, how much of global material throughput is reused or recycled compared to waste?",options:["About half is recycled, half becomes waste","9.3 Gt is reused/recycled versus 67.4 Gt of waste","Most material is recycled thanks to modern technology","25 Gt is recycled versus 50 Gt of waste"],correct:1,explanation:"The Sankey diagram shows that only 9.3 Gt is reused/recycled while 67.4 Gt becomes waste, demonstrating the urgent need for a more circular economy."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
-    else score++;
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
     </script>
     <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

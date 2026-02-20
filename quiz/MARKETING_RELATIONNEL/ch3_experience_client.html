@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.3 — L'Expérience Client</title>
+    <title>Quiz — Ch.3 — Exp&eacute;rience Client</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -42,78 +43,46 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">MARKETING RELATIONNEL — QUIZ</div>
-        <h1>Ch.3 — L'Expérience Client</h1>
+        <div class="matiere">MARKETING RELATIONNEL &mdash; QUIZ</div>
+        <h1>Ch.3 &mdash; Exp&eacute;rience Client</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9202; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Selon Lemon et Verhoef (2016), le parcours client comprend combien d'étapes ?", options:["2 étapes","3 étapes","4 étapes","5 étapes"], correct:1, explanation:"3 étapes : avant l'achat / l'achat lui-même / le post-achat. Chaque étape comprend plusieurs points de contact."},
-  {q:"Quelle est la différence entre multicanal et omnicanal ?", options:["Ce sont deux mots pour la même chose","Multicanal = plusieurs canaux séparés / Omnicanal = expérience unifiée et fluide entre tous les canaux","Multicanal = digital uniquement / Omnicanal = physique + digital","L'omnicanal est plus ancien que le multicanal"], correct:1, explanation:"Multicanal = l'entreprise est présente sur plusieurs canaux mais ils fonctionnent séparément. Omnicanal = expérience 'sans couture', le client passe d'un canal à l'autre sans rupture."},
-  {q:"Quels profils de clients (Herhausen et al.) nécessitent un parcours fluide pour être fidèles ?", options:["Les accros du physique et les pragmatiques en ligne","Les intensifs en ligne et les accros du physique","Les enthousiastes multicanaux et les O2O","Tous les profils sans exception"], correct:2, explanation:"Les enthousiastes multicanaux et les O2O (online-to-offline) sont fidèles seulement si le produit est bon ET le parcours fluide. Les autres profils sont fidèles dès que le produit satisfait."},
-  {q:"Que signifie '80% des demandes clients concernent 20% des sujets' pour les chatbots ?", options:["Les chatbots ne peuvent répondre qu'à 20% des demandes","Il y a un fort potentiel d'automatisation des réponses les plus fréquentes","80% des clients préfèrent les chatbots aux humains","Les chatbots coûtent 80% moins cher que les humains"], correct:1, explanation:"Si 80% des demandes portent sur 20% des sujets, on peut automatiser ces réponses fréquentes avec un chatbot, libérant les humains pour les cas complexes."},
-  {q:"Pourquoi les chatbots sont-ils particulièrement utiles pour les e-commerçants ?", options:["Ils remplacent totalement les équipes SAV","60% des achats en ligne se font le soir/weekend, hors heures de travail → disponibilité 24h/24","Ils sont gratuits à développer","Ils augmentent automatiquement le panier moyen"], correct:1, explanation:"60% des achats e-commerce se font en dehors des heures de bureau. Un chatbot assure une présence permanente et répond immédiatement à ces moments clés."},
-  {q:"Quels sont les deux grands types de chatbots ?", options:["Chatbot vocal et chatbot écrit","Chatbot B2B et chatbot B2C","Ruled-based chatbot et AI chatbot","Chatbot simple et chatbot complexe"], correct:2, explanation:"Ruled-based = répond selon des règles prédéfinies (arbre de décision). AI chatbot = utilise l'IA pour comprendre le langage naturel et s'adapter."},
-  {q:"Quel est l'apport du métavers pour le marketing relationnel ?", options:["Réduire les coûts de production","Personnaliser l'expérience, gamifier le parcours client, outil de différenciation","Remplacer les magasins physiques","Automatiser les commandes"], correct:1, explanation:"Le métavers offre 3 avantages relationnels : personnalisation de l'expérience, gamification du parcours client, et différenciation face aux concurrents."},
-  {q:"Qui choisit le parcours dans une stratégie omnicanale ?", options:["L'entreprise impose le parcours optimal","L'algorithme détermine le meilleur canal","Le client choisit son parcours, la marque s'adapte","Le vendeur guide toujours le client"], correct:2, explanation:"L'omnicanal part du principe que c'est le CLIENT qui choisit son parcours. La marque doit rendre service en offrant une expérience fluide quel que soit ce choix."}
+  {q:"Selon Pine & Gilmore, l\u2019\u00e9conomie de l\u2019exp\u00e9rience succ\u00e8de \u00e0 quelles \u00e9tapes ?", options:["Mati\u00e8res premi\u00e8res \u2192 Biens \u2192 Services \u2192 Exp\u00e9riences","Production \u2192 Distribution \u2192 Communication \u2192 Fid\u00e9lisation","Prix \u2192 Produit \u2192 Place \u2192 Promotion","Innovation \u2192 Croissance \u2192 Maturit\u00e9 \u2192 D\u00e9clin"], correct:0, explanation:"Pine & Gilmore (1999) d\u00e9crivent la progression de la valeur \u00e9conomique : mati\u00e8res premi\u00e8res \u2192 biens manufactur\u00e9s \u2192 services \u2192 exp\u00e9riences."},
+  {q:"Lequel N\u2019EST PAS un type d\u2019exp\u00e9rience dans le mod\u00e8le de Schmitt ?", options:["Sense (sensorielle)","Think (cognitive)","Price (tarifaire)","Relate (sociale / identitaire)"], correct:2, explanation:"Les 5 dimensions de Schmitt sont : Sense, Feel, Think, Act, Relate. \u00ab Price \u00bb n\u2019en fait pas partie."},
+  {q:"Un h\u00f4tel offre un upgrade surprise et un cadeau de bienvenue personnalis\u00e9. De quel type de strat\u00e9gie s\u2019agit-il ?", options:["Satisfaction transactionnelle","Marketing de masse","Enchantement client","Marketing segment\u00e9"], correct:2, explanation:"L\u2019enchantement client va au-del\u00e0 de la satisfaction en cr\u00e9ant une surprise positive et un effet \u00ab wow \u00bb."},
+  {q:"Vrai ou faux : le parcours client est toujours lin\u00e9aire.", options:["Vrai, les \u00e9tapes se suivent dans un ordre fixe","Faux, le parcours est non lin\u00e9aire avec des allers-retours entre les \u00e9tapes","Vrai, de la d\u00e9couverte \u00e0 l\u2019achat c\u2019est un entonnoir strict","Faux, il n\u2019y a pas de parcours identifiable"], correct:1, explanation:"Le parcours client est non lin\u00e9aire : le client peut revenir \u00e0 des \u00e9tapes pr\u00e9c\u00e9dentes, comparer, h\u00e9siter, et interagir sur plusieurs canaux."},
+  {q:"Le NPS (Net Promoter Score) classe les clients en trois cat\u00e9gories. Lesquelles ?", options:["Satisfaits, neutres, insatisfaits","Promoteurs, passifs, d\u00e9tracteurs","Fid\u00e8les, occasionnels, perdus","Fans, clients, prospects"], correct:1, explanation:"Le NPS distingue : promoteurs (9-10), passifs (7-8) et d\u00e9tracteurs (0-6)."},
+  {q:"Le CES (Customer Effort Score) mesure :", options:["Le niveau de satisfaction globale","L\u2019effort que le client a d\u00fb fournir pour r\u00e9soudre son probl\u00e8me","Le montant d\u00e9pens\u00e9 par visite","Le taux de recommandation spontan\u00e9e"], correct:1, explanation:"Le CES mesure l\u2019effort per\u00e7u par le client lors d\u2019une interaction. Moins d\u2019effort = meilleure exp\u00e9rience."},
+  {q:"Lequel de ces \u00e9l\u00e9ments N\u2019EST PAS un point de contact du parcours client ?", options:["Site web de l\u2019entreprise","Avis sur Google","Bilan comptable interne","R\u00e9seaux sociaux de la marque"], correct:2, explanation:"Le bilan comptable est un document financier interne, pas un point de contact client. Les autres sont des touchpoints."},
+  {q:"Quelle est la diff\u00e9rence entre un moment de v\u00e9rit\u00e9 et un point de contact classique ?", options:["Il n\u2019y a aucune diff\u00e9rence","Le moment de v\u00e9rit\u00e9 est un point de contact critique qui influence fortement la perception","Le moment de v\u00e9rit\u00e9 ne concerne que l\u2019apr\u00e8s-vente","Le point de contact est plus important que le moment de v\u00e9rit\u00e9"], correct:1, explanation:"Un moment de v\u00e9rit\u00e9 est un point de contact \u00e0 fort impact \u00e9motionnel qui peut basculer la perception du client (positif ou n\u00e9gatif)."},
+  {q:"La strat\u00e9gie omnicanale se distingue de la strat\u00e9gie multicanale par :", options:["Le nombre de canaux utilis\u00e9s","L\u2019int\u00e9gration et la coh\u00e9rence entre tous les canaux pour une exp\u00e9rience fluide","L\u2019utilisation exclusive du digital","La suppression des points de vente physiques"], correct:1, explanation:"L\u2019omnicanal ne se limite pas \u00e0 multiplier les canaux : il les int\u00e8gre pour offrir une exp\u00e9rience fluide et coh\u00e9rente."},
+  {q:"Pourquoi le design de l\u2019exp\u00e9rience client est-il devenu un avantage concurrentiel majeur ?", options:["Parce que les prix sont identiques partout","Parce que les produits et services se banalisent, et l\u2019exp\u00e9rience devient le principal facteur de diff\u00e9renciation","Parce que les clients ne comparent plus les offres","Parce que la technologie remplace l\u2019exp\u00e9rience humaine"], correct:1, explanation:"Dans un contexte de banalisation des offres, l\u2019exp\u00e9rience client devient le principal levier de diff\u00e9renciation et de fid\u00e9lisation."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return;
-    answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current=0,score=0,answered=false,timerInterval,seconds=0;
+function startTimer(){seconds=0;clearInterval(timerInterval);timerInterval=setInterval(()=>{seconds++;const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F2 '+m+':'+s;},1000);}
+function renderQuestion(){const q=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';document.getElementById('quiz-area').innerHTML=`<div class="question-card"><div class="question-num">Question ${current+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options">${q.options.map((opt,i)=>`<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div><div class="explanation" id="explanation">${q.explanation}</div></div><div class="nav-buttons">${current>0?'<button class="btn btn-back" onclick="prev()">&larr; Pr\u00e9c\u00e9dent</button>':'<div></div>'}<button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant &rarr;</button></div>`;answered=false;}
+function answer(idx){if(answered)return;answered=true;const q=questions[current];document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(idx===q.correct){document.getElementById('opt'+idx).classList.add('correct');score++;}else{document.getElementById('opt'+idx).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function next(){if(current<questions.length-1){current++;renderQuestion();}else{showResult();}}
+function prev(){if(current>0){current--;renderQuestion();}}
+function showResult(){clearInterval(timerInterval);document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'\uD83C\uDFC6 Excellent ! Tu ma\u00eetrises ce chapitre.':pct>=0.6?'\uD83D\uDC4D Bien ! Encore un peu de r\u00e9vision.':'\uD83D\uDCDA R\u00e9vise la synth\u00e8se et r\u00e9essaie !';}
+function restartQuiz(){current=0;score=0;answered=false;document.getElementById('result-card').style.display='none';startTimer();renderQuestion();}
+startTimer();renderQuestion();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

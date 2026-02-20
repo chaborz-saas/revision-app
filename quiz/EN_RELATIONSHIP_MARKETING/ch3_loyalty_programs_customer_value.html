@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Relationship Marketing Ch3: Loyalty Programs & Customer Value</title>
+    <title>Quiz — Relationship Marketing Ch3: Loyalty Programs & Customer Value Strategy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -33,6 +34,7 @@
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #10b981; }
@@ -42,15 +44,17 @@
 <div class="quiz-container">
     <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     <div class="quiz-header">
-        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
+        <div class="matiere">Relationship Marketing &mdash; QUIZ</div>
         <h1>Chapter 3 &mdash; Loyalty Programs &amp; Customer Value Strategy</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
@@ -59,39 +63,58 @@
 </div>
 <script>
 const questions = [
-    {q:"Which loyalty program type uses Silver, Gold, and Platinum tiers to encourage increased spending?", options:["A. Points-based rewards","B. Content marketing","C. Status-based rewards","D. Paid membership"], correct:2, explanation:"Status-based rewards use climbing tiers (Silver, Gold, Platinum) to encourage customers to increase their spending to reach higher levels with better benefits."},
-    {q:"What are the 3 main levers of loyalty programs?", options:["A. Price, Product, Promotion","B. Accelerate (Rewards), Support (Relationship), Retain (Status)","C. Acquisition, Conversion, Retention","D. Data, Technology, Automation"], correct:1, explanation:"The 3 levers are: Accelerate (using Rewards to increase spending), Support (using Relationship for brand influence), Retain (using Status to discourage downgrading)."},
-    {q:"If a company has 10,000 customers in January and 8,000 in December, what is the Customer Lifetime?", options:["A. 2 years","B. 5 years","C. 8 years","D. 10 years"], correct:1, explanation:"Attrition Rate = (10,000-8,000)/10,000 = 20%. Customer Lifetime = 1/20% = 5 years."},
-    {q:"An NPS score of 50% is generally considered:", options:["A. Very poor","B. Below average","C. Good","D. Impossible to achieve"], correct:2, explanation:"An NPS of 50% or more is considered good. NPS around 75% is excellent. NPS = % Promoters (9-10 score) minus % Detractors (0-6 score)."},
-    {q:"In the NPS framework, a customer who rates 7 or 8 is classified as:", options:["A. A Promoter","B. A Detractor","C. A Passive/Neutral","D. Not counted"], correct:2, explanation:"Scores 7-8 are Passive/Neutral: satisfied but unenthusiastic, vulnerable to competition, and difficult to convert into promoters."},
-    {q:"The CLV formula is:", options:["A. Revenue x Number of employees","B. (Customer Revenue - Acquisition & Loyalty Costs) x (1 / Attrition Rate)","C. Total sales / Total customers","D. NPS x Customer Lifetime"], correct:1, explanation:"CLV = Customer Value per year (Revenue minus Costs) multiplied by Customer Lifetime (1/Attrition Rate). It represents the total expected profit from a customer over time."},
-    {q:"What is the 'Wake-up effect' in targeting?", options:["A. Customers becoming more loyal after receiving promotions","B. Existing customers receiving acquisition promos, then noticing competitors and potentially leaving","C. New customers discovering the brand for the first time","D. Staff becoming more customer-oriented"], correct:1, explanation:"The Wake-up effect occurs when acquisition promotions intended for new customers also reach existing ones, causing them to look at the market and potentially switch to competitors."},
-    {q:"What does the Customer Orientation Score (COS) measure?", options:["A. Customer satisfaction only","B. Employee productivity","C. The perception gap between how employees and customers view service quality","D. The number of customer complaints"], correct:2, explanation:"The COS (Daniel Ray, 2014) measures the gap between employees' self-perception of service quality (avg 66%) and customers' perception (avg 42%). Benchmark: 55%."}
+    {q:"Which type of loyalty program filters committed customers through a registration price and offers a multitude of services?", options:["Points-based rewards","Content marketing","Paid membership","Status-based rewards"], correct:2, explanation:"Paid membership programs (e.g., Amazon Prime, Castorama) filter committed customers through a registration price. The multitude of services gives a strong value impression."},
+    {q:"What are the 3 main levers of loyalty programs according to the course?", options:["Price, Product, Promotion","Accelerate (Rewards), Support (Relationship), Retain (Status)","Awareness, Consideration, Purchase","Acquisition, Retention, Referral"], correct:1, explanation:"The 3 levers are: 1) Accelerate through Rewards (modify consumption habits), 2) Support through Relationship (mechanisms with strong brand loyalty influence), 3) Retain through Status (discourage customers from going backwards)."},
+    {q:"If a company has 10,000 customers in January and 9,000 in December, what is the attrition rate?", options:["1%","9%","10%","90%"], correct:2, explanation:"Attrition Rate = (10,000 - 9,000) / 10,000 = 1,000 / 10,000 = 10%. This means 10% of customers were lost during the period."},
+    {q:"On the NPS (Net Promoter Score) scale of 0 to 10, customers who score 7-8 are classified as:", options:["Promoters","Detractors","Passives/Neutrals","Advocates"], correct:2, explanation:"Scores of 7-8 are Passives/Neutrals: satisfied but unenthusiastic, vulnerable to competition, and difficult to convert. Promoters score 9-10, and Detractors score 0-6."},
+    {q:"If the attrition rate is 10% per year, what is the average customer lifetime?", options:["1 year","5 years","10 years","20 years"], correct:2, explanation:"Customer Lifetime = 1 / Attrition Rate. With a 10% attrition rate: 1 / 0.10 = 10 years average customer lifetime."},
+    {q:"According to Daniel Ray (2014), what is the average perception gap between employees and customers regarding consideration shown to customers?", options:["10 points (employees: 52%, customers: 42%)","24 points (employees: 66%, customers: 42%)","35 points (employees: 77%, customers: 42%)","5 points (employees: 47%, customers: 42%)"], correct:1, explanation:"On average, 66% of employees believe they show consideration toward customers, but only 42% of customers agree, creating a 24-point perception gap. The benchmark for acceptable COS is 55%."},
+    {q:"What is the basic principle of Customer Lifetime Value Management (CLVM)?", options:["Maximize revenue from the first transaction","You must keep a customer for a long time to recoup initial acquisition expenses","All customers have equal value","Focus exclusively on acquiring new customers"], correct:1, explanation:"The basic CLVM principle is that you must keep a customer for a long time to recoup the initial acquisition expenses. This is illustrated by the 'Elevator Company' model where initial losses are recouped over years of maintenance revenue."},
+    {q:"Which of the following is NOT listed as a limit of loyalty programs?", options:["Their cost is often underestimated","Effectiveness remains ambiguous despite millions of members","They always increase genuine brand attachment","Imitation from competitors destroys the initial competitive advantage"], correct:2, explanation:"Loyalty programs have several limits: underestimated costs, ambiguous effectiveness, competitor imitation, and uncertainty about whether customers are loyal to the program incentives or to the brand itself. They do NOT always increase genuine brand attachment."},
+    {q:"What is the 'Wake-up effect' in the context of poorly targeted acquisition?", options:["Customers become more loyal after receiving promotions","Existing customers exposed to acquisition offers start looking at the market and may switch to competitors","New customers are attracted by the brand","Employees become more aware of customer needs"], correct:1, explanation:"The 'Wake-up effect' occurs when acquisition offers also reach existing customers, causing them to 'wake up' and look at the market, potentially going to the competition. This destroys value through cannibalization and customer loss."},
+    {q:"According to the course, which 3 cultures are required for CRM to succeed?", options:["Innovation culture, sales culture, digital culture","Customer culture, strategic culture, economic culture","Data culture, engineering culture, design culture","Service culture, product culture, marketing culture"], correct:1, explanation:"The three cultures required for CRM are: 1) Customer culture (customer inspires everyone), 2) Strategic culture (optimize CLV, not immediate profit), and 3) Economic culture (some customers are more profitable than others)."}
 ];
-let current = 0, score = 0, answered = false;
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+function shuffleOptions(q) {
+    const indices = q.options.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const shuffled = indices.map(i => q.options[i]);
+    const newCorrect = indices.indexOf(q.correct);
+    return { ...q, options: shuffled, correct: newCorrect };
+}
 function renderQ() {
-    const q = questions[current];
+    const q = shuffleOptions(questions[current]);
+    questions[current]._shuffled = q;
     document.getElementById('current-q').textContent = current + 1;
     document.getElementById('total-q').textContent = questions.length;
     document.getElementById('score').textContent = score;
     document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            <div></div>
-            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
-        </div>`;
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>';
     answered = false;
 }
 function selectOption(idx) {
     if (answered) return;
     answered = true;
-    const q = questions[current];
+    const q = questions[current]._shuffled;
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
     if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
     else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
@@ -101,15 +124,20 @@ function selectOption(idx) {
 }
 function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
 function showResult() {
+    clearInterval(timerInterval);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
     document.getElementById('quiz-area').innerHTML = '';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
+    document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's';
     const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+    document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.';
 }
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer();
 renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

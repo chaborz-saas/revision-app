@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Analyse des écarts</title>
+    <title>Quiz — L'analyse des ecarts</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
-        <h1>L'analyse des écarts</h1>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
+        <h1>L'analyse des ecarts</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelle est la formule de l'écart sur prix de vente ?",
-        options: ["(Prix réel - Prix prévu) × Quantités prévues", "(Prix réel - Prix prévu) × Quantités réellement vendues", "(Quantités réelles - Quantités prévues) × Prix réel", "(CA réel - CA prévu) / Quantités réelles"],
-        correct: 1,
-        explanation: "Écart sur prix de vente = (Prix réel - Prix prévu) × Quantités réellement vendues. Un résultat positif signifie que le prix réel est supérieur au prix prévu : c'est un écart favorable."
-    },
-    {
-        q: "Un écart est dit 'favorable' lorsque :",
-        options: ["Il est positif en valeur absolue", "Il contribue positivement au résultat (recette réelle > prévue ou coût réel < prévu)", "Il dépasse 5 % de l'écart budgété", "Il est validé par la direction générale"],
-        correct: 1,
-        explanation: "Un écart favorable contribue positivement au résultat : soit la recette réelle est supérieure à la prévue, soit le coût réel est inférieur au prévu. La convention de signe est essentielle."
-    },
-    {
-        q: "Dans le cas SEUROL, quel écart représente 91 % de l'écart global défavorable ?",
-        options: ["L'écart sur prix de vente (-70 000 €)", "L'écart sur activité (-127 026 €)", "L'écart sur mix-produits (-2 437 755 €)", "L'écart sur coût de production (-43 203 €)"],
-        correct: 2,
-        explanation: "L'écart sur mix-produits (-2 437 755 €) représente 91 % de l'écart global. Il est dû à l'effondrement des ventes de tablettes (marge std = 779 €/u) au profit des enceintes bluetooth (marge std = 28 €/u)."
-    },
-    {
-        q: "La formule de l'écart sur quantités de matières consommées est :",
-        options: ["(Qr - Qp) × Pr", "(Qr - Qp) × Pp", "(Pr - Pp) × Qr", "(Pr - Pp) × Qp"],
-        correct: 1,
-        explanation: "Écart sur quantités matières = (Qr - Qp) × Pp. On valorise l'écart de quantité au coût prévu (Pp) pour isoler l'effet quantité de l'effet prix."
-    },
-    {
-        q: "La formule de l'écart sur taux horaire de MOD est :",
-        options: ["(Tr - Tp) × Sp", "(Sr - Sp) × Tr", "(Sr - Sp) × Tp", "(Tr - Tp) × Sr"],
-        correct: 1,
-        explanation: "Écart sur taux horaire MOD = (Sr - Sp) × Tr. On valorise l'écart de taux salarial à la quantité réelle d'heures travaillées (Tr) pour isoler l'effet taux."
-    },
-    {
-        q: "Qu'est-ce que le coût standard et à quoi sert-il ?",
-        options: ["Le coût moyen des 5 dernières années, utilisé comme référence comptable", "Quantité standard × Coût unitaire standard, calculé à l'avance pour mesurer les écarts (gestion par exception)", "Le coût le plus bas observé dans l'industrie, servant de benchmark", "Le coût prévisionnel validé par les commissaires aux comptes"],
-        correct: 1,
-        explanation: "Coût standard = Quantité standard × Coût unitaire standard. C'est un coût calculé à l'avance qui sert de référence pour mesurer les écarts. Il permet la gestion par exception : on n'analyse que les écarts significatifs."
-    },
-    {
-        q: "Comment calcule-t-on la marge standard unitaire moyenne (pour l'écart sur activité) ?",
-        options: ["Somme des marges standards unitaires / Nombre de produits", "Somme [Marge std unitaire(i) × Part prévisionnelle du produit(i) dans les ventes]", "CA total / Nombre d'unités vendues - Coût variable moyen", "Marge globale budgétée / Quantités totales prévues"],
-        correct: 1,
-        explanation: "Marge std moyenne = Somme [Marge std unitaire(i) × Part prévisionnelle du produit(i) dans les ventes en volume]. Elle tient compte du mix prévisionnel pour avoir une référence cohérente."
-    },
-    {
-        q: "Quelles sont les causes possibles d'un écart défavorable sur les quantités de MOD (temps) ?",
-        options: ["Augmentations légales imprévues, excès d'heures supplémentaires", "Chute de cadences, défaut d'encadrement, standards mal calculés", "Mauvais choix de fournisseur, variation des prix du marché", "Excès de rebuts, mauvais entretien des machines"],
-        correct: 1,
-        explanation: "Les écarts défavorables sur les temps de MOD peuvent venir : d'une chute de cadences, d'un défaut d'encadrement, ou de standards mal calculés. Les augmentations légales imprévues affectent plutôt le taux horaire."
-    },
-    {
-        q: "Quelle est la première étape de la démarche d'analyse des écarts en 5 étapes ?",
-        options: ["Identifier les causes et proposer des actions correctives", "Décomposer l'écart en sous-écarts (prix, volume, mix, coûts)", "Calculer l'écart global (résultat ou marge réel vs budget)", "Vérifier la cohérence : somme des sous-écarts = écart global"],
-        correct: 2,
-        explanation: "La démarche commence par calculer l'écart global (réel vs budget), puis on décompose en sous-écarts, on analyse chaque sous-écart, on vérifie la cohérence, et enfin on identifie les causes et propose des actions."
-    },
-    {
-        q: "En quoi consiste l'écart sur mix-produits ? Comment se calcule Qmix(i) ?",
-        options: ["Qmix(i) = Part réelle(i) × Total ventes prévues", "Qmix(i) = Part prévue(i) × Total ventes réelles, et l'écart = Somme [(Qr(i) - Qmix(i)) × Marge std(i)]", "Qmix(i) = Part réelle(i) × Total ventes réelles", "Qmix(i) = Marge std(i) / Marge std moyenne"],
-        correct: 1,
-        explanation: "Qmix(i) = Part prévisionnelle(i) × Total ventes réelles. L'écart sur mix = Somme [(Qr(i) - Qmix(i)) × Marge std(i)]. Il mesure l'impact du changement de composition des ventes (vente de produits plus ou moins rentables que prévu)."
-    }
+{q:"Un ecart sur cout est dit favorable lorsque :", options:["Le cout reel est superieur au cout prevu","Le cout reel est inferieur au cout prevu","Le cout reel est egal au cout prevu","Le chiffre d'affaires reel est inferieur au prevu"], correct:1, explanation:"Pour les couts, un ecart favorable signifie que le cout reel est inferieur au cout prevu (on a depense moins que prevu)."},
+{q:"Dans le cas SEUROL, quel facteur explique 91 % de l'ecart global de marge defavorable ?", options:["L'ecart sur prix de vente","L'ecart sur activite","L'ecart sur mix-produits","L'ecart sur cout de production"], correct:2, explanation:"L'ecart sur mix-produits (-2 437 755 euros) represente 91 % de l'ecart global (-2 677 984 euros), du a l'effondrement des ventes de tablettes au profit des enceintes."},
+{q:"Quelle est la formule de l'ecart sur quantites de matieres consommees ?", options:["(Qr - Qp) x Pr","(Pr - Pp) x Qr","(Qr - Qp) x Pp","(Qr x Pr) - (Qp x Pp)"], correct:2, explanation:"Ecart sur quantites consommees = (Qr - Qp) x Pp. On valorise l'ecart de quantite au prix prevu (standard)."},
+{q:"Dans l'exercice du cours, 5 000 produits ont necessite 22 000 kg pour 198 000 euros (norme : 4 kg a 8 euros/kg). Quel est l'ecart sur prix d'achat ?", options:["16 000 euros defavorable","22 000 euros defavorable","38 000 euros defavorable","10 000 euros favorable"], correct:1, explanation:"Prix reel = 198 000 / 22 000 = 9 euros/kg. Ecart sur prix = (9 - 8) x 22 000 = 22 000 euros defavorable."},
+{q:"L'ecart sur chiffre d'affaires se decompose en :", options:["Ecart sur marge et ecart sur cout","Ecart sur prix de vente et ecart sur quantites","Ecart de budget et ecart d'activite","Ecart sur rendement et ecart sur taux horaire"], correct:1, explanation:"L'ecart sur CA = ecart sur prix de vente [(Pr - Pp) x Qr] + ecart sur quantites [(Qr - Qp) x Pp]."},
+{q:"Dans le cas SEUROL, pourquoi l'ecart sur MOD est-il defavorable ?", options:["Les salaires ont ete reduits","Le temps reel par unite est de 0,2 h au lieu de 0,167 h et des heures supplementaires a +50 % ont ete necessaires","Les effectifs ont diminue","Les machines ont remplace la main d'oeuvre"], correct:1, explanation:"L'ecart est defavorable car le temps reel (0,2 h/unite) depasse le standard (0,167 h/unite), et l'excedent de 360 h a ete paye en heures supplementaires a +50 %."},
+{q:"Quelle est la premiere etape de la demarche d'analyse des ecarts en 5 etapes ?", options:["Identifier les causes et proposer des actions correctives","Decomposer l'ecart en sous-ecarts","Calculer l'ecart global entre resultat reel et resultat budgete","Verifier la coherence des sous-ecarts"], correct:2, explanation:"La premiere etape est de calculer l'ecart global entre le resultat (ou la marge) reel et le resultat budgete. La decomposition vient ensuite."},
+{q:"Dans le cas SEUROL, quel produit presente un ecart de mix massivement defavorable et pourquoi ?", options:["Les telephones, car leurs ventes ont chute","Les tablettes, car elles ont une forte marge unitaire (779,45) mais leurs ventes se sont effondrees","Les enceintes, car leur marge unitaire est trop faible","Aucun produit, le mix est reste stable"], correct:1, explanation:"Les tablettes ont une marge standard unitaire de 779,45 euros. Leur effondrement (3 100 vendues vs 6 402 prevues au mix) au profit des enceintes (faible marge de 28,45) est massivement defavorable."},
+{q:"L'ecart sur taux horaire de la MOD se calcule avec la formule :", options:["(Tr - Tp) x Sp","(Sr - Sp) x Tr","(Sr - Sp) x Tp","(Tr - Tp) x Sr"], correct:1, explanation:"Ecart sur taux horaire = (Sr - Sp) x Tr, ou Sr est le taux horaire reel, Sp le taux prevu, et Tr le temps reel."},
+{q:"Pour les charges indirectes dans le cas SEUROL, l'ecart trimestriel favorable provient principalement de :", options:["La baisse des salaires des dirigeants","La baisse des frais de R&D et d'entretien","L'augmentation de l'amortissement des machines","La hausse du loyer des batiments"], correct:1, explanation:"L'ecart favorable provient de la R&D (-3 000/mois, passant de 5 000 a 4 000) et de l'entretien (-2 000/mois, passant de 5 000 a 3 000)."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

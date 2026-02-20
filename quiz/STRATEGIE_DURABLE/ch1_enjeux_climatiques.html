@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.1 — Enjeux climatiques & empreinte carbone</title>
+    <title>Quiz — Strategie Durable Ch1: Enjeux climatiques & empreinte carbone</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,26 +15,26 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
         .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
-        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
         .btn-next { background: #27ae60; color: white; margin-left: auto; }
         .btn-next:hover { background: #1e8449; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #27ae60; }
@@ -42,65 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">STRAT&Eacute;GIE DURABLE &amp; &Eacute;THIQUE &mdash; QUIZ</div>
-        <h1>Ch.1 &mdash; Enjeux climatiques &amp; empreinte carbone</h1>
+        <div class="matiere">Strategie & Developpement Durable &mdash; QUIZ</div>
+        <h1>Chapitre 1 &mdash; Enjeux climatiques & empreinte carbone</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:3rem;">&#127793;</div>
-        <div class="result-score" id="final-score"></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
-        <button class="btn-restart" onclick="restart()">Recommencer</button>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Quel est l'objectif de r&eacute;chauffement maximal fix&eacute; par l'Accord de Paris ?", o:["+1,5 &deg;C par rapport &agrave; l'&egrave;re pr&eacute;industrielle","+2,5 &deg;C par rapport &agrave; l'&egrave;re pr&eacute;industrielle","+3 &deg;C par rapport &agrave; l'&egrave;re pr&eacute;industrielle","+4 &deg;C par rapport &agrave; l'&egrave;re pr&eacute;industrielle"], a:0, e:"L'Accord de Paris (2015) vise &agrave; limiter le r&eacute;chauffement &agrave; +1,5 &deg;C par rapport &agrave; l'&egrave;re pr&eacute;industrielle. La trajectoire actuelle nous m&egrave;ne vers +2,5 &deg;C, alors qu'avant l'Accord on se dirigeait vers +4 &deg;C."},
-  {q:"Quelle est la trajectoire actuelle de r&eacute;chauffement climatique si les politiques en place sont maintenues ?", o:["+1,5 &deg;C","+2,5 &deg;C","+4 &deg;C","+6 &deg;C"], a:1, e:"Avec les politiques actuelles, la trajectoire nous am&egrave;ne vers environ +2,5 &deg;C. C'est mieux que les +4 &deg;C pr&eacute;vus avant l'Accord de Paris, mais encore loin de l'objectif de +1,5 &deg;C."},
-  {q:"Quels sont les 3 grands leviers de la d&eacute;carbonation ?", o:["R&eacute;glementation, taxation, compensation","Sobri&eacute;t&eacute;, efficacit&eacute; &eacute;nerg&eacute;tique, &eacute;nergie bas-carbone","Innovation, croissance verte, capture carbone","Nucl&eacute;aire, &eacute;olien, solaire"], a:1, e:"Les 3 leviers fondamentaux sont : la sobri&eacute;t&eacute; (consommer moins), l'efficacit&eacute; &eacute;nerg&eacute;tique (consommer mieux) et le passage aux &eacute;nergies bas-carbone (d&eacute;carboner la production)."},
-  {q:"Qu'est-ce que l'effet de serre ?", o:["La pollution de l'air par les usines","Un ph&eacute;nom&egrave;ne naturel de r&eacute;tention de chaleur par l'atmosph&egrave;re, amplifi&eacute; par les activit&eacute;s humaines","Le trou dans la couche d'ozone","Un ph&eacute;nom&egrave;ne exclusivement caus&eacute; par l'industrie depuis 1900"], a:1, e:"L'effet de serre est un ph&eacute;nom&egrave;ne naturel essentiel &agrave; la vie (sans lui, la Terre serait &agrave; -18 &deg;C). Le probl&egrave;me est son amplification par les &eacute;missions anthropiques de gaz &agrave; effet de serre (CO2, m&eacute;thane, etc.)."},
-  {q:"Quel organisme fran&ccedil;ais produit des sc&eacute;narios de r&eacute;f&eacute;rence pour la transition &eacute;cologique ?", o:["Le GIEC","L'AIE (Agence Internationale de l'&Eacute;nergie)","L'ADEME","L'INSEE"], a:2, e:"L'ADEME (Agence de la transition &eacute;cologique) propose des sc&eacute;narios de r&eacute;f&eacute;rence pour la transition en France, d&eacute;clinant diff&eacute;rentes trajectoires de sobri&eacute;t&eacute; et de technologie."},
-  {q:"Qu'est-ce que l'empreinte carbone d'un individu mesure ?", o:["Uniquement les &eacute;missions directes de son v&eacute;hicule","L'ensemble des &eacute;missions de GES li&eacute;es &agrave; sa consommation (directes et indirectes)","Les &eacute;missions de son pays divis&eacute;es par le nombre d'habitants","La quantit&eacute; de CO2 absorb&eacute;e par les for&ecirc;ts de son territoire"], a:1, e:"L'empreinte carbone prend en compte l'ensemble des &eacute;missions de gaz &agrave; effet de serre (GES) li&eacute;es &agrave; la consommation d'un individu, y compris les &eacute;missions import&eacute;es (biens fabriqu&eacute;s &agrave; l'&eacute;tranger)."},
-  {q:"Vers quelle trajectoire de r&eacute;chauffement se dirigeait-on AVANT l'Accord de Paris ?", o:["+1,5 &deg;C","+2 &deg;C","+2,5 &deg;C","+4 &deg;C"], a:3, e:"Avant l'Accord de Paris, les projections indiquaient une trajectoire vers +4 &deg;C. L'accord a permis de ramener cette trajectoire &agrave; environ +2,5 &deg;C, mais des efforts suppl&eacute;mentaires sont n&eacute;cessaires pour atteindre +1,5 &deg;C."},
-  {q:"Parmi ces technologies, laquelle est consid&eacute;r&eacute;e comme une technologie bas-carbone cl&eacute; ?", o:["Le moteur diesel de derni&egrave;re g&eacute;n&eacute;ration","La centrale &agrave; charbon avec filtre","La pompe &agrave; chaleur","Le groupe &eacute;lectrog&egrave;ne au gaz naturel"], a:2, e:"La pompe &agrave; chaleur est une technologie bas-carbone cl&eacute; : elle utilise l'&eacute;nergie de l'environnement (air, sol, eau) pour chauffer, avec un rendement 3 &agrave; 5 fois sup&eacute;rieur &agrave; un chauffage &eacute;lectrique classique, et des &eacute;missions tr&egrave;s faibles."}
+    {q:"Quel est l'objectif de rechauffement maximal fixe par l'Accord de Paris (2015) ?",options:["+2,5 degC par rapport a l'ere preindustrielle","+1,5 degC par rapport a l'ere preindustrielle","+3 degC par rapport a l'ere preindustrielle","+2 degC par rapport a l'ere preindustrielle"],correct:1,explanation:"L'Accord de Paris vise a limiter le rechauffement a +1,5 degC par rapport a l'ere preindustrielle. La trajectoire actuelle nous mene vers +2,5 degC."},
+    {q:"Quelle serait la temperature moyenne sur Terre sans l'effet de serre naturel ?",options:["0 degC","+15 degC","-18 degC","+5 degC"],correct:2,explanation:"Sans effet de serre naturel, la Terre serait a environ -18 degC au lieu de +15 degC. C'est un phenomene naturel essentiel a la vie, amplifie par les emissions humaines."},
+    {q:"Quels sont les 3 grands leviers de la decarbonation ?",options:["Nucleaire, eolien, solaire","Sobriete, efficacite energetique, energie bas-carbone","Reglementation, taxation, compensation","Innovation, croissance verte, capture carbone"],correct:1,explanation:"Les 3 leviers fondamentaux sont : sobriete (consommer moins), efficacite energetique (consommer mieux), et energie bas-carbone (decarboner la production). Les trois doivent etre actives simultanement."},
+    {q:"Quelle est l'empreinte carbone moyenne d'un Francais par an ?",options:["Environ 2 tCO2eq","Environ 5 tCO2eq","Environ 15 tCO2eq","Environ 9 a 10 tCO2eq"],correct:3,explanation:"L'empreinte carbone moyenne d'un Francais est d'environ 9 a 10 tCO2eq par an. Pour respecter l'Accord de Paris, elle devrait etre ramenee a 2 tCO2eq d'ici 2050."},
+    {q:"Quel scenario ADEME Transition(s) 2050 repose principalement sur la sobriete ?",options:["S3 — Technologies vertes","S4 — Pari reparateur","S1 — Generation frugale","S2 — Cooperation territoriale"],correct:2,explanation:"Le scenario S1 'Generation frugale' repose sur une transformation profonde des modes de vie et une reduction forte de la consommation. La sobriete est son levier dominant."},
+    {q:"Vers quelle trajectoire de rechauffement se dirigeait-on AVANT l'Accord de Paris ?",options:["+4 degC","+2,5 degC","+1,5 degC","+3 degC"],correct:0,explanation:"Avant l'Accord de Paris, les projections indiquaient une trajectoire vers +4 degC. L'accord a ramene cette trajectoire a environ +2,5 degC, mais des efforts supplementaires sont necessaires."},
+    {q:"Quel gaz a effet de serre a un pouvoir de rechauffement environ 80 fois superieur au CO2 sur 20 ans ?",options:["Le protoxyde d'azote (N2O)","Les gaz fluores (HFC)","Le dioxyde de carbone (CO2)","Le methane (CH4)"],correct:3,explanation:"Le methane (CH4) a un pouvoir de rechauffement d'environ 80 fois celui du CO2 sur 20 ans. Ses sources principales sont l'elevage, les rizieres et les fuites de gaz naturel."},
+    {q:"Quel est le premier poste d'emission dans l'empreinte carbone d'un Francais ?",options:["L'alimentation (~20-25 %)","Le transport (~25-30 %)","Le logement (~20-25 %)","Les biens et services (~15-20 %)"],correct:1,explanation:"Le transport represente environ 25 a 30 % de l'empreinte carbone d'un Francais, principalement a cause de la voiture individuelle et de l'avion."},
+    {q:"Quel scenario ADEME parie sur des technologies de captage carbone et des ruptures technologiques ?",options:["S1 — Generation frugale","S4 — Pari reparateur","S2 — Cooperation territoriale","S3 — Technologies vertes"],correct:1,explanation:"Le scenario S4 'Pari reparateur' maintient la consommation et mise massivement sur les technologies de captage carbone et des ruptures technologiques. C'est le scenario le plus risque."},
+    {q:"Pourquoi l'electricite francaise est-elle relativement decarbonee par rapport a l'Allemagne ?",options:["Grace a l'eolien offshore","Grace aux importations d'electricite verte","Grace au parc nucleaire francais","Grace aux centrales a gaz de nouvelle generation"],correct:2,explanation:"Grace a son parc nucleaire, la production d'electricite francaise emet environ 50-60 g CO2/kWh contre 300-400 g en Allemagne. Cependant, petrole et gaz restent dominants dans les transports et le chauffage."}
 ];
-let current=0, score=0, answered=[];
-function render(){
-    const quest=questions[current];
-    document.getElementById('current-q').textContent=current+1;
-    document.getElementById('score').textContent=score;
-    document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';
-    let html='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+quest.q+'</div><div class="options">';
-    quest.o.forEach((opt,i)=>{
-        const disabled=answered[current]!==undefined?'disabled':'';
-        let cls='option';
-        if(answered[current]!==undefined){if(i===quest.a)cls+=' correct';else if(i===answered[current])cls+=' wrong';}
-        html+='<button class="'+cls+'" onclick="answer('+i+')" '+disabled+'>'+opt+'</button>';
-    });
-    html+='</div><div class="explanation" id="expl"'+(answered[current]!==undefined?' style="display:block"':'')+'>'+quest.e+'</div></div>';
-    html+='<div class="nav-buttons">';
-    if(current>0)html+='<button class="btn btn-back" onclick="prev()">&larr; Pr&eacute;c&eacute;dent</button>';
-    if(answered[current]!==undefined&&current<questions.length-1)html+='<button class="btn btn-next" onclick="next()">Suivant &rarr;</button>';
-    if(answered[current]!==undefined&&current===questions.length-1)html+='<button class="btn btn-next" onclick="showResult()">Voir le r&eacute;sultat &rarr;</button>';
-    html+='</div>';
-    document.getElementById('quiz-area').innerHTML=html;
-}
-function answer(i){if(answered[current]!==undefined)return;answered[current]=i;if(i===questions[current].a)score++;render();}
-function next(){current++;render();}
-function prev(){current--;render();}
-function showResult(){
-    document.getElementById('quiz-area').style.display='none';
-    document.getElementById('result-card').style.display='block';
-    const pct=Math.round(score/questions.length*100);
-    document.getElementById('final-score').textContent=score+'/'+questions.length;
-    document.getElementById('result-msg').textContent=pct>=75?'Excellent ! Tu ma\u00eetrises le sujet \uD83D\uDD25':pct>=50?'Pas mal ! Relis les points faibles \uD83D\uDCAA':'Continue \u00e0 r\u00e9viser, tu vas y arriver \uD83D\uDCDA';
-}
-function restart(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';render();}
-render();
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'">'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

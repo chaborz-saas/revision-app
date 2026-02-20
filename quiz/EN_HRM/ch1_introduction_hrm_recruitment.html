@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — HRM Ch 1: Introduction to HRM & Recruitment</title>
+    <title>Quiz — HRM Ch1: Introduction to HRM & Recruitment</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
-        .quiz-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-        .back-link { color: #10b981; text-decoration: none; font-size: 0.95rem; }
-        .back-link:hover { text-decoration: underline; }
-        .quiz-header { text-align: center; margin: 1.5rem 0; }
-        .matiere { color: #10b981; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-        .quiz-header h1 { font-size: 1.8rem; color: #fff; margin-top: 0.5rem; }
-        .score-display { text-align: center; color: #aaa; margin: 1rem 0; font-size: 0.95rem; }
-        .score-display span { color: #10b981; font-weight: 700; }
-        .progress-bar { background: #1a1a2e; border-radius: 10px; height: 8px; margin-bottom: 2rem; overflow: hidden; }
-        .progress-fill { background: linear-gradient(90deg, #10b981, #059669); height: 100%; border-radius: 10px; transition: width 0.4s ease; }
-        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
-        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .question-text { font-size: 1.1rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
-        .options { display: grid; gap: 0.75rem; }
-        .option { background: #16213e; border: 2px solid #233554; color: #e0e0e0; padding: 1rem; border-radius: 8px; cursor: pointer; font-size: 0.95rem; text-align: left; transition: all 0.2s ease; }
-        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
-        .option:disabled { cursor: not-allowed; }
-        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; }
-        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
-        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-left: 3px solid #10b981; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #a7f3d0; }
-        .nav-buttons { text-align: center; margin-top: 1rem; }
-        .btn { padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
-        .btn-next { background: #10b981; color: #fff; }
-        .btn-next:hover:not(:disabled) { background: #059669; }
-        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
-        .result-card { display: none; background: #1a1a2e; border-radius: 12px; padding: 3rem; text-align: center; }
-        .result-score { font-size: 3rem; font-weight: 700; color: #10b981; margin: 1rem 0; }
-        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
-        .btn-restart { background: #10b981; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; }
-        .btn-restart:hover { background: #059669; }
-        @media (max-width: 768px) { .quiz-container { padding: 1rem; } .quiz-header h1 { font-size: 1.4rem; } }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
     </style>
 </head>
 <body>
@@ -48,12 +47,14 @@
         <div class="matiere">HRM FOR MANAGERS &mdash; QUIZ</div>
         <h1>Chapter 1 &mdash; Introduction to HRM &amp; Recruitment</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">⏱ 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
@@ -62,64 +63,26 @@
 </div>
 <script>
 const questions = [
-    { q: "According to Peretti (1977), HRM is defined as all activities that enable the company to have:", options: ["A. Maximum profit through workforce exploitation", "B. The human resources it needs, in the right quantity and quality", "C. A fully automated workforce to replace manual labor", "D. The cheapest possible labor for production"], correct: 1, explanation: "Peretti's classic definition emphasizes having the right people in the right quantity and quality to meet the organization's needs." },
-    { q: "In the Ulrich Model (1997), which HR role is future-oriented and people-focused?", options: ["A. Administrative Expert", "B. Strategic Partner", "C. Change Agent", "D. Employee Champion"], correct: 2, explanation: "The Change Agent role is future-oriented and people-focused. It drives organizational transformation and cultural change." },
-    { q: "In Schein's model of corporate culture, which level represents unquestioned beliefs taken for granted?", options: ["A. Artifacts", "B. Espoused Values", "C. Organizational Structure", "D. Fundamental Assumptions"], correct: 3, explanation: "Fundamental Assumptions are the deepest level of Schein's model: deeply held, unquestioned beliefs that truly drive behavior in the organization." },
-    { q: "Which recruitment selection tool has the highest validity according to APEC data?", options: ["A. Individual interviews", "B. Personality tests", "C. Work trial / Aptitude tests", "D. Graphology analysis"], correct: 2, explanation: "Work trials and aptitude tests have 'Strong' validity ratings, while individual interviews (the most used at 92%) actually have 'Weak' validity." },
-    { q: "The 'halo effect' in recruitment refers to:", options: ["A. A candidate presenting an overly favorable image of themselves", "B. One positive or negative trait influencing the recruiter's overall impression", "C. The recruiter projecting their own values onto the candidate", "D. Drawing unwarranted conclusions from a candidate's CV"], correct: 1, explanation: "The halo effect is a recruiter-side bias where one prominent characteristic (positive or negative) colors the perception of all other qualities of the candidate." },
-    { q: "According to course data, what percentage of new permanent hires leave within a year?", options: ["A. 15%", "B. 25%", "C. 36%", "D. 50%"], correct: 2, explanation: "36% of new permanent hires leave within a year, which is why effective onboarding is critical for retention and reducing turnover costs." },
-    { q: "In Van Maanen's socialization tactics, what does the 'Investiture' approach mean?", options: ["A. The newcomer is expected to abandon their previous identity", "B. The organization values the newcomer's existing identity and skills", "C. Only the best newcomers are allowed to advance", "D. There is no fixed sequence for learning"], correct: 1, explanation: "Investiture means the organization values and affirms the newcomer's existing identity, background, and skills. Its opposite is 'Divestiture,' where newcomers must adopt new norms." },
-    { q: "Which activity is exclusively the responsibility of the operational manager (rating 5)?", options: ["A. Notification of a disciplinary measure", "B. Establishment of the compensation system", "C. Hiring decision for an employee", "D. Employee climate survey"], correct: 2, explanation: "The hiring decision (rating 5) is exclusively the manager's responsibility. Disciplinary notifications (1) and compensation system (1) are exclusively HR's. Climate surveys (2) are mainly HR." }
+    {q:"According to Ferrary (2014), the objective of HRM is to implement which dimension of the organization's strategy?", options:["The financial dimension","The technological dimension","The human dimension","The marketing dimension"], correct:2, explanation:"Ferrary defines HRM as a coherent managerial system whose objective is to implement the human dimension of the organization's strategy."},
+    {q:"Which of the following is NOT one of the purposes of HRM listed in the course?", options:["Select, retain, and train employees for strategic development","Maximize shareholder return through cost-cutting","Contribute to effective, efficient, and creative collective action","Integrate employees' individual choices while maintaining fairness"], correct:1, explanation:"Maximizing shareholder return through cost-cutting is not a stated purpose. The three purposes are: select/retain/train employees, contribute to collective action, and integrate individual choices fairly."},
+    {q:"In the activity distribution table, which activity is rated 1, meaning it is exclusively HR's responsibility?", options:["Hiring decision","Onboarding","Disciplinary notification","Training needs identification"], correct:2, explanation:"Disciplinary notification is rated 1 (exclusively HR). The hiring decision is rated 5 (exclusively manager). Onboarding and training needs identification are both rated 3 (shared)."},
+    {q:"During the period 1950-1970, which dominant theory shaped the HR function?", options:["Bureaucracy and Taylorism","Strategic Management","The Human Relations Movement","The Socio-Technical Approach"], correct:2, explanation:"The Human Relations Movement dominated from 1950 to 1970, shifting the focus toward communication and culture. The Socio-Technical Approach came in the 1960-1980 period."},
+    {q:"In Ulrich's model, the Administrative Expert role is characterized by being:", options:["Future-oriented and people-focused","Present-oriented and process-focused","Future-oriented and process-focused","Present-oriented and people-focused"], correct:1, explanation:"The Administrative Expert is present-oriented and process-focused, managing efficient HR processes with a cost-based approach."},
+    {q:"Which of the following is TRUE about Schein's three levels of corporate culture?", options:["Artifacts are the deepest and most invisible level","Espoused values are the visible symbols and rituals","Fundamental assumptions are unquestioned beliefs taken for granted","All three levels are equally easy to observe and change"], correct:2, explanation:"Fundamental assumptions are the deepest level — unquestioned beliefs taken for granted. Artifacts are the most visible level (symbols, stories, rituals), and espoused values are the stated values the organization claims to hold."},
+    {q:"According to APEC 2020 data, individual interviews are used by 92% of managers for recruitment. What is their validity rating?", options:["Strong","Medium","Weak","Very strong"], correct:2, explanation:"Despite being the most widely used selection tool (92%), individual interviews have a weak validity rating. Work trials and aptitude tests have strong validity but are used far less."},
+    {q:"A manager notices that a candidate's firm handshake makes them view the entire interview positively. Which bias is this?", options:["Social desirability bias","Projection bias","Inference effect","Halo effect"], correct:3, explanation:"The halo effect occurs when one positive or negative trait influences the recruiter's overall impression of the candidate. Social desirability is a candidate-side bias."},
+    {q:"According to the course, what percentage of new permanent hires leave within their first year?", options:["18%","25%","36%","48%"], correct:2, explanation:"The course states that 36% of new permanent hires leave within a year, highlighting the critical importance of effective onboarding programs."},
+    {q:"In Van Maanen's socialization tactics, the 'Serial' approach means:", options:["Newcomers must adopt entirely new norms and abandon their identity","Learning happens on the job without formal structure","A mentor guides the newcomer through the integration process","There is a set timetable for each onboarding phase"], correct:2, explanation:"The Serial approach means a mentor guides the newcomer. Its opposite, the Disjunctive approach, means the newcomer navigates alone without a mentor."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => {
-        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
-    });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
-    else { score++; }
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

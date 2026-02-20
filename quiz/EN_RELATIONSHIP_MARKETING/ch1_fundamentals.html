@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,11 +31,10 @@
         .btn-next { background: #10b981; color: white; margin-left: auto; }
         .btn-next:hover { background: #059669; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #10b981; }
@@ -44,15 +44,17 @@
 <div class="quiz-container">
     <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     <div class="quiz-header">
-        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
+        <div class="matiere">Relationship Marketing &mdash; QUIZ</div>
         <h1>Chapter 1 &mdash; Fundamentals, Satisfaction &amp; Customer Experience</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
@@ -61,39 +63,58 @@
 </div>
 <script>
 const questions = [
-    {q:"What is the definition of Relationship Marketing according to Morgan & Hunt (1994)?", options:["A. Focus on one-time sales and market share","B. All marketing activities aimed at establishing, developing and maintaining lasting relationships with the best customers","C. A strategy for mass advertising campaigns","D. Managing databases of customer complaints"], correct:1, explanation:"Morgan & Hunt (1994) define Relationship Marketing as all activities aimed at establishing, developing and maintaining lasting relationships with the best customers."},
-    {q:"Which is NOT a characteristic of Relationship Marketing (vs. Transactional)?", options:["A. Long-term time perspective","B. Proactive customer service","C. High customer price sensitivity","D. Focus on Customer Lifetime Value"], correct:2, explanation:"High price sensitivity is a characteristic of transactional marketing. In relationship marketing, price sensitivity is LOWER because of the established bond."},
-    {q:"According to Oliver's model, satisfaction occurs when:", options:["A. Expectations exceed experience","B. Experience equals expectations","C. Experience exceeds expectations","D. Price is lower than expected"], correct:2, explanation:"Oliver's simplified model: Satisfaction = Experience > Expectations. Dissatisfaction = Experience < Expectations. Beware of overpromising!"},
-    {q:"In the USA, 90% of car owners are satisfied with their brand. What percentage will repurchase the same brand?", options:["A. 90%","B. 65%","C. 35%","D. 10%"], correct:2, explanation:"Only 35% will repurchase the same brand despite 90% satisfaction. This demonstrates that satisfaction does NOT automatically lead to loyalty."},
-    {q:"Which type of loyalty involves a customer staying only due to high switching costs or lack of alternatives?", options:["A. Subjective loyalty","B. Relative loyalty","C. Absolute loyalty","D. Objective (passive/forced) loyalty"], correct:3, explanation:"Objective loyalty is simple observation of behavior. It may be passive (laziness, high switching costs) or forced (no alternatives). It does not imply genuine emotional attachment."},
-    {q:"What is the correct evolution of channel management?", options:["A. Omnichannel > Cross-channel > Multichannel","B. Multichannel > Cross-channel > Omnichannel","C. Cross-channel > Multichannel > Omnichannel","D. Omnichannel > Multichannel > Cross-channel"], correct:1, explanation:"The evolution goes from Multichannel (independent channels) to Cross-channel (streamlined, e.g. Click & Collect) to Omnichannel (full synergy to maximize results)."},
-    {q:"In Schmitt's 5 SEMs model, which module deals with emotional connections?", options:["A. SENSE","B. ACT","C. FEEL","D. THINK"], correct:2, explanation:"FEEL is the affective module dealing with emotional connections. SENSE = sensory, THINK = cognitive, ACT = behavioral, RELATE = social."},
-    {q:"According to the customer typology by Herhausen et al. (2019), multi-channel enthusiasts are loyal when:", options:["A. They receive the lowest price","B. They are satisfied with the product AND the journey is seamless","C. They only use one channel","D. They receive loyalty points"], correct:1, explanation:"Multi-channel enthusiasts and O2O customers require not just product satisfaction but also a seamless customer journey across channels to remain loyal."}
+    {q:"Customer Relationship Management focuses on 3 targets. Which of the following is NOT one of them?", options:["Current customers","Former customers","Competitors' employees","Potential customers (prospects)"], correct:2, explanation:"CRM focuses on current customers (retain & develop), former customers (win back), and prospects (acquire selectively). Competitors' employees are not a CRM target."},
+    {q:"According to the course, what is the key tension in Relationship Marketing strategy?", options:["Choosing between online and offline channels","Balancing acquisition of new customers and loyalty of current customers","Deciding between product quality and price","Selecting the right CRM software vendor"], correct:1, explanation:"Both acquisition and loyalty compete for the same marketing budgets. Relationship Marketing must find the right balance between the two."},
+    {q:"In the transactional vs. relational marketing comparison, which indicator of success belongs to Relationship Marketing?", options:["Turnover","Market share","Number of transactions per month","Customer Lifetime Value"], correct:3, explanation:"Relationship Marketing uses Customer Lifetime Value, customer portfolio value, and company value as success indicators, while transactional marketing focuses on turnover and market share."},
+    {q:"According to Oliver's simplified model, dissatisfaction occurs when:", options:["The customer does not complain","Experience exceeds expectations","Experience equals expectations","Expectations exceed experience"], correct:3, explanation:"Oliver's model states that dissatisfaction occurs when Experience < Expectations (i.e., expectations exceed the actual experience)."},
+    {q:"In the USA, 90% of car owners are satisfied with their brand. What percentage will buy the same brand again?", options:["90%","70%","35%","50%"], correct:2, explanation:"Only 35% of satisfied car owners will repurchase the same brand. This demonstrates that satisfaction does NOT automatically lead to loyalty."},
+    {q:"Which type of loyalty describes a customer who stays only because of high switching costs or lack of alternatives?", options:["Absolute loyalty","Objective loyalty","Relative loyalty","Subjective loyalty"], correct:1, explanation:"Objective loyalty is a simple observation of loyal behavior that may be passive (laziness, high switching costs) or forced (no alternatives). It lacks genuine emotional attachment."},
+    {q:"What does the acronym 'I-KWI-WAI-WIN' stand for in the context of today's customers?", options:["I Know What I Want And I Want It Now","I Keep Wanting Interesting Ways And Innovations Now","I Know Where I Was And I Want It New","I Keep What Is Worth And Ignore Negativity"], correct:0, explanation:"I-KWI-WAI-WIN stands for 'I Know What I Want And I Want It Now!' describing today's demanding, informed consumers who expect seamless omnichannel experiences."},
+    {q:"According to Herhausen et al. (2019), which customer types require BOTH satisfaction AND a seamless journey to remain loyal?", options:["Physical shop addicts and online pragmatics","Online intensives and online pragmatics","Physical shop addicts and multi-channel enthusiasts","Multi-channel enthusiasts and O2O (online-to-offline)"], correct:3, explanation:"Multi-channel enthusiasts and O2O customers are loyal when satisfied AND the journey is seamless, while single-channel types are loyal when satisfied with the product/service alone."},
+    {q:"Which of the following is NOT one of Schmitt's 5 Strategic Experience Modules (SEMs)?", options:["SENSE (sensory)","PRICE (economic)","FEEL (affective)","RELATE (relational/social)"], correct:1, explanation:"Schmitt's 5 SEMs are SENSE, FEEL, THINK, ACT, and RELATE. There is no 'PRICE' module in Schmitt's experiential framework."},
+    {q:"In the evolution from multichannel to omnichannel, what distinguishes omnichannel from cross-channel?", options:["Omnichannel has fewer contact points","Cross-channel is more advanced than omnichannel","Points of contact work in synergy to maximize results","Omnichannel only uses digital channels"], correct:2, explanation:"Omnichannel means points of contact are in synergy to maximize result, with physical and virtual touchpoints working together. Cross-channel merely streamlines the journey (e.g., Click & Collect)."}
 ];
-let current = 0, score = 0, answered = false;
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+function shuffleOptions(q) {
+    const indices = q.options.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const shuffled = indices.map(i => q.options[i]);
+    const newCorrect = indices.indexOf(q.correct);
+    return { ...q, options: shuffled, correct: newCorrect };
+}
 function renderQ() {
-    const q = questions[current];
+    const q = shuffleOptions(questions[current]);
+    questions[current]._shuffled = q;
     document.getElementById('current-q').textContent = current + 1;
     document.getElementById('total-q').textContent = questions.length;
     document.getElementById('score').textContent = score;
     document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            <div></div>
-            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
-        </div>`;
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>';
     answered = false;
 }
 function selectOption(idx) {
     if (answered) return;
     answered = true;
-    const q = questions[current];
+    const q = questions[current]._shuffled;
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
     if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
     else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
@@ -103,15 +124,20 @@ function selectOption(idx) {
 }
 function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
 function showResult() {
+    clearInterval(timerInterval);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
     document.getElementById('quiz-area').innerHTML = '';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
+    document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's';
     const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+    document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.';
 }
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer();
 renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

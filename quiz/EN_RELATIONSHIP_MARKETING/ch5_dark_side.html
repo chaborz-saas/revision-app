@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Relationship Marketing Ch5: The Dark Side of RM</title>
+    <title>Quiz — Relationship Marketing Ch5: The Dark Side of Relationship Marketing</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -33,6 +34,7 @@
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #10b981; }
@@ -42,15 +44,17 @@
 <div class="quiz-container">
     <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     <div class="quiz-header">
-        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
+        <div class="matiere">Relationship Marketing &mdash; QUIZ</div>
         <h1>Chapter 5 &mdash; The Dark Side of Relationship Marketing</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
@@ -59,39 +63,58 @@
 </div>
 <script>
 const questions = [
-    {q:"'CRM is essentially about Information Systems and IT.' This statement is:", options:["A. True -- CRM software is the core of CRM","B. False -- technology is only a support to strategy, marketing must drive CRM","C. True -- without IT, CRM cannot exist","D. Partially true -- IT and marketing are equally important"], correct:1, explanation:"This is Pitfall 1. Technology is only a support to strategy. The marketing department should specify what the CRM system should do. Buying software alone is not doing CRM."},
-    {q:"In the 'cake analogy' for Pitfall 2, what does the cake represent?", options:["A. The loyalty program","B. The CRM software","C. The basic quality of the product or service","D. The marketing budget"], correct:2, explanation:"The cake = basic quality of the product/service. Relationship Marketing = icing on the cake. Without a good cake (quality), the icing (RM) is useless and even irritating to customers."},
-    {q:"Why is a purely top-down RM approach (brand to customer) a pitfall?", options:["A. Because it is too expensive","B. Because customers also have things to say and policies based only on control don't work","C. Because regulators forbid it","D. Because it generates too much data"], correct:1, explanation:"Pitfall 3: Customers have feedback, claims, and suggestions. If the company does not listen, involvement stays limited. Social media amplifies this need for bidirectional communication."},
-    {q:"What happens when a relationship program focuses only on boosting immediate sales through promotions?", options:["A. Long-term customer value increases","B. Sales remain stable permanently","C. Sales spike during promos but drop immediately when they stop","D. Customer satisfaction increases permanently"], correct:2, explanation:"Pitfall 4: Promotional campaigns create short-term spikes, but sales drop when promotions end. True relationship programs build cognitive and emotional connections for sustained increasing income."},
-    {q:"The 'personalization paradox' refers to:", options:["A. Personalization being too expensive for companies","B. Consumers wanting personalized experiences but being uncomfortable with the data collection required","C. Personalized products being lower quality","D. AI being unable to deliver personalization"], correct:1, explanation:"The personalization paradox: consumers simultaneously want personalized experiences AND are uncomfortable with how much data companies collect to deliver them."},
-    {q:"Which consumer strategy involves only buying during promotional periods and never at full price?", options:["A. Program hopping","B. Serial switching","C. Cherry-picking","D. Reward gaming"], correct:2, explanation:"Cherry-picking means consumers only respond to promotions and discounts, never buying at regular prices. This reduces the profitability of RM programs."},
-    {q:"Why is 'RM is a stable activity' a pitfall?", options:["A. Because RM budgets are always changing","B. Because RM relies heavily on data, which is a constantly evolving field along with technology and consumer behavior","C. Because competitor pricing changes daily","D. Because employees frequently leave"], correct:1, explanation:"Pitfall 5: RM relies on data (constantly evolving), technology (rapidly changing), consumer behaviors (shifting), and regulations (e.g., GDPR). Strategies must be continuously adapted."},
-    {q:"According to the course, consumers' perception of GDPR is:", options:["A. Very positive -- they feel fully protected","B. Neutral -- they are not aware of GDPR","C. Negative -- they do not perceive GDPR as effective protection, finding consent forms confusing and feeling little real control","D. Mixed -- they support it but want it to be stricter"], correct:2, explanation:"Surveys show consumers do not perceive GDPR as effective protection. They find consent forms confusing, feel they have little real control, and believe companies still find ways to collect data."}
+    {q:"According to Pitfall 1, what is the common misconception about CRM?", options:["CRM is only about social media marketing","CRM is just Information Systems and IT software","CRM replaces the need for customer service","CRM only applies to B2B companies"], correct:1, explanation:"Pitfall 1 states that many managers think they are doing CRM because they committed to large CRM software (Salesforce, SAP, etc.). In reality, technology is only a support to strategy, not the strategy itself."},
+    {q:"The 'cake analogy' in Pitfall 2 illustrates that:", options:["Relationship Marketing is the entire product offering","Basic product quality is the cake, and RM is only the icing","RM can fully compensate for poor product quality","The cake represents customer loyalty"], correct:1, explanation:"The cake analogy means basic quality = the cake, and Relationship Marketing = only the icing. Without a good cake (sufficient product/service quality), the icing (RM) is meaningless."},
+    {q:"Pitfall 3 warns that RM should NOT be:", options:["Data-driven","Top-down and one-sided (brand to customer only)","Customer-focused","Long-term oriented"], correct:1, explanation:"Pitfall 3 warns that many RM programs operate one-sidedly from brand to customer. Companies must also listen to customers (comments, claims, suggestions), especially since the advent of social media. The principle is: don't just talk to customers -- learn from them!"},
+    {q:"What happens to sales when relationship programs are used purely as disguised sales promotions (Pitfall 4)?", options:["Sales increase permanently","Sales drop immediately when promotions stop","Sales remain stable regardless","Customer loyalty strengthens significantly"], correct:1, explanation:"When RM programs are merely disguised sales promotions focused on immediate sales (the 'bonus effect'), sales drop immediately when promotions stop. The challenge is finding the right balance between short-term promotions and long-term relationship building."},
+    {q:"Why is Relationship Marketing NOT a stable activity (Pitfall 5)?", options:["Because customers never change their behavior","Because RM relies heavily on data, which is a constantly evolving field with changing technologies, regulations, and behaviors","Because RM only works in specific industries","Because companies have unlimited budgets for RM"], correct:1, explanation:"RM relies heavily on data, which is constantly evolving. Technologies, consumer behaviors, regulations (e.g., GDPR), and competitive landscapes all change rapidly, requiring RM strategies to be continuously adapted."},
+    {q:"Which consumer gaming strategy involves only responding to promotions and discounts, never buying at full price?", options:["Program hopping","Serial switching","Cherry-picking","Gaming rewards"], correct:2, explanation:"Cherry-picking is when consumers only respond to promotions and discounts without ever buying at full price. Program hopping means joining multiple loyalty programs, serial switching means constantly switching to capture new-customer offers."},
+    {q:"What is the 'Personalization Paradox' described in the course?", options:["Companies want to personalize but lack the technology","Consumers want personalized experiences AND are uncomfortable with the data collection required","Personalization always leads to higher profits","Customers prefer generic experiences over personalized ones"], correct:1, explanation:"The Personalization Paradox is that consumers simultaneously want personalized experiences AND are uncomfortable with the data collection required to deliver them. They appreciate relevant recommendations but feel uneasy about how much companies know about them."},
+    {q:"According to the course, how do consumers generally perceive GDPR?", options:["As highly effective protection of their data","As not providing effective protection despite being designed to protect them","As completely unnecessary regulation","As beneficial mainly for companies"], correct:1, explanation:"Despite GDPR being designed to protect consumers, surveys show consumers do not necessarily perceive it as effective protection. Many feel consent forms are confusing, they have little real control, and the regulation has not fundamentally changed their experience."},
+    {q:"A consumer who constantly switches providers to capture new-customer offers is engaging in which gaming strategy?", options:["Cherry-picking","Program hopping","Gaming rewards","Serial switching"], correct:3, explanation:"Serial switching is constantly switching to capture new-customer offers. This is different from cherry-picking (only buying on promotion), program hopping (joining multiple programs), and gaming rewards (exploiting program rules)."},
+    {q:"Which of the following is TRUE about the relationship between RM strategy and IT, according to the pitfalls?", options:["IT should drive the CRM strategy","The marketing department should specify what the CRM system does; IT implements","CRM software automatically creates effective customer relationships","Technology is more important than strategy in RM"], correct:1, explanation:"According to Pitfall 1, the marketing department should specify what the CRM Information System should do. IT implements but does not drive the strategy. The strategy must define what is at stake, the objectives, and the actions to undertake."}
 ];
-let current = 0, score = 0, answered = false;
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+function shuffleOptions(q) {
+    const indices = q.options.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const shuffled = indices.map(i => q.options[i]);
+    const newCorrect = indices.indexOf(q.correct);
+    return { ...q, options: shuffled, correct: newCorrect };
+}
 function renderQ() {
-    const q = questions[current];
+    const q = shuffleOptions(questions[current]);
+    questions[current]._shuffled = q;
     document.getElementById('current-q').textContent = current + 1;
     document.getElementById('total-q').textContent = questions.length;
     document.getElementById('score').textContent = score;
     document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            <div></div>
-            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
-        </div>`;
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>';
     answered = false;
 }
 function selectOption(idx) {
     if (answered) return;
     answered = true;
-    const q = questions[current];
+    const q = questions[current]._shuffled;
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
     if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
     else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
@@ -101,15 +124,20 @@ function selectOption(idx) {
 }
 function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
 function showResult() {
+    clearInterval(timerInterval);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
     document.getElementById('quiz-area').innerHTML = '';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
+    document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's';
     const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+    document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.';
 }
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer();
 renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

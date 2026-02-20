@@ -3,50 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — La Rémunération</title>
+    <title>Quiz — La Remuneration</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
         .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #a0e0c0; display: none; }
+        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #10b981; color: white; margin-left: auto; }
-        .btn-next:hover { background: #059669; }
+        .btn-next { background: #f59e0b; color: white; margin-left: auto; }
+        .btn-next:hover { background: #d97706; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
         .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
-        .btn-restart:hover { background: #059669; }
+        .btn-restart { background: #f59e0b; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .btn-restart:hover { background: #d97706; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #10b981; }
+        .back-link:hover { color: #f59e0b; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">← Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">RESSOURCES HUMAINES — QUIZ</div>
-        <h1>Cours 3 — La Rémunération</h1>
+        <div class="matiere">GESTION DES RESSOURCES HUMAINES — QUIZ</div>
+        <h1>Cours 3 — La Remuneration</h1>
     </div>
 
     <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
@@ -59,137 +59,149 @@
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">← Retour a l'accueil</a>
     </div>
 </div>
 
 <script>
 const questions = [
     {
-        q: "Quelle dimension de la rémunération correspond au principe 'à travail égal, salaire égal' ?",
+        q: "En 2019, quelle part de la valeur ajoutee des entreprises representait la remuneration des salaries ?",
         options: [
-            "A. Dimension économique",
-            "B. Dimension psychologique",
-            "C. Dimension politique",
-            "D. Dimension éthique et juridique"
-        ],
-        correct: 3,
-        explanation: "La dimension éthique et juridique de la rémunération repose sur le principe 'à travail égal, salaire égal'. Elle encadre légalement les pratiques salariales pour éviter les discriminations."
-    },
-    {
-        q: "Quelle est la différence fondamentale entre l'intéressement et la participation ?",
-        options: [
-            "A. L'intéressement est obligatoire dès 50 salariés, la participation est facultative",
-            "B. L'intéressement est facultatif, la participation est obligatoire dès 50 salariés pendant 5 ans",
-            "C. Les deux sont obligatoires dès 11 salariés",
-            "D. L'intéressement est lié aux bénéfices, la participation aux résultats"
+            "42,3 %",
+            "57,6 %",
+            "65,1 %",
+            "33,8 %"
         ],
         correct: 1,
-        explanation: "L'intéressement (créé en 1959) est facultatif et lié aux résultats ou performances. La participation (créée en 1967) est obligatoire pour les entreprises de 50 salariés ou plus pendant 5 ans. Les deux sont soumises à un forfait social de 20 % pour les grandes entreprises."
+        explanation: "En 2019, la remuneration des salaries representait 57,6 % de la valeur ajoutee des entreprises, ce qui illustre son poids economique considerable."
     },
     {
-        q: "Quel levier de rémunération est privilégié pour l'objectif 'fidéliser' selon le mix-rémunération ?",
+        q: "Lequel n'est PAS une dimension de la remuneration evoquee dans le cours ?",
         options: [
-            "A. Rémunération directe élevée (salaire de base)",
-            "B. Variable individuel lié à la performance",
-            "C. Rémunération différée (stock-options) et avantages (mutuelle, logement)",
-            "D. Augmentations générales pour maintenir le climat social"
+            "La dimension psychologique (motivation)",
+            "La dimension technologique (digitalisation de la paie)",
+            "La dimension sociologique (statut social)",
+            "La dimension politique (rapport de forces)"
+        ],
+        correct: 1,
+        explanation: "Les quatre dimensions de la remuneration sont : psychologique (motivation), sociologique (statut social), politique (rapport de forces direction/partenaires sociaux) et ethique et juridique (a travail egal, salaire egal). La dimension technologique n'est pas mentionnee."
+    },
+    {
+        q: "La participation est obligatoire pour les entreprises remplissant quelle condition ?",
+        options: [
+            "Toutes les entreprises sans exception",
+            "Les entreprises de plus de 250 salaries",
+            "Les entreprises ayant employe au moins 50 salaries par mois pendant 5 ans sans interruption",
+            "Les entreprises cotees en bourse uniquement"
         ],
         correct: 2,
-        explanation: "Pour fidéliser, les entreprises misent sur la rémunération différée (stock-options, actionnariat salarié) et les avantages sociaux (mutuelle, logement). Attirer = fixe élevé ; Motiver = variable individuel ; Climat social = augmentations générales."
+        explanation: "La participation est obligatoire pour les entreprises ayant employe sans interruption au moins 50 salaries par mois au cours des 5 dernieres annees. Les entreprises plus petites peuvent la mettre en place volontairement."
     },
     {
-        q: "Comment calcule-t-on la masse salariale à partir du salaire brut ?",
+        q: "Quelle est la formule de la reserve speciale de participation (RSP) ?",
         options: [
-            "A. Masse salariale = Salaire brut uniquement",
-            "B. Masse salariale = Salaire brut + Charges patronales (25-42 %)",
-            "C. Masse salariale = Salaire net + Charges salariales",
-            "D. Masse salariale = Salaire brut - Impôts sur le revenu"
+            "RSP = Benefice x (Salaires / Chiffre d'affaires)",
+            "RSP = 1/2 x (Benefice - 5 % des capitaux propres) x (Salaires / Valeur ajoutee)",
+            "RSP = 1/3 x Benefice net x Nombre de salaries",
+            "RSP = Benefice net / Effectif moyen annuel"
         ],
         correct: 1,
-        explanation: "La masse salariale = Salaire brut + Charges patronales (entre 25 et 42 % du brut). Pour rappel : salaire net + charges sociales salariales = salaire brut. Exemple : brut 2 000 € + patronales 500-840 € = masse salariale entre 2 500 et 2 840 €."
+        explanation: "La formule legale de la reserve speciale de participation est : RSP = 1/2 x (Benefice - 5 % des capitaux propres) x (Salaires / Valeur ajoutee)."
     },
     {
-        q: "Quelle nouveauté 2025 concerne le partage de la valeur dans les petites entreprises ?",
+        q: "Dans le mix-remuneration, quel levier est le plus adapte pour fideliser les salaries ?",
         options: [
-            "A. Les entreprises de 50 à 299 salariés doivent verser une prime Macron annuelle",
-            "B. Les entreprises de 11 à 49 salariés doivent partager la valeur si le bénéfice net fiscal dépasse 1 % du CA pendant 3 années consécutives",
-            "C. Toutes les entreprises de plus de 11 salariés doivent mettre en place un PEE",
-            "D. Le forfait social est supprimé pour les PME de moins de 250 salariés"
-        ],
-        correct: 1,
-        explanation: "Depuis 2025, les entreprises de 11 à 49 salariés ont l'obligation de partager la valeur si leur bénéfice net fiscal est supérieur ou égal à 1 % du CA pendant 3 années consécutives, via intéressement, participation, abondement PEE ou prime de partage de la valeur."
-    },
-    {
-        q: "Selon Peretti, quelle tendance accompagne la recherche de compétitivité par la qualité ?",
-        options: [
-            "A. Hausse de la part variable",
-            "B. Individualisation croissante de la rémunération",
-            "C. Hausse de la part différée",
-            "D. Généralisation des augmentations collectives"
-        ],
-        correct: 1,
-        explanation: "Selon Peretti, 3 tendances : compétitivité par les coûts = hausse du variable ; compétitivité par la qualité = individualisation croissante ; impératifs du marché financier = hausse du différé."
-    },
-    {
-        q: "Quelle est la formule de la Réserve Spéciale de Participation (RSP) ?",
-        options: [
-            "A. RSP = Bénéfice x Taux de participation",
-            "B. RSP = 1/2 x (Bénéfice - 5 % Capitaux propres) x (Salaires / VA)",
-            "C. RSP = Masse salariale x 10 % x Résultat net",
-            "D. RSP = (Bénéfice - Intéressement) / Nombre de salariés"
-        ],
-        correct: 1,
-        explanation: "La formule légale de la RSP est : 1/2 x (Bénéfice net fiscal - 5 % Capitaux propres) x (Salaires / Valeur Ajoutée). Cette formule redistribue une partie des bénéfices aux salariés de façon proportionnelle à leur salaire."
-    },
-    {
-        q: "Quelles sont les 4 qualités d'une bonne politique de rémunération ?",
-        options: [
-            "A. Transparente, juste, attractive, évolutive",
-            "B. Équitable, motivante, compétitive, souple",
-            "C. Légale, uniforme, progressive, collective",
-            "D. Fixe, variable, différée, statutaire"
-        ],
-        correct: 1,
-        explanation: "Une bonne politique de rémunération doit être : Équitable (perçue comme juste), Motivante (inciter à la performance), Compétitive (attirer sur le marché du travail), et Souple (s'adapter aux évolutions). Ces 4 qualités sont à retenir absolument."
-    },
-    {
-        q: "Parmi les 4 composantes de la rémunération, laquelle correspond à l'horizon 'moyen terme' ?",
-        options: [
-            "A. La rémunération directe (salaire fixe + variable)",
-            "B. Les avantages en nature",
-            "C. Les périphériques légaux (intéressement, participation, PEE)",
-            "D. Les périphériques statutaires (mutuelle, retraite complémentaire)"
-        ],
-        correct: 2,
-        explanation: "Les périphériques légaux (intéressement, participation, PEE) correspondent à un horizon moyen terme. La rémunération directe et les avantages en nature sont à court terme. Les périphériques statutaires couvrent plusieurs horizons (CT/MT/LT)."
-    },
-    {
-        q: "Quelle dimension de la rémunération représentait 57,6 % de la valeur ajoutée des entreprises en 2019 ?",
-        options: [
-            "A. Dimension psychologique",
-            "B. Dimension sociologique",
-            "C. Dimension politique",
-            "D. Dimension économique"
+            "Une remuneration directe elevee",
+            "Des augmentations generales",
+            "Des composantes variables collectives (interessement)",
+            "La remuneration differee et les avantages croissants avec l'anciennete"
         ],
         correct: 3,
-        explanation: "La dimension économique de la rémunération : les rémunérations représentaient 57,6 % de la valeur ajoutée des entreprises en 2019. C'est un poste de coût majeur pour l'employeur et la principale source de revenus pour les salariés."
+        explanation: "Pour fideliser, l'entreprise mise sur la remuneration differee (actionnariat, stock-options) et des avantages croissants avec l'anciennete, qui creent un cout de sortie implicite pour le salarie."
+    },
+    {
+        q: "Vrai ou faux : l'interessement est un dispositif obligatoire pour toutes les entreprises de plus de 50 salaries.",
+        options: [
+            "Vrai, c'est obligatoire au meme titre que la participation",
+            "Faux, l'interessement est facultatif ; c'est la participation qui est obligatoire pour les entreprises de 50+ salaries",
+            "Vrai, mais uniquement pour les entreprises de plus de 250 salaries",
+            "Faux, ni l'interessement ni la participation ne sont obligatoires"
+        ],
+        correct: 1,
+        explanation: "L'interessement est un dispositif facultatif. C'est la participation qui est obligatoire pour les entreprises ayant employe 50 salaries ou plus par mois pendant 5 ans consecutifs."
+    },
+    {
+        q: "Selon Peretti, lorsque l'entreprise recherche la competitivite par la qualite, quelle tendance observe-t-on dans la politique de remuneration ?",
+        options: [
+            "Augmentation de la part variable",
+            "Augmentation de la part differee",
+            "Individualisation croissante des remunerations",
+            "Augmentation des augmentations generales"
+        ],
+        correct: 2,
+        explanation: "Selon Peretti, la competitivite par la qualite conduit a une individualisation croissante des remunerations, afin de reconnaitre la contribution qualitative de chaque salarie. La competitivite par les couts favorise la part variable, et les imperatifs financiers favorisent la part differee."
+    },
+    {
+        q: "Quelle est la duree de blocage des sommes placees sur un PEE (Plan d'Epargne Entreprise) ?",
+        options: [
+            "3 ans",
+            "5 ans",
+            "8 ans",
+            "10 ans"
+        ],
+        correct: 1,
+        explanation: "Les sommes placees sur un PEE sont bloquees pendant 5 ans, sauf cas de deblocage anticipe autorise par la loi (mariage, naissance, achat residence principale, etc.)."
+    },
+    {
+        q: "Lesquelles sont les quatre qualites d'une bonne politique de remuneration ?",
+        options: [
+            "Rapide, flexible, transparente, progressive",
+            "Equitable, motivante, competitive, souple",
+            "Genereuse, individualisee, automatique, stable",
+            "Simple, hierarchique, collective, uniforme"
+        ],
+        correct: 1,
+        explanation: "Une bonne politique de remuneration doit etre equitable (justice interne), motivante (lien performance-retribution), competitive (attirer et retenir les talents) et souple (s'adapter aux evolutions)."
+    },
+    {
+        q: "Un salarie percoit un salaire net de 1 600 euros. Les charges salariales s'elevent a 400 euros et les charges patronales a 600 euros. Quel est le cout total pour l'employeur (masse salariale) ?",
+        options: [
+            "2 000 euros",
+            "2 200 euros",
+            "2 600 euros",
+            "2 400 euros"
+        ],
+        correct: 2,
+        explanation: "Le calcul est : Salaire net (1 600) + Charges salariales (400) = Remuneration brute (2 000). Puis Brut (2 000) + Charges patronales (600) = Masse salariale de 2 600 euros."
     }
 ];
 
-let current = 0, score = 0, answered = false;
+let current = 0, score = 0, answered = false, shuffledQuestions = [];
+
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+}
+
+function initQuiz() {
+    shuffledQuestions = shuffle(questions);
+    current = 0; score = 0; answered = false;
+    renderQuestion();
+}
 
 function renderQuestion() {
-    const q = questions[current];
+    const q = shuffledQuestions[current];
     document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('total-q').textContent = shuffledQuestions.length;
     document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    document.getElementById('progress').style.width = ((current + 1) / shuffledQuestions.length * 100) + '%';
 
     const area = document.getElementById('quiz-area');
     area.innerHTML = `
         <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
+            <div class="question-num">Question ${current + 1} / ${shuffledQuestions.length}</div>
             <div class="question-text">${q.q}</div>
             <div class="options">
                 ${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}
@@ -197,7 +209,7 @@ function renderQuestion() {
             <div class="explanation" id="explanation">${q.explanation}</div>
         </div>
         <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
+            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Precedent</button>' : '<div></div>'}
             <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
         </div>
     `;
@@ -207,7 +219,7 @@ function renderQuestion() {
 function answer(idx) {
     if (answered) return;
     answered = true;
-    const q = questions[current];
+    const q = shuffledQuestions[current];
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
     if (idx === q.correct) {
         document.getElementById('opt' + idx).classList.add('correct');
@@ -222,7 +234,7 @@ function answer(idx) {
 }
 
 function next() {
-    if (current < questions.length - 1) { current++; renderQuestion(); }
+    if (current < shuffledQuestions.length - 1) { current++; renderQuestion(); }
     else { showResult(); }
 }
 
@@ -232,24 +244,21 @@ function prev() {
 
 function showResult() {
     document.getElementById('quiz-area').style.display = 'none';
-    const nb = document.querySelector('.nav-buttons');
-    if (nb) nb.style.display = 'none';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
+    document.getElementById('final-total').textContent = shuffledQuestions.length;
+    const pct = score / shuffledQuestions.length;
+    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de revision.' : 'Revise la synthese et reessaie !';
 }
 
 function restartQuiz() {
-    current = 0; score = 0; answered = false;
     document.getElementById('result-card').style.display = 'none';
     document.getElementById('quiz-area').style.display = 'block';
-    renderQuestion();
+    initQuiz();
 }
 
-renderQuestion();
+initQuiz();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

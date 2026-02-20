@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -33,6 +34,7 @@
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #10b981; }
@@ -42,15 +44,17 @@
 <div class="quiz-container">
     <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     <div class="quiz-header">
-        <div class="matiere">RELATIONSHIP MARKETING &mdash; QUIZ</div>
-        <h1>Chapter 2 &mdash; Complaints: Last Chance Relationships</h1>
+        <div class="matiere">Relationship Marketing &mdash; QUIZ</div>
+        <h1>Chapter 2 &mdash; Complaints &mdash; Last Chance Relationships</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
@@ -59,39 +63,58 @@
 </div>
 <script>
 const questions = [
-    {q:"What are the two categories of costs associated with customer dissatisfaction?", options:["A. Fixed costs and variable costs","B. Direct costs and opportunity costs","C. Production costs and marketing costs","D. Internal costs and external costs"], correct:1, explanation:"Direct costs include warranties, indemnities, and handling. Opportunity costs include lost revenue from departing customers and negative word-of-mouth deterring prospects."},
-    {q:"What is the correct sequence of the complaints management process?", options:["A. Analysis > Collection > Response > Corrective > Prevention","B. Response > Collection > Analysis > Prevention > Corrective","C. Collection & Centralization > Analysis & Validation > Response > Corrective Action > Progress Actions","D. Corrective Action > Response > Analysis > Collection > Prevention"], correct:2, explanation:"The 5-step process goes: 1) Collection & Centralization, 2) Analysis & Validation, 3) Providing Response, 4) Corrective Action, 5) Progress Actions (preventive)."},
-    {q:"What is the Ishikawa Diagram used for in complaints management?", options:["A. Measuring customer satisfaction scores","B. Root-cause analysis using the 6 Ms framework","C. Calculating the attrition rate","D. Designing loyalty programs"], correct:1, explanation:"The Ishikawa (Fishbone) Diagram identifies root causes across 6 domains: Man, Machine, Method, Material, Measurement, Milieu (Environment)."},
-    {q:"According to Pareto analysis applied to complaints, approximately:", options:["A. 50% of cause types generate 50% of complaints","B. 80% of cause types generate 20% of complaints","C. 20% of cause types generate 80% of complaints","D. 10% of cause types generate 90% of complaints"], correct:2, explanation:"Pareto's 80/20 rule: approximately 20% of cause types generate 80% of consequences. This helps prioritize where to invest prevention resources."},
-    {q:"A standard compensation grid is built collaboratively by which departments?", options:["A. IT, HR, and Legal","B. Sales, Finance, and Quality","C. Marketing, Production, and R&D","D. Customer Service, IT, and Logistics"], correct:1, explanation:"The compensation grid should be built jointly by Sales (customer knowledge), Finance (budget control), and Quality (standards), to ensure consistency and fairness."},
-    {q:"What percentage of dissatisfied customers typically express their complaints?", options:["A. About 50%","B. About 25%","C. About 5%","D. About 75%"], correct:2, explanation:"Only about 5% of dissatisfied customers complain spontaneously. The vast majority (95%) leave without warning, making complaints just the tip of the iceberg."},
-    {q:"What is the difference between corrective and preventive actions?", options:["A. Corrective = for future customers; Preventive = for current customers","B. Corrective = fixes the individual case; Preventive = removes root causes to prevent recurrence","C. They are the same thing","D. Corrective = financial compensation only; Preventive = apology only"], correct:1, explanation:"Corrective actions fix the specific customer's problem (exchange, refund). Preventive actions remove the root causes so similar problems do not recur for any customer."},
-    {q:"The attrition rate formula is:", options:["A. Total revenue / Number of customers","B. Number of complaints / Total customers","C. Number of customers lost over the period / Number of customers at the start","D. Number of new customers / Number of lost customers"], correct:2, explanation:"Attrition Rate = Customers lost during the period / Customers at the start of the period. It measures the rate at which a company loses its customers."}
+    {q:"According to the course, what percentage of dissatisfied customers do NOT express their opinion spontaneously?", options:["50%","75%","85%","Approximately 95%"], correct:3, explanation:"Approximately 95% of dissatisfied customers do NOT express their opinion spontaneously and many leave without warning. Visible complaints are only the tip of the iceberg."},
+    {q:"Which of the following is an 'opportunity cost' of customer dissatisfaction?", options:["Cost of warranties and indemnities","Cost of handling complaints","Lost revenue from customers who dissuade potential buyers through negative word-of-mouth","Special delivery expenses for replacement products"], correct:2, explanation:"Opportunity costs include lost revenue from customers who no longer buy and dissatisfied people who dissuade potential customers through negative word-of-mouth. Warranties and handling costs are direct costs."},
+    {q:"In the B2B complaint cost example from the course, what was the total cost of handling a single complaint?", options:["120 EUR","500 EUR","950 EUR","1,500 EUR"], correct:2, explanation:"The example calculates: internal time (120 EUR) + travel + meal invitation (30 EUR) + special delivery (500 EUR) + exceptional discount (300 EUR) = 950 EUR total for a single complaint."},
+    {q:"What is the correct order of the 5-step complaints management process?", options:["Analysis, Collection, Response, Corrective Action, Progress Actions","Collection & Centralization, Analysis & Validation, Providing Response, Corrective Action, Progress Actions","Response, Collection, Analysis, Progress Actions, Corrective Action","Corrective Action, Analysis, Collection, Response, Progress Actions"], correct:1, explanation:"The 5-step process is: 1) Collection & Centralization, 2) Analysis & Validation, 3) Providing Response, 4) Corrective Action (fix specific case), 5) Progress Actions (systemic changes to prevent recurrence)."},
+    {q:"A standard compensation grid determines the appropriate response based on which two factors?", options:["Product type and complaint channel","Customer type (strategic/important/standard) and criticality (low/medium/high)","Time of year and complaint volume","Employee seniority and customer age"], correct:1, explanation:"The compensation grid uses customer type (strategic, important, standard) and criticality (low, medium, high) to determine the right response. It should be built collaboratively by Sales, Finance, and Quality departments."},
+    {q:"What is the difference between corrective actions and preventive actions in complaints management?", options:["Corrective actions prevent future problems; preventive actions fix current ones","Corrective actions fix the specific customer's problem; preventive actions remove root causes to prevent recurrence","Corrective actions are cheaper; preventive actions are more expensive","There is no difference; they are the same thing"], correct:1, explanation:"Corrective actions fix the particular case of the complaining customer (e.g., product exchange). Preventive actions remove root causes of dissatisfaction to prevent similar problems for all customers."},
+    {q:"The Ishikawa Diagram (Fishbone) identifies possible causes in 6 standard domains called 'the 6 Ms.' Which of the following is NOT one of them?", options:["Man (people, skills)","Money (budget, finances)","Machine (equipment, tools)","Milieu/Environment (workplace, conditions)"], correct:1, explanation:"The 6 Ms are: Man, Machine, Method, Material, Measurement, and Milieu/Environment. 'Money' is not one of the standard domains in the Ishikawa diagram."},
+    {q:"According to the Pareto analysis example in the course, how many cause types out of 7 accounted for 75% of all complaints?", options:["1 cause type","2 cause types","4 cause types","5 cause types"], correct:1, explanation:"In the example, 2 cause types out of 7 (29%) accounted for 75% of all complaints (Delivery and Delay issues). Focusing preventive actions on these two areas yields the highest impact."},
+    {q:"What is the formula for the Attrition Rate?", options:["Number of new customers / Total customers","Number of customers lost / Number of customers at the start of the period","Total complaints / Total customers","Revenue lost / Total revenue"], correct:1, explanation:"Attrition Rate = Number of customers lost over the period / Number of customers at the start of the period."},
+    {q:"For a high-criticality complaint from a strategic customer, what compensation does the standard grid recommend?", options:["A simple apology email","Oral apology by account manager","New product giveaways only","Visit of account manager + Letter from CEO + Discount on next order"], correct:3, explanation:"For strategic customers with high-criticality complaints, the grid recommends the highest level of response: visit of account manager + letter from CEO + discount on next order."}
 ];
-let current = 0, score = 0, answered = false;
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+function shuffleOptions(q) {
+    const indices = q.options.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const shuffled = indices.map(i => q.options[i]);
+    const newCorrect = indices.indexOf(q.correct);
+    return { ...q, options: shuffled, correct: newCorrect };
+}
 function renderQ() {
-    const q = questions[current];
+    const q = shuffleOptions(questions[current]);
+    questions[current]._shuffled = q;
     document.getElementById('current-q').textContent = current + 1;
     document.getElementById('total-q').textContent = questions.length;
     document.getElementById('score').textContent = score;
     document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="selectOption(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            <div></div>
-            <button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button>
-        </div>`;
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>';
     answered = false;
 }
 function selectOption(idx) {
     if (answered) return;
     answered = true;
-    const q = questions[current];
+    const q = questions[current]._shuffled;
     document.querySelectorAll('.option').forEach(b => b.disabled = true);
     if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
     else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
@@ -101,15 +124,20 @@ function selectOption(idx) {
 }
 function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
 function showResult() {
+    clearInterval(timerInterval);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
     document.getElementById('quiz-area').innerHTML = '';
     const rc = document.getElementById('result-card');
     rc.style.display = 'block';
     document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
+    document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's';
     const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! You have mastered this chapter.' : pct >= 0.6 ? 'Good job! A little more revision and you will nail it.' : 'Keep studying! Review the summary and try again.';
+    document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.';
 }
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQ(); }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer();
 renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

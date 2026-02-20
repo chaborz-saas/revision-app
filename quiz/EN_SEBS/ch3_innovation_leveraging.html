@@ -46,13 +46,15 @@
             <div class="matiere">SUSTAINABLE &amp; ETHICAL BUSINESS STRATEGY &mdash; QUIZ</div>
             <h1>Chapter 3 &mdash; Innovation &amp; Leveraging</h1>
         </div>
-        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+        <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span> &mdash; <span id="timer">&#9201; 00:00</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
         <div id="quiz-area"></div>
         <div class="result-card" id="result-card">
             <div style="font-size:2rem">&#127919;</div>
-            <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+            <div class="result-score"><span id="final-score">0</span>/10</div>
             <div class="result-msg" id="result-msg"></div>
+            <div id="result-time"></div>
+            <br>
             <button class="btn-restart" onclick="restartQuiz()">Restart</button>
             <br><br>
             <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
@@ -60,62 +62,26 @@
     </div>
     <script>
 const questions = [
-    { q: "What are the four traditional categories of innovation?", options: ["A. Technical, financial, marketing, operational", "B. Product, process, organizational, market", "C. Digital, analog, hybrid, platform", "D. Incremental, radical, disruptive, sustaining"], correct: 1, explanation: "The four traditional categories are: Product innovation (new goods/services), Process innovation (improved production/delivery), Organizational innovation (changed structures/management), and Market innovation (new markets/positioning)." },
-    { q: "According to the course, what is the real driver of competitiveness?", options: ["A. Having the latest technology", "B. Reducing production costs", "C. Business model innovation", "D. Aggressive marketing strategies"], correct: 2, explanation: "The course emphasizes that competitiveness = business model innovation. Real innovation that works requires boldness to change business models, not merely improve products or processes." },
-    { q: "What was BlaBlaCar's real innovation?", options: ["A. Inventing geolocation technology", "B. Creating a new website design", "C. The business model of peer-to-peer carpooling", "D. Developing a new type of vehicle"], correct: 2, explanation: "BlaBlaCar's technology (website + geolocation) was not new. The real innovation was the business model of carpooling between individuals, creating a new collaborative mobility market." },
-    { q: "What is 'prosumption'?", options: ["A. Professional consumption by businesses", "B. People being both producers and consumers simultaneously", "C. The process of consuming before producing", "D. A type of industrial mass production"], correct: 1, explanation: "Prosumption (or prosumerisation) means people are both producers and consumers at the same time, enabled by digital tools like social media, 3D printing, YouTube, and e-commerce platforms." },
-    { q: "What percentage of clothing purchases by value is second-hand in France?", options: ["A. 5.2%", "B. 10.9%", "C. 16.3%", "D. 25.1%"], correct: 1, explanation: "Second-hand represents 10.9% of total clothing purchases by value in France. Among 18-34 year-olds, the figure is even higher at 16.3%. Vinted is now the leading clothing seller by volume." },
-    { q: "What are the three waves of civilization according to Toffler?", options: ["A. Stone Age, Bronze Age, Iron Age", "B. Agricultural, Industrial, Digital/Information", "C. Feudal, Capitalist, Socialist", "D. Local, National, Global"], correct: 1, explanation: "Toffler's Three Waves: 1st Wave = Agricultural Age (land, manual labor), 2nd Wave = Industrial Age (machines, factories, mass production), 3rd Wave = Digital/Information Age (information, social capital, platforms)." },
-    { q: "What was Decathlon's key innovation?", options: ["A. Inventing new sports equipment technology", "B. Vertical integration — design, produce, and sell own brands under one roof", "C. Creating an online-only sales platform", "D. Partnering with luxury sports brands"], correct: 1, explanation: "Decathlon's innovation was vertical integration: designing, producing, and selling its own brands (Quechua, Domyos, etc.) under one roof, reducing prices and democratizing access to sport." },
-    { q: "In the 3rd Wave, what is the key organisational form?", options: ["A. Corporations", "B. Government agencies", "C. Platforms", "D. Family businesses"], correct: 2, explanation: "In the 3rd Wave (Digital/Information Age), platforms (like Uber, Airbnb, YouTube) are the key organisational form. They connect supply and demand through digital infrastructure, with social capital as the key resource." }
+    {q:"According to the course, what is the real driver of competitiveness?",options:["Having the latest technology","Reducing production costs","Business model innovation","Aggressive marketing strategies"],correct:2,explanation:"The course emphasizes that competitiveness = business model innovation. Real innovation that works requires boldness to change business models, not merely improve products or processes."},
+    {q:"Which of the following is NOT one of the four traditional categories of innovation?",options:["Product innovation","Process innovation","Financial innovation","Market innovation"],correct:2,explanation:"The four traditional categories are Product, Process, Organizational, and Market innovation. Financial innovation is not listed as one of the four categories used to study how companies evolve and create value."},
+    {q:"What was BlaBlaCar's real innovation according to the course?",options:["Inventing geolocation technology","Creating a new website design framework","The business model of peer-to-peer carpooling","Developing autonomous vehicles"],correct:2,explanation:"BlaBlaCar's technology (website + geolocation) was not new. The real innovation was the business model of carpooling between individuals — connecting drivers and passengers to share travel costs on long-distance trips."},
+    {q:"What is prosumption (prosumerisation)?",options:["Professional consumption patterns in B2B markets","People being both producers and consumers simultaneously","A production method that reduces waste","Consumer protection against unfair pricing"],correct:1,explanation:"Prosumption means people are both producers and consumers at the same time, enabled by digital tools like social media, 3D printing, YouTube, and e-commerce platforms."},
+    {q:"A young entrepreneur sells handmade crafts on Etsy while also buying supplies from other sellers on the same platform. This best illustrates which concept?",options:["Vertical integration","The Jevons Paradox","Prosumption","Market innovation"],correct:2,explanation:"This is a classic example of prosumption — the entrepreneur is simultaneously a producer (selling crafts) and a consumer (buying supplies) on the same platform, which is a hallmark of the 3rd Wave digital economy."},
+    {q:"What percentage of total clothing purchases by value in France is second-hand?",options:["5.2%","10.9%","16.3%","25.1%"],correct:1,explanation:"Second-hand represents 10.9% of total clothing purchases by value in France. Among 18-34 year-olds, the figure is even higher at 16.3%. Vinted has become the leading clothing seller by volume."},
+    {q:"According to Toffler, what is the key resource of the 3rd Wave (Digital/Information Age)?",options:["Land and manual labor","Machines and factories","Information and social capital","Oil and natural gas"],correct:2,explanation:"In the 3rd Wave, information and social capital (connections, data, trust) are the key resources, replacing land (1st Wave) and machines/factories (2nd Wave). Platforms like Uber and Airbnb exemplify this shift."},
+    {q:"What was Decathlon's key innovation?",options:["Inventing new sports equipment technology","Vertical integration — designing, producing, and selling own brands under one roof","Creating an online-only sales model","Partnering with luxury sports brands for distribution"],correct:1,explanation:"Decathlon's innovation was vertical integration: designing, producing, and selling its own brands (Quechua, Domyos, etc.) under one roof. This reduced prices and democratized access to sport globally."},
+    {q:"In the platform economy, platforms create value primarily through which mechanism?",options:["Owning all means of production","Network effects — the more users, the more valuable the platform becomes","Government subsidies and tax incentives","Monopolizing raw material supply chains"],correct:1,explanation:"Platforms like Uber, Airbnb, and Vinted do not own the means of production. They create value through network effects — the more users on the platform, the more valuable it becomes for all participants."},
+    {q:"SOJO is cited as an example of circular economy innovation. What service does it provide?",options:["Food waste composting for restaurants","Clothing repairs and alterations connecting consumers with local tailors","Electric vehicle battery recycling","Solar panel installation for households"],correct:1,explanation:"SOJO connects consumers with local tailors through an app for clothing repairs and alterations. It extends the lifespan of garments and reduces textile waste, exemplifying the circular economy principle of reuse."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => { html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>'; });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) document.getElementById('opt' + idx).classList.add('wrong');
-    else score++;
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
     </script>
     <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

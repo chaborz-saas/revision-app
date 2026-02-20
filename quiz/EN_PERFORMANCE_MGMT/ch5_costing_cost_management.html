@@ -1,84 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz — Performance Management Ch 5: Costing and Cost Management</title>
-<style>
-*{margin:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
-.container{max-width:750px;margin:0 auto}
-.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
-.back-link:hover{color:#10b981}
-.quiz-header{text-align:center;margin-bottom:2rem}
-.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
-.quiz-header p{color:#aaa;font-size:.9rem}
-.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
-.score-bar span{font-size:.95rem}
-.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
-.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
-.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
-.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
-.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
-.options{display:flex;flex-direction:column;gap:.6rem}
-.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
-.option:hover:not(:disabled){border-color:#10b981;background:#162229}
-.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
-.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
-.option:disabled{cursor:default}
-.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
-.nav-buttons{text-align:right;margin-top:1rem}
-.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
-.btn-next{background:#10b981;color:#0f0f1a}
-.btn-next:hover:not(:disabled){background:#0ea472}
-.btn-next:disabled{opacity:.4;cursor:default}
-.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
-#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
-#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
-#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
-#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Performance Management Ch 5: Costing and Cost Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
 </head>
 <body>
-<div class="container">
-<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
-<div class="quiz-header">
-<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
-<p>Chapter 5: Costing and Cost Management in a Competitive Environment</p>
-</div>
-<div class="score-bar">
-<span>Question <span id="current-q">1</span>/8</span>
-<span>Score: <span id="score">0</span></span>
-</div>
-<div class="progress-bg"><div class="progress" id="progress"></div></div>
-<div id="quiz-area"></div>
-<div id="result-card">
-<h2>Quiz Complete!</h2>
-<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
-<div class="result-msg" id="result-msg"></div>
-<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
-</div>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">PERFORMANCE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 5 &mdash; Costing and Cost Management in a Competitive Environment</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
 </div>
 <script>
 const questions = [
-  {q:"What is the main difference between traditional and modern production environments that affects costing?",options:["Modern environments use less technology","Modern environments have high overheads relative to direct costs","Traditional environments had higher overheads","Product life cycles are longer in modern environments"],correct:1,explanation:"In the modern environment, overheads are high relative to direct costs due to automation, depreciation, and other indirect costs. This makes accurate overhead allocation critical."},
-  {q:"In Activity-Based Costing, what is a 'cost driver'?",options:["The total cost of a product","A factor that causes a change in the cost of a support activity","The direct labour rate","The selling price of the product"],correct:1,explanation:"A cost driver is the factor that causes a change in the costs of each support activity. Examples include number of setups, number of purchase orders, or machine hours."},
-  {q:"What is the formula for target cost?",options:["Target Cost = Estimated Cost - Profit","Target Cost = Target Price - Target Profit","Target Cost = Selling Price + Profit Margin","Target Cost = Variable Cost + Fixed Cost"],correct:1,explanation:"Target Cost = Target Price - Target Profit. This market-based approach starts from what the market will pay and works backwards to determine the maximum allowable cost."},
-  {q:"Kaizen costing is primarily concerned with cost reduction during which phase?",options:["Pre-production phase","Post-production phase","Production phase","Design phase"],correct:2,explanation:"Kaizen costing focuses on continual and gradual cost reduction during the production phase, as part of a broader culture of continuous improvement."},
-  {q:"Which of the following is NOT a category of quality costs under TQM?",options:["Prevention costs","Appraisal costs","Distribution costs","External failure costs"],correct:2,explanation:"The four categories of quality costs under TQM are: prevention costs, appraisal costs, internal failure costs, and external failure costs. Distribution costs are not a TQM quality cost category."},
-  {q:"In value chain analysis, which of the following is a PRIMARY activity?",options:["Human resource management","Procurement","Operations","Technology and R&D"],correct:2,explanation:"The five primary activities are: inbound logistics, operations, outbound logistics, marketing & sales, and service. HR, procurement, technology/R&D, and admin are support activities."},
-  {q:"In the Comma Ltd example, what does ABC reveal about the Deluxe product compared to the traditional approach?",options:["Deluxe is more profitable under ABC","Deluxe is less profitable under ABC than traditional costing shows","Both methods show similar profitability","Deluxe should be discontinued immediately"],correct:1,explanation:"Under traditional costing, Deluxe RoS was 20.52%. Under ABC, it drops to 14.55%. ABC reveals that the Standard product is far more profitable (25.29%) and the business should reconsider pushing Deluxe."},
-  {q:"What is the key insight about prevention costs in TQM?",options:["Prevention costs should be minimised to reduce total costs","Higher prevention costs always increase total quality costs","Investing more in prevention can reduce appraisal and failure costs","Prevention costs only affect external failure costs"],correct:2,explanation:"If more is spent on prevention costs, cost savings may be made through the reduction of appraisal costs and failure costs. The goal is to achieve zero defects."}
+    {q:"In Activity-Based Costing, what is a cost pool?",options:["The total direct labour cost of a product","A collection of costs associated with a particular support activity","The profit margin for each product line","The sum of all fixed overheads in the business"],correct:1,explanation:"In ABC, costs of each support activity are collected into cost pools (one pool per cost driver). Overheads are then absorbed from these pools to products based on their usage of the relevant cost driver."},
+    {q:"Which of the following is NOT a criticism of Activity-Based Costing?",options:["Costly and time-consuming to set up and run","Reports can be complex and difficult to interpret","It always gives identical results to traditional costing","The cause-and-effect relationship between drivers and costs can be hard to establish"],correct:2,explanation:"ABC does not always give identical results to traditional costing. In fact, it may give similar results only when products are similar or overheads are low. The other three options are genuine criticisms of ABC."},
+    {q:"In the Modern Producers Ltd example, Product B is stored for 4 weeks per unit. If the cost per product week is \u00a30.60, how much storage overhead does Product B absorb per unit?",options:["\u00a30.60","\u00a31.20","\u00a32.40","\u00a34.80"],correct:2,explanation:"Product B absorbs 4 weeks x \u00a30.60 per product week = \u00a32.40 per unit. Product A, stored for only 1 week, absorbs just \u00a30.60 per unit."},
+    {q:"Which statement about total life-cycle costing is TRUE?",options:["It only captures costs during the production phase","A high proportion of costs is incurred or committed during the pre-production phase","Post-production costs such as warranty and environmental clean-up are excluded","It is identical to traditional absorption costing"],correct:1,explanation:"Total life-cycle costing tracks all costs from beginning to end of a product's life. A key insight is that a high proportion of costs is incurred and/or committed during the pre-production phase (R&D, design, set-up, advertising), which traditional costing largely misses."},
+    {q:"Target costing starts from which of the following?",options:["The estimated current cost of the product","The target selling price determined by the market","The total fixed overheads of the factory","The direct labour hours required per unit"],correct:1,explanation:"Target costing is a market-based approach. It starts from the target selling price, deducts the target profit, and derives the maximum allowable cost (the target cost). The formula is: Target Cost = Target Price - Target Profit."},
+    {q:"Kaizen costing focuses on cost reduction during which phase of the product life cycle?",options:["The pre-production phase","The design phase","The post-production phase","The production phase"],correct:3,explanation:"Kaizen costing focuses on continual and gradual cost reduction during the production phase. Target costing operates in the pre-production phase. Together with total life-cycle costing, they cover the full product life."},
+    {q:"In Porter's value chain, which of the following is a support activity?",options:["Inbound logistics","Operations","Procurement","Outbound logistics"],correct:2,explanation:"The four support activities in Porter's value chain are: HR management, Technology/R&D, Procurement, and Admin/finance/QA. The five primary activities are: Inbound logistics, Operations, Outbound logistics, Marketing & sales, and Service."},
+    {q:"Which of the following is NOT a focus area for waste elimination under Kaizen?",options:["Eliminating overproduction","Increasing finished goods inventories","Reducing defective products through process changes","Reducing waiting times through closer supplier links"],correct:1,explanation:"Kaizen aims to identify and eliminate excess inventories, not increase them. Key focus areas include eliminating overproduction, reducing defects, synchronising processes, eliminating bottlenecks, reducing waiting times, and improving storage and handling."},
+    {q:"Under TQM, which category of quality cost includes customer complaints, returns, and lost reputation?",options:["Prevention costs","Appraisal costs","Internal failure costs","External failure costs"],correct:3,explanation:"External failure costs are costs of defects found after delivery to the customer, including complaints, returns, recalls, lost reputation, and legal liability. Internal failure costs relate to defects found before delivery (reworking, scrap, re-testing)."},
+    {q:"In the Comma Ltd ABC example, what does ABC reveal compared to traditional costing?",options:["Both Standard and Deluxe are equally profitable","The Deluxe product is far more profitable than the Standard","The Standard product is far more profitable than traditional costing suggested","ABC confirms the traditional costing profit figures exactly"],correct:2,explanation:"Under traditional costing, Standard RoS was 17.08% and Deluxe was 20.52%. Under ABC, Standard RoS jumps to 25.29% while Deluxe drops to 14.55%. ABC reveals the Standard is far more profitable and the business should reconsider pushing Deluxe."}
 ];
-let current=0,score=0,answered=[];
-function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
-function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
-function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
-function nextQ(){current++;renderQ();}
-function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
-function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

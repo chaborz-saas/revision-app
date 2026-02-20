@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
-        <h1>Lean Management et Mudas (7 gaspillages)</h1>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
+        <h1>Lean Management et Mudas</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Le Lean Management est issu de quel système industriel et dans quelle décennie ?",
-        options: ["Le système Ford (années 1920)", "Le TPS — Toyota Production System (années 1950)", "Le système Taylor (années 1910)", "Le système de production allemand (années 1970)"],
-        correct: 1,
-        explanation: "Le Lean Management est issu du TPS (Toyota Production System), développé dans les usines Toyota dans les années 1950. Son objectif est d'éliminer les gaspillages (mudas) et d'augmenter la valeur ajoutée."
-    },
-    {
-        q: "Que signifie 'Muda' et combien de types le Lean identifie-t-il ?",
-        options: ["Muda = amélioration continue ; 5 types", "Muda = gaspillage (activité sans valeur pour le client) ; 7 types", "Muda = flux de production ; 3 types", "Muda = défaut qualité ; 6 types"],
-        correct: 1,
-        explanation: "Muda est un terme japonais signifiant 'gaspillage' : toute activité qui consomme des ressources sans créer de valeur pour le client. Le Lean identifie 7 types de Mudas."
-    },
-    {
-        q: "Quels sont les 7 Mudas du Lean Management ?",
-        options: ["Coûts, délais, stocks, transports, personnel, qualité, sécurité", "Surproductions, attentes, transports, stocks, processus excessifs, mouvements humains, non-qualité", "Temps, matière, énergie, espace, information, main-d'œuvre, machines", "Surcoûts, sous-productivité, rebuts, retards, pannes, accidents, litiges"],
-        correct: 1,
-        explanation: "Les 7 Mudas sont : 1) Surproductions, 2) Attentes inutiles, 3) Transports, 4) Stocks, 5) Processus/méthodes excessifs, 6) Déplacements et mouvements humains, 7) Non-qualité de produit."
-    },
-    {
-        q: "Que signifie 'Kaizen' et quel est son principe ?",
-        options: ["'Zéro défaut' : viser la perfection absolue dès la première fois", "'Changement pour le bien' : amélioration continue, ajustements progressifs et permanents impliquant tous les collaborateurs", "'Production tirée' : produire uniquement sur commande client", "'Juste à temps' : livrer exactement ce qu'il faut, quand il faut"],
-        correct: 1,
-        explanation: "Kaizen = 'changement pour le bien' en japonais. C'est l'amélioration continue : des ajustements progressifs et permanents impliquant tous les collaborateurs, à tous les niveaux de l'organisation."
-    },
-    {
-        q: "Quels sont les 5M du Lean Management ?",
-        options: ["Machine, Méthode, Matière, Milieu, Main-d'œuvre", "Management, Marketing, Marché, Mesure, Milieu", "Maintenance, Méthode, Management, Machine, Matière", "Motivation, Milieu, Méthode, Matériel, Mouvements"],
-        correct: 0,
-        explanation: "Les 5M sont les 5 facteurs de production à maîtriser pour la stabilité des processus : Main-d'œuvre, Matière, Matériel (ou Machine), Méthodes, Milieu. Toute instabilité dans ces 5 facteurs génère des gaspillages."
-    },
-    {
-        q: "Quel outil du Lean permet de visualiser les déplacements inutiles dans un atelier et d'optimiser les flux ?",
-        options: ["Le diagramme de Gantt", "Le diagramme spaghetti", "La carte de flux de valeur (VSM)", "Le tableau Kanban"],
-        correct: 1,
-        explanation: "Le diagramme spaghetti permet de tracer les trajets réels des opérateurs ou des pièces pour identifier les transports et mouvements non optimisés. Son nom vient de l'aspect enchevêtré des lignes de déplacement."
-    },
-    {
-        q: "Quelles méthodes le Lean préconise-t-il pour lutter contre le Muda de surproduction ?",
-        options: ["Le Six Sigma et le QRQC", "Le JIT (Just In Time) et le Kanban, avec une production tirée (pull)", "Le diagramme spaghetti et l'ergonomie", "La MSP et le Jidoka"],
-        correct: 1,
-        explanation: "Pour lutter contre les surproductions : JIT (Just In Time = produire juste ce qu'il faut, quand il faut), Kanban (système visuel de gestion de flux), et surtout passer d'une logique push (pousser la production) à une logique pull (tirer la production)."
-    },
-    {
-        q: "Quel outil est préconisé pour lutter contre le Muda de non-qualité ?",
-        options: ["Le JIT et le Kanban", "Le MSP, le Six Sigma, le QRQC et le Jidoka", "Le diagramme spaghetti", "L'analyse de valeur ajoutée"],
-        correct: 1,
-        explanation: "Pour lutter contre la non-qualité : MSP (Maîtrise Statistique des Procédés), Six Sigma (réduire la variabilité et les défauts), QRQC (Quick Response Quality Control), et Jidoka (détection automatique des anomalies, principe TPS)."
-    },
-    {
-        q: "Quels sont les 3 leviers de performance identifiés dans le Lean ?",
-        options: ["Coût, qualité, délai", "Flexibilité, qualité, productivité", "Innovation, standardisation, automatisation", "Prix, service, fidélisation"],
-        correct: 1,
-        explanation: "Les 3 leviers de performance Lean sont : Flexibilité (adapter ressources et capacités : JIT, innovation, mobilité), Qualité (se différencier, répondre aux attentes clients), Productivité (chasse aux coûts, allègement des procédures, automatisation)."
-    },
-    {
-        q: "Quelle conséquence organisationnelle le Lean Management entraîne-t-il sur la hiérarchie ?",
-        options: ["Multiplication des niveaux hiérarchiques pour plus de contrôle", "Réduction des niveaux hiérarchiques (de 5-6 niveaux à 3), management 'maigre'", "Renforcement de la centralisation des décisions", "Spécialisation accrue des collaborateurs dans un seul domaine"],
-        correct: 1,
-        explanation: "Le Lean entraîne une réduction des niveaux hiérarchiques (de 5-6 à 3 niveaux). Il favorise décentralisation, polyvalence, travail collectif et fonctionnement en projet/processus. L'empowerment donne plus de responsabilités aux managers de terrain."
-    }
+{q:"Le Lean Management est ne dans les usines de quel constructeur automobile ?", options:["Ford (Etats-Unis)","Volkswagen (Allemagne)","Toyota (Japon)","Renault (France)"], correct:2, explanation:"Le Lean Management est un systeme d'organisation industrielle initie dans les usines japonaises du groupe Toyota au debut des annees cinquante (TPS - Toyota Production System)."},
+{q:"Que signifie le terme japonais Kaizen ?", options:["Production au plus juste","Changement pour le bien (amelioration continue)","Elimination des gaspillages","Qualite totale"], correct:1, explanation:"Kaizen signifie changement pour le bien, c'est-a-dire l'amelioration continue. La demarche repose sur des ajustements progressifs et permanents."},
+{q:"Lequel n'est PAS un des 7 Mudas (gaspillages) ?", options:["Surproductions","Attentes inutiles","Innovation excessive","Non-qualite de produit"], correct:2, explanation:"Les 7 Mudas sont : surproductions, attentes inutiles, transports, stocks, processus excessifs, mouvements humains, non-qualite. L'innovation excessive n'en fait pas partie."},
+{q:"Quels sont les 5M du Lean ?", options:["Marketing, Management, Methodes, Moyens, Mesures","Main-d'oeuvre, Matiere, Materiel, Methodes, Milieu","Mission, Marche, Marge, Motivation, Maitrise","Machines, Maintenance, Magasin, Mouvement, Mesure"], correct:1, explanation:"Les 5M sont : Main-d'oeuvre, Matiere, Materiel, Methodes et Milieu. Leur stabilisation est une condition essentielle pour reduire les gaspillages."},
+{q:"Quel Muda est considere comme le plus grave car il engendre les autres gaspillages ?", options:["Les stocks","Les surproductions","La non-qualite","Les transports"], correct:1, explanation:"Les surproductions constituent souvent le gaspillage le plus grave car elles engendrent d'autres Mudas (stocks, transports, attentes)."},
+{q:"Quelles methodes sont preconisees pour lutter contre le Muda de surproduction ?", options:["Diagramme spaghetti et ergonomie","MSP, Six Sigma et QRQC","JIT (Just In Time) et Kanban","Analyse de valeur ajoutee"], correct:2, explanation:"Les methodes pour lutter contre la surproduction sont le JIT (production tiree), le Kanban, les bonnes previsions et la stabilisation des 5M."},
+{q:"Combien de niveaux hierarchiques le Lean Management vise-t-il dans les organisations ?", options:["2 niveaux","3 niveaux","5 niveaux","7 niveaux"], correct:1, explanation:"Le Lean Management reduit les niveaux hierarchiques : certains etablissements sont passes de 5-6 niveaux a seulement 3, supprimant par exemple le role de chef d'equipe."},
+{q:"Quel outil est utilise pour diagnostiquer les deplacements et mouvements humains inutiles ?", options:["Le Kanban","Le diagramme spaghetti","Le Six Sigma","Le JIT"], correct:1, explanation:"Le diagramme spaghetti est utilise pour visualiser et optimiser les deplacements des operateurs. Il permet d'identifier les mouvements inutiles et d'ameliorer l'ergonomie."},
+{q:"Les trois leviers de la performance organisationnelle presentes dans le cours sont :", options:["Cout, qualite, delai","Flexibilite, qualite, productivite","Innovation, croissance, rentabilite","Efficacite, efficience, pertinence"], correct:1, explanation:"Les trois leviers sont la flexibilite, la qualite et la productivite. Le cours precise que ces trois politiques ne sont pas forcement compatibles entre elles."},
+{q:"Le Jidoka, methode de lutte contre la non-qualite, correspond a :", options:["La production tiree par la demande","La detection automatique des anomalies (principe issu du TPS)","L'optimisation des transports","La mesure statistique des procedes"], correct:1, explanation:"Le Jidoka est un principe issu du Toyota Production System (TPS) qui permet la detection automatique des anomalies de qualite dans le processus de production."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

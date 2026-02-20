@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.2 — V&eacute;hicule &eacute;lectrique &amp; id&eacute;es re&ccedil;ues</title>
+    <title>Quiz — Strategie Durable Ch2: Vehicule electrique & idees recues</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,26 +15,26 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
         .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
-        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #82e0aa; display: none; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
         .btn-next { background: #27ae60; color: white; margin-left: auto; }
         .btn-next:hover { background: #1e8449; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #27ae60; }
@@ -42,65 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">STRAT&Eacute;GIE DURABLE &amp; &Eacute;THIQUE &mdash; QUIZ</div>
-        <h1>Ch.2 &mdash; V&eacute;hicule &eacute;lectrique &amp; id&eacute;es re&ccedil;ues</h1>
+        <div class="matiere">Strategie & Developpement Durable &mdash; QUIZ</div>
+        <h1>Chapitre 2 &mdash; Vehicule electrique & idees recues</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:3rem;">&#127793;</div>
-        <div class="result-score" id="final-score"></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
-        <button class="btn-restart" onclick="restart()">Recommencer</button>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Les batteries de v&eacute;hicules &eacute;lectriques contiennent-elles des terres rares ?", o:["Oui, en grande quantit&eacute;","Oui, mais en faible quantit&eacute;","Non, les batteries n'utilisent pas de terres rares","Seulement les batteries chinoises"], a:2, e:"C'est une id&eacute;e re&ccedil;ue majeure : les batteries lithium-ion (NMC ou LFP) ne contiennent PAS de terres rares. Les terres rares sont utilis&eacute;es dans certains moteurs &eacute;lectriques (aimants permanents), mais pas dans les batteries elles-m&ecirc;mes."},
-  {q:"Quelle est la dur&eacute;e de vie moyenne garantie d'une batterie de v&eacute;hicule &eacute;lectrique ?", o:["3 ans / 50 000 km","5 ans / 100 000 km","8 ans / 160 000 km","15 ans / 300 000 km"], a:2, e:"Les constructeurs garantissent g&eacute;n&eacute;ralement les batteries 8 ans ou 160 000 km. Les batteries LFP (Lithium Fer Phosphate) peuvent supporter jusqu'&agrave; 6 000 cycles de charge, soit bien au-del&agrave; de la dur&eacute;e de vie du v&eacute;hicule."},
-  {q:"Quel est le taux de recyclage atteignable pour les mat&eacute;riaux des batteries &eacute;lectriques ?", o:["Environ 30 %","Environ 50 %","Environ 75 %","Jusqu'&agrave; 95 %"], a:3, e:"Les proc&eacute;d&eacute;s actuels de recyclage des batteries permettent de r&eacute;cup&eacute;rer jusqu'&agrave; 95 % des mat&eacute;riaux (lithium, cobalt, nickel, mangan&egrave;se). Cela r&eacute;duit fortement le besoin en extraction mini&egrave;re primaire."},
-  {q:"&laquo; Il vaut mieux garder sa vieille voiture thermique que d'acheter un v&eacute;hicule &eacute;lectrique. &raquo; Cette affirmation est :", o:["Vraie, car fabriquer un VE &eacute;met beaucoup de CO2","Vraie, car les vieilles voitures sont plus robustes","Fausse, car un VE compense ses &eacute;missions de fabrication en 2-3 ans d'utilisation","Fausse, car les vieilles voitures ne polluent pas"], a:2, e:"M&ecirc;me en tenant compte des &eacute;missions de fabrication (notamment la batterie), un VE compense son &laquo; dette carbone &raquo; en 2 &agrave; 3 ans d'utilisation gr&acirc;ce &agrave; ses &eacute;missions quasi nulles &agrave; l'usage. Garder un v&eacute;hicule thermique revient &agrave; continuer d'&eacute;mettre du CO2 chaque kilom&egrave;tre."},
-  {q:"Qu'est-ce que le V2G (Vehicle-to-Grid) ?", o:["Un syst&egrave;me de navigation pour v&eacute;hicules &eacute;lectriques","La capacit&eacute; d'un VE &agrave; renvoyer de l'&eacute;lectricit&eacute; vers le r&eacute;seau","Un label de qualit&eacute; pour les bornes de recharge","Un protocole de recharge rapide"], a:1, e:"Le V2G (Vehicle-to-Grid) permet aux v&eacute;hicules &eacute;lectriques de renvoyer de l'&eacute;lectricit&eacute; stock&eacute;e dans leur batterie vers le r&eacute;seau. Loin de provoquer des blackouts, les VE peuvent ainsi servir de stockage tampon et stabiliser le r&eacute;seau &eacute;lectrique."},
-  {q:"Concernant le co&ucirc;t total de possession (TCO) d'un v&eacute;hicule &eacute;lectrique :", o:["Il est plus &eacute;lev&eacute; qu'un v&eacute;hicule thermique sur toute la dur&eacute;e de vie","Il est &eacute;quivalent &agrave; un v&eacute;hicule thermique","Il est moins &eacute;lev&eacute; qu'un v&eacute;hicule thermique (entretien, &eacute;nergie, d&eacute;cote)","Il d&eacute;pend uniquement du prix d'achat"], a:2, e:"Le TCO (Total Cost of Ownership) d'un VE est inf&eacute;rieur &agrave; celui d'un v&eacute;hicule thermique : co&ucirc;t d'&eacute;nergie plus faible (&eacute;lectricit&eacute; vs carburant), entretien r&eacute;duit (moins de pi&egrave;ces d'usure), et d&eacute;cote moindre."},
-  {q:"Quel mat&eacute;riau utilis&eacute; dans les batteries est associ&eacute; &agrave; des probl&egrave;mes de travail des enfants, et quelle est la tendance ?", o:["Le lithium, et le probl&egrave;me s'aggrave","Le cobalt, mais la tendance est &agrave; la r&eacute;duction et aux solutions (batteries LFP sans cobalt)","Le nickel, et il n'y a aucune solution","Les terres rares, et le recyclage r&egrave;gle le probl&egrave;me"], a:1, e:"Le cobalt (extrait principalement en RDC) est associ&eacute; &agrave; des probl&egrave;mes de travail infantile. Cependant, les solutions existent : batteries LFP sans cobalt, tra&ccedil;abilit&eacute; de la cha&icirc;ne d'approvisionnement, et r&eacute;duction progressive de la quantit&eacute; de cobalt dans les batteries NMC."},
-  {q:"Les v&eacute;hicules &eacute;lectriques risquent-ils de provoquer des blackouts &eacute;lectriques ?", o:["Oui, le r&eacute;seau ne peut pas supporter la charge","Oui, surtout en hiver","Non, la charge est g&eacute;rable et le V2G peut m&ecirc;me stabiliser le r&eacute;seau","Non, car les VE consomment tr&egrave;s peu d'&eacute;lectricit&eacute;"], a:2, e:"Le risque de blackout est un mythe. La recharge peut &ecirc;tre pilot&eacute;e (charge intelligente aux heures creuses) et le V2G permet aux VE de restituer de l'&eacute;lectricit&eacute; au r&eacute;seau lors des pics de demande, contribuant ainsi &agrave; sa stabilit&eacute;."}
+    {q:"Les batteries de vehicules electriques contiennent-elles des terres rares ?",options:["Oui, en grande quantite","Non, les batteries lithium-ion n'utilisent pas de terres rares","Oui, mais uniquement les batteries chinoises","Oui, mais en faible quantite"],correct:1,explanation:"C'est une idee recue majeure : les batteries lithium-ion (NMC ou LFP) ne contiennent PAS de terres rares. Les terres rares sont utilisees dans certains moteurs electriques (aimants permanents) et surtout dans les pots catalytiques des vehicules thermiques."},
+    {q:"Quelle est la duree de vie garantie typique d'une batterie de vehicule electrique ?",options:["3 ans / 50 000 km","5 ans / 100 000 km","15 ans / 300 000 km","8 ans / 160 000 km"],correct:3,explanation:"Les constructeurs garantissent generalement les batteries 8 ans ou 160 000 km. Les batteries LFP peuvent supporter jusqu'a 6 000 cycles de charge, soit potentiellement 1,8 million de km theoriques."},
+    {q:"Quel est le taux de recyclage atteignable pour les materiaux des batteries electriques ?",options:["Environ 30 %","Environ 50 %","Jusqu'a 95 %","Environ 75 %"],correct:2,explanation:"Les procedes actuels de recyclage des batteries permettent de recuperer jusqu'a 95 % des materiaux (cobalt, nickel, cuivre). Le lithium atteint 80 %. Cela reduit fortement le besoin en extraction miniere primaire."},
+    {q:"En combien de temps un VE compense-t-il sa 'dette carbone' de fabrication ?",options:["Jamais, le VE pollue plus au total","En 2 a 3 ans d'utilisation","En 10 a 15 ans d'utilisation","En 7 a 8 ans d'utilisation"],correct:1,explanation:"Meme en tenant compte des emissions de fabrication (notamment la batterie), un VE compense son surplus d'emissions en 2 a 3 ans d'utilisation grace a ses emissions quasi nulles a l'usage."},
+    {q:"Qu'est-ce que le V2G (Vehicle-to-Grid) ?",options:["Un systeme de navigation pour vehicules electriques","Un label de qualite pour les bornes de recharge","Un protocole de recharge rapide","La capacite d'un VE a renvoyer de l'electricite vers le reseau"],correct:3,explanation:"Le V2G permet aux VE de renvoyer de l'electricite stockee dans leur batterie vers le reseau lors des pics de demande. Les VE deviennent ainsi un actif de stabilisation du reseau, pas une menace de blackout."},
+    {q:"Quel materiau des batteries est associe au probleme du travail des enfants, et quelle est la solution ?",options:["Le lithium, et le probleme s'aggrave","Le cobalt (RDC), mais les batteries LFP sans cobalt + passeport batterie UE sont des solutions","Le nickel, et il n'y a aucune solution","Les terres rares, et le recyclage regle le probleme"],correct:1,explanation:"Le cobalt (70 % extrait en RDC) est associe au travail infantile. Les solutions existent : batteries LFP sans cobalt, tracabilite via le passeport batterie europeen, et reduction progressive du cobalt dans les batteries NMC."},
+    {q:"Pourquoi le vehicule electrique renforce-t-il la souverainete energetique ?",options:["Car les batteries sont fabriquees localement partout","Car il met fin a la dependance petroliere et se branche sur une electricite produite localement","Car il ne necessite aucune matiere premiere importee","Car les bornes de recharge sont gratuites"],correct:1,explanation:"Le VE met fin a la dependance vis-a-vis des pays producteurs de petrole (Russie, Arabie Saoudite). L'electricite peut etre produite localement (nucleaire, renouvelables) et l'Europe investit massivement dans les gigafactories de batteries."},
+    {q:"Concernant le cout total de possession (TCO) d'un VE :",options:["Il est plus eleve qu'un vehicule thermique sur toute la duree de vie","Il est equivalent a un vehicule thermique","Il depend uniquement du prix d'achat","Il est deja inferieur a celui d'un vehicule thermique (energie, entretien, decote)"],correct:3,explanation:"Le TCO d'un VE est inferieur a celui d'un thermique : cout d'energie 3 a 5 fois moindre, entretien reduit de ~30 % (moins de pieces d'usure), et decote moindre."},
+    {q:"Le freinage regeneratif du VE a quel effet sur les particules fines ?",options:["Il augmente les emissions de particules de pneus","Il n'a aucun effet sur les particules fines","Il reduit les emissions de particules liees au freinage","Il produit plus de particules que le freinage classique"],correct:2,explanation:"Le freinage regeneratif reduit considerablement l'usure des plaquettes de frein, et donc les emissions de particules fines liees au freinage. Le VE n'a aucune emission a l'echappement."},
+    {q:"Pourquoi le risque de blackout du au VE est-il un mythe ?",options:["Car les VE consomment tres peu d'electricite","Car la recharge est pilotable (heures creuses) et le V2G stabilise le reseau","Car les VE ne se rechargent que le week-end","Car l'Etat interdit la recharge aux heures de pointe"],correct:1,explanation:"La recharge peut etre pilotee intelligemment aux heures creuses (smart charging) et le V2G permet aux VE de restituer de l'electricite au reseau lors des pics. Les etudes de RTE confirment la compatibilite avec le reseau francais."}
 ];
-let current=0, score=0, answered=[];
-function render(){
-    const quest=questions[current];
-    document.getElementById('current-q').textContent=current+1;
-    document.getElementById('score').textContent=score;
-    document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';
-    let html='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+quest.q+'</div><div class="options">';
-    quest.o.forEach((opt,i)=>{
-        const disabled=answered[current]!==undefined?'disabled':'';
-        let cls='option';
-        if(answered[current]!==undefined){if(i===quest.a)cls+=' correct';else if(i===answered[current])cls+=' wrong';}
-        html+='<button class="'+cls+'" onclick="answer('+i+')" '+disabled+'>'+opt+'</button>';
-    });
-    html+='</div><div class="explanation" id="expl"'+(answered[current]!==undefined?' style="display:block"':'')+'>'+quest.e+'</div></div>';
-    html+='<div class="nav-buttons">';
-    if(current>0)html+='<button class="btn btn-back" onclick="prev()">&larr; Pr&eacute;c&eacute;dent</button>';
-    if(answered[current]!==undefined&&current<questions.length-1)html+='<button class="btn btn-next" onclick="next()">Suivant &rarr;</button>';
-    if(answered[current]!==undefined&&current===questions.length-1)html+='<button class="btn btn-next" onclick="showResult()">Voir le r&eacute;sultat &rarr;</button>';
-    html+='</div>';
-    document.getElementById('quiz-area').innerHTML=html;
-}
-function answer(i){if(answered[current]!==undefined)return;answered[current]=i;if(i===questions[current].a)score++;render();}
-function next(){current++;render();}
-function prev(){current--;render();}
-function showResult(){
-    document.getElementById('quiz-area').style.display='none';
-    document.getElementById('result-card').style.display='block';
-    const pct=Math.round(score/questions.length*100);
-    document.getElementById('final-score').textContent=score+'/'+questions.length;
-    document.getElementById('result-msg').textContent=pct>=75?'Excellent ! Tu ma\u00eetrises le sujet \uD83D\uDD25':pct>=50?'Pas mal ! Relis les points faibles \uD83D\uDCAA':'Continue \u00e0 r\u00e9viser, tu vas y arriver \uD83D\uDCDA';
-}
-function restart(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';render();}
-render();
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'">'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

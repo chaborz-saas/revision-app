@@ -8,162 +8,81 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
         .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f4a0b0; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
-        .btn-next:hover { background: #d97706; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #d63851; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #f59e0b; }
+        .back-link:hover { color: #e94560; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">DROIT — QUIZ</div>
-        <h1>Ch. 6 — Transport international maritime</h1>
+        <div class="matiere">DROIT DES AFFAIRES INTERNATIONALES &mdash; QUIZ</div>
+        <h1>Ch.6 : Transport international maritime</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelles sont les deux fonctions du connaissement (Bill of Lading / B/L) ?",
-        options: ["Fonction douanière et fonction fiscale", "Fonction contractuelle (matérialise le contrat) et fonction probatoire (preuve de l'état des marchandises)", "Fonction de paiement et fonction d'assurance", "Fonction d'identification du navire et fonction de manifeste"],
-        correct: 1,
-        explanation: "Le connaissement (B/L) remplit une double fonction : fonction contractuelle (il matérialise le contrat de transport maritime) et fonction probatoire (il constitue une preuve de l'état des marchandises au moment de la prise en charge par le transporteur). 3 originaux sont émis."
-    },
-    {
-        q: "Quel est le délai pour formuler des réserves en cas de dommage non apparent en transport maritime ?",
-        options: ["Le jour de la livraison", "3 jours après la livraison", "7 jours après la livraison", "1 mois après la livraison"],
-        correct: 1,
-        explanation: "Pour les dommages non apparents en transport maritime : les réserves doivent être formulées dans les 3 jours après la livraison. Pour les dommages apparents, les réserves doivent être formulées le jour même de la livraison. Passé ces délais, la livraison est présumée conforme."
-    },
-    {
-        q: "Quels sont les deux plafonds de limitation de responsabilité du transporteur maritime (Convention de Bruxelles 1924) ?",
-        options: ["100 DTS par colis ou 1 DTS par kg brut", "666,67 DTS par colis/unité OU 2 DTS par kg de fret brut (on retient le plus élevé)", "500 € par colis ou 5 € par kg brut", "8,33 DTS par kg (comme en routier)"],
-        correct: 1,
-        explanation: "Les deux plafonds de la Convention de Bruxelles : méthode 1 = 666,67 DTS par colis/unité ; méthode 2 = 2 DTS par kg brut. On retient la limite la plus élevée, ce qui est favorable à l'expéditeur. 1 DTS = environ 1,23 EUR."
-    },
-    {
-        q: "Quel est le délai de prescription pour exercer une action contre le transporteur maritime ?",
-        options: ["6 mois à compter de la livraison", "1 an à compter de la livraison", "2 ans à compter de la livraison", "3 ans à compter de la livraison"],
-        correct: 1,
-        explanation: "La prescription en transport maritime est de 1 an à compter de la livraison (Convention de Bruxelles 1924). Elle est interrompue par la reconnaissance de responsabilité par le transporteur ou par une action en justice."
-    },
-    {
-        q: "Dans quels cas la limitation de responsabilité du transporteur maritime peut-elle être levée ?",
-        options: ["En cas de retard de livraison supérieur à 30 jours", "Par déclaration de valeur inscrite sur le B/L avant expédition OU en cas de faute inexcusable du transporteur", "Si l'expéditeur a souscrit une assurance tous risques", "Automatiquement si la valeur des marchandises dépasse 100 000 EUR"],
-        correct: 1,
-        explanation: "La limitation de responsabilité est levée dans deux cas : 1) déclaration de valeur et de nature des marchandises faite avant l'expédition et mentionnée sur le B/L (indemnisation intégrale possible) ; 2) faute inexcusable du transporteur (faute imprudente et consciente)."
-    },
-    {
-        q: "Quelle est la différence entre un contrat de transport maritime et un contrat d'affrètement ?",
-        options: ["Le transport maritime s'applique aux conteneurs, l'affrètement aux marchandises en vrac ; le premier utilise un B/L, le second une charte-partie", "Il n'y a pas de différence pratique : les deux utilisent un connaissement", "L'affrètement est réservé aux voyages transatlantiques, le transport maritime aux courtes distances", "Le transport maritime implique toujours l'assurance CIF, l'affrètement non"],
-        correct: 0,
-        explanation: "Contrat de transport : utilise un B/L, pour le transport de conteneurs (marchandises individualisées). Contrat d'affrètement : location d'un navire (coque nue, au voyage, à temps), documenté par une charte-partie, utilisé pour le vrac (pétrole, céréales...)."
-    },
-    {
-        q: "Dans un affrètement à temps, qui assure la gestion nautique et qui assure la gestion commerciale ?",
-        options: ["L'affréteur assure les deux gestions", "L'armateur assure la gestion nautique ; l'affréteur assure la gestion commerciale", "L'armateur assure les deux gestions", "L'affréteur assure la gestion nautique ; l'armateur assure la gestion commerciale"],
-        correct: 1,
-        explanation: "Dans l'affrètement à temps : l'armateur (propriétaire) conserve la gestion nautique (navigation, équipage), tandis que l'affréteur assure la gestion commerciale (chargement, routes commerciales, frets). C'est un partage des responsabilités."
-    },
-    {
-        q: "Quelle est la différence de nature d'obligation entre un transitaire et un déclarant en douane ?",
-        options: ["Les deux ont une obligation de résultat", "Le transitaire a une obligation de résultat ; le déclarant en douane a une obligation de moyens (faute personnelle à prouver)", "Les deux ont une obligation de moyens", "Le déclarant a une obligation de résultat ; le transitaire a une obligation de moyens"],
-        correct: 1,
-        explanation: "Le transitaire : obligation de résultat (responsable de ses actes et de ceux de ses subordonnés). Le déclarant en douane : obligation de moyens, agissant comme mandataire, responsable uniquement de ses fautes personnelles, que le mandant doit prouver."
-    },
-    {
-        q: "Comparaison multimodale : quel est le délai de réserves pour dommage non apparent en transport routier (CMR) ?",
-        options: ["Le jour même de la livraison", "3 jours après la livraison", "7 jours après la livraison", "14 jours après la livraison"],
-        correct: 2,
-        explanation: "Les délais de réserves pour dommage non apparent varient selon le mode : maritime = 3 jours, routier (CMR) = 7 jours, aérien (Montréal 1999) = le jour même de la livraison. La prescription est de 1 an en maritime et routier, 2 ans en aérien."
-    },
-    {
-        q: "Un expéditeur a expédié 300 colis de 15 kg chacun. Le transporteur maritime est responsable d'un dommage total. Quelle est la limite d'indemnisation applicable ?",
-        options: ["300 × 2 × 1,23 EUR = 738 EUR", "300 × 666,67 × 1,23 EUR ≈ 246 001 EUR (méthode par colis, plus élevée)", "4 500 × 666,67 × 1,23 EUR", "4 500 × 8,33 EUR (règle CMR appliquée par erreur)"],
-        correct: 1,
-        explanation: "Calcul : par poids = 4 500 kg × 2 DTS × 1,23 = 11 070 EUR ; par colis = 300 × 666,67 × 1,23 ≈ 246 001 EUR. On retient le montant le plus élevé, favorable à l'expéditeur : environ 246 001 EUR par la méthode par colis."
-    }
+    {q:"Quel document materialise le contrat de transport maritime et constitue la preuve de la prise en charge des marchandises ?",options:["La lettre de voiture CMR","La facture commerciale","Le connaissement (Bill of Lading)","Le certificat d'assurance"],correct:2,explanation:"Le connaissement (Bill of Lading / B/L) est le document central du transport maritime. Il remplit une fonction contractuelle (contrat de transport) et probatoire (preuve de la prise en charge)."},
+    {q:"Quel est le delai de prescription pour intenter une action en justice contre un transporteur maritime ?",options:["6 mois a compter de la livraison","1 an a compter de la livraison","2 ans a compter de la livraison","5 ans a compter de la conclusion du contrat"],correct:1,explanation:"En transport maritime, le delai de prescription est d'un an a compter du jour de la livraison (ou du jour ou les marchandises auraient du etre livrees en cas de perte totale)."},
+    {q:"Dans un affretement a temps, qui decide des ports d'escale et des marchandises transportees ?",options:["L'armateur (proprietaire du navire)","L'affreteur","Le capitaine du navire, en toute autonomie","Le transitaire mandate par l'expediteur"],correct:1,explanation:"Dans l'affretement a temps, la gestion nautique reste a l'armateur, mais la gestion commerciale (choix des ports, des marchandises) revient a l'affreteur."},
+    {q:"Vrai ou faux : En cas de dommage non apparent lors d'un transport maritime, le destinataire dispose de 7 jours pour formuler ses reserves.",options:["Vrai, c'est le delai prevu par la Convention de Bruxelles","Faux, le delai est de 3 jours pour le transport maritime","Vrai, mais uniquement pour les marchandises en vrac","Faux, les reserves doivent etre faites le jour meme"],correct:1,explanation:"En transport maritime, les reserves pour dommage non apparent doivent etre formulees dans les 3 jours suivant la livraison (et non 7 jours, qui est le delai en transport routier CMR)."},
+    {q:"Un conteneur de 300 caisses de 15 kg chacune est endommage. Quelle methode de calcul de la limitation de responsabilite est la plus favorable a l'expediteur ?",options:["Methode par poids : 2 DTS par kg brut","Methode par colis : 666,67 DTS par colis","Les deux methodes donnent le meme resultat","Aucune limitation ne s'applique au transport par conteneur"],correct:1,explanation:"Par poids : 4 500 kg x 2 DTS = 9 000 DTS. Par colis : 300 x 666,67 DTS = 200 001 DTS. La methode par colis est largement plus favorable a l'expediteur (c'est celle qui s'applique)."},
+    {q:"Lequel de ces cas n'est PAS un cas exceptionnel d'exoneration du transporteur maritime selon la Convention de Bruxelles ?",options:["Incendie non imputable au transporteur","Retard de livraison du a un embouteillage portuaire","Faute maritime du capitaine dans la navigation","Vice inherent a la marchandise"],correct:1,explanation:"La Convention de Bruxelles enumere 11 cas exceptionnels d'exoneration (incendie, faute maritime, vice inherent, etc.). Un embouteillage portuaire n'en fait pas partie."},
+    {q:"Quelles sont les deux conditions permettant de lever la limitation de responsabilite du transporteur maritime ?",options:["Reclamation dans les 24 heures et expertise contradictoire","Declaration de valeur prealable ou faute inexcusable du transporteur","Contrat d'assurance tous risques et notification ecrite","Arbitrage international et clause penale au contrat"],correct:1,explanation:"La limitation de responsabilite est ecartee dans deux cas : lorsque l'expediteur a fait une declaration de valeur figurant sur le connaissement, ou en cas de faute inexcusable du transporteur."},
+    {q:"Quel est le role du transitaire dans le transport international ?",options:["Uniquement declarer les marchandises en douane","Organiser le transport complet, conclure les contrats de transport et assurer le dedouanement","Uniquement assurer les marchandises pendant le transport","Piloter le navire et gerer l'equipage"],correct:1,explanation:"Le transitaire organise le transport complet des marchandises, conclut les contrats de transport avec les transporteurs necessaires et assure les formalites de dedouanement."},
+    {q:"En droit francais, le transitaire est soumis a une obligation de resultat. Que signifie cette obligation ?",options:["Le transitaire doit prouver qu'il a fait de son mieux","Le transitaire doit garantir que les marchandises arrivent en bon etat et dans les delais","Le transitaire n'est responsable que de ses propres fautes","Le transitaire n'est jamais responsable des dommages pendant le transport"],correct:1,explanation:"L'obligation de resultat signifie que le transitaire doit organiser le transport de A a B et veiller a ce que les marchandises arrivent en bon etat et dans les delais. S'il n'y parvient pas, il a manque a son obligation."},
+    {q:"Quel est le delai de prescription pour une action contre un transporteur aerien selon la Convention de Montreal ?",options:["6 mois","1 an","2 ans","3 ans"],correct:2,explanation:"La Convention de Montreal (1999) prevoit un delai de prescription de 2 ans pour le transport aerien, contre 1 an pour le transport maritime et routier."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

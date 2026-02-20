@@ -1,85 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz — Performance Management Ch 3: CVP Analysis</title>
-<style>
-*{margin:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
-.container{max-width:750px;margin:0 auto}
-.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
-.back-link:hover{color:#10b981}
-.quiz-header{text-align:center;margin-bottom:2rem}
-.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
-.quiz-header p{color:#aaa;font-size:.9rem}
-.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
-.score-bar span{font-size:.95rem}
-.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
-.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
-.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
-.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
-.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
-.options{display:flex;flex-direction:column;gap:.6rem}
-.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
-.option:hover:not(:disabled){border-color:#10b981;background:#162229}
-.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
-.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
-.option:disabled{cursor:default}
-.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
-.nav-buttons{text-align:right;margin-top:1rem}
-.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
-.btn-next{background:#10b981;color:#0f0f1a}
-.btn-next:hover:not(:disabled){background:#0ea472}
-.btn-next:disabled{opacity:.4;cursor:default}
-.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
-#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
-#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
-#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
-#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Performance Management Ch3: CVP Analysis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
 </head>
 <body>
-<div class="container">
-<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
-<div class="quiz-header">
-<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
-<p>Chapter 3: Cost-Volume-Profit (CVP) Analysis</p>
-</div>
-<div class="score-bar">
-<span>Question <span id="current-q">1</span>/8</span>
-<span>Score: <span id="score">0</span></span>
-</div>
-<div class="progress-bg"><div class="progress" id="progress"></div></div>
-<div id="quiz-area"></div>
-<div id="result-card">
-<h2>Quiz Complete!</h2>
-<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
-<div class="result-msg" id="result-msg"></div>
-<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
-</div>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">PERFORMANCE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 3 &mdash; CVP Analysis</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
 </div>
 <script>
 const questions = [
-  {q:"A business has fixed costs of &pound;500/month and a contribution per unit of &pound;2. What is the break-even point?",options:["100 units","200 units","250 units","500 units"],correct:2,explanation:"BEP = Fixed Costs / Contribution per unit = &pound;500 / &pound;2 = 250 units. At this volume, total contribution (&pound;500) exactly covers fixed costs, and profit is zero."},
-  {q:"Planned sales are 500 units and the BEP is 250 units. What is the margin of safety as a percentage?",options:["25%","50%","75%","100%"],correct:1,explanation:"Margin of safety (%) = (Planned - BEP) / Planned &times; 100 = (500 - 250) / 500 &times; 100 = 50%. This means sales can fall by 50% before the business starts making a loss."},
-  {q:"Using the high-low method: lowest quarter has 100,000 units at &pound;80,000 total cost; highest has 180,000 units at &pound;120,000. What is the variable cost per unit?",options:["&pound;0.25","&pound;0.50","&pound;0.67","&pound;1.00"],correct:1,explanation:"Variable cost per unit = (&pound;120,000 - &pound;80,000) / (180,000 - 100,000) = &pound;40,000 / 80,000 = &pound;0.50 per unit. The remaining cost is fixed at &pound;30,000 per quarter."},
-  {q:"Fixed costs = &pound;3,000, contribution = &pound;7/unit. What volume is needed for a target profit of &pound;4,000?",options:["429 units","571 units","1,000 units","1,500 units"],correct:2,explanation:"Target volume = (Fixed Costs + Target Profit) / Contribution per unit = (&pound;3,000 + &pound;4,000) / &pound;7 = 1,000 units. Wait, let me recalculate: &pound;7,000 / &pound;7 = 1,000 units. Actually the correct answer is 1,000 units."},
-  {q:"A company can make a component for &pound;15 variable cost or buy it for &pound;20. There is spare capacity. What should it do?",options:["Buy it (&pound;20 is a better deal)","Make it (variable cost &pound;15 is lower than buy price &pound;20)","It makes no difference","Need more information about fixed costs"],correct:1,explanation:"With spare capacity, the relevant cost of making is the variable cost of &pound;15. Since &pound;15 < &pound;20, the company should make the component internally, saving &pound;5 per unit."},
-  {q:"Three products compete for 148 scarce machine hours. B17 gives &pound;4/hr, B14 gives &pound;3.75/hr, B22 gives &pound;2.75/hr. Which product should be made first?",options:["B14 (highest selling price)","B17 (highest contribution per machine hour)","B22 (highest demand)","All products equally"],correct:1,explanation:"When resources are scarce, rank products by contribution per unit of the scarce resource. B17 has the highest contribution per machine hour (&pound;4.00), so it should be produced first, followed by B14, then B22."},
-  {q:"A department shows a &pound;9,000 loss after fixed cost allocation but generates &pound;37,000 in contribution. All fixed costs are unavoidable. Should it be closed?",options:["Yes, it is making a loss","No, closing it would reduce total profit by &pound;37,000","Yes, to eliminate the &pound;9,000 loss","Only if another department can absorb its customers"],correct:1,explanation:"The department should NOT be closed. It makes a positive contribution of &pound;37,000. If closed, the fixed costs remain but the contribution is lost, making the business &pound;37,000 worse off overall."},
-  {q:"What does 'operating gearing' mean in CVP analysis?",options:["The ratio of debt to equity","The extent to which total costs are fixed rather than variable","The ratio of revenue to variable costs","The speed at which a business can change its output"],correct:1,explanation:"Operating gearing is the extent to which total costs are fixed rather than variable. Higher operating gearing means profits are more sensitive to volume changes &mdash; both gains and losses are amplified."}
+    {q:"A basket maker has fixed costs of &pound;500/month, sells at &pound;14, and has variable costs of &pound;12 per unit. What is the break-even point?", options:["100 units","500 units","250 units","200 units"], correct:2, explanation:"Contribution per unit = &pound;14 &minus; &pound;12 = &pound;2. BEP = Fixed Costs / Contribution per unit = &pound;500 / &pound;2 = 250 units per month."},
+    {q:"Using the high-low method: lowest quarter is 100,000 units at &pound;80,000; highest is 180,000 units at &pound;120,000. What is the variable cost per unit?", options:["&pound;0.25","&pound;1.00","&pound;0.67","&pound;0.50"], correct:3, explanation:"Variable cost per unit = (&pound;120,000 &minus; &pound;80,000) / (180,000 &minus; 100,000) = &pound;40,000 / 80,000 = &pound;0.50 per unit."},
+    {q:"Planned sales are 500 units and BEP is 250 units. What is the margin of safety as a percentage?", options:["25%","75%","50%","100%"], correct:2, explanation:"Margin of safety (%) = (Planned &minus; BEP) / Planned &times; 100 = (500 &minus; 250) / 500 &times; 100 = 50%."},
+    {q:"Which of the following is NOT a weakness of break-even analysis?", options:["It assumes linear cost and revenue relationships","It struggles with multi-product businesses","Fixed costs may include stepped costs at different levels","It accurately predicts profits at all volume levels"], correct:3, explanation:"Break-even analysis does NOT accurately predict profits at all volumes. Its weaknesses include assuming linear relationships, difficulty with multi-product firms, stepped fixed costs, and ignoring economies of scale."},
+    {q:"Target profit = &pound;4,000, fixed costs = &pound;500, contribution = &pound;2/unit. How many units must be sold?", options:["2,000 units","2,500 units","2,250 units","4,500 units"], correct:2, explanation:"Volume = (Fixed Costs + Target Profit) / Contribution per unit = (&pound;500 + &pound;4,000) / &pound;2 = &pound;4,500 / &pound;2 = 2,250 units."},
+    {q:"What does operating gearing measure?", options:["The ratio of debt to equity in a business","The speed at which a business can change output","The extent to which total costs are fixed rather than variable","The proportion of revenue that is variable cost"], correct:2, explanation:"Operating gearing measures the extent to which total costs are fixed rather than variable. Higher gearing means profits are more sensitive to volume changes, amplifying both upside and downside risk."},
+    {q:"Three products compete for 148 scarce machine hours. B17 gives &pound;4.00/hr, B14 gives &pound;3.75/hr, B22 gives &pound;2.75/hr. Which product is produced first?", options:["B22 (lowest contribution per hour)","B14 (mid-range contribution per hour)","B17 (highest contribution per machine hour)","All products equally"], correct:2, explanation:"When a resource is scarce, products are ranked by contribution per unit of the scarce resource. B17 has the highest at &pound;4.00/hr, so it is produced first, then B14, then B22 with remaining hours."},
+    {q:"A department generates &pound;37,000 in contribution but shows a &pound;9,000 loss after fixed cost allocation. All fixed costs are unavoidable. Should it be closed?", options:["Yes, it is making an accounting loss","No, closing it would reduce total profit by &pound;37,000","Yes, to eliminate the &pound;9,000 loss","Only if fixed costs can be reallocated"], correct:1, explanation:"Do NOT close a department that makes a positive contribution. If the &pound;37,000 contribution is lost but unavoidable fixed costs remain, total profit worsens by &pound;37,000."},
+    {q:"An electricity bill has a &pound;200 standing charge plus &pound;0.10 per kWh used. What type of cost is this?", options:["Purely fixed cost","Purely variable cost","Semi-variable (semi-fixed) cost","Stepped cost"], correct:2, explanation:"A cost with both a fixed component (the standing charge) and a variable component (the per-unit usage charge) is a semi-variable or semi-fixed cost."},
+    {q:"Which statement about marginal analysis for short-term decisions is TRUE?", options:["Fixed costs are always relevant in short-term decisions","A contract should be accepted if its revenue exceeds relevant variable costs","Sunk costs should be included in the analysis","Contribution margin is irrelevant to decision-making"], correct:1, explanation:"In marginal analysis, the rule is to accept a contract if its revenue exceeds the relevant variable costs (i.e. it makes a positive contribution). Fixed costs are only relevant if the decision changes them."}
 ];
-questions[3]={q:"Fixed costs = &pound;3,000, contribution = &pound;7/unit. What volume is needed for a target profit of &pound;4,000?",options:["429 units","714 units","1,000 units","1,500 units"],correct:2,explanation:"Target volume = (Fixed Costs + Target Profit) / Contribution per unit = (&pound;3,000 + &pound;4,000) / &pound;7 = 1,000 units. At this volume, contribution is &pound;7,000 which covers &pound;3,000 fixed costs and delivers &pound;4,000 profit."};
-let current=0,score=0,answered=[];
-function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
-function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
-function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
-function nextQ(){current++;renderQ();}
-function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
-function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

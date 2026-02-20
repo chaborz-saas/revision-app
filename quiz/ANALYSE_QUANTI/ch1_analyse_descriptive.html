@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Cours 1 : Analyse descriptive univariée</title>
+    <title>Quiz — Analyse Quantitative Ch1: Analyse descriptive univariee</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #3b82f6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #3b82f6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -22,7 +23,7 @@
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
         .option:hover:not(:disabled) { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
         .explanation { background: rgba(59,130,246,0.08); border-left: 3px solid #3b82f6; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #93c5fd; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
@@ -30,143 +31,58 @@
         .btn-next { background: #3b82f6; color: white; margin-left: auto; }
         .btn-next:hover { background: #2563eb; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #3b82f6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #3b82f6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
-        .btn-restart:hover { background: #2563eb; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #3b82f6; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">ANALYSE QUANTITATIVE — QUIZ</div>
-        <h1>Cours 1 — Analyse descriptive univariée</h1>
+        <div class="matiere">Analyse Quantitative &mdash; QUIZ</div>
+        <h1>Chapitre 1 &mdash; Analyse descriptive univariee</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quel est le seul indicateur de tendance centrale utilisable pour une variable qualitative nominale ?",
-        options: ["La moyenne", "La médiane", "Le mode", "L'écart-type"],
-        correct: 2,
-        explanation: "Le mode (valeur la plus fréquente) est le seul indicateur valide pour une variable qualitative nominale. La moyenne et la médiane n'ont aucun sens sur des catégories sans ordre ni valeur numérique."
-    },
-    {
-        q: "Quels graphiques sont adaptés à une variable qualitative ?",
-        options: ["Histogramme et boxplot", "Diagramme circulaire et diagramme en barres", "Boxplot et histogramme", "Nuage de points et courbe"],
-        correct: 1,
-        explanation: "Les variables qualitatives se représentent avec un diagramme circulaire (proportions) ou un diagramme en barres (comparaison de catégories). L'histogramme et le boxplot sont réservés aux variables quantitatives."
-    },
-    {
-        q: "La médiane est plus robuste que la moyenne car :",
-        options: ["Elle tient compte de toutes les valeurs dans le calcul", "Elle n'est pas influencée par les valeurs extrêmes (outliers)", "Elle est toujours supérieure à la moyenne", "Elle s'applique uniquement aux variables ordinales"],
-        correct: 1,
-        explanation: "La médiane divise l'échantillon en deux moitiés égales et n'est pas tirée par les valeurs extrêmes. C'est pourquoi on préfère la médiane au salaire moyen, par exemple, en présence de très hauts salaires."
-    },
-    {
-        q: "Si la médiane est inférieure à la moyenne, la distribution est :",
-        options: ["Symétrique (normale)", "Asymétrique à gauche (queue vers le bas)", "Asymétrique à droite (queue vers le haut)", "Bimodale"],
-        correct: 2,
-        explanation: "Quand médiane < moyenne, quelques valeurs élevées tirent la moyenne vers le haut, ce qui crée une queue à droite (distribution asymétrique positive). Exemple classique : les revenus ou les salaires."
-    },
-    {
-        q: "Quelle est la formule de la variance ?",
-        options: ["σ = Σ(xi - x̄) / n", "σ² = Σ(xi - x̄)² / n", "σ² = Max − Min", "σ = √(Σxi / n)"],
-        correct: 1,
-        explanation: "La variance σ² = Σ(xi − x̄)² / n est la moyenne des carrés des écarts à la moyenne. L'écart-type σ est la racine carrée de la variance, exprimé dans la même unité que la variable."
-    },
-    {
-        q: "Le coefficient de variation (CV) sert à :",
-        options: ["Calculer la moyenne pondérée de plusieurs groupes", "Mesurer la dispersion relative pour comparer des groupes d'unités différentes", "Identifier les valeurs aberrantes dans un jeu de données", "Calculer la corrélation entre deux variables"],
-        correct: 1,
-        explanation: "CV = (σ / x̄) × 100. Il exprime la dispersion en pourcentage de la moyenne, ce qui permet de comparer la variabilité de groupes mesurés dans des unités différentes (ex : salaires en euros vs âge en années)."
-    },
-    {
-        q: "Dans Jamovi, les 4 types de mesure disponibles sont :",
-        options: ["Nominal, Ordinal, Ratio, Intervalle", "Nominal, Ordinal, Continu, Identité", "Qualitatif, Quantitatif, Binaire, Discret", "Nominal, Binaire, Continu, Discret"],
-        correct: 1,
-        explanation: "Jamovi propose : Nominal (catégories sans ordre), Ordinal (catégories avec ordre), Continu (valeurs numériques), Identité (identifiant unique). Définir le bon type est crucial car il détermine les analyses disponibles."
-    },
-    {
-        q: "Pour analyser les statistiques descriptives dans Jamovi, on utilise :",
-        options: ["Analyses → Régression → Linéaire", "Analyses → T-Tests → Student", "Analyses → Exploration → Statistiques Descriptives", "Analyses → ANOVA → One-Way"],
-        correct: 2,
-        explanation: "Le chemin dans Jamovi est : Analyses → Exploration → Statistiques Descriptives. On glisse ensuite les variables, on coche les statistiques souhaitées (moyenne, médiane, écart-type...) et on ajoute des graphiques."
-    },
-    {
-        q: "Deux groupes ont la même moyenne de satisfaction (7/10). Que faut-il vérifier pour savoir s'ils sont vraiment similaires ?",
-        options: ["La taille de l'échantillon uniquement", "La dispersion (écart-type ou variance) de chaque groupe", "Le mode de chaque groupe", "Le type de variable uniquement"],
-        correct: 1,
-        explanation: "Même moyenne ne signifie pas même réalité. Il faut comparer la dispersion (écart-type, variance, quartiles). Un groupe très homogène (σ faible) et un groupe très hétérogène (σ élevé) peuvent avoir la même moyenne tout en étant très différents."
-    },
-    {
-        q: "Dans l'étude CaféEMN, la satisfaction moyenne est 7,77 avec σ = 0,91. Quelle conclusion peut-on tirer ?",
-        options: ["La satisfaction est faible et très dispersée", "La satisfaction est bonne et peu dispersée (groupe homogène)", "La satisfaction est élevée mais avec de fortes inégalités", "Les données ne sont pas exploitables sans la médiane"],
-        correct: 1,
-        explanation: "Un écart-type de 0,91 sur une échelle de 10 est faible, ce qui indique un groupe homogène : les clients ont des niveaux de satisfaction proches. La moyenne 7,77 traduit une bonne satisfaction générale. Pas besoin de segmenter ici."
-    }
+    {q:"Pourquoi est-il absurde de calculer une moyenne sur la variable 'genre' (H/F) ?",options:["Parce que l'echantillon est trop petit","Parce que le genre est une variable qualitative nominale, sans valeur numerique ni ordre","Parce que la moyenne ne fonctionne qu'avec des variables ordinales","Parce qu'il faudrait d'abord calculer la mediane"],correct:1,explanation:"Le genre est une variable qualitative nominale : ses categories n'ont ni valeur numerique ni ordre. Calculer une moyenne n'a aucun sens. Seuls le mode et les frequences sont utilisables."},
+    {q:"Quelle est la difference entre une variable quantitative discrete et une variable quantitative continue ?",options:["La discrete est qualitative, la continue est quantitative","La discrete prend des valeurs entieres (nombre de commandes), la continue prend des valeurs reelles (salaire, age)","La discrete ne peut pas etre representee par un histogramme","La continue ne permet pas de calculer l'ecart-type"],correct:1,explanation:"Variable discrete = nombres entiers denombrables (ex : nombre de formations). Variable continue = valeurs reelles sur un intervalle (ex : salaire, age). Les deux sont quantitatives et acceptent les memes indicateurs statistiques."},
+    {q:"L'intervalle interquartile (IQR = Q3 - Q1) mesure :",options:["La dispersion des 50 % centraux de la distribution","L'ecart entre la moyenne et la mediane","La difference entre le maximum et le minimum","La variabilite totale autour de la moyenne"],correct:0,explanation:"L'IQR = Q3 - Q1 mesure la dispersion des 50 % centraux de la distribution, en eliminant les 25 % les plus bas et les 25 % les plus hauts. C'est un indicateur robuste, insensible aux valeurs extremes."},
+    {q:"Si la mediane des salaires est de 2 600 euros et la moyenne de 2 800 euros, cela signifie :",options:["Les salaires sont parfaitement symetriques","La distribution est asymetrique a gauche (queue vers le bas)","Quelques hauts salaires tirent la moyenne vers le haut (asymetrie a droite)","La mediane est mal calculee"],correct:2,explanation:"Mediane < moyenne signifie que quelques valeurs elevees tirent la moyenne vers le haut, creant une queue a droite (asymetrie positive). C'est typique des distributions de salaires ou de revenus."},
+    {q:"Quel graphique est adapte pour visualiser la distribution d'une variable quantitative continue ?",options:["Diagramme circulaire (camembert)","Diagramme en barres (batons)","Histogramme ou boxplot","Tableau de frequences uniquement"],correct:2,explanation:"L'histogramme montre la forme de la distribution (symetrie, aplatissement). Le boxplot resume les quartiles et identifie les valeurs extremes. Le diagramme circulaire et le diagramme en barres sont reserves aux variables qualitatives."},
+    {q:"La variance se calcule en faisant :",options:["La somme des ecarts a la moyenne divisee par n","La moyenne des carres des ecarts a la moyenne","La racine carree de l'ecart-type","Le maximum moins le minimum"],correct:1,explanation:"Variance sigma-carre = Somme(xi - x-barre)^2 / n. C'est la moyenne des carres des ecarts a la moyenne. L'ecart-type sigma est la racine carree de la variance, exprime dans la meme unite que la variable."},
+    {q:"Le coefficient de variation (CV) permet de :",options:["Comparer la dispersion de groupes mesures dans des unites differentes","Calculer la correlation entre deux variables","Identifier la valeur la plus frequente d'une serie","Mesurer l'asymetrie de la distribution"],correct:0,explanation:"CV = (sigma / x-barre) x 100. Il exprime la dispersion en pourcentage de la moyenne, ce qui permet de comparer la variabilite entre des groupes mesures dans des unites differentes (ex : ages en annees vs salaires en euros)."},
+    {q:"Dans Jamovi, quel chemin permet d'acceder aux statistiques descriptives ?",options:["Analyses - Regression - Lineaire","Analyses - T-Tests - Student","Analyses - ANOVA - One-Way","Analyses - Exploration - Statistiques Descriptives"],correct:3,explanation:"Le chemin dans Jamovi est : Analyses - Exploration - Statistiques Descriptives. On glisse ensuite les variables dans le panneau, on coche les statistiques souhaitees (moyenne, mediane, ecart-type...) et on ajoute des graphiques."},
+    {q:"Deux services ont la meme moyenne de performance (75/100). Le service A a un ecart-type de 3, le service B de 18. Quelle conclusion ?",options:["Les deux services sont identiques puisqu'ils ont la meme moyenne","Le service A est plus homogene, le service B est tres heterogene et merite un diagnostic approfondi","L'ecart-type ne sert qu'a calculer la variance, il n'a pas d'interpretation manageriale","Le service B est forcement meilleur car sa dispersion est plus grande"],correct:1,explanation:"Meme moyenne ne signifie pas meme realite. Le service A (sigma=3) est tres homogene : tout le monde performe de maniere similaire. Le service B (sigma=18) est tres heterogene : certains performent tres bien, d'autres tres mal. Il faut investiguer les causes de cette heterogeneite."},
+    {q:"Dans l'etude CafeEMN, la moyenne des depenses est 6,83 euros et la mediane 6,85 euros. Cela indique :",options:["Une forte asymetrie a droite dans les depenses","Une distribution symetrique et des depenses homogenes","Que la mediane est toujours superieure a la moyenne","Que les donnees comportent de nombreuses valeurs aberrantes"],correct:1,explanation:"Moyenne (6,83) et mediane (6,85) sont quasi identiques, ce qui indique une distribution symetrique. Les depenses sont homogenes et stables. Cela facilite la gestion des stocks et la prevision de la demande."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return;
-    answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'">'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

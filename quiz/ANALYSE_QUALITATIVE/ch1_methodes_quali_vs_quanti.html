@@ -3,98 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.1 — Méthodes quali vs quanti</title>
+    <title>Quiz — Analyse Qualitative Ch1: Methodes quali vs quanti</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #8e44ad; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #8e44ad; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(142,68,173,0.1); border-color: rgba(142,68,173,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
-        .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(142,68,173,0.08); border-left: 3px solid #8e44ad; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #c39bd3; display: none; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #8e44ad; color: white; margin-left: auto; }
-        .btn-next:hover { background: #6c3483; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #8e44ad; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #8e44ad; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #8e44ad; }
+        .back-link:hover { color: #10b981; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">ANALYSE QUALITATIVE — QUIZ</div>
-        <h1>Ch.1 — Méthodes quali vs quanti</h1>
+        <div class="matiere">Analyse Qualitative &mdash; QUIZ</div>
+        <h1>Chapitre 1 &mdash; Methodes quali vs quanti</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
-        <br><br><a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Quelles sont les 4 dimensions des méthodes qualitatives ?",options:["Rigueur, objectivité, reproductibilité, précision","Inductives, exploratoires, interprétatives, contextuelles","Mesurables, testables, généralisables, prédictives","Descriptives, analytiques, causales, corrélatives"],correct:1,explanation:"Les 4 dimensions : inductives (concepts émergent des données), exploratoires (phénomènes complexes), interprétatives (sens des actions), contextuelles (environnement et interactions)."},
-  {q:"Qui a introduit la Grounded Theory ?",options:["Herbert Simon (1957)","Yin (1994)","Glaser & Strauss (1967)","Eisenhardt (1989)"],correct:2,explanation:"Glaser & Strauss (1967) : méthode inductive pour générer des concepts directement à partir des données du terrain."},
-  {q:"Le qualitatif cherche à :",options:["Mesurer des variables et tester des hypothèses","Comprendre en profondeur et faire apparaître du SENS","Produire des résultats généralisables","Prédire des comportements futurs"],correct:1,explanation:"Le qualitatif vise la compréhension en profondeur et le sens. Le quantitatif vise la mesure, les tests d'hypothèses et la prédiction."},
-  {q:"Quelle méthode qualitative implique que le chercheur est aussi un intervenant ?",options:["L'ethnographie","La recherche-action","L'étude de cas","L'expérimentation"],correct:1,explanation:"La recherche-action : le chercheur intervient directement. Avantage : richesse des données. Limite : difficulté à prendre du recul."},
-  {q:"Herbert Simon (1957) a introduit quel concept clé ?",options:["La Grounded Theory","La rationalité limitée","L'étude de cas multiple","L'analyse thématique"],correct:1,explanation:"Simon a introduit la rationalité limitée et l'analyse comportementale des organisations — une approche empirique et exploratoire."},
-  {q:"Quel est le type d'échantillon typique d'une étude qualitative ?",options:["Grand et représentatif","Petit mais en profondeur","Aléatoire et stratifié","Le plus grand possible"],correct:1,explanation:"Le qualitatif travaille sur des échantillons petits mais riches en détails et en profondeur. Le quantitatif vise des échantillons grands et représentatifs."},
-  {q:"Yin (1981, 1994) est associé à quelle méthodologie ?",options:["La Grounded Theory","L'analyse thématique","L'étude de cas unique et multiple","La recherche-action"],correct:2,explanation:"Yin a formalisé la méthodologie de l'étude de cas (unique et multiple) avec des protocoles et stratégies d'analyse rigoureux."},
-  {q:"Les méthodes quali et quanti peuvent-elles être combinées ?",options:["Non, elles sont incompatibles","Oui, dans une même recherche, selon les objectifs","Oui, mais uniquement dans les thèses","Non, il faut choisir l'une ou l'autre"],correct:1,explanation:"Les deux approches peuvent être associées dans une même recherche, en fonction des objectifs du chercheur (triangulation méthodologique)."}
+    {q:"Quelles sont les 4 dimensions des methodes qualitatives ?",options:["Rigueur, objectivite, reproductibilite, precision","Inductives, exploratoires, interpretatives, contextuelles","Mesurables, testables, generalisables, predictives","Descriptives, analytiques, causales, correlatives"],correct:1,explanation:"Les 4 dimensions : inductives (concepts emergent des donnees), exploratoires (phenomenes complexes), interpretatives (sens des actions), contextuelles (environnement et interactions)."},
+    {q:"Qui a introduit la Grounded Theory ?",options:["Glaser & Strauss (1967)","Herbert Simon (1957)","Yin (1994)","Eisenhardt (1989)"],correct:0,explanation:"Glaser & Strauss (1967) : methode inductive pour generer des concepts directement a partir des donnees du terrain."},
+    {q:"Le qualitatif cherche principalement a :",options:["Mesurer des variables et tester des hypotheses","Produire des resultats generalisables","Comprendre en profondeur et faire apparaitre du SENS","Predire des comportements futurs"],correct:2,explanation:"Le qualitatif vise la comprehension en profondeur et le sens. Le quantitatif vise la mesure, les tests d'hypotheses et la prediction."},
+    {q:"Quelle methode qualitative implique que le chercheur est aussi un intervenant ?",options:["L'ethnographie","L'etude de cas","La recherche-action","L'experimentation"],correct:2,explanation:"La recherche-action : le chercheur intervient directement. Avantage : richesse des donnees. Limite : difficulte a prendre du recul."},
+    {q:"Herbert Simon (1957) a introduit quel concept cle ?",options:["La Grounded Theory","L'etude de cas multiple","L'analyse thematique","La rationalite limitee"],correct:3,explanation:"Simon a introduit la rationalite limitee et l'analyse comportementale des organisations — une approche empirique et exploratoire."},
+    {q:"Quel est le type d'echantillon typique d'une etude qualitative ?",options:["Grand et representatif","Aleatoire et stratifie","Petit mais en profondeur","Le plus grand possible"],correct:2,explanation:"Le qualitatif travaille sur des echantillons petits mais riches en details et en profondeur. Le quantitatif vise des echantillons grands et representatifs."},
+    {q:"Yin (1981, 1994) est associe a quelle methodologie ?",options:["La Grounded Theory","L'analyse thematique","La recherche-action","L'etude de cas unique et multiple"],correct:3,explanation:"Yin a formalise la methodologie de l'etude de cas (unique et multiple) avec des protocoles et strategies d'analyse rigoureux."},
+    {q:"Les methodes quali et quanti peuvent-elles etre combinees ?",options:["Non, elles sont incompatibles","Oui, mais uniquement dans les theses","Oui, dans une meme recherche selon les objectifs","Non, il faut choisir l'une ou l'autre"],correct:2,explanation:"Les deux approches peuvent etre associees dans une meme recherche, en fonction des objectifs du chercheur (triangulation methodologique)."},
+    {q:"Quelle approche epistemologique considere qu'il existe une realite objective independante du chercheur ?",options:["Le constructivisme","L'interpretativisme","Le positivisme","La phenomenologie"],correct:2,explanation:"Le positivisme postule une realite objective que le chercheur peut observer et mesurer sans l'influencer. C'est l'approche dominante en quantitatif."},
+    {q:"Eisenhardt (1989) est connue pour sa contribution sur :",options:["La construction de theories a partir d'etudes de cas","Le codage axial","La saturation theorique","L'entretien semi-directif"],correct:0,explanation:"Eisenhardt (1989) a formalise le processus de construction de theories a partir d'etudes de cas multiples, combinant les approches inductives et deductives."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current+1)/questions.length*100)+'%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current+1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((o,i)=>`<button class="option" onclick="answer(${i})" id="opt${i}">${o}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current>0?'<button class="btn btn-back" onclick="prev()">← Précédent</button>':'<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx){if(answered)return;answered=true;const q=questions[current];document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(idx===q.correct){document.getElementById('opt'+idx).classList.add('correct');score++;}else{document.getElementById('opt'+idx).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
-function next(){if(current<questions.length-1){current++;renderQuestion();}else{showResult();}}
-function prev(){if(current>0){current--;renderQuestion();}}
-function showResult(){document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.8?'🏆 Excellent ! Tu maîtrises ce chapitre.':p>=0.6?'👍 Bien ! Encore un peu de révision.':'📚 Révise la synthèse et réessaie !';}
-function restartQuiz(){current=0;score=0;answered=false;document.getElementById('result-card').style.display='none';renderQuestion();}
-renderQuestion();
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'>'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

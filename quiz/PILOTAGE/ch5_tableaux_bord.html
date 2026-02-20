@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Tableaux de bord et indicateurs</title>
+    <title>Quiz — Les tableaux de bord</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
-        <h1>Les tableaux de bord et indicateurs</h1>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
+        <h1>Les tableaux de bord</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quels sont les 3 rôles du tableau de bord ?",
-        options: ["Prévision, motivation, communication", "Contrôle et comparaison, aide à la décision, dialogue et communication", "Reporting, analyse des écarts, consolidation", "Simulation, coordination, évaluation des responsables"],
-        correct: 1,
-        explanation: "Les 3 rôles du TdB sont : 1) Instrument de contrôle et de comparaison (réalisations vs objectifs), 2) Aide à la décision (analyse + actions correctives en temps réel), 3) Outil de dialogue et communication (langage commun, optimum global)."
-    },
-    {
-        q: "Quelle est la différence principale entre un tableau de bord et un reporting ?",
-        options: ["Le TdB est plus détaillé que le reporting", "Le TdB pilote l'action (variables financières + qualitatives + quantitatives) ; le reporting remonte les données financières à la DG a posteriori", "Le reporting est destiné aux opérationnels, le TdB à la DG", "Il n'y a pas de différence : les deux termes sont synonymes"],
-        correct: 1,
-        explanation: "Le TdB est un outil de pilotage tourné vers l'action, comprenant des variables financières, qualitatives et quantitatives. Le reporting remonte principalement des données financières à la DG pour vérifier a posteriori l'atteinte des objectifs."
-    },
-    {
-        q: "Que signifie l'acronyme OVAR ?",
-        options: ["Objectifs, Variables, Analyse, Résultats", "Objectifs, Variables d'Action, Responsables", "Organisation, Vision, Actions, Reporting", "Objectifs, Validation, Actions, Révision"],
-        correct: 1,
-        explanation: "OVAR = Objectifs, Variables d'Action, Responsables. On part des missions et facteurs clés de succès pour définir les indicateurs pertinents et les responsables. Cela assure l'alignement stratégie / indicateurs opérationnels."
-    },
-    {
-        q: "Quel est le nombre maximal d'indicateurs recommandé dans un tableau de bord ?",
-        options: ["5 priorités et 10 indicateurs maximum", "10 priorités et 20 indicateurs maximum", "15 priorités et 30 indicateurs maximum", "20 priorités et 50 indicateurs maximum"],
-        correct: 2,
-        explanation: "Un TdB doit comporter au maximum 15 priorités et 30 indicateurs. Au-delà, il perd son caractère synthétique et sa lisibilité. Le principe de concision est essentiel."
-    },
-    {
-        q: "Quelle est la formule de l'écart en valeur relative dans un tableau de bord ?",
-        options: ["(Vn - Vn-1) × 100", "(Vn - Vn-1) / Vn × 100 %", "(Vn - Vn-1) / Vn-1", "(Vn / Vn-1) - 1 %"],
-        correct: 2,
-        explanation: "Écart en valeur relative = (Vn - Vn-1) / Vn-1 = x %. Cette formule mesure le taux de variation entre deux périodes. Ne pas confondre avec le calcul sur Vn (qui donne un résultat différent)."
-    },
-    {
-        q: "Parmi les 5 principes de conception d'un TdB, lequel prime sur la précision ?",
-        options: ["La cohérence avec l'organigramme", "La rapidité d'élaboration et de transmission", "Le nombre limité d'indicateurs", "La forme et le contenu standardisés"],
-        correct: 1,
-        explanation: "Le principe de rapidité prime sur la précision : un TdB doit jouer un rôle d'alerte (rapport flash). Mieux vaut une information rapide et légèrement approximative qu'une information précise mais tardive."
-    },
-    {
-        q: "Quelle est la différence entre un indicateur rétrospectif et un indicateur prospectif ?",
-        options: ["L'indicateur rétrospectif mesure les coûts, le prospectif mesure les recettes", "L'indicateur rétrospectif mesure le passé (ex : ventes réalisées), le prospectif anticipe le futur (ex : commandes en cours)", "L'indicateur rétrospectif est financier, le prospectif est qualitatif", "Il n'y a pas de différence, c'est la même catégorie"],
-        correct: 1,
-        explanation: "Indicateurs rétrospectifs : mesurent ce qui s'est passé (ventes passées, résultat). Indicateurs prospectifs (ou avancés) : anticipent l'avenir (commandes reçues, devis en cours). Ces derniers sont essentiels pour un pilotage proactif."
-    },
-    {
-        q: "Citez les 5 références de comparaison possibles dans un tableau de bord.",
-        options: ["Budget, forecast, N-1, plan stratégique, benchmark sectoriel", "Soi-même dans le temps, ses pairs, les meilleurs, la moyenne de sa catégorie, source externe (benchmark)", "Résultat réel, objectif, prévision, historique, cible", "Filiales, divisions, départements, services, individus"],
-        correct: 1,
-        explanation: "Les 5 références sont : 1) Soi-même dans le temps, 2) Ses pairs (régions similaires), 3) Les meilleurs (top 10), 4) La moyenne de sa catégorie, 5) Source externe / benchmark (ex : APQC)."
-    },
-    {
-        q: "Quelle est la définition de l'efficience (vs efficacité) ?",
-        options: ["L'efficience = atteindre ses objectifs ; l'efficacité = optimiser les ressources", "L'efficacité = atteindre ses objectifs ('faire ce qu'il faut') ; l'efficience = optimiser l'utilisation des ressources ('faire bien')", "Les deux termes sont synonymes dans le contexte du pilotage", "L'efficience concerne les coûts, l'efficacité concerne les délais"],
-        correct: 1,
-        explanation: "Efficacité = atteindre ses objectifs ('faire ce qu'il faut'). Efficience = optimiser l'utilisation des ressources ('faire bien'). Le pilotage de la performance vise le couple valeur-coûts, donc à être à la fois efficace et efficient."
-    },
-    {
-        q: "Selon la logique 'poupées russes', comment s'organise un tableau de bord en fonction du niveau hiérarchique ?",
-        options: ["Identique à tous les niveaux pour assurer la cohérence", "DG : TdB synthétique ; directions : TdB détaillé ; services opérationnels : TdB très détaillé", "Services opérationnels : TdB synthétique ; DG : TdB très détaillé", "Chaque niveau crée son propre TdB indépendamment"],
-        correct: 1,
-        explanation: "La logique 'poupées russes' signifie que le TdB doit être cohérent avec l'organigramme : la DG dispose d'un TdB synthétique, les directions d'un TdB plus détaillé, et les services opérationnels d'un TdB très détaillé."
-    }
+{q:"Que signifie l'acronyme OVAR dans la methode d'elaboration des tableaux de bord ?", options:["Objectifs, Volumes, Actions, Resultats","Objectifs, Variables d'Action, Responsables","Organisation, Valeur, Analyse, Reporting","Optimisation, Veille, Adaptation, Revision"], correct:1, explanation:"OVAR = Objectifs, Variables d'Action, Responsables. Cette methode part des missions et facteurs cles de succes pour definir les indicateurs pertinents."},
+{q:"Lequel n'est PAS un des trois roles du tableau de bord selon le cours ?", options:["Instrument de controle et de comparaison","Aide a la decision","Outil de dialogue et de communication","Outil de calcul automatique des couts"], correct:3, explanation:"Les trois roles sont : controle/comparaison, aide a la decision, dialogue/communication. Le calcul automatique des couts n'est pas un role du tableau de bord."},
+{q:"Quelle est la difference principale entre un tableau de bord et un reporting ?", options:["Le tableau de bord est annuel, le reporting est mensuel","Le reporting remonte des donnees financieres a la DG, le tableau de bord est un support a l'action au quotidien","Le tableau de bord est uniquement qualitatif","Le reporting est destine aux operationnels"], correct:1, explanation:"Le reporting remonte les donnees financieres a la direction generale pour verifier l'atteinte des objectifs. Le tableau de bord est un outil de pilotage operationnel quotidien."},
+{q:"Combien d'indicateurs maximum un bon tableau de bord doit-il contenir selon le cours ?", options:["10 indicateurs","20 indicateurs","30 indicateurs","50 indicateurs"], correct:2, explanation:"Un bon tableau de bord ne depasse pas 15 priorites et 30 indicateurs maximum. Il ne se substitue pas aux reportings."},
+{q:"Les quatre modes de representation des indicateurs sont :", options:["Ecarts, ratios, graphiques, clignotants","Tableaux, graphiques, textes, images","Budgets, previsions, realisations, ecarts","Financiers, physiques, objectifs, moyens"], correct:0, explanation:"Les quatre modes de representation sont : les ecarts (absolus ou relatifs), les ratios, les graphiques (courbes, histogrammes) et les clignotants (feux tricolores, jauges)."},
+{q:"Selon le principe de la logique de 'poupees russes', comment les tableaux de bord doivent-ils etre organises ?", options:["Tous les tableaux de bord doivent etre identiques a chaque niveau","Le decoupage doit respecter le decoupage des responsabilites et lignes hierarchiques","Il faut un seul tableau de bord pour toute l'entreprise","Les tableaux de bord doivent etre elabores de bas en haut uniquement"], correct:1, explanation:"Le principe des poupees russes signifie que les tableaux de bord respectent la hierarchie : DG (synthetique), directions fonctionnelles (detaille), services operationnels (tres detaille)."},
+{q:"Quels sont les quatre determinants de la valeur pour le client selon le cours ?", options:["Prix, marque, publicite, disponibilite","Qualite de conception, qualite de production, delais, services annexes","Cout, volume, marge, rentabilite","Innovation, design, packaging, garantie"], correct:1, explanation:"Les quatre determinants sont : qualite de conception, qualite de production (conformite), delais de mise a disposition, et services annexes (SAV, financement, conseil)."},
+{q:"Dans le pilotage de la performance, qu'est-ce que l'efficience ?", options:["La capacite a atteindre ses objectifs par rapport a son environnement","La capacite a utiliser au mieux ses ressources","La capacite a innover rapidement","La capacite a satisfaire les actionnaires"], correct:1, explanation:"L'efficience est la capacite a utiliser au mieux ses ressources (faire bien). Elle se mesure par la rentabilite ou la productivite. L'efficacite, elle, est la capacite a atteindre ses objectifs."},
+{q:"Dans le cas Labopharma, quelles sont les cinq categories de donnees du tableau de bord ?", options:["Ventes, achats, tresorerie, investissements, fiscalite","Donnees commerciales, production, comptables, suivi des stocks, donnees financieres","Budget, forecast, reel, ecarts, previsions","Personnel, qualite, securite, environnement, innovation"], correct:1, explanation:"Les cinq categories sont : donnees commerciales, donnees de production, donnees comptables, suivi des stocks, et donnees financieres (credit clients/fournisseurs, BFR, tresorerie)."},
+{q:"Quel principe du tableau de bord stipule que la rapidite doit l'emporter sur la precision ?", options:["Le principe de coherence avec l'organigramme","Le principe de rapidite d'elaboration et de transmission","Le principe de synthese","Le principe de simplicite des indicateurs"], correct:1, explanation:"Le principe de rapidite d'elaboration et de transmission stipule que la rapidite prime sur la precision. Le TdB a un role d'alerte pour des actions correctives rapides."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

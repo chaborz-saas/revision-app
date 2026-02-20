@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
         <h1>Introduction et Elaboration budgetaire</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Combien de fonctions le budget remplit-il selon le cours ?",
-        options: ["3 fonctions", "4 fonctions", "5 fonctions", "6 fonctions"],
-        correct: 2,
-        explanation: "Le budget remplit 5 fonctions : prévision, attribution d'objectifs et de moyens, délégation et motivation, coordination et communication, optimisation des choix."
-    },
-    {
-        q: "Comment fonctionne le rolling forecast ?",
-        options: ["Révision annuelle sur 12 mois fixes", "Réévaluation trimestrielle sur 6 trimestres roulants (1 réel + 5 estimés)", "Révision mensuelle sur 3 mois glissants", "Prévision semestrielle sur 2 semestres"],
-        correct: 1,
-        explanation: "Le rolling forecast est une réévaluation trimestrielle sur 6 trimestres roulants (1 réel + 5 estimés). Les chiffres de décembre N servent de cible pour les primes variables de N+1."
-    },
-    {
-        q: "Quel est le principe du Budget Base Zéro (BBZ) ?",
-        options: ["Reconduire chaque poste automatiquement avec une légère hausse", "Justifier chaque poste budgétaire depuis zéro sans reconduction automatique", "Fixer un budget global et le décomposer top-down", "Utiliser les données des 3 dernières années comme base"],
-        correct: 1,
-        explanation: "Le BBZ impose de justifier chaque poste budgétaire depuis zéro. Mis au point par P. Pyhrr (années 80, Texas Instruments), il est adapté aux frais de structure et aux administrations."
-    },
-    {
-        q: "Quelle est la formule de la TVA à décaisser ?",
-        options: ["TVA collectée + TVA déductible", "TVA déductible - TVA collectée", "TVA collectée - TVA déductible", "TVA collectée × taux de déductibilité"],
-        correct: 2,
-        explanation: "TVA à décaisser = TVA collectée - TVA déductible. Si TVA déductible > TVA collectée, il y a un crédit de TVA reporté sur la période suivante. La TVA du mois M est payée au mois M+1."
-    },
-    {
-        q: "Dans l'approche budgétaire mixte (pratique), quel outil lance le processus ?",
-        options: ["Le business plan stratégique", "La lettre de cadrage de la direction", "Le bilan social de l'année précédente", "Le rolling forecast du dernier trimestre"],
-        correct: 1,
-        explanation: "L'approche mixte combine une lettre de cadrage (top-down) avec les remontées terrain (bottom-up). C'est l'approche la plus courante car elle équilibre rapidité et responsabilisation."
-    },
-    {
-        q: "La formule de l'écart économique sur matière (EM) est :",
-        options: ["(Qr - Qp) × Pr + (Pr - Pp) × Qp", "(Qr - Qp) × Pp + (Pr - Pp) × Qr", "(Pr - Pp) × Qp + (Qr - Qp) × Pr", "(Qr + Qp) × (Pr - Pp)"],
-        correct: 1,
-        explanation: "EM = (Qr - Qp) × Pp + (Pr - Pp) × Qr. Le premier terme est l'écart sur quantités (valorisé au coût prévu), le second est l'écart sur prix (valorisé à la quantité réelle)."
-    },
-    {
-        q: "Quelle est la principale limite de l'approche bottom-up du budget ?",
-        options: ["Elle est trop rapide et manque de détail", "Elle dévalorise les managers opérationnels", "Elle tend à être inflationniste (les managers gonflent leurs demandes)", "Elle ne permet pas la coordination entre services"],
-        correct: 2,
-        explanation: "L'approche bottom-up responsabilise et fournit du détail, mais elle est souvent inflationniste : les managers ont tendance à demander plus que nécessaire pour se ménager des marges de manœuvre."
-    },
-    {
-        q: "Le budget de trésorerie utilise le CA TTC ou HT pour calculer les encaissements clients ?",
-        options: ["Le CA HT, car la TVA est gérée séparément", "Le CA TTC, car c'est la somme réellement encaissée", "La moyenne des deux selon la période", "Le CA HT majoré du taux de TVA moyen"],
-        correct: 1,
-        explanation: "On utilise le CA TTC pour calculer les encaissements clients, car c'est le montant réellement versé par le client. La TVA collectée est ensuite soustraite dans le budget de TVA."
-    },
-    {
-        q: "Le contrôle budgetaire est défini comme une 'gestion par exception'. Que cela signifie-t-il ?",
-        options: ["On ne contrôle que les postes budgétaires exceptionnels (investissements)", "Seuls les écarts significatifs déclenchent une analyse approfondie et des mesures correctives", "On effectue des contrôles aléatoires pour éviter la fraude", "Le budget n'est contrôlé qu'en fin d'exercice"],
-        correct: 1,
-        explanation: "La gestion par exception signifie que l'on se concentre sur les écarts remarquables plutôt que de traiter tous les écarts de la même manière. Cela permet d'orienter l'énergie sur ce qui compte vraiment."
-    },
-    {
-        q: "Quelle méthode de prévision consiste à abandonner totalement le budget au profit d'une culture de confiance ?",
-        options: ["Rolling forecast", "Budget Base Zéro (BBZ)", "Beyond Budgeting", "Modèle de simulation"],
-        correct: 2,
-        explanation: "Le Beyond Budgeting prône l'abandon complet du budget traditionnel. D'origine scandinave, il repose sur une culture de confiance et nécessite l'exemplarité des dirigeants."
-    }
+{q:"Quel est le principe fondateur du Budget Base Zero (BBZ) ?", options:["Reconduire automatiquement les enveloppes budgetaires de l'annee precedente","Justifier chaque poste de budget des son origine sans reconduction automatique","Fixer le budget en fonction du chiffre d'affaires realise l'annee precedente","Eliminer tous les frais de structure pour repartir de zero"], correct:1, explanation:"Le BBZ exige que chaque dirigeant justifie dans le detail et des son origine tous les postes de budget, rompant avec la logique de reconduction automatique."},
+{q:"Dans le rolling forecast, sur combien de trimestres roulants les previsions glissantes sont-elles realisees ?", options:["4 trimestres","5 trimestres","6 trimestres","8 trimestres"], correct:2, explanation:"Les previsions glissantes sont realisees tous les trimestres sur 6 trimestres roulants : 1 trimestre reel et 5 trimestres estimes."},
+{q:"Lequel n'est PAS une fonction du budget selon le cours ?", options:["Outil de prevision du resultat previsionnel","Outil de delegation et de motivation","Outil de coordination et de communication","Outil de suppression des ecarts"], correct:3, explanation:"Le budget est un outil de prevision, delegation/motivation, coordination/communication et optimisation des choix. La suppression des ecarts n'est pas une de ses fonctions."},
+{q:"Quel est l'inconvenient principal de l'approche budgetaire bottom-up ?", options:["Elle devalorise les managers","Elle est trop rapide a mettre en oeuvre","Elle peut conduire a une vision inflationniste","Elle ignore les remontees terrain"], correct:2, explanation:"L'approche bottom-up responsabilise les managers mais peut conduire a une vision inflationniste car les managers tendent a sur-estimer leurs besoins."},
+{q:"La formule de la TVA a decaisser est :", options:["TVA collectee + TVA deductible","TVA deductible - TVA collectee","TVA collectee - TVA deductible","TVA collectee x taux de TVA"], correct:2, explanation:"TVA a decaisser = TVA collectee - TVA deductible. Quand la TVA deductible est superieure, l'entreprise dispose d'un credit de TVA."},
+{q:"Dans le budget de tresorerie, a quel moment la TVA a decaisser du mois M est-elle effectivement versee a l'Etat ?", options:["Le meme mois M","Le mois M+1","Le mois M+2","Le trimestre suivant"], correct:1, explanation:"La TVA a decaisser calculee au titre du mois M est versee a l'Etat au cours du mois M+1. Il ne faut pas confondre mois de declaration et mois de paiement."},
+{q:"Quelle methode de controle budgetaire consiste a ne declencher une analyse approfondie que pour les ecarts remarquables ?", options:["La gestion par objectifs","La gestion par exception","Le controle continu integral","La gestion par processus"], correct:1, explanation:"Le controle budgetaire repose sur la gestion par exception : seuls les ecarts remarquables declenchent une analyse approfondie et des actions correctives."},
+{q:"Quel outil est utilise pour la valorisation du programme de production (deuxieme etape du budget de production) ?", options:["Le budget de tresorerie","La comptabilite analytique","Le business plan","Le rolling forecast"], correct:1, explanation:"La valorisation du programme de production repose sur les resultats de la comptabilite analytique pour chiffrer les ressources necessaires (matieres, MOD, autres couts)."},
+{q:"Le Beyond Budgeting a ete initie par des entreprises de quel type ?", options:["Des multinationales americaines","Des PME francaises","Des entreprises scandinaves fondees sur le dialogue et la confiance","Des start-ups technologiques asiatiques"], correct:2, explanation:"Les pionnieres du Beyond Budgeting sont des entreprises scandinaves partageant une culture fondee sur le dialogue et la confiance."},
+{q:"Selon le cours, quel est le cout standard d'un produit ?", options:["Le cout reel constate en fin de periode","Le cout le plus bas jamais atteint dans l'entreprise","Quantite standard multipliee par cout unitaire standard","Le prix de vente diminue de la marge souhaitee"], correct:2, explanation:"Cout standard = Quantite standard x Cout unitaire standard. C'est un cout calcule a l'avance servant de reference pour le controle budgetaire."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

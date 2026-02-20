@@ -1,84 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz — Performance Management Ch 1: Introduction to Management Accounting</title>
-<style>
-*{margin:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
-.container{max-width:750px;margin:0 auto}
-.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
-.back-link:hover{color:#10b981}
-.quiz-header{text-align:center;margin-bottom:2rem}
-.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
-.quiz-header p{color:#aaa;font-size:.9rem}
-.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
-.score-bar span{font-size:.95rem}
-.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
-.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
-.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
-.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
-.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
-.options{display:flex;flex-direction:column;gap:.6rem}
-.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
-.option:hover:not(:disabled){border-color:#10b981;background:#162229}
-.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
-.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
-.option:disabled{cursor:default}
-.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
-.nav-buttons{text-align:right;margin-top:1rem}
-.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
-.btn-next{background:#10b981;color:#0f0f1a}
-.btn-next:hover:not(:disabled){background:#0ea472}
-.btn-next:disabled{opacity:.4;cursor:default}
-.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
-#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
-#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
-#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
-#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Performance Management Ch1: Introduction to Management Accounting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
 </head>
 <body>
-<div class="container">
-<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
-<div class="quiz-header">
-<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
-<p>Chapter 1: Introduction to Management Accounting</p>
-</div>
-<div class="score-bar">
-<span>Question <span id="current-q">1</span>/8</span>
-<span>Score: <span id="score">0</span></span>
-</div>
-<div class="progress-bg"><div class="progress" id="progress"></div></div>
-<div id="quiz-area"></div>
-<div id="result-card">
-<h2>Quiz Complete!</h2>
-<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
-<div class="result-msg" id="result-msg"></div>
-<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
-</div>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">PERFORMANCE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 1 &mdash; Introduction to Management Accounting</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
 </div>
 <script>
 const questions = [
-  {q:"What is the primary purpose of a business?",options:["To maximise short-term profits","To create and keep a customer","To minimise costs","To pay dividends to shareholders"],correct:1,explanation:"According to the course, the purpose of a business is to create and keep a customer. The primary financial goal is to enhance owner wealth in the long term, but the overarching purpose is customer-focused."},
-  {q:"In a limited company, what protection do shareholders have that sole traders do not?",options:["Unlimited liability for all debts","Joint and several liability","Limited liability (veil of incorporation)","No liability at all"],correct:2,explanation:"Shareholders in a company have limited liability, meaning they are only liable up to the price of their shares. This is known as the 'veil of incorporation'. Sole traders have unlimited personal liability for business debts."},
-  {q:"Which step of strategic management involves SWOT analysis?",options:["Establish mission and objectives","Undertake a position analysis","Identify strategic options","Perform, review and control"],correct:1,explanation:"SWOT analysis is a tool used in Step 2: Position Analysis. It assesses the business's Strengths and Weaknesses (internal) and Opportunities and Threats (external) to understand its competitive position."},
-  {q:"In a SWOT analysis, 'Opportunities' and 'Threats' are classified as:",options:["Internal and positive factors","Internal and negative factors","External factors","Historical factors"],correct:2,explanation:"Opportunities and Threats are external factors present in the environment in which the business operates. Strengths and Weaknesses are internal factors that are attributes of the business itself."},
-  {q:"Which of the following is NOT one of the four key principles of management accounting?",options:["Influence","Profitability","Analysis","Trust"],correct:1,explanation:"The four key principles are: Influence, Relevance, Analysis, and Trust (IRAT). Profitability is a business objective but not one of the four principles upon which management accounting information should be based."},
-  {q:"Management accounting information is different from financial accounting because it is:",options:["Regulated by accounting standards","Based on historical data only","Future-focused and customisable for internal use","Required by law for all businesses"],correct:2,explanation:"Management accounting is unregulated, future-focused, detail-oriented, and customisable for specific management needs. Financial accounting is regulated, historical, standardised, and legally required."},
-  {q:"What are the four ethical standards for management accountants?",options:["Accuracy, Timeliness, Reliability, Consistency","Integrity, Objectivity, Confidentiality, Competence","Transparency, Accountability, Fairness, Responsibility","Honesty, Diligence, Prudence, Independence"],correct:1,explanation:"The four ethical standards are: Integrity (communicate truthfully), Objectivity (avoid bias), Confidentiality (protect sensitive information), and Competence (maintain professional skill)."},
-  {q:"Which of the following is an example of non-financial information that a management accountant might provide?",options:["Monthly revenue figures","Cost per unit of production","Customer satisfaction levels","Profit margin percentages"],correct:2,explanation:"Customer satisfaction levels are non-financial information (not expressed in monetary values). Providing non-financial information has become an increasingly important part of the management accountant's role, alongside traditional financial measures."}
+    {q:"What is the primary financial goal of a business?", options:["Maximise short-term revenue","Enhance the wealth of its owners in the long term","Minimise all operating costs","Increase market share above competitors"], correct:1, explanation:"The primary financial goal of a business is to enhance the wealth of its owners in the long term, while the overarching purpose is to create and keep a customer."},
+    {q:"Which of the following is NOT one of the five steps of strategic management?", options:["Position analysis (e.g. SWOT)","Establish mission, vision and objectives","Perform, review and control","Conduct a financial audit of competitors"], correct:3, explanation:"The five steps are: (1) Establish mission/vision/objectives, (2) Position analysis, (3) Identify and assess strategic options, (4) Select options and formulate plans, (5) Perform, review and control. Auditing competitors is not a step."},
+    {q:"In a SWOT analysis, which category do Opportunities belong to?", options:["Internal and positive","External and negative","External and positive","Internal and negative"], correct:2, explanation:"In SWOT, Strengths (internal positive), Weaknesses (internal negative), Opportunities (external positive), and Threats (external negative). Opportunities are external and positive."},
+    {q:"Which statement about management accounting is TRUE?", options:["It is legally required for all businesses","It is regulated by accounting standards","It focuses primarily on historic data","It is future-oriented and customisable for management needs"], correct:3, explanation:"Management accounting is future-oriented, detail-focused, and customisable. It is unregulated, not legally required, and differs from financial accounting which focuses on historic data."},
+    {q:"What are the four key principles of management accounting?", options:["Cost, Revenue, Profit, Volume","Influence, Relevance, Analysis, Trust","Planning, Organising, Leading, Controlling","Accuracy, Timeliness, Completeness, Consistency"], correct:1, explanation:"The four key principles are Influence (provides insights), Relevance (information relevant to decisions), Analysis (insights into options and cause-and-effect), and Trust (managers can rely on the information)."},
+    {q:"In a limited company, who appoints the board of directors?", options:["The government regulator","The managing director","The shareholders","The employees through a vote"], correct:2, explanation:"In a limited company, shareholders appoint a board of directors to set the overall direction, monitor and control activities, and communicate with shareholders and stakeholders."},
+    {q:"Which of the following is an example of non-financial information in an airline context?", options:["Total revenue per quarter","Net profit margin","Cost of fuel per litre","Load factors and flight punctuality"], correct:3, explanation:"Non-financial information includes passenger volumes, load factors, flight punctuality, turnaround times, customer satisfaction, and percentage of online bookings. Revenue, profit margin, and fuel cost per litre are financial measures."},
+    {q:"Which ethical standard requires management accountants to avoid bias?", options:["Integrity","Competence","Confidentiality","Objectivity"], correct:3, explanation:"Objectivity requires management accountants to avoid bias. Integrity is about truthfulness, Confidentiality protects sensitive information, and Competence maintains professional skill."},
+    {q:"A key change in the modern management accountant's role is spending more time on:", options:["Recording historical transactions","Preparing statutory financial statements","Enforcing tax compliance","Analysis and business advice"], correct:3, explanation:"The modern management accountant spends more time on analysis and business advice, acting as a key member of the management team with broader responsibilities as an information manager."},
+    {q:"Which feature distinguishes financial accounting from management accounting?", options:["Financial accounting is future-focused","Financial accounting is unregulated","Financial accounting is regulated by accounting standards","Financial accounting provides detailed, customisable reports"], correct:2, explanation:"Financial accounting is regulated by accounting standards and provides standardised reports for external users. Management accounting is unregulated, future-focused, and customisable."}
 ];
-let current=0,score=0,answered=[];
-function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
-function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
-function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
-function nextQ(){current++;renderQ();}
-function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
-function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

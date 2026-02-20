@@ -1,84 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz — Performance Management Ch 4: Full Costing</title>
-<style>
-*{margin:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;padding:1rem}
-.container{max-width:750px;margin:0 auto}
-.back-link{display:inline-block;color:#7f8c8d;font-size:.85rem;text-decoration:none;margin-bottom:1rem}
-.back-link:hover{color:#10b981}
-.quiz-header{text-align:center;margin-bottom:2rem}
-.quiz-header h1{font-size:1.4rem;color:#10b981;margin-bottom:.3rem}
-.quiz-header p{color:#aaa;font-size:.9rem}
-.score-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:.8rem 1.2rem;border-radius:10px;margin-bottom:1.5rem}
-.score-bar span{font-size:.95rem}
-.progress-bg{width:100%;background:#1a1a2e;height:6px;border-radius:3px;margin-bottom:1.5rem;overflow:hidden}
-.progress-bg .progress{height:100%;background:#10b981;border-radius:3px;transition:width .4s}
-.question-card{background:#1a1a2e;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
-.question-num{color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
-.question-text{font-size:1.05rem;margin-bottom:1.2rem;line-height:1.5}
-.options{display:flex;flex-direction:column;gap:.6rem}
-.option{background:#0f0f1a;border:2px solid #333;border-radius:8px;padding:.8rem 1rem;cursor:pointer;font-size:.95rem;text-align:left;color:#e0e0e0;transition:all .2s}
-.option:hover:not(:disabled){border-color:#10b981;background:#162229}
-.option.correct{border-color:#10b981;background:#0d3320;color:#10b981}
-.option.wrong{border-color:#e74c3c;background:#3b1a1a;color:#e74c3c}
-.option:disabled{cursor:default}
-.explanation{display:none;background:#162229;border-left:3px solid #10b981;padding:.8rem 1rem;margin-top:1rem;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5;color:#ccc}
-.nav-buttons{text-align:right;margin-top:1rem}
-.btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s}
-.btn-next{background:#10b981;color:#0f0f1a}
-.btn-next:hover:not(:disabled){background:#0ea472}
-.btn-next:disabled{opacity:.4;cursor:default}
-.btn-restart{background:#10b981;color:#0f0f1a;margin-top:1rem}
-#result-card{display:none;text-align:center;background:#1a1a2e;border-radius:12px;padding:2rem}
-#result-card h2{font-size:1.5rem;color:#10b981;margin-bottom:.5rem}
-#result-card .result-score{font-size:2.5rem;font-weight:700;color:#10b981;margin:.8rem 0}
-#result-card .result-msg{font-size:1rem;color:#ccc;margin-bottom:1rem}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Performance Management Ch4: Full Costing</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
+    </style>
 </head>
 <body>
-<div class="container">
-<a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
-<div class="quiz-header">
-<h1>PERFORMANCE MANAGEMENT &mdash; QUIZ</h1>
-<p>Chapter 4: Full Costing</p>
-</div>
-<div class="score-bar">
-<span>Question <span id="current-q">1</span>/8</span>
-<span>Score: <span id="score">0</span></span>
-</div>
-<div class="progress-bg"><div class="progress" id="progress"></div></div>
-<div id="quiz-area"></div>
-<div id="result-card">
-<h2>Quiz Complete!</h2>
-<div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
-<div class="result-msg" id="result-msg"></div>
-<button class="btn btn-restart" onclick="restartQuiz()">Restart Quiz</button>
-</div>
+<div class="quiz-container">
+    <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    <div class="quiz-header">
+        <div class="matiere">PERFORMANCE MANAGEMENT &mdash; QUIZ</div>
+        <h1>Chapter 4 &mdash; Full Costing</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Restart</button>
+        <br><br>
+        <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
+    </div>
 </div>
 <script>
 const questions = [
-  {q:"A factory produced 120 completed gnomes and 15 that are 80% complete. Total cost is &pound;5,280. What is the cost per equivalent unit?",options:["&pound;39.11","&pound;40.00","&pound;44.00","&pound;48.00"],correct:1,explanation:"Equivalent units = 120 + (15 &times; 80%) = 120 + 12 = 132. Cost per equivalent unit = &pound;5,280 / 132 = &pound;40.00. The WIP units are converted to their equivalent completed units before dividing."},
-  {q:"Monthly overheads are &pound;10,000 and total direct labour hours are 1,000. A job uses 3 labour hours. What overhead is charged to the job?",options:["&pound;10","&pound;30","&pound;100","&pound;3,333"],correct:1,explanation:"Overhead recovery rate = &pound;10,000 / 1,000 hours = &pound;10 per direct labour hour. Overhead charged to the job = 3 hours &times; &pound;10 = &pound;30."},
-  {q:"What is the difference between 'allocating' and 'apportioning' overheads?",options:["Allocating is for variable costs; apportioning is for fixed costs","Allocating assigns costs specific to one centre; apportioning shares costs across multiple centres","Allocating uses machine hours; apportioning uses labour hours","There is no difference; they are synonyms"],correct:1,explanation:"Cost allocation assigns indirect costs that relate directly to a specific cost centre. Cost apportionment shares general overheads that relate to more than one cost centre, using a fair basis such as floor area or number of employees."},
-  {q:"Which of the following is the most appropriate basis for apportioning rent costs to departments?",options:["Number of employees","Machine hours","Floor area occupied","Direct labour cost"],correct:2,explanation:"Rent relates to the space used, so floor area (square metres) is the most logical basis for apportioning rent costs between departments. Other bases would not reflect actual space consumption."},
-  {q:"Production = 6,000 units, Sales = 4,000 units. Fixed overhead = &pound;3/unit. Which costing method gives higher profit?",options:["Variable (marginal) costing","Absorption costing","Both give the same profit","Cannot be determined"],correct:1,explanation:"When inventory increases (production > sales), absorption costing gives higher profit. The difference = 2,000 units &times; &pound;3 = &pound;6,000 more profit under absorption. This is because fixed overheads are deferred in closing inventory under absorption costing."},
-  {q:"Under variable (marginal) costing, how are fixed manufacturing overheads treated?",options:["Included in the cost of each product unit","Treated as a period expense, charged in full to the period incurred","Ignored completely","Split equally between production and administration"],correct:1,explanation:"Under variable costing, only variable production costs are treated as product costs. Fixed manufacturing overheads are treated as a period expense and charged in full to the income statement in the period they are incurred, not absorbed into inventory."},
-  {q:"Marine Suppliers Ltd has total overheads of &pound;41,700 and 6,000 direct labour hours. A sail job requires 6 hours and 20 sqm of cloth at &pound;25/sqm plus 6 hours of labour at &pound;20/hr. What is the full cost?",options:["&pound;620.00","&pound;661.70","&pound;724.25","&pound;700.00"],correct:1,explanation:"Direct materials = 20 &times; &pound;25 = &pound;500. Direct labour = 6 &times; &pound;20 = &pound;120. Overhead rate = &pound;41,700 / 6,000 = &pound;6.95/hr. Overheads = 6 &times; &pound;6.95 = &pound;41.70. Full cost = &pound;500 + &pound;120 + &pound;41.70 = &pound;661.70."},
-  {q:"Is it true that a direct cost is always a variable cost?",options:["Yes, direct costs always vary with output","No, direct/indirect relates to traceability while variable/fixed relates to behaviour","Yes, because direct costs are always materials and labour","No, but only in service industries"],correct:1,explanation:"Direct/indirect classification depends on whether a cost can be traced to a specific cost unit. Variable/fixed classification depends on how the cost behaves with changes in activity level. These are independent classifications. A cost can be direct and fixed (e.g. a supervisor dedicated to one product line)."}
+    {q:"A factory produced 120 completed gnomes and 15 that are 80% complete. Total cost is &pound;5,280. What is the cost per equivalent unit?", options:["&pound;44.00","&pound;40.00","&pound;39.11","&pound;48.00"], correct:1, explanation:"Equivalent units = 120 + (15 &times; 80%) = 120 + 12 = 132. Cost per equivalent unit = &pound;5,280 / 132 = &pound;40.00."},
+    {q:"Which of the following is NOT a use of full cost information?", options:["Pricing and output decisions","Assessing relative efficiency across locations","Exercising control over actual costs","Calculating contribution margin for short-term decisions"], correct:3, explanation:"Full cost information is used for pricing, control, efficiency comparison, and performance assessment. Contribution margin analysis is a marginal/variable costing tool, not a full costing use."},
+    {q:"Monthly overheads are &pound;10,000 and total direct labour hours are 1,000. A repair job uses 3 hours of direct labour, &pound;15 of materials, and &pound;48 of direct labour. What is the full cost?", options:["&pound;63","&pound;78","&pound;93","&pound;123"], correct:2, explanation:"Overhead rate = &pound;10,000 / 1,000 = &pound;10/hour. Overheads absorbed = 3 &times; &pound;10 = &pound;30. Full cost = &pound;15 (materials) + &pound;48 (labour) + &pound;30 (overheads) = &pound;93."},
+    {q:"What is the most appropriate basis for apportioning rent and rates to departments?", options:["Number of employees","Floor area occupied","Machine hours used","Direct labour cost"], correct:1, explanation:"Rent and rates relate to the space used, so floor area (square metres) is the most logical apportionment basis. Other bases would not reflect actual space consumption."},
+    {q:"Which statement about direct and indirect costs is TRUE?", options:["Direct costs are always variable costs","Indirect costs are always fixed costs","Direct/indirect depends on traceability to a cost unit, not on cost behaviour","A cost cannot be both direct and fixed at the same time"], correct:2, explanation:"Direct/indirect classification depends on whether a cost can be traced to a specific cost unit. Variable/fixed classification depends on how costs behave with activity. A cost can be direct and fixed (e.g. a supervisor dedicated to one product line)."},
+    {q:"Production = 6,000 units, Sales = 4,000 units, Fixed overhead = &pound;3/unit. Under which method is profit higher, and by how much?", options:["Variable costing profit is &pound;6,000 higher","Absorption costing profit is &pound;6,000 higher","Both give the same profit","Absorption costing profit is &pound;3,000 higher"], correct:1, explanation:"When inventory increases (production > sales), absorption costing gives higher profit. Difference = 2,000 units increase &times; &pound;3 fixed overhead per unit = &pound;6,000 higher under absorption costing."},
+    {q:"Under variable (marginal) costing, how are fixed manufacturing overheads treated?", options:["Included in the cost of each product unit","Treated as a period expense charged in full to the income statement","Split between inventory and cost of sales","Ignored entirely in the accounts"], correct:1, explanation:"Under variable costing, only variable production costs are product costs. Fixed manufacturing overheads are treated as a period expense, charged in full to the income statement in the period incurred."},
+    {q:"What are the five steps for handling overheads on a cost centre basis?", options:["Estimate, Budget, Record, Compare, Report","Identify, Classify, Allocate, Absorb, Reconcile","Allocate, Apportion, Reapportion service centre costs, Calculate overhead rate, Absorb into jobs","Plan, Collect, Distribute, Verify, Close"], correct:2, explanation:"The five steps are: (1) Allocate overheads specific to each cost centre, (2) Apportion shared overheads, (3) Reapportion service cost centre overheads to production centres, (4) Calculate an overhead recovery rate, (5) Absorb overheads into jobs."},
+    {q:"Which accounting standard requires absorption costing for external financial reporting?", options:["IFRS 15","IAS 16","IAS 2","IFRS 9"], correct:2, explanation:"IAS 2 (Inventories) requires that inventory is valued using absorption costing for external financial reporting. Variable (marginal) costing is not compliant for external reporting."},
+    {q:"Lahore Ltd produces 6,000 units and sells 4,000. Variable cost is &pound;5/unit, fixed manufacturing overhead is &pound;18,000 (&pound;3/unit), selling price is &pound;14. What is the absorption costing profit if non-manufacturing costs are &pound;5,000?", options:["&pound;13,000","&pound;24,000","&pound;19,000","&pound;25,000"], correct:2, explanation:"Under absorption costing: Full production cost = &pound;5 + &pound;3 = &pound;8/unit. Cost of sales = 4,000 &times; &pound;8 = &pound;32,000. Revenue = 4,000 &times; &pound;14 = &pound;56,000. Gross profit = &pound;24,000. Profit = &pound;24,000 &minus; &pound;5,000 = &pound;19,000."}
 ];
-let current=0,score=0,answered=[];
-function renderQ(){if(current>=questions.length){showResult();return;}const qd=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';let html='<div class="question-card"><div class="question-num">Question '+(current+1)+'</div><div class="question-text">'+qd.q+'</div><div class="options">';qd.options.forEach((o,i)=>{html+='<button class="option" onclick="selectOption('+i+')" id="opt'+i+'">'+o+'</button>';});html+='</div><div class="explanation" id="expl">'+qd.explanation+'</div></div><div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';document.getElementById('quiz-area').innerHTML=html;if(answered[current]!==undefined)showAnswered();}
-function selectOption(idx){if(answered[current]!==undefined)return;answered[current]=idx;const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(idx!==qd.correct)document.getElementById('opt'+idx).classList.add('wrong');else score++;document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;document.getElementById('score').textContent=score;}
-function showAnswered(){const qd=questions[current];document.getElementById('opt'+qd.correct).classList.add('correct');if(answered[current]!==qd.correct)document.getElementById('opt'+answered[current]).classList.add('wrong');document.querySelectorAll('.option').forEach(b=>b.disabled=true);document.getElementById('expl').style.display='block';document.getElementById('nextBtn').disabled=false;}
-function nextQ(){current++;renderQ();}
-function showResult(){document.getElementById('quiz-area').style.display='none';document.querySelector('.nav-buttons')?.remove();const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'Excellent! Well done!':pct>=0.5?'Good job, keep revising!':'Keep studying, you will get there!';}
-function restartQuiz(){current=0;score=0;answered=[];document.getElementById('quiz-area').style.display='block';document.getElementById('result-card').style.display='none';document.getElementById('score').textContent='0';renderQ();}
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Contrôle de gestion sociale et masse salariale</title>
+    <title>Quiz — Le controle de gestion sociale</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
-        <h1>Contrôle de gestion sociale et masse salariale</h1>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
+        <h1>Le controle de gestion sociale</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Que signifie le sigle GVT et que désigne chaque lettre ?",
-        options: ["Gestion, Volume, Temps", "Glissement (mérite), Vieillissement (ancienneté), Technicité (qualification)", "Gains, Variables, Taux", "Glissement, Variation, Transfert"],
-        correct: 1,
-        explanation: "GVT : G = Glissement (augmentation liée à la performance individuelle / mérite, sans lien avec l'ancienneté), V = Vieillissement (prime d'ancienneté, grille automatique), T = Technicité (amélioration de qualification, changement de poste ou de niveau)."
-    },
-    {
-        q: "À partir de combien de salariés le bilan social est-il obligatoire et sur combien d'années porte-t-il ?",
-        options: ["100 salariés, sur 1 an", "300 salariés, sur 3 ans", "500 salariés, sur 5 ans", "250 salariés, sur 2 ans"],
-        correct: 1,
-        explanation: "Le bilan social est obligatoire à partir de 300 salariés (créé en 1977, précisé par la loi NRE 2001, renforcé par la loi PACTE 2019). Il porte sur les 3 dernières années et contient environ 120 indicateurs."
-    },
-    {
-        q: "Quelle est la formule de l'effet en masse d'une augmentation salariale ?",
-        options: ["Effet en masse = Augmentation % × (nb mois restants / 12)", "Effet en masse = Augmentation % × 12 mois", "Effet en masse = (MS N+1 - MS N) / MS N", "Effet en masse = Salaire moyen × taux d'augmentation"],
-        correct: 0,
-        explanation: "Effet en masse = Augmentation % × (nb mois restants / 12). Exemple : +4 % au 1er octobre = 4 % × 3/12 = +1 % en masse. Plus l'augmentation est tardive dans l'année, plus l'effet en masse est faible."
-    },
-    {
-        q: "Pourquoi l'effet noria est-il généralement négatif (économie) ?",
-        options: ["Car les entreprises recrutent moins que ce qu'elles perdent", "Car les sortants âgés coûtent plus cher que les entrants jeunes, générant une économie", "Car la noria intègre uniquement les départs en retraite non remplacés", "Car les charges sociales diminuent avec le renouvellement des effectifs"],
-        correct: 1,
-        explanation: "La noria est généralement négative (économie) car les salariés sortants (souvent anciens et expérimentés) ont des salaires plus élevés que les entrants (jeunes recrues). Elle est positive uniquement quand la technicité des postes augmente fortement."
-    },
-    {
-        q: "Combien de chapitres contient le bilan social ?",
-        options: ["5 chapitres", "6 chapitres", "7 chapitres", "9 chapitres"],
-        correct: 2,
-        explanation: "Le bilan social contient 7 chapitres : 1) Emploi, 2) Rémunérations et charges, 3) Hygiène et sécurité, 4) Conditions de travail, 5) Formation, 6) Relations professionnelles, 7) Autres conditions de vie relevant de l'entreprise."
-    },
-    {
-        q: "Quelle est la différence entre l'effet en niveau et l'effet en masse d'une augmentation salariale ?",
-        options: ["Ils sont identiques quand l'augmentation est au 1er janvier", "L'effet en niveau mesure la variation de salaire entre deux dates ; l'effet en masse mesure l'impact sur la masse salariale annuelle totale", "L'effet en niveau concerne les cadres, l'effet en masse les non-cadres", "L'effet en masse est toujours supérieur à l'effet en niveau"],
-        correct: 1,
-        explanation: "Effet en niveau : variation du salaire entre deux dates (ex : +4 %). Effet en masse : impact sur la masse salariale annuelle totale. Une augmentation de +4 % au 1er octobre n'a qu'un effet en masse de +1 % (car seulement 3 mois sur 12)."
-    },
-    {
-        q: "Comment se calcule la noria en valeur ?",
-        options: ["Noria = (SAM sortants - SAM entrants) × Nb remplaçants × prorata temporis", "Noria = (SAM entrants - SAM sortants) × Nb remplaçants × prorata temporis", "Noria = Delta MS à structure constante - (Augm. collectives + Report + GVT)", "Noria = MS N+1 - MS N ajustée de l'effectif"],
-        correct: 1,
-        explanation: "Noria (en valeur) = (SAM entrants - SAM sortants) × Nombre de remplaçants × prorata temporis. Comme SAM entrants < SAM sortants en général, la noria est négative, ce qui représente une économie pour l'entreprise."
-    },
-    {
-        q: "Qu'est-ce que l'effet de report dans la masse salariale ?",
-        options: ["Le report du paiement des salaires au mois suivant", "L'incidence en masse, sur l'année N+1, des mesures d'augmentation prises en cours d'année N", "Le transfert de salariés d'une filiale à une autre en cours d'année", "La reconduction automatique des augmentations de N sur N+1"],
-        correct: 1,
-        explanation: "Effet de report = (Coût en année pleine N+1 - Coût en masse pour N) / Masse salariale de N. Il mesure l'impact sur N+1 des augmentations accordées en cours d'année N, même si elles ont déjà été payées partiellement en N."
-    },
-    {
-        q: "Quels sont les 3 modes de règlement des conflits sociaux mentionnés dans le cours ?",
-        options: ["Négociation, médiation, arbitrage", "Conciliation, médiation, arbitrage", "Conciliation, grève, arbitrage", "Médiation, tribunal, accord collectif"],
-        correct: 1,
-        explanation: "Les 3 modes sont : Conciliation (harmoniser les positions), Médiation (recommandation d'un tiers), Arbitrage (sentence obligatoire rendue par un tiers). Ils sont classés du moins contraignant au plus contraignant."
-    },
-    {
-        q: "Quelle loi a monétisé le CPF et à quelle hauteur ?",
-        options: ["Loi PACTE (2019) : 1 000 €/an", "Loi du 5 septembre 2018 : 500 €/an", "Loi NRE (2001) : 300 €/an", "Loi Rebsamen (2015) : 400 €/an"],
-        correct: 1,
-        explanation: "La loi du 5 septembre 2018 a monétisé le CPF à hauteur de 500 €/an. Cette loi a également remplacé le Plan de formation par le PDC (Plan de Développement des Compétences) et les OPCA par les OPCO."
-    }
+{q:"Que signifie le sigle GVT dans l'analyse de la masse salariale ?", options:["Gestion, Valorisation, Transformation","Glissement, Vieillissement, Technicite","Gains, Variations, Tendances","Global, Variable, Total"], correct:1, explanation:"GVT = Glissement (performance individuelle), Vieillissement (anciennete), Technicite (qualification). Ce sont les trois composantes des mesures individuelles sur la masse salariale."},
+{q:"Le bilan social est obligatoire pour les entreprises de plus de combien de salaries ?", options:["50 salaries","100 salaries","300 salaries","500 salaries"], correct:2, explanation:"Le bilan social est obligatoire pour les entreprises et etablissements de plus de 300 salaries. Il presente la situation sociale sur les trois dernieres annees."},
+{q:"Combien de chapitres comporte le bilan social ?", options:["5 chapitres","7 chapitres","10 chapitres","12 chapitres"], correct:1, explanation:"Le bilan social comporte 7 chapitres : Emploi, Remunerations, Hygiene et securite, Autres conditions de travail, Formation, Relations professionnelles, Autres conditions de vie."},
+{q:"La Noria est generalement negative (GVT negatif). Que signifie cela pour l'entreprise ?", options:["L'entreprise perd de l'argent a chaque remplacement","L'entreprise economise car les entrants sont moins payes que les sortants","L'entreprise augmente sa masse salariale automatiquement","L'entreprise n'effectue aucun remplacement"], correct:1, explanation:"La Noria negative signifie que les salaries partant a la retraite (salaires eleves) sont remplaces par de nouveaux arrivants (salaires plus faibles), generant une economie."},
+{q:"Lequel n'est PAS un des quatre perimetres de la masse salariale presentes dans le cours ?", options:["Masse salariale chargee","Couts de personnel","Cout total du travail","Masse salariale nette d'impots"], correct:3, explanation:"Les quatre perimetres sont : masse salariale, masse salariale chargee, couts de personnel, et cout total du travail. La masse salariale nette d'impots n'en fait pas partie."},
+{q:"Qu'est-ce que l'effet en masse d'une augmentation salariale ?", options:["Le pourcentage d'evolution de la masse salariale totale sur la periode","Le montant total des augmentations distribuees","Le nombre de salaries concernes par l'augmentation","La difference entre l'augmentation en niveau et l'effet de report"], correct:0, explanation:"L'effet en masse est le pourcentage d'evolution de la masse salariale totale sur la periode. Une augmentation en cours d'annee a un effet en masse inferieur a l'augmentation en niveau."},
+{q:"Si une augmentation de 4 % est accordee au 1er octobre, quel est l'effet en masse sur l'annee ?", options:["4 %","3 %","1 %","2 %"], correct:2, explanation:"Effet en masse = 4 % x 3/12 = 1 %. L'augmentation ne s'applique que sur les 3 derniers mois de l'annee."},
+{q:"Qu'a remplace la GPEC selon la loi de 2018 ?", options:["Le plan de sauvegarde de l'emploi (PSE)","La GEPP (Gestion des Emplois et des Parcours Professionnels)","Le bilan social","La negociation collective"], correct:1, explanation:"La GEPP (Gestion des Emplois et des Parcours Professionnels) a remplace la GPEC. Elle est obligatoire pour les entreprises de plus de 300 salaries."},
+{q:"Les quatre effets de decomposition de la variation de la masse salariale sont, dans l'ordre :", options:["Effectif, activite, remuneration, structure","Activite, effectif, augmentations generales/report, mesures individuelles","Remuneration, effectif, noria, structure","Structure, noria, GVT, augmentations"], correct:1, explanation:"L'ordre est : 1) Variation d'activite, 2) Effet effectif, 3) Augmentations generales/categorielles + report, 4) Mesures individuelles (GVT, structure, noria)."},
+{q:"Parmi les trois procedures de reglement des conflits sociaux, laquelle aboutit a une sentence obligatoire ?", options:["La conciliation","La mediation","L'arbitrage","La negociation directe"], correct:2, explanation:"L'arbitrage aboutit a une sentence obligatoire prononcee par un ou plusieurs arbitres designes d'un commun accord. La conciliation et la mediation sont moins contraignantes."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

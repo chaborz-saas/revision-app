@@ -3,167 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Incoterms et Crédit documentaire</title>
+    <title>Quiz — Incoterms et Credit documentaire</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
-        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #f59e0b; }
-        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.3rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #e94560; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.3rem; }
         .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
-        .progress-fill { background: #f59e0b; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
-        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #f59e0b; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
         .options { display: grid; gap: 0.6rem; }
         .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
-        .option:hover:not(:disabled) { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: white; }
+        .option:hover:not(:disabled) { background: rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.4); color: white; }
         .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
         .option.wrong { background: rgba(233,69,96,0.2); border-color: #e94560; color: #e94560; }
         .option:disabled { cursor: default; }
-        .explanation { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #fcd34d; display: none; }
+        .explanation { background: rgba(233,69,96,0.08); border-left: 3px solid #e94560; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #f4a0b0; display: none; }
         .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-next { background: #f59e0b; color: #0f0f1a; margin-left: auto; }
-        .btn-next:hover { background: #d97706; }
+        .btn-next { background: #e94560; color: white; margin-left: auto; }
+        .btn-next:hover { background: #d63851; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
-        .btn-back:hover { background: rgba(255,255,255,0.15); }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
-        .result-score { font-size: 3.5rem; font-weight: 800; color: #f59e0b; margin: 1rem 0; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #e94560; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
-        .btn-restart { background: #f59e0b; color: #0f0f1a; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #e94560; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
-        .back-link:hover { color: #f59e0b; }
+        .back-link:hover { color: #e94560; }
     </style>
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">DROIT — QUIZ</div>
-        <h1>Ch. 5 — Incoterms et Crédit documentaire</h1>
+        <div class="matiere">DROIT DES AFFAIRES INTERNATIONALES &mdash; QUIZ</div>
+        <h1>Ch.5 : Incoterms et Credit documentaire</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Combien d'Incoterms compte la version 2020, et quel organisme les publie ?",
-        options: ["13 Incoterms, publiés par l'OMC", "11 Incoterms, publiés par la CCI (Chambre de Commerce Internationale)", "9 Incoterms, publiés par l'OCDE", "11 Incoterms, publiés par l'ONU"],
-        correct: 1,
-        explanation: "Les Incoterms 2020 comprennent 11 termes standardisés, publiés par la CCI (Chambre de Commerce Internationale). Ils ne sont pas obligatoires mais sont librement adoptés par les parties."
-    },
-    {
-        q: "Quels sont les 4 Incoterms réservés exclusivement au transport maritime ou fluvial ?",
-        options: ["EXW, FCA, CPT, CIP", "FAS, FOB, CFR, CIF", "DAP, DPU, DDP, FOB", "FOB, CIF, DAP, DDP"],
-        correct: 1,
-        explanation: "Les 4 Incoterms maritimes/fluviaux sont : FAS (Franco le long du navire), FOB (Franco à bord), CFR (Coût et fret) et CIF (Coût, assurance et fret). Tous les autres Incoterms sont utilisables pour tous modes de transport."
-    },
-    {
-        q: "Quel Incoterm impose le maximum d'obligations au vendeur, y compris le dédouanement à l'importation ?",
-        options: ["CIF", "DAP", "DPU", "DDP (Rendu droits acquittés)"],
-        correct: 3,
-        explanation: "DDP (Delivered Duty Paid / Rendu droits acquittés) impose le maximum d'obligations au vendeur : il supporte tous les frais et risques jusqu'à la livraison finale, y compris le dédouanement à l'importation et le paiement des droits de douane."
-    },
-    {
-        q: "Quels sont les seuls Incoterms qui imposent une obligation d'assurance au vendeur ?",
-        options: ["FOB et CIF", "CIF (maritime) et CIP (tous modes)", "DDP et DAP", "CFR et CPT"],
-        correct: 1,
-        explanation: "Seuls CIF (maritime) et CIP (tous modes) imposent une obligation d'assurance au vendeur. Pour CIP, l'assurance doit couvrir au minimum 110 % du prix du contrat dans la devise du contrat."
-    },
-    {
-        q: "Quelle est la différence entre une vente « au départ » et une vente « à l'arrivée » ?",
-        options: ["La vente au départ est plus courante, la vente à l'arrivée est réservée aux gros volumes", "Vente au départ (E/F/C) : risques transférés dans le pays du vendeur ; vente à l'arrivée (D) : risques transférés dans le pays de l'acheteur", "La vente au départ inclut le fret, la vente à l'arrivée non", "Aucune différence pratique, seul le lieu de facturation change"],
-        correct: 1,
-        explanation: "Vente au départ (groupes E, F, C) : les risques sont transférés dans le pays du vendeur et supportés par l'acheteur pendant le transport. Vente à l'arrivée (groupe D : DAP, DPU, DDP) : le vendeur supporte les risques jusqu'à la destination convenue."
-    },
-    {
-        q: "Pourquoi l'Incoterm EXW est-il déconseillé pour un vendeur exportant hors UE ?",
-        options: ["Car l'acheteur ne peut pas assurer les marchandises pendant le transport", "Car le vendeur ne maîtrise pas le dédouanement export et ne peut pas prouver l'exportation pour obtenir l'exonération de TVA", "Car EXW est réservé aux ventes intra-UE uniquement", "Car EXW implique que le vendeur paie le fret principal"],
-        correct: 1,
-        explanation: "En EXW, l'acheteur prend en charge le dédouanement export. Le vendeur ne peut donc pas facilement prouver l'exportation auprès de l'administration fiscale, ce qui lui rend difficile l'obtention de l'exonération de TVA à l'export."
-    },
-    {
-        q: "Quels sont les 4 acteurs d'un crédit documentaire ?",
-        options: ["Vendeur, acheteur, douanes, transporteur", "Demandeur (acheteur), banque émettrice, bénéficiaire (vendeur), banque notificatrice", "Vendeur, acheteur, banque centrale, courtier", "Émetteur, confirmateur, présentateur, payeur"],
-        correct: 1,
-        explanation: "Les 4 acteurs du crédit documentaire : 1) le demandeur (acheteur), 2) la banque émettrice (banque de l'acheteur), 3) le bénéficiaire (vendeur), 4) la banque notificatrice (banque du vendeur qui notifie et peut confirmer)."
-    },
-    {
-        q: "Quel est le délai par défaut pour présenter les documents dans un crédit documentaire ?",
-        options: ["7 jours après l'expédition", "14 jours après l'expédition", "21 jours après la date d'expédition des marchandises", "30 jours après la date d'expédition des marchandises"],
-        correct: 2,
-        explanation: "Le délai de présentation des documents est de 21 jours après la date d'expédition des marchandises, sauf indication contraire dans l'ouverture du crédit documentaire. Il faut également respecter la date de validité globale du crédit."
-    },
-    {
-        q: "Qu'est-ce que le crédit documentaire garantit à chacune des parties ?",
-        options: ["À l'acheteur : livraison dans les délais ; au vendeur : qualité conforme des marchandises", "À l'acheteur : paiement seulement si le vendeur fournit les documents d'expédition conformes ; au vendeur : garantie de paiement par la banque", "Aux deux parties : un recours en cas de litige devant la CCI", "À l'acheteur : dédouanement facilité ; au vendeur : pas de risque de change"],
-        correct: 1,
-        explanation: "Double sécurité du crédit documentaire : l'acheteur est protégé car le paiement n'est déclenché que sur présentation de documents prouvant l'expédition. Le vendeur est protégé car il a la garantie de paiement par la banque émettrice, indépendamment de la solvabilité de l'acheteur."
-    },
-    {
-        q: "En CIF, qui paie le fret et l'assurance, et à quel moment les risques sont-ils transférés à l'acheteur ?",
-        options: ["L'acheteur paie tout et les risques se transfèrent à l'arrivée au port de destination", "Le vendeur paie le fret et l'assurance, mais les risques se transfèrent à l'acheteur au chargement à bord (port d'expédition)", "Le vendeur paie tout jusqu'à la livraison finale à l'entrepôt de l'acheteur", "Le vendeur paie le fret et les risques se transfèrent à l'arrivée"],
-        correct: 1,
-        explanation: "En CIF : le vendeur paie le fret et l'assurance (obligations de frais), mais les risques se transfèrent à l'acheteur dès le chargement à bord au port d'expédition. C'est la caractéristique du groupe C : frais à charge du vendeur mais risques transférés au départ."
-    }
+    {q:"Combien d'Incoterms comprend la version 2020 publiee par la CCI ?",options:["7 termes","9 termes","11 termes","13 termes"],correct:2,explanation:"Les Incoterms 2020 comprennent 11 termes, chacun identifie par un sigle de trois lettres (EXW, FCA, FAS, FOB, CFR, CIF, CPT, CIP, DAP, DPU, DDP)."},
+    {q:"Lequel de ces elements n'est PAS determine par les Incoterms ?",options:["Le lieu du transfert des risques","La repartition des frais de transport","Les conditions de paiement du contrat","L'obligation de dedouanement a l'exportation"],correct:2,explanation:"Les Incoterms determinent le transfert des risques et la repartition des frais de transport. Ils ne precisent pas les conditions de paiement, la loi applicable, ni les specifications du bien."},
+    {q:"Quels sont les deux seuls Incoterms qui imposent au vendeur une obligation d'assurance ?",options:["FOB et CFR","EXW et DDP","CIF et CIP","DAP et DPU"],correct:2,explanation:"Seuls CIF (maritime) et CIP (tous modes) imposent au vendeur de conclure un contrat d'assurance pour le transport. Tous les autres Incoterms n'ont aucune obligation d'assurance."},
+    {q:"En Incoterm EXW, qui est responsable du dedouanement a l'exportation ?",options:["Le vendeur, comme dans tous les Incoterms","L'acheteur, car le vendeur n'a que l'obligation de mise a disposition","Le transitaire designe par le vendeur","Les autorites douanieres du pays d'exportation"],correct:1,explanation:"En EXW, l'obligation du vendeur se limite a mettre les marchandises a disposition dans ses locaux. C'est l'acheteur qui effectue et paie toutes les formalites de dedouanement, y compris a l'exportation."},
+    {q:"Quel Incoterm implique le maximum d'obligations pour le vendeur, y compris le dedouanement a l'importation ?",options:["CIF (Cout, assurance et fret)","FOB (Franco a bord)","DAP (Livre a destination)","DDP (Rendu droits acquittes)"],correct:3,explanation:"DDP (Delivered Duty Paid) impose au vendeur le maximum d'obligations : dedouanement export ET import, transport principal, livraison au lieu de destination. Seuls le dechargement final et l'assurance ne sont pas obligatoires."},
+    {q:"Un parfumeur francais vend en EXW a une entreprise chinoise. Pourquoi ce choix pose-t-il un probleme en matiere de TVA ?",options:["L'EXW ne permet pas l'exoneration de TVA a l'exportation","Le vendeur ne maitrise pas le dedouanement et a du mal a prouver l'exportation","La TVA est toujours due en EXW, sans exception","Le taux de TVA est double en EXW"],correct:1,explanation:"En EXW, le vendeur ne maitrise ni la logistique ni le dedouanement a l'exportation. Il lui est donc difficile de prouver l'exportation effective aupres de l'administration douaniere (DAU) pour beneficier de l'exoneration de TVA."},
+    {q:"Dans le credit documentaire, quel acteur s'engage a payer le vendeur si les documents presentes sont conformes ?",options:["La banque notificatrice (banque du vendeur)","Le transitaire de l'acheteur","La banque emettrice (banque de l'acheteur)","L'organisme de credit a l'exportation"],correct:2,explanation:"Dans le credit documentaire, c'est la banque emettrice (banque de l'acheteur) qui s'engage a payer le vendeur lorsque les documents presentes sont conformes aux stipulations du credit."},
+    {q:"Vrai ou faux : Les Incoterms FOB, FAS, CFR et CIF sont reserves exclusivement au transport maritime et fluvial.",options:["Vrai, ces quatre Incoterms ne s'appliquent qu'au transport par eau","Faux, seuls FOB et CIF sont reserves au maritime","Faux, tous les Incoterms sont applicables a tous les modes de transport","Vrai, mais uniquement pour les conteneurs"],correct:0,explanation:"FOB, FAS, CFR et CIF sont les quatre Incoterms reserves exclusivement au transport maritime et fluvial. Les sept autres (EXW, FCA, CPT, CIP, DAP, DPU, DDP) sont applicables a tous les modes de transport."},
+    {q:"En Incoterm CIF, a quel moment les risques sont-ils transferes a l'acheteur ?",options:["A l'arrivee des marchandises au port de destination","Au chargement a bord du navire au port de depart","Au moment ou l'assurance est souscrite par le vendeur","Au moment du paiement du credit documentaire"],correct:1,explanation:"En CIF, meme si le vendeur paie le fret et l'assurance, les risques sont transferes au chargement a bord du navire au port de depart. Il y a donc une dissociation entre le transfert des frais et le transfert des risques."},
+    {q:"Quel est le delai par defaut pour presenter les documents conformes dans un credit documentaire apres l'expedition ?",options:["7 jours","14 jours","21 jours","30 jours"],correct:2,explanation:"Sauf indication contraire, le vendeur dispose de 21 jours apres la date d'expedition pour presenter les documents conformes a la banque dans le cadre du credit documentaire."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? 'Bien ! Encore un peu de révision.' : 'Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

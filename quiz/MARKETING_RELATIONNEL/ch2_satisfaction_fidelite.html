@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Ch.2 — Satisfaction & Fidélité</title>
+    <title>Quiz — Marketing Relationnel Ch2: Satisfaction & Fid&#233;lit&#233;</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -42,78 +43,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">MARKETING RELATIONNEL — QUIZ</div>
-        <h1>Ch.2 — Satisfaction & Fidélité</h1>
+        <div class="matiere">MARKETING RELATIONNEL &mdash; QUIZ</div>
+        <h1>Ch.2 &mdash; Satisfaction &amp; Fid&eacute;lit&eacute;</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9202; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Selon Oliver, la satisfaction naît de :", options:["La qualité intrinsèque du produit","La comparaison entre attentes préalables et expérience de consommation","Le prix payé par le client","La notoriété de la marque"], correct:1, explanation:"La satisfaction = comparaison attentes vs expérience. Si expérience > attentes → satisfaction. Si expérience < attentes → insatisfaction."},
-  {q:"Qu'est-ce que le risque de 'surpromesse' ?", options:["Promettre trop peu pour mieux surprendre","Gonfler les attentes du client au point qu'une bonne expérience génère quand même de l'insatisfaction","Offrir trop d'avantages au client","Promettre des promotions impossibles à tenir"], correct:1, explanation:"Si on promet trop (pub exagérée, vendeur enthousiaste), on élève les attentes. Même une bonne expérience peut décevoir si les attentes étaient irréalistes."},
-  {q:"Lequel N'EST PAS une mesure directe de la satisfaction ?", options:["Enquête de satisfaction","Client mystère","Taux de défection","Questionnaire NPS"], correct:2, explanation:"Le taux de défection est une mesure INDIRECTE (comportement observé). Les mesures directes interrogent explicitement le client sur sa satisfaction."},
-  {q:"En marketing, la 'part de client' (taux de nourriture) mesure :", options:["Le nombre de produits achetés par le client","La proportion des achats du client réalisés chez nous vs ses achats totaux dans la catégorie","La satisfaction du client","Le chiffre d'affaires généré par client"], correct:1, explanation:"Le taux de nourriture = achats chez nous / achats totaux du client dans la catégorie. Ex: un client dépense 200€/mois en vêtements dont 80€ chez nous → taux = 40%."},
-  {q:"Aux USA, 90% des automobilistes sont satisfaits de leur marque. Quel % la remplace par la même marque ?", options:["90%","70%","50%","35%"], correct:3, explanation:"Seulement 35% ! C'est l'illustration parfaite que satisfaction ≠ fidélité. Un client satisfait peut quand même changer de marque."},
-  {q:"Quelle est la différence entre fidélité objective et subjective ?", options:["La fidélité objective concerne les femmes, la subjective les hommes","Objective = comportements de rachat / Subjective = attachement émotionnel et mental","Objective = mesurable / Subjective = non mesurable","Il n'y a pas de différence"], correct:1, explanation:"Fidélité objective = ce que le client FAIT (rachète). Fidélité subjective = ce que le client RESSENT (attachement, confiance). La vraie fidélité combine les deux."},
-  {q:"Pour quels clients le lien satisfaction-fidélité est-il le plus fort ?", options:["Les clients moyennement satisfaits","Les clients ayant des attentes minimales","Les clients aux positions extrêmes (très satisfaits ou très insatisfaits)","Les clients les plus anciens"], correct:2, explanation:"Les positions extrêmes sont les plus prédictives : les très satisfaits sont les plus fidèles, les très insatisfaits partent définitivement. Les 'moyens' sont les plus volatiles."},
-  {q:"Pourquoi un client satisfait peut-il être infidèle ? (plusieurs raisons, choisissez la mauvaise)", options:["Recherche de variété","Satisfaction ne veut pas dire préférence","Sollicitations d'autres marques","Prix plus élevé chez le concurrent"], correct:3, explanation:"Un prix plus élevé chez le concurrent est une raison de rester fidèle, pas de partir ! Les vraies raisons d'infidélité malgré la satisfaction : variété, préférence différente, offres concurrentes attractives."}
+  {q:"Selon Oliver, la satisfaction na\u00eet de :", options:["La qualit\u00e9 intrins\u00e8que du produit","La comparaison entre attentes pr\u00e9alables et exp\u00e9rience de consommation","Le prix pay\u00e9 par le client","La notori\u00e9t\u00e9 de la marque"], correct:1, explanation:"La satisfaction r\u00e9sulte de la comparaison entre les attentes pr\u00e9alables du client et son exp\u00e9rience r\u00e9elle de consommation. Si l\u2019exp\u00e9rience d\u00e9passe les attentes, il y a satisfaction."},
+  {q:"Qu\u2019est-ce que le risque de \u00ab surpromesse \u00bb ?", options:["Gonfler les attentes du client au point qu\u2019une bonne exp\u00e9rience g\u00e9n\u00e8re quand m\u00eame de l\u2019insatisfaction","Promettre trop peu pour mieux surprendre le client","Offrir trop d\u2019avantages gratuits au client fid\u00e8le","Promettre des promotions impossibles \u00e0 tenir financi\u00e8rement"], correct:0, explanation:"Si l\u2019entreprise promet trop (pub exag\u00e9r\u00e9e, vendeur trop enthousiaste), elle \u00e9l\u00e8ve les attentes. M\u00eame une bonne exp\u00e9rience peut d\u00e9cevoir si les attentes \u00e9taient irr\u00e9alistes."},
+  {q:"Lequel N\u2019EST PAS une mesure directe de la satisfaction ?", options:["Enqu\u00eate de satisfaction","Client myst\u00e8re","Taux de d\u00e9fection","Questionnaire NPS"], correct:2, explanation:"Le taux de d\u00e9fection est une mesure INDIRECTE (comportement observ\u00e9). Les mesures directes interrogent explicitement le client sur sa satisfaction (enqu\u00eates, client myst\u00e8re, NPS)."},
+  {q:"En marketing, le \u00ab taux de nourriture \u00bb (part de client) mesure :", options:["Le nombre total de produits achet\u00e9s par le client","La proportion des achats du client r\u00e9alis\u00e9s chez nous par rapport \u00e0 ses achats totaux dans la cat\u00e9gorie","La satisfaction globale du client sur une \u00e9chelle de 1 \u00e0 10","Le chiffre d\u2019affaires g\u00e9n\u00e9r\u00e9 par client sur un an"], correct:1, explanation:"Le taux de nourriture = achats chez nous / achats totaux du client dans la cat\u00e9gorie. Ex : un client d\u00e9pense 200\u20ac/mois en v\u00eatements dont 80\u20ac chez nous \u2192 taux = 40%."},
+  {q:"Aux USA, 90% des automobilistes sont satisfaits de leur marque. Quel pourcentage la rachète effectivement ?", options:["90%","70%","50%","35%"], correct:3, explanation:"Seulement 35% ! C\u2019est l\u2019illustration parfaite que satisfaction \u2260 fid\u00e9lit\u00e9. Un client satisfait peut quand m\u00eame changer de marque."},
+  {q:"La fid\u00e9lit\u00e9 objective se distingue de la fid\u00e9lit\u00e9 subjective car elle repose sur :", options:["Les comportements effectifs de rachat du client","L\u2019attachement \u00e9motionnel et la confiance envers la marque","La satisfaction d\u00e9clar\u00e9e dans les enqu\u00eates","La recommandation de la marque \u00e0 l\u2019entourage"], correct:0, explanation:"Fid\u00e9lit\u00e9 objective = ce que le client FAIT (comportements de rachat). Fid\u00e9lit\u00e9 subjective = ce que le client RESSENT (attachement, confiance). La vraie fid\u00e9lit\u00e9 combine les deux."},
+  {q:"Pour quels clients le lien satisfaction-fid\u00e9lit\u00e9 est-il le plus fort ?", options:["Les clients moyennement satisfaits","Les clients ayant des attentes minimales","Les clients aux positions extr\u00eames (tr\u00e8s satisfaits ou tr\u00e8s insatisfaits)","Les clients les plus anciens de l\u2019entreprise"], correct:2, explanation:"Les positions extr\u00eames sont les plus pr\u00e9dictives : les tr\u00e8s satisfaits sont les plus fid\u00e8les, les tr\u00e8s insatisfaits partent d\u00e9finitivement. Les clients \u00ab moyennement satisfaits \u00bb sont les plus volatiles."},
+  {q:"Pourquoi un client satisfait peut-il \u00eatre infid\u00e8le ? Choisissez la raison qui N\u2019EST PAS valable :", options:["Recherche de vari\u00e9t\u00e9 et curiosit\u00e9 naturelle","Satisfaction ne veut pas dire pr\u00e9f\u00e9rence","Sollicitations attractives d\u2019autres marques","Le concurrent pratique des prix plus \u00e9lev\u00e9s"], correct:3, explanation:"Un prix plus \u00e9lev\u00e9 chez le concurrent n\u2019incite pas \u00e0 partir, au contraire. Les vraies raisons d\u2019infid\u00e9lit\u00e9 malgr\u00e9 la satisfaction : recherche de vari\u00e9t\u00e9, pr\u00e9f\u00e9rence diff\u00e9rente, offres concurrentes attractives."},
+  {q:"Les trois niveaux d\u2019attentes du client sont, du plus basique au plus \u00e9lev\u00e9 :", options:["Satisfaction, fid\u00e9lit\u00e9, recommandation","Attentes minimales, attentes esp\u00e9r\u00e9es, attentes inesp\u00e9r\u00e9es","Qualit\u00e9, service, prix","Besoin, d\u00e9sir, demande"], correct:1, explanation:"Les 3 niveaux d\u2019attente sont : (1) attentes minimales (le minimum hygi\u00e8ne, ex : h\u00f4tel propre), (2) attentes esp\u00e9r\u00e9es (ce qu\u2019on esp\u00e8re, ex : service rapide), (3) attentes inesp\u00e9r\u00e9es (surprise positive, ex : cadeau de bienvenue)."},
+  {q:"Dans quel type de secteur le lien satisfaction-fid\u00e9lit\u00e9 est-il le plus fort ?", options:["La grande distribution (FMCG)","Les march\u00e9s de produits g\u00e9n\u00e9riques","Les secteurs \u00e0 forte implication comme la banque ou l\u2019assurance","Les secteurs o\u00f9 le prix est le crit\u00e8re dominant"], correct:2, explanation:"Le lien satisfaction-fid\u00e9lit\u00e9 est fort dans les secteurs \u00e0 forte implication (banque, assurance) o\u00f9 le client s\u2019engage davantage, et plus faible dans les secteurs \u00e0 faible implication (grande distribution, FMCG)."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return;
-    answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current=0,score=0,answered=false,timerInterval,seconds=0;
+function startTimer(){seconds=0;clearInterval(timerInterval);timerInterval=setInterval(()=>{seconds++;const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F2 '+m+':'+s;},1000);}
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
+function renderQuestion(){const q=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';document.getElementById('quiz-area').innerHTML=`<div class="question-card"><div class="question-num">Question ${current+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options">${q.options.map((opt,i)=>`<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div><div class="explanation" id="explanation">${q.explanation}</div></div><div class="nav-buttons">${current>0?'<button class="btn btn-back" onclick="prev()">&larr; Pr\u00e9c\u00e9dent</button>':'<div></div>'}<button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant &rarr;</button></div>`;answered=false;}
+function answer(idx){if(answered)return;answered=true;const q=questions[current];document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(idx===q.correct){document.getElementById('opt'+idx).classList.add('correct');score++;}else{document.getElementById('opt'+idx).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function next(){if(current<questions.length-1){current++;renderQuestion();}else{showResult();}}
+function prev(){if(current>0){current--;renderQuestion();}}
+function showResult(){clearInterval(timerInterval);document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'\uD83C\uDFC6 Excellent ! Tu ma\u00eetrises ce chapitre.':pct>=0.6?'\uD83D\uDC4D Bien ! Encore un peu de r\u00e9vision.':'\uD83D\uDCDA R\u00e9vise la synth\u00e8se et r\u00e9essaie !';}
+function restartQuiz(){current=0;score=0;answered=false;document.getElementById('result-card').style.display='none';startTimer();renderQuestion();}
+startTimer();renderQuestion();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

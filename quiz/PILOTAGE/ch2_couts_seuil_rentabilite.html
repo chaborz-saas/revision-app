@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Méthode des coûts et seuil de rentabilité</title>
+    <title>Quiz — Couts et seuil de rentabilite</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #8b5cf6; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8b5cf6; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -30,10 +31,10 @@
         .btn-next { background: #8b5cf6; color: white; margin-left: auto; }
         .btn-next:hover { background: #7c3aed; }
         .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .btn-back { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
         .result-score { font-size: 3.5rem; font-weight: 800; color: #8b5cf6; margin: 1rem 0; }
         .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
         .btn-restart { background: #8b5cf6; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
         .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
         .back-link:hover { color: #8b5cf6; }
@@ -41,128 +42,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">PILOTAGE DE LA PERFORMANCE — QUIZ</div>
-        <h1>Méthode des coûts et seuil de rentabilité</h1>
+        <div class="matiere">PILOTAGE DE LA PERFORMANCE &mdash; QUIZ</div>
+        <h1>Couts et seuil de rentabilite</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> — Score : <span id="score">0</span></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-    {
-        q: "Quelle est la formule du seuil de rentabilité en euros ?",
-        options: ["SR = CA - Coûts variables", "SR = Charges fixes / Taux de MCV", "SR = MCV / Chiffre d'affaires", "SR = Charges fixes × TMCV"],
-        correct: 1,
-        explanation: "SR = Charges fixes / Taux de MCV (TMCV). Le TMCV se calcule lui-même comme MCV / CA. C'est la formule fondamentale du seuil de rentabilité."
-    },
-    {
-        q: "Au seuil de rentabilité, quelle est la condition d'équilibre ?",
-        options: ["CA = Coûts variables", "Marge sur coûts variables = Charges fixes", "Résultat = Marge sur coûts variables", "Charges fixes = Chiffre d'affaires"],
-        correct: 1,
-        explanation: "Au SR, MCV = Charges fixes, ce qui donne un résultat égal à zéro. En dessous du SR, l'entreprise est déficitaire ; au-dessus, elle est bénéficiaire."
-    },
-    {
-        q: "Dans le cas JIBI, quel est le seuil de rentabilité de la société A (internalisation) ?",
-        options: ["200 000 euros", "400 000 euros", "500 000 euros", "600 000 euros"],
-        correct: 2,
-        explanation: "Société A : CF = 200 000, TMCV = 40 % → SR = 200 000 / 0,40 = 500 000 euros. La société A a un SR plus élevé car ses charges fixes sont importantes."
-    },
-    {
-        q: "Dans le cas JIBI, quel est le TMCV de la société B (sous-traitance) ?",
-        options: ["40 %", "30 %", "25 %", "20 %"],
-        correct: 2,
-        explanation: "Société B : MCV = 250 000, CA = 1 000 000 → TMCV = 250 000 / 1 000 000 = 25 %. Ce taux plus faible s'explique par des coûts variables élevés liés à la sous-traitance."
-    },
-    {
-        q: "Comment calcule-t-on le point mort en jours ?",
-        options: ["(CA / SR) × 360", "(SR / CA) × 365", "(SR / CA) × 360", "(MCV / CF) × 360"],
-        correct: 2,
-        explanation: "Point mort = (SR / CA annuel) × 360 jours. Il indique le jour de l'année à partir duquel l'entreprise commence à dégager un bénéfice."
-    },
-    {
-        q: "Lors d'une baisse de 10 % du CA (→ 900 000 €), quel est le résultat de la société B (sous-traitance) dans le cas JIBI ?",
-        options: ["160 000 €", "175 000 €", "180 000 €", "190 000 €"],
-        correct: 1,
-        explanation: "Société B : MCV = 900 000 × 25 % = 225 000 ; Résultat = 225 000 - 50 000 = 175 000 €. La société B résiste mieux car ses charges fixes sont faibles (50 000 €)."
-    },
-    {
-        q: "Qu'est-ce que la marge de sécurité ?",
-        options: ["La différence entre MCV et charges fixes", "Le rapport MCV / CA", "La différence entre le CA réel et le seuil de rentabilité", "Le produit SR × TMCV"],
-        correct: 2,
-        explanation: "Marge de sécurité = CA - SR. Elle mesure de combien le CA peut baisser avant que l'entreprise ne soit déficitaire. L'indice de sécurité = (CA - SR) / CA."
-    },
-    {
-        q: "Quelle société bénéficie davantage du levier opérationnel lors d'une hausse du CA ?",
-        options: ["La société B (sous-traitance) car son SR est plus bas", "La société A (internalisation) car son TMCV est plus élevé (40 %)", "Les deux sociétés de façon identique", "Ni l'une ni l'autre, le levier opérationnel est indépendant du TMCV"],
-        correct: 1,
-        explanation: "La société A (TMCV = 40 %) bénéficie davantage du levier opérationnel. Chaque euro de CA supplémentaire génère 40 centimes de MCV, contre 25 centimes pour la société B."
-    },
-    {
-        q: "Quels sont les deux types de coûts distingués dans le compte de résultat différentiel ?",
-        options: ["Coûts directs et coûts indirects", "Coûts variables et coûts fixes", "Coûts de production et coûts commerciaux", "Coûts contrôlables et coûts non contrôlables"],
-        correct: 1,
-        explanation: "Le compte de résultat différentiel distingue coûts variables (proportionnels au volume : matières premières, sous-traitance) et coûts fixes (stables : amortissements, loyers, salaires CDI)."
-    },
-    {
-        q: "Pourquoi la société B (sous-traitance) a-t-elle un seuil de rentabilité plus bas que la société A ?",
-        options: ["Son CA est plus faible", "Ses coûts fixes sont beaucoup plus faibles (50 000 € vs 200 000 €)", "Son TMCV est plus élevé", "Elle vend plus de quantités"],
-        correct: 1,
-        explanation: "La sous-traitance variabilise les coûts : CF = 50 000 € pour B vs 200 000 € pour A. Comme SR = CF / TMCV, un CF faible donne un SR bas (200 000 € pour B vs 500 000 € pour A)."
-    }
+{q:"Dans le cas JIBI, quel est le taux de marge sur couts variables (TMCV) de la societe A ?", options:["25 %","30 %","40 %","50 %"], correct:2, explanation:"Societe A : MCV = 400 000 / CA = 1 000 000, donc TMCV = 40 %."},
+{q:"Quelle est la formule du seuil de rentabilite en euros ?", options:["Charges fixes x TMCV","Charges fixes / TMCV","MCV / Charges fixes","CA - Charges fixes"], correct:1, explanation:"Le seuil de rentabilite en euros = Charges fixes / Taux de marge sur couts variables (TMCV)."},
+{q:"Lequel n'est PAS un exemple de cout fixe ?", options:["Amortissement des machines","Loyers","Commissions sur ventes","Assurances"], correct:2, explanation:"Les commissions sur ventes sont des couts variables car elles evoluent proportionnellement au volume de ventes. Les autres sont des couts fixes."},
+{q:"Dans le cas JIBI, quel est le seuil de rentabilite en euros de la societe B ?", options:["200 000 euros","250 000 euros","400 000 euros","500 000 euros"], correct:0, explanation:"Societe B : SR = CF / TMCV = 50 000 / 0,25 = 200 000 euros."},
+{q:"Comment se calcule le point mort en nombre de jours ?", options:["(CA / SR) x 360","(SR / CA annuel) x 360","(CF / CA) x 365","(MCV / CF) x 360"], correct:1, explanation:"Point mort en jours = (SR / CA annuel) x 360 jours."},
+{q:"Pourquoi la societe B (cas JIBI) atteint-elle son seuil de rentabilite plus rapidement que la societe A ?", options:["Elle a un chiffre d'affaires plus eleve","Elle a des couts fixes beaucoup plus faibles (50 000 vs 200 000)","Elle a un TMCV plus eleve","Elle vend plus de briques"], correct:1, explanation:"Avec des couts fixes de seulement 50 000 euros (contre 200 000 pour A), la societe B couvre ses charges fixes beaucoup plus vite, meme avec un TMCV plus faible."},
+{q:"Une entreprise qui sous-traite fortement aura tendance a avoir :", options:["Des couts fixes eleves et des couts variables faibles","Des couts variables eleves et des couts fixes faibles","Des couts fixes et variables egaux","Uniquement des couts fixes"], correct:1, explanation:"La sous-traitance permet de variabiliser les couts : l'entreprise a des couts variables eleves et des couts fixes faibles."},
+{q:"Quelle est la formule de l'indice de securite ?", options:["CA / SR","(CA - SR) / CA","SR / CA","CF / MCV"], correct:1, explanation:"L'indice de securite = (CA - SR) / CA = Marge de securite / CA. Plus il est eleve, plus l'entreprise peut absorber une baisse d'activite."},
+{q:"Dans le cas JIBI, si le CA baisse de 10 %, quelle societe voit son resultat baisser le plus ?", options:["La societe A, car son levier operationnel est plus puissant","La societe B, car elle sous-traite davantage","Les deux societes perdent le meme montant","Aucune des deux, les couts fixes absorbent le choc"], correct:0, explanation:"La societe A passe de 200 000 a 160 000 euros de resultat (-40 000), tandis que B passe de 200 000 a 175 000 (-25 000). A souffre davantage a cause de son levier operationnel plus eleve (TMCV de 40 %)."},
+{q:"Que represente la marge sur couts variables (MCV) ?", options:["Le benefice net de l'entreprise","La contribution de l'activite a la couverture des charges fixes et a la generation du profit","Le montant total des charges variables","La difference entre le prix de vente et le cout de revient complet"], correct:1, explanation:"La MCV = CA - Couts variables. Elle represente la contribution de l'activite a la couverture des charges fixes puis a la generation du profit."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return; answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    document.getElementById('result-card').style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '⏱ ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '⏱ Temps : ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Excellent ! Tu maitrises ce chapitre.' : pct >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' : pct >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' : 'Continue a reviser ! Relis la synthese et reessaie.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

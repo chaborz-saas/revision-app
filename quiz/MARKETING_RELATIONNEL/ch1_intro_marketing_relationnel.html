@@ -15,6 +15,7 @@
         .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
         .progress-fill { background: #e94560; height: 100%; border-radius: 10px; transition: width 0.3s; }
         .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
         .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
         .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; margin-bottom: 0.8rem; font-weight: 700; }
         .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -42,78 +43,47 @@
 </head>
 <body>
 <div class="quiz-container">
-    <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     <div class="quiz-header">
-        <div class="matiere">MARKETING RELATIONNEL — QUIZ</div>
-        <h1>Ch.1 — Introduction au Marketing Relationnel</h1>
+        <div class="matiere">MARKETING RELATIONNEL &mdash; QUIZ</div>
+        <h1>Ch.1 &mdash; Introduction au Marketing Relationnel</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> — Score : <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9202; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
-        <div style="font-size:2rem">🎯</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">10</span></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
         <br><br>
-        <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l'accueil</a>
     </div>
 </div>
 <script>
 const questions = [
-  {q:"Quelle est la définition du marketing relationnel ?", options:["Focus sur la vente unique et le volume","Politique et outils pour établir des relations individualisées et interactives créant des attitudes positives durables","Stratégie de promotion par les médias de masse","Gestion des bases de données clients"], correct:1, explanation:"Le marketing relationnel vise des relations individualisées, interactives et durables — à l'opposé du marketing transactionnel centré sur la vente unique."},
-  {q:"Lequel N'EST PAS un facteur d'émergence du marketing relationnel ?", options:["Demande de plus en plus hétérogène","Concurrence exacerbée","Baisse du coût de production","Efficacité décroissante des médias traditionnels"], correct:2, explanation:"Les 3 facteurs sont : changements des consommateurs, des marchés, et de la pratique marketing. Le coût de production n'en fait pas partie."},
-  {q:"Dans l'évolution historique, quel modèle correspond au 'One to Many' ?", options:["Marketing relationnel","Marketing interactif","Push marketing / Mass market","Marketing segmenté"], correct:2, explanation:"Le push marketing / mass market diffuse un message identique à tous — logique 'one to many'."},
-  {q:"Quelles sont les 2 dimensions centrales du marketing relationnel ?", options:["Les objectifs et la data","Le prix et la distribution","La publicité et le bouche-à-oreille","La satisfaction et la réclamation"], correct:0, explanation:"Dimension 1 : les objectifs (fidéliser, rentabiliser, allonger la relation). Dimension 2 : la data (carburant de la relation)."},
-  {q:"Un programme de fidélité seul constitue-t-il du marketing relationnel ?", options:["Oui, c'est exactement la même chose","Non, le marketing relationnel est une philosophie globale qui va bien au-delà","Oui, si le programme inclut des points","Non, le marketing relationnel n'utilise pas de programmes de fidélité"], correct:1, explanation:"Le marketing relationnel est une philosophie d'entreprise complète. Un programme de fidélité en est un outil, pas une définition."},
-  {q:"Quelle mutation a rendu le marketing de masse moins efficace ?", options:["La hausse des prix","La multiplication des canaux et la dilution de l'influence des médias","La baisse de la consommation","L'augmentation du chômage"], correct:1, explanation:"La multiplication des canaux (TV, digital, réseaux sociaux...) a dilué l'influence de chaque média, réduisant l'efficacité du mass marketing."},
-  {q:"L'acquisition de nouveaux clients dans le marketing relationnel est :", options:["Inutile, on se concentre uniquement sur les clients existants","Coûteuse mais nécessaire, et peut se faire en mettant en avant la relation","Toujours moins coûteuse que la fidélisation","Le seul objectif du marketing relationnel"], correct:1, explanation:"L'acquisition reste nécessaire mais coûteuse. Le marketing relationnel peut s'en servir en valorisant la qualité de la relation comme argument de conquête."},
-  {q:"Quel est le rôle de la data dans le marketing relationnel ?", options:["Elle est optionnelle","Elle sert uniquement à la comptabilité","C'est le carburant de la relation : sans data de qualité, pas de personnalisation possible","Elle remplace les équipes marketing"], correct:2, explanation:"La data (interne/externe, temps réel, IA) est indispensable : c'est elle qui permet de personnaliser la relation et de créer des interactions individualisées."}
+  {q:"Quelle est la d\u00e9finition du marketing relationnel ?", options:["Strat\u00e9gie centr\u00e9e sur la vente unique et ponctuelle","Politique et outils pour \u00e9tablir des relations individualis\u00e9es et interactives cr\u00e9ant des attitudes positives durables","Technique de promotion par les m\u00e9dias de masse","M\u00e9thode de fixation des prix bas pour attirer les clients"], correct:1, explanation:"Le marketing relationnel vise \u00e0 \u00e9tablir des relations individualis\u00e9es et interactives pour cr\u00e9er des attitudes positives durables envers l\u2019entreprise."},
+  {q:"Lequel N\u2019EST PAS un facteur d\u2019\u00e9mergence du marketing relationnel ?", options:["Demande de plus en plus h\u00e9t\u00e9rog\u00e8ne","Concurrence exacerb\u00e9e sur les march\u00e9s","Baisse du co\u00fbt de production industrielle","Multiplication des canaux et dilution de l\u2019influence m\u00e9diatique"], correct:2, explanation:"Les trois mutations sont : demande individualis\u00e9e, concurrence accrue et multiplication des canaux. La baisse du co\u00fbt de production n\u2019en fait pas partie."},
+  {q:"Dans l\u2019\u00e9volution historique du marketing, le mod\u00e8le \u00ab One to Many \u00bb correspond \u00e0 :", options:["Le marketing relationnel","Le marketing segment\u00e9","Le push marketing / mass market","Le marketing interactif"], correct:2, explanation:"Le push marketing diffuse un message identique \u00e0 tous : logique mass market, communication One to Many."},
+  {q:"Vrai ou faux : le marketing transactionnel et le marketing relationnel poursuivent le m\u00eame objectif.", options:["Vrai, les deux visent la fidélisation \u00e0 long terme","Faux, le transactionnel vise la vente unique tandis que le relationnel vise une relation durable","Vrai, les deux se concentrent sur la data client","Faux, le transactionnel n\u2019existe plus aujourd\u2019hui"], correct:1, explanation:"Le marketing transactionnel se concentre sur la vente unique ; le marketing relationnel vise \u00e0 construire une relation durable et rentable dans le temps."},
+  {q:"Quelles sont les deux dimensions centrales du marketing relationnel ?", options:["Le prix et la distribution","Les objectifs et la data","La publicit\u00e9 et le bouche-\u00e0-oreille","La satisfaction et la r\u00e9clamation"], correct:1, explanation:"Les deux dimensions cl\u00e9s sont : (1) les objectifs (fid\u00e9liser, rentabiliser, allonger la relation, acqu\u00e9rir) et (2) la data (carburant de la relation)."},
+  {q:"Un restaurateur envoie des offres personnalis\u00e9es bas\u00e9es sur l\u2019historique de commandes de ses clients. De quelle \u00e9tape du marketing s\u2019agit-il ?", options:["Push marketing","Marketing segment\u00e9","Marketing interactif","Marketing relationnel"], correct:3, explanation:"Des offres personnalis\u00e9es bas\u00e9es sur la data client + relation durable = marketing relationnel (One to One + data)."},
+  {q:"Lequel de ces objectifs N\u2019EST PAS directement associ\u00e9 au marketing relationnel ?", options:["Fid\u00e9liser les clients actuels","Maximiser le volume de ventes ponctuelles","Augmenter la rentabilit\u00e9 des clients actuels","Allonger la dur\u00e9e de la relation client"], correct:1, explanation:"Maximiser les ventes ponctuelles est une logique transactionnelle. Le marketing relationnel vise la fid\u00e9lisation, la rentabilit\u00e9 et la dur\u00e9e de la relation."},
+  {q:"Pourquoi la data est-elle qualifi\u00e9e de \u00ab carburant de la relation client \u00bb ?", options:["Parce qu\u2019elle permet de r\u00e9duire les co\u00fbts de production","Parce qu\u2019elle est stock\u00e9e dans des bases de donn\u00e9es","Parce que sans data de qualit\u00e9, la personnalisation et l\u2019interaction individualis\u00e9e sont impossibles","Parce qu\u2019elle remplace les \u00e9quipes marketing"], correct:2, explanation:"La data (interne/externe, temps r\u00e9el, IA) est indispensable pour personnaliser la relation et cr\u00e9er des interactions individualis\u00e9es."},
+  {q:"Le passage du marketing segment\u00e9 au marketing interactif s\u2019accompagne d\u2019un changement de communication. Lequel ?", options:["De One to Many \u00e0 One to Some","De One to Some \u00e0 One to One","De One to One \u00e0 One to Many","De One to Many \u00e0 One to One"], correct:1, explanation:"Le marketing segment\u00e9 communique en One to Some (groupes de clients). Le marketing interactif passe au One to One (individu)."},
+  {q:"Amazon recommande des produits bas\u00e9s sur l\u2019historique d\u2019achat et envoie des e-mails personnalis\u00e9s. Cela illustre :", options:["Le push marketing classique","Le marketing segment\u00e9","Le marketing relationnel (relation individualis\u00e9e et interaction continue)","Le marketing de masse avec data"], correct:2, explanation:"Amazon combine la personnalisation via la data (historique d\u2019achat) et l\u2019interaction continue (e-mails personnalis\u00e9s) \u2192 fid\u00e9lisation sur le long terme, typique du marketing relationnel."}
 ];
-let current = 0, score = 0, answered = false;
-function renderQuestion() {
-    const q = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('total-q').textContent = questions.length;
-    document.getElementById('score').textContent = score;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    document.getElementById('quiz-area').innerHTML = `
-        <div class="question-card">
-            <div class="question-num">Question ${current + 1} / ${questions.length}</div>
-            <div class="question-text">${q.q}</div>
-            <div class="options">${q.options.map((opt, i) => `<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div>
-            <div class="explanation" id="explanation">${q.explanation}</div>
-        </div>
-        <div class="nav-buttons">
-            ${current > 0 ? '<button class="btn btn-back" onclick="prev()">← Précédent</button>' : '<div></div>'}
-            <button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant →</button>
-        </div>`;
-    answered = false;
-}
-function answer(idx) {
-    if (answered) return;
-    answered = true;
-    const q = questions[current];
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; }
-    else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); }
-    document.getElementById('explanation').style.display = 'block';
-    document.getElementById('btn-next').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function next() { if (current < questions.length - 1) { current++; renderQuestion(); } else { showResult(); } }
-function prev() { if (current > 0) { current--; renderQuestion(); } }
-function showResult() {
-    document.getElementById('quiz-area').innerHTML = '';
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? '🏆 Excellent ! Tu maîtrises ce chapitre.' : pct >= 0.6 ? '👍 Bien ! Encore un peu de révision.' : '📚 Révise la synthèse et réessaie !';
-}
-function restartQuiz() { current = 0; score = 0; answered = false; document.getElementById('result-card').style.display = 'none'; renderQuestion(); }
-renderQuestion();
+let current=0,score=0,answered=false,timerInterval,seconds=0;
+function startTimer(){seconds=0;clearInterval(timerInterval);timerInterval=setInterval(()=>{seconds++;const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F2 '+m+':'+s;},1000);}
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
+function renderQuestion(){const q=questions[current];document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';document.getElementById('quiz-area').innerHTML=`<div class="question-card"><div class="question-num">Question ${current+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options">${q.options.map((opt,i)=>`<button class="option" onclick="answer(${i})" id="opt${i}">${opt}</button>`).join('')}</div><div class="explanation" id="explanation">${q.explanation}</div></div><div class="nav-buttons">${current>0?'<button class="btn btn-back" onclick="prev()">&larr; Pr\u00e9c\u00e9dent</button>':'<div></div>'}<button class="btn btn-next" id="btn-next" onclick="next()" disabled>Suivant &rarr;</button></div>`;answered=false;}
+function answer(idx){if(answered)return;answered=true;const q=questions[current];document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(idx===q.correct){document.getElementById('opt'+idx).classList.add('correct');score++;}else{document.getElementById('opt'+idx).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function next(){if(current<questions.length-1){current++;renderQuestion();}else{showResult();}}
+function prev(){if(current>0){current--;renderQuestion();}}
+function showResult(){clearInterval(timerInterval);document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('final-total').textContent=questions.length;const pct=score/questions.length;document.getElementById('result-msg').textContent=pct>=0.8?'\uD83C\uDFC6 Excellent ! Tu ma\u00eetrises ce chapitre.':pct>=0.6?'\uD83D\uDC4D Bien ! Encore un peu de r\u00e9vision.':'\uD83D\uDCDA R\u00e9vise la synth\u00e8se et r\u00e9essaie !';}
+function restartQuiz(){current=0;score=0;answered=false;document.getElementById('result-card').style.display='none';startTimer();renderQuestion();}
+startTimer();renderQuestion();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

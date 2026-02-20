@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — Geoeconomics Ch 3: The Company as a Geoeconomic Actor</title>
+    <title>Quiz — Geoeconomics Ch3: The Company as a Geoeconomic Actor</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #10b981; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
         .quiz-container { max-width: 800px; margin: 0 auto; }
-        .back-link { color: #10b981; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
-        .back-link:hover { text-decoration: underline; }
-        .quiz-header { text-align: center; margin-bottom: 2rem; }
-        .matiere { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.5rem; }
-        h1 { font-size: 1.8rem; color: #fff; }
-        .score-display { text-align: center; font-size: 1rem; color: #aaa; margin-bottom: 1rem; }
-        .progress-bar { width: 100%; height: 6px; background: #1e1e2f; border-radius: 3px; margin-bottom: 2rem; overflow: hidden; }
-        .progress-fill { height: 100%; background: #10b981; border-radius: 3px; transition: width 0.4s ease; }
-        .question-card { background: #1a1a2e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
-        .question-num { color: #10b981; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-        .question-text { font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.5; }
-        .options { display: flex; flex-direction: column; gap: 0.75rem; }
-        .option { background: #16213e; border: 2px solid #1e3a5f; padding: 1rem 1.25rem; border-radius: 8px; color: #e0e0e0; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s; }
-        .option:hover:not(:disabled) { border-color: #10b981; background: #1a2a4a; }
-        .option:disabled { cursor: not-allowed; opacity: 0.85; }
-        .option.correct { border-color: #10b981; background: rgba(16,185,129,0.15); color: #10b981; font-weight: 600; }
-        .option.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); color: #ef4444; }
-        .explanation { display: none; margin-top: 1.25rem; padding: 1rem; background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.95rem; color: #a7f3d0; }
-        .nav-buttons { text-align: center; margin-top: 1rem; }
-        .btn-next { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
-        .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
-        .btn-next:hover:not(:disabled) { background: #059669; }
-        .result-card { display: none; text-align: center; background: #1a1a2e; border-radius: 12px; padding: 3rem 2rem; }
-        .result-score { font-size: 3rem; color: #10b981; font-weight: 700; margin: 1rem 0; }
-        .result-msg { font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; }
-        .btn-restart { background: #10b981; color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
-        .btn-restart:hover { background: #059669; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #10b981; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.4); color: white; }
+        .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #10b981; color: white; margin-left: auto; }
+        .btn-next:hover { background: #059669; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #10b981; }
     </style>
 </head>
 <body>
@@ -44,79 +47,42 @@
         <div class="matiere">GEOECONOMICS &mdash; QUIZ</div>
         <h1>Chapter 3 &mdash; The Company as a Geoeconomic Actor</h1>
     </div>
-    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">8</span> &mdash; Score: <span id="score">0</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
     <div id="quiz-area"></div>
     <div class="result-card" id="result-card">
         <div style="font-size:2rem">&#127919;</div>
-        <div class="result-score"><span id="final-score">0</span>/<span id="final-total">8</span></div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
         <div class="result-msg" id="result-msg"></div>
         <button class="btn-restart" onclick="restartQuiz()">Restart</button>
         <br><br>
         <a href="../../en/index.html" class="back-link">&larr; Back to dashboard</a>
     </div>
 </div>
-
 <script>
 const questions = [
-    { q: "According to Kobrin (2015), transnational corporations are:", options: ["A. Purely economic agents with no geopolitical influence", "B. No longer mere economic agents; they influence geopolitics", "C. Entirely dependent on State policies for their strategies", "D. Only relevant in domestic markets"], correct: 1, explanation: "Kobrin (2015) argues that transnational corporations are no longer mere economic agents; they actively influence geopolitics through their strategic decisions." },
-    { q: "What does the multipolar world mean for firms?", options: ["A. Firms face simpler strategic choices with fewer competitors", "B. Firms are exposed to complex strategic trade-offs due to competing norms and pressures", "C. Firms can ignore geopolitical risks entirely", "D. Firms only need to comply with one global regulatory framework"], correct: 1, explanation: "The multipolar world exposes firms to complex strategic trade-offs (Kobrin, 2017). They face competing norms, sanctions regimes, and political pressures from different states simultaneously." },
-    { q: "What determines a multinational's normative power?", options: ["A. Only its number of employees", "B. Its military partnerships", "C. Its size, sector, and lobbying capacity", "D. The number of countries where it has offices"], correct: 2, explanation: "A multinational's normative power (ability to influence international rules and standards) depends on its size, sector, and lobbying capacity (Tamimi, 2017)." },
-    { q: "Why are asymmetric interdependencies in value chains a geoeconomic concern?", options: ["A. They make all actors equally vulnerable", "B. They generate mutual benefits without risks", "C. They create vulnerabilities that some actors in a chain are more exposed to, enabling geoeconomic exploitation", "D. They eliminate the need for geographic diversification"], correct: 2, explanation: "Global value chains generate interdependencies but also vulnerabilities (Babic et al., 2022). Asymmetric interdependencies mean some actors are more vulnerable than others, creating leverage points for geoeconomic exploitation." },
-    { q: "Which is NOT one of the four strategies for managing geopolitical risk identified in the course?", options: ["A. Scenario planning and mapping of geopolitical risks", "B. Military deterrence against rival states", "C. Geographic diversification of production and supply sites", "D. Enhanced dialogue with governments and local institutions"], correct: 1, explanation: "The four strategies are: scenario planning, contractual mechanisms (force majeure), geographic diversification, and enhanced dialogue with governments. Military deterrence is a State strategy, not a corporate one." },
-    { q: "In a geoeconomic diagnostic, what does Step 2 (Analyze Stakeholders) require assessing?", options: ["A. Only the financial performance of competitors", "B. The company's dependence on each stakeholder, the stakeholder's dependence on the company, and stakeholder stability", "C. Only the stakeholder's marketing strategy", "D. The environmental impact of all stakeholders"], correct: 1, explanation: "Step 2 requires analyzing mutual dependence (company on stakeholder and vice versa), the stakeholder's stability (financial, political, reputational), and their mission/vision/values." },
-    { q: "What are the six steps of a geoeconomic diagnostic of a company?", options: ["A. SWOT, PESTEL, Porter, BCG, McKinsey, Ansoff", "B. Characterize company, analyze stakeholders, analyze areas of activity, analyze flows, visual synthesis, evaluate data reliability", "C. Market research, product development, pricing, distribution, promotion, evaluation", "D. Plan, organize, staff, direct, control, budget"], correct: 1, explanation: "The six steps are: (1) Characterize the company, (2) Analyze stakeholders, (3) Analyze areas of activity, (4) Analyze activity flows, (5) Visual synthesis (map/diagram), (6) Evaluate data reliability." },
-    { q: "In the data reliability framework, what is the purpose of 'external validations'?", options: ["A. Getting approval from the company's board of directors", "B. Triangulating the information with other independent sources to verify accuracy", "C. Publishing the data in social media for public review", "D. Sending the data to government regulators"], correct: 1, explanation: "External validations involve triangulating the information with other independent sources. This is the fifth step of the six-step data reliability evaluation, used to cross-check and verify the accuracy of findings." }
+    {q:"According to Kobrin (2015), how have transnational corporations (TNCs) evolved in the geoeconomic arena?", options:["They are no longer mere economic agents; they influence geopolitics through their strategic decisions","They have become entirely subordinate to State policies","They have abandoned international markets to focus on domestic production","They only operate in countries with stable governments"], correct:0, explanation:"Kobrin (2015) argues that TNCs are no longer mere economic agents; they influence geopolitics. Their strategic decisions have repercussions on power relations among States (Belhoste & Dimitrova, 2023)."},
+    {q:"What is the key challenge for companies in a multipolar world?", options:["Finding a single global regulatory framework to follow","Avoiding all international trade entirely","Facing competing norms, sanctions regimes, and political pressures from different states simultaneously","Focusing exclusively on domestic markets to avoid risk"], correct:2, explanation:"In a multipolar world, companies face competing norms, sanctions regimes, and political pressures from different states. A single investment or sourcing decision can place a company in the crossfire of rival geopolitical blocs."},
+    {q:"What determines a multinational's normative power according to the course?", options:["Only its number of employees worldwide","Its size, sector, and lobbying capacity","Its ability to deploy military forces","The number of countries where it has offices"], correct:1, explanation:"A multinational's normative power depends on its size, sector, and lobbying capacity (Tamimi, 2017). Some multinationals influence the rules of the international game and contribute to the construction of standards in ecological or digital matters."},
+    {q:"A company concentrates all its semiconductor production in a single country. According to the course, this creates:", options:["An optimal efficiency arrangement with no downsides","Greater bargaining power with all trading partners","A strong diversification strategy","A single point of failure that rivals can exploit, making the company vulnerable to geopolitical shocks"], correct:3, explanation:"The more interconnected a company's value chain, the more exposed it is to geopolitical shocks. Concentration of production in a single country creates a single point of failure that rivals can exploit."},
+    {q:"Which of the following is NOT one of the four strategies for managing geopolitical risk identified in the course?", options:["Military deterrence against rival states","Scenario planning and risk mapping","Contractual mechanisms including force majeure clauses","Geographic diversification of production sites"], correct:0, explanation:"The four strategies are: scenario planning, contractual mechanisms (force majeure clauses, risk-sharing), geographic diversification, and enhanced dialogue with governments and institutions. Military deterrence is a State strategy, not a corporate one."},
+    {q:"In Step 2 of the geoeconomic diagnostic (Analyze Stakeholders), what must be assessed?", options:["Only the competitor's marketing campaigns","Only the company's internal financial performance","The mutual dependence between the company and each stakeholder, plus stakeholder stability","Only the environmental impact of the stakeholder"], correct:2, explanation:"Step 2 requires analyzing the company's dependence on the stakeholder, the stakeholder's dependence on the company, and the stakeholder's stability (market position, financial situation, government stability, etc.)."},
+    {q:"What is the purpose of Step 5 (Visual Synthesis) in the geoeconomic diagnostic?", options:["Creating a financial balance sheet for investors","Creating a map or diagram showing territories, conflicts, actors with power levers, and flows as a visual summary","Writing a legal contract for international trade","Developing a marketing campaign for new markets"], correct:1, explanation:"Step 5 involves creating a diagram or map as a visual summary showing territories where conflicts occur, internal actors with power levers, flows involved, and if space allows, external actors and related conflicts."},
+    {q:"In the six-step data reliability evaluation, which step involves asking whether the information can be triangulated with other sources?", options:["Step 1: The source","Step 2: The author","Step 4: Our biases","Step 5: External validations"], correct:3, explanation:"Step 5 (External validations) asks what the information can be triangulated with. The six steps are: (1) source reliability, (2) author credibility, (3) date/currency, (4) our biases, (5) external validations, (6) an accessible expert."},
+    {q:"A peer-reviewed article in a top-ranked journal by established academics would score how on the reliability framework?", options:["High reliability, as it meets criteria for source, author, and external validation","Low reliability, because academic sources are always biased","Medium reliability, as only government reports are fully reliable","It cannot be evaluated using this framework"], correct:0, explanation:"According to the course, a peer-reviewed article in a top-ranked journal by established academics with cross-validations from other references scores high on reliability, meeting criteria for source (peer-reviewed), author (established), and validation."},
+    {q:"According to the course, what characterizes geopolitical risks that companies must manage?", options:["They are predictable and follow regular patterns","They only affect companies in the defense sector","They are both highly unpredictable and intense, requiring scenario planning and diversification","They can be fully eliminated through insurance contracts"], correct:2, explanation:"Geopolitical risks are both highly unpredictable and intense (De Villa et al., 2015). Companies must consider the resilience of their value chains and use strategies like scenario planning and geographic diversification to manage these risks."}
 ];
-let current = 0, score = 0, answered = [];
-function renderQ() {
-    if (current >= questions.length) { showResult(); return; }
-    const qd = questions[current];
-    document.getElementById('current-q').textContent = current + 1;
-    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
-    let html = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + '</div>';
-    html += '<div class="question-text">' + qd.q + '</div><div class="options">';
-    qd.options.forEach((o, i) => {
-        html += '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + o + '</button>';
-    });
-    html += '</div><div class="explanation" id="expl">' + qd.explanation + '</div></div>';
-    html += '<div class="nav-buttons"><button class="btn btn-next" id="nextBtn" onclick="nextQ()" disabled>Next &rarr;</button></div>';
-    document.getElementById('quiz-area').innerHTML = html;
-    if (answered[current] !== undefined) { showAnswered(); }
-}
-function selectOption(idx) {
-    if (answered[current] !== undefined) return;
-    answered[current] = idx;
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (idx !== qd.correct) { document.getElementById('opt' + idx).classList.add('wrong'); }
-    else { score++; }
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('score').textContent = score;
-}
-function showAnswered() {
-    const qd = questions[current];
-    document.getElementById('opt' + qd.correct).classList.add('correct');
-    if (answered[current] !== qd.correct) document.getElementById('opt' + answered[current]).classList.add('wrong');
-    document.querySelectorAll('.option').forEach(b => b.disabled = true);
-    document.getElementById('expl').style.display = 'block';
-    document.getElementById('nextBtn').disabled = false;
-}
-function nextQ() { current++; renderQ(); }
-function showResult() {
-    document.getElementById('quiz-area').style.display = 'none';
-    document.querySelector('.nav-buttons')?.remove();
-    const rc = document.getElementById('result-card');
-    rc.style.display = 'block';
-    document.getElementById('final-score').textContent = score;
-    document.getElementById('final-total').textContent = questions.length;
-    const pct = score / questions.length;
-    document.getElementById('result-msg').textContent = pct >= 0.8 ? 'Excellent! Well done!' : pct >= 0.5 ? 'Good job, keep revising!' : 'Keep studying, you will get there!';
-}
-function restartQuiz() { current = 0; score = 0; answered = []; document.getElementById('quiz-area').style.display = 'block'; document.getElementById('result-card').style.display = 'none'; document.getElementById('score').textContent = '0'; renderQ(); }
-renderQ();
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+function startTimer() { timerInterval = setInterval(() => { const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = String(Math.floor(elapsed / 60)).padStart(2, '0'); const s = String(elapsed % 60).padStart(2, '0'); document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s; }, 1000); }
+function shuffleOptions(q) { const indices = q.options.map((_, i) => i); for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; } const shuffled = indices.map(i => q.options[i]); const newCorrect = indices.indexOf(q.correct); return { ...q, options: shuffled, correct: newCorrect }; }
+function renderQ() { const q = shuffleOptions(questions[current]); questions[current]._shuffled = q; document.getElementById('current-q').textContent = current + 1; document.getElementById('total-q').textContent = questions.length; document.getElementById('score').textContent = score; document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%'; const letters = ['A', 'B', 'C', 'D']; document.getElementById('quiz-area').innerHTML = '<div class="question-card"><div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div><div class="question-text">' + q.q + '</div><div class="options">' + q.options.map((opt, i) => '<button class="option" onclick="selectOption(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + opt + '</button>').join('') + '</div><div class="explanation" id="explanation">' + q.explanation + '</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Next &rarr;</button></div>'; answered = false; }
+function selectOption(idx) { if (answered) return; answered = true; const q = questions[current]._shuffled; document.querySelectorAll('.option').forEach(b => b.disabled = true); if (idx === q.correct) { document.getElementById('opt' + idx).classList.add('correct'); score++; } else { document.getElementById('opt' + idx).classList.add('wrong'); document.getElementById('opt' + q.correct).classList.add('correct'); } document.getElementById('explanation').style.display = 'block'; document.getElementById('btn-next').disabled = false; document.getElementById('score').textContent = score; }
+function nextQ() { if (current < questions.length - 1) { current++; renderQ(); } else { showResult(); } }
+function showResult() { clearInterval(timerInterval); const elapsed = Math.floor((Date.now() - startTime) / 1000); const m = Math.floor(elapsed / 60); const s = elapsed % 60; document.getElementById('quiz-area').innerHTML = ''; const rc = document.getElementById('result-card'); rc.style.display = 'block'; document.getElementById('final-score').textContent = score; document.getElementById('result-time').textContent = '\u23F1 Time: ' + m + 'min ' + s + 's'; const pct = score / questions.length; document.getElementById('result-msg').textContent = pct >= 0.9 ? 'Outstanding! You truly mastered this chapter.' : pct >= 0.7 ? 'Good job! A bit more review and you will ace it.' : pct >= 0.5 ? 'Not bad, but review the summary to strengthen weak areas.' : 'Keep studying! Read the summary and try again.'; }
+function restartQuiz() { current = 0; score = 0; answered = false; startTime = Date.now(); document.getElementById('result-card').style.display = 'none'; startTimer(); renderQ(); }
+startTimer(); renderQ();
 </script>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

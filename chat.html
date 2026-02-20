@@ -5,137 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Q&A — Révision M1</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
 
-        /* HEADER */
-        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1rem 1.5rem; border-bottom: 2px solid #e94560; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-        .header-left { display: flex; align-items: center; gap: 1rem; }
-        .back-link { color: #808090; font-size: 0.8rem; text-decoration: none; }
+        /* HERO — identique au site */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid #e94560;
+        }
+        .hero-top { display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto 1.5rem; flex-wrap: wrap; gap: 0.8rem; }
+        .back-link { color: #808090; font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
         .back-link:hover { color: #e94560; }
-        .header h1 { font-size: 1.2rem; font-weight: 700; color: white; }
-        .header h1 span { color: #e94560; }
+        .hero h1 { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 0.3rem; }
+        .hero p { color: #a0a0b0; font-size: 0.95rem; }
         .auth-bar { display: flex; align-items: center; gap: 0.7rem; }
-        .auth-bar .username { font-size: 0.85rem; color: #a0a0b0; }
-        .btn-auth { padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .username { font-size: 0.82rem; color: #a0a0b0; }
+        .btn-auth { padding: 0.45rem 1.1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; font-family: inherit; }
         .btn-login { background: #e94560; color: white; }
         .btn-login:hover { background: #c0354a; }
         .btn-logout { background: rgba(255,255,255,0.08); color: #d0d0d8; }
         .btn-logout:hover { background: rgba(255,255,255,0.15); }
 
-        /* TABS */
-        .tabs-wrapper { background: #13131f; border-bottom: 1px solid rgba(255,255,255,0.06); overflow-x: auto; }
+        /* TABS — style sous-navigation */
+        .tabs-wrapper { background: #13131f; border-bottom: 1px solid rgba(255,255,255,0.06); overflow-x: auto; position: sticky; top: 0; z-index: 10; }
         .tabs-wrapper::-webkit-scrollbar { height: 3px; }
         .tabs-wrapper::-webkit-scrollbar-thumb { background: #e94560; border-radius: 2px; }
-        .tabs { display: flex; gap: 0; min-width: max-content; }
-        .tab { padding: 0.8rem 1.2rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; color: #606075; white-space: nowrap; transition: all 0.2s; user-select: none; }
+        .tabs-inner { display: flex; min-width: max-content; max-width: 1000px; margin: 0 auto; }
+        .tab { padding: 0.85rem 1.3rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; color: #606075; white-space: nowrap; transition: all 0.2s; user-select: none; }
         .tab:hover { color: #d0d0d8; background: rgba(255,255,255,0.03); }
-        .tab.active { color: white; border-bottom-color: #e94560; background: rgba(233,69,96,0.07); }
-        .tab-sep { width: 1px; background: rgba(255,255,255,0.05); margin: 0.5rem 0; }
-        .track-label { padding: 0.8rem 0.6rem 0.8rem 1rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: #404055; font-weight: 700; white-space: nowrap; display: flex; align-items: center; }
+        .tab.active { color: white; border-bottom-color: #e94560; background: rgba(233,69,96,0.06); }
+        .tab-divider { width: 1px; background: rgba(255,255,255,0.06); margin: 0.6rem 0; }
+        .tab-group-label { padding: 0 0.5rem 0 1rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1.5px; color: #404055; font-weight: 700; display: flex; align-items: center; white-space: nowrap; }
 
         /* MAIN */
-        .main { max-width: 860px; margin: 0 auto; padding: 1.5rem; }
+        .main { max-width: 1000px; margin: 0 auto; padding: 2rem; }
 
         /* TOOLBAR */
-        .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; gap: 1rem; flex-wrap: wrap; }
-        .toolbar-title { font-size: 1rem; font-weight: 700; color: white; }
-        .toolbar-title span { color: #e94560; }
-        .btn-new-q { background: #e94560; color: white; padding: 0.55rem 1.2rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-new-q:hover { background: #c0354a; }
+        .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+        .toolbar-title { font-size: 1.1rem; font-weight: 700; color: white; }
+        .toolbar-title .accent { color: #e94560; }
+        .btn-new-q { background: linear-gradient(135deg, #e94560, #c0354a); color: white; padding: 0.55rem 1.3rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; border: none; transition: opacity 0.2s; font-family: inherit; }
+        .btn-new-q:hover { opacity: 0.85; }
 
         /* QUESTION LIST */
-        .question-list { display: flex; flex-direction: column; gap: 0.8rem; }
-        .empty-state { text-align: center; padding: 3rem 1rem; color: #505065; }
+        .question-list { display: flex; flex-direction: column; gap: 0.7rem; }
+        .empty-state { text-align: center; padding: 4rem 1rem; color: #505065; }
         .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-        .empty-state p { font-size: 0.95rem; }
+        .empty-state p { font-size: 0.95rem; line-height: 1.6; }
 
         /* QUESTION CARD */
-        .q-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.2rem 1.4rem; cursor: pointer; transition: all 0.2s; }
-        .q-card:hover { border-color: rgba(233,69,96,0.3); background: #1e1e35; }
-        .q-card.open { border-color: rgba(233,69,96,0.4); background: #1e1e35; }
-        .q-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-        .q-card-title { font-size: 0.95rem; font-weight: 600; color: white; line-height: 1.4; }
-        .q-card-meta { font-size: 0.75rem; color: #505065; margin-top: 0.35rem; }
-        .q-card-meta span { color: #a94560; }
-        .q-card-body { font-size: 0.88rem; color: #909098; margin-top: 0.5rem; line-height: 1.5; }
-        .q-card-stats { display: flex; gap: 1rem; margin-top: 0.8rem; align-items: center; }
-        .vote-btn { display: flex; align-items: center; gap: 0.3rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.78rem; color: #808090; cursor: pointer; transition: all 0.2s; }
-        .vote-btn:hover { background: rgba(233,69,96,0.15); border-color: rgba(233,69,96,0.4); color: #e94560; }
+        .q-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.2rem 1.4rem; transition: all 0.2s; }
+        .q-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+        .q-card.open { border-color: rgba(233,69,96,0.35); background: rgba(233,69,96,0.03); }
+        .q-clickable { cursor: pointer; }
+        .q-title { font-size: 0.95rem; font-weight: 600; color: white; line-height: 1.4; margin-bottom: 0.3rem; }
+        .q-body-preview { font-size: 0.85rem; color: #707080; line-height: 1.5; margin-bottom: 0.4rem; }
+        .q-meta { font-size: 0.72rem; color: #505065; }
+        .q-meta .author { color: #e94560; font-weight: 600; }
+        .q-stats { display: flex; gap: 0.8rem; margin-top: 0.8rem; align-items: center; }
+        .vote-btn { display: flex; align-items: center; gap: 0.3rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.28rem 0.7rem; font-size: 0.78rem; color: #707080; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+        .vote-btn:hover { background: rgba(233,69,96,0.12); border-color: rgba(233,69,96,0.4); color: #e94560; }
         .vote-btn.voted { background: rgba(233,69,96,0.15); border-color: #e94560; color: #e94560; }
         .answer-count { font-size: 0.78rem; color: #505065; }
 
-        /* ANSWERS SECTION */
+        /* ANSWERS */
         .answers-section { margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: none; }
         .answers-section.open { display: block; }
-        .answer-item { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.6rem; }
-        .answer-body { font-size: 0.88rem; color: #c0c0cc; line-height: 1.5; }
+        .answer-item { background: rgba(255,255,255,0.025); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.5rem; }
+        .answer-body { font-size: 0.88rem; color: #c0c0cc; line-height: 1.55; }
         .answer-meta { font-size: 0.72rem; color: #505065; margin-top: 0.4rem; display: flex; justify-content: space-between; align-items: center; }
-        .answer-meta span { color: #a94560; }
-
-        /* ANSWER FORM */
+        .answer-meta .author { color: #e94560; font-weight: 600; }
         .answer-form { margin-top: 0.8rem; }
-        .answer-form textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.7rem 0.9rem; color: #e0e0e0; font-family: inherit; font-size: 0.88rem; resize: vertical; min-height: 70px; outline: none; transition: border-color 0.2s; }
+        .answer-form textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.7rem 0.9rem; color: #e0e0e0; font-family: inherit; font-size: 0.88rem; resize: vertical; min-height: 70px; outline: none; transition: border-color 0.2s; }
         .answer-form textarea:focus { border-color: rgba(233,69,96,0.4); }
         .answer-form-footer { display: flex; justify-content: flex-end; margin-top: 0.5rem; }
-        .btn-submit-answer { background: #e94560; color: white; padding: 0.45rem 1rem; border-radius: 7px; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-submit-answer:hover { background: #c0354a; }
-        .btn-submit-answer:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .btn-reply { background: #e94560; color: white; padding: 0.42rem 1rem; border-radius: 7px; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none; font-family: inherit; }
+        .btn-reply:hover { background: #c0354a; }
+        .btn-reply:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
 
         /* MODALS */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
         .modal-overlay.open { display: flex; }
         .modal { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; width: 100%; max-width: 440px; }
-        .modal h2 { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 1.5rem; }
-        .modal label { font-size: 0.8rem; color: #808090; display: block; margin-bottom: 0.3rem; margin-top: 0.8rem; }
+        .modal h2 { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 1.5rem; }
+        .modal-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
+        .modal-tab { padding: 0.55rem 1rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; color: #606075; transition: all 0.2s; }
+        .modal-tab.active { color: white; border-bottom-color: #e94560; }
+        .modal label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #808090; display: block; margin-bottom: 0.35rem; margin-top: 1rem; }
         .modal input, .modal textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.65rem 0.9rem; color: #e0e0e0; font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
         .modal input:focus, .modal textarea:focus { border-color: rgba(233,69,96,0.5); }
         .modal textarea { resize: vertical; min-height: 80px; }
         .modal-footer { display: flex; gap: 0.7rem; margin-top: 1.5rem; justify-content: flex-end; }
-        .btn-cancel { background: rgba(255,255,255,0.07); color: #d0d0d8; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; border: none; }
+        .btn-cancel { background: rgba(255,255,255,0.07); color: #d0d0d8; padding: 0.55rem 1.2rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
         .btn-cancel:hover { background: rgba(255,255,255,0.12); }
-        .btn-primary { background: #e94560; color: white; padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-primary:hover { background: #c0354a; }
-        .btn-primary:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
-        .modal-tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-        .modal-tab { padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; color: #606075; transition: all 0.2s; }
-        .modal-tab.active { color: white; border-bottom-color: #e94560; }
+        .btn-primary { background: linear-gradient(135deg, #e94560, #c0354a); color: white; padding: 0.55rem 1.4rem; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: none; font-family: inherit; transition: opacity 0.2s; }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-primary:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; opacity: 1; }
         .error-msg { color: #e94560; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
-        .success-msg { color: #10b981; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
 
         /* LOADER */
-        .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.2); border-top-color: #e94560; border-radius: 50%; animation: spin 0.7s linear infinite; }
+        .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.15); border-top-color: #e94560; border-radius: 50%; animation: spin 0.7s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-questions { text-align: center; padding: 2rem; color: #505065; }
+        .loading-state { text-align: center; padding: 3rem; }
+
+        @media (max-width: 600px) {
+            .main { padding: 1.2rem; }
+            .hero { padding: 1.5rem 1rem 1rem; }
+            .hero h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="header-left">
-        <a href="fr/index.html" class="back-link">← Accueil</a>
-        <h1>💬 Chat <span>Q&A</span></h1>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-top">
+        <a href="index.html" class="back-link">← Accueil</a>
+        <div class="auth-bar" id="auth-bar">
+            <button class="btn-auth btn-login" onclick="openAuthModal()">Se connecter</button>
+        </div>
     </div>
-    <div class="auth-bar" id="auth-bar">
-        <button class="btn-auth btn-login" onclick="openAuthModal()">Se connecter</button>
-    </div>
+    <h1>💬 Chat Q&A</h1>
+    <p>Pose tes questions, réponds à celles des autres — par matière</p>
 </div>
 
 <!-- TABS -->
 <div class="tabs-wrapper">
-    <div class="tabs" id="tabs">
-        <div class="track-label">🇫🇷 FR</div>
-        <div class="tab active" data-matiere="rh" data-label="RH" onclick="switchTab(this)">RH</div>
+    <div class="tabs-inner">
+        <div class="tab active" data-matiere="general" data-label="Général" onclick="switchTab(this)">🌐 Général</div>
+        <div class="tab-divider"></div>
+        <div class="tab-group-label">🇫🇷</div>
+        <div class="tab" data-matiere="rh" data-label="RH" onclick="switchTab(this)">RH</div>
         <div class="tab" data-matiere="analyse-quanti" data-label="Analyse Quanti" onclick="switchTab(this)">Analyse Quanti</div>
         <div class="tab" data-matiere="droit" data-label="Droit" onclick="switchTab(this)">Droit</div>
         <div class="tab" data-matiere="pilotage" data-label="Pilotage" onclick="switchTab(this)">Pilotage</div>
         <div class="tab" data-matiere="analyse-quali" data-label="Analyse Quali" onclick="switchTab(this)">Analyse Quali</div>
         <div class="tab" data-matiere="marketing-relationnel" data-label="Marketing Rel." onclick="switchTab(this)">Marketing Rel.</div>
         <div class="tab" data-matiere="strategie-durable" data-label="Stratégie Dur." onclick="switchTab(this)">Stratégie Dur.</div>
-        <div class="tab-sep"></div>
-        <div class="track-label">🇬🇧 EN</div>
+        <div class="tab-divider"></div>
+        <div class="tab-group-label">🇬🇧</div>
         <div class="tab" data-matiere="relationship-marketing" data-label="Relationship Mkt" onclick="switchTab(this)">Relationship Mkt</div>
         <div class="tab" data-matiere="change-management" data-label="Change Mgmt" onclick="switchTab(this)">Change Mgmt</div>
         <div class="tab" data-matiere="geoeconomics" data-label="Geoeconomics" onclick="switchTab(this)">Geoeconomics</div>
@@ -145,14 +156,14 @@
     </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="main">
     <div class="toolbar">
-        <div class="toolbar-title">Questions — <span id="current-matiere-label">RH</span></div>
-        <button class="btn-new-q" onclick="openNewQuestionModal()">+ Poser une question</button>
+        <div class="toolbar-title">Questions — <span class="accent" id="current-label">Général</span></div>
+        <button class="btn-new-q" onclick="openNewQ()">+ Poser une question</button>
     </div>
     <div class="question-list" id="question-list">
-        <div class="loading-questions"><div class="spinner"></div></div>
+        <div class="loading-state"><div class="spinner"></div></div>
     </div>
 </div>
 
@@ -160,16 +171,16 @@
 <div class="modal-overlay" id="modal-auth">
     <div class="modal">
         <div class="modal-tabs">
-            <div class="modal-tab active" id="tab-login" onclick="switchAuthTab('login')">Se connecter</div>
-            <div class="modal-tab" id="tab-register" onclick="switchAuthTab('register')">S'inscrire</div>
+            <div class="modal-tab active" id="mtab-login" onclick="switchAuthTab('login')">Se connecter</div>
+            <div class="modal-tab" id="mtab-register" onclick="switchAuthTab('register')">S'inscrire</div>
         </div>
         <div id="form-login">
-            <h2>Connexion</h2>
+            <h2>Bon retour 👋</h2>
             <label>Email</label>
             <input type="email" id="login-email" placeholder="ton@email.com">
             <label>Mot de passe</label>
-            <input type="password" id="login-password" placeholder="••••••••">
-            <div class="error-msg" id="login-error"></div>
+            <input type="password" id="login-pass" placeholder="••••••••">
+            <div class="error-msg" id="err-login"></div>
             <div class="modal-footer">
                 <button class="btn-cancel" onclick="closeAuthModal()">Annuler</button>
                 <button class="btn-primary" onclick="doLogin()">Se connecter</button>
@@ -181,9 +192,9 @@
             <input type="text" id="reg-name" placeholder="Ton prénom ou pseudo">
             <label>Email</label>
             <input type="email" id="reg-email" placeholder="ton@email.com">
-            <label>Mot de passe (6 caractères min.)</label>
-            <input type="password" id="reg-password" placeholder="••••••••">
-            <div class="error-msg" id="reg-error"></div>
+            <label>Mot de passe (6 min.)</label>
+            <input type="password" id="reg-pass" placeholder="••••••••">
+            <div class="error-msg" id="err-reg"></div>
             <div class="modal-footer">
                 <button class="btn-cancel" onclick="closeAuthModal()">Annuler</button>
                 <button class="btn-primary" onclick="doRegister()">Créer le compte</button>
@@ -193,17 +204,17 @@
 </div>
 
 <!-- MODAL NOUVELLE QUESTION -->
-<div class="modal-overlay" id="modal-new-q">
+<div class="modal-overlay" id="modal-newq">
     <div class="modal">
         <h2>Poser une question</h2>
-        <label>Titre (résumé de la question)</label>
-        <input type="text" id="nq-title" placeholder="ex: Différence entre codage ouvert et axial ?">
+        <label>Titre</label>
+        <input type="text" id="nq-title" placeholder="ex: Différence codage ouvert / axial ?">
         <label>Détails (optionnel)</label>
-        <textarea id="nq-body" placeholder="Explique ta question en détail..."></textarea>
-        <div class="error-msg" id="nq-error"></div>
+        <textarea id="nq-body" placeholder="Explique ta question..."></textarea>
+        <div class="error-msg" id="err-nq"></div>
         <div class="modal-footer">
-            <button class="btn-cancel" onclick="closeNewQuestionModal()">Annuler</button>
-            <button class="btn-primary" id="btn-submit-q" onclick="submitQuestion()">Publier</button>
+            <button class="btn-cancel" onclick="closeNewQ()">Annuler</button>
+            <button class="btn-primary" id="btn-post-q" onclick="submitQ()">Publier</button>
         </div>
     </div>
 </div>
@@ -214,131 +225,126 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, increment, query, where, orderBy, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig = {
+const app = initializeApp({
     apiKey: "AIzaSyDmRIeI0Y122BdvxnvjmXD3_T9xXbKH7hs",
     authDomain: "revision-ae7ba.firebaseapp.com",
     projectId: "revision-ae7ba",
     storageBucket: "revision-ae7ba.firebasestorage.app",
     messagingSenderId: "499231316478",
     appId: "1:499231316478:web:eb8742fc078c7b31c488af"
-};
-
-const app = initializeApp(firebaseConfig);
+});
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let currentUser = null;
-let currentMatiere = 'rh';
+let user = null;
+let matiere = 'general';
 
-onAuthStateChanged(auth, (user) => {
-    currentUser = user;
-    updateAuthBar();
-});
+// AUTH STATE
+onAuthStateChanged(auth, u => { user = u; renderAuthBar(); });
 
-function updateAuthBar() {
+function renderAuthBar() {
     const bar = document.getElementById('auth-bar');
-    if (currentUser) {
-        bar.innerHTML = `<span class="username">👤 ${currentUser.displayName || currentUser.email}</span>
-            <button class="btn-auth btn-logout" onclick="window._logout()">Déconnexion</button>`;
+    if (user) {
+        bar.innerHTML = `<span class="username">👤 ${user.displayName || user.email}</span>
+            <button class="btn-auth btn-logout" onclick="window._logout()">Déco</button>`;
     } else {
         bar.innerHTML = `<button class="btn-auth btn-login" onclick="openAuthModal()">Se connecter</button>`;
     }
 }
-
-// GLOBAL FUNCTIONS
-window.openAuthModal = () => document.getElementById('modal-auth').classList.add('open');
-window.closeAuthModal = () => { document.getElementById('modal-auth').classList.remove('open'); clearErrors(); };
 window._logout = () => signOut(auth);
 
-window.switchAuthTab = (tab) => {
-    document.getElementById('form-login').style.display = tab === 'login' ? '' : 'none';
-    document.getElementById('form-register').style.display = tab === 'register' ? '' : 'none';
-    document.getElementById('tab-login').classList.toggle('active', tab === 'login');
-    document.getElementById('tab-register').classList.toggle('active', tab === 'register');
-};
-
-function clearErrors() {
-    ['login-error','reg-error'].forEach(id => { const el = document.getElementById(id); el.style.display='none'; el.textContent=''; });
-}
-function showErr(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.style.display = 'block'; }
+// HELPERS
+function showErr(id, msg) { const e = document.getElementById(id); e.textContent = msg; e.style.display = 'block'; }
+function hideErr(id) { const e = document.getElementById(id); e.style.display = 'none'; }
 function frErr(code) {
-    return ({ 'auth/email-already-in-use':'Email déjà utilisé.', 'auth/invalid-email':'Email invalide.', 'auth/weak-password':'Mot de passe trop faible.', 'auth/invalid-credential':'Email ou mot de passe incorrect.', 'auth/too-many-requests':'Trop de tentatives, réessaie plus tard.' })[code] || 'Erreur : ' + code;
+    return ({'auth/email-already-in-use':'Email déjà utilisé.','auth/invalid-email':'Email invalide.','auth/invalid-credential':'Email ou mot de passe incorrect.','auth/too-many-requests':'Trop de tentatives.','auth/weak-password':'Mot de passe trop faible.'})[code] || 'Erreur ('+code+')';
 }
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtDate(ts) { return ts ? new Date(ts.seconds*1000).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}) : ''; }
 
+// AUTH MODAL
+window.openAuthModal = () => document.getElementById('modal-auth').classList.add('open');
+window.closeAuthModal = () => { document.getElementById('modal-auth').classList.remove('open'); hideErr('err-login'); hideErr('err-reg'); };
+window.switchAuthTab = (t) => {
+    document.getElementById('form-login').style.display = t==='login' ? '' : 'none';
+    document.getElementById('form-register').style.display = t==='register' ? '' : 'none';
+    document.getElementById('mtab-login').classList.toggle('active', t==='login');
+    document.getElementById('mtab-register').classList.toggle('active', t==='register');
+};
 window.doLogin = async () => {
     const email = document.getElementById('login-email').value.trim();
-    const pass = document.getElementById('login-password').value;
-    if (!email || !pass) { showErr('login-error','Remplis tous les champs.'); return; }
+    const pass = document.getElementById('login-pass').value;
+    if (!email||!pass) { showErr('err-login','Remplis tous les champs.'); return; }
     try { await signInWithEmailAndPassword(auth, email, pass); window.closeAuthModal(); }
-    catch(e) { showErr('login-error', frErr(e.code)); }
+    catch(e) { showErr('err-login', frErr(e.code)); }
 };
-
 window.doRegister = async () => {
     const name = document.getElementById('reg-name').value.trim();
     const email = document.getElementById('reg-email').value.trim();
-    const pass = document.getElementById('reg-password').value;
-    if (!name || !email || !pass) { showErr('reg-error','Remplis tous les champs.'); return; }
-    if (pass.length < 6) { showErr('reg-error','Mot de passe trop court (6 min).'); return; }
+    const pass = document.getElementById('reg-pass').value;
+    if (!name||!email||!pass) { showErr('err-reg','Remplis tous les champs.'); return; }
+    if (pass.length < 6) { showErr('err-reg','Mot de passe trop court.'); return; }
     try {
-        const cred = await createUserWithEmailAndPassword(auth, email, pass);
-        await updateProfile(cred.user, { displayName: name });
+        const c = await createUserWithEmailAndPassword(auth, email, pass);
+        await updateProfile(c.user, { displayName: name });
         window.closeAuthModal();
-    } catch(e) { showErr('reg-error', frErr(e.code)); }
+    } catch(e) { showErr('err-reg', frErr(e.code)); }
 };
 
+// TABS
 window.switchTab = (el) => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
-    currentMatiere = el.dataset.matiere;
-    document.getElementById('current-matiere-label').textContent = el.dataset.label;
+    matiere = el.dataset.matiere;
+    document.getElementById('current-label').textContent = el.dataset.label;
     loadQuestions();
 };
 
-window.openNewQuestionModal = () => {
-    if (!currentUser) { window.openAuthModal(); return; }
-    document.getElementById('modal-new-q').classList.add('open');
+// NEW Q MODAL
+window.openNewQ = () => {
+    if (!user) { window.openAuthModal(); return; }
+    document.getElementById('modal-newq').classList.add('open');
 };
-window.closeNewQuestionModal = () => {
-    document.getElementById('modal-new-q').classList.remove('open');
+window.closeNewQ = () => {
+    document.getElementById('modal-newq').classList.remove('open');
     document.getElementById('nq-title').value = '';
     document.getElementById('nq-body').value = '';
-    document.getElementById('nq-error').style.display = 'none';
+    hideErr('err-nq');
 };
-
-window.submitQuestion = async () => {
-    if (!currentUser) return;
+window.submitQ = async () => {
+    if (!user) return;
     const title = document.getElementById('nq-title').value.trim();
     const body = document.getElementById('nq-body').value.trim();
-    if (!title) { showErr('nq-error','Le titre est obligatoire.'); return; }
-    const btn = document.getElementById('btn-submit-q');
+    if (!title) { showErr('err-nq','Le titre est obligatoire.'); return; }
+    const btn = document.getElementById('btn-post-q');
     btn.disabled = true; btn.textContent = '...';
     try {
-        await addDoc(collection(db, 'questions'), {
-            matiere: currentMatiere, title, body,
-            authorName: currentUser.displayName || currentUser.email,
-            authorId: currentUser.uid, upvotes: 0, answerCount: 0,
-            createdAt: serverTimestamp()
+        await addDoc(collection(db,'questions'), {
+            matiere, title, body,
+            authorName: user.displayName||user.email,
+            authorId: user.uid, upvotes: 0, answerCount: 0, createdAt: serverTimestamp()
         });
-        window.closeNewQuestionModal();
+        window.closeNewQ();
         loadQuestions();
-    } catch(e) { showErr('nq-error','Erreur lors de la publication.'); }
+    } catch(e) { showErr('err-nq','Erreur. Réessaie.'); }
     btn.disabled = false; btn.textContent = 'Publier';
 };
 
+// LOAD QUESTIONS
 async function loadQuestions() {
     const list = document.getElementById('question-list');
-    list.innerHTML = '<div class="loading-questions"><div class="spinner"></div></div>';
+    list.innerHTML = '<div class="loading-state"><div class="spinner"></div></div>';
     try {
-        const q = query(collection(db, 'questions'), where('matiere', '==', currentMatiere), orderBy('upvotes', 'desc'), orderBy('createdAt', 'desc'));
+        const q = query(collection(db,'questions'), where('matiere','==',matiere), orderBy('upvotes','desc'), orderBy('createdAt','desc'));
         const snap = await getDocs(q);
         if (snap.empty) {
-            list.innerHTML = `<div class="empty-state"><div class="icon">💬</div><p>Aucune question pour cette matière.<br>Sois le premier à en poser une !</p></div>`;
+            list.innerHTML = `<div class="empty-state"><div class="icon">💬</div><p>Aucune question pour le moment.<br>Sois le premier à en poser une !</p></div>`;
             return;
         }
         list.innerHTML = '';
         snap.forEach(d => list.appendChild(buildCard(d.id, d.data())));
     } catch(e) {
-        list.innerHTML = `<div class="empty-state"><p>Erreur de chargement. Réessaie.</p></div>`;
+        list.innerHTML = `<div class="empty-state"><p>Erreur de chargement — réessaie.</p></div>`;
         console.error(e);
     }
 }
@@ -346,99 +352,93 @@ async function loadQuestions() {
 function buildCard(id, d) {
     const div = document.createElement('div');
     div.className = 'q-card';
-    div.id = 'qcard-' + id;
-    const date = d.createdAt ? new Date(d.createdAt.seconds * 1000).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}) : '';
+    div.id = 'qcard-'+id;
     div.innerHTML = `
-        <div onclick="window.toggleAnswers('${id}')">
-            <div class="q-card-title">${esc(d.title)}</div>
-            ${d.body ? `<div class="q-card-body">${esc(d.body)}</div>` : ''}
-            <div class="q-card-meta"><span>${esc(d.authorName)}</span> · ${date}</div>
+        <div class="q-clickable" onclick="window.toggleA('${id}')">
+            <div class="q-title">${esc(d.title)}</div>
+            ${d.body ? `<div class="q-body-preview">${esc(d.body)}</div>` : ''}
+            <div class="q-meta">par <span class="author">${esc(d.authorName)}</span> · ${fmtDate(d.createdAt)}</div>
         </div>
-        <div class="q-card-stats">
-            <button class="vote-btn" id="upvote-q-${id}" onclick="window.voteQ(event,'${id}')">▲ <span id="qvotes-${id}">${d.upvotes||0}</span></button>
-            <span class="answer-count">💬 <span id="acount-${id}">${d.answerCount||0}</span> réponse${(d.answerCount||0)!==1?'s':''}</span>
+        <div class="q-stats">
+            <button class="vote-btn" id="vq-${id}" onclick="window.voteQ(event,'${id}')">▲ <span id="vc-${id}">${d.upvotes||0}</span></button>
+            <span class="answer-count">💬 <span id="ac-${id}">${d.answerCount||0}</span> réponse${(d.answerCount||0)!==1?'s':''}</span>
         </div>
-        <div class="answers-section" id="answers-${id}">
-            <div id="alist-${id}"><div class="loading-questions"><div class="spinner"></div></div></div>
-            <div class="answer-form" id="aform-${id}">
-                <textarea id="ainput-${id}" placeholder="Ta réponse..."></textarea>
+        <div class="answers-section" id="as-${id}">
+            <div id="al-${id}"><div class="loading-state"><div class="spinner"></div></div></div>
+            <div class="answer-form" id="af-${id}">
+                <textarea id="ai-${id}" placeholder="Ta réponse..."></textarea>
                 <div class="answer-form-footer">
-                    <button class="btn-submit-answer" id="abtn-${id}" onclick="window.submitAnswer('${id}')">Répondre</button>
+                    <button class="btn-reply" id="ab-${id}" onclick="window.submitA('${id}')">Répondre</button>
                 </div>
             </div>
         </div>`;
     return div;
 }
 
-window.toggleAnswers = async (qId) => {
-    const section = document.getElementById('answers-' + qId);
-    const card = document.getElementById('qcard-' + qId);
-    if (section.classList.contains('open')) {
-        section.classList.remove('open'); card.classList.remove('open');
+window.toggleA = async (qId) => {
+    const sec = document.getElementById('as-'+qId);
+    const card = document.getElementById('qcard-'+qId);
+    if (sec.classList.contains('open')) {
+        sec.classList.remove('open'); card.classList.remove('open');
     } else {
-        section.classList.add('open'); card.classList.add('open');
+        sec.classList.add('open'); card.classList.add('open');
         loadAnswers(qId);
-        const form = document.getElementById('aform-' + qId);
-        if (form) form.style.display = currentUser ? '' : 'none';
+        const af = document.getElementById('af-'+qId);
+        if (af) af.style.display = user ? '' : 'none';
     }
 };
 
 async function loadAnswers(qId) {
-    const listEl = document.getElementById('alist-' + qId);
-    listEl.innerHTML = '<div class="loading-questions"><div class="spinner"></div></div>';
+    const el = document.getElementById('al-'+qId);
+    el.innerHTML = '<div class="loading-state"><div class="spinner"></div></div>';
     try {
-        const q = query(collection(db, 'answers'), where('questionId','==',qId), orderBy('upvotes','desc'), orderBy('createdAt','asc'));
+        const q = query(collection(db,'answers'), where('questionId','==',qId), orderBy('upvotes','desc'), orderBy('createdAt','asc'));
         const snap = await getDocs(q);
-        if (snap.empty) { listEl.innerHTML = '<p style="font-size:0.82rem;color:#505065;margin-bottom:0.8rem;">Aucune réponse pour l\'instant.</p>'; return; }
-        listEl.innerHTML = '';
-        snap.forEach(aSnap => {
-            const a = aSnap.data();
-            const date = a.createdAt ? new Date(a.createdAt.seconds*1000).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}) : '';
-            const el = document.createElement('div');
-            el.className = 'answer-item';
-            el.innerHTML = `<div class="answer-body">${esc(a.body)}</div>
-                <div class="answer-meta"><span>${esc(a.authorName)}</span> · ${date}
-                <button class="vote-btn" onclick="window.voteA(event,'${aSnap.id}','${qId}')">▲ ${a.upvotes||0}</button></div>`;
-            listEl.appendChild(el);
+        if (snap.empty) { el.innerHTML = '<p style="font-size:0.82rem;color:#505065;margin-bottom:0.8rem;">Aucune réponse pour l\'instant.</p>'; return; }
+        el.innerHTML = '';
+        snap.forEach(s => {
+            const a = s.data();
+            const d = document.createElement('div');
+            d.className = 'answer-item';
+            d.innerHTML = `<div class="answer-body">${esc(a.body)}</div>
+                <div class="answer-meta"><span><span class="author">${esc(a.authorName)}</span> · ${fmtDate(a.createdAt)}</span>
+                <button class="vote-btn" onclick="window.voteA(event,'${s.id}','${qId}')">▲ ${a.upvotes||0}</button></div>`;
+            el.appendChild(d);
         });
-    } catch(e) { listEl.innerHTML = '<p style="font-size:0.82rem;color:#e94560;">Erreur de chargement.</p>'; }
+    } catch(e) { el.innerHTML = '<p style="color:#e94560;font-size:0.82rem;">Erreur.</p>'; }
 }
 
-window.submitAnswer = async (qId) => {
-    if (!currentUser) { window.openAuthModal(); return; }
-    const input = document.getElementById('ainput-' + qId);
-    const body = input.value.trim();
+window.submitA = async (qId) => {
+    if (!user) { window.openAuthModal(); return; }
+    const inp = document.getElementById('ai-'+qId);
+    const body = inp.value.trim();
     if (!body) return;
-    const btn = document.getElementById('abtn-' + qId);
+    const btn = document.getElementById('ab-'+qId);
     btn.disabled = true;
     try {
-        await addDoc(collection(db, 'answers'), {
-            questionId: qId, body,
-            authorName: currentUser.displayName || currentUser.email,
-            authorId: currentUser.uid, upvotes: 0, createdAt: serverTimestamp()
-        });
-        await updateDoc(doc(db, 'questions', qId), { answerCount: increment(1) });
-        input.value = '';
+        await addDoc(collection(db,'answers'), { questionId:qId, body, authorName:user.displayName||user.email, authorId:user.uid, upvotes:0, createdAt:serverTimestamp() });
+        await updateDoc(doc(db,'questions',qId), { answerCount: increment(1) });
+        inp.value = '';
         loadAnswers(qId);
-        const c = document.getElementById('acount-' + qId);
-        if (c) c.textContent = parseInt(c.textContent||0) + 1;
+        const c = document.getElementById('ac-'+qId);
+        if (c) c.textContent = parseInt(c.textContent||0)+1;
     } catch(e) { console.error(e); }
     btn.disabled = false;
 };
 
 window.voteQ = async (e, qId) => {
     e.stopPropagation();
-    if (!currentUser) { window.openAuthModal(); return; }
-    const ref = doc(db, 'votes', currentUser.uid + '_q_' + qId);
+    if (!user) { window.openAuthModal(); return; }
+    const ref = doc(db,'votes',user.uid+'_q_'+qId);
     const snap = await getDoc(ref);
-    const btn = document.getElementById('upvote-q-' + qId);
-    const cnt = document.getElementById('qvotes-' + qId);
+    const btn = document.getElementById('vq-'+qId);
+    const cnt = document.getElementById('vc-'+qId);
     if (snap.exists()) {
         await deleteDoc(ref);
         await updateDoc(doc(db,'questions',qId), { upvotes: increment(-1) });
         btn.classList.remove('voted'); cnt.textContent = parseInt(cnt.textContent)-1;
     } else {
-        await setDoc(ref, { userId: currentUser.uid, questionId: qId, createdAt: serverTimestamp() });
+        await setDoc(ref, { userId:user.uid, questionId:qId, createdAt:serverTimestamp() });
         await updateDoc(doc(db,'questions',qId), { upvotes: increment(1) });
         btn.classList.add('voted'); cnt.textContent = parseInt(cnt.textContent)+1;
     }
@@ -446,20 +446,15 @@ window.voteQ = async (e, qId) => {
 
 window.voteA = async (e, aId, qId) => {
     e.stopPropagation();
-    if (!currentUser) { window.openAuthModal(); return; }
-    const ref = doc(db, 'votes', currentUser.uid + '_a_' + aId);
+    if (!user) { window.openAuthModal(); return; }
+    const ref = doc(db,'votes',user.uid+'_a_'+aId);
     const snap = await getDoc(ref);
     if (!snap.exists()) {
-        await setDoc(ref, { userId: currentUser.uid, answerId: aId, createdAt: serverTimestamp() });
+        await setDoc(ref, { userId:user.uid, answerId:aId, createdAt:serverTimestamp() });
         await updateDoc(doc(db,'answers',aId), { upvotes: increment(1) });
         loadAnswers(qId);
     }
 };
-
-function esc(str) {
-    if (!str) return '';
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
 
 loadQuestions();
 </script>

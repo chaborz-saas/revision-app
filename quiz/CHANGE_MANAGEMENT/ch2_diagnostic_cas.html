@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Module 2 : Étude de cas & Préparation des projets — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+.quiz-container { max-width: 800px; margin: 0 auto; }
+.quiz-header { text-align: center; padding: 2rem 0 1.5rem; }
+.quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.5rem; }
+.quiz-header h1 { font-size: 1.4rem; font-weight: 700; color: white; }
+.question-card { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; margin: 1.2rem 0; border-left: 4px solid #8e44ad; }
+.question-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.6rem; }
+.question-text { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; }
+.option { background: #252540; border: 2px solid #252540; border-radius: 10px; padding: 0.7rem 1rem; cursor: pointer; font-size: 0.9rem; color: #e0e0e0; transition: all 0.2s; text-align: left; }
+.option:hover { border-color: #8e44ad; background: #2d2050; }
+.option.correct { background: #1a3a2a; border-color: #27ae60; color: #2ecc71; }
+.option.wrong { background: #3a1a1a; border-color: #e74c3c; color: #e74c3c; }
+.explanation { background: #1e1e35; border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: #a0a0c0; display: none; border-left: 3px solid #8e44ad; line-height: 1.5; }
+.score-bar { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; display: none; }
+.score-bar h2 { font-size: 1.5rem; color: #8e44ad; margin-bottom: 0.5rem; }
+.btn-retry { background: #8e44ad; color: white; border: none; border-radius: 10px; padding: 0.8rem 2rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; margin-top: 1rem; }
+a.back { color: #8e44ad; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="quiz-header">
+  <div class="matiere">Gestion du Changement — M1 ✦ Nouvelle version</div>
+  <h1>Quiz — Module 2 : Étude de cas &amp; Diagnostic</h1>
+</div>
+<div id="quiz"></div>
+<div class="score-bar" id="scoreBar">
+  <h2 id="scoreText"></h2>
+  <p style="color:#aaa;font-size:0.9rem;">Relis la fiche pour renforcer les points faibles</p>
+  <button class="btn-retry" onclick="restartQuiz()">Recommencer</button>
+</div>
+</div>
+<script>
+const questions = [
+  {
+    q: "Quelle était la structure juridique originelle d'OpenAI à sa fondation en 2015 ?",
+    options: [
+      "Une société anonyme cotée en bourse (S.A.)",
+      "Une organisation à but non lucratif (ONG)",
+      "Une coopérative de travailleurs (SCOP)",
+      "Une filiale commerciale de Microsoft"
+    ],
+    answer: 1,
+    explanation: "OpenAI a été fondée en 2015 comme organisation à but non lucratif (ONG) avec pour mission déclarée d'assurer que l'intelligence artificielle générale bénéficie à l'ensemble de l'humanité. Ce n'est qu'en 2019 qu'elle a créé une filiale commerciale 'capped-profit' pour lever des capitaux."
+  },
+  {
+    q: "Quelle tension fondamentale illustre le plus fortement l'évolution d'OpenAI vers une société à but lucratif classique ?",
+    options: [
+      "La tension global vs. local dans le déploiement de l'IA",
+      "La tension entre conformité légale et engagement volontaire",
+      "La tension entre mission sociale déclarée et logique de profit",
+      "La tension entre les piliers social et environnemental"
+    ],
+    answer: 2,
+    explanation: "La transition d'OpenAI de ONG (2015) à filiale capped-profit (2019) puis vers un but lucratif classique (2024-2025) illustre précisément la tension mission/profit : l'organisation est progressivement 'capturée' par les logiques de marché, au détriment de sa mission originelle 'bénéficier à l'humanité'."
+  },
+  {
+    q: "Dans la matrice parties prenantes (Power/Interest Matrix), dans quel quadrant placer des actionnaires institutionnels puissants mais peu engagés sur la durabilité ?",
+    options: [
+      "Engager activement (fort pouvoir / fort intérêt)",
+      "Informer régulièrement (faible pouvoir / fort intérêt)",
+      "Surveiller (faible pouvoir / faible intérêt)",
+      "Satisfaire et maintenir l'engagement (fort pouvoir / faible intérêt)"
+    ],
+    answer: 3,
+    explanation: "Des actionnaires institutionnels ont un fort pouvoir d'influence (ils peuvent voter en AG, vendre leurs titres, exercer une pression sur la direction) mais s'ils ont un faible intérêt pour la durabilité, ils se trouvent dans le quadrant 'Fort pouvoir / Faible intérêt' : il faut les satisfaire et chercher à maintenir leur engagement."
+  },
+  {
+    q: "Quelle est la première étape de la démarche de diagnostic de durabilité selon le cours GCD ?",
+    options: [
+      "L'identification des tensions structurelles de l'organisation",
+      "La cartographie des parties prenantes",
+      "L'évaluation des pratiques environnementales actuelles",
+      "La formulation des propositions de développement"
+    ],
+    answer: 1,
+    explanation: "La démarche de diagnostic commence par la cartographie des parties prenantes : qui sont-ils, quels sont leurs intérêts, leur pouvoir d'influence et leur niveau d'engagement actuel ? Cette étape est fondatrice car toutes les analyses suivantes s'organisent autour des parties prenantes identifiées."
+  },
+  {
+    q: "Que révèle l'épisode du licenciement puis réintégration de Sam Altman en novembre 2023 pour l'analyse de durabilité d'OpenAI ?",
+    options: [
+      "Que la gouvernance d'OpenAI est solide et capable de résister aux pressions externes",
+      "Que les modèles de gouvernance hybrides ONG/commercial sont instables face aux pressions du marché",
+      "Que la mission sociale d'OpenAI est pleinement protégée par ses statuts",
+      "Que les actionnaires ont joué leur rôle de protection de la mission sociale"
+    ],
+    answer: 1,
+    explanation: "L'épisode novembre 2023 illustre la fragilité des structures de gouvernance hybrides : le conseil d'administration, censé être le garant de la mission sociale, a été contraint de réintégrer le CEO sous la pression des employés et de Microsoft (actionnaire). Cela démontre que les mécanismes institutionnels n'étaient pas assez robustes pour résister aux forces du marché."
+  },
+  {
+    q: "Lequel de ces éléments constitue une tension de durabilité spécifique à OpenAI liée à son nom même ?",
+    options: [
+      "La tension entre l'usage professionnel et l'usage grand public de ses technologies",
+      "La tension entre la transparence (son nom 'Open') et l'opacité croissante sur ses modèles (GPT-4 non publié)",
+      "La tension entre ses activités en Europe et aux États-Unis",
+      "La tension entre ses équipes de recherche et ses équipes commerciales"
+    ],
+    answer: 1,
+    explanation: "OpenAI porte un paradoxe dans son nom même : 'Open' suggère la transparence et le partage, héritage de la culture open source. Pourtant, depuis GPT-4, les architectures et données d'entraînement ne sont plus publiées. Cette tension transparence vs. avantage concurrentiel est une contradiction directe avec la mission fondatrice de partage du savoir pour le bien commun."
+  },
+  {
+    q: "Selon la démarche de diagnostic GCD, qu'est-ce qui distingue une 'bonne' proposition de développement durable d'une proposition générique ?",
+    options: [
+      "Elle doit être basée sur les meilleures pratiques du secteur et les standards internationaux",
+      "Elle doit être ancrée dans les tensions spécifiques identifiées chez l'organisation étudiée",
+      "Elle doit proposer d'adopter les certifications B Corp et ISO 14001",
+      "Elle doit maximiser le retour sur investissement à court terme"
+    ],
+    answer: 1,
+    explanation: "Une bonne proposition de développement doit être ancrée dans l'analyse des tensions identifiées pour l'organisation spécifique. Les solutions génériques (adopter telle certification, réduire les émissions) n'ont pas de valeur analytique sans être connectées aux paradoxes réels que l'organisation gère. L'ancrage contextuel est la marque d'une analyse rigoureuse."
+  },
+  {
+    q: "Quel piège analytique consiste à qualifier une entreprise simplement de 'bonne' ou 'mauvaise' en matière de durabilité ?",
+    options: [
+      "Le greenwashing analytique",
+      "Le relativisme contextuel",
+      "Le jugement moral sans nuance (ignorer les contraintes structurelles et paradoxes)",
+      "L'anachronisme managérial"
+    ],
+    answer: 2,
+    explanation: "Le jugement moral sans nuance est un piège analytique majeur : il consiste à évaluer une entreprise de façon binaire (bonne/mauvaise) sans comprendre les contraintes structurelles, les paradoxes qu'elle gère et les pressions concurrentes auxquelles elle fait face. Une analyse rigoureuse cherche à comprendre pourquoi certaines tensions existent avant de porter un jugement."
+  },
+  {
+    q: "Quelle caractéristique principale doit présenter une organisation choisie pour le projet de groupe afin qu'elle soit analytiquement pertinente ?",
+    options: [
+      "Être une startup technologique innovante du secteur numérique",
+      "Avoir un CA supérieur à 1 milliard d'euros",
+      "Présenter des tensions de durabilité visibles et documentées publiquement",
+      "Avoir un département RSE officiel et un directeur développement durable"
+    ],
+    answer: 2,
+    explanation: "La caractéristique principale requise est la richesse analytique : l'organisation doit présenter des tensions de durabilité suffisamment visibles et documentées pour nourrir l'analyse. Sans tensions apparentes et documentées, il est impossible de réaliser un diagnostic approfondi et de proposer des options de développement argumentées."
+  },
+  {
+    q: "Comment s'appelle la dérive par laquelle une organisation fondée sur une mission sociale se retrouve progressivement dominée par des logiques commerciales ?",
+    options: [
+      "La dérive institutionnelle",
+      "Le mission drift ou 'capture par le marché'",
+      "Le stakeholder shift",
+      "La compliance fatigue"
+    ],
+    answer: 1,
+    explanation: "La 'capture par le marché' (ou mission drift) est le phénomène par lequel une organisation hybride, initialement fondée sur une mission sociale, voit progressivement cette mission s'éroder sous la pression des impératifs commerciaux, des investisseurs et des concurrents. OpenAI en est l'exemple paradigmatique étudié dans ce module."
+  }
+];
+
+let score = 0, answered = 0;
+function shuffleOptions(q) {
+  const opts = q.options.map((o,i) => ({text:o, isCorrect: i===q.answer}));
+  for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  return opts;
+}
+function buildQuiz() {
+  const div = document.getElementById('quiz');
+  div.innerHTML = '';
+  score = 0; answered = 0;
+  questions.forEach((q,qi) => {
+    const shuffled = shuffleOptions(q);
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.innerHTML = `<div class="question-num">Question ${qi+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options" id="opts-${qi}">${shuffled.map((o,i)=>`<button class="option" onclick="answer(${qi},${i},${o.isCorrect},this)">${o.text}</button>`).join('')}</div><div class="explanation" id="exp-${qi}">${q.explanation}</div>`;
+    div.appendChild(card);
+  });
+  document.getElementById('scoreBar').style.display = 'none';
+}
+function answer(qi, oi, correct, btn) {
+  const opts = document.querySelectorAll(`#opts-${qi} .option`);
+  opts.forEach(b => b.disabled = true);
+  if(correct){ btn.classList.add('correct'); score++; }
+  else { btn.classList.add('wrong'); opts.forEach(b=>{ if(b.onclick.toString().includes('true')) b.classList.add('correct'); }); }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  answered++;
+  if(answered === questions.length) {
+    setTimeout(()=>{ const sb=document.getElementById('scoreBar'); sb.style.display='block'; document.getElementById('scoreText').textContent=`${score} / ${questions.length} — ${Math.round(score/questions.length*100)}%`; }, 300);
+  }
+}
+function restartQuiz() { buildQuiz(); }
+buildQuiz();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

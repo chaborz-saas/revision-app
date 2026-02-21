@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Paradoxes & logiques institutionnelles — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+.quiz-container { max-width: 800px; margin: 0 auto; }
+.quiz-header { text-align: center; padding: 2rem 0 1.5rem; }
+.quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.5rem; }
+.quiz-header h1 { font-size: 1.4rem; font-weight: 700; color: white; }
+.quiz-header p { font-size: 0.85rem; color: #888; margin-top: 0.4rem; }
+.question-card { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; margin: 1.2rem 0; border-left: 4px solid #8e44ad; }
+.question-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.6rem; }
+.question-text { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; }
+.option { background: #252540; border: 2px solid #252540; border-radius: 10px; padding: 0.7rem 1rem; cursor: pointer; font-size: 0.9rem; color: #e0e0e0; transition: all 0.2s; text-align: left; }
+.option:hover:not(:disabled) { border-color: #8e44ad; background: #2d2050; }
+.option.correct { background: #1a3a2a; border-color: #27ae60; color: #2ecc71; }
+.option.wrong { background: #3a1a1a; border-color: #e74c3c; color: #e74c3c; }
+.explanation { background: #1e1e35; border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: #a0a0c0; display: none; border-left: 3px solid #8e44ad; line-height: 1.5; }
+.score-bar { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; display: none; }
+.score-bar h2 { font-size: 1.5rem; color: #8e44ad; margin-bottom: 0.5rem; }
+.btn-retry { background: #8e44ad; color: white; border: none; border-radius: 10px; padding: 0.8rem 2rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; margin-top: 1rem; }
+.btn-retry:hover { background: #6c3483; }
+a.back { color: #8e44ad; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="quiz-header">
+<div class="matiere">Gestion du Changement — M1 ✦ Module 4</div>
+<h1>Paradoxes &amp; logiques institutionnelles</h1>
+<p>10 questions — Répondez, puis découvrez les explications</p>
+</div>
+<div id="quiz"></div>
+<div class="score-bar" id="scoreBar">
+<h2 id="scoreText"></h2>
+<p style="color:#aaa;font-size:0.9rem;margin-top:0.3rem;">Relis la fiche pour renforcer les points faibles</p>
+<button class="btn-retry" onclick="restartQuiz()">Recommencer</button>
+</div>
+</div>
+<script>
+const questions = [
+  {
+    q: "Dans la théorie des logiques institutionnelles appliquée à la durabilité, quelle est la différence fondamentale entre logique de marché et logique civique ?",
+    options: [
+      "La logique de marché est nationale, la logique civique est internationale",
+      "La logique de marché optimise le profit pour les actionnaires (court terme), la logique civique crée de la valeur pour la société (long terme)",
+      "La logique de marché est publique, la logique civique est privée",
+      "La logique de marché est axée sur l'innovation, la logique civique sur la tradition"
+    ],
+    answer: 1,
+    explanation: "La logique de marché priorise la rentabilité actionnariale, la compétition et l'externalisation des coûts environnementaux. La logique civique priorise la valeur pour toutes les parties prenantes, la coopération et l'internalisation des externalités. Ces deux logiques cohabitent en tension permanente dans les organisations durables."
+  },
+  {
+    q: "Qu'est-ce que la 'rhétorique de compatibilité' dans le contexte de la durabilité organisationnelle ?",
+    options: [
+      "Un outil de communication interne pour aligner les équipes sur des objectifs communs",
+      "Un discours qui tente de réconcilier des logiques contradictoires comme 'croissance verte' ou 'capitalisme responsable'",
+      "Une méthode de certification RSE reconnue par l'Union Européenne",
+      "Un protocole de négociation entre entreprises et ONG environnementales"
+    ],
+    answer: 1,
+    explanation: "La rhétorique de compatibilité englobe des concepts comme 'croissance verte' et 'capitalisme responsable' qui tentent de montrer que profit et durabilité sont compatibles. La critique (Boltanski, Chiapello) souligne le risque de 'récupération critique' : ces discours neutralisent les velléités de transformation radicale en les intégrant au système existant sans le remettre en cause."
+  },
+  {
+    q: "Selon Smith & Lewis (2011), dans quelle 'zone de navigation' une organisation génère-t-elle de l'innovation en durabilité ?",
+    options: [
+      "Zone de confort (évitement des tensions)",
+      "Zone de survie (crise non gérée)",
+      "Zone de performance (tension productive)",
+      "Zone d'équilibre (résolution des paradoxes)"
+    ],
+    answer: 2,
+    explanation: "La zone de performance (Smith & Lewis, 2011) est celle où l'organisation embrasse la tension paradoxale et l'utilise comme moteur d'innovation. Contrairement à la zone de confort (évitement → stagnation) ou la zone de survie (crise → paralysie), la zone de performance transforme l'inconfort en énergie créatrice."
+  },
+  {
+    q: "Quel est le paradoxe central illustré par le cas Fairphone selon Brix-Asala et al. (2018) ?",
+    options: [
+      "Fairphone vend des téléphones haut de gamme mais se positionne comme marque accessible",
+      "Fairphone utilise des minerais de zones de conflit tout en revendiquant une éthique maximale et conçoit des produits réparables dans un marché d'obsolescence programmée",
+      "Fairphone est une entreprise néerlandaise qui fabrique en Chine contre ses principes éthiques",
+      "Fairphone promeut le numérique malgré l'impact carbone des data centers"
+    ],
+    answer: 1,
+    explanation: "Fairphone (Brix-Asala et al., 2018) est un 'sustainability paradox case' : elle incarne simultanément le problème (industrie électronique utilisant des minerais de conflits) et la solution (réparabilité, traçabilité, Fairtrade). Sa stratégie de transparence radicale (assumer publiquement les imperfections) lui permet de maintenir sa légitimité tout en progressant vers ses idéaux."
+  },
+  {
+    q: "Dans la matrice Pouvoir / Intérêt (Mendelow, 1991), comment doit-on traiter les parties prenantes à FORT pouvoir et FORT intérêt ?",
+    options: [
+      "Surveiller minimalement — leur forte implication gère d'elle-même la relation",
+      "Satisfaire ponctuellement — les informer lors des grandes décisions uniquement",
+      "Gérer en priorité — dialogue permanent, engagement fort",
+      "Éviter le contact — leur pouvoir combiné à leur intérêt crée des risques d'ingérence"
+    ],
+    answer: 2,
+    explanation: "Les parties prenantes à fort pouvoir ET fort intérêt (clients-clés, investisseurs ESG, autorités réglementaires) doivent être gérées en priorité avec un dialogue permanent. Ce sont les acteurs qui peuvent le plus influencer le succès ou l'échec d'une stratégie de durabilité."
+  },
+  {
+    q: "Qu'est-ce qu'une 'partie prenante silencieuse' dans le diagnostic de durabilité ?",
+    options: [
+      "Un employé qui n'exprime pas ses opinions en réunion",
+      "Un actionnaire minoritaire qui ne vote pas aux assemblées générales",
+      "Des acteurs affectés par l'organisation mais sans voix dans les processus de décision (générations futures, écosystèmes)",
+      "Des fournisseurs qui refusent de participer aux audits de durabilité"
+    ],
+    answer: 2,
+    explanation: "Les parties prenantes silencieuses (générations futures, espèces animales, écosystèmes) sont affectées par les décisions organisationnelles mais n'ont pas de représentation dans les processus de décision. L'enjeu de la durabilité est de leur donner une voix via des mécanismes de représentation (conseil de durabilité, indicateurs biodiversité) ou de traduction (expertise scientifique, rapport GIEC)."
+  },
+  {
+    q: "Qu'est-ce que le 'polarity mapping' (cartographie des polarités) développé par Barry Johnson ?",
+    options: [
+      "Un outil cartographique pour localiser les zones d'impact environnemental d'une entreprise",
+      "Un outil de visualisation des tensions irréductibles — couples de valeurs complémentaires qu'il faut naviguer plutôt que résoudre",
+      "Une méthode d'analyse politique des parties prenantes dans les organisations internationales",
+      "Un algorithme de scoring ESG utilisé par les agences de notation financière"
+    ],
+    answer: 1,
+    explanation: "Le polarity mapping (Johnson, 1992) identifie des polarités — tensions entre deux pôles complémentaires comme rentabilité/impact ou standardisation/adaptation. L'outil aide à visualiser les avantages ET les risques de chaque pôle, et à comprendre que la solution n'est pas de choisir mais de naviguer intelligemment entre les deux, en profitant des forces de chacun."
+  },
+  {
+    q: "Quel rôle jouent les ONG dans la 'centralité et jugement social' des organisations durables ?",
+    options: [
+      "Elles fournissent des financements verts aux entreprises engagées",
+      "Elles certifient officiellement les labels RSE au nom des gouvernements",
+      "Elles agissent comme chiens de garde via enquêtes, classements et campagnes de boycott qui forcent les repositionnements",
+      "Elles gèrent les fonds de pension ESG pour les retraités engagés"
+    ],
+    answer: 2,
+    explanation: "Les ONG (Greenpeace, WWF, Oxfam, etc.) exercent un rôle de surveillance critique : elles mènent des enquêtes indépendantes, publient des classements comparatifs, révèlent les pratiques problématiques et lancent des campagnes de boycott. Leur action force les entreprises à se repositionner et constitue un vecteur majeur de légitimité (ou de délégitimaion) dans le champ de la durabilité."
+  },
+  {
+    q: "Selon la pensée paradoxale appliquée au management durable, quelle est la différence entre une approche 'OU' et une approche 'ET' ?",
+    options: [
+      "L'approche 'OU' est quantitative, l'approche 'ET' est qualitative",
+      "L'approche 'OU' choisit un seul pôle (ex. profit OU impact) — l'approche 'ET' embrasse les deux simultanément (profit ET impact)",
+      "L'approche 'OU' est utilisée à court terme, l'approche 'ET' à long terme",
+      "L'approche 'OU' est propre aux grandes entreprises, l'approche 'ET' aux PME"
+    ],
+    answer: 1,
+    explanation: "La pensée paradoxale remplace le 'OU' exclusif (choix entre deux options contradictoires) par le 'ET' inclusif (maintenir simultanément deux vérités contradictoires en tension productive). Exemples : efficacité économique ET sobriété écologique, compétition ET coopération. Cette posture génère des solutions innovantes impossibles avec une pensée binaire."
+  },
+  {
+    q: "Quelle zone décrit Smith & Lewis pour une organisation qui évite totalement les tensions paradoxales et choisit un seul pôle ?",
+    options: [
+      "Zone de performance — elle est focalisée et efficace",
+      "Zone d'innovation — la simplicité favorise la créativité",
+      "Zone de survie — la pression externe finit par la déstabiliser",
+      "Zone de confort — évitement des tensions menant à la stagnation"
+    ],
+    answer: 3,
+    explanation: "La zone de confort (Smith & Lewis, 2011) correspond à l'évitement des tensions : l'organisation choisit un seul pôle (ex. profit uniquement, ou durabilité sans rentabilité) pour éviter l'inconfort paradoxal. Résultat à court terme : confort organisationnel. Résultat à long terme : stagnation et vulnérabilité croissante face aux disruptions et aux nouvelles exigences des parties prenantes."
+  }
+];
+let score = 0, answered = 0;
+function shuffleOptions(q) {
+  const opts = q.options.map((o,i) => ({text:o, isCorrect: i===q.answer}));
+  for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  return opts;
+}
+function buildQuiz() {
+  const div = document.getElementById('quiz');
+  div.innerHTML = '';
+  score = 0; answered = 0;
+  questions.forEach((q,qi) => {
+    const shuffled = shuffleOptions(q);
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.innerHTML = `<div class="question-num">Question ${qi+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options" id="opts-${qi}">${shuffled.map((o,i)=>`<button class="option" onclick="answer(${qi},${i},${o.isCorrect},this)">${o.text}</button>`).join('')}</div><div class="explanation" id="exp-${qi}">${q.explanation}</div>`;
+    div.appendChild(card);
+  });
+  document.getElementById('scoreBar').style.display = 'none';
+}
+function answer(qi, oi, correct, btn) {
+  const opts = document.querySelectorAll(`#opts-${qi} .option`);
+  opts.forEach(b => b.disabled = true);
+  if(correct){ btn.classList.add('correct'); score++; }
+  else {
+    btn.classList.add('wrong');
+    opts.forEach(b => {
+      try { if(b.getAttribute('onclick') && b.getAttribute('onclick').includes(',true,')) b.classList.add('correct'); } catch(e){}
+    });
+  }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  answered++;
+  if(answered === questions.length) {
+    setTimeout(()=>{
+      const sb=document.getElementById('scoreBar');
+      sb.style.display='block';
+      const pct = Math.round(score/questions.length*100);
+      let msg = pct >= 80 ? '🟢 Excellent !' : pct >= 60 ? '🟡 Bien, continue !' : '🔴 Relis le cours';
+      document.getElementById('scoreText').textContent=`${score} / ${questions.length} — ${pct}% — ${msg}`;
+      sb.scrollIntoView({behavior:'smooth'});
+    }, 400);
+  }
+}
+function restartQuiz() { buildQuiz(); window.scrollTo({top:0,behavior:'smooth'}); }
+buildQuiz();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

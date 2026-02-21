@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthèse — Diagnostic de durabilité organisationnelle (1) — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Inter:wght@400;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #fafaf8; color: #1a1a2e; padding: 2rem; line-height: 1.7; }
+.synthese-wrapper { max-width: 860px; margin: 0 auto; }
+.header { border-bottom: 3px solid #8e44ad; padding-bottom: 1rem; margin-bottom: 2rem; }
+.header .matiere { font-family: Inter, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.3rem; }
+.header h1 { font-size: 1.6rem; font-weight: normal; color: #1a1a2e; }
+h2 { font-size: 1.15rem; font-family: Inter, sans-serif; font-weight: 700; color: #1a1a2e; margin: 2rem 0 0.6rem; border-left: 4px solid #8e44ad; padding-left: 0.7rem; }
+h3 { font-size: 1rem; font-family: Inter, sans-serif; font-weight: 600; color: #4a235a; margin: 1.2rem 0 0.4rem; }
+p { margin-bottom: 0.8rem; font-size: 0.95rem; }
+ul { margin: 0.5rem 0 0.8rem 1.5rem; }
+li { font-size: 0.93rem; margin-bottom: 0.3rem; line-height: 1.6; }
+.definition { background: #f5eef8; border-left: 4px solid #8e44ad; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+.important { background: #fdecea; border-left: 4px solid #e74c3c; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+.example { background: #e8f8f5; border-left: 4px solid #1abc9c; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+.formula { background: #eef6fc; border-left: 4px solid #2980b9; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; font-family: Inter, sans-serif; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.8rem 0; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 0.8rem 0; }
+.card { background: #f5eef8; border-radius: 10px; padding: 0.8rem 1rem; }
+.card h4 { font-family: Inter, sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6c3483; margin-bottom: 0.4rem; }
+.card p { font-size: 0.88rem; margin: 0; }
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.8rem 0; }
+.swot-s { background: #e8f8f5; border-top: 3px solid #1abc9c; border-radius: 6px; padding: 0.7rem 0.9rem; }
+.swot-w { background: #fdecea; border-top: 3px solid #e74c3c; border-radius: 6px; padding: 0.7rem 0.9rem; }
+.swot-o { background: #eef6fc; border-top: 3px solid #2980b9; border-radius: 6px; padding: 0.7rem 0.9rem; }
+.swot-t { background: #fef9e7; border-top: 3px solid #f39c12; border-radius: 6px; padding: 0.7rem 0.9rem; }
+.swot-label { font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.35rem; }
+.swot-s .swot-label { color: #1abc9c; }
+.swot-w .swot-label { color: #e74c3c; }
+.swot-o .swot-label { color: #2980b9; }
+.swot-t .swot-label { color: #f39c12; }
+.bmc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 0.8rem 0; }
+.bmc-cell { background: #f5eef8; border-radius: 6px; padding: 0.6rem 0.7rem; border-top: 3px solid #8e44ad; }
+.bmc-cell.green { border-color: #1abc9c; background: #e8f8f5; }
+.bmc-cell.blue { border-color: #2980b9; background: #eef6fc; }
+.bmc-cell h5 { font-family: Inter, sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #4a235a; margin-bottom: 0.3rem; }
+.bmc-cell p { font-size: 0.78rem; margin: 0; line-height: 1.45; }
+.timeline { margin: 0.8rem 0; }
+.timeline-item { display: flex; gap: 1rem; margin-bottom: 0.7rem; align-items: flex-start; }
+.timeline-dot { width: 28px; height: 28px; border-radius: 50%; background: #8e44ad; color: white; font-family: Inter, sans-serif; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
+.timeline-content { font-size: 0.9rem; line-height: 1.5; }
+.timeline-content strong { font-family: Inter, sans-serif; color: #1a1a2e; }
+.odd-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.4rem; margin: 0.8rem 0; text-align: center; }
+.odd-badge { background: #8e44ad; color: white; border-radius: 8px; padding: 0.5rem 0.3rem; font-family: Inter, sans-serif; font-size: 0.7rem; font-weight: 700; line-height: 1.3; }
+.odd-badge.green { background: #27ae60; }
+.odd-badge.blue { background: #2980b9; }
+.odd-badge.orange { background: #e67e22; }
+.odd-badge.red { background: #c0392b; }
+.odd-badge.teal { background: #16a085; }
+.odd-badge.darkblue { background: #1a5276; }
+.source-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; font-family: Inter, sans-serif; font-size: 0.8rem; color: #999; text-align: center; }
+a.back { font-family: Inter, sans-serif; font-size: 0.85rem; color: #8e44ad; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="synthese-wrapper">
+<div class="header">
+<div class="matiere">Gestion du Changement — M1 ✦ Module 3</div>
+<h1>Diagnostic de durabilité organisationnelle (1)</h1>
+</div>
+
+<h2>1. Le modèle diagnostic HBS</h2>
+<p>Le <strong>modèle diagnostique de la Harvard Business School (HBS)</strong> propose une analyse organisationnelle complète qui permet d'évaluer la santé d'une organisation et sa capacité à intégrer des transformations durables. Il articule plusieurs niveaux d'analyse interdépendants.</p>
+<div class="definition">
+  <strong>Définition :</strong> Le diagnostic HBS est une grille d'analyse systémique qui examine l'organisation sous l'angle de ses ressources, capacités, structure, culture et environnement pour identifier les leviers et freins au changement durable.
+</div>
+<div class="grid-2">
+  <div class="card">
+    <h4>Analyse interne</h4>
+    <p>Ressources (humaines, financières, technologiques), compétences distinctives, culture organisationnelle, processus opérationnels, structures hiérarchiques et informelles.</p>
+  </div>
+  <div class="card">
+    <h4>Analyse externe</h4>
+    <p>Pressions réglementaires (normes ISO, CSRD), attentes des parties prenantes, dynamiques sectorielles, tendances macro-économiques, risques climatiques et sociaux.</p>
+  </div>
+  <div class="card">
+    <h4>Alignement stratégique</h4>
+    <p>Cohérence entre la vision durable et les pratiques opérationnelles. Identification des écarts (gaps) entre l'ambition RSE affichée et la réalité des processus.</p>
+  </div>
+  <div class="card">
+    <h4>Capacité de transformation</h4>
+    <p>Leadership engagé, slack organisationnel (ressources disponibles pour l'innovation), agilité culturelle, apprentissage organisationnel et gestion des résistances.</p>
+  </div>
+</div>
+<p>Appliqué à la durabilité, ce modèle permet de cartographier les zones de vulnérabilité (empreinte carbone, chaîne d'approvisionnement opaque, gouvernance défaillante) et les zones de levier (savoir-faire en économie circulaire, culture d'innovation, partenariats stratégiques).</p>
+
+<h2>2. SWOT créatif appliqué à la durabilité</h2>
+<p>La matrice SWOT (Strengths, Weaknesses, Opportunities, Threats) est ici réinterprétée de façon <em>créative</em> pour dépasser le diagnostic statique et intégrer les dimensions environnementales, sociales et de gouvernance (ESG).</p>
+<div class="swot-grid">
+  <div class="swot-s">
+    <div class="swot-label">Forces (Strengths)</div>
+    <ul>
+      <li>Savoir-faire en éco-conception</li>
+      <li>Certifications environnementales (ISO 14001, B-Corp)</li>
+      <li>Culture d'innovation participative</li>
+      <li>Partenariats avec acteurs de l'économie circulaire</li>
+    </ul>
+  </div>
+  <div class="swot-w">
+    <div class="swot-label">Faiblesses (Weaknesses)</div>
+    <ul>
+      <li>Chaînes d'approvisionnement opaques</li>
+      <li>Dépendance aux énergies fossiles</li>
+      <li>Manque de compétences en reporting ESG</li>
+      <li>Silos organisationnels freinant la transversalité</li>
+    </ul>
+  </div>
+  <div class="swot-o">
+    <div class="swot-label">Opportunités (Opportunities)</div>
+    <ul>
+      <li>Marchés émergents de la finance verte</li>
+      <li>Réglementations favorables (taxonomie UE)</li>
+      <li>Demande croissante de produits responsables</li>
+      <li>Subventions à la transition énergétique</li>
+    </ul>
+  </div>
+  <div class="swot-t">
+    <div class="swot-label">Menaces (Threats)</div>
+    <ul>
+      <li>Risques de greenwashing et atteinte à la réputation</li>
+      <li>Concurrence des "pure players" durables</li>
+      <li>Réglementations CSRD contraignantes</li>
+      <li>Volatilité des matières premières recyclées</li>
+    </ul>
+  </div>
+</div>
+<div class="example">
+  <strong>Dimension créative :</strong> Le SWOT créatif va au-delà du diagnostic — il identifie des <em>combinaisons paradoxales</em> (une faiblesse transformée en opportunité via l'innovation) et intègre des parties prenantes non-traditionnelles (communautés locales, générations futures, écosystèmes naturels) comme "parties prenantes silencieuses" à considérer.
+</div>
+
+<h2>3. Business Model Canvas appliqué à la durabilité</h2>
+<p>Le Business Model Canvas (Osterwalder & Pigneur) est enrichi pour intégrer simultanément la <strong>valeur économique</strong>, la <strong>valeur sociale</strong> et la <strong>valeur écologique</strong> — c'est la logique du <em>Triple Bottom Line</em> (People, Planet, Profit).</p>
+<div class="bmc-grid">
+  <div class="bmc-cell">
+    <h5>Partenaires Clés</h5>
+    <p>Fournisseurs engagés, ONG, collectivités, start-ups cleantech</p>
+  </div>
+  <div class="bmc-cell">
+    <h5>Activités Clés</h5>
+    <p>R&D éco-conception, logistique inverse, formation RSE</p>
+  </div>
+  <div class="bmc-cell" style="grid-row: span 2;">
+    <h5>Proposition de Valeur Triple</h5>
+    <p><strong>Éco :</strong> rentabilité durable<br><strong>Sociale :</strong> emploi local, inclusion<br><strong>Éco-logique :</strong> régénération des écosystèmes</p>
+  </div>
+  <div class="bmc-cell">
+    <h5>Relations Clients</h5>
+    <p>Co-création, communautés d'usage, transparence radicale</p>
+  </div>
+  <div class="bmc-cell">
+    <h5>Segments Clients</h5>
+    <p>Consommateurs engagés, collectivités, entreprises à mission</p>
+  </div>
+  <div class="bmc-cell">
+    <h5>Ressources Clés</h5>
+    <p>Matériaux recyclés, capital humain qualifié, certifications</p>
+  </div>
+  <div class="bmc-cell">
+    <h5>Canaux</h5>
+    <p>Circuit court, e-commerce responsable, marchés B2B durables</p>
+  </div>
+</div>
+<div class="grid-2" style="margin-top:0.5rem;">
+  <div class="bmc-cell green" style="border-radius:6px; border-top:3px solid #1abc9c;">
+    <h5>Structure de Coûts (+ coûts sociaux/env.)</h5>
+    <p style="font-size:0.83rem;">Coûts opérationnels + externalités négatives internalisées (CO₂, déchets, impact communautaire)</p>
+  </div>
+  <div class="bmc-cell blue" style="border-radius:6px; border-top:3px solid #2980b9;">
+    <h5>Sources de Revenus (+ valeur créée)</h5>
+    <p style="font-size:0.83rem;">Ventes + revenus de la seconde vie des produits + économies réalisées via efficacité énergétique</p>
+  </div>
+</div>
+
+<h2>4. Exemple : économie circulaire par bio-digestion</h2>
+<p>La <strong>bio-digestion</strong> (ou méthanisation) est un exemple emblématique de circularité appliquée : les déchets organiques ne sont plus une nuisance à éliminer mais des <em>ressources à valoriser</em>.</p>
+<div class="example">
+  <strong>Boucle circulaire :</strong>
+  <br>Déchets organiques (restaurants, agriculture, ménages)
+  <br>→ <strong>Digesteur anaérobie</strong> (sans oxygène, bactéries dégradent la matière)
+  <br>→ <strong>Biogaz</strong> (méthane, CO₂) → production d'énergie électrique et thermique
+  <br>→ <strong>Digestat</strong> → fertilisant naturel pour agriculture
+  <br>→ Réduction des engrais chimiques → moins d'émissions de N₂O
+</div>
+<div class="formula">
+  <strong>Équation de valeur circulaire :</strong><br>
+  Déchet = Ressource (1) pour l'énergie + Ressource (2) pour le sol<br>
+  Coût de traitement → Revenus énergétiques + Économies d'engrais + Crédits carbone
+</div>
+<p>Ce modèle illustre comment une entreprise peut transformer ses <em>externalités négatives</em> en <em>centres de profit durables</em>, tout en contribuant à des ODD (7 — énergie propre, 12 — consommation responsable, 13 — action climatique).</p>
+
+<h2>5. Les ODD / SDGs — Agenda 2030</h2>
+<div class="important">
+  <strong>Chiffres clés à retenir :</strong> 17 objectifs — 169 cibles — 193 pays signataires — adoptés en septembre 2015 (Assemblée Générale de l'ONU) — horizon : 2030
+</div>
+<p>Les Objectifs de Développement Durable (ODD) ou <em>Sustainable Development Goals</em> (SDGs) constituent le cadre de référence mondial pour un développement équilibré entre dimensions économique, sociale et environnementale. Ils ont remplacé les Objectifs du Millénaire pour le Développement (OMD, 2000-2015).</p>
+<div class="odd-grid">
+  <div class="odd-badge red">ODD 1<br>Pas de pauvreté</div>
+  <div class="odd-badge orange">ODD 2<br>Faim zéro</div>
+  <div class="odd-badge red">ODD 3<br>Bonne santé</div>
+  <div class="odd-badge red">ODD 4<br>Éducation</div>
+  <div class="odd-badge red">ODD 5<br>Égalité des genres</div>
+  <div class="odd-badge blue">ODD 6<br>Eau propre</div>
+  <div class="odd-badge orange">ODD 7<br>Énergie propre</div>
+  <div class="odd-badge" style="background:#c0392b;">ODD 8<br>Travail décent</div>
+  <div class="odd-badge orange">ODD 9<br>Industrie & innovation</div>
+  <div class="odd-badge red">ODD 10<br>Inégalités réduites</div>
+  <div class="odd-badge orange">ODD 11<br>Villes durables</div>
+  <div class="odd-badge" style="background:#c0392b;">ODD 12<br>Consommation responsable</div>
+  <div class="odd-badge green">ODD 13<br>Action climatique</div>
+  <div class="odd-badge blue">ODD 14<br>Vie aquatique</div>
+  <div class="odd-badge green">ODD 15<br>Vie terrestre</div>
+  <div class="odd-badge" style="background:#1a5276;">ODD 16<br>Justice & institutions</div>
+  <div class="odd-badge darkblue">ODD 17<br>Partenariats</div>
+  <div class="odd-badge" style="background:#888; font-size:0.65rem;">169<br>cibles</div>
+</div>
+<p>Pour les organisations, les ODD servent de cadre pour aligner leur stratégie RSE, prioriser leurs actions d'impact et communiquer avec les parties prenantes. L'enjeu est d'aller au-delà du <em>SDG-washing</em> (afficher des ODD sans actions concrètes) vers une <strong>contribution réelle et mesurable</strong>.</p>
+<h3>Comment intégrer les ODD dans le diagnostic organisationnel ?</h3>
+<ul>
+  <li><strong>Cartographie de matérialité :</strong> identifier quels ODD sont les plus pertinents pour le secteur et les parties prenantes de l'organisation</li>
+  <li><strong>Analyse des contributions positives et négatives :</strong> certaines activités peuvent contribuer à un ODD tout en en contrariant un autre (ex. : énergie solaire — ODD 7 — mais extraction de lithium — ODD 15 à risque)</li>
+  <li><strong>Intégration aux KPIs :</strong> traduire les cibles ODD en indicateurs opérationnels mesurables</li>
+</ul>
+
+<h2>6. Évolution des structures organisationnelles</h2>
+<p>La trajectoire des structures organisationnelles reflète une évolution vers plus d'agilité, de transversalité et de circularité — conditions nécessaires à l'intégration de la durabilité.</p>
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot">1</div>
+    <div class="timeline-content">
+      <strong>Taylorisme / Fordisme (début XXe s.)</strong><br>
+      Organisation scientifique du travail. Division stricte des tâches, hiérarchie pyramidale, standardisation. Efficacité maximale à court terme mais rigidité structurelle et aliénation des travailleurs. Incompatible avec la complexité des enjeux durables.
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot">2</div>
+    <div class="timeline-content">
+      <strong>Structure fonctionnelle (mi-XXe s.)</strong><br>
+      Regroupement par fonctions (RH, Finance, Production, Marketing). Silos opérationnels. Optimise l'expertise mais freine la transversalité indispensable à une stratégie RSE cohérente.
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot">3</div>
+    <div class="timeline-content">
+      <strong>Structure matricielle (années 1970-80)</strong><br>
+      Double ligne hiérarchique (fonctionnelle + projet). Favorise la coordination transversale mais génère des conflits d'autorité. Premier pas vers la coopération inter-fonctionnelle.
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot">4</div>
+    <div class="timeline-content">
+      <strong>Organisation en réseau / agile (XXIe s.)</strong><br>
+      Équipes auto-organisées, itérations rapides (sprints), management participatif. Favorise l'innovation, l'adaptation aux disruptions et l'intégration des enjeux durables de manière transversale.
+    </div>
+  </div>
+</div>
+
+<h2>7. Concepts clés : agilité, transversalité, circularité, holacratie</h2>
+<h3>Agilité organisationnelle</h3>
+<div class="definition">
+  Capacité d'une organisation à s'adapter rapidement aux changements environnementaux tout en maintenant ses performances. Repose sur des cycles courts de décision, l'autonomie des équipes et une culture d'apprentissage continu.
+</div>
+<p>Dans le contexte de la durabilité, l'agilité permet de répondre rapidement aux évolutions réglementaires (CSRD, taxonomie verte), aux nouvelles attentes des consommateurs et aux risques climatiques émergents.</p>
+<h3>Transversalité</h3>
+<p>Démarche qui brise les silos fonctionnels pour faire collaborer des acteurs de différentes fonctions autour d'un objectif commun. Essentielle pour la RSE car les enjeux durables (empreinte carbone, diversité, gouvernance) traversent toutes les fonctions de l'entreprise.</p>
+<h3>Circularité</h3>
+<p>Principe organisationnel inspiré de l'économie circulaire : remplacement des flux linéaires (extraire-produire-jeter) par des boucles fermées où les déchets d'un processus deviennent les ressources d'un autre. S'applique aux matières (physique) mais aussi aux compétences (réaffectation) et aux savoirs (capitalisation).</p>
+<h3>Holacratie</h3>
+<div class="definition">
+  Système de gouvernance organisationnelle développé par Brian Robertson, où l'autorité et la prise de décision sont distribuées à des "cercles" auto-organisés plutôt que concentrées dans une hiérarchie. Chaque cercle a une mission claire et une autonomie réelle.
+</div>
+<div class="example">
+  <strong>Cas Zappos :</strong> Le géant américain de la vente en ligne de chaussures a adopté l'holacratie en 2013, supprimant les titres de postes traditionnels et restructurant l'entreprise en ~500 cercles auto-gérés. Objectif : libérer l'initiative, accélérer l'innovation et renforcer l'engagement des collaborateurs. La transition fut difficile (18% de turn-over initial) mais a permis une culture d'entreprise distinctive et une plus grande réactivité.
+</div>
+<p>Le <strong>self-management</strong> (ou auto-gestion) est au cœur de ces nouvelles formes organisationnelles : chaque collaborateur est responsable de sa contribution à la mission collective, sans supervision hiérarchique constante. Ce modèle est particulièrement cohérent avec les valeurs de durabilité (responsabilité, engagement, sens).</p>
+
+<h2>8. Cas : Mobil Wood — mobilier circulaire</h2>
+<div class="example">
+  <strong>Mobil Wood</strong> est une entreprise de mobilier professionnel qui applique les principes de l'économie circulaire à son modèle d'affaires complet :
+  <ul style="margin-top:0.5rem;">
+    <li><strong>Approvisionnement :</strong> bois certifié FSC, matériaux recyclés et upcyclés</li>
+    <li><strong>Production :</strong> fabrication locale, zéro déchets en décharge (boucles internes)</li>
+    <li><strong>Usage :</strong> offre de leasing de mobilier (Product-as-a-Service) — le client paie l'usage, Mobil Wood conserve la propriété et récupère le mobilier en fin de contrat</li>
+    <li><strong>Fin de vie :</strong> reconditionnement, réemploi, ou recyclage matière des composants</li>
+    <li><strong>Valeur sociale :</strong> création d'emplois locaux non-délocalisables, insertion professionnelle</li>
+  </ul>
+</div>
+<p>Ce cas illustre comment un SWOT de durabilité et un Business Model Canvas enrichi peuvent guider la refonte complète d'un modèle économique vers la triple valeur (économique, sociale, écologique). Mobil Wood réussit à transformer la contrainte environnementale en avantage concurrentiel différenciateur.</p>
+
+<div class="source-footer">Cours GCD — Laurent Paris — EM Normandie M1 2025-2026</div>
+</div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

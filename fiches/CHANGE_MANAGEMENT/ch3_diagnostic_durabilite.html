@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche — Diagnostic de durabilité organisationnelle (1) — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+.fiche-header { background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%); color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0; max-width: 900px; margin: 0 auto; }
+.fiche-header h1 { font-size: 1.3rem; font-weight: 700; }
+.fiche-header .matiere { font-size: 0.78rem; opacity: 0.75; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+.fiche-body { background: white; padding: 1.8rem 2rem; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto 1.5rem; }
+.block { margin: 0.9rem 0; padding: 0.85rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+.block-def { background: #f5eef8; border-color: #8e44ad; }
+.block-attention { background: #fdecea; border-color: #e74c3c; }
+.block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+.block-chiffre { background: #eef6fc; border-color: #2980b9; }
+.block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+.section-title { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin: 1.6rem 0 0.6rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+ul.blist { list-style: none; padding: 0; }
+ul.blist li { padding: 0.3rem 0 0.3rem 1.3rem; position: relative; font-size: 0.9rem; line-height: 1.55; }
+ul.blist li::before { content: "→"; position: absolute; left: 0; color: #8e44ad; font-weight: bold; }
+ul.blist li.sub { padding-left: 2.3rem; color: #555; font-size: 0.87rem; }
+ul.blist li.sub::before { content: "·"; left: 1rem; color: #bbb; }
+.hl { background: linear-gradient(180deg, transparent 50%, #f9e4ff 50%); font-weight: 700; padding: 0 2px; }
+.tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; }
+.tag-purple { background: #f5eef8; color: #6c3483; }
+.tag-green { background: #e8f8f5; color: #1a7a5e; }
+.tag-blue { background: #eef6fc; color: #1a5276; }
+.compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+.compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+.compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+.compact-table tr:nth-child(even) { background: #f8f9fa; }
+.swot-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.5rem 0; }
+.swot-cell { padding: 0.5rem 0.7rem; border-radius: 6px; font-size: 0.83rem; }
+.swot-s-cell { background: #e8f8f5; border-left: 3px solid #1abc9c; }
+.swot-w-cell { background: #fdecea; border-left: 3px solid #e74c3c; }
+.swot-o-cell { background: #eef6fc; border-left: 3px solid #2980b9; }
+.swot-t-cell { background: #fef9e7; border-left: 3px solid #f39c12; }
+.swot-cell strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+.odd-mini { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.5rem 0; }
+.odd-pill { background: #8e44ad; color: white; border-radius: 20px; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 700; }
+.odd-pill.e { background: #27ae60; }
+.odd-pill.b { background: #2980b9; }
+.odd-pill.o { background: #e67e22; }
+.source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; }
+a.back { font-family: Inter, sans-serif; font-size: 0.85rem; color: #8e44ad; text-decoration: none; display: block; margin: 0 auto 1rem; max-width: 900px; }
+</style>
+</head>
+<body>
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="fiche-header">
+<div class="matiere">Gestion du Changement — M1 ✦ Module 3</div>
+<h1>Diagnostic de durabilité organisationnelle (1)</h1>
+</div>
+<div class="fiche-body">
+
+  <div class="section-title">Modèle Diagnostic HBS</div>
+  <div class="block block-def">
+    <div class="block-label">Définition</div>
+    Grille d'analyse <span class="hl">systémique</span> de la Harvard Business School : évalue ressources, structure, culture et capacité de transformation d'une organisation pour identifier les leviers de changement durable.
+  </div>
+  <ul class="blist">
+    <li>Analyse interne : ressources, compétences, culture, processus <span class="tag tag-purple">HBS</span></li>
+    <li class="sub">Identifier les écarts (gaps) entre ambition RSE et réalité opérationnelle</li>
+    <li>Analyse externe : réglementations (CSRD), parties prenantes, risques climatiques</li>
+    <li>Alignement stratégique : cohérence vision durable ↔ pratiques réelles</li>
+    <li>Capacité de transformation : leadership, slack organisationnel, agilité culturelle</li>
+  </ul>
+
+  <div class="section-title">SWOT Créatif Durabilité</div>
+  <div class="swot-mini">
+    <div class="swot-cell swot-s-cell"><strong>Forces</strong>Certifications ESG, éco-conception, partenariats économie circulaire</div>
+    <div class="swot-cell swot-w-cell"><strong>Faiblesses</strong>Chaînes opaques, dépendance fossile, silos organisationnels</div>
+    <div class="swot-cell swot-o-cell"><strong>Opportunités</strong>Finance verte, taxonomie UE, marchés responsables</div>
+    <div class="swot-cell swot-t-cell"><strong>Menaces</strong>Greenwashing, CSRD contraignante, "pure players" durables</div>
+  </div>
+  <div class="block block-astuce">
+    <div class="block-label">Astuce créative</div>
+    Intégrer des "parties prenantes silencieuses" : générations futures, écosystèmes naturels, communautés locales. Transformer les faiblesses en opportunités par l'innovation.
+  </div>
+
+  <div class="section-title">Business Model Canvas × Triple Valeur</div>
+  <table class="compact-table">
+    <thead><tr><th>Bloc BMC</th><th>Dimension Durable</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr><td>Proposition de valeur</td><td>Valeur économique + sociale + écologique</td><td>Mobilier circulaire (Mobil Wood)</td></tr>
+      <tr><td>Partenaires clés</td><td>ONG, fournisseurs engagés, start-ups cleantech</td><td>Économie collaborative</td></tr>
+      <tr><td>Sources de revenus</td><td>Ventes + seconde vie + crédits carbone</td><td>Product-as-a-Service</td></tr>
+      <tr><td>Structure de coûts</td><td>Externalités négatives internalisées</td><td>Coût CO₂, traitement déchets</td></tr>
+      <tr><td>Segments clients</td><td>Consommateurs engagés, collectivités</td><td>Marchés B2B durables</td></tr>
+    </tbody>
+  </table>
+  <div class="block block-attention">
+    <div class="block-label">Attention — Triple Bottom Line</div>
+    People / Planet / Profit — aucune des 3 dimensions ne doit être sacrifiée aux autres. Un modèle rentable mais destructeur socialement ou écologiquement n'est pas durable.
+  </div>
+
+  <div class="section-title">Économie Circulaire — Bio-digestion</div>
+  <div class="block block-astuce">
+    <div class="block-label">Boucle circulaire</div>
+    Déchets organiques → <strong>Digesteur</strong> (anaérobie) → <strong>Biogaz</strong> (énergie) + <strong>Digestat</strong> (fertilisant) → réduction engrais chimiques → crédits carbone
+  </div>
+  <ul class="blist">
+    <li>Transforme externalités négatives en centres de profit durables</li>
+    <li>Contribue aux ODD 7 (énergie propre), 12 (consommation responsable), 13 (climat)</li>
+    <li>Modèle économique : coût traitement déchets → revenus énergétiques</li>
+  </ul>
+
+  <div class="section-title">ODD / SDGs — Agenda 2030</div>
+  <div class="block block-chiffre">
+    <div class="block-label">Chiffres clés</div>
+    <span class="hl">17 objectifs</span> · <span class="hl">169 cibles</span> · <span class="hl">193 signataires</span> · adoptés <span class="hl">septembre 2015</span> (ONU) · horizon <span class="hl">2030</span>
+  </div>
+  <div class="odd-mini">
+    <span class="odd-pill">ODD 1 Pauvreté</span>
+    <span class="odd-pill e">ODD 7 Énergie</span>
+    <span class="odd-pill b">ODD 9 Innovation</span>
+    <span class="odd-pill">ODD 10 Inégalités</span>
+    <span class="odd-pill o">ODD 11 Villes</span>
+    <span class="odd-pill o">ODD 12 Production</span>
+    <span class="odd-pill e">ODD 13 Climat</span>
+    <span class="odd-pill b">ODD 17 Partenariats</span>
+  </div>
+  <ul class="blist">
+    <li>Cartographie de matérialité : identifier les ODD pertinents pour l'entreprise</li>
+    <li>Éviter le SDG-washing : contributions concrètes et mesurables uniquement</li>
+    <li class="sub">Risque : afficher un ODD tout en en contrariant un autre (ex. solaire vs lithium)</li>
+    <li>Traduire les cibles ODD en KPIs opérationnels</li>
+  </ul>
+
+  <div class="section-title">Évolution des Structures Organisationnelles</div>
+  <table class="compact-table">
+    <thead><tr><th>Époque</th><th>Structure</th><th>Limites durabilité</th></tr></thead>
+    <tbody>
+      <tr><td>Début XXe</td><td>Taylorisme / Fordisme</td><td>Hiérarchie rigide, vision court terme, aliénation</td></tr>
+      <tr><td>Mi-XXe</td><td>Structure fonctionnelle</td><td>Silos, freine la transversalité RSE</td></tr>
+      <tr><td>Années 70-80</td><td>Structure matricielle</td><td>Conflits d'autorité, coordination coûteuse</td></tr>
+      <tr><td>XXIe siècle</td><td><strong>Réseau / Agile</strong></td><td>Adapté à la complexité durable ✓</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Concepts Clés : Agilité, Transversalité, Holacratie</div>
+  <div class="block block-def">
+    <div class="block-label">Holacratie</div>
+    Gouvernance distribuée à des cercles auto-organisés (Brian Robertson). Chaque cercle a mission + autonomie réelle. <strong>Cas Zappos :</strong> 500 cercles, suppression des titres, 18% turn-over initial mais culture distinctive.
+  </div>
+  <ul class="blist">
+    <li><strong>Agilité :</strong> cycles courts, autonomie équipes, apprentissage continu → répond aux évolutions CSRD/climatiques</li>
+    <li><strong>Transversalité :</strong> brise les silos fonctionnels → nécessaire car RSE traverse TOUTES les fonctions</li>
+    <li><strong>Circularité :</strong> flux linéaires (extraire-produire-jeter) → boucles fermées (déchets = ressources)</li>
+    <li><strong>Self-management :</strong> chaque collaborateur responsable de sa contribution à la mission collective</li>
+  </ul>
+
+  <div class="section-title">Cas : Mobil Wood (Mobilier Circulaire)</div>
+  <ul class="blist">
+    <li>Bois certifié FSC + matériaux recyclés/upcyclés <span class="tag tag-green">ESG</span></li>
+    <li>Fabrication locale → zéro déchet en décharge (boucles internes)</li>
+    <li>Leasing de mobilier (Product-as-a-Service) → Mobil Wood conserve propriété et récupère fin de vie</li>
+    <li>Reconditionnement → réemploi → recyclage matière en fin de vie</li>
+    <li class="sub">Contrainte environnementale transformée en avantage concurrentiel différenciateur</li>
+    <li>Valeur sociale : emplois locaux non-délocalisables, insertion professionnelle</li>
+  </ul>
+
+</div>
+<div class="source-footer">Cours GCD — Laurent Paris — EM Normandie M1 2025-2026</div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

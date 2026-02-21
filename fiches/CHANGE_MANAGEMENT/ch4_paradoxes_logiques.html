@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche — Paradoxes & logiques institutionnelles — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+.fiche-header { background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%); color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0; max-width: 900px; margin: 0 auto; }
+.fiche-header h1 { font-size: 1.3rem; font-weight: 700; }
+.fiche-header .matiere { font-size: 0.78rem; opacity: 0.75; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+.fiche-body { background: white; padding: 1.8rem 2rem; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto 1.5rem; }
+.block { margin: 0.9rem 0; padding: 0.85rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+.block-def { background: #f5eef8; border-color: #8e44ad; }
+.block-attention { background: #fdecea; border-color: #e74c3c; }
+.block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+.block-ref { background: #eef6fc; border-color: #2980b9; }
+.block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+.section-title { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin: 1.6rem 0 0.6rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+ul.blist { list-style: none; padding: 0; }
+ul.blist li { padding: 0.3rem 0 0.3rem 1.3rem; position: relative; font-size: 0.9rem; line-height: 1.55; }
+ul.blist li::before { content: "→"; position: absolute; left: 0; color: #8e44ad; font-weight: bold; }
+ul.blist li.sub { padding-left: 2.3rem; color: #555; font-size: 0.87rem; }
+ul.blist li.sub::before { content: "·"; left: 1rem; color: #bbb; }
+.hl { background: linear-gradient(180deg, transparent 50%, #f9e4ff 50%); font-weight: 700; padding: 0 2px; }
+.hl-green { background: linear-gradient(180deg, transparent 50%, #d5f5e3 50%); font-weight: 700; padding: 0 2px; }
+.hl-red { background: linear-gradient(180deg, transparent 50%, #fde8e8 50%); font-weight: 700; padding: 0 2px; }
+.tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; }
+.tag-purple { background: #f5eef8; color: #6c3483; }
+.tag-red { background: #fdecea; color: #c0392b; }
+.tag-green { background: #e8f8f5; color: #1a7a5e; }
+.compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+.compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+.compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+.compact-table tr:nth-child(even) { background: #f8f9fa; }
+.zones-mini { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin: 0.5rem 0; }
+.zone-mini { border-radius: 8px; padding: 0.6rem 0.7rem; font-size: 0.83rem; text-align: center; }
+.z-c { background: #fef9e7; border: 2px solid #f39c12; }
+.z-p { background: #e8f8f5; border: 2px solid #1abc9c; }
+.z-s { background: #fdecea; border: 2px solid #e74c3c; }
+.zone-mini strong { display: block; font-size: 0.78rem; margin-bottom: 0.2rem; }
+.z-c strong { color: #b7770d; }
+.z-p strong { color: #1a7a5e; }
+.z-s strong { color: #c0392b; }
+.fairphone-box { background: #f5eef8; border-radius: 10px; padding: 0.9rem 1rem; margin: 0.5rem 0; }
+.fairphone-box h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6c3483; margin-bottom: 0.5rem; }
+.source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; }
+a.back { font-family: Inter, sans-serif; font-size: 0.85rem; color: #8e44ad; text-decoration: none; display: block; margin: 0 auto 1rem; max-width: 900px; }
+</style>
+</head>
+<body>
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="fiche-header">
+<div class="matiere">Gestion du Changement — M1 ✦ Module 4</div>
+<h1>Diagnostic de durabilité (2) — Paradoxes &amp; logiques institutionnelles</h1>
+</div>
+<div class="fiche-body">
+
+  <div class="section-title">Logiques Institutionnelles — Marché vs Civique</div>
+  <table class="compact-table">
+    <thead><tr><th>Dimension</th><th>Logique de Marché</th><th>Logique Civique</th></tr></thead>
+    <tbody>
+      <tr><td>Finalité</td><td>Profit actionnaires (shareholders)</td><td>Valeur société (stakeholders)</td></tr>
+      <tr><td>Temporalité</td><td>Court-termisme (trimestre)</td><td>Long-termisme (générations futures)</td></tr>
+      <tr><td>Mode d'action</td><td>Compétition, propriété</td><td>Coopération, communs</td></tr>
+      <tr><td>Externalités</td><td>Externalisées (pas payées)</td><td>Internalisées (coût réel)</td></tr>
+      <tr><td>Légitimité</td><td>Performance financière</td><td>Mission sociale/environnementale</td></tr>
+      <tr><td>Exemples</td><td>Entreprise cotée, fonds spéculatifs</td><td>Coopérative, B-Corp, entreprise à mission</td></tr>
+    </tbody>
+  </table>
+  <div class="block block-attention">
+    <div class="block-label">Enjeu Clé</div>
+    Les organisations hybrides naviguent en <span class="hl">tension permanente</span> entre ces deux logiques. Le dirigeant ne peut pas résoudre cette tension — il doit apprendre à la gérer.
+  </div>
+
+  <div class="section-title">Rhétorique de Compatibilité</div>
+  <ul class="blist">
+    <li><span class="hl">"Croissance verte"</span> : découplage croissance économique / dégradation environnementale via innovation</li>
+    <li class="sub">Critique : le découplage absolu n'est pas encore démontré à grande échelle</li>
+    <li><span class="hl">"Capitalisme responsable"</span> : intégrer externalités sans remettre en cause la logique de profit</li>
+    <li class="sub">Promu par le World Economic Forum (Davos)</li>
+    <li>Risque de "récupération critique" (Boltanski, Chiapello) : neutralise les velléités de transformation radicale</li>
+  </ul>
+
+  <div class="section-title">Centralité & Jugement Social</div>
+  <div class="block block-def">
+    <div class="block-label">Définition</div>
+    Plus une organisation est centrale (visible, influente), plus elle est scrutée et doit démontrer sa légitimité. La centralité expose au jugement des acteurs du champ institutionnel.
+  </div>
+  <ul class="blist">
+    <li><strong>Médias :</strong> amplificateurs des succès et scandales RSE <span class="tag tag-red">Risque greenwashing</span></li>
+    <li><strong>ONG :</strong> chiens de garde — enquêtes, classements, boycotts (Greenpeace, WWF, Oxfam)</li>
+    <li><strong>Clients :</strong> vote avec le porte-monnaie + apps de notation (Yuka, Good On You)</li>
+    <li><strong>Investisseurs :</strong> notation ESG (MSCI, Sustainalytics), finance verte, obligations vertes</li>
+    <li><strong>Employés Gen Z :</strong> choix employeur selon engagements ESG → enjeu RH majeur</li>
+  </ul>
+
+  <div class="section-title">Pensée Paradoxale — Embrasser le "ET"</div>
+  <div class="block block-def">
+    <div class="block-label">Principe fondamental</div>
+    Dans les environnements complexes, les tensions ne se <em>résolvent</em> pas — elles se <em>gèrent</em>. Remplacer le "OU" exclusif par le "ET" inclusif. Maintenir deux vérités contradictoires en tension productive.
+  </div>
+  <ul class="blist">
+    <li>Rentabilité <span class="hl">ET</span> impact à long terme</li>
+    <li>Compétition (marché) <span class="hl">ET</span> coopération (civique)</li>
+    <li>Efficacité économique <span class="hl">ET</span> sobriété écologique</li>
+    <li>Standardisation <span class="hl">ET</span> adaptation locale</li>
+  </ul>
+  <div class="block block-astuce">
+    <div class="block-label">Polarity Mapping (Barry Johnson, 1992)</div>
+    Outil de visualisation des tensions irréductibles. Une polarité = couple de valeurs complémentaires qui se renforcent mutuellement. Objectif : naviguer entre les pôles, pas choisir l'un contre l'autre.
+  </div>
+
+  <div class="section-title">Smith & Lewis (2011) — 3 Zones de Navigation</div>
+  <div class="zones-mini">
+    <div class="zone-mini z-c">
+      <strong>Zone de Confort</strong>
+      Evitement → Stagnation. Choisit un seul pôle (ex. profit only). Vulnérabilité croissante.
+    </div>
+    <div class="zone-mini z-p">
+      <strong>Zone de Performance</strong>
+      Tension productive → Innovation. Embrasse la tension. Zone cible durabilité.
+    </div>
+    <div class="zone-mini z-s">
+      <strong>Zone de Survie</strong>
+      Crise non gérée → Paralysie. Tension insoutenable, conflits, perte de légitimité.
+    </div>
+  </div>
+  <div class="block block-ref">
+    <div class="block-label">Référence</div>
+    Smith, W.K. & Lewis, M.W. (2011). "Toward a theory of paradox: A dynamic equilibrium model of organizing." <em>Academy of Management Review</em>, 36(2), 381-403.
+  </div>
+
+  <div class="section-title">Cas : Fairphone (Brix-Asala et al., 2018)</div>
+  <div class="fairphone-box">
+    <h4>Paradoxes de la chaîne d'approvisionnement</h4>
+    <ul class="blist">
+      <li><span class="hl-red">Tension 1 :</span> utilise des minerais de zones de conflit (coltan, cobalt du Congo) tout en revendiquant une éthique maximale</li>
+      <li><span class="hl-red">Tension 2 :</span> conçoit des téléphones réparables dans un marché structuré autour de l'obsolescence programmée</li>
+      <li><span class="hl-green">Stratégie :</span> transparence radicale sur les imperfections ("pas encore parfait") + certification Fairtrade minerais + modules remplaçables</li>
+      <li class="sub">Traçabilité blockchain de l'approvisionnement + partenariats ONG locales dans zones minières</li>
+      <li><span class="hl">Leçon :</span> nommer les paradoxes + assumer publiquement + démontrer une trajectoire de progrès crédible = légitimité</li>
+    </ul>
+  </div>
+  <div class="block block-ref">
+    <div class="block-label">Référence Académique</div>
+    Brix-Asala, C. et al. (2018). Fairphone analysé comme "sustainability paradox case" : l'entreprise incarne simultanément le problème ET la solution.
+  </div>
+
+  <div class="section-title">Théorie des Parties Prenantes — Matrice Pouvoir/Intérêt</div>
+  <table class="compact-table">
+    <thead><tr><th>Quadrant</th><th>Profil</th><th>Stratégie</th><th>Exemples</th></tr></thead>
+    <tbody>
+      <tr><td>Fort pouvoir + Fort intérêt</td><td>Acteurs prioritaires</td><td>Gérer en priorité, dialogue permanent</td><td>Clients-clés, investisseurs ESG, régulateurs</td></tr>
+      <tr><td>Fort pouvoir + Faible intérêt</td><td>Satisfaire / surveiller</td><td>Informer régulièrement, éviter surprises</td><td>Actionnaires passifs, pouvoirs publics</td></tr>
+      <tr><td>Faible pouvoir + Fort intérêt</td><td>Informer &amp; impliquer</td><td>Co-construction, engagement fort</td><td>ONG, employés, communautés locales</td></tr>
+      <tr><td>Faible pouvoir + Faible intérêt</td><td>Surveiller (minimal)</td><td>Information ponctuelle</td><td>Grand public, médias locaux</td></tr>
+    </tbody>
+  </table>
+  <ul class="blist">
+    <li><strong>Parties prenantes primaires :</strong> relation directe (actionnaires, clients, employés, fournisseurs)</li>
+    <li><strong>Parties prenantes secondaires :</strong> influence sans transaction directe (ONG, médias, communautés)</li>
+    <li><strong>Parties prenantes silencieuses :</strong> affectées sans voix (générations futures, écosystèmes) — à représenter via indicateurs biodiversité, rapports GIEC, conseils de durabilité</li>
+  </ul>
+
+</div>
+<div class="source-footer">Cours GCD — Laurent Paris — EM Normandie M1 2025-2026</div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Implémentation &amp; Gestion du Changement — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+.quiz-container { max-width: 800px; margin: 0 auto; }
+.quiz-header { text-align: center; padding: 2rem 0 1.5rem; }
+.quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.5rem; }
+.quiz-header h1 { font-size: 1.4rem; font-weight: 700; color: white; }
+.question-card { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; margin: 1.2rem 0; border-left: 4px solid #8e44ad; }
+.question-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.6rem; }
+.question-text { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; }
+.option { background: #252540; border: 2px solid #252540; border-radius: 10px; padding: 0.7rem 1rem; cursor: pointer; font-size: 0.9rem; color: #e0e0e0; transition: all 0.2s; text-align: left; }
+.option:hover { border-color: #8e44ad; background: #2d2050; }
+.option.correct { background: #1a3a2a; border-color: #27ae60; color: #2ecc71; }
+.option.wrong { background: #3a1a1a; border-color: #e74c3c; color: #e74c3c; }
+.explanation { background: #1e1e35; border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: #a0a0c0; display: none; border-left: 3px solid #8e44ad; line-height: 1.5; }
+.score-bar { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; display: none; }
+.score-bar h2 { font-size: 1.5rem; color: #8e44ad; margin-bottom: 0.5rem; }
+.btn-retry { background: #8e44ad; color: white; border: none; border-radius: 10px; padding: 0.8rem 2rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; margin-top: 1rem; }
+a.back { color: #8e44ad; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="quiz-header">
+  <div class="matiere">Gestion du Changement — M1 ✦ Nouvelle version</div>
+  <h1>Quiz — Module 6 : Implémentation &amp; Gestion du Changement</h1>
+</div>
+<div id="quiz"></div>
+<div class="score-bar" id="scoreBar">
+  <h2 id="scoreText"></h2>
+  <p style="color:#aaa;font-size:0.9rem;">Relis la fiche pour renforcer les points faibles</p>
+  <button class="btn-retry" onclick="restartQuiz()">Recommencer</button>
+</div>
+</div>
+<script>
+const questions = [
+  {
+    q: "Selon le Rapport Brundtland (1987), le développement durable consiste à :",
+    options: [
+      "Maximiser le profit tout en respectant les lois environnementales",
+      "Répondre aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs",
+      "Mettre en place des critères ESG dans les entreprises cotées",
+      "Adopter une démarche RSE volontaire au niveau national"
+    ],
+    answer: 1,
+    explanation: "La définition exacte du rapport Brundtland (Commission mondiale ONU, 1987) est : 'répondre aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs'. C'est la définition de référence du développement durable."
+  },
+  {
+    q: "Quelle est la différence principale entre la RSE et les critères ESG ?",
+    options: [
+      "La RSE s'adresse aux investisseurs, l'ESG aux entreprises",
+      "L'ESG est une démarche volontaire, la RSE est une notation financière",
+      "La RSE est une démarche volontaire d'entreprise, l'ESG est un outil de mesure pour les investisseurs",
+      "Il n'y a pas de différence, ce sont deux termes synonymes"
+    ],
+    answer: 2,
+    explanation: "La RSE est une démarche interne et volontaire par laquelle une entreprise intègre les enjeux sociaux et environnementaux dans sa stratégie. Les critères ESG (Environnement, Social, Gouvernance) sont des indicateurs de mesure externe utilisés par les investisseurs pour évaluer et noter les entreprises."
+  },
+  {
+    q: "Dans la pyramide RSE de Carroll, quel est le niveau de base (fondement) ?",
+    options: [
+      "La responsabilité légale",
+      "La responsabilité philanthropique",
+      "La responsabilité éthique",
+      "La responsabilité économique"
+    ],
+    answer: 3,
+    explanation: "La pyramide de Carroll (1991) place la responsabilité économique à la base : l'entreprise doit d'abord être rentable pour pouvoir ensuite respecter la loi (légale), aller au-delà de la loi (éthique) et contribuer à la société (philanthropique)."
+  },
+  {
+    q: "Le Triple Bottom Line de John Elkington repose sur quelles trois dimensions ?",
+    options: [
+      "Profit, Performance, Productivité",
+      "People, Planet, Profit",
+      "Parts de marché, Positionnement, Partenariats",
+      "Prévention, Protection, Promotion"
+    ],
+    answer: 1,
+    explanation: "Le Triple Bottom Line (ou 3P), proposé par John Elkington en 1994, repose sur trois dimensions : People (social), Planet (environnemental) et Profit (économique). Une entreprise durable doit créer de la valeur sur ces trois axes simultanément."
+  },
+  {
+    q: "Dans le modèle de Lewin, quelle est la bonne séquence des phases du changement ?",
+    options: [
+      "Mouvement → Dégel → Regel",
+      "Regel → Mouvement → Dégel",
+      "Dégel → Mouvement → Regel",
+      "Dégel → Regel → Mouvement"
+    ],
+    answer: 2,
+    explanation: "Le modèle de Kurt Lewin suit trois phases : Dégel (Unfreeze) — on remet en question les habitudes et on crée l'ouverture au changement ; Mouvement (Change) — la transition effective ; Regel (Refreeze) — la stabilisation des nouvelles pratiques."
+  },
+  {
+    q: "Selon Kotter, quelle est la PREMIÈRE étape du changement ?",
+    options: [
+      "Former une coalition directrice",
+      "Ancrer le changement dans la culture",
+      "Générer des victoires rapides",
+      "Créer un sentiment d'urgence"
+    ],
+    answer: 3,
+    explanation: "La première des 8 étapes de Kotter est de créer un sentiment d'urgence : montrer aux acteurs les risques de l'inaction et la nécessité de changer. Sans cette prise de conscience, les autres étapes n'ont pas de fondement."
+  },
+  {
+    q: "Dans l'analyse VRIO de Barney, que signifie le 'O' ?",
+    options: [
+      "Originalité",
+      "Opportunité",
+      "Organisation — la capacité à exploiter la ressource",
+      "Ouverture au marché"
+    ],
+    answer: 2,
+    explanation: "Dans le cadre VRIO (Barney 1991/1995), O signifie Organization : l'entreprise doit être organisée pour capturer la valeur de la ressource. Une ressource Valuable, Rare et difficile à Imiter ne crée un avantage durable que si l'organisation peut l'exploiter."
+  },
+  {
+    q: "Dans la matrice Pouvoir/Intérêt des parties prenantes, comment s'appellent les acteurs ayant un fort pouvoir et un fort intérêt ?",
+    options: [
+      "Géants endormis",
+      "Gardiens du temple",
+      "Acteurs clés",
+      "Acteurs marginaux"
+    ],
+    answer: 2,
+    explanation: "Les acteurs ayant un fort pouvoir ET un fort intérêt sont les 'Acteurs clés' : ce sont les parties prenantes à impliquer en priorité dans toute démarche de changement. Les 'Géants endormis' ont fort pouvoir mais faible intérêt ; les 'Gardiens du temple' ont faible pouvoir mais fort intérêt."
+  },
+  {
+    q: "Chez Boltanski & Thévenot, quel registre de justification correspond à la logique du bien commun et de la solidarité ?",
+    options: [
+      "Registre marchand",
+      "Registre industriel",
+      "Registre inspiré",
+      "Registre civique"
+    ],
+    answer: 3,
+    explanation: "Dans les 'économies de la grandeur' (Boltanski & Thévenot, 1991), le registre civique est celui du bien commun, de la solidarité et de l'intérêt général. Il s'oppose au registre marchand (logique de prix) et peut être mobilisé pour justifier des engagements RSE."
+  },
+  {
+    q: "L'approche dialogique du changement se caractérise principalement par :",
+    options: [
+      "Une décision centralisée prise par la direction générale",
+      "Un changement planifié selon un calendrier strict",
+      "Un changement émergent co-construit avec les acteurs",
+      "L'application stricte d'un modèle en 8 étapes"
+    ],
+    answer: 2,
+    explanation: "L'approche dialogique conçoit le changement comme émergent et co-construit : il se fait avec les acteurs et non sur eux. Elle valorise la participation, le sens collectif et la légitimité du processus, en opposition aux approches top-down purement prescriptives."
+  }
+];
+
+let score = 0, answered = 0;
+function shuffleOptions(q) {
+  const opts = q.options.map((o, i) => ({ text: o, isCorrect: i === q.answer }));
+  for (let i = opts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [opts[i], opts[j]] = [opts[j], opts[i]];
+  }
+  return opts;
+}
+function buildQuiz() {
+  const div = document.getElementById('quiz');
+  div.innerHTML = '';
+  score = 0; answered = 0;
+  questions.forEach((q, qi) => {
+    const shuffled = shuffleOptions(q);
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.innerHTML = `<div class="question-num">Question ${qi + 1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options" id="opts-${qi}">${shuffled.map((o, i) => `<button class="option" onclick="answer(${qi},${i},${o.isCorrect},this)">${o.text}</button>`).join('')}</div><div class="explanation" id="exp-${qi}">${q.explanation}</div>`;
+    div.appendChild(card);
+  });
+  document.getElementById('scoreBar').style.display = 'none';
+}
+function answer(qi, oi, correct, btn) {
+  const opts = document.querySelectorAll(`#opts-${qi} .option`);
+  opts.forEach(b => b.disabled = true);
+  if (correct) { btn.classList.add('correct'); score++; }
+  else {
+    btn.classList.add('wrong');
+    opts.forEach(b => { if (b.onclick.toString().includes('true')) b.classList.add('correct'); });
+  }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  answered++;
+  if (answered === questions.length) {
+    setTimeout(() => {
+      const sb = document.getElementById('scoreBar');
+      sb.style.display = 'block';
+      document.getElementById('scoreText').textContent = `${score} / ${questions.length} — ${Math.round(score / questions.length * 100)}%`;
+    }, 300);
+  }
+}
+function restartQuiz() { buildQuiz(); }
+buildQuiz();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

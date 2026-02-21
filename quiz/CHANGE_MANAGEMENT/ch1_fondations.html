@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Module 1 : Introduction & Fondations théoriques — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+.quiz-container { max-width: 800px; margin: 0 auto; }
+.quiz-header { text-align: center; padding: 2rem 0 1.5rem; }
+.quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.5rem; }
+.quiz-header h1 { font-size: 1.4rem; font-weight: 700; color: white; }
+.question-card { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; margin: 1.2rem 0; border-left: 4px solid #8e44ad; }
+.question-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.6rem; }
+.question-text { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; }
+.option { background: #252540; border: 2px solid #252540; border-radius: 10px; padding: 0.7rem 1rem; cursor: pointer; font-size: 0.9rem; color: #e0e0e0; transition: all 0.2s; text-align: left; }
+.option:hover { border-color: #8e44ad; background: #2d2050; }
+.option.correct { background: #1a3a2a; border-color: #27ae60; color: #2ecc71; }
+.option.wrong { background: #3a1a1a; border-color: #e74c3c; color: #e74c3c; }
+.explanation { background: #1e1e35; border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: #a0a0c0; display: none; border-left: 3px solid #8e44ad; line-height: 1.5; }
+.score-bar { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; display: none; }
+.score-bar h2 { font-size: 1.5rem; color: #8e44ad; margin-bottom: 0.5rem; }
+.btn-retry { background: #8e44ad; color: white; border: none; border-radius: 10px; padding: 0.8rem 2rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; margin-top: 1rem; }
+a.back { color: #8e44ad; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="quiz-header">
+  <div class="matiere">Gestion du Changement — M1 ✦ Nouvelle version</div>
+  <h1>Quiz — Module 1 : Introduction &amp; Fondations théoriques</h1>
+</div>
+<div id="quiz"></div>
+<div class="score-bar" id="scoreBar">
+  <h2 id="scoreText"></h2>
+  <p style="color:#aaa;font-size:0.9rem;">Relis la fiche pour renforcer les points faibles</p>
+  <button class="btn-retry" onclick="restartQuiz()">Recommencer</button>
+</div>
+</div>
+<script>
+const questions = [
+  {
+    q: "Quelle est la définition du développement durable selon le Rapport Brundtland (1987) ?",
+    options: [
+      "Un développement qui répond aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs",
+      "Un développement qui maximise la croissance économique tout en respectant l'environnement",
+      "Un développement qui garantit l'égalité sociale entre toutes les nations du monde",
+      "Un développement basé sur les énergies renouvelables et l'économie circulaire"
+    ],
+    answer: 0,
+    explanation: "La définition officielle du Rapport Brundtland (1987) 'Notre Avenir à Tous' précise que le développement durable 'répond aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs'. C'est la définition de référence internationale."
+  },
+  {
+    q: "Quelle est la caractéristique fondamentale de la RSE par rapport à la conformité légale ?",
+    options: [
+      "La RSE est obligatoire tandis que la conformité légale est volontaire",
+      "La RSE va au-delà des obligations légales et implique un engagement volontaire",
+      "La RSE et la conformité légale sont synonymes dans le contexte européen",
+      "La RSE concerne uniquement l'environnement, la conformité légale couvre le social"
+    ],
+    answer: 1,
+    explanation: "La RSE (Responsabilité Sociale des Entreprises) se définit précisément par son caractère volontaire : elle va au-delà des obligations légales. Respecter la loi est le minimum requis ; la RSE implique une démarche proactive supplémentaire."
+  },
+  {
+    q: "Selon la théorie de l'agence de Milton Friedman (1970), quelle est la responsabilité sociale de l'entreprise ?",
+    options: [
+      "Créer de la valeur pour toutes les parties prenantes : employés, clients, fournisseurs et actionnaires",
+      "Contribuer au bien commun en soutenant les communautés locales",
+      "La seule responsabilité sociale est d'augmenter les profits pour les actionnaires",
+      "Équilibrer performance économique et impact environnemental"
+    ],
+    answer: 2,
+    explanation: "Milton Friedman a défendu en 1970 que 'la seule responsabilité sociale de l'entreprise est d'augmenter ses profits'. Cette vision shareholder-centric s'oppose à la théorie des parties prenantes (Freeman, 1984) qui étend les obligations morales à l'ensemble des stakeholders."
+  },
+  {
+    q: "Quelle logique de motivation correspond à une entreprise qui adopte la durabilité principalement pour réduire ses coûts énergétiques et attirer des talents ?",
+    options: [
+      "Logique institutionnelle",
+      "Logique éthique",
+      "Logique politique",
+      "Logique instrumentale"
+    ],
+    answer: 3,
+    explanation: "La logique instrumentale correspond aux motivations économiques : réduction de coûts, accès à de nouveaux marchés, attraction de talents, financement ESG. L'entreprise s'engage parce que cela améliore sa compétitivité et sa performance financière."
+  },
+  {
+    q: "Qu'est-ce que le 'greenwashing' ?",
+    options: [
+      "Une technique de nettoyage écologique utilisée dans l'industrie chimique",
+      "Le fait de se donner une image de responsabilité environnementale sans actions substantielles",
+      "Un label de certification pour les entreprises ayant réduit leurs émissions de CO2",
+      "La pratique de laver les données environnementales avant de les publier"
+    ],
+    answer: 1,
+    explanation: "Le greenwashing consiste à se donner une image de responsabilité environnementale sans que les actions concrètes soient à la hauteur des communications. C'est la dérive principale d'une RSE motivée uniquement par des raisons instrumentales ou politiques, sans ancrage éthique réel."
+  },
+  {
+    q: "Selon la théorie éthique kantienne (déontologie), qu'est-ce que l'impératif catégorique appliqué aux affaires ?",
+    options: [
+      "Maximiser les résultats pour le plus grand nombre de parties prenantes",
+      "Agir uniquement selon des principes que l'on pourrait vouloir voir universalisés",
+      "Suivre les règles légales en vigueur dans chaque pays où l'on opère",
+      "Privilégier les intérêts des actionnaires sur ceux des autres parties prenantes"
+    ],
+    answer: 1,
+    explanation: "L'impératif catégorique de Kant stipule que l'on doit 'agir selon des principes (maximes) que l'on pourrait vouloir ériger en loi universelle'. Appliqué aux affaires, cela signifie : pouvez-vous vouloir que toutes les entreprises agissent comme vous ?"
+  },
+  {
+    q: "Quelle est la pondération de l'évaluation finale dans le cours GCD ?",
+    options: [
+      "50% contrôle continu, 50% examen final",
+      "30% contrôle continu, 70% examen final",
+      "40% contrôle continu (exposés + peer review), 60% final (jeu de rôle + rapport individuel)",
+      "60% contrôle continu, 40% examen final"
+    ],
+    answer: 2,
+    explanation: "Le cours GCD est évalué à 40% en contrôle continu (2 exposés oraux en groupe + peer review) et 60% lors de l'évaluation finale (jeu de rôle + rapport individuel de 3 à 5 pages)."
+  },
+  {
+    q: "Laquelle de ces affirmations correspond à la logique institutionnelle d'engagement pour la durabilité ?",
+    options: [
+      "L'entreprise s'engage parce que ses dirigeants ont des convictions morales profondes",
+      "L'entreprise s'engage pour satisfaire les ONG qui font pression sur elle",
+      "L'entreprise s'engage pour se conformer aux normes sectorielles et obtenir des certifications comme B Corp ou ISO 14001",
+      "L'entreprise s'engage pour réduire ses coûts de production à long terme"
+    ],
+    answer: 2,
+    explanation: "La logique institutionnelle correspond à la recherche de légitimité sociale : conformité aux normes sectorielles (ISO, GRI, UN Global Compact), obtention de certifications (B Corp, labels), adoption des standards des investisseurs institutionnels intégrant les critères ESG."
+  },
+  {
+    q: "Quels sont les trois piliers du développement durable ?",
+    options: [
+      "Économique, Technologique, Environnemental",
+      "Économique, Social, Environnemental",
+      "Financier, Humain, Écologique",
+      "Gouvernance, Responsabilité, Transparence"
+    ],
+    answer: 1,
+    explanation: "Les trois piliers du développement durable sont : le pilier Économique (viabilité, création de valeur), le pilier Social (équité, bien-être, droits humains) et le pilier Environnemental (préservation des écosystèmes, soutenabilité des ressources). Le développement durable se situe à leur intersection."
+  },
+  {
+    q: "Laquelle de ces tensions est au cœur des débats contemporains sur la gouvernance d'entreprise, jusqu'à pousser la Business Roundtable à réviser sa position en 2019 ?",
+    options: [
+      "La tension entre conformité légale et engagement volontaire",
+      "La tension entre stratégie globale et adaptation locale",
+      "La tension entre actionnaires et parties prenantes",
+      "La tension entre croissance économique et objectifs ESG"
+    ],
+    answer: 2,
+    explanation: "La tension actionnaires vs. parties prenantes (Friedman vs. Freeman) est si fondamentale que la Business Roundtable, qui regroupe les PDG des plus grandes entreprises américaines, a révisé en 2019 sa définition de la mission de l'entreprise pour l'étendre au-delà des seuls actionnaires à l'ensemble des parties prenantes."
+  }
+];
+
+let score = 0, answered = 0;
+function shuffleOptions(q) {
+  const opts = q.options.map((o,i) => ({text:o, isCorrect: i===q.answer}));
+  for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  return opts;
+}
+function buildQuiz() {
+  const div = document.getElementById('quiz');
+  div.innerHTML = '';
+  score = 0; answered = 0;
+  questions.forEach((q,qi) => {
+    const shuffled = shuffleOptions(q);
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.innerHTML = `<div class="question-num">Question ${qi+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options" id="opts-${qi}">${shuffled.map((o,i)=>`<button class="option" onclick="answer(${qi},${i},${o.isCorrect},this)">${o.text}</button>`).join('')}</div><div class="explanation" id="exp-${qi}">${q.explanation}</div>`;
+    div.appendChild(card);
+  });
+  document.getElementById('scoreBar').style.display = 'none';
+}
+function answer(qi, oi, correct, btn) {
+  const opts = document.querySelectorAll(`#opts-${qi} .option`);
+  opts.forEach(b => b.disabled = true);
+  if(correct){ btn.classList.add('correct'); score++; }
+  else { btn.classList.add('wrong'); opts.forEach(b=>{ if(b.onclick.toString().includes('true')) b.classList.add('correct'); }); }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  answered++;
+  if(answered === questions.length) {
+    setTimeout(()=>{ const sb=document.getElementById('scoreBar'); sb.style.display='block'; document.getElementById('scoreText').textContent=`${score} / ${questions.length} — ${Math.round(score/questions.length*100)}%`; }, 300);
+  }
+}
+function restartQuiz() { buildQuiz(); }
+buildQuiz();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

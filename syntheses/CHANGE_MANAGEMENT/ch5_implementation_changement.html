@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthèse — Implémentation &amp; Gestion du Changement — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Inter:wght@400;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #fafaf8; color: #1a1a2e; padding: 2rem; line-height: 1.7; }
+.synthese-wrapper { max-width: 860px; margin: 0 auto; }
+.header { border-bottom: 3px solid #8e44ad; padding-bottom: 1rem; margin-bottom: 2rem; }
+.header .matiere { font-family: Inter, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.3rem; }
+.header h1 { font-size: 1.6rem; font-weight: normal; color: #1a1a2e; }
+h2 { font-size: 1.15rem; font-family: Inter, sans-serif; font-weight: 700; color: #1a1a2e; margin: 2rem 0 0.6rem; border-left: 4px solid #8e44ad; padding-left: 0.7rem; }
+h3 { font-size: 1rem; font-family: Inter, sans-serif; font-weight: 600; color: #4a235a; margin: 1.2rem 0 0.4rem; }
+p { margin-bottom: 0.8rem; font-size: 0.95rem; }
+.definition { background: #f5eef8; border-left: 4px solid #8e44ad; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+.important { background: #fdecea; border-left: 4px solid #e74c3c; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+.example { background: #e8f8f5; border-left: 4px solid #1abc9c; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+.formula { background: #eef6fc; border-left: 4px solid #2980b9; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; font-family: Inter, sans-serif; }
+.source-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; font-family: Inter, sans-serif; font-size: 0.8rem; color: #999; text-align: center; }
+a.back { font-family: Inter, sans-serif; font-size: 0.85rem; color: #8e44ad; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
+ul { margin: 0.5rem 0 0.8rem 1.5rem; }
+ul li { font-size: 0.95rem; margin-bottom: 0.3rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.8rem 0; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 0.8rem 0; }
+.card { background: #f5eef8; border-radius: 8px; padding: 0.8rem 1rem; border-top: 3px solid #8e44ad; }
+.card h4 { font-family: Inter, sans-serif; font-size: 0.85rem; font-weight: 700; color: #4a235a; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+.card p { font-size: 0.88rem; margin-bottom: 0; }
+.pyramid { background: #f5eef8; border-radius: 8px; padding: 1rem; margin: 0.8rem 0; }
+.pyramid-level { padding: 0.5rem 1rem; margin: 0.3rem auto; border-radius: 6px; text-align: center; font-family: Inter, sans-serif; font-size: 0.88rem; font-weight: 600; }
+.steps-list { counter-reset: step-counter; list-style: none; padding: 0; margin: 0.8rem 0; }
+.steps-list li { counter-increment: step-counter; padding: 0.45rem 0.7rem 0.45rem 2.8rem; position: relative; font-size: 0.92rem; border-bottom: 1px solid #eee; }
+.steps-list li::before { content: counter(step-counter); position: absolute; left: 0.5rem; top: 50%; transform: translateY(-50%); background: #8e44ad; color: white; width: 1.6rem; height: 1.6rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.9rem; }
+th { background: #1a1a2e; color: white; padding: 0.5rem 0.8rem; text-align: left; font-family: Inter, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
+td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #eee; vertical-align: top; }
+tr:nth-child(even) td { background: #f8f5fa; }
+</style>
+</head>
+<body>
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="synthese-wrapper">
+<div class="header">
+  <div class="matiere">Gestion du Changement — M1 ✦ Nouvelle version</div>
+  <h1>Module 6 — Implémentation &amp; Gestion du Changement (1)</h1>
+</div>
+
+<h2>1. ESG, RSE et Développement Durable : trois concepts distincts</h2>
+<p>Ces trois notions sont souvent confondues mais désignent des réalités différentes selon leur niveau d'analyse, leurs acteurs cibles et leurs finalités.</p>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>Développement Durable</h4>
+    <p>Concept macro, sociétal. Issu du rapport Brundtland (1987). Cadre normatif pour les politiques publiques et les organisations au niveau global.</p>
+  </div>
+  <div class="card">
+    <h4>RSE</h4>
+    <p>Responsabilité Sociétale des Entreprises. Démarche <strong>volontaire</strong> d'une organisation pour intégrer des préoccupations sociales et environnementales à ses activités.</p>
+  </div>
+  <div class="card">
+    <h4>ESG</h4>
+    <p>Critères Environnement, Social, Gouvernance. Outil de <strong>mesure et d'évaluation financière</strong> utilisé par les investisseurs pour noter les entreprises.</p>
+  </div>
+</div>
+
+<div class="definition">
+  <strong>Rapport Brundtland (1987) :</strong> "Le développement durable est un développement qui répond aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs." — Commission mondiale sur l'environnement et le développement, ONU.
+</div>
+
+<div class="important">
+  <strong>Distinction clé à retenir :</strong> Le développement durable est un <em>concept</em>, la RSE est une <em>démarche</em>, et l'ESG est un <em>outil de mesure</em>. Ils opèrent à des niveaux différents et servent des acteurs différents.
+</div>
+
+<h2>2. Pyramide RSE de Carroll</h2>
+<p>Archie Carroll (1991) modélise les responsabilités de l'entreprise en quatre niveaux hiérarchisés, de la base (obligatoire) au sommet (idéal).</p>
+
+<div class="pyramid">
+  <div class="pyramid-level" style="width:35%; background:#e8d5f5; color:#4a235a;">Philanthropique<br><small style="font-weight:400">Être un bon citoyen · Donner, contribuer</small></div>
+  <div class="pyramid-level" style="width:55%; background:#c39bd3; color:#fff;">Éthique<br><small style="font-weight:400">Faire ce qui est juste et équitable</small></div>
+  <div class="pyramid-level" style="width:75%; background:#8e44ad; color:#fff;">Légale<br><small style="font-weight:400">Respecter les lois et réglementations</small></div>
+  <div class="pyramid-level" style="width:95%; background:#6c3483; color:#fff;">Économique (base)<br><small style="font-weight:400">Être rentable — fondement de toute activité</small></div>
+</div>
+
+<p>La base économique est indispensable : sans rentabilité, les autres niveaux ne peuvent exister. La dimension philanthropique est souhaitée mais non exigée.</p>
+
+<h2>3. Triple Bottom Line (John Elkington)</h2>
+<div class="formula">
+  <strong>3P : People · Planet · Profit</strong><br>
+  Une entreprise durable doit créer de la valeur sur trois dimensions simultanément : sociale (People), environnementale (Planet) et économique (Profit).
+</div>
+
+<p>Proposé par John Elkington en 1994, ce cadre invite à élargir la notion de "résultat" au-delà du seul bénéfice financier. Il est à la base de nombreux reporting RSE contemporains.</p>
+
+<h2>4. Modèles de conduite du changement</h2>
+
+<h3>Kurt Lewin (1890-1947) — Le modèle en 3 phases</h3>
+<p>Lewin, psychologue social, propose un modèle fondateur de la dynamique du changement organisationnel.</p>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>1. Dégel (Unfreeze)</h4>
+    <p>Remettre en question les pratiques existantes. Créer un sentiment d'urgence, de nécessité du changement. Réduire les forces de résistance.</p>
+  </div>
+  <div class="card">
+    <h4>2. Mouvement (Change)</h4>
+    <p>Transition effective vers les nouveaux comportements, processus, valeurs. Phase d'incertitude et d'apprentissage.</p>
+  </div>
+  <div class="card">
+    <h4>3. Regel (Refreeze)</h4>
+    <p>Stabilisation et ancrage des nouvelles pratiques. Les nouveaux comportements deviennent la norme.</p>
+  </div>
+</div>
+
+<div class="example">
+  <strong>Limite du modèle :</strong> La métaphore du "regel" est critiquée dans les environnements VUCA (Volatile, Incertain, Complexe, Ambigu) car elle suppose un retour à la stabilité, alors que le changement est devenu permanent.
+</div>
+
+<h3>John Kotter (1947-) — Les 8 étapes du changement</h3>
+<p>Kotter, professeur à Harvard, élabore un modèle prescriptif en 8 étapes pour conduire des transformations organisationnelles profondes.</p>
+
+<ol class="steps-list">
+  <li><strong>Créer un sentiment d'urgence</strong> — Montrer les risques de l'inaction</li>
+  <li><strong>Former une coalition directrice</strong> — Réunir des personnes influentes</li>
+  <li><strong>Développer une vision et une stratégie</strong> — Donner un cap clair</li>
+  <li><strong>Communiquer la vision</strong> — La diffuser massivement et de manière cohérente</li>
+  <li><strong>Lever les obstacles</strong> — Donner les moyens d'agir (empowerment)</li>
+  <li><strong>Générer des victoires rapides</strong> — Prouver la valeur du changement à court terme</li>
+  <li><strong>Consolider les gains</strong> — Accélérer sur la base des succès, ne pas relâcher</li>
+  <li><strong>Ancrer dans la culture</strong> — Institutionnaliser les nouvelles pratiques</li>
+</ol>
+
+<h3>Approche dialogique</h3>
+<div class="definition">
+  L'approche dialogique conçoit le changement comme <strong>émergent et co-construit</strong> entre les acteurs. Elle s'oppose aux approches top-down en valorisant la participation, le sens collectif et la légitimité du processus.
+</div>
+
+<table>
+  <tr><th>Approche</th><th>Logique</th><th>Avantages</th><th>Limites</th></tr>
+  <tr><td><strong>Top-down</strong></td><td>Direction décide, exécution suit</td><td>Rapidité, cohérence</td><td>Résistances, manque d'adhésion</td></tr>
+  <tr><td><strong>Bottom-up</strong></td><td>Initiative des équipes terrain</td><td>Légitimité, créativité</td><td>Lenteur, risque d'incohérence</td></tr>
+  <tr><td><strong>Participatif</strong></td><td>Co-construction multi-acteurs</td><td>Adhésion, sens partagé</td><td>Temps, complexité de facilitation</td></tr>
+</table>
+
+<h2>5. Analyse VRIO (Barney 1991/1995)</h2>
+<p>Jay Barney développe un cadre pour identifier les ressources susceptibles de générer un <strong>avantage compétitif durable</strong>.</p>
+
+<table>
+  <tr><th>Critère</th><th>Question clé</th><th>Si oui →</th></tr>
+  <tr><td><strong>V</strong>aleur (Value)</td><td>La ressource crée-t-elle de la valeur ?</td><td>Avantage compétitif possible</td></tr>
+  <tr><td><strong>R</strong>areté (Rarity)</td><td>Peu de concurrents la possèdent-ils ?</td><td>Avantage temporaire</td></tr>
+  <tr><td><strong>I</strong>mitabilité (Imitability)</td><td>Est-elle difficile à imiter ou substituer ?</td><td>Avantage durable possible</td></tr>
+  <tr><td><strong>O</strong>rganisation (Organization)</td><td>L'organisation est-elle structurée pour en tirer profit ?</td><td>Avantage compétitif durable</td></tr>
+</table>
+
+<div class="important">
+  Une ressource ne devient source d'avantage durable que si elle remplit les 4 critères simultanément. Dans le cadre RSE, les pratiques durables ancrées dans la culture peuvent satisfaire à cette condition.
+</div>
+
+<h2>6. Théorie des parties prenantes</h2>
+<p>Freeman (1984) définit les parties prenantes comme "tout groupe ou individu pouvant affecter ou être affecté par la réalisation des objectifs de l'organisation".</p>
+
+<h3>Matrice Pouvoir / Intérêt (Mitchell, Agle &amp; Wood)</h3>
+
+<table>
+  <tr><th></th><th>Faible intérêt</th><th>Fort intérêt</th></tr>
+  <tr><td><strong>Fort pouvoir</strong></td><td>Géants endormis → surveiller, anticiper</td><td>Acteurs clés → gérer en priorité, consulter</td></tr>
+  <tr><td><strong>Faible pouvoir</strong></td><td>Effort minimal → informer ponctuellement</td><td>Gardiens du temple → informer régulièrement</td></tr>
+</table>
+
+<div class="definition">
+  <strong>Acteurs clés :</strong> fort pouvoir + fort intérêt. Ce sont les parties prenantes à impliquer activement dans toute démarche de changement ou de RSE. Leur opposition peut bloquer un projet.
+</div>
+
+<h2>7. Registres de justification — Boltanski &amp; Thévenot</h2>
+<p>Dans leur ouvrage "De la justification" (1991), Boltanski et Thévenot identifient plusieurs "économies de la grandeur" — des registres de valeur utilisés pour légitimer des actions ou des décisions.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <h4>Registre marchand</h4>
+    <p>Logique de prix, de marché, de profit. La valeur se mesure en termes d'échange et de rentabilité.</p>
+  </div>
+  <div class="card">
+    <h4>Registre civique</h4>
+    <p>Logique collective, du bien commun, de la solidarité. La valeur réside dans l'intérêt général.</p>
+  </div>
+  <div class="card">
+    <h4>Registre industriel</h4>
+    <p>Logique d'efficacité, de performance, de technique. La valeur se mesure par la productivité.</p>
+  </div>
+  <div class="card">
+    <h4>Registre inspiré</h4>
+    <p>Logique créative, artistique, de singularité. La valeur réside dans l'originalité et l'inspiration.</p>
+  </div>
+</div>
+
+<div class="example">
+  <strong>Application RSE :</strong> Un dirigeant qui justifie une démarche RSE peut mobiliser simultanément le registre civique ("nous contribuons au bien commun"), le registre marchand ("cela améliore notre compétitivité") et le registre industriel ("nous optimisons nos processus"). Ces justifications sont souvent en tension.
+</div>
+
+<h2>8. Cas Interface — Pertinence, Acceptabilité, Faisabilité</h2>
+<p>Interface, fabricant de moquettes industrielles, est un cas emblématique de transformation RSE radicale sous l'impulsion de Ray Anderson dans les années 1990 (Mission Zero).</p>
+
+<div class="formula">
+  Pour évaluer la pertinence d'une stratégie durable, on peut utiliser trois critères :<br>
+  <strong>Pertinence</strong> (cohérence avec l'environnement et les ressources) · <strong>Acceptabilité</strong> (parties prenantes, légitimité) · <strong>Faisabilité</strong> (capacités opérationnelles, ressources)
+</div>
+
+<div class="source-footer">Cours GCD — Laurent Paris — EM Normandie M1 2025-2026</div>
+</div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

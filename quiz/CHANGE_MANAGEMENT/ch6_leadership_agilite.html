@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Leadership &amp; Agilité Organisationnelle — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+.quiz-container { max-width: 800px; margin: 0 auto; }
+.quiz-header { text-align: center; padding: 2rem 0 1.5rem; }
+.quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.5rem; }
+.quiz-header h1 { font-size: 1.4rem; font-weight: 700; color: white; }
+.question-card { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; margin: 1.2rem 0; border-left: 4px solid #8e44ad; }
+.question-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.6rem; }
+.question-text { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; }
+.option { background: #252540; border: 2px solid #252540; border-radius: 10px; padding: 0.7rem 1rem; cursor: pointer; font-size: 0.9rem; color: #e0e0e0; transition: all 0.2s; text-align: left; }
+.option:hover { border-color: #8e44ad; background: #2d2050; }
+.option.correct { background: #1a3a2a; border-color: #27ae60; color: #2ecc71; }
+.option.wrong { background: #3a1a1a; border-color: #e74c3c; color: #e74c3c; }
+.explanation { background: #1e1e35; border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: #a0a0c0; display: none; border-left: 3px solid #8e44ad; line-height: 1.5; }
+.score-bar { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; display: none; }
+.score-bar h2 { font-size: 1.5rem; color: #8e44ad; margin-bottom: 0.5rem; }
+.btn-retry { background: #8e44ad; color: white; border: none; border-radius: 10px; padding: 0.8rem 2rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; margin-top: 1rem; }
+a.back { color: #8e44ad; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="quiz-header">
+  <div class="matiere">Gestion du Changement — M1 ✦ Nouvelle version</div>
+  <h1>Quiz — Module 7 : Leadership &amp; Agilité Organisationnelle</h1>
+</div>
+<div id="quiz"></div>
+<div class="score-bar" id="scoreBar">
+  <h2 id="scoreText"></h2>
+  <p style="color:#aaa;font-size:0.9rem;">Relis la fiche pour renforcer les points faibles</p>
+  <button class="btn-retry" onclick="restartQuiz()">Recommencer</button>
+</div>
+</div>
+<script>
+const questions = [
+  {
+    q: "Dans le contexte du leadership, qu'est-ce que le leadership transformationnel se caractérise principalement par ?",
+    options: [
+      "La gestion des performances par un système de récompenses et punitions",
+      "La capacité à inspirer, motiver et proposer une vision à long terme qui transcende les intérêts individuels",
+      "La délégation systématique des décisions aux équipes terrain",
+      "L'application stricte de procédures et de protocoles établis"
+    ],
+    answer: 1,
+    explanation: "Le leadership transformationnel (Bass, 1985) se distingue par la capacité du leader à inspirer et motiver ses collaborateurs grâce à une vision à long terme, créant un sentiment de sens et d'appartenance. Il se différencie du leadership transactionnel qui repose sur les récompenses/punitions."
+  },
+  {
+    q: "L'innovation ambidextre selon March (1991) désigne la capacité à combiner simultanément :",
+    options: [
+      "Leadership transformationnel et leadership distribué",
+      "Croissance interne et croissance externe",
+      "Exploitation (optimisation de l'existant) et Exploration (innovation radicale)",
+      "Approche top-down et approche bottom-up"
+    ],
+    answer: 2,
+    explanation: "L'innovation ambidextre (March 1991, O'Reilly & Tushman 2004) consiste à maîtriser simultanément l'Exploitation (améliorer, optimiser l'existant, efficacité court terme) et l'Exploration (expérimenter, innover radicalement, horizon long terme). L'organisation doit équilibrer ces deux logiques souvent contradictoires."
+  },
+  {
+    q: "Quel 'piège' guette les organisations qui se concentrent exclusivement sur l'exploitation ?",
+    options: [
+      "Le piège de la croissance (growth trap)",
+      "Le piège de la compétence (competency trap) — obsolescence à terme",
+      "Le piège de la diversification",
+      "Le piège de l'internationalisation"
+    ],
+    answer: 1,
+    explanation: "Les organisations qui n'investissent que dans l'exploitation (optimisation de l'existant) risquent le 'competency trap' (piège de la compétence) : leurs compétences actuelles deviennent obsolètes car elles n'ont pas exploré de nouvelles voies. Elles se retrouvent alors incapables d'innover face aux ruptures du marché."
+  },
+  {
+    q: "Le leadership distribué (Spillane, 2006) repose principalement sur :",
+    options: [
+      "La concentration du pouvoir décisionnel chez un leader charismatique unique",
+      "La mise en place d'une hiérarchie stricte et claire",
+      "Le partage du pouvoir et l'empowerment des équipes, le leadership étant une propriété collective",
+      "La gestion par objectifs avec évaluation individuelle de chaque membre"
+    ],
+    answer: 2,
+    explanation: "Le leadership distribué (Spillane, 2006) conçoit le leadership non comme l'apanage d'un individu mais comme une propriété collective de l'organisation : les rôles de leadership sont répartis selon les expertises et les contextes. Il favorise l'agilité, la résilience et l'innovation."
+  },
+  {
+    q: "Parmi les caractéristiques de Mustela présentées en cours, laquelle EST correcte ?",
+    options: [
+      "Mustela est une grande entreprise cotée en bourse soumise à forte pression des actionnaires",
+      "Mustela est une entreprise familiale, B Corp certifiée, spécialisée dans les cosmétiques bébé naturels",
+      "Mustela a abandonné la RSE pour se concentrer sur la croissance externe",
+      "Mustela est un cas de résistance au changement et d'immobilisme stratégique"
+    ],
+    answer: 1,
+    explanation: "Mustela (groupe Expanscience) est une entreprise familiale B Corp certifiée, spécialisée dans les cosmétiques bébé naturels. Elle illustre comment une PME familiale peut combiner agilité organisationnelle et engagement RSE authentique, avec une culture d'innovation ouverte et des valeurs durables fondatrices."
+  },
+  {
+    q: "Quelle forme de développement stratégique consiste à s'étendre vers des marchés ou activités distincts de l'activité principale ?",
+    options: [
+      "Internationalisation",
+      "Croissance interne",
+      "Diversification",
+      "Croissance externe"
+    ],
+    answer: 2,
+    explanation: "La diversification consiste à s'étendre vers de nouveaux marchés ou de nouvelles activités distincts de l'activité principale de l'organisation. Elle génère des défis spécifiques d'alignement stratégique et de compétences. À distinguer de l'internationalisation (expansion géographique) et de la croissance externe (fusion/acquisition)."
+  },
+  {
+    q: "Parmi les sources de résistance au changement, quelle résistance est liée à la menace sur le pouvoir et les avantages existants ?",
+    options: [
+      "La résistance par peur de l'incertitude",
+      "La résistance par habitude et inertie cognitive",
+      "La résistance par intérêts acquis",
+      "La résistance par manque de sens"
+    ],
+    answer: 2,
+    explanation: "La résistance par intérêts acquis survient quand le changement menace les avantages existants d'acteurs : leur pouvoir, leurs ressources, leur statut. Le levier de dépassement est la négociation, l'implication de ces acteurs dans le processus et, parfois, la compensation des pertes."
+  },
+  {
+    q: "Une organisation à 'culture apprenante' se caractérise par :",
+    options: [
+      "L'absence de formations formelles pour favoriser l'apprentissage informel uniquement",
+      "La capacité à expérimenter, tirer les leçons des échecs et capitaliser sur les expériences (boucles d'apprentissage)",
+      "Le respect strict des procédures pour éviter les erreurs coûteuses",
+      "La centralisation des décisions stratégiques pour garantir la cohérence de l'apprentissage"
+    ],
+    answer: 1,
+    explanation: "Une culture apprenante (Argyris, Senge) se caractérise par la capacité de l'organisation à expérimenter, tirer les leçons de ses échecs (sans punir l'erreur) et capitaliser sur ses expériences via des boucles d'apprentissage (simple et double boucle). C'est un pilier de l'agilité organisationnelle."
+  },
+  {
+    q: "La certification B Corp pour une entreprise comme Mustela signifie :",
+    options: [
+      "Qu'elle est cotée en bourse avec un statut spécial",
+      "Qu'elle a passé un audit fiscal favorable",
+      "Une évaluation indépendante rigoureuse de son impact social et environnemental par l'organisation B Lab",
+      "Qu'elle appartient à un groupement de PME françaises certifiées"
+    ],
+    answer: 2,
+    explanation: "La certification B Corp est délivrée par B Lab (organisation à but non lucratif) après une évaluation rigoureuse et indépendante de la performance sociale et environnementale, de la responsabilité et de la transparence de l'entreprise. Elle implique également une modification des statuts pour protéger la mission. C'est un signal crédible, distinct du greenwashing."
+  },
+  {
+    q: "Dans l'évaluation finale sous forme de jeu de rôle, quel est l'objectif principal selon le cours ?",
+    options: [
+      "Réaliser une présentation PowerPoint de 20 slides sans interaction",
+      "Défendre un business plan financier face à des investisseurs",
+      "Mettre en scène une situation de changement avec narrateur et parties prenantes en mobilisant les concepts du cours",
+      "Rédiger un rapport écrit d'analyse stratégique en groupe"
+    ],
+    answer: 2,
+    explanation: "L'évaluation finale prend la forme d'un jeu de rôle scénarisé (20 min) avec un narrateur (fil directeur) et des parties prenantes (directeur, syndicat, investisseur ESG, ONG...). Il s'agit de mettre en scène une situation de changement avec tensions et résolutions, en mobilisant les concepts du cours (VRIO, Lewin, Kotter, RSE, ambidextrie, registres de Boltanski...)."
+  }
+];
+
+let score = 0, answered = 0;
+function shuffleOptions(q) {
+  const opts = q.options.map((o, i) => ({ text: o, isCorrect: i === q.answer }));
+  for (let i = opts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [opts[i], opts[j]] = [opts[j], opts[i]];
+  }
+  return opts;
+}
+function buildQuiz() {
+  const div = document.getElementById('quiz');
+  div.innerHTML = '';
+  score = 0; answered = 0;
+  questions.forEach((q, qi) => {
+    const shuffled = shuffleOptions(q);
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.innerHTML = `<div class="question-num">Question ${qi + 1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options" id="opts-${qi}">${shuffled.map((o, i) => `<button class="option" onclick="answer(${qi},${i},${o.isCorrect},this)">${o.text}</button>`).join('')}</div><div class="explanation" id="exp-${qi}">${q.explanation}</div>`;
+    div.appendChild(card);
+  });
+  document.getElementById('scoreBar').style.display = 'none';
+}
+function answer(qi, oi, correct, btn) {
+  const opts = document.querySelectorAll(`#opts-${qi} .option`);
+  opts.forEach(b => b.disabled = true);
+  if (correct) { btn.classList.add('correct'); score++; }
+  else {
+    btn.classList.add('wrong');
+    opts.forEach(b => { if (b.onclick.toString().includes('true')) b.classList.add('correct'); });
+  }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  answered++;
+  if (answered === questions.length) {
+    setTimeout(() => {
+      const sb = document.getElementById('scoreBar');
+      sb.style.display = 'block';
+      document.getElementById('scoreText').textContent = `${score} / ${questions.length} — ${Math.round(score / questions.length * 100)}%`;
+    }, 300);
+  }
+}
+function restartQuiz() { buildQuiz(); }
+buildQuiz();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

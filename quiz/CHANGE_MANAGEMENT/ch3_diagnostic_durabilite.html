@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Diagnostic de durabilité organisationnelle (1) — Gestion du Changement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+.quiz-container { max-width: 800px; margin: 0 auto; }
+.quiz-header { text-align: center; padding: 2rem 0 1.5rem; }
+.quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.5rem; }
+.quiz-header h1 { font-size: 1.4rem; font-weight: 700; color: white; }
+.quiz-header p { font-size: 0.85rem; color: #888; margin-top: 0.4rem; }
+.question-card { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; margin: 1.2rem 0; border-left: 4px solid #8e44ad; }
+.question-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8e44ad; margin-bottom: 0.6rem; }
+.question-text { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; }
+.option { background: #252540; border: 2px solid #252540; border-radius: 10px; padding: 0.7rem 1rem; cursor: pointer; font-size: 0.9rem; color: #e0e0e0; transition: all 0.2s; text-align: left; }
+.option:hover:not(:disabled) { border-color: #8e44ad; background: #2d2050; }
+.option.correct { background: #1a3a2a; border-color: #27ae60; color: #2ecc71; }
+.option.wrong { background: #3a1a1a; border-color: #e74c3c; color: #e74c3c; }
+.explanation { background: #1e1e35; border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: #a0a0c0; display: none; border-left: 3px solid #8e44ad; line-height: 1.5; }
+.score-bar { background: #1a1a2e; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; display: none; }
+.score-bar h2 { font-size: 1.5rem; color: #8e44ad; margin-bottom: 0.5rem; }
+.btn-retry { background: #8e44ad; color: white; border: none; border-radius: 10px; padding: 0.8rem 2rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; margin-top: 1rem; }
+.btn-retry:hover { background: #6c3483; }
+a.back { color: #8e44ad; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
+<div class="quiz-header">
+<div class="matiere">Gestion du Changement — M1 ✦ Module 3</div>
+<h1>Diagnostic de durabilité organisationnelle (1)</h1>
+<p>10 questions — Répondez, puis découvrez les explications</p>
+</div>
+<div id="quiz"></div>
+<div class="score-bar" id="scoreBar">
+<h2 id="scoreText"></h2>
+<p style="color:#aaa;font-size:0.9rem;margin-top:0.3rem;">Relis la fiche pour renforcer les points faibles</p>
+<button class="btn-retry" onclick="restartQuiz()">Recommencer</button>
+</div>
+</div>
+<script>
+const questions = [
+  {
+    q: "Combien d'objectifs, de cibles et de pays signataires comptent les ODD adoptés en 2015 ?",
+    options: [
+      "17 objectifs, 169 cibles, 193 signataires",
+      "15 objectifs, 150 cibles, 195 signataires",
+      "17 objectifs, 193 cibles, 169 signataires",
+      "20 objectifs, 169 cibles, 193 signataires"
+    ],
+    answer: 0,
+    explanation: "Les ODD (Agenda 2030) comptent exactement 17 objectifs, 169 cibles et ont été signés par 193 États membres de l'ONU en septembre 2015. Ce cadre remplace les Objectifs du Millénaire pour le Développement (OMD)."
+  },
+  {
+    q: "Qu'est-ce que l'holacratie, illustrée par le cas Zappos ?",
+    options: [
+      "Un système de gouvernance centralisée où le PDG prend toutes les décisions",
+      "Un système de gouvernance distribuée à des cercles auto-organisés avec mission et autonomie réelles",
+      "Une méthode de management par objectifs (MBO) développée par Peter Drucker",
+      "Un outil de diagnostic stratégique inspiré du modèle Harvard"
+    ],
+    answer: 1,
+    explanation: "L'holacratie (Brian Robertson) distribue l'autorité à des cercles auto-organisés. Zappos a adopté ce système en 2013, créant ~500 cercles et supprimant les titres de postes traditionnels. Résultat : 18% de turn-over initial mais une culture distinctive et une plus grande réactivité."
+  },
+  {
+    q: "Dans la bio-digestion (méthanisation), quels sont les deux produits valorisés issus des déchets organiques ?",
+    options: [
+      "Plastique recyclé et eau purifiée",
+      "Biogaz (énergie) et digestat (fertilisant)",
+      "Compost solide et vapeur d'eau",
+      "Hydrogène vert et biochar"
+    ],
+    answer: 1,
+    explanation: "La bio-digestion anaérobie transforme les déchets organiques en : (1) Biogaz (méthane + CO₂) utilisé pour produire de l'énergie électrique et thermique, et (2) Digestat, un fertilisant naturel qui réduit le besoin en engrais chimiques. C'est un exemple parfait de circularité."
+  },
+  {
+    q: "Quelle est la principale critique du Taylorisme dans un contexte de durabilité organisationnelle ?",
+    options: [
+      "Il favorise trop l'innovation et rend les processus imprévisibles",
+      "Il est trop coûteux à mettre en œuvre dans les grandes organisations",
+      "Sa hiérarchie rigide et sa vision court-terme sont incompatibles avec la complexité des enjeux durables",
+      "Il ignore la dimension financière et se concentre trop sur le bien-être des travailleurs"
+    ],
+    answer: 2,
+    explanation: "Le Taylorisme (organisation scientifique du travail, début XXe s.) optimise l'efficacité à court terme via la division stricte des tâches et la hiérarchie pyramidale. Mais cette rigidité structurelle et cette vision court-terme sont fondamentalement incompatibles avec la gestion de la complexité durable, qui nécessite transversalité et adaptabilité."
+  },
+  {
+    q: "Qu'est-ce que le 'SDG-washing' et comment l'éviter dans une organisation ?",
+    options: [
+      "Une méthode de nettoyage des données ESG avant reporting",
+      "Afficher des ODD sans contributions concrètes et mesurables — l'éviter via cartographie de matérialité et KPIs réels",
+      "L'utilisation excessive de couleurs vertes dans les communications RSE",
+      "Une pratique de délégation des responsabilités environnementales aux fournisseurs"
+    ],
+    answer: 1,
+    explanation: "Le SDG-washing consiste à afficher des logos d'ODD sans actions concrètes ni mesurables. Pour l'éviter : (1) réaliser une cartographie de matérialité pour identifier les ODD réellement pertinents, (2) vérifier les contributions positives ET négatives, et (3) traduire les cibles ODD en KPIs opérationnels."
+  },
+  {
+    q: "Dans le Business Model Canvas appliqué à la durabilité, quelle est la 'triple valeur' recherchée ?",
+    options: [
+      "Valeur pour les actionnaires, valeur pour les clients, valeur pour les fournisseurs",
+      "Valeur à court terme, valeur à moyen terme, valeur à long terme",
+      "Valeur économique (profit), valeur sociale (people) et valeur écologique (planet)",
+      "Valeur tangible, valeur intangible et valeur de marque"
+    ],
+    answer: 2,
+    explanation: "Le BMC durable intègre le Triple Bottom Line (TBL) : Profit (économique), People (social) et Planet (écologique). Aucune des 3 dimensions ne peut être sacrifiée. Cette approche va au-delà de la simple rentabilité financière pour créer une valeur partagée avec toutes les parties prenantes."
+  },
+  {
+    q: "Quelle structure organisationnelle est la mieux adaptée à l'intégration de la durabilité selon l'évolution historique présentée dans le cours ?",
+    options: [
+      "Structure fonctionnelle (spécialisation par département)",
+      "Structure tayloriste (division scientifique du travail)",
+      "Structure divisionnelle (unités d'affaires autonomes)",
+      "Organisation en réseau / agile (équipes auto-organisées, itérations rapides)"
+    ],
+    answer: 3,
+    explanation: "L'organisation en réseau/agile (XXIe s.) est la plus adaptée car elle permet des cycles courts de décision, l'autonomie des équipes, l'apprentissage continu et la transversalité — conditions nécessaires pour intégrer la complexité des enjeux durables et répondre rapidement aux évolutions réglementaires (CSRD)."
+  },
+  {
+    q: "Comment Mobil Wood illustre-t-il le modèle 'Product-as-a-Service' dans l'économie circulaire ?",
+    options: [
+      "En vendant des licences logicielles pour concevoir des meubles durables",
+      "En proposant des abonnements mensuels à des catalogues de design mobilier",
+      "En offrant le leasing de mobilier : le client paie l'usage, Mobil Wood conserve la propriété et récupère le mobilier en fin de contrat",
+      "En créant une marketplace de revente entre entreprises et particuliers"
+    ],
+    answer: 2,
+    explanation: "Mobil Wood applique le Product-as-a-Service (PaaS) : le client paie pour l'usage du mobilier (non pour sa possession), Mobil Wood conserve la propriété et récupère systématiquement les meubles en fin de contrat pour reconditionnement, réemploi ou recyclage. Cela ferme la boucle circulaire et garantit la valorisation des matières."
+  },
+  {
+    q: "Que signifie le concept de 'transversalité' dans le contexte des organisations durables ?",
+    options: [
+      "La capacité d'une entreprise à opérer dans plusieurs pays simultanément",
+      "La rupture des silos fonctionnels pour faire collaborer des acteurs de différentes fonctions autour d'objectifs RSE communs",
+      "La transmission horizontale des données entre systèmes informatiques",
+      "La mise en place d'une équipe RSE dédiée avec un reporting au PDG"
+    ],
+    answer: 1,
+    explanation: "La transversalité brise les silos fonctionnels (Finance, RH, Production, etc.) pour créer de la coopération inter-fonctionnelle. Elle est essentielle pour la durabilité car les enjeux RSE (empreinte carbone, diversité, gouvernance) traversent toutes les fonctions de l'entreprise et ne peuvent être traités en silo."
+  },
+  {
+    q: "Le SWOT 'créatif' appliqué à la durabilité se distingue du SWOT classique principalement parce qu'il :",
+    options: [
+      "Utilise des couleurs différentes pour chaque quadrant",
+      "Se concentre uniquement sur les aspects financiers de la durabilité",
+      "Intègre des 'parties prenantes silencieuses' (générations futures, écosystèmes) et identifie des combinaisons paradoxales forces-faiblesses",
+      "Est réalisé uniquement par des consultants externes pour garantir l'objectivité"
+    ],
+    answer: 2,
+    explanation: "Le SWOT créatif dépasse le diagnostic statique en : (1) intégrant des parties prenantes non-traditionnelles (générations futures, écosystèmes, communautés locales), (2) identifiant des combinaisons paradoxales (une faiblesse transformée en opportunité par l'innovation), et (3) formulant des stratégies d'action hybrides plutôt qu'un simple état des lieux."
+  }
+];
+let score = 0, answered = 0;
+function shuffleOptions(q) {
+  const opts = q.options.map((o,i) => ({text:o, isCorrect: i===q.answer}));
+  for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  return opts;
+}
+function buildQuiz() {
+  const div = document.getElementById('quiz');
+  div.innerHTML = '';
+  score = 0; answered = 0;
+  questions.forEach((q,qi) => {
+    const shuffled = shuffleOptions(q);
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.innerHTML = `<div class="question-num">Question ${qi+1} / ${questions.length}</div><div class="question-text">${q.q}</div><div class="options" id="opts-${qi}">${shuffled.map((o,i)=>`<button class="option" onclick="answer(${qi},${i},${o.isCorrect},this)">${o.text}</button>`).join('')}</div><div class="explanation" id="exp-${qi}">${q.explanation}</div>`;
+    div.appendChild(card);
+  });
+  document.getElementById('scoreBar').style.display = 'none';
+}
+function answer(qi, oi, correct, btn) {
+  const opts = document.querySelectorAll(`#opts-${qi} .option`);
+  opts.forEach(b => b.disabled = true);
+  if(correct){ btn.classList.add('correct'); score++; }
+  else {
+    btn.classList.add('wrong');
+    opts.forEach(b => {
+      try { if(b.getAttribute('onclick') && b.getAttribute('onclick').includes(',true,')) b.classList.add('correct'); } catch(e){}
+    });
+  }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  answered++;
+  if(answered === questions.length) {
+    setTimeout(()=>{
+      const sb=document.getElementById('scoreBar');
+      sb.style.display='block';
+      const pct = Math.round(score/questions.length*100);
+      let msg = pct >= 80 ? '🟢 Excellent !' : pct >= 60 ? '🟡 Bien, continue !' : '🔴 Relis le cours';
+      document.getElementById('scoreText').textContent=`${score} / ${questions.length} — ${pct}% — ${msg}`;
+      sb.scrollIntoView({behavior:'smooth'});
+    }, 400);
+  }
+}
+function restartQuiz() { buildQuiz(); window.scrollTo({top:0,behavior:'smooth'}); }
+buildQuiz();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

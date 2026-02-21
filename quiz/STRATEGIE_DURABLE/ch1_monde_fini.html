@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Ch1 Monde Fini | Stratégie Durable</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0f1a; color: #e0e0f0; min-height: 100vh; padding: 1.5rem; }
+  .quiz-container { max-width: 780px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 1.2rem; color: #27ae60; text-decoration: none; font-size: 0.85rem; opacity: 0.85; transition: opacity 0.2s; }
+  .back-link:hover { opacity: 1; }
+  .quiz-header { background: linear-gradient(135deg, #1a2a1a 0%, #0f1f0f 100%); border: 1px solid #27ae60; border-radius: 16px; padding: 1.5rem 2rem; margin-bottom: 2rem; }
+  .quiz-header .matiere { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px; color: #27ae60; opacity: 0.8; margin-bottom: 0.4rem; }
+  .quiz-header h1 { font-size: 1.35rem; font-weight: 700; color: #ffffff; }
+  .quiz-header .subtitle { font-size: 0.85rem; color: #a0a0b0; margin-top: 0.3rem; }
+  .progress-bar-wrap { background: #1e1e30; border-radius: 99px; height: 6px; margin: 1.2rem 0 0; overflow: hidden; }
+  .progress-bar { background: linear-gradient(90deg, #27ae60, #2ecc71); height: 6px; border-radius: 99px; transition: width 0.4s ease; }
+  .score-display { text-align: right; font-size: 0.8rem; color: #7f8c8d; margin-top: 0.3rem; }
+  .question-card { background: #16162a; border: 1px solid #2a2a45; border-radius: 14px; padding: 1.5rem 1.8rem; margin-bottom: 1.5rem; transition: border-color 0.3s; }
+  .question-card.answered-correct { border-color: #27ae60; }
+  .question-card.answered-wrong { border-color: #e74c3c; }
+  .question-number { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.5rem; font-weight: 600; }
+  .question-text { font-size: 1rem; font-weight: 600; color: #e8e8ff; line-height: 1.55; margin-bottom: 1.1rem; }
+  .options { display: flex; flex-direction: column; gap: 0.55rem; }
+  .option-btn { background: #1e1e35; border: 1.5px solid #2e2e50; color: #d0d0e8; border-radius: 10px; padding: 0.65rem 1rem; text-align: left; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; line-height: 1.45; }
+  .option-btn:hover:not(:disabled) { background: #252540; border-color: #27ae60; color: #ffffff; }
+  .option-btn.correct { background: #0d2b1a; border-color: #27ae60; color: #2ecc71; font-weight: 600; }
+  .option-btn.wrong { background: #2b0d0d; border-color: #e74c3c; color: #e74c3c; }
+  .option-btn.reveal-correct { background: #0d2b1a; border-color: #27ae60; color: #2ecc71; font-weight: 600; }
+  .option-btn:disabled { cursor: default; opacity: 0.85; }
+  .explanation { display: none; background: #0f1f2f; border-left: 3px solid #27ae60; border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; margin-top: 0.9rem; font-size: 0.85rem; color: #a8d8b8; line-height: 1.6; }
+  .explanation.visible { display: block; }
+  .explanation strong { color: #2ecc71; }
+  .final-panel { display: none; background: linear-gradient(135deg, #0d2b1a, #0a1f12); border: 2px solid #27ae60; border-radius: 16px; padding: 2rem; text-align: center; margin-top: 1.5rem; }
+  .final-panel h2 { color: #2ecc71; font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .final-panel .score-big { font-size: 3rem; font-weight: 800; color: #ffffff; margin: 0.5rem 0; }
+  .final-panel .score-label { color: #a8d8b8; font-size: 0.95rem; margin-bottom: 1.2rem; }
+  .final-panel .mention { font-size: 1.1rem; font-weight: 600; color: #27ae60; margin-bottom: 1.5rem; }
+  .btn-restart { background: #27ae60; color: white; border: none; border-radius: 10px; padding: 0.75rem 2rem; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .btn-restart:hover { background: #2ecc71; }
+  .btn-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .btn-links a { color: #27ae60; font-size: 0.82rem; text-decoration: none; opacity: 0.8; }
+  .btn-links a:hover { opacity: 1; }
+  @media (max-width: 500px) { body { padding: 1rem; } .question-card { padding: 1.1rem 1.2rem; } }
+</style>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="quiz-container">
+
+  <a href="../../fr/index.html" class="back-link">← Retour à l'accueil</a>
+
+  <div class="quiz-header">
+    <div class="matiere">Stratégie Durable &amp; Éthique — M1 ✦ Nouvelle version</div>
+    <h1>Quiz — Chapitre 1 : Penser l'économie dans un monde fini</h1>
+    <div class="subtitle">10 questions QCM · Contraintes physiques &amp; limites planétaires</div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+    <div class="score-display" id="scoreDisplay">0 / 10</div>
+  </div>
+
+  <div id="quizArea"></div>
+
+  <div class="final-panel" id="finalPanel">
+    <h2>Quiz terminé !</h2>
+    <div class="score-big" id="finalScore"></div>
+    <div class="score-label">bonnes réponses sur 10</div>
+    <div class="mention" id="finalMention"></div>
+    <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+    <div class="btn-links">
+      <a href="../../syntheses/STRATEGIE_DURABLE/ch1_monde_fini.html">Synthèse complète →</a>
+      <a href="../../fiches/STRATEGIE_DURABLE/ch1_monde_fini.html">Fiche de révision →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const allQuestions = [
+  {
+    question: "Pourquoi dit-on que l'économie opère dans un \"système clos\" ?",
+    options: [
+      "La Terre ne reçoit que de l'énergie solaire ; la matière ne sort pas — toute ressource extraite et tout déchet restent dans la biosphère",
+      "Les échanges internationaux sont équilibrés par les organisations mondiales comme l'OMC",
+      "Les entreprises fonctionnent en circuit fermé sans dépendre de ressources naturelles",
+      "Les États contrôlent l'ensemble des flux économiques à l'intérieur de leurs frontières"
+    ],
+    correct: 0,
+    explanation: "<strong>Système clos :</strong> La Terre reçoit de l'énergie solaire mais échange très peu de matière avec l'extérieur. L'économie transforme des ressources déjà présentes dans la biosphère — elle ne les crée pas. Chaque tonne extraite génère des résidus qui restent dans le système."
+  },
+  {
+    question: "Quelles sont les 3 limites planétaires les plus critiques pour la stratégie d'entreprise selon le cours ?",
+    options: [
+      "Le changement climatique (GES), l'intégrité de la biosphère (biodiversité) et les cycles biogéochimiques (Azote/Phosphore)",
+      "La couche d'ozone, l'acidification des océans et la pollution chimique",
+      "L'utilisation des terres, l'eau douce et les aérosols atmosphériques",
+      "La sécurité alimentaire, la déforestation et la montée des eaux"
+    ],
+    correct: 0,
+    explanation: "<strong>Les 3 prioritaires du cours :</strong> (1) Climat — CO₂ &gt;420 ppm vs limite de 350 ppm ; (2) Biodiversité — extinction 100-1000× le taux naturel ; (3) Cycles N/P — eutrophisation et épuisement du phosphore. En 2024, 6 des 9 limites sont franchies."
+  },
+  {
+    question: "Quel modèle économique génère volatilité des coûts, ruptures d'approvisionnement et pressions réglementaires croissantes ?",
+    options: [
+      "Le modèle linéaire \"extraire → produire → jeter\"",
+      "Le modèle circulaire basé sur la réutilisation des matières",
+      "Le modèle de l'économie de la fonctionnalité",
+      "Le modèle coopératif de partage des ressources"
+    ],
+    correct: 0,
+    explanation: "<strong>Le modèle linéaire</strong> dépend de ressources finies et concentrées géographiquement → volatilité des prix (cobalt, pétrole) + dépendances géopolitiques (terres rares en Chine) + internalisation des externalités par la réglementation (taxe carbone, CSRD, EUDR)."
+  },
+  {
+    question: "Qu'est-ce qu'un PPA (Power Purchase Agreement) dans le contexte d'une stratégie durable industrielle ?",
+    options: [
+      "Un contrat d'achat d'électricité renouvelable à long terme permettant de sécuriser un approvisionnement bas-carbone et de stabiliser les coûts énergétiques",
+      "Un accord de partenariat public-privé pour financer des projets d'infrastructure verte",
+      "Un protocole de traçabilité des émissions scope 3 tout au long de la chaîne de valeur",
+      "Un programme de compensation carbone basé sur l'achat de crédits forestiers certifiés"
+    ],
+    correct: 0,
+    explanation: "<strong>PPA industriel :</strong> contrat direct entre un producteur d'énergie renouvelable et un industriel, fixant le prix de l'électricité sur plusieurs années. Double avantage : décarbonation du scope 2 + stabilité des coûts face à la volatilité du marché de l'énergie fossile."
+  },
+  {
+    question: "Pourquoi la déforestation est-elle problématique du point de vue des limites planétaires ?",
+    options: [
+      "Elle détruit simultanément les puits de carbone et les habitats naturels, contribuant à franchir deux limites planétaires : le climat et la biodiversité",
+      "Elle augmente le prix des matières premières agricoles sur les marchés mondiaux",
+      "Elle crée des tensions sociales dans les communautés rurales dépendantes de la forêt",
+      "Elle réduit les précipitations locales uniquement dans les zones tropicales équatoriales"
+    ],
+    correct: 0,
+    explanation: "<strong>Double impact de la déforestation :</strong> (1) Libération de CO₂ stocké dans la biomasse → franchissement de la limite climatique ; (2) Destruction d'habitats = effondrement de la biodiversité. La déforestation pour l'élevage ou le soja est l'un des principaux vecteurs d'érosion de la biodiversité mondiale."
+  },
+  {
+    question: "Quel est l'exemple d'innovation positive pour répondre à la limite planétaire des cycles biogéochimiques (Azote/Phosphore) ?",
+    options: [
+      "Les bio-fertilisants à base de micro-organismes fixateurs d'azote, en substitution des engrais de synthèse",
+      "L'irrigation au goutte-à-goutte pour réduire la consommation d'eau agricole",
+      "Les panneaux solaires installés en agrivoltaïsme sur les parcelles agricoles",
+      "La certification Rainforest Alliance pour les produits d'exportation tropicaux"
+    ],
+    correct: 0,
+    explanation: "<strong>Bio-fertilisants :</strong> des bactéries ou champignons symbiotiques (ex. rhizobiums) fixent l'azote atmosphérique directement dans le sol, réduisant le recours aux engrais de synthèse coûteux et polluants. L'agriculture de précision complète cette approche en optimisant les doses d'intrants via capteurs et IA."
+  },
+  {
+    question: "Comment l'industrie du textile illustre-t-elle la transformation d'un modèle linéaire vers un modèle durable ?",
+    options: [
+      "La fast fashion (pollution, surconsommation, déchets) se transforme via la seconde main, la location et la réparation qui allongent la durée de vie des vêtements",
+      "Les marques de luxe adoptent des fibres naturelles issues de l'agriculture biologique certifiée",
+      "Le textile se digitalise en proposant des vêtements virtuels pour les avatars dans le métavers",
+      "Les usines de confection relocalised en Europe pour réduire les émissions de transport"
+    ],
+    correct: 0,
+    explanation: "<strong>Transformation textile :</strong> le modèle linéaire (produire → porter peu → jeter) génère pollution à l'eau, émissions et déchets massifs. Les modèles circulaires — Vinted/ThredUp (seconde main), Rent the Runway (location), ateliers de réparation — réduisent la production nette en maintenant les vêtements en circulation."
+  },
+  {
+    question: "Pourquoi intégrer la durabilité au cœur de la stratégie (et non en périphérie comme un simple rapport RSE) ?",
+    options: [
+      "Parce que les pressions systémiques convergentes (climat, raréfaction, inégalités) en font un impératif de résilience et de création de valeur long terme, pas juste une contrainte réglementaire",
+      "Parce que les consommateurs sont désormais prêts à payer 30% de plus pour des produits durables certifiés",
+      "Parce que la réglementation européenne impose un Chief Sustainability Officer dans les entreprises de plus de 500 salariés",
+      "Parce que les actionnaires majoritaires exigent désormais un score ESG minimum de AA pour maintenir leurs investissements"
+    ],
+    correct: 0,
+    explanation: "<strong>Double impératif stratégique :</strong> les entreprises doivent simultanément réduire leur empreinte sur les limites planétaires ET construire leur résilience face aux perturbations déjà en cours. Ce n'est ni philanthropie ni conformité : c'est un repositionnement concurrentiel qui conditionne l'accès aux ressources, aux marchés et aux talents."
+  },
+  {
+    question: "Quelle transformation illustre la réponse de l'agriculture au stress hydrique et à la saturation en azote ?",
+    options: [
+      "Le passage de l'irrigation intensive et des engrais de synthèse vers l'agroécologie, les bio-fertilisants et l'agriculture de précision",
+      "La construction de grands barrages hydroélectriques pour sécuriser l'approvisionnement en eau des plaines agricoles",
+      "La fusion des exploitations agricoles en méga-fermes industrielles pour atteindre les économies d'échelle nécessaires",
+      "L'importation de céréales bon marché depuis des pays où l'eau est abondante pour réduire la pression locale"
+    ],
+    correct: 0,
+    explanation: "<strong>Transformation agricole :</strong> face au stress hydrique (limite eau douce en tension) et à l'eutrophisation (limite N/P franchie), l'agroécologie propose : associations de cultures, agroforesterie, bio-fertilisants microbiens, capteurs IoT pour doser précisément l'eau et les intrants. Résultat : résilience accrue, moins d'intrants, restauration de la biodiversité des sols."
+  },
+  {
+    question: "Parmi les exemples suivants, lequel correspond à un 'business model négatif' sur le plan des limites planétaires ?",
+    options: [
+      "Les monocultures intensives avec engrais de synthèse et irrigation à grande échelle",
+      "L'agroécologie associant cultures diversifiées et bio-fertilisants microbiens",
+      "Les contrats PPA permettant aux industriels d'acheter de l'énergie solaire à long terme",
+      "La traçabilité blockchain garantissant zéro déforestation dans la chaîne d'approvisionnement"
+    ],
+    correct: 0,
+    explanation: "<strong>Monocultures intensives :</strong> elles épuisent les sols (perte de biodiversité), consomment massivement des engrais de synthèse azotés et phosphorés (franchissement de la limite biogéochimique), et nécessitent une irrigation intensive (stress hydrique). À l'opposé, les PPA, l'agroécologie et la traçabilité sont des exemples de business models positifs."
+  }
+];
+
+let questions = [];
+let currentQ = 0;
+let score = 0;
+let answered = 0;
+
+function shuffleOptions(question) {
+  const indices = [0, 1, 2, 3];
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  const correctOption = question.options[question.correct];
+  const shuffledOptions = indices.map(i => question.options[i]);
+  const newCorrect = shuffledOptions.indexOf(correctOption);
+  return { ...question, options: shuffledOptions, correct: newCorrect };
+}
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function initQuiz() {
+  questions = shuffleArray(allQuestions).map(q => shuffleOptions(q));
+  currentQ = 0;
+  score = 0;
+  answered = 0;
+  document.getElementById('finalPanel').style.display = 'none';
+  renderQuiz();
+  updateProgress();
+}
+
+function renderQuiz() {
+  const area = document.getElementById('quizArea');
+  area.innerHTML = '';
+  questions.forEach((q, idx) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'card-' + idx;
+
+    const num = document.createElement('div');
+    num.className = 'question-number';
+    num.textContent = 'Question ' + (idx + 1) + ' / ' + questions.length;
+
+    const txt = document.createElement('div');
+    txt.className = 'question-text';
+    txt.textContent = q.question;
+
+    const opts = document.createElement('div');
+    opts.className = 'options';
+
+    q.options.forEach((opt, oi) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.textContent = opt;
+      btn.setAttribute('data-qi', idx);
+      btn.setAttribute('data-oi', oi);
+      btn.onclick = () => selectAnswer(idx, oi);
+      opts.appendChild(btn);
+    });
+
+    const expl = document.createElement('div');
+    expl.className = 'explanation';
+    expl.id = 'expl-' + idx;
+    expl.innerHTML = q.explanation;
+
+    card.appendChild(num);
+    card.appendChild(txt);
+    card.appendChild(opts);
+    card.appendChild(expl);
+    area.appendChild(card);
+  });
+}
+
+function selectAnswer(qi, oi) {
+  const q = questions[qi];
+  const card = document.getElementById('card-' + qi);
+  const btns = card.querySelectorAll('.option-btn');
+  const expl = document.getElementById('expl-' + qi);
+
+  btns.forEach(b => b.disabled = true);
+
+  if (oi === q.correct) {
+    btns[oi].classList.add('correct');
+    card.classList.add('answered-correct');
+    score++;
+  } else {
+    btns[oi].classList.add('wrong');
+    btns[q.correct].classList.add('reveal-correct');
+    card.classList.add('answered-wrong');
+  }
+
+  expl.classList.add('visible');
+  answered++;
+  updateProgress();
+
+  if (answered === questions.length) {
+    setTimeout(showFinal, 800);
+  }
+}
+
+function updateProgress() {
+  const pct = (answered / questions.length) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('scoreDisplay').textContent = score + ' / ' + questions.length;
+}
+
+function showFinal() {
+  const panel = document.getElementById('finalPanel');
+  document.getElementById('finalScore').textContent = score;
+  let mention = '';
+  if (score === 10) mention = 'Parfait — Maîtrise totale du chapitre !';
+  else if (score >= 8) mention = 'Excellent — Très bonne compréhension !';
+  else if (score >= 6) mention = 'Bien — Quelques points à revoir.';
+  else if (score >= 4) mention = 'Passable — Relis la synthèse.';
+  else mention = 'À retravailler — Consulte la fiche et la synthèse.';
+  document.getElementById('finalMention').textContent = mention;
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  initQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', initQuiz);
+</script>
+
+</body>
+</html>

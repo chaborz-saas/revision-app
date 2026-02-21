@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Strategie Durable Ch5: Souverainete, dilemme climatique & methodologie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">Strategie Durable &amp; Ethique &mdash; QUIZ &mdash; Nouvelle version</div>
+        <h1>Chapitre 5 &mdash; Souverainete, dilemme climatique &amp; methodologie</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Qu'est-ce que le dilemme du prisonnier applique au climat ?",
+        options: [
+            "Les pays riches refusent de financer la transition des pays pauvres",
+            "Chaque pays a interet a laisser les autres agir, resultant en une absence de cooperation collective malgre le besoin urgent d'action",
+            "Les entreprises choisissent de payer des amendes plutot que de reduire leurs emissions",
+            "Les gouvernements font des choix arbitraires entre croissance et protection climatique"
+        ],
+        correct: 1,
+        explanation: "Le dilemme du prisonnier climatique : chaque pays prefere que les autres supportent le cout de la transition (passager clandestin). Si tous raisonnent ainsi, personne n'agit. C'est un equilibre de Nash sous-optimal : rationnel individuellement, catastrophique collectivement."
+    },
+    {
+        q: "Quelle est la premiere etape de la methodologie cas pratique en 5 etapes ?",
+        options: [
+            "Identifier la contrainte reglementaire (CSRD, ETS, CBAM)",
+            "Qualifier l'impact CAPEX / Competitivite / Finance",
+            "Identifier la contrainte physique : Climat / Ressources / Biodiversite",
+            "Proposer une transformation du business model"
+        ],
+        correct: 2,
+        explanation: "L'etape 1 consiste a identifier la contrainte physique : quelle limite planetaire est en jeu ? Climat (emissions GES), Ressources (eau, matieres, energie) ou Biodiversite (sols, ecosystemes). C'est le point de depart obligatoire de toute analyse strategique durable."
+    },
+    {
+        q: "Quelle est la strategie de cooperation la plus robuste dans un jeu repete climatique ?",
+        options: [
+            "La strategie de domination totale : agir seul sans attendre les autres",
+            "La strategie Tit-for-Tat : cooperer d'abord, puis copier le comportement de l'autre",
+            "La strategie de passager clandestin : ne jamais agir et profiter des autres",
+            "La strategie aleatoire : alterner action et inaction de facon impredictible"
+        ],
+        correct: 1,
+        explanation: "La strategie Tit-for-Tat est la plus robuste dans un jeu repete : elle coopere en premier, recompense la cooperation et punit la trahison de facon symetrique. Elle favorise la cooperation sans etre exploitable. C'est pourquoi les jeux repetes (interactions recurrentes entre Etats) facilitent la cooperation climatique."
+    },
+    {
+        q: "Pourquoi la dependance au petrole implique-t-elle une perte de souverainete ?",
+        options: [
+            "Car le petrole est une ressource renouvelable difficile a stocker",
+            "Car les pays producteurs peuvent utiliser l'energie comme levier de pression geopolitique, privant les pays dependants de leur autonomie industrielle, economique et militaire",
+            "Car le petrole est trop abondant et fait baisser le prix des energies alternatives",
+            "Car la dependance au petrole ameliore la competitivite industrielle a court terme"
+        ],
+        correct: 1,
+        explanation: "Sans energie, pas d'industrie, pas d'emplois, pas de puissance militaire. Un pays dependant de petrole importe est expose aux chocs geopolitiques (embargos, guerres, cartels), aux variations de prix et perd sa capacite d'action diplomatique independante. La crise energetique de 2022 apres l'invasion de l'Ukraine en est l'illustration."
+    },
+    {
+        q: "Quel est l'avantage cle de la transition fossiles vers les metaux en termes de souverainete ?",
+        options: [
+            "Les metaux sont plus abondants que le petrole et donc moins chers",
+            "Les metaux sont extractibles dans tous les pays europeens",
+            "Contrairement aux fossiles qui sont brules, les metaux (Li, Ni, Cu, Co) sont recyclables, permettant une souverainete de long terme via la circularite",
+            "Les metaux n'emettent pas de CO2 lors de leur extraction"
+        ],
+        correct: 2,
+        explanation: "La difference cle : le petrole est brule (consomme definitivement, non recyclable). Les metaux critiques (Li, Ni, Cu, Co, U) sont recyclables. L'economie circulaire permet donc de reduire la dependance aux importations continues et d'atteindre une souverainete de long terme — ce qui est impossible avec les fossiles."
+    },
+    {
+        q: "Qu'est-ce que l'efficience operationnelle dans une strategie durable ?",
+        options: [
+            "Produire plus de biens en augmentant la consommation d'energie et de matieres",
+            "Investir massivement en CAPEX pour moderniser les usines",
+            "Reduire la consommation d'energie et de matieres premieres pour faire baisser les OPEX, rendant l'entreprise moins exposee aux chocs energetiques",
+            "Externaliser la production vers des pays a moindres couts sociaux et environnementaux"
+        ],
+        correct: 2,
+        explanation: "L'efficience operationnelle durable consiste a reduire l'intensite energetique et materielle de la production. Cela fait baisser les OPEX (couts d'exploitation courants) independamment du prix des commodites. L'entreprise devient moins vulnerable aux chocs energetiques et plus competitive structurellement."
+    },
+    {
+        q: "Quel KPI mesure le mieux la circularite dans le secteur textile ?",
+        options: [
+            "Le chiffre d'affaires total en millions d'euros",
+            "Le nombre de collections par an",
+            "Le taux de reemploi (% de produits vendus en seconde vie vs neuf) et l'intensite matiere (kg de matiere / euro de CA)",
+            "La part de marche en % sur le marche du luxe"
+        ],
+        correct: 2,
+        explanation: "Les KPIs de circularite pour le textile sont : taux de reemploi (% produits en seconde vie), intensite matiere (kg/€ CA), % du CA issu des modeles circulaires (seconde main, location, reparation). Ces KPIs mesurent la transition effective vers un modele circulaire, contrairement aux indicateurs financiers classiques."
+    },
+    {
+        q: "Quelle erreur frequente consiste a ignorer les emissions des fournisseurs et des clients ?",
+        options: [
+            "Confondre CAPEX et OPEX",
+            "Ignorer le Scope 3 : les emissions indirectes dans la chaine de valeur (fournisseurs en amont, usage et fin de vie en aval)",
+            "Proposer une innovation sans analyse reglementaire",
+            "Oublier de calculer le taux de reemploi"
+        ],
+        correct: 1,
+        explanation: "Le Scope 3 regroupe toutes les emissions indirectes : fournisseurs (amont), transport, usage par les clients, fin de vie des produits. Pour la plupart des entreprises, le Scope 3 represente 70 a 90% des emissions totales. L'ignorer revient a analyser une infime partie de l'empreinte carbone reelle."
+    },
+    {
+        q: "Comment la Taxonomie europeenne aide-t-elle les entreprises durables ?",
+        options: [
+            "Elle impose des amendes aux entreprises polluantes",
+            "Elle definit les activites economiques considerees comme durables, permettant aux entreprises alignees d'acceder a des financements avec un cout du capital reduit",
+            "Elle interdit les investissements dans les energies fossiles",
+            "Elle fixe le prix du carbone au niveau europeen"
+        ],
+        correct: 1,
+        explanation: "La Taxonomie europeenne classe les activites economiques selon leur durabilite. Les entreprises et projets alignes peuvent acceder aux fonds ESG, obligations vertes et financement institutionnel a conditions preferentielles. Cela reduit le cout du capital, creant un avantage competitif financier pour les entreprises durables verifiables."
+    },
+    {
+        q: "Quelle est la part des energies fossiles dans le mix energetique mondial actuel ?",
+        options: [
+            "Environ 40% (petrole, gaz, charbon)",
+            "Environ 60% (petrole, gaz, charbon)",
+            "Environ 80% (petrole, gaz, charbon)",
+            "Environ 95% (petrole, gaz, charbon)"
+        ],
+        correct: 2,
+        explanation: "Le mix energetique mondial est compose d'environ 80% d'energies fossiles (petrole ~31%, charbon ~27%, gaz ~23%). Ce chiffre illustre l'ampleur du defi de la transition energetique : malgre la croissance rapide des renouvelables, les fossiles restent largement dominants et la correlation energie-PIB reste quasi lineaire."
+    }
+];
+
+let current=0,score=0,answered=false,startTime=Date.now(),timerInterval;
+function startTimer(){timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-startTime)/1000);const m=String(Math.floor(e/60)).padStart(2,'0');const s=String(e%60).padStart(2,'0');document.getElementById('timer').textContent='\u23F1 '+m+':'+s;},1000);}
+function shuffleOptions(q){const idx=q.options.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}return{...q,options:idx.map(i=>q.options[i]),correct:idx.indexOf(q.correct)};}
+function renderQ(){const q=shuffleOptions(questions[current]);questions[current]._s=q;document.getElementById('current-q').textContent=current+1;document.getElementById('total-q').textContent=questions.length;document.getElementById('score').textContent=score;document.getElementById('progress').style.width=((current+1)/questions.length*100)+'%';const letters=['A','B','C','D'];document.getElementById('quiz-area').innerHTML='<div class="question-card"><div class="question-num">Question '+(current+1)+' / '+questions.length+'</div><div class="question-text">'+q.q+'</div><div class="options">'+q.options.map((o,i)=>'<button class="option" onclick="sel('+i+')" id="opt'+i+'">'+letters[i]+'. '+o+'</button>').join('')+'</div><div class="explanation" id="explanation">'+q.explanation+'</div></div><div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';answered=false;}
+function sel(i){if(answered)return;answered=true;const q=questions[current]._s;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(i===q.correct){document.getElementById('opt'+i).classList.add('correct');score++;}else{document.getElementById('opt'+i).classList.add('wrong');document.getElementById('opt'+q.correct).classList.add('correct');}document.getElementById('explanation').style.display='block';document.getElementById('btn-next').disabled=false;document.getElementById('score').textContent=score;}
+function nextQ(){if(current<questions.length-1){current++;renderQ();}else{showResult();}}
+function showResult(){clearInterval(timerInterval);const e=Math.floor((Date.now()-startTime)/1000);const m=Math.floor(e/60);const s=e%60;document.getElementById('quiz-area').innerHTML='';const rc=document.getElementById('result-card');rc.style.display='block';document.getElementById('final-score').textContent=score;document.getElementById('result-time').textContent='\u23F1 Temps: '+m+'min '+s+'s';const p=score/questions.length;document.getElementById('result-msg').textContent=p>=0.9?'Exceptionnel ! Tu maitrises parfaitement ce chapitre.':p>=0.7?'Bien joue ! Encore un peu de revision et ce sera parfait.':p>=0.5?'Pas mal, mais relis la synthese pour consolider.':'Continue a reviser, relis la synthese et reessaie.';}
+function restartQuiz(){current=0;score=0;answered=false;startTime=Date.now();document.getElementById('result-card').style.display='none';startTimer();renderQ();}
+startTimer();renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

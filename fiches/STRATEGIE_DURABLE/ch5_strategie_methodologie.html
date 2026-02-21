@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de revision — Strategie Durable : Souverainete, dilemme climatique & methodologie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-methodo {
+            background: #f4f0fa;
+            border-color: #8e44ad;
+            margin: 1rem 0; padding: 1rem 1.2rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.5rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .condensed-list { list-style: none; padding: 0; }
+        .condensed-list li {
+            padding: 0.35rem 0; padding-left: 1.2rem;
+            position: relative; font-size: 0.92rem; line-height: 1.5;
+        }
+        .condensed-list li::before {
+            content: "\2192"; position: absolute; left: 0;
+            color: #27ae60; font-weight: bold;
+        }
+        .compact-table {
+            width: 100%; border-collapse: collapse;
+            margin: 0.7rem 0; font-size: 0.85rem;
+        }
+        .compact-table th {
+            background: #1a1a2e; color: white;
+            padding: 0.45rem 0.7rem; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .methodo-step-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin: 0.6rem 0;
+            padding: 0.65rem 0.9rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #d2b4de;
+            font-size: 0.9rem;
+        }
+        .step-badge {
+            background: #8e44ad;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .step-label { font-weight: 700; color: #6c3483; }
+        .flash-q {
+            background: #f8f0ff; border: 1px dashed #9b59b6;
+            border-radius: 8px; padding: 0.7rem 1rem;
+            margin: 0.7rem 0; font-size: 0.88rem;
+        }
+        .flash-q .answer {
+            display: block; margin-top: 0.3rem;
+            color: #6c3483; font-weight: 600;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        .source-footer a { color: #27ae60; text-decoration: none; }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche-header">
+        <div class="matiere">Strategie Durable &amp; Ethique — M1 &#10022; Nouvelle version</div>
+        <h1>Chapitre 5 — Strategie d'affaires durables : Souverainete, dilemme climatique &amp; methodologie</h1>
+    </div>
+    <div class="fiche-body">
+
+        <div class="section-title">Energie &amp; croissance economique</div>
+
+        <div class="block block-def">
+            <div class="block-label">Faits cles</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Correlation quasi lineaire energie-PIB</span> depuis l'industrialisation</li>
+                <li>Mix energetique mondial : <span class="hl-critical">~80% fossiles</span> (petrole, gaz, charbon)</li>
+                <li><span class="hl-critical">~58% de l'energie primaire dissipee</span> (moteur thermique : rendement 25-33% seulement)</li>
+                <li>Decorrélation possible via <span class="hl-important">efficacite energetique</span> : meme richesse, moins d'energie</li>
+            </ul>
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Cle de lecture — Identite de Kaya</div>
+            Emissions = Pop &times; PIB/hab &times; <span class="hl-critical">Energie/PIB</span> &times; CO2/Energie. Agir sur l'intensite energetique = levier majeur de decarbonation sans sacrifier la croissance.
+        </div>
+
+        <div class="section-title">Souverainete energetique</div>
+
+        <div class="block block-def">
+            <div class="block-label">Definition</div>
+            Capacite d'un Etat a <span class="hl-critical">produire ou controler ses ressources energetiques</span>. Sans energie : pas d'industrie, pas d'emplois, pas de puissance militaire. La dependance = vulnerabilite strategique.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Source</th><th>Souverainete</th><th>Recyclabilite</th></tr>
+            <tr><td>Petrole / gaz / charbon</td><td><span class="hl-critical">Faible</span> (importes)</td><td>Nulle (combustion)</td></tr>
+            <tr><td>Solaire / eolien / hydraulique</td><td><span class="hl-critical">Forte</span> (locale)</td><td>Materiaux recyclables</td></tr>
+            <tr><td>Nucleaire</td><td>Forte (production locale)</td><td>Uranium retraitable</td></tr>
+        </table>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Transition fossiles &#8594; metaux</div>
+            Li, Ni, Cu, Co, U = nouveaux intrants critiques. Mais a la difference du petrole (brule) : les metaux sont <span class="hl-critical">recyclables</span>. La circularite = souverainete de long terme. France : gaz importé (Algerie, USA, Kazakhstan), petrole (Moyen-Orient).
+        </div>
+
+        <div class="section-title">Dilemme du prisonnier climatique</div>
+
+        <div class="block block-def">
+            <div class="block-label">Logique du dilemme</div>
+            Chaque pays a interet a laisser les autres agir (<span class="hl-critical">passager clandestin</span>). Si tous raisonnent ainsi : aucune cooperation, desastre collectif. C'est l'equilibre de Nash sous-optimal : rationnel individuellement, catastrophique collectivement.
+        </div>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; Sortir du dilemme — Jeux repetes</div>
+            Dans un jeu repete, la cooperation devient rationnelle. Strategie <span class="hl-critical">Tit-for-Tat</span> = la plus robuste : cooperer d'abord, puis copier l'adversaire. Conditions : <span class="hl-important">confiance, transparence, mesure des emissions, regles credibles</span>.
+        </div>
+
+        <table class="compact-table">
+            <tr><th>Instrument</th><th>Role</th></tr>
+            <tr><td><span class="hl-important">Accords Paris / Kyoto</span></td><td>Engagement collectif (NDC)</td></tr>
+            <tr><td><span class="hl-critical">EU-ETS</span></td><td>Prix carbone = sanction automatique (~50-100 €/tCO2)</td></tr>
+            <tr><td><span class="hl-critical">CBAM</span></td><td>Taxe frontiere = eviter les fuites carbone</td></tr>
+            <tr><td><span class="hl-critical">CSRD</span></td><td>Reporting Scope 1-2-3 verifie = transparence</td></tr>
+        </table>
+
+        <div class="section-title">Avantages competitifs de la durabilite</div>
+
+        <table class="compact-table">
+            <tr><th>Avantage</th><th>Mecanisme</th></tr>
+            <tr><td><span class="hl-important">Differenciation &amp; confiance</span></td><td>Clients et talents privilegient les entreprises credibles</td></tr>
+            <tr><td><span class="hl-important">Acces au capital (ESG / Taxonomie)</span></td><td>Criteres ESG → cout du capital diminue</td></tr>
+            <tr><td><span class="hl-important">Resilience reglementaire</span></td><td>Anticipation CSRD/CBAM = pas de surprise</td></tr>
+            <tr><td><span class="hl-critical">Efficience operationnelle</span></td><td>Energie &amp; matieres baissent → OPEX en baisse</td></tr>
+            <tr><td><span class="hl-important">Nouveaux revenus</span></td><td>Seconde main, reparation, "as-a-service"</td></tr>
+        </table>
+
+        <div class="section-title">&#128204; Methodologie cas pratique — 5 etapes</div>
+
+        <div class="block-methodo">
+            <div class="block-label" style="color:#6c3483;opacity:1;margin-bottom:0.8rem;">Cadre d'analyse — A appliquer systematiquement a l'examen</div>
+
+            <div class="methodo-step-row">
+                <div class="step-badge">1</div>
+                <div><span class="step-label">Contrainte physique</span> — Climat / Ressources / Biodiversite<br>
+                <span style="font-size:0.85rem;color:#555;">Quelle limite planetaire est en jeu ? C'est le point de depart obligatoire.</span></div>
+            </div>
+
+            <div class="methodo-step-row">
+                <div class="step-badge">2</div>
+                <div><span class="step-label">Dependance strategique</span> — Technologie / Metaux / Supply chain<br>
+                <span style="font-size:0.85rem;color:#555;">Quelle vulnerabilite cree la dependance (semi-conducteurs, Li, Co, fournisseurs asiatiques) ?</span></div>
+            </div>
+
+            <div class="methodo-step-row">
+                <div class="step-badge">3</div>
+                <div><span class="step-label">Contrainte reglementaire</span> — CSRD / EU-ETS / CBAM<br>
+                <span style="font-size:0.85rem;color:#555;">Quelle regulation impacte le secteur et change les regles competitives ?</span></div>
+            </div>
+
+            <div class="methodo-step-row">
+                <div class="step-badge">4</div>
+                <div><span class="step-label">Qualifier l'impact</span> — CAPEX / Competitivite / Finance / Innovation<br>
+                <span style="font-size:0.85rem;color:#555;">Comment les contraintes se traduisent-elles en termes business concrets ?</span></div>
+            </div>
+
+            <div class="methodo-step-row">
+                <div class="step-badge">5</div>
+                <div><span class="step-label">Transformation strategique</span> — Business model / Supply chain / Localisation / Circularite<br>
+                <span style="font-size:0.85rem;color:#555;">Quelle reponse avec quels KPIs mesurables ? (taux de reemploi, intensite matiere, € CA circulaire)</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">Exemple examen — Secteur Textile</div>
+
+        <table class="compact-table">
+            <tr><th>Etape</th><th>Application textile</th></tr>
+            <tr><td>Contrainte physique</td><td>Intensite eau (10 000 L/kg coton), pollution chimique, dechets</td></tr>
+            <tr><td>Dependance strategique</td><td>Supply chain asiatique, fibres synthetiques (petrole)</td></tr>
+            <tr><td>Contrainte reglementaire</td><td>CSRD (Scope 3), directive ecodesign, taxe fast fashion</td></tr>
+            <tr><td>Impact</td><td>CAPEX fibres recyclees, competitivite marques durables, taxonomie</td></tr>
+            <tr><td>Transformation</td><td><span class="hl-critical">Seconde main / location / reparation / upcycling</span></td></tr>
+        </table>
+
+        <div class="block block-astuce">
+            <div class="block-label">&#10003; KPIs textile a connaitre</div>
+            <span class="hl-critical">Taux de reemploi</span> (% produits en seconde vie) &bull; <span class="hl-critical">Intensite matiere</span> (kg / € CA) &bull; <span class="hl-critical">€ CA circulaire</span> (% issu de la circularite)
+        </div>
+
+        <div class="section-title">Erreurs frequentes a l'examen</div>
+
+        <div class="block block-attention">
+            <div class="block-label">&#9888; Les 5 pieges</div>
+            <ul class="condensed-list">
+                <li><span class="hl-critical">Ignorer Scope 3</span> : la majorite des emissions est dans la chaine de valeur (fournisseurs, usage, fin de vie)</li>
+                <li><span class="hl-critical">Confondre CAPEX / OPEX</span> : CAPEX = investissement ; OPEX = couts d'exploitation courants</li>
+                <li><span class="hl-critical">Oublier les dependances matieres</span> : une transition peut creer de nouvelles dependances (Li, Co, Cu)</li>
+                <li><span class="hl-critical">Analyser sans regulation</span> : CSRD/CBAM/ETS changent les regles du jeu, ne pas les ignorer</li>
+                <li><span class="hl-critical">Innovation sans circularite</span> : proposer un nouveau produit sans penser sa fin de vie = analyse incomplete</li>
+            </ul>
+        </div>
+
+        <div class="section-title">Questions flash</div>
+
+        <div class="flash-q">
+            Qu'est-ce que le dilemme du prisonnier applique au climat ?
+            <span class="answer">Chaque pays a interet a laisser les autres agir (passager clandestin). Si tous raisonnent ainsi, personne n'agit et le climat se degrade. Logique individuelle rationnelle, resultat collectif catastrophique. La sortie : jeux repetes, Tit-for-Tat, instruments contraignants (CBAM, ETS).</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle est la 1re etape de la methodologie cas pratique ?
+            <span class="answer">Identifier la contrainte physique : Climat (GES), Ressources (eau, matières, energie) ou Biodiversite (sols, ecosystemes). Sans ce point de depart, l'analyse est superficielle.</span>
+        </div>
+
+        <div class="flash-q">
+            Pourquoi la transition fossiles → metaux ameliore la souverainete ?
+            <span class="answer">Les fossiles sont brules (consommes, non recyclables, importes). Les metaux (Li, Ni, Cu, Co, U) sont recyclables. La circularite permet d'assurer une souverainete de long terme sans dependance aux importations continues.</span>
+        </div>
+
+        <div class="flash-q">
+            Qu'est-ce que l'efficience operationnelle dans une strategie durable ?
+            <span class="answer">Reduire la consommation d'energie et de matieres premiere pour faire baisser les OPEX (couts d'exploitation). L'entreprise est moins exposee aux chocs energetiques et plus competitive. Exemple : isolation, lean manufacturing, economie circulaire.</span>
+        </div>
+
+        <div class="flash-q">
+            Quelle erreur consiste a ignorer les emissions des fournisseurs ?
+            <span class="answer">Ignorer le Scope 3 (emissions indirectes : fournisseurs, usage par les clients, fin de vie). C'est souvent la part la plus importante des emissions totales d'une entreprise.</span>
+        </div>
+
+    </div>
+    <div style="background:#fff3cd;border-left:4px solid #f59e0b;border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;">
+        <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#b7791f;margin-bottom:0.4rem;">Attention — confusion frequente</div>
+        <p style="font-size:0.9rem;color:#92400e;line-height:1.5;">Cette matiere <strong>Strategie Durable &amp; Ethique</strong> traite des enjeux climatiques, energetiques et environnementaux. Ne pas confondre avec <strong>Gestion du changement au service de la durabilite</strong> (Change Management, track EN) qui aborde le management durable des organisations.</p>
+    </div>
+    <div class="source-footer">
+        <a href="../../syntheses/STRATEGIE_DURABLE/ch5_strategie_methodologie.html">Synthese complete</a>
+    </div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

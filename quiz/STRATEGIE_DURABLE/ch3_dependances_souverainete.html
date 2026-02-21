@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz &mdash; Strategie Durable Ch3 : D&eacute;pendances industrielles, m&eacute;taux critiques &amp; souverainet&eacute;</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l&apos;accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">Strat&eacute;gie Durable &amp; Ethique &mdash; QUIZ &mdash; Nouvelle version</div>
+        <h1>Chapitre 3 &mdash; D&eacute;pendances industrielles, m&eacute;taux critiques &amp; souverainet&eacute;</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l&apos;accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Qu'est-ce que la souverainet\u00e9 technologique ?",
+        options: [
+            "La capacit\u00e9 d'un \u00c9tat \u00e0 produire lui-m\u00eame toutes ses mati\u00e8res premi\u00e8res",
+            "La capacit\u00e9 d'un \u00c9tat \u00e0 ma\u00eetriser les technologies essentielles \u00e0 son ind\u00e9pendance \u00e9conomique, politique et militaire",
+            "Le fait pour un pays d'\u00eatre autosuffisant \u00e9nerg\u00e9tiquement",
+            "Le contr\u00f4le exclusif du march\u00e9 num\u00e9rique par l'\u00c9tat"
+        ],
+        correct: 1,
+        explanation: "La souverainet\u00e9 technologique d\u00e9signe la capacit\u00e9 d'un \u00c9tat \u00e0 ma\u00eetriser la cha\u00eene de valeur compl\u00e8te des technologies strat\u00e9giques (de la R&D \u00e0 la production), garantissant son ind\u00e9pendance \u00e9conomique, politique et militaire. Elle diff\u00e8re de la souverainet\u00e9 des ressources qui porte sur les mati\u00e8res premi\u00e8res."
+    },
+    {
+        q: "Quels m\u00e9taux sont indispensables aux batteries des v\u00e9hicules \u00e9lectriques (chimie NMC) ?",
+        options: [
+            "Terres rares (n\u00e9odyme, dysprosium), platine et palladium",
+            "Lithium (Li), Cobalt (Co), Nickel (Ni) et Graphite",
+            "Cuivre, aluminium et manganese uniquement",
+            "Uranium, c\u00e9sium et indium"
+        ],
+        correct: 1,
+        explanation: "Les batteries NMC (Nickel-Mangan\u00e8se-Cobalt) utilisent du Lithium, Cobalt, Nickel et du Graphite pour l'anode. Les terres rares ne sont PAS dans les batteries \u2014 elles sont dans les aimants permanents de certains moteurs. La chimie LFP (Lithium Fer Phosphate) \u00e9limine le cobalt."
+    },
+    {
+        q: "Quelle crise a r\u00e9v\u00e9l\u00e9 la d\u00e9pendance mondiale aux masques chirurgicaux et aux semi-conducteurs ?",
+        options: [
+            "La crise financi\u00e8re de 2008",
+            "La crise \u00e9nerg\u00e9tique de 2021\u20132022",
+            "La crise COVID-19 (2020\u20132021)",
+            "La guerre commerciale USA\u2013Chine de 2018"
+        ],
+        correct: 2,
+        explanation: "La pand\u00e9mie COVID-19 a brutalement r\u00e9v\u00e9l\u00e9 les vuln\u00e9rabilit\u00e9s syst\u00e9miques : 80 % des masques produits en Asie, p\u00e9nurie de semi-conducteurs paralysant l'industrie automobile. La recherche exclusive du co\u00fbt le plus bas avait cr\u00e9\u00e9 des d\u00e9pendances dangereuses."
+    },
+    {
+        q: "Que signifie \u00ab qui contr\u00f4le les inputs contr\u00f4le la valeur \u00bb ?",
+        options: [
+            "Que la valeur d'un produit est d\u00e9termin\u00e9e uniquement par son prix de vente",
+            "Que les fournisseurs de mati\u00e8res premi\u00e8res et de composants strat\u00e9giques capturent une rente et exercent un levier g\u00e9opolitique sur toute la cha\u00eene de valeur",
+            "Que l'\u00c9tat doit nationaliser toutes les ressources naturelles",
+            "Que la valeur d'une entreprise d\u00e9pend de son capital humain uniquement"
+        ],
+        correct: 1,
+        explanation: "Cette formule r\u00e9sume la logique de puissance des m\u00e9taux critiques. La valeur cr\u00e9\u00e9e par une gigafactory ou une \u00e9olienne d\u00e9pend enti\u00e8rement de l'acc\u00e8s aux mati\u00e8res premi\u00e8res. Celui qui contr\u00f4le l'extraction et le raffinage capte une rente strat\u00e9gique et peut exercer des pressions (ex. Chine sur les terres rares en 2010 face au Japon)."
+    },
+    {
+        q: "Qu'est-ce qu'un PPA (Power Purchase Agreement) dans le contexte industriel ?",
+        options: [
+            "Un accord de partenariat public-priv\u00e9 pour financer les gigafactories",
+            "Un protocole de certification des batteries selon leur empreinte carbone",
+            "Un contrat d'achat d'\u00e9lectricit\u00e9 \u00e0 long terme directement avec un producteur d'\u00e9nergies renouvelables",
+            "Une m\u00e9thode de calcul du prix des m\u00e9taux critiques sur les march\u00e9s internationaux"
+        ],
+        correct: 2,
+        explanation: "Un PPA est un contrat d'achat d'\u00e9lectricit\u00e9 \u00e0 long terme (10\u201320 ans) conclus directement entre un industriel (ex. gigafactory de batteries) et un producteur d'\u00e9nergies renouvelables. Il garantit un prix stable sur la dur\u00e9e et un approvisionnement bas-carbone, deux conditions essentielles pour la comp\u00e9titivit\u00e9 et le bilan carbone des batteries europ\u00e9ennes."
+    },
+    {
+        q: "Selon Mariana Mazzucato, quel est le r\u00f4le de l'\u00c9tat dans l'\u00e9conomie ?",
+        options: [
+            "L'\u00c9tat doit uniquement corriger les d\u00e9faillances du march\u00e9 et rester en retrait",
+            "L'\u00c9tat est un cr\u00e9ateur de march\u00e9 (\u00ab entrepreneurial state \u00bb) qui prend des risques que le priv\u00e9 refuse et d\u00e9finit des missions d'innovation",
+            "L'\u00c9tat doit nationaliser les industries strat\u00e9giques sans exception",
+            "L'\u00c9tat n'a aucun r\u00f4le \u00e9conomique en dehors de la d\u00e9fense nationale"
+        ],
+        correct: 1,
+        explanation: "Mazzucato renverse la vision n\u00e9oclassique : l'\u00c9tat n'est pas seulement un correcteur passif, mais un cr\u00e9ateur actif de march\u00e9. Il a financ\u00e9 Internet, le GPS, les \u00e9crans tactiles \u2014 toutes des technologies n\u00e9es d'investissements publics am\u00e9ricains. Il prend des risques \u00e0 long terme que le priv\u00e9 ne peut pas assumer, et cr\u00e9e ainsi des march\u00e9s entiers."
+    },
+    {
+        q: "Quelle est la diff\u00e9rence entre souverainet\u00e9 technologique et souverainet\u00e9 des ressources ?",
+        options: [
+            "Il n'y a aucune diff\u00e9rence, ce sont des synonymes",
+            "La souverainet\u00e9 technologique concerne les arm\u00e9es, la souverainet\u00e9 des ressources concerne l'agriculture",
+            "La souverainet\u00e9 technologique = ma\u00eetrise des technologies strat\u00e9giques ; la souverainet\u00e9 des ressources = contr\u00f4le des ressources naturelles indispensables. On peut avoir l'une sans l'autre.",
+            "La souverainet\u00e9 des ressources inclut toujours la souverainet\u00e9 technologique"
+        ],
+        correct: 2,
+        explanation: "Ces deux notions sont distinctes mais imbriqu\u00e9es. Un pays peut ma\u00eetriser la technologie des batteries sans contr\u00f4ler les m\u00e9taux n\u00e9cessaires (cas de l'Europe). Inversement, un pays peut poss\u00e9der des ressources sans la technologie pour les valoriser pleinement. C'est cette dissociation qui cr\u00e9e des vuln\u00e9rabilit\u00e9s strat\u00e9giques."
+    },
+    {
+        q: "Pourquoi le recyclage des m\u00e9taux critiques est-il strat\u00e9gique pour l'Europe ?",
+        options: [
+            "Parce qu'il est toujours moins cher que l'extraction primaire",
+            "Parce qu'il r\u00e9duit la d\u00e9pendance \u00e0 des approvisionnements concentr\u00e9s g\u00e9ographiquement, s\u00e9curise l'acc\u00e8s aux m\u00e9taux et r\u00e9duit l'empreinte carbone",
+            "Parce que l'Europe interdit d\u00e9sormais toute importation de m\u00e9taux",
+            "Parce que le recyclage est exig\u00e9 par les accords de Paris"
+        ],
+        correct: 1,
+        explanation: "Le recyclage cr\u00e9e une \u00ab mine urbaine \u00bb locale qui r\u00e9duit la d\u00e9pendance aux producteurs concentr\u00e9s (Chine pour le raffinage, RDC pour le cobalt). Les objectifs UE sont ambitieux : 95 % de r\u00e9cup\u00e9ration pour Co/Ni/Cu, 80 % pour Li. Il r\u00e9duit aussi l'empreinte carbone des batteries, renfor\u00e7ant l'avantage comp\u00e9titif europ\u00e9en."
+    },
+    {
+        q: "Quel m\u00e9tal est particuli\u00e8rement dominant en Chine pour le raffinage, repr\u00e9sentant 85\u201390 % du total mondial ?",
+        options: [
+            "Le lithium",
+            "Le cobalt",
+            "Les terres rares",
+            "Le nickel"
+        ],
+        correct: 2,
+        explanation: "La Chine domine le raffinage des terres rares \u00e0 hauteur de 85\u201390 % de la production mondiale. Elle domine \u00e9galement le raffinage du cobalt (~70 %), du lithium (~65 %) et du graphite (~80 %). Cette concentration est au c\u0153ur des strat\u00e9gies de diversification europ\u00e9ennes (Critical Raw Materials Act)."
+    },
+    {
+        q: "Qu'est-ce que l'ACV (Analyse du Cycle de Vie) et pourquoi est-elle strat\u00e9gique ?",
+        options: [
+            "Une m\u00e9thode comptable pour calculer la valeur r\u00e9siduelle d'un actif industriel",
+            "Un standard de certification ISO pour les entreprises exportatrices",
+            "Une m\u00e9thodologie qui \u00e9value l'ensemble des impacts environnementaux d'un produit de l'extraction \u00e0 la fin de vie, utilis\u00e9e comme standard et avantage comp\u00e9titif \u00e0 l'export",
+            "Un outil de gestion des ressources humaines dans les industries de transition"
+        ],
+        correct: 2,
+        explanation: "L'ACV mesure tous les impacts environnementaux d'un produit (CO\u2082, eau, biodiversit\u00e9) depuis l'extraction des mati\u00e8res premi\u00e8res jusqu'au recyclage. Pour les batteries, elle permet de comparer le bilan carbone r\u00e9el selon la source d'\u00e9lectricit\u00e9 et les conditions d'extraction. Impos\u00e9e comme standard (CSRD, passeport batterie), l'ACV devient une barri\u00e8re \u00e0 l'entr\u00e9e pour les concurrents moins vertueux et un avantage comp\u00e9titif \u00e0 l'export."
+    }
+];
+
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const e = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(e / 60)).padStart(2, '0');
+        const s = String(e % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+
+function shuffleOptions(q) {
+    const idx = q.options.map((_, i) => i);
+    for (let i = idx.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [idx[i], idx[j]] = [idx[j], idx[i]];
+    }
+    return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
+
+function renderQ() {
+    const q = shuffleOptions(questions[current]);
+    questions[current]._s = q;
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' +
+        q.options.map((o, i) => '<button class="option" onclick="sel(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + o + '</button>').join('') +
+        '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';
+    answered = false;
+}
+
+function sel(i) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current]._s;
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (i === q.correct) {
+        document.getElementById('opt' + i).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + i).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function nextQ() {
+    if (current < questions.length - 1) {
+        current++;
+        renderQ();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    clearInterval(timerInterval);
+    const e = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(e / 60);
+    const s = e % 60;
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's';
+    const p = score / questions.length;
+    document.getElementById('result-msg').textContent =
+        p >= 0.9 ? 'Exceptionnel ! Tu ma\u00eetrises parfaitement ce chapitre.' :
+        p >= 0.7 ? 'Bien jou\u00e9 ! Encore un peu de r\u00e9vision et ce sera parfait.' :
+        p >= 0.5 ? 'Pas mal, mais relis la synth\u00e8se pour consolider.' :
+        'Continue \u00e0 r\u00e9viser, relis la synth\u00e8se et r\u00e9essaie.';
+}
+
+function restartQuiz() {
+    current = 0;
+    score = 0;
+    answered = false;
+    startTime = Date.now();
+    document.getElementById('result-card').style.display = 'none';
+    startTimer();
+    renderQ();
+}
+
+startTimer();
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

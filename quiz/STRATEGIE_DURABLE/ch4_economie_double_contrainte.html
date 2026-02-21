@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz &mdash; Strategie Durable Ch4 : Economie du climat &amp; double contrainte carbone</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">Strategie Durable &amp; Ethique &mdash; QUIZ &mdash; Nouvelle version</div>
+        <h1>Chapitre 4 &mdash; Economie du climat &amp; double contrainte carbone</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score : <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour a l'accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Qu'est-ce que le cout social du carbone (CSC) ?",
+        options: [
+            "Le cout pour une entreprise d'acheter des quotas carbone sur le marche ETS",
+            "Le dommage economique total cause a la societe par l'emission d'une tonne supplementaire de CO2",
+            "Le prix moyen de la tonne de CO2 evitee dans les projets de decarbonation",
+            "La taxe frontiere appliquee aux importations emettant plus que les normes europeennes"
+        ],
+        correct: 1,
+        explanation: "Le CSC (Cout Social du Carbone) mesure le dommage economique total subi par la societe (sante, agriculture, infra, ecosystemes...) du fait d'une tonne de CO2 supplementaire. Il est different du prix ETS et de la valeur d'action. Estimations : 50-200 $/t selon les modeles."
+    },
+    {
+        q: "Qu'est-ce que le Green Premium ?",
+        options: [
+            "Une subvention accordee aux entreprises qui reduisent leurs emissions",
+            "Le label certifiant qu'un produit est conforme aux criteres de durabilite europeens",
+            "Le surcout initial d'une solution decarbonee par rapport a son equivalent fossile",
+            "La prime de risque exigee par les investisseurs pour financer des projets verts"
+        ],
+        correct: 2,
+        explanation: "Le Green Premium est le surcout initial d'une solution propre vs son equivalent fossile. Exemples : acier DRI-H2 vs haut-fourneau (+20-30 %), SAF vs kerosene (+300-500 %). Il peut devenir negatif quand la solution propre devient moins chere (ex : solaire vs charbon aujourd'hui)."
+    },
+    {
+        q: "Quelle est la difference entre PIB et PIN ?",
+        options: [
+            "Le PIB mesure la production industrielle, le PIN mesure la production agricole nette",
+            "Le PIB inclut les importations, le PIN les exclut",
+            "Le PIN est egal au PIB moins la depreciation du capital (physique et naturel), il mesure la richesse reellement creee",
+            "Le PIB est calcule en volume, le PIN en valeur courante"
+        ],
+        correct: 2,
+        explanation: "PIN = PIB - depreciation du capital. La depreciation inclut l'usure des machines, la degradation des infrastructures ET les dommages du changement climatique sur le capital naturel. Un pays peut avoir un PIB croissant mais un PIN decroissant s'il consomme son capital plus vite qu'il ne le cree."
+    },
+    {
+        q: "Qu'est-ce que le Scope 3 dans le bilan carbone d'une entreprise ?",
+        options: [
+            "Les emissions directes des procedes de production et de la flotte propre",
+            "Les emissions liees a l'electricite et a la chaleur achetees au reseau",
+            "Les emissions indirectes de toute la chaine de valeur : fournisseurs, transport, usage produit, fin de vie",
+            "Les emissions compensees par des credits carbone certifies"
+        ],
+        correct: 2,
+        explanation: "Scope 3 = toutes les emissions indirectes hors energie achetee : achats amont (matieres, composants), transport par des tiers, deplacements professionnels, usage des produits par les clients, fin de vie. Represente souvent 70-90 % des emissions totales dans les secteurs textile, electronique, agroalimentaire."
+    },
+    {
+        q: "Que signifie MRV dans le contexte de la CSRD ?",
+        options: [
+            "Management des Risques et de la Vulnerabilite",
+            "Measurement, Reporting, Verification : cadre methodologique pour mesurer, rapporter et verifier les emissions",
+            "Marche de Reference Vert : indice des societes decarbonees en Europe",
+            "Module de Reconnaissance Volontaire des engagements climatiques"
+        ],
+        correct: 1,
+        explanation: "MRV = Measurement (mesure des emissions), Reporting (declaration selon des normes reconnues) et Verification (audit par un tiers independant). La CSRD rend ce cadre obligatoire pour les grandes entreprises europeennes. C'est un metier en industrialisation rapide dans les organisations."
+    },
+    {
+        q: "Comment definit-on la 'double contrainte carbone' ?",
+        options: [
+            "L'obligation de reduire a la fois les emissions de CO2 et de methane",
+            "La double peine pour les entreprises tres emettrices : ETS et CBAM simultanement",
+            "L'obligation organisationnelle de piloter ET prouver ses emissions, sur site et hors site",
+            "La contrainte de publier deux rapports carbone annuels : un interne et un externe"
+        ],
+        correct: 2,
+        explanation: "La double contrainte carbone = obligation de (1) PILOTER ses emissions (systeme de comptabilite carbone interne, objectifs de reduction) ET (2) PROUVER ses emissions de facon auditable (CSRD, MRV). Les deux dimensions concernent les emissions directes (Scopes 1+2) et indirectes (Scope 3)."
+    },
+    {
+        q: "Qu'est-ce qu'une externalite negative ?",
+        options: [
+            "Un effet positif d'une activite qui beneficie a des tiers sans compensation",
+            "Un cout impose a des tiers par une activite economique, sans etre integre dans le prix de marche",
+            "Une perte de valeur subie par une entreprise due a des facteurs exterieurs",
+            "Un risque reglementaire non anticipe affectant le bilan d'une entreprise"
+        ],
+        correct: 1,
+        explanation: "Une externalite negative est un cout impose a la societe (tiers) par une activite economique, sans que le responsable le paie. Exemple carbone : le CO2 d'un vol impose des dommages climatiques a la societe, mais le prix du billet ne l'inclut pas. C'est pourquoi l'intervention publique (ETS, taxe carbone) est justifiee."
+    },
+    {
+        q: "Quel est l'impact immediat de la CSRD sur les entreprises europeennes ?",
+        options: [
+            "Obligation de planter des arbres pour compenser les emissions Scope 1",
+            "Reporting ESG audite obligatoire incluant les Scopes 1, 2 et 3, avec industrialisation du MRV",
+            "Interdiction d'utiliser des energies fossiles dans les procedes de production",
+            "Obligation de publier un plan de neutralite carbone certifie avant 2030"
+        ],
+        correct: 1,
+        explanation: "La CSRD impose un reporting ESG audite (Scopes 1+2+3) pour les grandes entreprises, progressivement a partir de 2025. Concretement : CAPEX decarbonation en hausse, industrialisation du MRV (systemes de mesure temps reel, collecte donnees chaine de valeur), nouveaux metiers (analyste ACV, responsable MRV)."
+    },
+    {
+        q: "Comment reduire le Green Premium selon le cours ?",
+        options: [
+            "Compenser les surcoûts par des credits carbone et attendre que le marche s'equilibre naturellement",
+            "Learning curves (produire plus), politiques publiques (subventions, taxes carbone), finance engagee (green bonds, ESG)",
+            "Negocier directement avec les fournisseurs pour reduire le prix des intrants bas-carbone",
+            "Delocaliser la production dans des pays ou les normes environnementales sont moins strictes"
+        ],
+        correct: 1,
+        explanation: "3 leviers pour reduire le Green Premium : (1) Learning curves : investir aujourd'hui accelere la baisse des couts (ex : solaire PV, learning rate ~20-24 %) ; (2) Politiques publiques : subventions, taxes ETS qui rencherissent le fossile, normes IRA/Fit for 55 ; (3) Finance engagee : green bonds et criteres ESG reduisent le cout du capital pour les projets propres."
+    },
+    {
+        q: "Quelle est la valeur indicative de la tonne de CO2 evitee en France ?",
+        options: [
+            "Environ 30 euros par tonne",
+            "Environ 80 euros par tonne (prix moyen du marche ETS europeen)",
+            "Environ 150 euros par tonne",
+            "Environ 500 euros par tonne"
+        ],
+        correct: 2,
+        explanation: "La valeur d'action indicative en France est d'environ 150 €/tonne de CO2 evitee. Elle est calculee comme : (Cout complet solution carbonee - Cout complet solution decarbonee) / (Emissions decarbonee - Emissions carbonee). A ne pas confondre avec le prix du quota ETS (~40-90 €/t) qui est le prix de marche du carbone."
+    }
+];
+
+let current = 0, score = 0, answered = false, startTime = Date.now(), timerInterval;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const e = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(e / 60)).padStart(2, '0');
+        const s = String(e % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+
+function shuffleOptions(q) {
+    const idx = q.options.map((_, i) => i);
+    for (let i = idx.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [idx[i], idx[j]] = [idx[j], idx[i]];
+    }
+    return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
+
+function renderQ() {
+    const q = shuffleOptions(questions[current]);
+    questions[current]._s = q;
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' +
+        q.options.map((o, i) => '<button class="option" onclick="sel(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + o + '</button>').join('') +
+        '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';
+    answered = false;
+}
+
+function sel(i) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current]._s;
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (i === q.correct) {
+        document.getElementById('opt' + i).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + i).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function nextQ() {
+    if (current < questions.length - 1) {
+        current++;
+        renderQ();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    clearInterval(timerInterval);
+    const e = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(e / 60);
+    const s = e % 60;
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('result-time').textContent = '\u23F1 Temps : ' + m + 'min ' + s + 's';
+    const p = score / questions.length;
+    document.getElementById('result-msg').textContent =
+        p >= 0.9 ? 'Exceptionnel ! Tu maitrises parfaitement ce chapitre.' :
+        p >= 0.7 ? 'Bien joue ! Encore un peu de revision et ce sera parfait.' :
+        p >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' :
+        'Continue a reviser, relis la synthese et reessaie.';
+}
+
+function restartQuiz() {
+    current = 0; score = 0; answered = false; startTime = Date.now();
+    document.getElementById('result-card').style.display = 'none';
+    startTimer();
+    renderQ();
+}
+
+startTimer();
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

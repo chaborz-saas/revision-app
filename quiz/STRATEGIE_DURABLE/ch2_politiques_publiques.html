@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — Strategie Durable Ch2 : Politiques publiques IRA / MIC 2025 / Green Deal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; padding: 1.5rem; }
+        .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1.5rem 2rem; border-radius: 16px; margin-bottom: 1.5rem; border-bottom: 3px solid #27ae60; }
+        .quiz-header .matiere { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.3rem; }
+        .quiz-header h1 { font-size: 1.3rem; font-weight: 700; color: white; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 1.5rem; }
+        .progress-fill { background: #27ae60; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .score-display { text-align: center; font-size: 0.85rem; color: #808090; margin-bottom: 1rem; }
+        .timer { text-align: center; font-size: 0.85rem; color: #f59e0b; margin-bottom: 0.5rem; font-weight: 600; }
+        .question-card { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+        .question-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #27ae60; margin-bottom: 0.8rem; font-weight: 700; }
+        .question-text { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 1.5rem; line-height: 1.5; }
+        .options { display: grid; gap: 0.6rem; }
+        .option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.2s; font-size: 0.92rem; color: #d0d0d8; text-align: left; width: 100%; }
+        .option:hover:not(:disabled) { background: rgba(39,174,96,0.1); border-color: rgba(39,174,96,0.4); color: white; }
+        .option.correct { background: rgba(39,174,96,0.2); border-color: #27ae60; color: #6ee7b7; font-weight: 600; }
+        .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+        .option:disabled { cursor: default; }
+        .explanation { background: rgba(39,174,96,0.08); border-left: 3px solid #27ae60; padding: 0.8rem 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #6ee7b7; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-next { background: #27ae60; color: white; margin-left: auto; }
+        .btn-next:hover { background: #1e8449; }
+        .btn-next:disabled { background: rgba(255,255,255,0.1); color: #606070; cursor: default; }
+        .result-card { background: #1a1a2e; border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; }
+        .result-score { font-size: 3.5rem; font-weight: 800; color: #27ae60; margin: 1rem 0; }
+        .result-msg { font-size: 1.1rem; color: #d0d0d8; margin-bottom: 2rem; }
+        .result-time { font-size: 0.9rem; color: #f59e0b; margin-bottom: 1.5rem; }
+        .btn-restart { background: #27ae60; color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; border: none; }
+        .back-link { display: inline-block; color: #808090; font-size: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+        .back-link:hover { color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l&apos;accueil</a>
+    <div class="quiz-header">
+        <div class="matiere">Strat&eacute;gie Durable &amp; Ethique &mdash; M1 &bull; Nouvelle version &mdash; QUIZ</div>
+        <h1>Chapitre 2 &mdash; Grandes politiques publiques&nbsp;: IRA / MIC 2025 / Green Deal</h1>
+    </div>
+    <div class="timer" id="timer">&#9201; 00:00</div>
+    <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">10</span> &mdash; Score&nbsp;: <span id="score">0</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:10%"></div></div>
+    <div id="quiz-area"></div>
+    <div class="result-card" id="result-card">
+        <div style="font-size:2rem">&#127919;</div>
+        <div class="result-score"><span id="final-score">0</span>/10</div>
+        <div class="result-time" id="result-time"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Recommencer</button>
+        <br><br>
+        <a href="../../fr/index.html" class="back-link">&larr; Retour &agrave; l&apos;accueil</a>
+    </div>
+</div>
+<script>
+const questions = [
+    {
+        q: "Quel est le montant total de l'IRA (Inflation Reduction Act) sur 10 ans ?",
+        options: ["150 milliards de dollars","370 milliards de dollars","500 milliards de dollars","1 000 milliards de dollars"],
+        correct: 1,
+        explanation: "L'IRA mobilise 370 milliards de dollars sur 10 ans (2022-2032), principalement sous forme de credits d'impot et de subventions. C'est le plus grand investissement climatique de l'histoire americaine."
+    },
+    {
+        q: "Quel credit fiscal l'IRA offre-t-il pour l'achat d'un vehicule electrique assemble en Amerique du Nord ?",
+        options: ["2 000 dollars","5 000 dollars","7 500 dollars","10 000 dollars"],
+        correct: 2,
+        explanation: "L'IRA prevoit un credit fiscal de 7 500 dollars par vehicule electrique, a condition qu'il soit assemble en Amerique du Nord et que la batterie contienne au minimum 40 % de composants locaux."
+    },
+    {
+        q: "Quelle est la cible de 'Made in China 2025' en termes de contenu local dans les secteurs strategiques ?",
+        options: ["De 20 % a 50 %","De 30 % a 60 %","De 40 % a 70 %","De 50 % a 80 %"],
+        correct: 2,
+        explanation: "Made in China 2025 vise a faire passer le contenu local de 40 % a 70 % dans les 10 secteurs strategiques d'ici 2025, afin de reduire la dependance aux technologies etrangeres."
+    },
+    {
+        q: "Quelle part du raffinage mondial des terres rares la Chine controle-t-elle ?",
+        options: ["Environ 40 %","Environ 60 %","Environ 75 %","Environ 92 %"],
+        correct: 3,
+        explanation: "La Chine controle 92 % du raffinage mondial des terres rares (plus 60 % du minage). Ces materiaux sont indispensables aux eoliennes, vehicules electriques, batteries et electronique de defense."
+    },
+    {
+        q: "Qu'est-ce que le CBAM (Carbon Border Adjustment Mechanism) ?",
+        options: ["Un credit d'impot pour les entreprises europeennes qui exportent","Un mecanisme de taxe carbone aux frontieres de l'UE sur les importations selon leur empreinte carbone","Un fonds europeen de soutien a l'innovation verte","Un label certifiant les produits a faible empreinte carbone"],
+        correct: 1,
+        explanation: "Le CBAM est une taxe carbone aux frontieres europeennes : les importateurs de produits a forte empreinte (acier, ciment, aluminium, engrais, electricite) doivent acheter des certificats CBAM. Objectif : eviter les fuites de carbone et equaliser la concurrence."
+    },
+    {
+        q: "Quel est l'objectif de reduction des GES du Green Deal europeen a horizon 2030 ?",
+        options: ["-40 % par rapport a 1990","-50 % par rapport a 2005","-55 % par rapport a 1990","-65 % par rapport a 2010"],
+        correct: 2,
+        explanation: "Le Green Deal europeen vise -55 % de GES d'ici 2030 par rapport aux niveaux de 1990, avec un objectif de neutralite carbone en 2050. Ce paquet legislatif s'appelle 'Fit for 55'."
+    },
+    {
+        q: "Qu'est-ce que le 'Fit for 55' dans le cadre du Green Deal ?",
+        options: ["Un programme de formation aux metiers verts pour les 55 ans et plus","Un paquet legislatif europeen alignant le droit de l'UE sur l'objectif -55 % de GES en 2030","Un fonds de 55 milliards euros pour la reindustrialisation verte","Une norme d'efficacite energetique imposant 55 % de gain pour les batiments"],
+        correct: 1,
+        explanation: "Fit for 55 est le paquet legislatif adopte entre 2021 et 2023 pour aligner toute la reglementation europeenne sur l'objectif -55 % de GES en 2030 : fin des moteurs thermiques en 2035, extension de l'ETS, revision de la directive ENR, normes batiments..."
+    },
+    {
+        q: "Pourquoi l'IRA est-il critique par l'Union europeenne ?",
+        options: ["Parce qu'il n'inclut pas assez de mesures climatiques","Parce que ses clauses 'made in USA' excluent les vehicules electriques europeens des credits fiscaux, creant une concurrence deloyale","Parce qu'il ne finance pas assez l'hydrogene vert","Parce qu'il augmente les droits de douane sur les exportations europeennes"],
+        correct: 1,
+        explanation: "L'UE denonce que les clauses 'made in USA' de l'IRA excluent de facto les VE assembles en Europe des credits fiscaux de 7 500 dollars. Cela risque de detourner des investissements europeens vers les Etats-Unis — une distorsion de concurrence potentiellement contraire aux regles de l'OMC."
+    },
+    {
+        q: "Qu'est-ce que la Belt & Road Initiative (BRI) verte de la Chine ?",
+        options: ["Un programme de financement d'infrastructures vertes (solaire, barrages, rail) dans 100+ pays pour etendre l'influence geopolitique chinoise","Un accord commercial vert entre la Chine et les pays europeens","Un plan de reduction des emissions de CO2 de l'industrie lourde chinoise","Un fonds souverain chinois investissant dans les entreprises vertes mondiales"],
+        correct: 0,
+        explanation: "La BRI verte est une composante du programme 'Nouvelle Route de la Soie' : la Chine finance et construit des parcs solaires, barrages, chemins de fer dans 100+ pays. Objectif double : influence geopolitique et debouches pour les entreprises chinoises."
+    },
+    {
+        q: "Quel risque strategique majeur represente la dependance aux terres rares chinoises pour les industries vertes occidentales ?",
+        options: ["Un risque de prix eleves mais sans risque d'approvisionnement","Un risque de rupture d'approvisionnement si la Chine restreint ses exportations, rendant impossible la production de VE, eoliennes et electronique","Un risque uniquement pour l'industrie de la defense, pas pour la transition energetique","Un risque mineur car les terres rares peuvent etre remplacees par d'autres materiaux"],
+        correct: 1,
+        explanation: "La Chine controle 92 % du raffinage mondial des terres rares. En 2023, elle a deja restreint l'export de gallium et germanium en represailles aux sanctions US. Une restriction plus large paralyserait la production de VE, eoliennes, batteries et electronique de defense en Europe et aux USA."
+    }
+];
+
+let current=0, score=0, answered=false, startTime=Date.now(), timerInterval;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const e = Math.floor((Date.now() - startTime) / 1000);
+        const m = String(Math.floor(e / 60)).padStart(2, '0');
+        const s = String(e % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = '\u23F1 ' + m + ':' + s;
+    }, 1000);
+}
+
+function shuffleOptions(q) {
+    const idx = q.options.map((_, i) => i);
+    for (let i = idx.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [idx[i], idx[j]] = [idx[j], idx[i]];
+    }
+    return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
+
+function renderQ() {
+    const q = shuffleOptions(questions[current]);
+    questions[current]._s = q;
+    document.getElementById('current-q').textContent = current + 1;
+    document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score').textContent = score;
+    document.getElementById('progress').style.width = ((current + 1) / questions.length * 100) + '%';
+    const letters = ['A', 'B', 'C', 'D'];
+    document.getElementById('quiz-area').innerHTML =
+        '<div class="question-card">' +
+        '<div class="question-num">Question ' + (current + 1) + ' / ' + questions.length + '</div>' +
+        '<div class="question-text">' + q.q + '</div>' +
+        '<div class="options">' +
+        q.options.map((o, i) => '<button class="option" onclick="sel(' + i + ')" id="opt' + i + '">' + letters[i] + '. ' + o + '</button>').join('') +
+        '</div>' +
+        '<div class="explanation" id="explanation">' + q.explanation + '</div>' +
+        '</div>' +
+        '<div class="nav-buttons"><div></div><button class="btn btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant &rarr;</button></div>';
+    answered = false;
+}
+
+function sel(i) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current]._s;
+    document.querySelectorAll('.option').forEach(b => b.disabled = true);
+    if (i === q.correct) {
+        document.getElementById('opt' + i).classList.add('correct');
+        score++;
+    } else {
+        document.getElementById('opt' + i).classList.add('wrong');
+        document.getElementById('opt' + q.correct).classList.add('correct');
+    }
+    document.getElementById('explanation').style.display = 'block';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('score').textContent = score;
+}
+
+function nextQ() {
+    if (current < questions.length - 1) {
+        current++;
+        renderQ();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    clearInterval(timerInterval);
+    const e = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(e / 60);
+    const s = e % 60;
+    document.getElementById('quiz-area').innerHTML = '';
+    const rc = document.getElementById('result-card');
+    rc.style.display = 'block';
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('result-time').textContent = '\u23F1 Temps\u00a0: ' + m + 'min ' + s + 's';
+    const p = score / questions.length;
+    document.getElementById('result-msg').textContent =
+        p >= 0.9 ? 'Exceptionnel\u00a0! Tu maitrises parfaitement les politiques publiques climatiques.' :
+        p >= 0.7 ? 'Bien joue\u00a0! Encore un peu de revision et ce sera parfait.' :
+        p >= 0.5 ? 'Pas mal, mais relis la synthese pour consolider.' :
+        'Continue a reviser, relis la fiche et la synthese puis reessaie.';
+}
+
+function restartQuiz() {
+    current = 0;
+    score = 0;
+    answered = false;
+    startTime = Date.now();
+    document.getElementById('result-card').style.display = 'none';
+    startTimer();
+    renderQ();
+}
+
+startTimer();
+renderQ();
+</script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

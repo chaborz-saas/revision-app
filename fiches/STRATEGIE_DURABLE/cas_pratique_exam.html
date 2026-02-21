@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Cas Pratique — Stratégie Durable & Éthique : Sujet d'examen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            padding: 1.5rem;
+            color: #1a1a2e;
+        }
+        .fiche-header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere {
+            font-size: 0.8rem; opacity: 0.7;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem;
+        }
+        .fiche-header .subtitle {
+            font-size: 0.85rem; opacity: 0.85; margin-top: 0.4rem;
+        }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hl-critical {
+            background: linear-gradient(180deg, transparent 50%, #fff3cd 50%);
+            font-weight: 700; padding: 0 2px;
+        }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block {
+            margin: 1rem 0; padding: 0.9rem 1.1rem;
+            border-radius: 10px; border-left: 4px solid;
+        }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-exam { background: #f0f0ff; border-color: #6c3483; }
+        .block-label {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 0.3rem; opacity: 0.7;
+        }
+        .question-card {
+            background: #1a1a2e;
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 5px solid #27ae60;
+        }
+        .question-card .q-num {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: #27ae60; margin-bottom: 0.5rem;
+        }
+        .question-card .q-text {
+            font-size: 1rem; font-weight: 600;
+            color: white; margin-bottom: 1rem; line-height: 1.5;
+        }
+        .answer-section {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+        }
+        .answer-section ul {
+            list-style: none; padding: 0;
+        }
+        .answer-section ul li {
+            padding: 0.3rem 0 0.3rem 1.3rem;
+            position: relative; font-size: 0.9rem; line-height: 1.55;
+            color: #1a1a2e;
+        }
+        .answer-section ul li::before {
+            content: "→"; position: absolute; left: 0;
+            color: #27ae60; font-weight: bold;
+        }
+        .answer-section ul li.sub {
+            padding-left: 2.3rem; color: #444;
+        }
+        .answer-section ul li.sub::before {
+            content: "·"; left: 1rem; color: #999;
+        }
+        .answer-section .author-tag {
+            display: inline-block;
+            background: #eef6fc;
+            color: #1a5276;
+            border-radius: 4px;
+            padding: 0 5px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        .section-title {
+            font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+            margin: 1.8rem 0 0.7rem;
+            padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8;
+        }
+        .exam-info {
+            background: #fff3cd;
+            border-left: 4px solid #f59e0b;
+            border-radius: 10px;
+            padding: 0.9rem 1.1rem;
+            margin: 1rem 0;
+        }
+        .exam-info .block-label { color: #b7791f; }
+        .exam-info p { font-size: 0.9rem; color: #92400e; line-height: 1.5; }
+        .sujet-card {
+            background: #f8f0ff;
+            border: 1px dashed #9b59b6;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin: 1.2rem 0;
+        }
+        .sujet-card .s-num {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: #6c3483; margin-bottom: 0.5rem;
+        }
+        .sujet-card .s-text {
+            font-size: 0.92rem; color: #1a1a2e; line-height: 1.55;
+            margin-bottom: 0.8rem;
+        }
+        .sujet-card ul {
+            list-style: none; padding: 0;
+        }
+        .sujet-card ul li {
+            padding: 0.28rem 0 0.28rem 1.3rem;
+            position: relative; font-size: 0.88rem; line-height: 1.55;
+            color: #1a1a2e;
+        }
+        .sujet-card ul li::before {
+            content: "→"; position: absolute; left: 0;
+            color: #9b59b6; font-weight: bold;
+        }
+        .source-footer {
+            text-align: center; padding: 1rem;
+            color: #95a5a6; font-size: 0.8rem;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .fiche-body { box-shadow: none; }
+            .fiche-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .question-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+<div style="max-width:900px;margin:0 auto;"><a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;font-family:Inter,sans-serif;">← Retour à l'accueil</a></div>
+
+<div class="fiche-header" style="max-width:900px;margin:0 auto;">
+    <div class="matiere">Stratégie Durable & Éthique — M1 ✦ Nouvelle version</div>
+    <h1>Fiche Cas Pratique — Sujet d'examen complet</h1>
+    <div class="subtitle">7 questions × 4 pts + 2 sujets à traiter (12 pts) — Répondre à 2 questions sur 7 + 1 sujet sur 2</div>
+</div>
+
+<div class="fiche-body" style="max-width:900px;margin:0 auto;">
+
+    <div class="exam-info">
+        <div class="block-label">⚠ Format de l'épreuve</div>
+        <p><strong>Partie 1 :</strong> Répondre à <strong>2 questions parmi 7</strong> — chaque question vaut <strong>4 points</strong> (total 8 pts)<br>
+        <strong>Partie 2 :</strong> Traiter <strong>1 sujet parmi 2</strong> — vaut <strong>12 points</strong><br>
+        Justifier avec exemples précis sourcés. Mettre entre guillemets les citations en indiquant la source.</p>
+    </div>
+
+    <div class="section-title">PARTIE 1 — Les 7 questions (4 pts chacune)</div>
+
+    <!-- QUESTION 1 -->
+    <div class="question-card">
+        <div class="q-num">Question 1 / 7</div>
+        <div class="q-text">Quelles sont les limites potentielles d'une stratégie d'affaire durable et éthique ? Quelles sont les avantages qu'une entreprise peut tirer d'une telle stratégie ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>LIMITES / RISQUES</strong></li>
+                <li class="sub"><span class="hl-critical">Coûts de transition élevés</span> à court terme (investissements ESG, reporting CSRD, rénovation industrielle)</li>
+                <li class="sub">Risque de <span class="hl-critical">greenwashing</span> : décalage entre communication et réalité = perte de confiance + litiges</li>
+                <li class="sub"><span class="hl-critical">Compétitivité asymétrique</span> : concurrents hors UE non soumis aux mêmes contraintes (ex : Made in China 2025 vs Green Deal)</li>
+                <li class="sub">Difficultés de mesure et standardisation des indicateurs ESG / double matérialité</li>
+                <li class="sub">Risque de <span class="hl-critical">rebound effect</span> (paradoxe de Jevons) : efficacité accrue → consommation globale qui repart à la hausse</li>
+                <li class="sub">Résistance interne au changement (salariés, actionnaires court-termistes)</li>
+                <li class="sub">Limites du marché volontaire carbone : prix carbone insuffisant pour déclencher la transition</li>
+                <li><strong>AVANTAGES / OPPORTUNITÉS</strong></li>
+                <li class="sub">Accès au <span class="hl-critical">green finance</span> (EU Taxonomy, obligations vertes, fonds ESG) → réduction coût du capital</li>
+                <li class="sub">Anticipation réglementaire (CSRD, CBAM, taxonomie) = moindre exposition aux sanctions futures</li>
+                <li class="sub"><span class="hl-critical">Attractivité talents</span> : employés et consommateurs privilégient les entreprises engagées</li>
+                <li class="sub">Réduction des risques physiques et de transition <span class="author-tag">Mark Carney</span> : risques physiques, risques de transition, risques de responsabilité</li>
+                <li class="sub">Innovation et nouveaux marchés (économie circulaire, hydrogène vert, bioéconomie)</li>
+                <li class="sub">Légitimité renforcée auprès des parties prenantes → meilleure licence to operate</li>
+                <li class="sub">Alignement avec les ODD (ONU) → différenciation concurrentielle internationale</li>
+                <li><strong>CONCEPT CLÉ à mentionner :</strong> <span class="hl-important">Triple Bottom Line</span> <span class="author-tag">John Elkington</span> — People, Planet, Profit</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QUESTION 2 -->
+    <div class="question-card">
+        <div class="q-num">Question 2 / 7</div>
+        <div class="q-text">Il existe un cadre physique contraint, pouvez-vous expliquer les conséquences pour les stratégies d'affaire des organisations ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>LE CADRE PHYSIQUE CONTRAINT = LIMITES PLANÉTAIRES</strong> <span class="author-tag">Johan Rockström</span></li>
+                <li class="sub">9 limites planétaires définissant un <span class="hl-critical">"espace de sécurité"</span> pour l'humanité (safe operating space)</li>
+                <li class="sub"><span class="hl-critical">6/9 limites déjà franchies</span> (2023) : climat, biodiversité, cycles azote/phosphore, eau douce, utilisation terres, nouvelles entités</li>
+                <li class="sub">Concept d'<span class="hl-critical">Anthropocène</span> <span class="author-tag">Paul Crutzen</span> : l'activité humaine est devenue une force géologique</li>
+                <li><strong>CONSÉQUENCES STRATÉGIQUES POUR LES ENTREPRISES</strong></li>
+                <li class="sub"><span class="hl-critical">Contrainte physique sur les ressources</span> → fin de l'hypothèse de ressources illimitées (pétrole, métaux critiques, eau)</li>
+                <li class="sub">Risque de <span class="hl-critical">tipping points</span> (points de bascule) : irréversibilité = impossibilité d'adaptation tardive</li>
+                <li class="sub"><span class="hl-critical">Double contrainte carbone</span> <span class="author-tag">Gaël Giraud</span> : raréfaction fossiles + accumulation CO2 → modèles fondés sur énergie fossile non viables</li>
+                <li class="sub">Risque d'<span class="hl-critical">actifs échoués</span> (stranded assets) : réserves fossiles, équipements carbonés perdent leur valeur</li>
+                <li class="sub"><span class="hl-critical">Doughnut Economics</span> <span class="author-tag">Kate Raworth</span> : objectif = rester entre le plancher social et le plafond écologique</li>
+                <li class="sub">Obligation de repenser les chaînes de valeur : approvisionnement, production, logistique dans le respect des limites</li>
+                <li class="sub">Reporting CSRD = obligation légale de mesurer et déclarer les impacts sur les limites planétaires</li>
+                <li><strong>EXEMPLE :</strong> Amsterdam a adopté le modèle Doughnut pour piloter son développement urbain</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QUESTION 3 -->
+    <div class="question-card">
+        <div class="q-num">Question 3 / 7</div>
+        <div class="q-text">L'Agence internationale de l'énergie publie un rapport chaque année, quelles recommandations donneriez-vous à un COMEX sur le rapport de l'année 2024 ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>RAPPORT AIE 2024 — MESSAGES CLÉS (World Energy Outlook 2024)</strong></li>
+                <li class="sub">Le pic de la demande fossile mondiale est prévu <span class="hl-critical">avant 2030</span> (charbon déjà en pic, pétrole/gaz bientôt)</li>
+                <li class="sub">Investissements dans les <span class="hl-critical">énergies propres dépassent les fossiles</span> pour la première fois (clean energy > 2 000 Mds$/an)</li>
+                <li class="sub">La trajectoire actuelle mène à <span class="hl-critical">+2,4°C</span> — insuffisant pour les objectifs Paris</li>
+                <li class="sub">Croissance explosive du solaire photovoltaïque et des VE en Chine et dans les pays émergents</li>
+                <li class="sub">Enjeux critiques : stockage énergie, hydrogène vert, réseaux intelligents (smart grids)</li>
+                <li><strong>RECOMMANDATIONS AU COMEX</strong></li>
+                <li class="sub"><span class="hl-critical">Cartographier l'exposition énergétique fossile</span> de l'entreprise (energy exposure) → identifier les actifs à risque de stranding</li>
+                <li class="sub">Accélérer l'<span class="hl-critical">efficacité énergétique</span> opérationnelle avant les prochaines contraintes réglementaires (CBAM, ETS)</li>
+                <li class="sub">Intégrer un <span class="hl-critical">prix carbone interne</span> dans les décisions d'investissement (recommandé par l'AIE)</li>
+                <li class="sub">Sécuriser l'approvisionnement en <span class="hl-critical">métaux critiques</span> (lithium, cobalt, terres rares) via contrats long-terme ou intégration verticale</li>
+                <li class="sub">Anticiper le <span class="hl-critical">risque de Minsky climatique</span> <span class="author-tag">Hyman Minsky / Mark Carney</span> : repricing brutal des actifs carbonés = risque financier systémique</li>
+                <li class="sub">Saisir les opportunités de <span class="hl-critical">décarbonation hard-to-abate</span> (hydrogène vert, électrification industrie lourde)</li>
+                <li><strong>CADRE D'ANALYSE :</strong> Risques physiques + transition + responsabilité <span class="author-tag">Mark Carney</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QUESTION 4 -->
+    <div class="question-card">
+        <div class="q-num">Question 4 / 7</div>
+        <div class="q-text">Les économistes ont depuis longtemps proposé des définitions et des explications à la croissance du PIB. Quels sont les liens existant entre la définition de la croissance économique et une stratégie d'affaire durable ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>DÉFINITIONS CLASSIQUES DE LA CROISSANCE</strong></li>
+                <li class="sub">PIB = mesure de la production → associe progrès à augmentation des flux de production et de consommation</li>
+                <li class="sub"><span class="hl-critical">Courbe de Kuznets environnementale</span> <span class="author-tag">Simon Kuznets</span> : pollution augmente puis diminue avec la croissance → remise en cause car CO2 continue de croître</li>
+                <li class="sub">Hypothèse de découplage (croissance sans émissions) : <span class="hl-critical">découplage absolu non démontré à l'échelle mondiale</span></li>
+                <li><strong>TENSIONS ENTRE CROISSANCE CLASSIQUE ET DURABILITÉ</strong></li>
+                <li class="sub"><span class="hl-critical">Paradoxe de Jevons / effet rebond</span> <span class="author-tag">William Stanley Jevons</span> : gains d'efficacité → hausse consommation globale → émissions ne baissent pas</li>
+                <li class="sub">Croissance PIB fondée sur consommation de ressources finies = incompatible avec limites planétaires</li>
+                <li class="sub"><span class="hl-critical">Prosperity without Growth</span> <span class="author-tag">Tim Jackson</span> : le bien-être ne nécessite pas une croissance matérielle infinie</li>
+                <li><strong>VERS UNE REDÉFINITION DE LA PERFORMANCE</strong></li>
+                <li class="sub"><span class="hl-critical">Triple Bottom Line</span> <span class="author-tag">John Elkington</span> : People, Planet, Profit → intégrer dimensions sociales et environnementales</li>
+                <li class="sub"><span class="hl-critical">Doughnut Economics</span> <span class="author-tag">Kate Raworth</span> : croissance dans les limites planétaires et au-dessus du plancher social</li>
+                <li class="sub">Indicateurs alternatifs : IDH, bien-être subjectif, empreinte écologique (au-delà du seul PIB)</li>
+                <li class="sub">Stratégie durable = découpler création de valeur de la consommation de ressources → économie circulaire, servicisation</li>
+                <li><strong>LIEN STRATÉGIQUE :</strong> une entreprise durable redéfinit sa création de valeur au-delà du profit pour intégrer la soutenabilité comme avantage compétitif durable</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QUESTION 5 -->
+    <div class="question-card">
+        <div class="q-num">Question 5 / 7</div>
+        <div class="q-text">Quelles sont les grandes politiques publiques actuelles dans ce contexte de stratégies d'affaires durables et éthiques ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>🇪🇺 UNION EUROPÉENNE — Green Deal & réglementation</strong></li>
+                <li class="sub"><span class="hl-critical">European Green Deal</span> (2019) : neutralité carbone 2050, -55 % émissions d'ici 2030 (Fit for 55)</li>
+                <li class="sub"><span class="hl-critical">CSRD</span> (Corporate Sustainability Reporting Directive) : reporting obligatoire double matérialité pour milliers d'entreprises</li>
+                <li class="sub"><span class="hl-critical">Taxonomie verte UE</span> : classification des activités économiques durables → guide l'allocation de capitaux</li>
+                <li class="sub"><span class="hl-critical">CBAM</span> (Mécanisme d'ajustement carbone aux frontières) : taxe carbone à l'importation → protège compétitivité industrielle UE</li>
+                <li class="sub"><span class="hl-critical">ETS</span> (Système d'échange de quotas) : prix carbone marché → incitation décarbonation</li>
+                <li><strong>🇺🇸 ÉTATS-UNIS — Inflation Reduction Act (IRA 2022)</strong></li>
+                <li class="sub">370 Mds$ de subventions et crédits fiscaux pour la transition énergétique américaine</li>
+                <li class="sub">Objectif : relocaliser la production verte aux USA → risque de détournement d'investissements depuis l'Europe</li>
+                <li class="sub">Effet de compétition réglementaire (competition for green investment)</li>
+                <li><strong>🇨🇳 CHINE — Made in China 2025 & domination verte</strong></li>
+                <li class="sub">Stratégie industrielle massive : dominer les technologies vertes mondiales (VE, solaire, batteries)</li>
+                <li class="sub">BYD, CATL = leadership mondial → défi pour industries européennes</li>
+                <li class="sub">Dépendances critiques : terres rares, batteries → souveraineté industrielle en question</li>
+                <li><strong>TENSIONS GÉOPOLITIQUES → CONSÉQUENCES STRATÉGIQUES</strong></li>
+                <li class="sub">Risque de fragmentation (decoupling UE/USA vs Chine) → revoir chaînes d'approvisionnement</li>
+                <li class="sub">Opportunités : subventions IRA, fonds européens (Just Transition Fund, InvestEU)</li>
+                <li class="sub">Obligation d'intégrer la <span class="hl-critical">souveraineté technologique</span> dans la stratégie d'entreprise</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QUESTION 6 -->
+    <div class="question-card" style="border-left-color: #e74c3c;">
+        <div class="q-num" style="color: #e74c3c;">Question 6 / 7 — ⭐ Tombée en exam (surlignée)</div>
+        <div class="q-text">Qu'est-ce que la double contrainte carbone ? Quelles conséquences sur le monde économique ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>DÉFINITION — Double contrainte carbone</strong> <span class="author-tag">Gaël Giraud / Jean-Marc Jancovici</span></li>
+                <li class="sub"><span class="hl-critical">Contrainte 1 — Épuisement des ressources fossiles</span> : le pétrole, charbon, gaz sont des ressources finies → coûts extraction croissants → pic de production</li>
+                <li class="sub"><span class="hl-critical">Contrainte 2 — Accumulation des émissions de CO2</span> : brûler les réserves restantes = franchir massivement les limites climatiques → effondrement systèmes naturels</li>
+                <li class="sub">Les deux contraintes s'exercent <span class="hl-critical">simultanément</span> : on ne peut ni continuer à brûler les fossiles (contrainte climatique) ni arrêter brutalement (contrainte de dépendance économique)</li>
+                <li><strong>CONSÉQUENCES ÉCONOMIQUES</strong></li>
+                <li class="sub"><span class="hl-critical">Stranded assets</span> : réserves fossiles non exploitables → bilans des majors pétrolières à réévaluer massivement</li>
+                <li class="sub">Risque de <span class="hl-critical">Climate Minsky Moment</span> <span class="author-tag">inspiration Hyman Minsky</span> : repricing brutal et soudain de tous les actifs carbonés → crise financière systémique</li>
+                <li class="sub">Remise en cause du modèle de croissance fossilo-dépendant : énergie bon marché et abondante = hypothèse erronée</li>
+                <li class="sub"><span class="hl-critical">Volatilité des prix énergétiques</span> → incertitude pour les investissements industriels longs</li>
+                <li class="sub">Accélération de la <span class="hl-critical">transition énergétique contrainte</span> : pas par choix uniquement, mais par nécessité physique</li>
+                <li class="sub">Désinvestissement obligatoire du secteur fossile (divestment) → réallocation vers renouvelables, stockage, efficacité</li>
+                <li><strong>POUR L'ENTREPRISE :</strong></li>
+                <li class="sub">Cartographier son <span class="hl-critical">exposition énergétique</span> (energy exposure) aux fossiles</li>
+                <li class="sub">Planifier la décarbonation de la chaîne de valeur avant d'y être contraint</li>
+                <li class="sub">Intégrer la double contrainte dans les scénarios stratégiques à 5-10 ans</li>
+                <li><strong>CHIFFRE CLÉ :</strong> Trajectoire actuelle = +2,4 à +3°C. Budget carbone restant compatible avec +1,5°C = limité à ~500 GtCO2 (GIEC)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QUESTION 7 -->
+    <div class="question-card">
+        <div class="q-num">Question 7 / 7</div>
+        <div class="q-text">En quoi le concept d'économie circulaire modifie-t-il les stratégies d'affaire des entreprises ?</div>
+        <div class="answer-section">
+            <ul>
+                <li><strong>DÉFINITION — Économie circulaire</strong></li>
+                <li class="sub">Modèle économique visant à <span class="hl-critical">éliminer les déchets</span> et à maintenir les matériaux et produits en circulation le plus longtemps possible</li>
+                <li class="sub">Oppose le modèle linéaire <span class="hl-critical">« extraire → fabriquer → jeter »</span> (take-make-dispose)</li>
+                <li class="sub">3 principes (Ellen MacArthur Foundation) : éliminer les déchets, maintenir les produits/matériaux en usage, régénérer les systèmes naturels</li>
+                <li><strong>MODIFICATIONS DES STRATÉGIES D'AFFAIRE</strong></li>
+                <li class="sub"><span class="hl-critical">Changement de modèle économique</span> : de la vente de produits → vente d'usage/service (Product as a Service, leasing, pay-per-use)</li>
+                <li class="sub"><span class="hl-critical">Éco-conception</span> obligatoire : penser le produit pour la réparabilité, démontabilité, recyclabilité dès la conception</li>
+                <li class="sub">Intégration de la <span class="hl-critical">chaîne de valeur inversée</span> (reverse logistics) : collecte, reconditionnement, recyclage des produits en fin de vie</li>
+                <li class="sub">Réduction de la <span class="hl-critical">dépendance aux matières premières vierges</span> → résilience face aux tensions sur métaux critiques</li>
+                <li class="sub">Nouvelles sources de valeur : vente de matières secondaires recyclées, services de maintenance, remanufacturing</li>
+                <li class="sub">Exigences réglementaires : <span class="hl-critical">règlement Écoconception UE</span>, indice de réparabilité, obligations de reprise → circularité devient compliance</li>
+                <li><strong>EXEMPLES D'ENTREPRISES</strong></li>
+                <li class="sub">IKEA : développement lignes meubles circulaires (location, reprise, réparation)</li>
+                <li class="sub">Renault : usine de Flins (Re-Factory) entièrement dédiée à l'économie circulaire automobile</li>
+                <li class="sub">Michelin : vente au km parcouru (not au pneu) → modèle Product as a Service</li>
+                <li><strong>LIEN avec la double contrainte carbone :</strong> circularité = réponse partielle à la raréfaction des ressources physiques</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">PARTIE 2 — Sujets longs (12 pts) — Traiter 1 sujet sur 2</div>
+
+    <!-- SUJET 1 -->
+    <div class="sujet-card">
+        <div class="s-num">Sujet 1 — Libre (sujet de votre choix traité en cours)</div>
+        <div class="s-text">Présenter un sujet du cours et expliquer en quoi il permet de mieux appréhender les grandes tendances de la stratégie durable et éthique. Appuyer sur les sources du cours, faire le lien avec d'autres sujets, mettre les citations entre guillemets avec source.</div>
+        <ul>
+            <li><strong>STRUCTURE RECOMMANDÉE :</strong></li>
+            <li>Introduction : annoncer le sujet + pourquoi il est central pour la stratégie durable</li>
+            <li>Développement : 3 points clés, chaque point sourcé et illustré d'un exemple actuel</li>
+            <li>Liens avec les autres concepts du cours (au moins 2 liens)</li>
+            <li>Conclusion : enjeux stratégiques pour les entreprises aujourd'hui</li>
+            <li><strong>SUJETS RECOMMANDÉS (les plus porteurs) :</strong></li>
+            <li class="sub">Double contrainte carbone → liens avec stranded assets, transition énergétique, politiques publiques</li>
+            <li class="sub">Limites planétaires → liens avec doughnut, stratégie, CSRD</li>
+            <li class="sub">Green Deal + IRA → liens avec géoéconomie, souveraineté, décarbonation industrielle</li>
+            <li class="sub">Économie circulaire → liens avec modèles d'affaire, circularité, écoconception</li>
+            <li><strong>CITATIONS CLÉS À UTILISER :</strong></li>
+            <li class="sub">« Les entreprises qui ignorent les limites planétaires s'exposent à des risques stratégiques croissants » (Johan Rockström, Stockholm Resilience Centre)</li>
+            <li class="sub">« La prospérité ne nécessite pas une croissance matérielle infinie » (Tim Jackson, Prosperity without Growth)</li>
+            <li class="sub">« Le changement climatique représente le plus grand échec de marché que le monde ait jamais connu » (Nicholas Stern, Rapport Stern 2006)</li>
+        </ul>
+    </div>
+
+    <!-- SUJET 2 -->
+    <div class="sujet-card">
+        <div class="s-num">Sujet 2 — Note stratégique pour le COMEX (conseil de direction)</div>
+        <div class="s-text">Vous êtes responsable de l'innovation et de la stratégie. Le COMEX vous demande une note sur les enjeux actuels du modèle d'affaire et les politiques publiques (Green Deal, planification écologique...) avec vos préconisations pour un impact positif. Qualité du raisonnement + exemples sourcés.</div>
+        <ul>
+            <li><strong>STRUCTURE DE LA NOTE :</strong></li>
+            <li>En-tête : Note à l'attention du COMEX — Objet : Enjeux stratégiques durables et préconisations</li>
+            <li><strong>1. Diagnostic — Le contexte contraint</strong></li>
+            <li class="sub">6/9 limites planétaires franchies → ressources finies, urgence climatique réelle</li>
+            <li class="sub">Double contrainte carbone → fin de la croissance fossilo-dépendante</li>
+            <li class="sub">Trajectoire : +2,4°C actuellement → risques physiques (inondations, sécheresses) + risques réglementaires</li>
+            <li><strong>2. Cadre réglementaire — Contraintes et opportunités</strong></li>
+            <li class="sub">Green Deal EU : -55 % d'ici 2030, neutralité 2050 → contrainte juridique incontournable</li>
+            <li class="sub">CSRD obligatoire → reporting double matérialité dès 2024-2025 selon taille</li>
+            <li class="sub">CBAM → protège notre compétitivité vs concurrents asiatiques non-taxés carbone</li>
+            <li class="sub">IRA américain → risque de délocalisations d'investissements verts vers les USA</li>
+            <li class="sub">Made in China 2025 → pression sur VE, batteries, solaire → dépendances à gérer</li>
+            <li><strong>3. Préconisations stratégiques</strong></li>
+            <li class="sub">Court terme : cartographier l'empreinte carbone (scopes 1, 2, 3) et l'energy exposure</li>
+            <li class="sub">Court terme : préparer la conformité CSRD (double matérialité, KPIs ESG)</li>
+            <li class="sub">Moyen terme : intégrer un prix carbone interne dans les décisions d'investissement</li>
+            <li class="sub">Moyen terme : sécuriser les approvisionnements en métaux critiques (diversification, recyclage)</li>
+            <li class="sub">Long terme : réorienter le modèle d'affaire vers l'économie circulaire et la servicisation</li>
+            <li class="sub">Long terme : aligner la stratégie sur les ODD et le cadre Doughnut Economics</li>
+            <li><strong>4. Conclusion</strong></li>
+            <li class="sub">La durabilité n'est plus un choix éthique : c'est une impérative stratégique et financière</li>
+            <li class="sub">Les entreprises en avance sur la transition créeront les avantages compétitifs durables de demain</li>
+        </ul>
+    </div>
+
+    <div class="block block-astuce" style="margin-top:1.5rem;">
+        <div class="block-label">✓ Auteurs et concepts clés à connaître absolument</div>
+        <ul class="condensed-list" style="list-style:none;padding:0;">
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Johan Rockström</strong> → Limites planétaires (9 boundaries, 6 franchies)
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Paul Crutzen</strong> → Anthropocène
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Kate Raworth</strong> → Doughnut Economics (plancher social + plafond écologique)
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Tim Jackson</strong> → Prosperity without Growth (croissance infinie non nécessaire)
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>John Elkington</strong> → Triple Bottom Line (People, Planet, Profit)
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Gaël Giraud / Jancovici</strong> → Double contrainte carbone
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Mark Carney</strong> → 3 risques climatiques (physiques, transition, responsabilité)
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>William Stanley Jevons</strong> → Paradoxe de Jevons / effet rebond
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Simon Kuznets</strong> → Courbe de Kuznets environnementale (croissance + pollution)
+            </li>
+            <li style="padding:0.3rem 0 0.3rem 1.3rem;position:relative;font-size:0.88rem;">
+                <span style="position:absolute;left:0;color:#1abc9c;font-weight:bold;">→</span>
+                <strong>Nicholas Stern</strong> → "Le changement climatique est le plus grand échec de marché"
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="source-footer" style="max-width:900px;margin:0 auto;">
+    Sujet d'examen Stratégie Durable & Éthique — EM Normandie M1 — Fiche préparatoire cas pratique
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

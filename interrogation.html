@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mon Prof IA — Révisions M1</title>
+<title>Goat IA — Révisions M1</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -173,7 +173,7 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 
 <div class="header">
   <a href="fr/index.html">← Retour</a>
-  <h1>🎓 Mon Prof IA</h1>
+  <h1>🐐 Goat IA</h1>
   <span class="mode-badge">Groq</span>
 </div>
 
@@ -726,7 +726,7 @@ async function openTutoringSession() {
   ];
   // Message d'accueil immédiat (sans appel API)
   const subj = SUBJECTS[selectedSubject];
-  const welcomeMsg = `Bonjour ! Je suis ton prof IA pour **${subj.name}**.\n\nPose-moi toutes tes questions sur le cours — définitions, explications, exemples concrets, comparaisons entre concepts... Je suis là pour t'aider à comprendre. ▶ De quoi as-tu besoin ?`;
+  const welcomeMsg = `Bonjour ! Je suis **Goat IA**, ton assistant pour **${subj.name}**.\n\nPose-moi toutes tes questions sur le cours — définitions, explications, exemples concrets, comparaisons entre concepts... Je suis là pour t'aider à comprendre. ▶ De quoi as-tu besoin ?`;
   addMessage('ai', welcomeMsg);
   conversationHistory.push({ role: 'assistant', content: welcomeMsg });
 }
@@ -817,7 +817,7 @@ function addMessage(role, text) {
 
   const avatar = document.createElement('div');
   avatar.className = 'msg-avatar';
-  avatar.textContent = role === 'ai' ? '🎓' : '👤';
+  avatar.textContent = role === 'ai' ? '🐐' : '👤';
 
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble';

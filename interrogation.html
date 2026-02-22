@@ -1104,8 +1104,13 @@ async function sendMessage() {
 
   conversationHistory.push({ role: 'user', content: text });
 
+  // Keep only system prompt + last 8 messages to save tokens
+  const systemMsg = conversationHistory[0];
+  const recent = conversationHistory.slice(-8);
+  const trimmed = (systemMsg?.role === 'system') ? [systemMsg, ...recent.filter(m => m.role !== 'system')] : conversationHistory;
+
   showThinking();
-  const response = await callGroq(conversationHistory);
+  const response = await callGroq(trimmed);
   hideThinking();
 
   if (response) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,26 +172,26 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 <body>
 
 <div class="header">
-  <a href="fr/index.html">← Retour</a>
+  <a href="fr/index.html" id="backLink">← Retour</a>
   <h1>🐐 Goat IA</h1>
   <span class="mode-badge">Groq</span>
 </div>
 
 <!-- ===== ÉCRAN MODE ===== -->
 <div id="mode-screen">
-  <h2>Que veux-tu faire ?</h2>
-  <p>Choisis ton mode — le prof IA s'adapte à toi.</p>
+  <h2 id="modeTitle">Que veux-tu faire ?</h2>
+  <p id="modeSubtitle">Choisis ton mode — le prof IA s'adapte à toi.</p>
 
   <div class="mode-grid">
     <div class="mode-card interro" onclick="selectMode('interro')">
       <div class="m-icon">🎤</div>
-      <div class="m-name">Mode Interrogation</div>
-      <div class="m-desc">Le prof te pose des questions, évalue tes réponses et corrige. Parfait pour tester tes connaissances avant un exam.</div>
+      <div class="m-name" id="interroCardName">Mode Interrogation</div>
+      <div class="m-desc" id="interroCardDesc">Le prof te pose des questions, évalue tes réponses et corrige. Parfait pour tester tes connaissances avant un exam.</div>
     </div>
     <div class="mode-card question" onclick="selectMode('question')">
       <div class="m-icon">💬</div>
-      <div class="m-name">Mode Questions</div>
-      <div class="m-desc">Tu poses des questions sur le cours, le prof t'explique. Comme un tuteur à dispo 24h/24.</div>
+      <div class="m-name" id="questionCardName">Mode Questions</div>
+      <div class="m-desc" id="questionCardDesc">Tu poses des questions sur le cours, le prof t'explique. Comme un tuteur à dispo 24h/24.</div>
     </div>
   </div>
 </div>
@@ -203,55 +203,11 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
   <p id="setupDesc">—</p>
 
   <div class="subject-grid" id="subjectGrid">
-    <div class="subject-card" onclick="selectSubject(this, 'DROIT')" data-subject="DROIT">
-      <div class="s-emoji">⚖️</div>
-      <div class="s-name">Droit International</div>
-      <div class="s-desc">Contrats, CVIM, Incoterms</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'RH')" data-subject="RH">
-      <div class="s-emoji">📗</div>
-      <div class="s-name">Ressources Humaines</div>
-      <div class="s-desc">GRH, recrutement, rémunération</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'STRATEGIE_DURABLE')" data-subject="STRATEGIE_DURABLE">
-      <div class="s-emoji">🌱</div>
-      <div class="s-name">Stratégie Durable</div>
-      <div class="s-desc">Limites planétaires, double contrainte</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'CHANGE_MANAGEMENT')" data-subject="CHANGE_MANAGEMENT">
-      <div class="s-emoji">🔄</div>
-      <div class="s-name">Gestion du Changement</div>
-      <div class="s-desc">Lewin, Kotter, RSE, paradoxes</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'MARKETING_RELATIONNEL')" data-subject="MARKETING_RELATIONNEL">
-      <div class="s-emoji">💼</div>
-      <div class="s-name">Marketing Relationnel</div>
-      <div class="s-desc">CLV, fidélisation, CRM</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'PILOTAGE')" data-subject="PILOTAGE">
-      <div class="s-emoji">📈</div>
-      <div class="s-name">Pilotage de la Performance</div>
-      <div class="s-desc">Coûts, seuil de rentabilité, écarts, BSC</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'ANALYSE_QUALITATIVE')" data-subject="ANALYSE_QUALITATIVE">
-      <div class="s-emoji">🔬</div>
-      <div class="s-name">Analyse Qualitative</div>
-      <div class="s-desc">Entretiens, codage, Grounded Theory</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'ANALYSE_QUANTI')" data-subject="ANALYSE_QUANTI">
-      <div class="s-emoji">📊</div>
-      <div class="s-name">Analyse Quantitative</div>
-      <div class="s-desc">Corrélation, régression, ANOVA</div>
-    </div>
-    <div class="subject-card" onclick="selectSubject(this, 'LEADERSHIP')" data-subject="LEADERSHIP">
-      <div class="s-emoji">🏆</div>
-      <div class="s-name">Leadership</div>
-      <div class="s-desc">Pouvoir, IE, conflits, communication</div>
-    </div>
+    <!-- populated dynamically by renderSubjects() -->
   </div>
 
   <button class="btn-start" id="btnStart" onclick="startSession()">Commencer →</button>
-  <button class="btn-back-mode" onclick="backToMode()">← Changer de mode</button>
+  <button class="btn-back-mode" id="btnBackMode" onclick="backToMode()">← Changer de mode</button>
 </div>
 
 <!-- ===== CHAT ===== -->
@@ -259,7 +215,7 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
   <div class="chat-info" id="chatInfo">
     <span class="subject-tag" id="subjectTag">—</span>
     <span class="instruction" id="chatInstruction">—</span>
-    <button class="btn-reset" onclick="resetSession()">Changer</button>
+    <button class="btn-reset" id="btnReset" onclick="resetSession()">Changer</button>
   </div>
   <div class="messages" id="messages"></div>
   <div class="input-area">
@@ -274,9 +230,35 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 </div>
 
 <script>
+// ===== LANGUAGE DETECTION =====
+const lang = new URLSearchParams(window.location.search).get('lang') || 'fr';
+
 const GROQ_API_KEY = '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';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL = 'llama-3.3-70b-versatile';
+
+// ===== SUBJECT KEYS =====
+const FR_SUBJECT_KEYS = ['DROIT','RH','STRATEGIE_DURABLE','CHANGE_MANAGEMENT','MARKETING_RELATIONNEL','PILOTAGE','ANALYSE_QUALITATIVE','ANALYSE_QUANTI','LEADERSHIP'];
+const EN_SUBJECT_KEYS = ['EN_RELATIONSHIP_MARKETING','EN_CHANGE_MANAGEMENT','EN_GEOECONOMICS','EN_HRM','EN_PERFORMANCE_MGMT','EN_SEBS'];
+
+// ===== SUBJECT DISPLAY INFO (emoji, label, short desc) =====
+const SUBJECT_CARDS = {
+  DROIT:                    { emoji:'⚖️',  name:'Droit International',       desc:'Contrats, CVIM, Incoterms' },
+  RH:                       { emoji:'📗',  name:'Ressources Humaines',        desc:'GRH, recrutement, rémunération' },
+  STRATEGIE_DURABLE:        { emoji:'🌱',  name:'Stratégie Durable',          desc:'Limites planétaires, double contrainte' },
+  CHANGE_MANAGEMENT:        { emoji:'🔄',  name:'Gestion du Changement',      desc:'Lewin, Kotter, RSE, paradoxes' },
+  MARKETING_RELATIONNEL:    { emoji:'💼',  name:'Marketing Relationnel',      desc:'CLV, fidélisation, CRM' },
+  PILOTAGE:                 { emoji:'📈',  name:'Pilotage de la Performance', desc:'Coûts, seuil de rentabilité, écarts, BSC' },
+  ANALYSE_QUALITATIVE:      { emoji:'🔬',  name:'Analyse Qualitative',        desc:'Entretiens, codage, Grounded Theory' },
+  ANALYSE_QUANTI:           { emoji:'📊',  name:'Analyse Quantitative',       desc:'Corrélation, régression, ANOVA' },
+  LEADERSHIP:               { emoji:'🏆',  name:'Leadership',                 desc:'Pouvoir, IE, conflits, communication' },
+  EN_RELATIONSHIP_MARKETING:{ emoji:'🤝',  name:'Relationship Marketing',     desc:'CLV, loyalty programs, SERVQUAL, CRM' },
+  EN_CHANGE_MANAGEMENT:     { emoji:'🔄',  name:'Change Management',          desc:'CSR, Carroll, Lewin, Kotter, greenwashing' },
+  EN_GEOECONOMICS:          { emoji:'🌍',  name:'Geoeconomics',               desc:'Geopolitics, MNCs, trade policy, CBAM' },
+  EN_HRM:                   { emoji:'👥',  name:'Human Resource Management',  desc:'Recruitment, compensation, DEI, wellbeing' },
+  EN_PERFORMANCE_MGMT:      { emoji:'📊',  name:'Performance Management',     desc:'CVP, costing, variance analysis, BSC' },
+  EN_SEBS:                  { emoji:'♻️',  name:'Sustainability, Energy & Business', desc:'Climate, circular economy, public policies' },
+};
 
 const SUBJECTS = {
   DROIT: {
@@ -595,6 +577,277 @@ CHAPITRE 3 — ANOVA (Analyse de la Variance)
 - ANOVA à 2 facteurs: étudier l'effet de deux variables indépendantes et leur interaction
 - Tests post-hoc (Tukey, Bonferroni): identifier quels groupes diffèrent après ANOVA significative
 - Conditions: normalité des résidus, homogénéité des variances (test de Levene)`
+  },
+
+  // ===== ENGLISH SUBJECTS =====
+
+  EN_RELATIONSHIP_MARKETING: {
+    name: '🤝 Relationship Marketing',
+    context: `Relationship Marketing course, M1 EM Normandie (English track).
+
+CHAPTER 1 — Fundamentals of Relationship Marketing
+- Transactional vs Relational marketing: short-term transactions vs long-term relationship focus
+- SERVQUAL (Parasuraman, Zeithaml & Berry): 5 dimensions — Reliability, Responsiveness, Assurance, Empathy, Tangibles
+- Gap Model: quality perceived = gap between customer expectations and actual service received
+- Service Blueprint: visual map — Frontstage (visible to customer) vs Backstage (internal processes)
+- Moments of Truth (Jan Carlzon): every customer contact point that shapes the experience
+- 4Ps vs Relationship approach: from product/price focus to customer/trust/value focus
+
+CHAPTER 2 — Complaint Management & Service Recovery
+- Service failure: gap between promised and delivered service
+- Service recovery paradox: effective recovery can produce higher satisfaction than no failure
+- Steps: Acknowledge → Apologize → Act → Follow-up
+- Justice dimensions: distributive (fair outcome), procedural (fair process), interactional (fair treatment)
+- Complaint handling: compensation, speed, empathy are key drivers of recovery satisfaction
+
+CHAPTER 3 — Customer Loyalty & Customer Lifetime Value
+- CLV (Customer Lifetime Value): total net profit from a customer over the entire relationship
+- CLV formula: (Margin/purchase × Purchases/year × Duration) − Acquisition & retention costs
+- Calculate on MARGIN, not revenue — classic exam trap
+- RFM model: Recency, Frequency, Monetary — behavioural segmentation tool
+- NPS (Net Promoter Score): % Promoters (9-10) − % Detractors (0-6)
+- Loyalty programs: tiered, points-based, cashback — risk: training customers to wait for discounts
+- 80/20 rule (Pareto): 20% of customers generate 80% of revenue
+- Sherden's 80/20/30 law: top 20% generate 80% of profit, bottom 30% destroy half of it
+
+CHAPTER 4 — AI & Relationship Marketing
+- CRM systems: data centralization, 360° customer view, journey tracking
+- Personalization at scale: AI-driven recommendations, predictive churn models
+- Omnichannel: seamless integration of all customer touchpoints (online + offline)
+- GDPR: data protection, consent management, right to erasure
+- Ethical use of data: transparency, opt-in, avoiding surveillance capitalism
+
+CHAPTER 5 — Dark Side of Relationship Marketing
+- Over-solicitation: customer fatigue, unsubscribe behavior, brand backlash
+- Lock-in effect: customers trapped, not genuinely loyal — forced loyalty ≠ real loyalty
+- Privacy concerns: intrusive data collection, personalization perceived as manipulation
+- Dependency risk: customers become over-reliant or resentful
+- Trust destruction: excessive relationship marketing can damage trust`
+  },
+
+  EN_CHANGE_MANAGEMENT: {
+    name: '🔄 Change Management',
+    context: `Change Management for Sustainability course, M1 EM Normandie (English track).
+
+CHAPTER 1 — Standard Economy & Environment
+- Planetary Boundaries (Rockström, 2009): 9 limits, 6 already exceeded as of 2023
+- Anthropocene (Crutzen): human activity as dominant geological force
+- Brundtland definition (1987): "Sustainable development meets present needs without compromising future generations"
+- Climate change: greenhouse gases, tipping points, Paris Agreement (1.5°C / 2°C targets)
+- Standard economic model: GDP growth focus vs environmental limits
+- Stranded assets: fossil fuel assets losing value as energy transition accelerates
+
+CHAPTER 2 — Introduction to Sustainable Management
+- CSR (Corporate Social Responsibility): voluntary integration of social & environmental concerns beyond legal obligations
+- Carroll's Pyramid (1991): Economic (base, required) → Legal (required) → Ethical (expected) → Philanthropic (desired, top)
+- Triple Bottom Line (Elkington): People, Planet, Profit — 3 pillars of sustainable business
+- Stakeholder theory (Freeman, 1984): obligations to ALL stakeholders, not just shareholders
+- Friedman (1970): shareholder primacy doctrine — the firm's sole responsibility is profit (challenged by sustainability)
+- SDGs: 17 Sustainable Development Goals (UN, 2015, Agenda 2030)
+- CSRD: European mandatory extra-financial reporting directive
+
+CHAPTER 3 — From Rhetoric to Strategy
+- Greenwashing: projecting a responsible image without substantive action — Legal ≠ Ethical
+- VRIO (Barney, 1991): Valuable, Rare, Inimitable, Organized — authentic CSR as durable competitive advantage
+- B Corp certification: rigorous social and environmental standards
+- Shared Value (Porter & Kramer): economic value creation + societal value creation simultaneously
+- Business Roundtable (2019): broader corporate purpose beyond shareholder returns
+- 4 CSR logics: Instrumental (ROI), Ethical (values), Institutional (legitimacy), Political (pressure)
+
+CHAPTER 4 — Organizational & Institutional Change
+- Lewin's 3-step model: Unfreeze (break habits) → Change (new practices) → Refreeze (institutionalize)
+- Kotter's 8-step model: Create urgency → Build coalition → Vision → Communicate → Remove obstacles → Short-term wins → Consolidate → Anchor in culture
+- Resistance to change: fear of unknown, loss of control, threatened interests, skill anxiety
+- Paradox theory (Smith & Lewis, 2011): embracing "both/and" instead of "either/or" — comfort zone / performance zone / survival zone
+- Change agent: leader as facilitator, not just decision-maker
+- Agile organization: sprints, iterations, feedback loops, pivoting`
+  },
+
+  EN_GEOECONOMICS: {
+    name: '🌍 Geoeconomics',
+    context: `Geoeconomics course, M1 EM Normandie (English track).
+
+CHAPTER 1 — Geopolitical Foundations
+- Geoeconomics: use of economic means (trade, investment, sanctions) to pursue geopolitical objectives
+- Geopolitics: influence of geography on political and economic power
+- Hard power (military, coercion) vs Soft power (attraction, culture — Nye) vs Smart power (combination)
+- Realism: states as rational self-interested actors; Liberalism: interdependence reduces conflict
+- Globalization: interconnection of markets, production, information — now under stress (fragmentation)
+- Multipolar world: US, China, EU, emerging powers — end of unipolar dominance
+
+CHAPTER 2 — Actors, Flows & Scales
+- Multinational corporations (MNCs): key non-state actors in global economy — 100+ countries, complex structures
+- Foreign Direct Investment (FDI): ownership/control (≠ portfolio investment, which has no control)
+- Global Value Chains (GVC): international fragmentation of production — Apple in China, TSMC in Taiwan
+- Trade flows: goods, services, capital, people, data — each with different geopolitical implications
+- BRICS, G7/G20, WTO, IMF, World Bank: geopolitical power blocs and institutions
+- Offshoring vs reshoring vs nearshoring: strategic location decisions under geopolitical pressure
+
+CHAPTER 3 — Company as Geoeconomic Actor
+- Corporate geopolitical risk: political instability, nationalization, sanctions, export controls
+- Supply chain resilience: diversification, dual sourcing, strategic stocks
+- Technology competition: US-China rivalry, CHIPS Act, export controls on semiconductors
+- Sovereign wealth funds: state-owned investment vehicles (Norway, Qatar, China) with strategic goals
+- Corporate lobbying and international standard-setting: firms shaping rules of the game
+- ESG and geopolitics: environmental standards as trade barriers or competitive tools
+
+CHAPTER 4 — Sustainability & Trade Policy
+- Carbon Border Adjustment Mechanism (CBAM): EU carbon tariff on imports to prevent carbon leakage
+- ESG regulations: CSRD, EU Taxonomy, mandatory human rights due diligence
+- Trade wars: US-China tariffs, protectionism, economic nationalism post-2016
+- Energy transition geopolitics: renewables reduce oil dependency but create new dependencies (rare earths)
+- Strategic minerals: lithium, cobalt, rare earths — new geopolitical battlegrounds
+- WTO and climate: tension between free trade rules and unilateral climate measures`
+  },
+
+  EN_HRM: {
+    name: '👥 Human Resource Management',
+    context: `Human Resource Management course (English track), M1 EM Normandie.
+
+CHAPTER 1 — Introduction to HRM & Recruitment
+- Strategic HRM: aligning people management with organizational strategy (vs administrative HR)
+- Ulrich model (4 roles): Strategic Partner, Administrative Expert, Employee Champion, Change Agent
+- HR functions: recruitment, training, compensation, career management, industrial relations
+- Recruitment process: job analysis → job description/person spec → sourcing → selection → onboarding
+- Selection methods: structured interviews (most valid), psychometric tests, assessment centers
+- Biases in recruitment: halo effect (one trait colours all), similarity bias, stereotyping
+- Employer branding: attracting talent through organizational reputation
+
+CHAPTER 2 — Compensation & Performance Evaluation
+- Total compensation (Total Rewards): fixed salary + variable pay + benefits + non-financial rewards
+- Equity theory (Adams): perception of fairness — internal equity (vs colleagues) and external equity (vs market)
+- Expectancy theory (Vroom): Effort → Performance → Outcome (E×I×V = Motivation)
+- Performance appraisal: SMART objectives, 360° feedback, forced ranking (controversial)
+- Motivation theories: Maslow (5-level hierarchy), Herzberg (hygiene factors vs true motivators), McGregor (Theory X vs Y)
+- Pay structures: broadbanding, merit pay, profit-sharing, stock options
+
+CHAPTER 3 — Training & Career Management
+- Training cycle: needs analysis → design → delivery → evaluation (Kirkpatrick: reaction/learning/behavior/results)
+- ROI of training: difficult to measure but critical for strategic justification
+- Career management: career paths, succession planning, talent pools, high-potential programs
+- Mentoring (senior → junior experience transfer) vs Coaching (developing specific skills/goals)
+- Competency frameworks: defining skills needed now and in the future
+- Knowledge management: communities of practice, organizational learning (Senge)
+
+CHAPTER 4 — Diversity, Psychosocial Risks & Work-Life Balance
+- DEI (Diversity, Equity, Inclusion): gender, ethnicity, age, disability, neurodiversity
+- Glass ceiling: invisible barriers to advancement for women and minorities
+- Psychosocial risks (PSR): occupational stress, burnout (exhaustion + depersonalization + low efficacy), moral harassment
+- Wellbeing at work: physical + psychological + social dimensions
+- Work-life balance: flexible working, remote work, right to disconnect
+- Legal frameworks: equal pay legislation, anti-discrimination law, whistleblowing protection`
+  },
+
+  EN_PERFORMANCE_MGMT: {
+    name: '📊 Performance Management',
+    context: `Performance Management (Management Accounting) course, M1 EM Normandie (English track).
+
+CHAPTER 1 — Introduction to Management Accounting
+- Management accounting vs financial accounting: internal decision-making vs external statutory reporting
+- Cost classification: fixed vs variable; direct vs indirect; product vs period costs
+- Cost behavior: relevant range, step-fixed costs, semi-variable costs (y = a + bx)
+- Cost objects: products, departments, customers, projects
+
+CHAPTER 2 — Decisions & Relevant Costs
+- Relevant costs: future, incremental costs that differ between alternatives
+- Irrelevant costs: sunk costs (past, irrecoverable — ignore in decisions), committed costs
+- Make-or-buy decisions: compare relevant costs of internal production vs outsourcing
+- Special orders: accept if contribution margin > 0 and spare capacity exists
+- Opportunity cost: value of the best alternative foregone (always include in relevant cost analysis)
+
+CHAPTER 3 — CVP Analysis (Cost-Volume-Profit)
+- Contribution margin (CM) = Revenue − Variable Costs
+- Contribution margin ratio (CMR) = CM / Revenue
+- Break-even point (BEP) in £/€ = Fixed Costs / CMR
+- Break-even point in units = Fixed Costs / CM per unit
+- Target profit: units = (Fixed Costs + Target Profit) / CM per unit
+- Margin of safety = Actual Sales − BEP Sales; as % = Margin of Safety / Actual Sales
+- Operating leverage: high fixed costs → small revenue change → large profit change (amplification)
+
+CHAPTER 4 — Full Costing & Absorption Costing
+- Absorption costing: all manufacturing costs (fixed + variable) allocated to products — required for financial reporting
+- OAR (Overhead Absorption Rate) = Budgeted Overhead / Budgeted Activity Level
+- Over-absorption: actual output > budget → actual profit higher
+- Under-absorption: actual output < budget → actual profit lower
+- Activity-Based Costing (ABC): assigns costs based on activities/cost drivers — more accurate for complex products
+- Marginal vs absorption costing: profit difference = fixed overhead in closing stock − opening stock
+
+CHAPTER 5 — Target Costing & Cost Management
+- Target cost = Target selling price − Required profit margin (market-in logic)
+- Value engineering: eliminating non-value-added features/processes to hit target cost
+- Kaizen costing: continuous incremental cost reduction targets (Japanese approach)
+- Life-cycle costing: tracking costs across all stages — R&D, production, distribution, disposal
+
+CHAPTER 6 — Budgeting
+- Master budget: sales budget → production budget → cost budgets → cash budget → projected financials
+- Fixed (static) budget vs Flexible budget: flexible adjusts for actual activity level — more meaningful for variance analysis
+- Zero-based budgeting (ZBB): justify ALL costs from zero each period (vs incremental budgeting)
+- Beyond Budgeting: rolling forecasts, relative targets, decentralization — response to rigidity of traditional budgets
+
+CHAPTER 7 — Variance Analysis
+- Sales price variance = (Actual price − Standard price) × Actual quantity sold
+- Sales volume variance = (Actual quantity − Budgeted quantity) × Standard margin
+- Material price variance = (Standard price − Actual price) × Actual quantity purchased
+- Material usage variance = (Standard quantity − Actual quantity) × Standard price
+- Labour rate variance = (Standard rate − Actual rate) × Actual hours
+- Labour efficiency variance = (Standard hours − Actual hours) × Standard rate
+- Fixed overhead variances: expenditure + volume (capacity + efficiency)
+- Interpret: Favorable (F) = good for profit; Adverse (A) = bad for profit
+
+CHAPTER 8 — Strategic Management Accounting
+- Balanced Scorecard (BSC — Kaplan & Norton, 1992): 4 perspectives — Financial, Customer, Internal Process, Learning & Growth
+- KPIs: leading indicators (predictive/forward-looking) vs lagging indicators (results/backward-looking)
+- Benchmarking: internal (best internal practice), competitive (vs rivals), functional (best in class across industries)
+- Value chain analysis (Porter): primary activities (inbound logistics, operations, outbound, marketing, service) + support activities
+- Transfer pricing: pricing of transactions between divisions — market-based, cost-based, negotiated`
+  },
+
+  EN_SEBS: {
+    name: '♻️ Sustainability, Energy, Business & Society',
+    context: `Sustainability, Energy, Business & Society (SEBS) course, M1 EM Normandie (English track).
+
+CHAPTER 1 — Climate & Energy Fundamentals
+- Greenhouse effect: CO2, CH4, N2O, F-gases — trapping solar radiation → global warming
+- Paris Agreement (2015): limit warming to 1.5°C / well below 2°C vs pre-industrial — 196 signatories
+- Carbon budget: remaining emissions allowable to stay below temperature targets (rapidly depleting)
+- IPCC: Intergovernmental Panel on Climate Change — scientific consensus body, 6th assessment report (AR6)
+- Energy systems: fossil fuels (80% of global energy) vs renewables (solar, wind, hydro, geothermal)
+- Energy transition: decarbonizing electricity, transport, heat, industry
+- Planetary Boundaries (Rockström, 2009): 9 limits, 6 already exceeded
+
+CHAPTER 2 — Resources, GHG & Pollution
+- Linear model: extract → produce → consume → dispose (take-make-waste)
+- Circular economy: reduce, reuse, recycle, recover, regenerate — closing material loops
+- GHG accounting: Scope 1 (direct emissions), Scope 2 (purchased energy), Scope 3 (value chain — largest share)
+- Carbon footprint vs water footprint vs biodiversity footprint
+- Pollution types: air (PM2.5, NOx, SOx), water (eutrophication, plastics), soil (heavy metals, pesticides)
+- Resource depletion: peak oil debate, rare earth materials, freshwater stress
+- Biodiversity loss: 6th mass extinction, ecosystem services at risk
+
+CHAPTER 3 — Innovation Leveraging
+- Eco-innovation: new products/services/processes that reduce environmental impact
+- Disruptive innovation (Christensen): new entrants displacing incumbents with cleaner alternatives (EVs vs ICE)
+- Technology cost curves: solar PV −90% cost since 2010, battery storage −97% since 1991
+- Innovation barriers: incumbent resistance, stranded asset lock-in, regulatory inertia, capital requirements
+- Circular business models: Product-as-a-Service, leasing, remanufacturing, repair networks
+- Digital-physical integration: IoT for energy monitoring, AI for grid optimization
+
+CHAPTER 4 — New Business Models
+- Sharing economy: higher asset utilization (Airbnb, Zipcar) — contested sustainability (rebound effects)
+- Platform economy: digital intermediaries, network effects, data monetization
+- B Corp certification: rigorous social and environmental standards — balancing profit and purpose
+- Cradle to Cradle (McDonough & Braungart): biological cycle (compostable) + technical cycle (recoverable)
+- Natural capitalism (Hawken, Lovins): radical resource productivity, biomimicry, service economy
+- Social enterprise: profit + explicit social mission (reinvested surplus)
+
+CHAPTER 5 — Public Policies & Regulation
+- EU Green Deal: climate neutrality by 2050, Fit for 55 package (-55% GHG by 2030)
+- Carbon pricing mechanisms: ETS (cap-and-trade, EU ETS) and carbon taxes
+- CSRD (Corporate Sustainability Reporting Directive): mandatory ESG reporting for large EU companies
+- EU Taxonomy: classification system for sustainable economic activities
+- CBAM (Carbon Border Adjustment Mechanism): carbon tariff on imports to prevent carbon leakage
+- Just Transition: ensuring social fairness while decarbonizing (supporting coal workers, developing regions)
+- Regulatory risk: stranded assets, carbon price increases, tightening standards`
   }
 };
 
@@ -602,6 +855,40 @@ let selectedMode = null;
 let selectedSubject = null;
 let conversationHistory = [];
 let isThinking = false;
+
+// ===== LANGUAGE INIT =====
+function initLang() {
+  if (lang === 'en') {
+    document.getElementById('htmlRoot').lang = 'en';
+    document.getElementById('backLink').href = 'en/index.html';
+    document.getElementById('backLink').textContent = '← Back';
+    document.getElementById('modeTitle').textContent = 'What do you want to do?';
+    document.getElementById('modeSubtitle').textContent = 'Choose your mode — Goat IA adapts to you.';
+    document.getElementById('interroCardName').textContent = 'Quiz Mode';
+    document.getElementById('interroCardDesc').textContent = 'Goat IA asks you questions, evaluates your answers and gives corrections. Perfect for testing your knowledge before an exam.';
+    document.getElementById('questionCardName').textContent = 'Q&A Mode';
+    document.getElementById('questionCardDesc').textContent = 'Ask questions about the course, Goat IA explains. Like a tutor available 24/7.';
+    document.getElementById('btnBackMode').textContent = '← Change mode';
+    document.getElementById('btnStart').textContent = 'Start →';
+    document.getElementById('btnReset').textContent = 'Change';
+  }
+  renderSubjects();
+}
+
+function renderSubjects() {
+  const keys = lang === 'en' ? EN_SUBJECT_KEYS : FR_SUBJECT_KEYS;
+  const grid = document.getElementById('subjectGrid');
+  grid.innerHTML = keys.map(key => {
+    const c = SUBJECT_CARDS[key];
+    return `<div class="subject-card" onclick="selectSubject(this,'${key}')" data-subject="${key}">
+      <div class="s-emoji">${c.emoji}</div>
+      <div class="s-name">${c.name}</div>
+      <div class="s-desc">${c.desc}</div>
+    </div>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', initLang);
 
 function selectMode(mode) {
   selectedMode = mode;
@@ -611,18 +898,34 @@ function selectMode(mode) {
   setupScreen.style.flexDirection = 'column';
 
   const indicator = document.getElementById('modeIndicator');
-  if (mode === 'interro') {
-    indicator.textContent = '🎤 Mode Interrogation';
-    indicator.className = 'mode-indicator interro';
-    document.getElementById('setupTitle').textContent = 'Choisis ta matière';
-    document.getElementById('setupDesc').textContent = "Le prof IA va t'interroger et corriger tes réponses.";
-    document.getElementById('btnStart').textContent = "Commencer l'interrogation →";
+  if (lang === 'en') {
+    if (mode === 'interro') {
+      indicator.textContent = '🎤 Quiz Mode';
+      indicator.className = 'mode-indicator interro';
+      document.getElementById('setupTitle').textContent = 'Choose your subject';
+      document.getElementById('setupDesc').textContent = 'Goat IA will quiz you and correct your answers.';
+      document.getElementById('btnStart').textContent = 'Start the quiz →';
+    } else {
+      indicator.textContent = '💬 Q&A Mode';
+      indicator.className = 'mode-indicator question';
+      document.getElementById('setupTitle').textContent = 'Which subject?';
+      document.getElementById('setupDesc').textContent = 'Ask all your questions — Goat IA explains and helps you understand.';
+      document.getElementById('btnStart').textContent = 'Open session →';
+    }
   } else {
-    indicator.textContent = '💬 Mode Questions';
-    indicator.className = 'mode-indicator question';
-    document.getElementById('setupTitle').textContent = 'Sur quelle matière ?';
-    document.getElementById('setupDesc').textContent = "Pose toutes tes questions — le prof IA t'explique et t'aide à comprendre.";
-    document.getElementById('btnStart').textContent = "Ouvrir la session →";
+    if (mode === 'interro') {
+      indicator.textContent = '🎤 Mode Interrogation';
+      indicator.className = 'mode-indicator interro';
+      document.getElementById('setupTitle').textContent = 'Choisis ta matière';
+      document.getElementById('setupDesc').textContent = "Le prof IA va t'interroger et corriger tes réponses.";
+      document.getElementById('btnStart').textContent = "Commencer l'interrogation →";
+    } else {
+      indicator.textContent = '💬 Mode Questions';
+      indicator.className = 'mode-indicator question';
+      document.getElementById('setupTitle').textContent = 'Sur quelle matière ?';
+      document.getElementById('setupDesc').textContent = "Pose toutes tes questions — le prof IA t'explique et t'aide à comprendre.";
+      document.getElementById('btnStart').textContent = "Ouvrir la session →";
+    }
   }
 }
 
@@ -656,12 +959,16 @@ function startSession() {
   tag.textContent = SUBJECTS[selectedSubject].name;
   if (selectedMode === 'interro') {
     chatInfo.className = 'chat-info mode-interro';
-    instr.textContent = 'Mode Interrogation — réponds librement, le prof évalue et corrige';
-    placeholder.placeholder = 'Ta réponse...';
+    instr.textContent = lang === 'en'
+      ? 'Quiz Mode — answer freely, Goat IA evaluates and corrects you'
+      : 'Mode Interrogation — réponds librement, le prof évalue et corrige';
+    placeholder.placeholder = lang === 'en' ? 'Your answer...' : 'Ta réponse...';
   } else {
     chatInfo.className = 'chat-info mode-question';
-    instr.textContent = 'Mode Questions — pose toutes tes questions sur le cours';
-    placeholder.placeholder = 'Ta question...';
+    instr.textContent = lang === 'en'
+      ? 'Q&A Mode — ask all your questions about the course'
+      : 'Mode Questions — pose toutes tes questions sur le cours';
+    placeholder.placeholder = lang === 'en' ? 'Your question...' : 'Ta question...';
   }
 
   conversationHistory = [];
@@ -689,7 +996,9 @@ async function sendFirstQuestion() {
   const systemPrompt = buildInterroPrompt();
   conversationHistory = [
     { role: 'system', content: systemPrompt },
-    { role: 'user', content: "Commence l'interrogation maintenant. Pose ta première question directement, sans présentation ni introduction." }
+    { role: 'user', content: lang === 'en'
+        ? "Start the quiz now. Ask your first question directly, without any introduction or preamble."
+        : "Commence l'interrogation maintenant. Pose ta première question directement, sans présentation ni introduction." }
   ];
   showThinking();
   const response = await callGroq(conversationHistory);
@@ -702,6 +1011,22 @@ async function sendFirstQuestion() {
 
 function buildInterroPrompt() {
   const subj = SUBJECTS[selectedSubject];
+  if (lang === 'en') {
+    return `${subj.context}
+
+QUIZ RULES — MANDATORY:
+1. Ask ONE question at a time. Short. Precise. Max 2 lines.
+2. After the student's answer, evaluate in 1-3 lines: what is correct ✓, what is missing or wrong ✗.
+3. Give the full correct answer if the student is wrong or incomplete.
+4. Move IMMEDIATELY to the next question.
+5. No filler. No "Great!", "Excellent question!", or empty phrases.
+6. If the student says "I don't know" → give the answer directly and move on.
+7. Language: English. Tone: direct, efficient, supportive.
+8. Vary question types: definition, difference between concepts, concrete example, author/theory, key figure/formula.
+9. After 5 questions, give a mini-summary (strengths + gaps) in 3 lines max, then continue.
+10. NEVER ask the same question twice in a session.
+11. MANDATORY FORMAT: every question you ask must be on its own line, preceded exactly by "▶ " (triangle + space). Example: "▶ What is the contribution margin ratio?"`;
+  }
   return `${subj.context}
 
 RÈGLES D'INTERROGATION — IMPÉRATIVES :
@@ -726,13 +1051,31 @@ async function openTutoringSession() {
   ];
   // Message d'accueil immédiat (sans appel API)
   const subj = SUBJECTS[selectedSubject];
-  const welcomeMsg = `Bonjour ! Je suis **Goat IA**, ton assistant pour **${subj.name}**.\n\nPose-moi toutes tes questions sur le cours — définitions, explications, exemples concrets, comparaisons entre concepts... Je suis là pour t'aider à comprendre. ▶ De quoi as-tu besoin ?`;
+  const welcomeMsg = lang === 'en'
+    ? `Hello! I'm **Goat IA**, your assistant for **${subj.name}**.\n\nAsk me anything about the course — definitions, explanations, concrete examples, comparisons between concepts... I'm here to help you understand. ▶ What do you need?`
+    : `Bonjour ! Je suis **Goat IA**, ton assistant pour **${subj.name}**.\n\nPose-moi toutes tes questions sur le cours — définitions, explications, exemples concrets, comparaisons entre concepts... Je suis là pour t'aider à comprendre. ▶ De quoi as-tu besoin ?`;
   addMessage('ai', welcomeMsg);
   conversationHistory.push({ role: 'assistant', content: welcomeMsg });
 }
 
 function buildTutoringPrompt() {
   const subj = SUBJECTS[selectedSubject];
+  if (lang === 'en') {
+    return `${subj.context}
+
+YOU ARE A SUPPORTIVE AND PEDAGOGICAL TUTOR.
+RULES:
+1. The student asks questions about the course. Answer in a CLEAR, STRUCTURED and EDUCATIONAL way.
+2. Use concrete examples to illustrate abstract concepts.
+3. When relevant, use text diagrams, bullet lists, or markdown tables to structure your response.
+4. Adapt depth: simple question → concise answer; complex question → develop fully.
+5. When the student understands, offer to go further or check their comprehension.
+6. No unnecessary jargon. Clear and direct language.
+7. Language: English. Tone: accessible, encouraging, expert.
+8. If the question is not related to the course, answer briefly and redirect to the subject.
+9. If the student states something incorrect in their question, correct them politely.
+10. You can use ▶ to signal a comprehension check question to the student.`;
+  }
   return `${subj.context}
 
 TU ES UN PROFESSEUR TUTEUR BIENVEILLANT ET PÉDAGOGIQUE.

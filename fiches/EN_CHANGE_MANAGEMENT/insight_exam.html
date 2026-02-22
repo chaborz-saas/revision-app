@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Prep — Change Management for Sustainability</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a5276 0%, #154360 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-header .sub { font-size: 0.85rem; opacity: 0.75; margin-top: 0.4rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #fff3cd 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-question { background: #f5eef8; border-color: #8e44ad; }
+        .block-answer { background: #eafaf1; border-color: #27ae60; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.4rem; opacity: 0.7; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        .q-header {
+            display: flex; align-items: center; gap: 0.7rem;
+            background: linear-gradient(135deg, #6c3483 0%, #8e44ad 100%);
+            color: white; padding: 0.9rem 1.2rem; border-radius: 10px 10px 0 0;
+            margin-top: 2rem;
+        }
+        .q-header .q-num { font-size: 1.5rem; font-weight: 800; opacity: 0.9; }
+        .q-header .q-pts { font-size: 0.75rem; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 0.2rem 0.7rem; font-weight: 700; }
+        .q-body { background: #f9f4fc; border: 2px solid #d7bde2; border-top: none; border-radius: 0 0 10px 10px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
+        .q-body .q-text { font-size: 0.93rem; font-weight: 600; color: #6c3483; line-height: 1.55; }
+        .theory-box { background: #eef6fc; border: 1px solid #aed6f1; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.7rem 0; }
+        .theory-box .theory-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #2980b9; margin-bottom: 0.4rem; }
+        .evidence-box { background: #f0f9f4; border: 1px solid #82e0aa; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.7rem 0; }
+        .evidence-box .ev-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #1e8449; margin-bottom: 0.4rem; }
+        .critical-box { background: #fef9e7; border: 1px solid #f9ca59; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.7rem 0; }
+        .critical-box .cr-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #d68910; margin-bottom: 0.4rem; }
+        .answer-section { margin-top: 0.8rem; }
+        .answer-title { font-size: 0.88rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.3rem 0 0.3rem 1.3rem; position: relative; font-size: 0.88rem; line-height: 1.55; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #1a5276; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.85rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.83rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.73rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 7px; font-size: 0.73rem; font-weight: 700; margin: 1px 2px; vertical-align: middle; }
+        .tag-purple { background: #f5eef8; color: #6c3483; }
+        .tag-blue { background: #eef6fc; color: #1a5276; }
+        .tag-green { background: #e8f8f5; color: #1e8449; }
+        .tag-orange { background: #fef9e7; color: #d35400; }
+        .divider { border: none; border-top: 2px dashed #e8e8e8; margin: 2rem 0; }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../en/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;">← Back to dashboard</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">Change Management for Sustainability — M1 PGE S7</div>
+    <h1>Final Exam Prep — Phoenix Organic Case</h1>
+    <div class="sub">Profs: Steven Jeanbrun &amp; Rezvan Velayati · 17/12/2025 · 2h · Choose 2/4 questions · 10 pts each</div>
+</div>
+
+<div class="fiche-body">
+
+    <!-- EXAM RULES -->
+    <div class="block block-attention">
+        <div class="block-label">⚠ Exam Rules — Read Carefully</div>
+        <ul class="blist">
+            <li><strong>Choose 2 questions out of 4</strong> — each worth 10 points (total 20)</li>
+            <li><span class="hl-critical">Max 10–12 lines</span> per answer — no bonus for longer answers</li>
+            <li>No authorized materials (documents, phone, etc.)</li>
+            <li><strong>Grading logic:</strong> Theory + Case evidence (Phoenix) + Critical reflection → avoid summaries and pure definitions</li>
+        </ul>
+    </div>
+
+    <!-- GRADING GRID -->
+    <div class="section-title">Grading Criteria</div>
+    <table class="compact-table">
+        <tr><th>Score</th><th>Level</th><th>What it requires</th></tr>
+        <tr>
+            <td><span class="hl-critical">9–10</span></td>
+            <td>Excellent</td>
+            <td>Structured argument, <strong>theory + Phoenix evidence + critical reflection</strong>. Shows originality and goes beyond the course notes.</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">7–8</span></td>
+            <td>Good</td>
+            <td>Solid theory + Phoenix case application, some critical reflection. Minor gaps.</td>
+        </tr>
+        <tr>
+            <td>5–6</td>
+            <td>Satisfactory</td>
+            <td>Basic case summary, limited theory. Answers "what" but not "how" or "why."</td>
+        </tr>
+        <tr>
+            <td style="color:#e74c3c;font-weight:700">0–4</td>
+            <td>Weak</td>
+            <td>Descriptive. Minimal engagement with theory or case. No critical thinking.</td>
+        </tr>
+    </table>
+
+    <!-- PHOENIX CASE SUMMARY -->
+    <div class="section-title">📋 Phoenix Organic — Key Facts to Know</div>
+
+    <div class="block block-def">
+        <div class="block-label">Company Profile</div>
+        <ul class="blist">
+            <li>Founded late 1980s in Auckland (NZ) by <strong>Chris Morrison, Deborah Cairns, Roger Harris</strong> — urban gardening / healthy living community</li>
+            <li>First product: naturally fermented ginger fizz in <strong>recycled Steinlager beer bottles</strong> (bathtub origins)</li>
+            <li>By 2004: <strong>NZ$6.5M revenue</strong>, largest organic beverage company in New Zealand</li>
+            <li>~2,000 cafés, ~70% penetration of café channel · Exports: ~10% of sales (mainly Australia)</li>
+            <li>20% sales through supermarkets (but supermarket pressure → standardization demands)</li>
+        </ul>
+    </div>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Identity & Values (use these as evidence in every answer)</div>
+        <ul class="blist">
+            <li>Morrison: <em>"Trust with suppliers, customers, employees was the foundation of success"</em></li>
+            <li><strong>Refused glass → plastic</strong> despite higher transport costs (principled stand)</li>
+            <li><strong>Refused to bottle water</strong> — ethical stance ("NZ should trust its tap water")</li>
+            <li><strong>GE-free NZ campaign</strong> — active advocacy beyond own business</li>
+            <li>Adopted <strong>The Natural Step</strong> (Swedish science-based sustainability framework)</li>
+            <li>Hired a part-time <strong>sustainability director</strong></li>
+            <li>Staff trips, social activities → low turnover, internalized values throughout org</li>
+            <li>Failed jams/salsa diversification → <em>"organic ghettos"</em> lesson: focus on beverages</li>
+            <li>Core tension: remain small &amp; authentic vs. grow &amp; risk compromise</li>
+        </ul>
+    </div>
+
+    <table class="compact-table">
+        <tr><th>Pressure / Rigidity</th><th>Description</th></tr>
+        <tr><td>Supermarket power</td><td>Demanded 1L bottles, multipacks, modest organic premium → forced standardization</td></tr>
+        <tr><td>Market dominance</td><td>Coca-Cola &amp; Frucor controlled NZ mainstream; now entering organic/juice segments</td></tr>
+        <tr><td>Cost structure</td><td>Organic ingredients 2× price, limited by seasonality → supply chain rigidity</td></tr>
+        <tr><td>Café channel threat</td><td>San Pellegrino beginning to encroach on Phoenix's stronghold</td></tr>
+        <tr><td>Financial constraint</td><td>Tight cash flow, heavy borrowing, reluctant to bring outside investors (values risk)</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <!-- ========== QUESTION 1 ========== -->
+    <div class="q-header">
+        <div class="q-num">Q1</div>
+        <div style="flex:1">
+            <div style="font-size:0.9rem;font-weight:700;">Leadership &amp; Organizational Identity</div>
+        </div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">How did leadership and organizational identity shape the process of embedding sustainability into the core strategy of a growing company such as Phoenix?</div>
+    </div>
+
+    <div class="answer-section">
+
+        <div class="theory-box">
+            <div class="theory-label">🔵 Theory to Mobilize</div>
+            <ul class="blist">
+                <li><span class="tag tag-purple">Transformational Leadership (Burns 1978, Bass 1985)</span> — Leaders inspire followers to transcend self-interest for a collective purpose. 4I model: <strong>Idealized Influence, Inspirational Motivation, Intellectual Stimulation, Individualized Consideration</strong></li>
+                <li><span class="tag tag-purple">VRIO (Barney 1991)</span> — Identity-driven sustainability is Valuable (premium pricing), Rare (cost-driven competitors), Inimitable (culturally embedded, cannot be copied), Organized (Natural Step, director) → <strong>durable competitive advantage</strong></li>
+                <li><span class="tag tag-purple">Carroll's Pyramid (1991)</span> — Phoenix operates at all 4 levels simultaneously; ethical/philanthropic decisions shape economic ones (≠ standard firm where economic always wins)</li>
+                <li><span class="tag tag-purple">Kotter's 8 Steps</span> — Phoenix embodied steps 1–3 from day 1: urgency (health &amp; environment), coalition (founding trio), vision (organic, authentic NZ)</li>
+                <li><span class="tag tag-purple">Paradox theory (Smith &amp; Lewis 2011)</span> — Both/and: profit AND sustainability held in tension rather than choosing one</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 Phoenix Evidence</div>
+            <ul class="blist">
+                <li>Morrison's identity-driven decisions: refused glass→plastic (Idealized Influence), refused bottled water (ethical over economic)</li>
+                <li>The Natural Step framework + sustainability director = Intellectual Stimulation at org level</li>
+                <li>Staff trips, social culture → Individualized Consideration → identity internalized, low turnover</li>
+                <li>"Squeaky clean" standard = accountability mechanism for the leader himself</li>
+                <li>VRIO in practice: identity cannot be copied by Coca-Cola or Frucor (anchored in founder history, culture, community)</li>
+            </ul>
+        </div>
+
+        <div class="critical-box">
+            <div class="cr-label">🟡 Critical Reflection (what separates a 9–10 from a 7–8)</div>
+            <ul class="blist">
+                <li>Identity is both an <strong>enabler</strong> (authentic, hard to imitate) and a <strong>constraint</strong> (limits scaling, rejects profitable options)</li>
+                <li>Morrison's reluctance to bring outside investors = identity protection vs financial vulnerability — can the company survive growth?</li>
+                <li>Contrast with Kotter: his model assumes change is triggered by crisis. Phoenix's embedding was proactive, from founding — <strong>identity-led change</strong>, not crisis-led</li>
+                <li>Risk: if Morrison exits, can identity outlive its founder? (succession = unresolved tension)</li>
+            </ul>
+        </div>
+
+        <div class="block block-answer" style="margin-top:0.8rem;">
+            <div class="block-label">✏ Model Answer Structure (10–12 lines)</div>
+            <p style="font-size:0.88rem;line-height:1.65;">
+                Phoenix illustrates how <strong>transformational leadership</strong> (Bass, 1985) can embed sustainability as organizational identity rather than CSR add-on. Morrison's 4I approach — refusing plastic and water (Idealized Influence), the "squeaky clean" vision (Inspirational Motivation), adopting The Natural Step (Intellectual Stimulation), staff trips (Individualized Consideration) — ensured values permeated the firm. This identity constitutes a <strong>VRIO resource</strong> (Barney, 1991): Valuable (organic premium), Rare (cost-driven industry), Inimitable (culturally rooted), Organized (sustainability director). Unlike Carroll's standard model where economic logic dominates, Phoenix operated at the ethical and philanthropic levels first, letting them constrain economic decisions. <strong>Smith &amp; Lewis's (2011) paradox theory</strong> explains this "both/and" stance — profit and sustainability held in productive tension. Critically, this was not a Kotter-style crisis-driven change but an <strong>identity-led process from founding</strong>, which is both its strength (hard to copy) and its risk: Morrison's reluctance to accept outside investors suggests identity may be a fragile asset dependent on founder continuity.
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ========== QUESTION 2 ========== -->
+    <div class="q-header">
+        <div class="q-num">Q2</div>
+        <div style="flex:1">
+            <div style="font-size:0.9rem;font-weight:700;">Rigidities &amp; Resistance to Change — Creative Responses</div>
+        </div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">As the industry was dominated by cost-driven giants, what types of rigidities and resistance to change did Phoenix encounter, and how might it creatively address them?</div>
+    </div>
+
+    <div class="answer-section">
+
+        <div class="theory-box">
+            <div class="theory-label">🔵 Theory to Mobilize</div>
+            <ul class="blist">
+                <li><span class="tag tag-purple">Institutional Isomorphism (DiMaggio &amp; Powell 1983)</span> — 3 mechanisms: <strong>Coercive</strong> (supermarkets demanding 1L bottles/multipacks), <strong>Mimetic</strong> (pressure to behave like Coca-Cola), <strong>Normative</strong> (industry norms of plastic, mass production, low cost)</li>
+                <li><span class="tag tag-purple">Lewin's Force Field Analysis</span> — Driving forces (organic consumer awareness, café culture, health trends) vs Restraining forces (cost dominance, "organic ghettos", supermarket power, financial constraints)</li>
+                <li><span class="tag tag-purple">Resistance to Change (Kotter &amp; Schlesinger)</span> — Self-interest (retailers protect margins), Misunderstanding (organics = niche = not mainstream), Different valuation of sustainability, Low tolerance for disruption</li>
+                <li><span class="tag tag-purple">Paradox theory (Smith &amp; Lewis 2011)</span> — Industry stuck in "either/or" (cheap OR sustainable); Phoenix's creative response is the "both/and" model</li>
+                <li><span class="tag tag-purple">VRIO</span> — Phoenix's scarcity of resources forces creative solutions (refrigerator deal, café focus)</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 Phoenix Evidence — Rigidities Encountered</div>
+            <ul class="blist">
+                <li><strong>Coercive:</strong> Supermarkets demanding 1L bottles, multipacks → forced standardization that commoditizes Phoenix</li>
+                <li><strong>Mimetic:</strong> Coca-Cola &amp; Frucor investing in juices, organic categories → competitive encroachment</li>
+                <li><strong>Normative:</strong> "Organic ghettos" in supermarkets = physical institutionalization of organic as marginal</li>
+                <li>Organic ingredients 2× price + seasonality = supply chain rigidity</li>
+                <li>San Pellegrino encroaching on café channel → even the safe alternative channel threatened</li>
+                <li>Tight cash flow → limits Phoenix's capacity to fight rigidities (no advertising budget)</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 Phoenix Evidence — Creative Responses</div>
+            <ul class="blist">
+                <li><strong>Café channel strategy</strong> = creative bypass of mainstream supermarket power → direct access to consumers valuing premium organic</li>
+                <li><strong>Eye-level shelf negotiation</strong> (fridges in exchange for visibility) = resource-constrained creativity</li>
+                <li><strong>Long-term supplier relationships</strong> = reduce supply volatility, build loyalty beyond market pricing</li>
+                <li><strong>Focus on beverages only</strong> after jams/salsa failure = strategic concentration as creative response to resource limits</li>
+                <li><strong>GE-free NZ advocacy</strong> = shaping external environment rather than just adapting to it → reduce coercive pressure at industry level</li>
+            </ul>
+        </div>
+
+        <div class="critical-box">
+            <div class="cr-label">🟡 Critical Reflection</div>
+            <ul class="blist">
+                <li>The creative responses are mostly <strong>avoidance strategies</strong> (bypass supermarkets via cafés) rather than transformation strategies — Phoenix shapes the fringes but hasn't transformed the mainstream</li>
+                <li>Lewin's Refreeze is the unsolved problem: Phoenix can unfreeze norms in cafés but the industry (supermarkets, giants) remains frozen</li>
+                <li>Risk: Café channel becoming commoditized (San Pellegrino) means the "escape route" from mainstream rigidities is closing</li>
+            </ul>
+        </div>
+
+        <div class="block block-answer" style="margin-top:0.8rem;">
+            <div class="block-label">✏ Model Answer Structure (10–12 lines)</div>
+            <p style="font-size:0.88rem;line-height:1.65;">
+                Phoenix faced three forms of <strong>institutional isomorphism</strong> (DiMaggio &amp; Powell, 1983): coercive pressure from supermarkets demanding 1L bottles and multipacks, mimetic pressure from Coca-Cola entering the organic segment, and normative pressure through "organic ghettos" that institutionalized organic as marginal. Using Lewin's Force Field Analysis, restraining forces (cost dominance, financial constraints, supply chain rigidity) outweigh driving forces (health trends, café culture) in mainstream channels. Resistance (Kotter &amp; Schlesinger) takes the form of self-interest (retailers protecting margins) and institutional misunderstanding of organic as niche. Phoenix's creative responses exploit the paradox (Smith &amp; Lewis, 2011): rather than fighting mainstream rigidities head-on, it bypassed them by building the <strong>café channel</strong> — negotiating eye-level space in exchange for fridges (a resource-constrained innovation), and building long-term supplier relationships to reduce supply chain volatility. Critically, these remain <strong>avoidance strategies rather than systemic transformation</strong>: Phoenix thrives in the fringes but has not yet defrosted the mainstream. With San Pellegrino encroaching on the café channel, even this creative escape route is narrowing.
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ========== QUESTION 3 ========== -->
+    <div class="q-header">
+        <div class="q-num">Q3</div>
+        <div style="flex:1">
+            <div style="font-size:0.9rem;font-weight:700;">Phoenix as Multiplier Firm — Systemic Change</div>
+        </div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">How could Phoenix act as a multiplier firm to create broader systemic change in the beverage sector while safeguarding its own values?</div>
+    </div>
+
+    <div class="answer-section">
+
+        <div class="theory-box">
+            <div class="theory-label">🔵 Theory to Mobilize</div>
+            <ul class="blist">
+                <li><span class="tag tag-purple">Multiplier Firm concept</span> — companies that influence their broader ecosystem (supply chains, competitors, regulators, consumers) beyond their own operations</li>
+                <li><span class="tag tag-purple">Stakeholder theory (Freeman 1984)</span> — obligations to all stakeholders = platform for influence: suppliers, consumers, employees, regulators, community</li>
+                <li><span class="tag tag-purple">Shared Value (Porter &amp; Kramer 2011)</span> — creating economic value AND societal value = scalable model that others can learn from or adopt</li>
+                <li><span class="tag tag-purple">Institutional entrepreneurship (DiMaggio 1988)</span> — firms with enough legitimacy can reshape industry norms, not just adapt to them</li>
+                <li><span class="tag tag-purple">VRIO paradox</span> — if Phoenix's practices become industry standard, they lose rarity → paradox of being too successful as a multiplier</li>
+                <li><span class="tag tag-purple">Carroll's Pyramid</span> — systemic change requires going beyond philanthropic to structural advocacy</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 Phoenix Evidence — Multiplier Actions Already Taken</div>
+            <ul class="blist">
+                <li><strong>GE-free NZ campaign</strong> = active reshaping of regulatory environment → institutional entrepreneurship</li>
+                <li><strong>Awards for sustainable business</strong> = external credibility that normalizes sustainability as viable business model</li>
+                <li><strong>Café channel</strong> = normalized premium organic in everyday consumption, creating consumer demand that influences competitors</li>
+                <li><strong>Supplier relationships</strong> = supporting small organic farmers → multiplier effect on supply side</li>
+                <li><strong>Refused bottled water</strong> = public advocacy that raises accountability standards for the whole industry</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 How to Scale Without Compromising Values</div>
+            <ul class="blist">
+                <li><strong>Coalition of like-minded firms</strong> (B Corp model) → collective influence without individual compromise</li>
+                <li><strong>Shared Value approach</strong>: demonstrate to the industry that organic + premium = viable profitable model</li>
+                <li><strong>Selective outside investors</strong> aligned with mission (impact investors) to fund multiplier activities</li>
+                <li><strong>Remain authentic</strong>: only advocate externally what you practice internally — "squeaky clean" test becomes more scrutinized as influence grows</li>
+            </ul>
+        </div>
+
+        <div class="critical-box">
+            <div class="cr-label">🟡 Critical Reflection — The Core Paradox</div>
+            <ul class="blist">
+                <li>The more Phoenix succeeds as a multiplier, the more competitors copy it → VRIO advantage eroded (sustainability becomes industry standard = no longer rare)</li>
+                <li>Morrison's reluctance to accept outside investors limits multiplier capacity: you cannot change a sector from a position of financial fragility</li>
+                <li>Institutional entrepreneurship requires <strong>legitimacy AND resources</strong> — Phoenix has legitimacy but lacks scale to reshape mainstream norms</li>
+            </ul>
+        </div>
+
+        <div class="block block-answer" style="margin-top:0.8rem;">
+            <div class="block-label">✏ Model Answer Structure (10–12 lines)</div>
+            <p style="font-size:0.88rem;line-height:1.65;">
+                Phoenix already exhibits <strong>multiplier behaviors</strong>: the GE-free NZ campaign and bottled water refusal demonstrate <strong>institutional entrepreneurship</strong> (DiMaggio, 1988) — actively reshaping norms rather than adapting to them. Through <strong>stakeholder theory</strong> (Freeman, 1984), Phoenix's long-term supplier relationships create a multiplier effect at the supply level, normalizing organic sourcing economics. Its café channel strategy generated a new consumer segment that now pressures competitors to respond, embodying <strong>Shared Value</strong> (Porter &amp; Kramer, 2011). To scale systemic impact while protecting values, Phoenix could form a <strong>coalition of like-minded firms</strong> (B Corp model) to achieve collective institutional influence no single company can reach alone. However, a core paradox emerges: the more Phoenix diffuses its practices, the less <strong>Rare</strong> and <strong>Inimitable</strong> they become (VRIO, Barney 1991) — sustainability becomes table stakes, not competitive advantage. Critically, institutional entrepreneurship requires both <strong>legitimacy</strong> (Phoenix has) and <strong>resources</strong> (Phoenix lacks) — Morrison's reluctance to bring outside investors leaves the firm too financially fragile to lead sector-level change at scale.
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ========== QUESTION 4 ========== -->
+    <div class="q-header">
+        <div class="q-num">Q4</div>
+        <div style="flex:1">
+            <div style="font-size:0.9rem;font-weight:700;">Measuring &amp; Communicating Sustainability — Avoiding Greenwashing</div>
+        </div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">How could Phoenix measure and communicate the impact of its sustainability practices in a way that reinforces credibility and competitive advantage, while avoiding the risk of overselling?</div>
+    </div>
+
+    <div class="answer-section">
+
+        <div class="theory-box">
+            <div class="theory-label">🔵 Theory to Mobilize</div>
+            <ul class="blist">
+                <li><span class="tag tag-purple">Triple Bottom Line (Elkington 1994)</span> — measure and report People (labor conditions, staff wellbeing, supplier fairness), Planet (GHG, waste, organic %), Profit (sustainable margins, CLV) — all three transparently</li>
+                <li><span class="tag tag-purple">GHG Accounting (Scope 1/2/3)</span> — credibility requires measuring full value chain impact, especially Scope 3 (ingredients, transport, distribution)</li>
+                <li><span class="tag tag-purple">Signaling theory</span> — <strong>costly signals</strong> (refusing profitable options = plastic, water) are far more credible than cheap talk (labels, slogans)</li>
+                <li><span class="tag tag-purple">Carroll's Pyramid</span> — Ethical responsibility goes beyond legal compliance; authentic communication = acting beyond what is required, not just reporting what is required</li>
+                <li><span class="tag tag-purple">VRIO</span> — credible, third-party verified measurement makes sustainability claims hard to imitate → competitive advantage</li>
+                <li><span class="tag tag-purple">Greenwashing (Carroll)</span> — claiming more than you deliver; Legal ≠ Ethical; risk is particularly acute when growing and seeking investors</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 Phoenix Evidence — What Already Works</div>
+            <ul class="blist">
+                <li><strong>Costly signals</strong>: refusing glass→plastic and refusing water = most credible communication (sacrifice = proof)</li>
+                <li><strong>The Natural Step framework</strong> = science-based (not marketing-driven) measurement system</li>
+                <li><strong>Awards for sustainable business</strong> = external validation / third-party signal</li>
+                <li><strong>Sustainability director</strong> = formal accountability structure</li>
+                <li><strong>GE-free NZ advocacy</strong> = public commitment that raises Phoenix's own accountability standard</li>
+                <li>Morrison's "squeaky clean" standard = self-aware risk management against hypocrisy</li>
+            </ul>
+        </div>
+
+        <div class="evidence-box">
+            <div class="ev-label">🟢 Recommendations to Improve Without Overselling</div>
+            <ul class="blist">
+                <li><strong>Measure Scope 3</strong> (ingredient sourcing, transport) — the hardest part, but most credible if reported honestly</li>
+                <li><strong>Triple Bottom Line reporting</strong>: quantify People (staff turnover, supplier fair prices), Planet (organic %, GHG), Profit (margin per product)</li>
+                <li><strong>Admit trade-offs honestly</strong>: glass → higher transport emissions vs. plastic → acknowledge complexity</li>
+                <li><strong>Third-party certification</strong> (organic, B Corp) rather than self-declaration</li>
+                <li><strong>Communicate the WHY</strong> (ethical reasoning, refused water) not just the WHAT (organic label) → audience understands intent, not just attribute</li>
+            </ul>
+        </div>
+
+        <div class="critical-box">
+            <div class="cr-label">🟡 Critical Reflection</div>
+            <ul class="blist">
+                <li>Phoenix's current communication is implicit (actions speak) rather than explicit (reports, metrics) — this is <strong>credible but not scalable</strong>: as the company grows and seeks investors, stakeholders will require formal TBL reporting</li>
+                <li>Key tension: <strong>authentic → formal reporting</strong> risks becoming performative (the act of reporting replaces the act of doing)</li>
+                <li>CSRD (EU directive) is not yet applicable to NZ, but any expansion to European markets will require it — early adoption could be a competitive advantage</li>
+            </ul>
+        </div>
+
+        <div class="block block-answer" style="margin-top:0.8rem;">
+            <div class="block-label">✏ Model Answer Structure (10–12 lines)</div>
+            <p style="font-size:0.88rem;line-height:1.65;">
+                Phoenix's most credible sustainability communication already relies on <strong>costly signals</strong> (signaling theory): refusing glass→plastic and declining to bottle water sacrifice commercial gains to prove genuine commitment — more credible than any label or slogan. To formalize this advantage, Phoenix should adopt <strong>Triple Bottom Line reporting</strong> (Elkington, 1994) — measuring People (staff wellbeing, supplier fair prices), Planet (organic %, GHG scope 1/2/3), and Profit (sustainable margins) — and publish it transparently, including trade-offs (glass = higher transport emissions). The Natural Step framework already provides a science-based measurement foundation; third-party certification (B Corp) would externalize verification and reduce greenwashing risk. <strong>VRIO analysis</strong> (Barney, 1991) shows that credible, independently verified measurement is itself Inimitable — generic organic brands cannot replicate Phoenix's history of principled sacrifices. Critically, Carroll's ethical level requires <strong>admitting constraints</strong>, not just showcasing achievements: honest reporting of the glass/transport trade-off or limited Scope 3 data is more credible than a polished sustainability report. The risk, however, is that formalizing reporting transforms authentic behavior into performative compliance — the very culture of "squeaky clean" integrity may be harder to preserve under investor and regulatory scrutiny.
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- QUICK THEORY RECAP -->
+    <div class="section-title">Quick Theory Recap — Authors & Concepts</div>
+
+    <table class="compact-table">
+        <tr><th>Author / Framework</th><th>Core Concept</th><th>Use in Phoenix answers</th></tr>
+        <tr>
+            <td><span class="hl-important">Carroll (1991)</span></td>
+            <td>Pyramid: Economic → Legal → Ethical → Philanthropic</td>
+            <td>Phoenix operates at ethical/philanthropic level (refuses profitable options); Legal ≠ Ethical = greenwashing warning</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Barney — VRIO</span></td>
+            <td>Valuable, Rare, Inimitable, Organized</td>
+            <td>Phoenix's identity + culture = durable competitive advantage; BUT multiplier role erodes rarity</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Freeman (1984)</span></td>
+            <td>Stakeholder theory — obligations beyond shareholders</td>
+            <td>Phoenix's trust-based relationships with suppliers, cafés, employees = stakeholder strategy</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Smith &amp; Lewis (2011)</span></td>
+            <td>Paradox theory — both/and vs either/or</td>
+            <td>Profit AND sustainability; growth AND values; Phoenix navigates performance zone (not survival, not comfort)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Bass (1985)</span></td>
+            <td>Transformational leadership — 4I model</td>
+            <td>Morrison as transformational leader embedding identity throughout org via principled decisions</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Lewin</span></td>
+            <td>Unfreeze → Change → Refreeze</td>
+            <td>Café channel = partial unfreeze; industry mainstream remains frozen; Refreeze unsolved for sector</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Kotter (8 steps)</span></td>
+            <td>Change management process</td>
+            <td>Phoenix built urgency + coalition + vision from founding (proactive, not crisis-driven)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">DiMaggio &amp; Powell (1983)</span></td>
+            <td>Institutional isomorphism (coercive / mimetic / normative)</td>
+            <td>3 types of rigidity Phoenix faces; also: Phoenix as institutional entrepreneur (GE-free NZ)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Porter &amp; Kramer (2011)</span></td>
+            <td>Shared Value — economic + social value</td>
+            <td>Phoenix model demonstrates viability → multiplier effect on industry</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Elkington (1994)</span></td>
+            <td>Triple Bottom Line — People, Planet, Profit</td>
+            <td>Framework for measuring AND communicating sustainability credibly</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Brundtland (1987)</span></td>
+            <td>Sustainable development definition</td>
+            <td>Theoretical foundation — Phoenix operationalizes it in a commercial context</td>
+        </tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Common Mistakes to Avoid</div>
+        <ul class="blist">
+            <li>Don't just describe what Phoenix does — <strong>always link to a theory</strong> and explain why it matters</li>
+            <li>Don't only praise Phoenix — <strong>critical reflection</strong> (tensions, limits, risks) is required for 9–10</li>
+            <li>Don't give generic definitions of CSR/Lewin/Carroll without tying them to Phoenix evidence</li>
+            <li>The exam is <strong>open-book in your head</strong>, not a test of memory alone — show you can <em>apply and critique</em></li>
+            <li>10–12 lines = roughly 150–180 words — be precise and structured, not exhaustive</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="source-footer">
+    Insight — Change Management for Sustainability — EM Normandie M1 PGE S7 · Exam 17/12/2025
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

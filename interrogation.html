@@ -1136,16 +1136,29 @@ async function callGroq(messages) {
     });
 
     if (!res.ok) {
-      const err = await res.json();
-      const errMsg = err?.error?.message || JSON.stringify(err);
-      addMessage('ai', `⚠️ Erreur API (${res.status}) : ${errMsg}`);
+      const err = await res.json().catch(() => ({}));
+      if (res.status === 429) {
+        const waitMatch = (err?.error?.message || '').match(/try again in (\d+m\d+s|\d+s|\d+m)/i);
+        const waitStr = waitMatch ? ` (${lang === 'en' ? 'try again in' : 'réessaie dans'} ${waitMatch[1]})` : '';
+        if (lang === 'en') {
+          addMessage('ai', `🐐 Daily token limit reached — Goat IA needs a short rest! The free Groq tier allows 100K tokens/day.${waitStr} Come back in a few hours or tomorrow.`);
+        } else {
+          addMessage('ai', `🐐 La limite quotidienne de tokens est atteinte — Goat IA a besoin d'un petit repos ! Le plan gratuit Groq autorise 100 000 tokens/jour.${waitStr} Reviens dans quelques heures ou demain.`);
+        }
+      } else {
+        if (lang === 'en') {
+          addMessage('ai', `🐐 Something went wrong (error ${res.status}). Please try again in a moment.`);
+        } else {
+          addMessage('ai', `🐐 Une erreur s'est produite (code ${res.status}). Réessaie dans un instant.`);
+        }
+      }
       return null;
     }
 
     const data = await res.json();
     return data.choices?.[0]?.message?.content || null;
   } catch (e) {
-    addMessage('ai', '⚠️ Erreur réseau. Réessaie dans un instant.');
+    addMessage('ai', lang === 'en' ? '🐐 Network error. Check your connection and try again.' : '🐐 Erreur réseau. Vérifie ta connexion et réessaie.');
     return null;
   } finally {
     isThinking = false;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Points clés — Gestion du Changement & RSE</title>
+    <title>Sujet d'exam — Change Management for Sustainability</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,6 +15,7 @@
         }
         .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
         .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-header .sub { font-size: 0.85rem; opacity: 0.75; margin-top: 0.4rem; }
         .fiche-body {
             background: white; padding: 1.8rem 2rem;
             border-radius: 0 0 16px 16px;
@@ -27,21 +28,38 @@
         .block-def { background: #eef6fc; border-color: #2980b9; }
         .block-attention { background: #fdecea; border-color: #e74c3c; }
         .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
-        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+        .block-answer { background: #eafaf1; border-color: #27ae60; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.4rem; opacity: 0.7; }
         .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        .q-header {
+            display: flex; align-items: center; gap: 0.7rem;
+            background: linear-gradient(135deg, #6c3483 0%, #8e44ad 100%);
+            color: white; padding: 0.9rem 1.2rem; border-radius: 10px 10px 0 0;
+            margin-top: 2rem;
+        }
+        .q-header .q-num { font-size: 1.5rem; font-weight: 800; opacity: 0.9; }
+        .q-header .q-pts { font-size: 0.75rem; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 0.2rem 0.7rem; font-weight: 700; }
+        .q-body { background: #f9f4fc; border: 2px solid #d7bde2; border-top: none; border-radius: 0 0 10px 10px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
+        .q-body .q-text { font-size: 0.93rem; font-weight: 600; color: #6c3483; line-height: 1.55; }
+        .theory-box { background: #eef6fc; border: 1px solid #aed6f1; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.7rem 0; }
+        .theory-box .theory-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #2980b9; margin-bottom: 0.4rem; }
+        .evidence-box { background: #f0f9f4; border: 1px solid #82e0aa; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.7rem 0; }
+        .evidence-box .ev-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #1e8449; margin-bottom: 0.4rem; }
+        .critical-box { background: #fef9e7; border: 1px solid #f9ca59; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.7rem 0; }
+        .critical-box .cr-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #d68910; margin-bottom: 0.4rem; }
         ul.blist { list-style: none; padding: 0; }
-        ul.blist li { padding: 0.32rem 0 0.32rem 1.3rem; position: relative; font-size: 0.91rem; line-height: 1.55; }
+        ul.blist li { padding: 0.3rem 0 0.3rem 1.3rem; position: relative; font-size: 0.88rem; line-height: 1.55; }
         ul.blist li::before { content: "→"; position: absolute; left: 0; color: #1a5276; font-weight: bold; }
-        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.88rem; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.85rem; }
         ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
-        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
-        .tag-blue { background: #eef6fc; color: #1a5276; }
-        .tag-red { background: #fdecea; color: #c0392b; }
-        .tag-green { background: #e8f8f5; color: #1e8449; }
-        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
-        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.83rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.73rem; text-transform: uppercase; letter-spacing: 1px; }
         .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
         .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 7px; font-size: 0.73rem; font-weight: 700; margin: 1px 2px; vertical-align: middle; }
+        .tag-purple { background: #f5eef8; color: #6c3483; }
+        .tag-blue { background: #eef6fc; color: #1a5276; }
+        .divider { border: none; border-top: 2px dashed #e8e8e8; margin: 2rem 0; }
         .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
         @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
     </style>
@@ -53,152 +71,293 @@
 </div>
 
 <div class="fiche-header">
-    <div class="matiere">Gestion du Changement — M1</div>
-    <h1>Points clés — RSE, VRIO, Carroll & Modèles de changement</h1>
+    <div class="matiere">Gestion du Changement pour la Durabilité — M1 PGE S7</div>
+    <h1>Sujet de partiel — Cas Phoenix Organic · Questions &amp; Réponses modèles</h1>
+    <div class="sub">Profs : Steven Jeanbrun &amp; Rezvan Velayati · 17/12/2025 · 2h · Choisir 2 questions sur 4 · 10 pts chacune</div>
 </div>
 
 <div class="fiche-body">
 
     <div class="block block-attention">
-        <div class="block-label">⚠ Points prioritaires</div>
-        Évaluation finale : <span class="hl-critical">jeu de rôle + rapport individuel 3-5 pages</span> sur une organisation réelle. Maîtriser : définition Brundtland, RSE (4 dimensions), Carroll, VRIO, et les modèles de conduite du changement (Lewin, Kotter). Savoir distinguer greenwashing et RSE authentique.
+        <div class="block-label">⚠ Règles de l'examen — à lire absolument</div>
+        <ul class="blist">
+            <li><strong>Choisir 2 questions sur 4</strong> — 10 points chacune (total 20)</li>
+            <li><span class="hl-critical">Maximum 10–12 lignes</span> par réponse — pas de points bonus pour une réponse plus longue</li>
+            <li>Aucun document ou téléphone autorisé</li>
+            <li><strong>Logique de notation :</strong> Théorie + Preuves du cas Phoenix + Réflexion critique → éviter les résumés et les définitions pures</li>
+        </ul>
     </div>
 
-    <!-- BLOC 1 : FONDATIONS RSE -->
-    <div class="section-title">1. Fondations — Brundtland & RSE</div>
+    <div class="section-title">Grille de notation</div>
+    <table class="compact-table">
+        <tr><th>Note</th><th>Niveau</th><th>Ce qui est exigé</th></tr>
+        <tr><td><span class="hl-critical">9–10</span></td><td>Excellent</td><td>Argument structuré, <strong>théorie + preuves Phoenix + réflexion critique</strong>. Originalité, dépassement du cours.</td></tr>
+        <tr><td><span class="hl-important">7–8</span></td><td>Bien</td><td>Théorie solide + application au cas Phoenix, quelques nuances critiques. Manques mineurs.</td></tr>
+        <tr><td>5–6</td><td>Satisfaisant</td><td>Résumé basique du cas, théorie limitée. Répond au "quoi" mais pas au "comment" ni au "pourquoi".</td></tr>
+        <tr><td style="color:#e74c3c;font-weight:700">0–4</td><td>Faible</td><td>Descriptif. Peu de théorie ou d'analyse. Pas de réflexion critique.</td></tr>
+    </table>
+
+    <div class="section-title">📋 Phoenix Organic — Faits clés à connaître</div>
 
     <div class="block block-def">
-        <div class="block-label">Définition incontournable — Brundtland (1987)</div>
-        <strong>"Développement durable : répond aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs."</strong>
+        <div class="block-label">Présentation de l'entreprise</div>
+        <ul class="blist">
+            <li>Fondée fin des années 1980 à Auckland (NZ) par <strong>Chris Morrison, Deborah Cairns, Roger Harris</strong> — communauté d'agriculture urbaine et vie saine</li>
+            <li>Premier produit : ginger fizz fermenté dans des <strong>bouteilles recyclées Steinlager</strong> (origines artisanales)</li>
+            <li>En 2004 : <strong>6,5 M NZD de CA</strong>, la plus grande entreprise de boissons biologiques de NZ</li>
+            <li>~2 000 cafés, ~70 % de pénétration du circuit café · Exports : ~10 % du CA (essentiellement Australie)</li>
+            <li>20 % des ventes en GMS (mais pression vers la standardisation)</li>
+        </ul>
     </div>
-
-    <ul class="blist">
-        <li><strong>RSE</strong> = intégration <span class="hl-critical">volontaire</span> des préoccupations sociales et environnementales, <strong>au-delà des obligations légales</strong></li>
-        <li><strong>4 dimensions de la RSE</strong></li>
-        <li class="sub">Économique : valeur partagée, pratiques commerciales éthiques</li>
-        <li class="sub">Social : conditions de travail, diversité, droits humains</li>
-        <li class="sub">Environnemental : carbone, déchets, énergie, économie circulaire</li>
-        <li class="sub">Gouvernance : transparence, reporting, composition des instances</li>
-        <li><strong>ODD</strong> = 17 Objectifs de Développement Durable (Agenda 2030, ONU)</li>
-        <li><strong>CSRD</strong> = directive européenne de reporting extra-financier obligatoire</li>
-    </ul>
-
-    <!-- BLOC 2 : CARROLL -->
-    <div class="section-title">2. Pyramide de Carroll — 4 niveaux de responsabilité</div>
-
-    <table class="compact-table">
-        <tr><th>Niveau</th><th>Obligation</th><th>Description</th></tr>
-        <tr>
-            <td><span class="hl-critical">Philanthropique</span></td>
-            <td>Souhaitée</td>
-            <td>Contribution volontaire à la communauté (mécénat, associations)</td>
-        </tr>
-        <tr>
-            <td><span class="hl-important">Éthique</span></td>
-            <td>Attendue</td>
-            <td>Faire ce qui est juste au-delà de la loi</td>
-        </tr>
-        <tr>
-            <td><span class="hl-important">Légale</span></td>
-            <td>Requise</td>
-            <td>Respecter les lois et régulations</td>
-        </tr>
-        <tr>
-            <td><span class="hl-important">Économique</span></td>
-            <td>Requise</td>
-            <td>Être rentable — base de tout le reste</td>
-        </tr>
-    </table>
 
     <div class="block block-astuce">
-        <div class="block-label">✓ Moyen mémo</div>
-        Base → Sommet : <strong>ÉLÉPHANT</strong> = Économique · Légale · Éthique · Philanthropique
+        <div class="block-label">✓ Identité &amp; Valeurs (à utiliser comme preuves dans chaque réponse)</div>
+        <ul class="blist">
+            <li>Morrison : <em>"La confiance avec les fournisseurs, les clients et les employés était le fondement du succès"</em></li>
+            <li><strong>Refus du plastique</strong> malgré des coûts de transport plus élevés (prise de position éthique)</li>
+            <li><strong>Refus d'embouteiller de l'eau</strong> — "la NZ devrait faire confiance à son eau du robinet"</li>
+            <li><strong>Campagne NZ sans OGM</strong> — plaidoyer actif au-delà de son propre business</li>
+            <li>Adoption du <strong>Natural Step</strong> (cadre suédois basé sur la science) · Embauche d'un <strong>directeur DD</strong></li>
+            <li>Voyages du personnel, activités sociales → faible turnover, valeurs ancrées dans toute l'org</li>
+            <li>Échec confitures/salsa → leçon des <em>"ghettos bio"</em> : focus exclusif sur les boissons</li>
+            <li>Tension centrale : rester petit &amp; authentique <strong>vs.</strong> grandir &amp; risquer de compromettre ses valeurs</li>
+        </ul>
     </div>
 
-    <!-- BLOC 3 : VRIO -->
-    <div class="section-title">3. Modèle VRIO (Barney) — Avantage concurrentiel durable</div>
-
     <table class="compact-table">
-        <tr><th>Critère</th><th>Question</th><th>Si OUI</th></tr>
-        <tr><td><span class="hl-critical">V</span>aluable (valeur)</td><td>La ressource crée-t-elle de la valeur ?</td><td>Compétitivité possible</td></tr>
-        <tr><td><span class="hl-critical">R</span>are</td><td>La ressource est-elle détenue par peu de concurrents ?</td><td>Avantage temporaire</td></tr>
-        <tr><td><span class="hl-critical">I</span>mitable (difficilement)</td><td>Est-elle coûteuse/difficile à imiter ?</td><td>Avantage durable potentiel</td></tr>
-        <tr><td><span class="hl-critical">O</span>rganisée</td><td>L'organisation exploite-t-elle cette ressource ?</td><td>Avantage concurrentiel durable</td></tr>
+        <tr><th>Pression / Rigidité</th><th>Description</th></tr>
+        <tr><td>Pouvoir des GMS</td><td>Exigeaient des bouteilles 1L, multipacks, remises bio faibles → standardisation forcée</td></tr>
+        <tr><td>Domination du marché</td><td>Coca-Cola &amp; Frucor contrôlaient le marché NZ ; entrent maintenant dans le bio/jus</td></tr>
+        <tr><td>Structure de coûts</td><td>Ingrédients bio 2× plus chers, saisonnalité → rigidité supply chain</td></tr>
+        <tr><td>Menace sur le circuit café</td><td>San Pellegrino commence à empiéter sur le terrain de Phoenix</td></tr>
+        <tr><td>Contrainte financière</td><td>Trésorerie tendue, fort endettement, réticence à accueillir des investisseurs extérieurs</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <!-- Q1 -->
+    <div class="q-header">
+        <div class="q-num">Q1</div>
+        <div style="flex:1"><div style="font-size:0.9rem;font-weight:700;">Leadership &amp; Identité organisationnelle</div></div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">Comment le leadership et l'identité organisationnelle ont-ils façonné le processus d'intégration de la durabilité dans la stratégie centrale d'une entreprise en croissance comme Phoenix ?</div>
+    </div>
+
+    <div class="theory-box">
+        <div class="theory-label">🔵 Théorie à mobiliser</div>
+        <ul class="blist">
+            <li><span class="tag tag-purple">Leadership transformationnel (Burns 1978, Bass 1985)</span> — 4I : Influence idéalisée · Motivation inspirante · Stimulation intellectuelle · Considération individualisée</li>
+            <li><span class="tag tag-purple">VRIO (Barney 1991)</span> — Identité-durabilité : Précieuse · Rare · Inimitable · Organisée → avantage concurrentiel durable</li>
+            <li><span class="tag tag-purple">Pyramide de Carroll (1991)</span> — Phoenix opère aux niveaux éthique/philanthropique en premier ; ceux-ci contraignent l'économique</li>
+            <li><span class="tag tag-purple">8 étapes de Kotter</span> — Phoenix incarne les étapes 1–3 dès la fondation (urgence, coalition, vision)</li>
+            <li><span class="tag tag-purple">Paradoxes (Smith &amp; Lewis 2011)</span> — "et/et" : profit ET durabilité en tension productive</li>
+        </ul>
+    </div>
+    <div class="evidence-box">
+        <div class="ev-label">🟢 Preuves Phoenix</div>
+        <ul class="blist">
+            <li>Refus plastique + refus eau embouteillée = Influence idéalisée (sacrifice commercial pour les valeurs)</li>
+            <li>Natural Step + directeur DD = Stimulation intellectuelle à l'échelle organisationnelle</li>
+            <li>Voyages du personnel = Considération individualisée → identité internalisée, faible turnover</li>
+            <li>VRIO : l'identité de Phoenix ne peut être copiée par Coca-Cola (ancrée dans l'histoire des fondateurs)</li>
+        </ul>
+    </div>
+    <div class="critical-box">
+        <div class="cr-label">🟡 Réflexion critique</div>
+        <ul class="blist">
+            <li>Identité = <strong>levier</strong> (difficile à imiter) ET <strong>contrainte</strong> (limite la croissance, rejette les options rentables)</li>
+            <li>Réticence de Morrison aux investisseurs = protection de l'identité vs fragilité financière</li>
+            <li>Contraste Kotter : changement ici <strong>piloté par l'identité dès le départ</strong>, non par une crise</li>
+            <li>Risque : si Morrison quitte, l'identité peut-elle lui survivre ? (succession non résolue)</li>
+        </ul>
+    </div>
+    <div class="block block-answer">
+        <div class="block-label">✏ Réponse modèle (10–12 lignes)</div>
+        <p style="font-size:0.88rem;line-height:1.65;">
+            Phoenix illustre comment le <strong>leadership transformationnel</strong> (Bass, 1985) peut intégrer la durabilité comme identité organisationnelle plutôt que comme simple ajout RSE. L'approche 4I de Morrison — refus du plastique et de l'eau (Influence idéalisée), vision "squeaky clean" (Motivation inspirante), adoption du Natural Step (Stimulation intellectuelle), voyages du personnel (Considération individualisée) — a assuré la diffusion des valeurs dans toute l'entreprise. Cette identité constitue une <strong>ressource VRIO</strong> (Barney, 1991) : Précieuse (prime bio), Rare (secteur axé coûts), Inimitable (enracinée culturellement), Organisée (directeur DD). Contrairement au modèle standard de Carroll où l'économique domine, Phoenix opère aux niveaux éthique et philanthropique en premier, laissant ceux-ci contraindre les décisions économiques. La <strong>théorie des paradoxes</strong> (Smith &amp; Lewis, 2011) explique la posture "et/et" — profit et durabilité en tension productive. De façon critique, il ne s'agit pas d'un changement Kotter déclenché par une crise, mais d'un <strong>processus piloté par l'identité dès la fondation</strong> : force (difficile à copier) et risque (dépendance au fondateur — la succession reste une tension non résolue).
+        </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Q2 -->
+    <div class="q-header">
+        <div class="q-num">Q2</div>
+        <div style="flex:1"><div style="font-size:0.9rem;font-weight:700;">Rigidités &amp; Résistances — Réponses créatives</div></div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">Le secteur étant dominé par des géants axés sur les coûts, quels types de rigidités et de résistances au changement Phoenix a-t-il rencontrés, et comment pourrait-il y répondre de façon créative ?</div>
+    </div>
+
+    <div class="theory-box">
+        <div class="theory-label">🔵 Théorie à mobiliser</div>
+        <ul class="blist">
+            <li><span class="tag tag-purple">Isomorphisme institutionnel (DiMaggio &amp; Powell 1983)</span> — <strong>Coercitif</strong> (GMS 1L/multipacks) · <strong>Mimétique</strong> (pression à imiter Coca-Cola) · <strong>Normatif</strong> (normes sectorielles : plastique, masse, faible coût)</li>
+            <li><span class="tag tag-purple">Champ de forces de Lewin</span> — Forces motrices (conscience bio, culture café) vs Forces résistantes (domination coûts, ghettos bio, pouvoir GMS)</li>
+            <li><span class="tag tag-purple">Résistances (Kotter &amp; Schlesinger)</span> — Intérêt personnel · Incompréhension · Évaluation différente · Faible tolérance à la disruption</li>
+            <li><span class="tag tag-purple">Paradoxes (Smith &amp; Lewis 2011)</span> — Le secteur est bloqué dans le "ou/ou" ; réponse créative de Phoenix = modèle "et/et"</li>
+        </ul>
+    </div>
+    <div class="evidence-box">
+        <div class="ev-label">🟢 Rigidités rencontrées</div>
+        <ul class="blist">
+            <li><strong>Coercitif :</strong> GMS imposant 1L, multipacks → standardisation qui banalise Phoenix</li>
+            <li><strong>Mimétique :</strong> Coca-Cola &amp; Frucor entrant dans le bio → empiètement concurrentiel</li>
+            <li><strong>Normatif :</strong> "Ghettos bio" = institutionnalisation du bio comme marginal</li>
+            <li>Ingrédients 2× plus chers, saisonnalité · San Pellegrino sur le circuit café · Trésorerie tendue</li>
+        </ul>
+    </div>
+    <div class="evidence-box">
+        <div class="ev-label">🟢 Réponses créatives</div>
+        <ul class="blist">
+            <li><strong>Circuit café</strong> = contournement créatif des GMS (réfrigérateurs contre visibilité à hauteur des yeux)</li>
+            <li><strong>Relations fournisseurs long terme</strong> = réduire la volatilité supply chain</li>
+            <li><strong>Focus boissons uniquement</strong> après l'échec confitures/salsa = concentration stratégique</li>
+            <li><strong>Campagne NZ sans OGM</strong> = façonner l'environnement externe plutôt que s'y adapter</li>
+        </ul>
+    </div>
+    <div class="critical-box">
+        <div class="cr-label">🟡 Réflexion critique</div>
+        <ul class="blist">
+            <li>Les réponses créatives sont surtout des <strong>stratégies d'évitement</strong>, pas de transformation systémique du mainstream</li>
+            <li>Le "Regelation" de Lewin est non résolu : Phoenix peut dégeler les cafés, mais le mainstream reste gelé</li>
+            <li>Avec San Pellegrino sur le circuit café, même la voie d'évasion se rétrécit</li>
+        </ul>
+    </div>
+    <div class="block block-answer">
+        <div class="block-label">✏ Réponse modèle (10–12 lignes)</div>
+        <p style="font-size:0.88rem;line-height:1.65;">
+            Phoenix a fait face à trois formes d'<strong>isomorphisme institutionnel</strong> (DiMaggio &amp; Powell, 1983) : pression coercitive (GMS exigeant 1L/multipacks), pression mimétique (Coca-Cola entrant dans le bio) et pression normative (les "ghettos bio" institutionnalisant le bio comme marginal). L'<strong>analyse du champ de forces de Lewin</strong> montre que les forces résistantes (domination coûts, fragilité financière, rigidité supply chain) l'emportent dans les circuits mainstream. Les résistances (Kotter &amp; Schlesinger) prennent la forme de l'intérêt personnel des distributeurs et de l'incompréhension institutionnelle. Les réponses créatives de Phoenix exploitent le paradoxe (Smith &amp; Lewis, 2011) : plutôt que d'affronter directement les rigidités, l'entreprise les <strong>contourne en construisant le circuit café</strong> — réfrigérateurs contre visibilité (innovation sous contrainte de ressources) — et en nouant des relations fournisseurs long terme. Toutefois, ce sont avant tout des <strong>stratégies d'évitement plutôt que de transformation systémique</strong> : Phoenix prospère en marge mais n'a pas encore dégelé le mainstream. L'empiètement de San Pellegrino sur le circuit café montre que même cette voie créative se rétrécit.
+        </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Q3 -->
+    <div class="q-header">
+        <div class="q-num">Q3</div>
+        <div style="flex:1"><div style="font-size:0.9rem;font-weight:700;">Entreprise multiplicatrice — Changement systémique</div></div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">Comment Phoenix pourrait-il agir comme une entreprise multiplicatrice pour créer un changement systémique plus large dans le secteur des boissons, tout en préservant ses propres valeurs ?</div>
+    </div>
+
+    <div class="theory-box">
+        <div class="theory-label">🔵 Théorie à mobiliser</div>
+        <ul class="blist">
+            <li><span class="tag tag-purple">Entreprise multiplicatrice</span> — influence l'écosystème élargi (supply chain, concurrents, régulateurs, consommateurs) au-delà de ses propres opérations</li>
+            <li><span class="tag tag-purple">Parties prenantes (Freeman 1984)</span> — obligations envers tous les stakeholders = plateforme d'influence sectorielle</li>
+            <li><span class="tag tag-purple">Valeur Partagée (Porter &amp; Kramer 2011)</span> — créer valeur économique ET sociétale = modèle que d'autres peuvent adopter</li>
+            <li><span class="tag tag-purple">Entrepreneuriat institutionnel (DiMaggio 1988)</span> — entreprises légitimes pouvant remodeler les normes sectorielles</li>
+            <li><span class="tag tag-purple">Paradoxe VRIO</span> — si les pratiques de Phoenix deviennent standard, elles perdent leur rareté → paradoxe du multiplicateur trop efficace</li>
+        </ul>
+    </div>
+    <div class="evidence-box">
+        <div class="ev-label">🟢 Actions multiplicatrices déjà prises</div>
+        <ul class="blist">
+            <li><strong>Campagne NZ sans OGM</strong> = remodelage actif de l'environnement réglementaire → entrepreneuriat institutionnel</li>
+            <li><strong>Récompenses business durable</strong> = crédibilité normalisant la durabilité comme modèle viable</li>
+            <li><strong>Circuit café</strong> = normalisation du bio premium dans la consommation quotidienne → influence sur les concurrents</li>
+            <li><strong>Refus eau embouteillée</strong> = plaidoyer public élevant les standards du secteur entier</li>
+        </ul>
+    </div>
+    <div class="critical-box">
+        <div class="cr-label">🟡 Réflexion critique — Le paradoxe central</div>
+        <ul class="blist">
+            <li>Plus Phoenix diffuse ses pratiques, moins elles sont <strong>Rares et Inimitables</strong> (VRIO) — avantage érodé</li>
+            <li>L'entrepreneuriat institutionnel requiert <strong>légitimité ET ressources</strong> — Phoenix a la légitimité, pas l'échelle</li>
+            <li>Réticence de Morrison = limite la capacité multiplicatrice : on ne change pas un secteur depuis une position de fragilité financière</li>
+        </ul>
+    </div>
+    <div class="block block-answer">
+        <div class="block-label">✏ Réponse modèle (10–12 lignes)</div>
+        <p style="font-size:0.88rem;line-height:1.65;">
+            Phoenix illustre déjà des <strong>comportements multiplicateurs</strong> : la campagne NZ sans OGM et le refus de l'eau embouteillée illustrent l'<strong>entrepreneuriat institutionnel</strong> (DiMaggio, 1988) — remodeler les normes plutôt que s'y adapter. Via la <strong>théorie des parties prenantes</strong> (Freeman, 1984), les relations fournisseurs long terme créent un effet multiplicateur côté offre, normalisant les économies d'approvisionnement bio. Le circuit café a généré un segment consommateurs qui pousse les concurrents à réagir, incarnant la <strong>Valeur Partagée</strong> (Porter &amp; Kramer, 2011). Pour amplifier l'impact tout en protégeant ses valeurs, Phoenix pourrait former une <strong>coalition d'entreprises partageant les mêmes valeurs</strong> (modèle B Corp) afin d'exercer une influence collective qu'aucune entreprise seule ne peut atteindre. Toutefois, un paradoxe fondamental émerge : plus Phoenix diffuse ses pratiques, moins elles sont <strong>Rares et Inimitables</strong> (VRIO, Barney, 1991). De façon critique, l'entrepreneuriat institutionnel requiert à la fois <strong>légitimité</strong> (dont Phoenix dispose) et <strong>ressources</strong> (dont il manque) — la réticence de Morrison à accueillir des investisseurs laisse l'entreprise trop fragile pour mener le changement sectoriel à grande échelle.
+        </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Q4 -->
+    <div class="q-header">
+        <div class="q-num">Q4</div>
+        <div style="flex:1"><div style="font-size:0.9rem;font-weight:700;">Mesurer &amp; Communiquer — Éviter le greenwashing</div></div>
+        <div class="q-pts">10 pts</div>
+    </div>
+    <div class="q-body">
+        <div class="q-text">Comment Phoenix pourrait-il mesurer et communiquer l'impact de ses pratiques de durabilité de façon à renforcer sa crédibilité et son avantage concurrentiel, tout en évitant le risque de sur-vente (greenwashing) ?</div>
+    </div>
+
+    <div class="theory-box">
+        <div class="theory-label">🔵 Théorie à mobiliser</div>
+        <ul class="blist">
+            <li><span class="tag tag-purple">Triple Bottom Line (Elkington 1994)</span> — mesurer et publier Humain · Planète · Profit de façon transparente, arbitrages compris</li>
+            <li><span class="tag tag-purple">Comptabilité GES (Scope 1/2/3)</span> — crédibilité = mesurer toute la chaîne de valeur (Scope 3 = ingrédients, transport)</li>
+            <li><span class="tag tag-purple">Théorie du signal</span> — signaux <strong>coûteux</strong> (refus options rentables) sont plus crédibles que les affirmations gratuites</li>
+            <li><span class="tag tag-purple">Carroll</span> — Légal ≠ Éthique ; communication authentique va au-delà de la conformité légale</li>
+            <li><span class="tag tag-purple">VRIO</span> — mesure crédible vérifiée par des tiers = difficile à imiter → avantage concurrentiel</li>
+        </ul>
+    </div>
+    <div class="evidence-box">
+        <div class="ev-label">🟢 Ce qui fonctionne déjà chez Phoenix</div>
+        <ul class="blist">
+            <li><strong>Signaux coûteux :</strong> refus plastique + refus eau = preuve la plus crédible de l'engagement</li>
+            <li><strong>Natural Step</strong> = cadre basé sur la science (pas sur le marketing)</li>
+            <li><strong>Récompenses externes</strong> = validation tierce · <strong>Directeur DD</strong> = redevabilité formelle</li>
+            <li>Standard "squeaky clean" = gestion consciente du risque d'hypocrisie</li>
+        </ul>
+    </div>
+    <div class="critical-box">
+        <div class="cr-label">🟡 Réflexion critique</div>
+        <ul class="blist">
+            <li>Communication actuelle = implicite (les actes parlent) → <strong>crédible mais pas scalable</strong> ; la croissance exigera un reporting formel TBL</li>
+            <li>Tension : reporting formel risque de devenir performatif (l'acte de rendre compte remplace l'acte d'agir)</li>
+            <li>Admettre les arbitrages honnêtement (verre = plus d'émissions transport) = plus crédible qu'un rapport RSE poli</li>
+        </ul>
+    </div>
+    <div class="block block-answer">
+        <div class="block-label">✏ Réponse modèle (10–12 lignes)</div>
+        <p style="font-size:0.88rem;line-height:1.65;">
+            La communication durabilité de Phoenix repose déjà sur des <strong>signaux coûteux</strong> (théorie du signal) : le refus du plastique et de l'eau sacrifie des gains commerciaux pour prouver un engagement sincère — bien plus crédible que n'importe quel label. Pour formaliser cet avantage, Phoenix devrait adopter le <strong>Triple Bottom Line reporting</strong> (Elkington, 1994) — Humain (bien-être, prix équitables fournisseurs), Planète (% bio, GES Scopes 1/2/3) et Profit (marges durables) — en publiant également les arbitrages (verre = transport plus émetteur). Le Natural Step fournit déjà une base scientifique ; une certification tierce (B Corp) externaliserait la vérification et réduirait le risque de greenwashing. L'<strong>analyse VRIO</strong> (Barney, 1991) montre qu'une mesure crédible et vérifiée en externe est elle-même Inimitable — les marques bio génériques ne peuvent reproduire l'historique de sacrifices principes de Phoenix. Carroll exige d'<strong>admettre les contraintes</strong> et non seulement de mettre en avant les réussites (Légal ≠ Éthique). Enfin, la tension principale reste que formaliser le reporting risque de transformer un comportement authentique en conformité performative — la culture "squeaky clean" pourrait être plus difficile à préserver sous la pression des investisseurs et des régulateurs.
+        </p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-title">Récap — Auteurs &amp; Concepts clés</div>
+    <table class="compact-table">
+        <tr><th>Auteur / Cadre</th><th>Concept central</th><th>Usage dans les réponses Phoenix</th></tr>
+        <tr><td><span class="hl-important">Carroll (1991)</span></td><td>Pyramide : Économique → Légale → Éthique → Philanthropique</td><td>Phoenix opère éthique/philanthropique en premier ; Légal ≠ Éthique = alerte greenwashing</td></tr>
+        <tr><td><span class="hl-important">Barney — VRIO</span></td><td>Précieux, Rare, Inimitable, Organisé</td><td>Identité Phoenix = avantage durable ; rôle multiplicateur érode la rareté</td></tr>
+        <tr><td><span class="hl-important">Freeman (1984)</span></td><td>Parties prenantes — au-delà des actionnaires</td><td>Relations de confiance fournisseurs/cafés/employés = stratégie stakeholders</td></tr>
+        <tr><td><span class="hl-important">Smith &amp; Lewis (2011)</span></td><td>Paradoxes — "et/et" vs "ou/ou"</td><td>Profit ET durabilité ; zone de performance (ni survie ni confort)</td></tr>
+        <tr><td><span class="hl-important">Bass (1985)</span></td><td>Leadership transformationnel — 4I</td><td>Morrison ancre l'identité via des décisions de principe</td></tr>
+        <tr><td><span class="hl-important">Lewin</span></td><td>Dégel → Changement → Regel</td><td>Circuit café = dégel partiel ; mainstream reste gelé ; Regel non résolu</td></tr>
+        <tr><td><span class="hl-important">Kotter (8 étapes)</span></td><td>Conduite du changement</td><td>Phoenix : urgence + coalition + vision dès la fondation (proactif, non lié à une crise)</td></tr>
+        <tr><td><span class="hl-important">DiMaggio &amp; Powell (1983)</span></td><td>Isomorphisme institutionnel (3 mécanismes)</td><td>3 types de rigidités ; Phoenix comme entrepreneur institutionnel (NZ sans OGM)</td></tr>
+        <tr><td><span class="hl-important">Porter &amp; Kramer (2011)</span></td><td>Valeur Partagée</td><td>Modèle Phoenix = effet multiplicateur sectoriel</td></tr>
+        <tr><td><span class="hl-important">Elkington (1994)</span></td><td>Triple Bottom Line</td><td>Cadre pour mesurer ET communiquer la durabilité</td></tr>
+        <tr><td><span class="hl-important">Brundtland (1987)</span></td><td>Développement durable</td><td>Fondement théorique opérationnalisé par Phoenix</td></tr>
     </table>
 
     <div class="block block-attention">
-        <div class="block-label">⚠ Application RSE + VRIO</div>
-        Une pratique RSE authentique peut constituer un avantage VRIO : rare (peu d'entreprises), difficile à imiter (ancrage culturel), valorisée (clients, talents, ESG investisseurs).
+        <div class="block-label">⚠ Erreurs courantes à éviter</div>
+        <ul class="blist">
+            <li>Ne pas décrire Phoenix sans <strong>articuler avec une théorie</strong> et expliquer le pourquoi</li>
+            <li>La <strong>réflexion critique</strong> (tensions, limites, risques) est indispensable pour obtenir 9–10</li>
+            <li>Pas de définitions génériques sans lien avec les preuves du cas Phoenix</li>
+            <li>10–12 lignes ≈ 150–180 mots — être précis et structuré, pas exhaustif</li>
+        </ul>
     </div>
-
-    <!-- BLOC 4 : THÉORIES ÉTHIQUES -->
-    <div class="section-title">4. Théories éthiques — Repères</div>
-
-    <table class="compact-table">
-        <tr><th>Théorie</th><th>Auteur(s)</th><th>Principe</th></tr>
-        <tr><td>Utilitarisme</td><td>Bentham, Mill</td><td>Maximiser le bien-être du plus grand nombre</td></tr>
-        <tr><td>Déontologie</td><td>Kant</td><td>Agir selon des principes universalisables (impératif catégorique)</td></tr>
-        <tr><td>Éthique des vertus</td><td>Aristote</td><td>Focus sur le caractère moral de l'agent</td></tr>
-        <tr><td>Théorie des parties prenantes</td><td>Freeman (1984)</td><td>Obligations envers tous les stakeholders</td></tr>
-        <tr><td>Doctrine de l'actionnaire</td><td>Friedman (1970)</td><td>Seule responsabilité = maximiser le profit</td></tr>
-    </table>
-
-    <!-- BLOC 5 : CONDUITE DU CHANGEMENT -->
-    <div class="section-title">5. Conduite du changement — Modèles clés</div>
-
-    <div class="block block-def">
-        <div class="block-label">Modèle de Lewin — 3 étapes</div>
-        <strong>1. Dégel (Unfreeze)</strong> : créer la prise de conscience, briser les habitudes<br>
-        <strong>2. Changement (Move)</strong> : mettre en place les nouvelles pratiques<br>
-        <strong>3. Regel (Refreeze)</strong> : ancrer, consolider, institutionnaliser le changement
-    </div>
-
-    <div class="block block-def">
-        <div class="block-label">Modèle de Kotter — 8 étapes</div>
-        1. Créer l'urgence → 2. Former une coalition → 3. Développer vision et stratégie → 4. Communiquer la vision → 5. Lever les obstacles → 6. Générer des victoires à CT → 7. Consolider → 8. Ancrer dans la culture
-    </div>
-
-    <ul class="blist">
-        <li><strong>Résistances au changement</strong> (causes) : peur de l'inconnu, perte de contrôle, remise en question des compétences, intérêts personnels menacés</li>
-        <li><strong>Facteurs de succès</strong> : leadership engagé, communication transparente, implication des acteurs concernés, quick wins visibles</li>
-        <li><strong>Agilité organisationnelle</strong> : capacité à pivoter rapidement → sprints, itérations, feedback loops</li>
-    </ul>
-
-    <!-- BLOC 6 : LOGIQUES DE MOTIVATION RSE -->
-    <div class="section-title">6. Pourquoi s'engager en RSE ? — 4 logiques</div>
-
-    <table class="compact-table">
-        <tr><th>Logique</th><th>Motivation</th><th>Risque</th></tr>
-        <tr><td><span class="hl-important">Instrumentale</span></td><td>ROI, compétitivité, accès financement ESG</td><td>Greenwashing si non ancrée</td></tr>
-        <tr><td><span class="hl-important">Éthique</span></td><td>Valeurs morales, convictions dirigeants</td><td>Difficile à maintenir sous pression actionnaires</td></tr>
-        <tr><td><span class="hl-important">Institutionnelle</span></td><td>Légitimité sociale, normes ISO, labels B Corp</td><td>Conformité sans réel engagement</td></tr>
-        <tr><td><span class="hl-important">Politique</span></td><td>Pression ONG, CSRD, consommateurs</td><td>Réactif, non proactif</td></tr>
-    </table>
-
-    <div class="block block-attention">
-        <div class="block-label">⚠ Greenwashing</div>
-        Se donner une image de responsabilité sans actions substantielles. Signe d'une RSE purement instrumentale. <span class="hl-critical">Légal ≠ Éthique. La RSE authentique va au-delà de la conformité.</span>
-    </div>
-
-    <!-- RECAP -->
-    <div class="section-title">Récap — Auteurs et références incontournables</div>
-
-    <table class="compact-table">
-        <tr><th>Auteur / Référence</th><th>Concept associé</th></tr>
-        <tr><td><span class="hl-important">Brundtland (1987)</span></td><td>Définition fondatrice du développement durable</td></tr>
-        <tr><td><span class="hl-important">Carroll (1991)</span></td><td>Pyramide des responsabilités (éco / légale / éthique / philanthropique)</td></tr>
-        <tr><td><span class="hl-important">Barney (VRIO)</span></td><td>Ressources et avantage concurrentiel durable</td></tr>
-        <tr><td><span class="hl-important">Freeman (1984)</span></td><td>Théorie des parties prenantes (stakeholders)</td></tr>
-        <tr><td><span class="hl-important">Friedman (1970)</span></td><td>Doctrine de la valeur actionnariale pure</td></tr>
-        <tr><td><span class="hl-important">Lewin</span></td><td>Modèle 3 étapes : Dégel – Changement – Regel</td></tr>
-        <tr><td><span class="hl-important">Kotter (8 étapes)</span></td><td>Conduite du changement organisationnel</td></tr>
-        <tr><td><span class="hl-important">Business Roundtable (2019)</span></td><td>Élargissement de la mission d'entreprise au-delà des actionnaires</td></tr>
-    </table>
 
 </div>
 
 <div class="source-footer">
-    Insight — Gestion du Changement & RSE — EM Normandie M1
+    Insight — Gestion du Changement pour la Durabilité — EM Normandie M1 PGE S7 · Partiel 17/12/2025
 </div>
 
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

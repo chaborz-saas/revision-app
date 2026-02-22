@@ -228,6 +228,21 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
       <div class="s-name">Marketing Relationnel</div>
       <div class="s-desc">CLV, fidélisation, CRM</div>
     </div>
+    <div class="subject-card" onclick="selectSubject(this, 'PILOTAGE')" data-subject="PILOTAGE">
+      <div class="s-emoji">📈</div>
+      <div class="s-name">Pilotage de la Performance</div>
+      <div class="s-desc">Coûts, seuil de rentabilité, écarts, BSC</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'ANALYSE_QUALITATIVE')" data-subject="ANALYSE_QUALITATIVE">
+      <div class="s-emoji">🔬</div>
+      <div class="s-name">Analyse Qualitative</div>
+      <div class="s-desc">Entretiens, codage, Grounded Theory</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'ANALYSE_QUANTI')" data-subject="ANALYSE_QUANTI">
+      <div class="s-emoji">📊</div>
+      <div class="s-name">Analyse Quantitative</div>
+      <div class="s-desc">Corrélation, régression, ANOVA</div>
+    </div>
     <div class="subject-card" onclick="selectSubject(this, 'LEADERSHIP')" data-subject="LEADERSHIP">
       <div class="s-emoji">🏆</div>
       <div class="s-name">Leadership</div>
@@ -474,6 +489,112 @@ CHAPITRE 7 — Communication
 - Communication assertive: 4 styles (passif, agressif, manipulateur, assertif)
 - DESC: Décrire, Exprimer, Spécifier, Conséquences
 - Feedback SBI (CCL): Situation, Behavior, Impact`
+  },
+
+  PILOTAGE: {
+    name: '📈 Pilotage de la Performance',
+    context: `Cours de Pilotage de la Performance, M1 EM Normandie.
+
+CHAPITRE 1 — Introduction
+- Contrôle de gestion: systèmes d'information au service du pilotage
+- Indicateurs financiers et non-financiers
+
+CHAPITRE 2 — Méthode des coûts variables et seuil de rentabilité
+- Coûts variables (proportionnels) vs coûts fixes (de structure)
+- Marge sur coûts variables (MCV) = CA − CV
+- Taux de MCV (TMCV) = MCV / CA
+- Seuil de rentabilité (SR) en € = CF / TMCV
+- SR en quantités = CF / MCV unitaire
+- Point mort (jours) = (SR / CA) × 360
+- Marge de sécurité = CA − SR; Indice de sécurité = (CA − SR) / CA
+- Sous-traitance: CF faibles, CV élevés, SR bas, plus flexible
+- Internalisation: CF élevés, CV modérés, levier opérationnel fort
+
+CHAPITRE 3 — Coût cible (Target Costing)
+- Coût cible = Prix de vente − Marge souhaitée
+- Logique "market-in": partir du prix accepté par le marché
+- Ingénierie de la valeur: supprimer fonctions non utiles pour atteindre le coût cible
+
+CHAPITRE 4 — Analyse des écarts
+- Écart sur CA = Réel − Budgété
+- Écart sur volume = (Q réelles − Q budgétées) × Prix budgété
+- Écart sur prix = (Prix réel − Prix budgété) × Q réelles
+- Écart favorable vs défavorable (préciser le sens)
+- Écart sur matières = écart quantité + écart prix matières
+- Écart sur main-d'œuvre = écart temps + écart taux horaire
+
+CHAPITRE 5 — Tableaux de bord & BSC
+- Balanced Scorecard (Kaplan & Norton): 4 perspectives
+  → Financière (ROI, EBITDA), Clients (NPS, satisfaction), Processus internes, Apprentissage/Innovation
+- Indicateurs: pilotes (avancés) vs de résultat (retardés)
+
+CHAPITRE 6 — Contrôle de gestion sociale
+- Masse salariale: Net + charges salariales = Brut; Brut + charges patronales (25-42%) = MS
+- Effets sur la MS: niveau, effectif, structure
+- Rapport de Situation Comparée (RSC): indicateurs femmes/hommes
+
+CHAPITRE 7 — Lean Management
+- 7 Mudas (gaspillages): Surproduction, Attentes, Transport, Stocks, Mouvements, Sur-traitement, Défauts
+- Kaizen: amélioration continue, petits pas
+- Value Stream Mapping: cartographier la chaîne de valeur`
+  },
+
+  ANALYSE_QUALITATIVE: {
+    name: '🔬 Analyse Qualitative',
+    context: `Cours d'Analyse Qualitative (Méthodologie de recherche), M1 EM Normandie.
+
+CHAPITRE 1 — Méthodes qualitatives vs quantitatives
+- Méthodes qualitatives: 4 dimensions — inductives, exploratoires, interprétatives, contextuelles
+- Méthodes quantitatives: rigueur, objectivité, reproductibilité
+- Qualitatif: comprendre le SENS; Quantitatif: MESURER
+- Méthodes quali: ethnographie, recherche-action, expérimentation, étude des traces, enquête
+- Repères: Simon (1957) rationalité limitée; Glaser & Strauss (1967) Grounded Theory; Yin (1981/1994) étude de cas; Eisenhardt (1989) cas multiples
+
+CHAPITRE 2 — Méthodologie de l'enquête qualitative
+- Types d'entretiens: directif, semi-directif (le plus utilisé), non-directif
+- Guide d'entretien: liste de thèmes et sous-thèmes (pas de questions fermées)
+- Échantillonnage raisonné (théorique, pas statistique)
+- Saturation théorique: point d'arrêt de la collecte (plus de nouvelles informations)
+- Triangulation: croiser plusieurs méthodes/sources pour renforcer la validité
+- Focus groups: entretien collectif guidé
+
+CHAPITRE 3 — Codage & Analyse thématique
+- Retranscription verbatim → lecture flottante
+- Codage ouvert: identifier unités de sens et leur attribuer des codes
+- Codage axial: regrouper les codes en catégories thématiques
+- Codage sélectif: identifier la catégorie centrale (Grounded Theory)
+- Memo writing: noter les réflexions théoriques en cours d'analyse
+- Critères de rigueur: crédibilité, transférabilité, fiabilité, confirmabilité
+- Généralisation théorique (pas statistique)`
+  },
+
+  ANALYSE_QUANTI: {
+    name: '📊 Analyse des Données Quantitatives',
+    context: `Cours d'Analyse des Données Quantitatives, M1 EM Normandie.
+
+CHAPITRE 1 — Analyse descriptive
+- Statistiques descriptives: moyenne, médiane, mode, écart-type, variance
+- Distribution normale (courbe en cloche): 68-95-99.7% dans 1-2-3 écarts-types
+- Mesures de tendance centrale vs mesures de dispersion
+- Visualisation: histogramme, box-plot, nuage de points
+
+CHAPITRE 2 — Analyse bivariée
+- Corrélation de Pearson (r): mesure la force et le sens d'une relation linéaire entre deux variables
+  → r entre -1 et +1; r=0 = pas de corrélation linéaire
+- Régression linéaire simple: Y = a + bX + ε
+  → b = coefficient de régression (pente); a = constante
+  → R² = coefficient de détermination (proportion de variance expliquée)
+- Corrélation ≠ causalité
+- Test du Chi-2: relation entre deux variables catégorielles
+
+CHAPITRE 3 — ANOVA (Analyse de la Variance)
+- ANOVA à 1 facteur: comparer les moyennes de 3 groupes ou plus
+  → H0: toutes les moyennes sont égales
+  → F-statistique = variance intergroupe / variance intragroupe
+  → Si p-value < 0.05: on rejette H0, différences significatives
+- ANOVA à 2 facteurs: étudier l'effet de deux variables indépendantes et leur interaction
+- Tests post-hoc (Tukey, Bonferroni): identifier quels groupes diffèrent après ANOVA significative
+- Conditions: normalité des résidus, homogénéité des variances (test de Levene)`
   }
 };
 

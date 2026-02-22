@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Management — Formula Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 1.5rem; min-height: 100vh; }
+
+.wrapper { max-width: 960px; margin: 0 auto; }
+a.back { color: #4361ee; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem; }
+
+.page-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  border: 1px solid #4361ee33;
+  border-radius: 16px; padding: 1.5rem 2rem; margin-bottom: 1.5rem;
+  border-left: 5px solid #4361ee;
+}
+.page-header .tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #4361ee; margin-bottom: 0.4rem; }
+.page-header h1 { font-size: 1.5rem; font-weight: 800; color: white; }
+.page-header p { font-size: 0.85rem; color: #808090; margin-top: 0.3rem; }
+
+.section-title {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 2.5px; color: #4361ee; margin: 1.8rem 0 0.8rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: #252540; }
+
+.formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.7rem; }
+
+.formula-card {
+  background: #1a1a2e; border-radius: 12px; padding: 1rem 1.2rem;
+  border: 1px solid #252540; transition: border-color 0.2s;
+}
+.formula-card:hover { border-color: #4361ee55; }
+.formula-card .f-name { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #808090; margin-bottom: 0.5rem; }
+.formula-card .f-formula {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;
+  color: #a78bfa; line-height: 1.6; margin-bottom: 0.4rem;
+}
+.formula-card .f-note { font-size: 0.78rem; color: #606080; line-height: 1.4; margin-top: 0.3rem; }
+.formula-card .f-example { font-size: 0.78rem; color: #4ade80; margin-top: 0.4rem; font-family: 'JetBrains Mono', monospace; }
+
+/* Wide card spans 2 columns */
+.formula-card.wide { grid-column: 1 / -1; }
+
+/* Color variants */
+.formula-card.blue { border-left: 3px solid #4361ee; }
+.formula-card.purple { border-left: 3px solid #a78bfa; }
+.formula-card.green { border-left: 3px solid #4ade80; }
+.formula-card.red { border-left: 3px solid #f87171; }
+.formula-card.yellow { border-left: 3px solid #fbbf24; }
+.formula-card.teal { border-left: 3px solid #2dd4bf; }
+
+.alert {
+  background: #1e1a00; border-left: 3px solid #fbbf24; border-radius: 10px;
+  padding: 0.7rem 1rem; margin: 0.6rem 0;
+  font-size: 0.82rem; color: #fbbf24; line-height: 1.5;
+}
+
+.table-wrap { overflow-x: auto; margin: 0.5rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+th { background: #252540; color: #a0a0c0; padding: 0.5rem 0.7rem; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; }
+td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #1e1e35; color: #e0e0e0; vertical-align: top; }
+tr:hover td { background: #1a1a2e; }
+td .mono { font-family: 'JetBrains Mono', monospace; color: #a78bfa; font-size: 0.8rem; }
+td.good { color: #4ade80; }
+td.bad { color: #f87171; }
+
+.sign-legend {
+  display: flex; gap: 1rem; margin: 0.5rem 0;
+  font-size: 0.78rem;
+}
+.sign-legend span { display: flex; align-items: center; gap: 0.3rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot.green { background: #4ade80; }
+.dot.red { background: #f87171; }
+
+@media (max-width: 600px) {
+  .formula-grid { grid-template-columns: 1fr; }
+  .formula-card.wide { grid-column: 1; }
+}
+@media print {
+  body { background: white; color: #000; padding: 0; }
+  .page-header { background: #f0f4ff; }
+  .formula-card { background: #f8f9fa; border-color: #ddd; }
+  a.back { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<a href="../../en/index.html" class="back">← Back to home</a>
+
+<div class="page-header">
+  <div class="tag">Performance Management — M1 · Formula Cheat Sheet</div>
+  <h1>📐 All Formulas at a Glance</h1>
+  <p>Every key formula from the course — costs, variances, payroll, target costing. Memorise these.</p>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">1 · Cost Structure & Break-Even</div>
+
+<div class="formula-grid">
+  <div class="formula-card blue">
+    <div class="f-name">Contribution Margin (CM)</div>
+    <div class="f-formula">CM = Revenue − Variable Costs</div>
+    <div class="f-note">Also called "Marge sur Coûts Variables" (MCV)</div>
+  </div>
+
+  <div class="formula-card blue">
+    <div class="f-name">CM Rate (TMCV)</div>
+    <div class="f-formula">TMCV = CM / Revenue</div>
+    <div class="f-formula">     = (Rev − VC) / Rev</div>
+    <div class="f-example">Ex: CM = 400k, Rev = 1M → TMCV = 40%</div>
+  </div>
+
+  <div class="formula-card green">
+    <div class="f-name">Break-Even Point (€)</div>
+    <div class="f-formula">BEP (€) = Fixed Costs / TMCV</div>
+    <div class="f-example">Ex: FC = 200k, TMCV = 40% → BEP = 500k€</div>
+  </div>
+
+  <div class="formula-card green">
+    <div class="f-name">Break-Even Point (units)</div>
+    <div class="f-formula">BEP (units) = Fixed Costs / CM per unit</div>
+    <div class="f-example">Ex: FC = 200k, CM/u = 0.40€ → BEP = 500k units</div>
+  </div>
+
+  <div class="formula-card teal">
+    <div class="f-name">Break-Even Date (days)</div>
+    <div class="f-formula">BEP (days) = (BEP / Annual Rev) × 360</div>
+    <div class="f-note">When in the year does profit start?</div>
+  </div>
+
+  <div class="formula-card purple">
+    <div class="f-name">Safety Margin & Index</div>
+    <div class="f-formula">SM = Revenue − BEP</div>
+    <div class="f-formula">SI = (Revenue − BEP) / Revenue</div>
+    <div class="f-note">How far above break-even are we?</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">Net Result (Income Statement)</div>
+    <div class="f-formula">Result = CM − Fixed Costs</div>
+    <div class="f-formula">      = Revenue × TMCV − FC</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">VAT (TVA) to Pay</div>
+    <div class="f-formula">VAT payable = VAT collected − VAT deductible</div>
+    <div class="f-note">If deductible > collected → VAT credit (carried forward)</div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">2 · Target Costing</div>
+
+<div class="formula-grid">
+  <div class="formula-card blue">
+    <div class="f-name">Target Cost</div>
+    <div class="f-formula">Target Cost = Market Price − Target Margin</div>
+    <div class="f-formula">           = Price × (1 − Margin rate)</div>
+    <div class="f-note">Price is set by the market, margin is strategic → cost is the variable</div>
+  </div>
+
+  <div class="formula-card blue">
+    <div class="f-name">Price excl. tax from TTC</div>
+    <div class="f-formula">Price HT = Price TTC / (1 + VAT rate)</div>
+    <div class="f-example">Ex: 100 000€ TTC, VAT 20% → HT = 83 333€</div>
+  </div>
+
+  <div class="formula-card red">
+    <div class="f-name">Gap to Close</div>
+    <div class="f-formula">Gap = Estimated Cost − Target Cost</div>
+    <div class="f-note">Positive = cost too high → must reduce. Negative = cost already below target.</div>
+  </div>
+
+  <div class="formula-card purple">
+    <div class="f-name">Component Weight (Value Analysis)</div>
+    <div class="f-formula">Weight(i) = Σ [ Function%(j) × Contribution%(i,j) ]</div>
+    <div class="f-note">Sum of: each function's weight × component's contribution to that function</div>
+  </div>
+
+  <div class="formula-card green">
+    <div class="f-name">Component Target Cost</div>
+    <div class="f-formula">Target Cost(i) = Weight(i) × Total Target Cost</div>
+    <div class="f-note">Then compare with estimated cost per component</div>
+  </div>
+
+  <div class="formula-card teal">
+    <div class="f-name">Value (AFNOR)</div>
+    <div class="f-formula">Value = Needs Satisfied / Costs</div>
+    <div class="f-note">Increase value by: cutting useless functions, reducing cost of a function without changing service</div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">3 · Variance Analysis (Écarts)</div>
+
+<div class="alert">⚠ Sign convention: Favourable variance = positive contribution to profit (real revenue > forecast OR real cost &lt; forecast). Unfavourable = opposite.</div>
+
+<div class="sign-legend">
+  <span><span class="dot green"></span> Favourable (F)</span>
+  <span><span class="dot red"></span> Unfavourable (U)</span>
+</div>
+
+<div class="section-title" style="margin-top:1rem;">3a · Revenue Variances</div>
+<div class="formula-grid">
+  <div class="formula-card blue">
+    <div class="f-name">Total Revenue Variance</div>
+    <div class="f-formula">= (Qr × Pr) − (Qp × Pp)</div>
+    <div class="f-note">Qr = actual qty, Pr = actual price, Qp = planned qty, Pp = planned price</div>
+  </div>
+
+  <div class="formula-card blue">
+    <div class="f-name">Price Variance (Revenue)</div>
+    <div class="f-formula">= (Pr − Pp) × Qr</div>
+  </div>
+
+  <div class="formula-card blue">
+    <div class="f-name">Volume Variance (Revenue)</div>
+    <div class="f-formula">= (Qr − Qp) × Pp</div>
+  </div>
+
+  <div class="formula-card purple">
+    <div class="f-name">Activity Variance</div>
+    <div class="f-formula">= (Total Qr − Total Qp) × Avg Std Margin</div>
+    <div class="f-note">Avg Std Margin = Σ [Std margin per unit(i) × Planned mix%(i)]</div>
+  </div>
+
+  <div class="formula-card purple">
+    <div class="f-name">Mix Variance</div>
+    <div class="f-formula">= Σ [ (Qr(i) − Qmix(i)) × Std Margin(i) ]</div>
+    <div class="f-note">Qmix(i) = planned share(i) × total actual qty</div>
+  </div>
+
+  <div class="formula-card green">
+    <div class="f-name">Production Cost Variance</div>
+    <div class="f-formula">= (Std unit cost − Actual unit cost) × Qr</div>
+  </div>
+</div>
+
+<div class="section-title" style="margin-top:1rem;">3b · Direct Cost Variances</div>
+<div class="formula-grid">
+  <div class="formula-card teal">
+    <div class="f-name">Materials — Total Variance (EM)</div>
+    <div class="f-formula">EM = (Qr × Pr) − (Qp × Pp)</div>
+  </div>
+
+  <div class="formula-card teal">
+    <div class="f-name">Materials — Usage Variance</div>
+    <div class="f-formula">= (Qr − Qp) × Pp</div>
+    <div class="f-note">More/less material used than standard</div>
+  </div>
+
+  <div class="formula-card teal">
+    <div class="f-name">Materials — Price Variance</div>
+    <div class="f-formula">= (Pr − Pp) × Qr</div>
+    <div class="f-note">Paid more/less per unit of material than standard</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">Labour — Total Variance (EMO)</div>
+    <div class="f-formula">EMO = (Tr × Sr) − (Tp × Sp)</div>
+    <div class="f-note">T = time (hours), S = hourly rate</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">Labour — Rate Variance</div>
+    <div class="f-formula">= (Sr − Sp) × Tr</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">Labour — Efficiency Variance</div>
+    <div class="f-formula">= (Tr − Tp) × Sp</div>
+  </div>
+</div>
+
+<div class="section-title" style="margin-top:1rem;">3c · Full Variance Tree</div>
+<div class="formula-card wide" style="background:#12122a;border-color:#4361ee33;padding:1.2rem 1.5rem;">
+  <div class="f-name" style="margin-bottom:0.7rem;">Result Variance Decomposition</div>
+  <pre style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#a78bfa;line-height:1.8;overflow-x:auto;">
+Total Result Variance
+├── Revenue Variances
+│   ├── Price Variance          = (Pr − Pp) × Qr
+│   ├── Activity Variance       = (Total Qr − Qp) × Avg Std Margin
+│   └── Mix Variance            = Σ[(Qr(i) − Qmix(i)) × Std Margin(i)]
+└── Cost Variances
+    ├── Direct Materials
+    │   ├── Usage Variance      = (Qr − Qp) × Pp
+    │   └── Price Variance      = (Pr − Pp) × Qr
+    └── Direct Labour
+        ├── Efficiency Variance = (Tr − Tp) × Sp
+        └── Rate Variance       = (Sr − Sp) × Tr</pre>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">4 · Standard Costing</div>
+
+<div class="formula-grid">
+  <div class="formula-card blue">
+    <div class="f-name">Standard Cost</div>
+    <div class="f-formula">Std Cost = Std Qty × Std Unit Cost</div>
+  </div>
+
+  <div class="formula-card blue">
+    <div class="f-name">Budget Control</div>
+    <div class="f-formula">Variance = Actual Result − Budgeted Result</div>
+    <div class="f-note">Compare YTD actuals vs cumulative budget. Also track Year-To-Go (reste à faire).</div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">5 · Payroll & HR Controlling</div>
+
+<div class="formula-grid">
+  <div class="formula-card purple">
+    <div class="f-name">Payroll Mass Variation — Additive</div>
+    <div class="f-formula">Δ Payroll = Δ Headcount effect + Δ Pay level</div>
+  </div>
+
+  <div class="formula-card purple">
+    <div class="f-name">Payroll Mass Variation — Multiplicative</div>
+    <div class="f-formula">(1 + Δ Headcount) × (1 + Δ Pay) = (1 + Δ Payroll)</div>
+    <div class="f-example">Ex: +10% headcount, +5% pay → 1.10 × 1.05 = 1.155 → +15.5%</div>
+  </div>
+
+  <div class="formula-card teal">
+    <div class="f-name">Pay Increase — In-Year Effect (Masse)</div>
+    <div class="f-formula">Mass effect = % increase × (months remaining / 12)</div>
+    <div class="f-example">Ex: +4% on Oct 1 → mass = 4% × 3/12 = 1%</div>
+  </div>
+
+  <div class="formula-card teal">
+    <div class="f-name">Pay Increase — Carry-Over to Next Year</div>
+    <div class="f-formula">Carry-over = (Full-year cost N+1 − In-year mass N) / Payroll N</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">Noria Effect (turnover savings)</div>
+    <div class="f-formula">Noria = (Avg salary joiners − Avg salary leavers) × nb replacements × prorata</div>
+    <div class="f-example">Ex: 10 replacements, joiners 20k, leavers 40k → −200k€ saving</div>
+  </div>
+
+  <div class="formula-card yellow">
+    <div class="f-name">Absenteeism Rate</div>
+    <div class="f-formula">Abs. rate = Days absent / Days paid × 100</div>
+  </div>
+
+  <div class="formula-card red">
+    <div class="f-name">GVT (Individual Pay Drift)</div>
+    <div class="f-formula">G = Merit (individual performance)
+V = Seniority increments
+T = Skills / job upgrades</div>
+    <div class="f-note">GVT = automatic upward payroll drift even without collective raises</div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">6 · Key Ratios & KPIs</div>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>KPI</th>
+    <th>Formula</th>
+    <th>What it measures</th>
+  </tr>
+  <tr>
+    <td>Profitability</td>
+    <td><span class="mono">Profit / Capital invested</span></td>
+    <td>Return on investment</td>
+  </tr>
+  <tr>
+    <td>Productivity</td>
+    <td><span class="mono">Output / Input</span></td>
+    <td>Resource efficiency</td>
+  </tr>
+  <tr>
+    <td>CM Rate (TMCV)</td>
+    <td><span class="mono">CM / Revenue</span></td>
+    <td>% of each € of sales that covers fixed costs</td>
+  </tr>
+  <tr>
+    <td>Safety Index</td>
+    <td><span class="mono">(Rev − BEP) / Rev</span></td>
+    <td>Buffer above break-even</td>
+  </tr>
+  <tr>
+    <td>Accident frequency rate</td>
+    <td><span class="mono">Accidents × 1 000 000 / Hours worked</span></td>
+    <td>Workplace safety</td>
+  </tr>
+  <tr>
+    <td>Accident severity rate</td>
+    <td><span class="mono">Days lost × 1 000 / Hours worked</span></td>
+    <td>Severity of accidents</td>
+  </tr>
+  <tr>
+    <td>Payroll / Revenue</td>
+    <td><span class="mono">Total payroll cost / Revenue</span></td>
+    <td>Labour cost intensity</td>
+  </tr>
+  <tr>
+    <td>Training spend %</td>
+    <td><span class="mono">Training budget / Gross payroll</span></td>
+    <td>HR investment in skills</td>
+  </tr>
+  <tr>
+    <td>KPI variance %</td>
+    <td><span class="mono">(Actual − Previous) / Previous × 100</span></td>
+    <td>Standard dashboard % change</td>
+  </tr>
+</table>
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<div class="section-title">7 · Quick Reference — All Variances</div>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Variance</th>
+    <th>Formula</th>
+    <th>Favourable if...</th>
+  </tr>
+  <tr>
+    <td>Revenue — Price</td>
+    <td><span class="mono">(Pr − Pp) × Qr</span></td>
+    <td class="good">Actual price &gt; Planned price</td>
+  </tr>
+  <tr>
+    <td>Revenue — Volume</td>
+    <td><span class="mono">(Qr − Qp) × Pp</span></td>
+    <td class="good">Actual qty &gt; Planned qty</td>
+  </tr>
+  <tr>
+    <td>Revenue — Activity</td>
+    <td><span class="mono">(Total Qr − Qp) × Avg Std Margin</span></td>
+    <td class="good">Sold more than planned overall</td>
+  </tr>
+  <tr>
+    <td>Revenue — Mix</td>
+    <td><span class="mono">Σ[(Qr(i) − Qmix(i)) × Std Margin(i)]</span></td>
+    <td class="good">Shifted toward high-margin products</td>
+  </tr>
+  <tr>
+    <td>Materials — Usage</td>
+    <td><span class="mono">(Qr − Qp) × Pp</span></td>
+    <td class="good">Used less material than standard</td>
+  </tr>
+  <tr>
+    <td>Materials — Price</td>
+    <td><span class="mono">(Pr − Pp) × Qr</span></td>
+    <td class="good">Paid less per unit than standard</td>
+  </tr>
+  <tr>
+    <td>Labour — Efficiency</td>
+    <td><span class="mono">(Tr − Tp) × Sp</span></td>
+    <td class="good">Worked fewer hours than standard</td>
+  </tr>
+  <tr>
+    <td>Labour — Rate</td>
+    <td><span class="mono">(Sr − Sp) × Tr</span></td>
+    <td class="good">Hourly rate lower than standard</td>
+  </tr>
+  <tr>
+    <td>Target Cost Gap</td>
+    <td><span class="mono">Estimated Cost − Target Cost</span></td>
+    <td class="good">Negative (cost below target)</td>
+  </tr>
+</table>
+</div>
+
+<div style="text-align:center;margin-top:2rem;padding:1rem;color:#404060;font-size:0.78rem;">
+  Performance Management — EM Normandie M1 · Formula Sheet
+</div>
+
+</div>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

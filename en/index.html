@@ -242,7 +242,50 @@
             .chapter .links { width: 100%; }
             .stats { gap: 1rem; }
         }
-
+        /* === TABLE OF CONTENTS === */
+        .toc-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0.55rem 1.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .toc-nav::-webkit-scrollbar { display: none; }
+        .toc-nav a {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 0.35rem;
+            color: #808090;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .toc-nav a:hover {
+            color: #e0e0e0;
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .toc-label {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #404050;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -255,10 +298,20 @@
     <a href="../chat.html" style="display:inline-block;margin-top:1rem;background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;text-decoration:none;padding:0.6rem 1.5rem;border-radius:10px;font-weight:700;font-size:0.9rem;">💬 Chat Q&A</a>
 </div>
 
+<nav class="toc-nav">
+    <span class="toc-label">Jump to →</span>
+    <a href="#rm">💜 Relationship Mktg</a>
+    <a href="#cm">🌿 Change Mgmt</a>
+    <a href="#geo">🌍 Geoeconomics</a>
+    <a href="#hrm">🧑‍💼 HRM</a>
+    <a href="#pm">📊 Performance Mgmt</a>
+    <a href="#sebs">♻️ SEBS</a>
+</nav>
+
 <div class="container">
 
     <!-- RELATIONSHIP MARKETING -->
-    <div class="matiere rm">
+    <div class="matiere rm" id="rm">
         <div class="matiere-header">
             <span class="emoji">💜</span>
             <h2>Relationship Marketing</h2>
@@ -314,7 +367,7 @@
     </div>
 
     <!-- CHANGE MANAGEMENT FOR SUSTAINABILITY -->
-    <div class="matiere cm">
+    <div class="matiere cm" id="cm">
         <div class="matiere-header">
             <span class="emoji">🌿</span>
             <h2>Change Management for Sustainability</h2>
@@ -361,7 +414,7 @@
     </div>
 
     <!-- GEOECONOMICS -->
-    <div class="matiere geo">
+    <div class="matiere geo" id="geo">
         <div class="matiere-header">
             <span class="emoji">🌍</span>
             <h2>Geoeconomics</h2>
@@ -408,7 +461,7 @@
     </div>
 
     <!-- HRM FOR MANAGERS -->
-    <div class="matiere hrm">
+    <div class="matiere hrm" id="hrm">
         <div class="matiere-header">
             <span class="emoji">🧑‍💼</span>
             <h2>HRM for Managers</h2>
@@ -455,7 +508,7 @@
     </div>
 
     <!-- PERFORMANCE MANAGEMENT -->
-    <div class="matiere pm">
+    <div class="matiere pm" id="pm">
         <div class="matiere-header">
             <span class="emoji">📊</span>
             <h2>Performance Management</h2>
@@ -545,7 +598,7 @@
     </div>
 
     <!-- SUSTAINABLE & ETHICAL BUSINESS STRATEGY -->
-    <div class="matiere sebs">
+    <div class="matiere sebs" id="sebs">
         <div class="matiere-header">
             <span class="emoji">♻️</span>
             <h2>Sustainable & Ethical Business Strategy</h2>

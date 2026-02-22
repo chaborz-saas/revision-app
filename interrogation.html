@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mode Interrogation IA — Révisions M1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #4361ee;
+  display: flex; align-items: center; gap: 1rem;
+}
+.header a { color: #4361ee; text-decoration: none; font-size: 0.85rem; }
+.header h1 { font-size: 1rem; font-weight: 700; color: white; flex: 1; text-align: center; }
+.mode-badge {
+  background: #4361ee; color: white;
+  font-size: 0.7rem; font-weight: 700;
+  padding: 0.2rem 0.6rem; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* SETUP SCREEN */
+#setup-screen {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 2rem; gap: 1.5rem;
+}
+#setup-screen h2 { font-size: 1.4rem; font-weight: 800; color: white; text-align: center; }
+#setup-screen p { color: #808090; font-size: 0.9rem; text-align: center; max-width: 500px; }
+
+.subject-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.8rem; width: 100%; max-width: 700px;
+}
+.subject-card {
+  background: #1a1a2e; border: 2px solid #252540;
+  border-radius: 12px; padding: 1rem 1.2rem;
+  cursor: pointer; transition: all 0.2s; text-align: left;
+}
+.subject-card:hover { border-color: #4361ee; background: #1e1e3a; transform: translateY(-2px); }
+.subject-card.selected { border-color: #4361ee; background: #1e1e3a; }
+.subject-card .s-emoji { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.subject-card .s-name { font-size: 0.9rem; font-weight: 700; color: white; }
+.subject-card .s-desc { font-size: 0.75rem; color: #808090; margin-top: 0.2rem; }
+
+.btn-start {
+  background: #4361ee; color: white; border: none;
+  border-radius: 12px; padding: 0.9rem 2.5rem;
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  transition: all 0.2s; opacity: 0.4; pointer-events: none;
+}
+.btn-start.active { opacity: 1; pointer-events: all; }
+.btn-start.active:hover { background: #3451de; transform: translateY(-2px); }
+
+/* CHAT SCREEN */
+#chat-screen { flex: 1; display: none; flex-direction: column; max-width: 800px; width: 100%; margin: 0 auto; padding: 0 1rem; }
+
+.chat-info {
+  background: #1a1a2e; border-radius: 12px; padding: 0.7rem 1.2rem;
+  margin: 0.8rem 0; display: flex; align-items: center; gap: 0.8rem;
+  border-left: 3px solid #4361ee;
+}
+.chat-info .subject-tag { font-size: 0.78rem; font-weight: 700; color: #4361ee; }
+.chat-info .instruction { font-size: 0.78rem; color: #808090; flex: 1; }
+.btn-reset { background: none; border: 1px solid #333; color: #808090; border-radius: 8px; padding: 0.3rem 0.7rem; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+.btn-reset:hover { border-color: #e74c3c; color: #e74c3c; }
+
+.messages { flex: 1; overflow-y: auto; padding: 0.5rem 0; display: flex; flex-direction: column; gap: 0.8rem; min-height: 0; max-height: calc(100vh - 280px); }
+.messages::-webkit-scrollbar { width: 4px; }
+.messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+.msg { display: flex; gap: 0.7rem; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 700; flex-shrink: 0;
+}
+.msg.ai .msg-avatar { background: #4361ee; color: white; }
+.msg.user .msg-avatar { background: #2d2d4e; color: #a0a0c0; }
+.msg-bubble {
+  max-width: 75%; padding: 0.75rem 1rem;
+  border-radius: 14px; font-size: 0.9rem; line-height: 1.55;
+}
+.msg.ai .msg-bubble { background: #1a1a2e; color: #e0e0e0; border-radius: 4px 14px 14px 14px; }
+.msg.user .msg-bubble { background: #4361ee; color: white; border-radius: 14px 4px 14px 14px; }
+
+/* Score badge in AI messages */
+.score-badge {
+  display: inline-block; border-radius: 6px; padding: 2px 8px;
+  font-size: 0.75rem; font-weight: 700; margin-top: 0.4rem;
+}
+.score-good { background: #1a3a2a; color: #2ecc71; }
+.score-partial { background: #3a3000; color: #f39c12; }
+.score-bad { background: #3a1a1a; color: #e74c3c; }
+
+/* Thinking indicator */
+.thinking { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1rem; background: #1a1a2e; border-radius: 14px; width: fit-content; }
+.thinking span { width: 7px; height: 7px; background: #4361ee; border-radius: 50%; animation: bounce 1.2s infinite; }
+.thinking span:nth-child(2) { animation-delay: 0.2s; }
+.thinking span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,80%,100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
+
+/* INPUT */
+.input-area {
+  padding: 0.8rem 0 1rem;
+  display: flex; gap: 0.6rem; align-items: flex-end;
+}
+#userInput {
+  flex: 1; background: #1a1a2e; border: 2px solid #252540;
+  border-radius: 12px; padding: 0.75rem 1rem;
+  color: #e0e0e0; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+  resize: none; outline: none; transition: border-color 0.2s;
+  min-height: 48px; max-height: 140px;
+}
+#userInput:focus { border-color: #4361ee; }
+#userInput::placeholder { color: #505070; }
+.btn-send {
+  background: #4361ee; border: none; color: white;
+  width: 44px; height: 44px; border-radius: 12px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.btn-send:hover { background: #3451de; }
+.btn-send:disabled { background: #252540; cursor: not-allowed; }
+.btn-send svg { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="fr/index.html">← Retour</a>
+  <h1>🎤 Mode Interrogation IA</h1>
+  <span class="mode-badge">Gemini</span>
+</div>
+
+<!-- SETUP -->
+<div id="setup-screen">
+  <h2>Choisis ta matière</h2>
+  <p>Le prof IA va t'interroger sur le cours — réponds en langage naturel, il évalue et corrige.</p>
+
+  <div class="subject-grid">
+    <div class="subject-card" onclick="selectSubject(this, 'DROIT')" data-subject="DROIT">
+      <div class="s-emoji">⚖️</div>
+      <div class="s-name">Droit International</div>
+      <div class="s-desc">Contrats, CVIM, Incoterms</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'RH')" data-subject="RH">
+      <div class="s-emoji">📗</div>
+      <div class="s-name">Ressources Humaines</div>
+      <div class="s-desc">GRH, recrutement, rémunération</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'STRATEGIE_DURABLE')" data-subject="STRATEGIE_DURABLE">
+      <div class="s-emoji">🌱</div>
+      <div class="s-name">Stratégie Durable</div>
+      <div class="s-desc">Limites planétaires, double contrainte</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'CHANGE_MANAGEMENT')" data-subject="CHANGE_MANAGEMENT">
+      <div class="s-emoji">🔄</div>
+      <div class="s-name">Gestion du Changement</div>
+      <div class="s-desc">Lewin, Kotter, RSE, paradoxes</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'MARKETING_RELATIONNEL')" data-subject="MARKETING_RELATIONNEL">
+      <div class="s-emoji">💼</div>
+      <div class="s-name">Marketing Relationnel</div>
+      <div class="s-desc">CLV, fidélisation, CRM</div>
+    </div>
+    <div class="subject-card" onclick="selectSubject(this, 'ALL')" data-subject="ALL">
+      <div class="s-emoji">🎲</div>
+      <div class="s-name">Toutes matières</div>
+      <div class="s-desc">Questions mélangées au hasard</div>
+    </div>
+  </div>
+
+  <button class="btn-start" id="btnStart" onclick="startSession()">Commencer l'interrogation →</button>
+</div>
+
+<!-- CHAT -->
+<div id="chat-screen">
+  <div class="chat-info">
+    <span class="subject-tag" id="subjectTag">—</span>
+    <span class="instruction">Réponds librement — le prof IA évalue, corrige et enchaîne</span>
+    <button class="btn-reset" onclick="resetSession()">Changer de matière</button>
+  </div>
+  <div class="messages" id="messages"></div>
+  <div class="input-area">
+    <textarea id="userInput" placeholder="Ta réponse..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button class="btn-send" id="btnSend" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const GEMINI_API_KEY = 'AIzaSyBf5ErK0efEqjZYIulw-RXK0uUUm6oXSEQ';
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+const SUBJECTS = {
+  DROIT: {
+    name: '⚖️ Droit International des Affaires',
+    context: `Tu interroges un étudiant de M1 en Droit International des Affaires. Voici les concepts du cours :
+
+CHAPITRE 1 — Contrats internationaux
+- Règlement Rome I : loi applicable au contrat. Principe d'autonomie (les parties choisissent). À défaut : résidence du débiteur caractéristique.
+- Règlement Bruxelles I bis : juridiction compétente. Tribunal du domicile du défendeur ou lieu d'exécution.
+- Convention de New York (1958) : reconnaissance et exécution des sentences arbitrales. 170+ États signataires.
+
+CHAPITRE 2 — CVIM (Convention de Vienne 1980)
+- S'applique automatiquement entre États contractants. Peut être écartée par les parties.
+- Régit : formation du contrat, obligations vendeur/acheteur, remèdes.
+- Art. 35 : conformité des marchandises. Art. 39 : délai raisonnable pour dénoncer le défaut.
+- Favorise la sauvegarde du contrat avant la résolution.
+
+CHAPITRE 5 — Incoterms
+- Règles CCI (Chambre de Commerce Internationale). Version actuelle : Incoterms 2020 (11 termes).
+- Nature juridique : clauses contractuelles, pas une loi. S'appliquent seulement si intégrés au contrat.
+- Règlent : transfert des risques, répartition des frais, obligations de livraison.
+- Ne règlent PAS : transfert de propriété, loi applicable, paiement.
+- FOB : risques à bord du navire, acheteur paye le fret.
+- CIF : vendeur paye fret + assurance, mais risques transférés au chargement.
+
+CHAPITRE 6 — Transport maritime
+- Parties : chargeur, transporteur (armateur), destinataire, commissionnaire.
+- Connaissement (Bill of Lading) : preuve du contrat + reçu + titre de propriété négociable.
+- Charte-partie : contrat d'affrètement.
+- Responsabilité transporteur : obligation de résultat. Exonérations : faute nautique, incendie, force majeure.`
+  },
+
+  RH: {
+    name: '📗 Ressources Humaines — GRH',
+    context: `Tu interroges un étudiant de M1 en Gestion des Ressources Humaines. Voici les concepts du cours :
+
+CHAPITRE 1 — Introduction GRH
+- GRH = gérer les hommes comme une ressource stratégique, pas juste administrative.
+- Missions RH : recrutement, formation, rémunération, GPEC, relations sociales.
+- Distinction : DRH stratégique vs administration du personnel.
+
+CHAPITRE 2 — Recrutement
+- Processus : analyse du besoin → fiche de poste → sourcing → sélection → intégration (onboarding).
+- Méthodes de sélection : entretien structuré, tests psychométriques, assessment center.
+- Erreurs à éviter : effet de halo, biais de similarité, stéréotypes.
+
+CHAPITRE 3 — Rémunération
+- Composantes : salaire fixe + variable + avantages (package total).
+- Théorie de l'équité (Adams) : perception de justice interne et externe.
+- Théorie des attentes (Vroom) : effort → performance → récompense.
+
+CHAPITRE 4 — Évaluation de la performance
+- Entretien annuel : objectifs SMART, feedback 360°.
+- Théorie des besoins de Maslow : pyramide des 5 niveaux.
+- Théorie X et Y (McGregor) : vision négative vs positive de l'employé.
+- Théorie des deux facteurs (Herzberg) : facteurs d'hygiène vs motivateurs.
+
+CHAPITRE 5 — Gestion des carrières
+- GPEC : Gestion Prévisionnelle des Emplois et Compétences.
+- Plans de succession, mobilité interne, bilan de compétences.
+- QVT : Qualité de Vie au Travail — indicateur clé de rétention.`
+  },
+
+  STRATEGIE_DURABLE: {
+    name: '🌱 Stratégie Durable & Éthique',
+    context: `Tu interroges un étudiant de M1 en Stratégie Durable et Éthique. Voici les concepts du cours :
+
+AUTEURS CLÉS
+- Johan Rockström : Limites planétaires (9 boundaries, 6 franchies en 2023)
+- Paul Crutzen : Anthropocène (activité humaine = force géologique)
+- Kate Raworth : Doughnut Economics (plancher social + plafond écologique)
+- Tim Jackson : Prosperity without Growth (bien-être ≠ croissance infinie)
+- John Elkington : Triple Bottom Line — People, Planet, Profit
+- Gaël Giraud / Jancovici : Double contrainte carbone
+- Mark Carney : 3 risques climatiques (physiques, transition, responsabilité)
+- William Stanley Jevons : Paradoxe de Jevons / effet rebond
+- Simon Kuznets : Courbe environnementale de Kuznets
+
+CONCEPTS CLÉS
+- Limites planétaires : 9 limites, 6 déjà franchies (climat, biodiversité, azote...)
+- Safe Operating Space : zone dans laquelle l'humanité peut se développer sans risque
+- Tipping points : seuils irréversibles (ex : fonte des glaces)
+- Double contrainte carbone : épuisement fossiles + accumulation CO2 simultanés
+- Stranded assets : actifs fossiles qui perdent leur valeur avant amortissement
+- Climate Minsky Moment : repricing brutal = crise financière systémique
+- Effet rebond (Jevons) : efficacité accrue → hausse conso globale
+- ESG, CSRD, Taxonomie verte UE, CBAM
+- Green Deal EU, IRA américain, Made in China 2025
+- SDGs / ODD : 17 objectifs, 169 cibles, 2015, 193 signataires`
+  },
+
+  CHANGE_MANAGEMENT: {
+    name: '🔄 Gestion du Changement',
+    context: `Tu interroges un étudiant de M1 en Gestion du Changement au service de la Durabilité. Voici les concepts du cours :
+
+MODULE 1 — Fondations
+- Développement Durable : Rapport Brundtland (1987) — "répondre aux besoins du présent sans compromettre les générations futures"
+- RSE : intégration volontaire des enjeux sociaux et environnementaux au-delà du légal
+- Pyramide de Carroll : responsabilités économique → légale → éthique → philanthropique
+- Triple Bottom Line (Elkington) : People, Planet, Profit
+
+MODULE 3 — Diagnostic de durabilité
+- Modèle HBS de diagnostic organisationnel
+- Business Model Canvas triple valeur : économique, sociale, écologique
+- ODD/SDGs : 17 objectifs de développement durable (ONU 2015)
+- Holacratie : organisation auto-gérée (ex : Zappos)
+- Économie circulaire : bio-digestion, déchets → énergie + fertilisants
+
+MODULE 4 — Paradoxes & logiques institutionnelles
+- Logique de marché vs logique civique (Boltanski & Chiapello)
+- Rhétorique de compatibilité : "croissance verte", "capitalisme responsable"
+- Pensée paradoxale (Smith & Lewis 2011) : embrasser le ET plutôt que le OU
+- 3 zones : confort (évitement), performance (tension productive), survie (crise)
+- Cas Fairphone : paradoxes de durabilité (Brix-Asala et al. 2018)
+
+MODULE 6 — Conduite du changement
+- Kurt Lewin : Unfreeze → Change → Refreeze
+- John Kotter : 8 étapes du changement
+- VRIO (Barney 1991) : Valeur, Rareté, Imitabilité, Organisation
+- Matrice parties prenantes : pouvoir/intérêt (key players, sleeping giants...)
+
+MODULE 7 — Leadership & agilité
+- Leadership transformationnel vs transactionnel
+- Innovation ambidextre : exploitation (améliorer) vs exploration (innover)
+- Résistance au changement : causes + leviers d'influence
+- Cas Mustela : agilité et durabilité`
+  },
+
+  MARKETING_RELATIONNEL: {
+    name: '💼 Marketing Relationnel',
+    context: `Tu interroges un étudiant de M1 en Marketing Relationnel. Voici les concepts du cours :
+
+CHAPITRE 1 — Fondements
+- Marketing transactionnel vs relationnel : transaction unique vs relation long terme
+- Marketing relationnel = créer, maintenir et développer des relations durables avec les clients
+- Service Blueprint : cartographie des interactions client (frontstage vs backstage)
+
+CHAPITRE 2 — Satisfaction & fidélité
+- Satisfaction = écart entre attentes et perceptions (Parasuraman)
+- SERVQUAL : 5 dimensions (fiabilité, réactivité, assurance, empathie, tangibilité)
+- Distinction fidélité comportementale vs attitudinale
+- Insatisfaction ne génère pas toujours de plainte (iceberg de l'insatisfaction)
+
+CHAPITRE 3 — Expérience client
+- Customer Journey Map : cartographier tous les points de contact
+- Moments of Truth : moments décisifs (Jan Carlzon)
+- Peak-End Rule (Kahneman) : souvenir = pic + fin de l'expérience
+
+CHAPITRE 4 — Programmes de fidélisation
+- Types : points, cashback, statuts (tiered programs)
+- Risques : réductions chroniques, clients opportunistes
+
+CHAPITRE 5 — CLV (Customer Lifetime Value)
+- CLV = valeur totale d'un client sur toute la relation
+- Formule : marge × taux de rétention / (1 + taux d'actualisation - taux de rétention)
+- Segmentation RFM : Récence, Fréquence, Montant
+
+CHAPITRE 6 — Big Data & IA
+- Personnalisation à grande échelle, hyper-segmentation
+- CRM : stockage et exploitation des données clients
+
+CHAPITRE 7 — Matrice Tétraclasse
+- Classe 1 : plus → plus de satisfaction (basique attendu)
+- Classe 2 : plus → plus de satisfaction (attractif)
+- Classe 3 : neutre
+- Classe 4 : moins → insatisfaction (critère de rejet)`
+  },
+
+  ALL: {
+    name: '🎲 Toutes matières',
+    context: `Tu interroges un étudiant de M1 sur TOUTES les matières : Droit International, RH, Stratégie Durable, Gestion du Changement, Marketing Relationnel. Pioche des questions dans toutes les matières de façon aléatoire et variée.
+
+Concepts par matière :
+DROIT : Rome I (loi applicable), Bruxelles I bis (juridiction), CVIM (vente internationale), Incoterms FOB/CIF, Connaissement
+RH : Maslow, Herzberg, McGregor (X/Y), Vroom, Adams, GPEC, recrutement, entretien 360°
+STRATÉGIE DURABLE : Rockström (limites planétaires), Raworth (Doughnut), Jancovici (double contrainte carbone), Jevons (rebond), Triple Bottom Line, CSRD, CBAM
+CHANGE MANAGEMENT : Brundtland (DD), Lewin (unfreeze/change/refreeze), Kotter (8 étapes), VRIO, Carroll (pyramide RSE), Fairphone, Smith & Lewis (zones paradoxe)
+MARKETING : CLV, RFM, SERVQUAL, Tétraclasse, Blueprint, Peak-End Rule`
+  }
+};
+
+let selectedSubject = null;
+let conversationHistory = [];
+let isThinking = false;
+
+function selectSubject(card, subject) {
+  document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedSubject = subject;
+  document.getElementById('btnStart').classList.add('active');
+}
+
+function startSession() {
+  if (!selectedSubject) return;
+  document.getElementById('setup-screen').style.display = 'none';
+  const chatScreen = document.getElementById('chat-screen');
+  chatScreen.style.display = 'flex';
+  chatScreen.style.flexDirection = 'column';
+  document.getElementById('subjectTag').textContent = SUBJECTS[selectedSubject].name;
+  conversationHistory = [];
+  document.getElementById('messages').innerHTML = '';
+  sendFirstQuestion();
+}
+
+function resetSession() {
+  document.getElementById('chat-screen').style.display = 'none';
+  document.getElementById('setup-screen').style.display = 'flex';
+  document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('btnStart').classList.remove('active');
+  selectedSubject = null;
+  conversationHistory = [];
+}
+
+async function sendFirstQuestion() {
+  const systemPrompt = buildSystemPrompt();
+  const firstMsg = systemPrompt + "\n\n---\nCommence l'interrogation maintenant. Pose ta première question directement, sans présentation ni introduction.";
+
+  conversationHistory = [{ role: 'user', parts: [{ text: firstMsg }] }];
+
+  showThinking();
+  const response = await callGemini(conversationHistory);
+  hideThinking();
+
+  if (response) {
+    conversationHistory.push({ role: 'model', parts: [{ text: response }] });
+    addMessage('ai', response);
+  }
+}
+
+async function sendMessage() {
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if (!text || isThinking) return;
+
+  input.value = '';
+  autoResize(input);
+  addMessage('user', text);
+
+  conversationHistory.push({ role: 'user', parts: [{ text }] });
+
+  showThinking();
+  const response = await callGemini(conversationHistory);
+  hideThinking();
+
+  if (response) {
+    conversationHistory.push({ role: 'model', parts: [{ text: response }] });
+    addMessage('ai', response);
+  }
+}
+
+function buildSystemPrompt() {
+  const subj = SUBJECTS[selectedSubject];
+  return `${subj.context}
+
+RÈGLES D'INTERROGATION — IMPÉRATIVES :
+1. Tu poses UNE seule question à la fois. Courte. Précise. Max 2 lignes.
+2. Après la réponse de l'étudiant, tu évalues en 1-3 lignes : ce qui est juste ✓, ce qui manque ou est faux ✗.
+3. Tu donnes la réponse correcte complète si l'étudiant est dans l'erreur ou incomplet.
+4. Tu enchaînes IMMÉDIATEMENT avec la question suivante.
+5. Pas de blabla. Pas de "Bien sûr !", "Excellente question !", ni de formules creuses.
+6. Si l'étudiant dit "je sais pas" → tu donnes la réponse directement et tu passes à la suite.
+7. Langue : français. Ton : direct, efficace, bienveillant.
+8. Varie les types de questions : définition, différence entre deux concepts, exemple concret, auteur/théorie, chiffre clé.
+9. Après 5 questions, fais un mini-bilan (forces + lacunes) en 3 lignes max, puis continue.
+10. Ne pose JAMAIS deux fois la même question dans une session.`;
+}
+
+async function callGemini(history) {
+  isThinking = true;
+  document.getElementById('btnSend').disabled = true;
+
+  try {
+    const body = {
+      contents: history,
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 600,
+      }
+    };
+
+    const res = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      console.error('Gemini error:', err);
+      addMessage('ai', '⚠️ Erreur API. Vérifie ta connexion et réessaie.');
+      return null;
+    }
+
+    const data = await res.json();
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || null;
+  } catch (e) {
+    console.error(e);
+    addMessage('ai', '⚠️ Erreur réseau. Réessaie dans un instant.');
+    return null;
+  } finally {
+    isThinking = false;
+    document.getElementById('btnSend').disabled = false;
+  }
+}
+
+function addMessage(role, text) {
+  const msgs = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.textContent = role === 'ai' ? '🎓' : '👤';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = formatText(text);
+
+  div.appendChild(avatar);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function formatText(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/✓(.*?)(?=\n|$)/g, '<span style="color:#2ecc71">✓$1</span>')
+    .replace(/✗(.*?)(?=\n|$)/g, '<span style="color:#e74c3c">✗$1</span>')
+    .replace(/\n/g, '<br>');
+}
+
+function showThinking() {
+  const msgs = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  div.id = 'thinking-msg';
+  div.innerHTML = `<div class="msg-avatar">🎓</div><div class="thinking"><span></span><span></span><span></span></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function hideThinking() {
+  const t = document.getElementById('thinking-msg');
+  if (t) t.remove();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+}
+</script>
+</body>
+</html>

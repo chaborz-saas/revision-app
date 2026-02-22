@@ -320,6 +320,50 @@
             .chapter .links a { flex: 1; text-align: center; }
             .stats { gap: 1rem; }
         }
+        /* === TABLE DES MATIÈRES === */
+        .toc-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0.55rem 1.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .toc-nav::-webkit-scrollbar { display: none; }
+        .toc-nav a {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 0.35rem;
+            color: #808090;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .toc-nav a:hover {
+            color: #e0e0e0;
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .toc-label {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #404050;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -331,10 +375,23 @@
     <a href="../chat.html" style="display:inline-block;margin-top:0.5rem;margin-left:0.5rem;background:linear-gradient(135deg,#e94560,#c0354a);color:white;text-decoration:none;padding:0.6rem 1.5rem;border-radius:10px;font-weight:700;font-size:0.9rem;">💬 Chat Q&A</a>
 </div>
 
+<nav class="toc-nav">
+    <span class="toc-label">Aller à →</span>
+    <a href="#rh">📗 RH</a>
+    <a href="#aq">📊 Analyse Quanti</a>
+    <a href="#droit">⚖️ Droit</a>
+    <a href="#pilotage">📈 Pilotage</a>
+    <a href="#quali">🔬 Analyse Quali</a>
+    <a href="#mkt">💼 Marketing Rel.</a>
+    <a href="#strat">🌱 Strat. Durable</a>
+    <a href="#change">🔄 Gestion Chgt</a>
+    <a href="#geo">🌍 Géoéconomie</a>
+</nav>
+
 <div class="container">
 
     <!-- RH -->
-    <div class="matiere rh">
+    <div class="matiere rh" id="rh">
         <div class="matiere-header">
             <span class="emoji">📗</span>
             <h2>Ressources Humaines — GRH pour Manager</h2>
@@ -390,7 +447,7 @@
     </div>
 
     <!-- ANALYSE QUANTI -->
-    <div class="matiere aq">
+    <div class="matiere aq" id="aq">
         <div class="matiere-header">
             <span class="emoji">📊</span>
             <h2>Analyse des Données Quantitatives</h2>
@@ -443,7 +500,7 @@
     </div>
 
     <!-- DROIT -->
-    <div class="matiere droit">
+    <div class="matiere droit" id="droit">
         <div class="matiere-header">
             <span class="emoji">⚖️</span>
             <h2>Droit — Ventes internationales & Contrats</h2>
@@ -524,7 +581,7 @@
     </div>
 
     <!-- PILOTAGE -->
-    <div class="matiere pilotage">
+    <div class="matiere pilotage" id="pilotage">
         <div class="matiere-header">
             <span class="emoji">📈</span>
             <h2>Pilotage de la Performance</h2>
@@ -607,7 +664,7 @@
     </div>
 
     <!-- ANALYSE QUALITATIVE -->
-    <div class="matiere" style="--accent:#8e44ad;">
+    <div class="matiere" id="quali" style="--accent:#8e44ad;">
         <div class="matiere-header" style="border-color:#8e44ad;">
             <span class="emoji">🔬</span>
             <h2 style="color:#8e44ad;">Analyse Qualitative (Méthodologie mémoire)</h2>
@@ -645,7 +702,7 @@
     </div>
 
     <!-- MARKETING RELATIONNEL -->
-    <div class="matiere" style="--accent:#f97316;">
+    <div class="matiere" id="mkt" style="--accent:#f97316;">
         <div class="matiere-header" style="border-color:#f97316;">
             <span class="emoji">💼</span>
             <h2 style="color:#f97316;">Marketing Relationnel</h2>
@@ -719,7 +776,7 @@
     </div>
 
     <!-- STRATÉGIE DURABLE & ÉTHIQUE -->
-    <div class="matiere" style="--accent:#27ae60;">
+    <div class="matiere" id="strat" style="--accent:#27ae60;">
         <div class="matiere-header" style="border-color:#27ae60;">
             <span class="emoji">🌱</span>
             <h2 style="color:#27ae60;">Stratégie Durable & Éthique <span style="font-size:0.65rem;font-weight:600;background:#27ae60;color:white;padding:0.2rem 0.5rem;border-radius:20px;margin-left:0.4rem;vertical-align:middle;">✦ Nouvelle version</span></h2>
@@ -782,7 +839,7 @@
     </div>
 
     <!-- GESTION DU CHANGEMENT -->
-    <div class="matiere" style="--accent:#8e44ad;">
+    <div class="matiere" id="change" style="--accent:#8e44ad;">
         <div class="matiere-header" style="border-color:#8e44ad;">
             <span class="emoji">🔄</span>
             <h2 style="color:#8e44ad;">Gestion du Changement au service de la Durabilité <span style="font-size:0.65rem;font-weight:600;background:#8e44ad;color:white;padding:0.2rem 0.5rem;border-radius:20px;margin-left:0.4rem;vertical-align:middle;">✦ Nouvelle version</span></h2>
@@ -842,6 +899,31 @@
                     <a href="../fiches/CHANGE_MANAGEMENT/ch6_leadership_agilite.html" class="btn-fiche">Fiche</a>
                     <a href="../quiz/CHANGE_MANAGEMENT/ch6_leadership_agilite.html" class="btn-quiz">Quiz</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- GÉOÉCONOMIE -->
+    <div class="matiere" id="geo" style="--accent:#c0392b;">
+        <div class="matiere-header" style="border-color:#c0392b;">
+            <span class="emoji">🌍</span>
+            <h2 style="color:#c0392b;">Géoéconomie <span style="font-size:0.65rem;font-weight:600;background:#c0392b;color:white;padding:0.2rem 0.5rem;border-radius:20px;margin-left:0.4rem;vertical-align:middle;">Open Book</span></h2>
+            <span class="count">Document officiel</span>
+        </div>
+        <div class="chapters">
+            <div class="chapter">
+                <span class="num">📄</span>
+                <span class="title">Rapport BD Consulting — Stratégie Campus Maritime d'Excellence (EM Normandie)</span>
+                <div class="links">
+                    <a href="../docs/geoeco_EMN_ALT_FRA.pdf" download class="btn-fiche">Télécharger le PDF</a>
+                </div>
+            </div>
+        </div>
+        <div class="sous-categorie" style="border-left-color:rgba(192,57,43,0.35);">
+            <div class="sous-categorie-title">Thèmes couverts</div>
+            <div style="font-size:0.84rem;color:#909099;line-height:1.65;padding-top:0.15rem;">
+                Label <strong style="color:#c0c0c8;">Campus Maritime d'Excellence (CME)</strong> · Ports Le Havre / Anvers / Rotterdam · Partenariats HAROPA & CMA CGM · Analyse bénéfices / risques · Recommandations stratégiques
             </div>
         </div>
     </div>

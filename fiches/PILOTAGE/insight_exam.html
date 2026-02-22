@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points clés — Pilotage de la Performance</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a5276 0%, #154360 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #fff3cd 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-formula { background: #fef9e7; border-color: #f39c12; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.32rem 0 0.32rem 1.3rem; position: relative; font-size: 0.91rem; line-height: 1.55; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #1a5276; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.88rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+        .tag-blue { background: #eef6fc; color: #1a5276; }
+        .tag-red { background: #fdecea; color: #c0392b; }
+        .tag-orange { background: #fef9e7; color: #d35400; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;">← Retour à l'accueil</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">Pilotage de la Performance — M1</div>
+    <h1>Points clés — Formules, Écarts, BSC & Lean</h1>
+</div>
+
+<div class="fiche-body">
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Points prioritaires</div>
+        Maîtriser toutes les <span class="hl-critical">formules de coûts et d'écarts</span> (calcul numérique probable). Savoir interpréter les résultats. Connaître le BSC (4 perspectives) et les 7 Mudas du Lean.
+    </div>
+
+    <!-- BLOC 1 : FORMULES -->
+    <div class="section-title">1. Méthode des coûts variables — Formules essentielles</div>
+
+    <div class="block block-formula">
+        <div class="block-label">📐 Formules à maîtriser</div>
+        <table class="compact-table">
+            <tr><th>Indicateur</th><th>Formule</th></tr>
+            <tr><td>Marge sur coûts variables (MCV)</td><td><span class="hl-critical">CA − CV</span></td></tr>
+            <tr><td>Taux de MCV (TMCV)</td><td><span class="hl-critical">MCV / CA</span></td></tr>
+            <tr><td>Résultat</td><td><span class="hl-critical">MCV − CF</span></td></tr>
+            <tr><td>Seuil de rentabilité (€)</td><td><span class="hl-critical">CF / TMCV</span></td></tr>
+            <tr><td>Seuil de rentabilité (quantités)</td><td><span class="hl-critical">CF / MCV unitaire</span></td></tr>
+            <tr><td>Point mort (jours)</td><td><span class="hl-critical">(SR / CA) × 360</span></td></tr>
+            <tr><td>Marge de sécurité</td><td><span class="hl-critical">CA − SR</span></td></tr>
+            <tr><td>Indice de sécurité</td><td><span class="hl-critical">(CA − SR) / CA</span></td></tr>
+        </table>
+    </div>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Logique clé</div>
+        <strong>Sous-traitance</strong> = CF faibles, CV élevés → TMCV faible → SR bas → plus flexible mais levier faible<br>
+        <strong>Internalisation</strong> = CF élevés, CV modérés → TMCV élevé → SR haut → levier opérationnel fort (amplifie hausse ET baisse)
+    </div>
+
+    <!-- BLOC 2 : COÛT CIBLE -->
+    <div class="section-title">2. Coût cible (Target Costing)</div>
+
+    <div class="block block-formula">
+        <div class="block-label">📐 Formule</div>
+        <strong>Coût cible = Prix de vente − Marge souhaitée</strong><br>
+        Logique : partir du prix accepté par le marché, déduire la marge voulue → <span class="hl-critical">le coût est un objectif à atteindre</span>, non une contrainte subie
+    </div>
+
+    <ul class="blist">
+        <li>Outil de conception collaborative : ingénierie, marketing, achats, finances travaillent ensemble</li>
+        <li>Si coût estimé > coût cible → ingénierie de la valeur (supprimer fonctions inutiles, modifier matériaux)</li>
+        <li>Différent du coût réel calculé après production</li>
+    </ul>
+
+    <!-- BLOC 3 : ANALYSE DES ÉCARTS -->
+    <div class="section-title">3. Analyse des écarts budgétaires</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Écart</th>
+            <th>Formule</th>
+            <th>Interprétation</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Écart sur chiffre d'affaires</span></td>
+            <td>(CA réel − CA budgété)</td>
+            <td>Volume × prix mixés</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Écart sur volume</span></td>
+            <td>(Q réelles − Q budgétées) × Prix budgété</td>
+            <td>Différence de quantités vendues</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Écart sur prix</span></td>
+            <td>(Prix réel − Prix budgété) × Q réelles</td>
+            <td>Différence de prix pratiqués</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Écart sur coût de matières</span></td>
+            <td>= Écart sur quantité + Écart sur prix matières</td>
+            <td>Usage vs gaspillage vs négociation achats</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Écart sur main-d'œuvre</span></td>
+            <td>= Écart sur temps + Écart sur taux horaire</td>
+            <td>Efficience vs coût de l'heure</td>
+        </tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Principe clé</div>
+        Écart = Réel − Budgété. Positif sur CA = favorable. Positif sur coût = <span class="hl-critical">défavorable</span>. Ne jamais oublier de préciser le sens de l'écart (F = favorable, D = défavorable).
+    </div>
+
+    <!-- BLOC 4 : BSC -->
+    <div class="section-title">4. Balanced Scorecard (BSC) — Kaplan & Norton</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Perspective</th>
+            <th>Question centrale</th>
+            <th>Exemples d'indicateurs</th>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Financière</span></td>
+            <td>Comment créer de la valeur pour les actionnaires ?</td>
+            <td>ROI, EBITDA, CA, résultat net</td>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Clients</span></td>
+            <td>Comment satisfaire les clients cibles ?</td>
+            <td>NPS, satisfaction, part de marché, fidélisation</td>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Processus internes</span></td>
+            <td>Dans quels processus exceller ?</td>
+            <td>Délai de production, taux de défauts, temps de cycle</td>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Apprentissage / Innovation</span></td>
+            <td>Comment nous améliorer et créer de la valeur future ?</td>
+            <td>Formation, turn-over, R&D, compétences clés</td>
+        </tr>
+    </table>
+
+    <!-- BLOC 5 : LEAN -->
+    <div class="section-title">5. Lean Management — Les 7 Mudas (gaspillages)</div>
+
+    <table class="compact-table">
+        <tr><th>#</th><th>Muda</th><th>Exemple</th></tr>
+        <tr><td>1</td><td><span class="hl-important">Surproduction</span></td><td>Fabriquer plus que la demande</td></tr>
+        <tr><td>2</td><td><span class="hl-important">Attentes / Délais</span></td><td>Machine en panne, attente d'approbation</td></tr>
+        <tr><td>3</td><td><span class="hl-important">Transport inutile</span></td><td>Déplacements de pièces sans valeur ajoutée</td></tr>
+        <tr><td>4</td><td><span class="hl-important">Stocks excessifs</span></td><td>Encours de production, stocks de sécurité surdimensionnés</td></tr>
+        <tr><td>5</td><td><span class="hl-important">Mouvements inutiles</span></td><td>Ergonomie défaillante, déplacements opérateurs</td></tr>
+        <tr><td>6</td><td><span class="hl-important">Sur-traitement</span></td><td>Contrôle qualité redondant, fonctionnalités non demandées</td></tr>
+        <tr><td>7</td><td><span class="hl-important">Défauts / rebuts</span></td><td>Non-conformités nécessitant retouches</td></tr>
+    </table>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Moyen mémo</div>
+        Acronyme <strong>SATSMSD</strong> : Surproduction · Attentes · Transport · Stocks · Mouvements · Sur-traitement · Défauts
+    </div>
+
+    <!-- BLOC 6 : MASSE SALARIALE -->
+    <div class="section-title">6. Contrôle de gestion sociale — Masse salariale</div>
+
+    <div class="block block-formula">
+        <div class="block-label">📐 Formule</div>
+        Net + charges sociales salariales = <strong>Brut</strong><br>
+        Brut + charges patronales (25-42 %) = <span class="hl-critical">Masse salariale</span>
+    </div>
+
+    <ul class="blist">
+        <li>Évolution de la masse salariale = effet <strong>niveau</strong> (augmentations) + effet <strong>effectif</strong> (entrées/sorties) + effet <strong>structure</strong> (promotions)</li>
+        <li>Indicateurs sociaux : turn-over, absentéisme, accidents du travail, satisfaction salariés</li>
+        <li>Rapport de situation comparée (RSC) : suivi des indicateurs femmes/hommes (égalité)</li>
+    </ul>
+
+    <!-- RECAP FORMULES -->
+    <div class="section-title">Récap — Formules à écrire en exam</div>
+
+    <table class="compact-table">
+        <tr><th>Concept</th><th>Formule</th><th>Tag</th></tr>
+        <tr><td>SR en €</td><td>CF / TMCV</td><td><span class="tag tag-red">Indispensable</span></td></tr>
+        <tr><td>Point mort</td><td>(SR / CA) × 360</td><td><span class="tag tag-red">Indispensable</span></td></tr>
+        <tr><td>Coût cible</td><td>Prix vente − Marge souhaitée</td><td><span class="tag tag-orange">Important</span></td></tr>
+        <tr><td>Écart sur prix</td><td>(Préel − Pbudgété) × Q réelles</td><td><span class="tag tag-orange">Important</span></td></tr>
+        <tr><td>TMCV</td><td>MCV / CA</td><td><span class="tag tag-red">Indispensable</span></td></tr>
+    </table>
+
+</div>
+
+<div class="source-footer">
+    Insight — Pilotage de la Performance — EM Normandie M1
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

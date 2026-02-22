@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points clés — Marketing Relationnel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a5276 0%, #154360 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #fff3cd 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-formula { background: #fef9e7; border-color: #f39c12; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.32rem 0 0.32rem 1.3rem; position: relative; font-size: 0.91rem; line-height: 1.55; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #1a5276; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.88rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+        .tag-blue { background: #eef6fc; color: #1a5276; }
+        .tag-red { background: #fdecea; color: #c0392b; }
+        .tag-orange { background: #fef9e7; color: #d35400; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;">← Retour à l'accueil</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">Marketing Relationnel — M1</div>
+    <h1>Points clés — CLV, SERVQUAL, Tétraclasse & Blueprint</h1>
+</div>
+
+<div class="fiche-body">
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Points prioritaires (insight prof)</div>
+        Sujets probables : <span class="hl-critical">Marketing transactionnel vs relationnel</span> (différences fondamentales) + <span class="hl-critical">Blueprint service</span>. Maîtriser CLV (formule + calcul), Tétraclasse (4 catégories), et SERVQUAL (5 dimensions).
+    </div>
+
+    <!-- BLOC 1 : TRANSACTIONNEL vs RELATIONNEL -->
+    <div class="section-title">1. Marketing transactionnel vs Marketing relationnel</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Critère</th>
+            <th>Marketing Transactionnel</th>
+            <th>Marketing Relationnel</th>
+        </tr>
+        <tr>
+            <td>Horizon temporel</td>
+            <td>Court terme (acte d'achat)</td>
+            <td>Long terme (durée de vie)</td>
+        </tr>
+        <tr>
+            <td>Objectif</td>
+            <td>Acquérir des clients, augmenter les ventes</td>
+            <td>Fidéliser, développer la relation</td>
+        </tr>
+        <tr>
+            <td>Focalisation</td>
+            <td>Produit / Prix / Transaction</td>
+            <td>Client / Confiance / Valeur créée</td>
+        </tr>
+        <tr>
+            <td>Mesure de succès</td>
+            <td>Part de marché, volume des ventes</td>
+            <td>CLV, NPS, taux de rétention</td>
+        </tr>
+        <tr>
+            <td>Communication</td>
+            <td>De masse, unidirectionnelle</td>
+            <td>Personnalisée, bidirectionnelle</td>
+        </tr>
+    </table>
+
+    <!-- BLOC 2 : CLV -->
+    <div class="section-title">2. Customer Lifetime Value (CLV)</div>
+
+    <div class="block block-formula">
+        <div class="block-label">📐 Formule CLV simplifiée</div>
+        <strong>CLV = Marge/achat × Achats/an × Durée (années) − Coûts marketing (acquisition + fidélisation)</strong>
+    </div>
+
+    <ul class="blist">
+        <li><strong>Exemple streaming</strong> : 10 € marge × 4 achats/an × 3 ans − 20 € = <span class="hl-critical">100 €</span></li>
+        <li><strong>Loi 80/20/30 de Sherden</strong> : 20 % des clients font 80 % des revenus, mais la moitié est perdue à cause des 30 % de clients non rentables</li>
+        <li>CLV se calcule sur la <span class="hl-critical">MARGE, pas sur le CA</span> — erreur classique à éviter</li>
+        <li>Si CLV &lt; coût d'acquisition → revoir la stratégie de fidélisation ou segmenter</li>
+    </ul>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Levier stratégique</div>
+        Augmenter la CLV : ↑ fréquence d'achat · ↑ panier moyen · ↑ durée de la relation · ↓ coûts d'acquisition (parrainage, bouche-à-oreille)
+    </div>
+
+    <!-- BLOC 3 : SATISFACTION / FIDÉLITÉ -->
+    <div class="section-title">3. Satisfaction et fidélité</div>
+
+    <ul class="blist">
+        <li><strong>Satisfaction</strong> = comparaison entre <span class="hl-critical">performance perçue</span> et <span class="hl-critical">attentes</span> (modèle de la disconfirmation)</li>
+        <li class="sub">Satisfaction &gt; Attentes → surprise positive (enchantement)</li>
+        <li class="sub">Satisfaction &lt; Attentes → insatisfaction, risque d'attrition</li>
+        <li><strong>Fidélité</strong> ≠ satisfaction : un client satisfait n'est pas forcément fidèle (offre concurrente, habitude)</li>
+        <li><strong>Fidélité comportementale</strong> (rachat) vs <strong>fidélité attitudinale</strong> (engagement émotionnel, recommandation)</li>
+        <li><strong>NPS (Net Promoter Score)</strong> : % Promoteurs (9-10) − % Détracteurs (0-6)</li>
+    </ul>
+
+    <!-- BLOC 4 : SERVQUAL -->
+    <div class="section-title">4. SERVQUAL — Qualité de service perçue</div>
+
+    <table class="compact-table">
+        <tr><th>Dimension</th><th>Description</th></tr>
+        <tr><td><span class="hl-critical">Fiabilité</span></td><td>Capacité à délivrer le service promis avec précision et régularité</td></tr>
+        <tr><td><span class="hl-critical">Réactivité</span></td><td>Volonté d'aider rapidement et de répondre aux besoins</td></tr>
+        <tr><td><span class="hl-important">Assurance</span></td><td>Compétences, courtoisie, crédibilité du personnel</td></tr>
+        <tr><td><span class="hl-important">Empathie</span></td><td>Attention individualisée portée aux clients</td></tr>
+        <tr><td><span class="hl-important">Tangibles</span></td><td>Apparence physique des locaux, équipements, personnel</td></tr>
+    </table>
+
+    <div class="block block-def">
+        <div class="block-label">Gap Model (Parasuraman, Zeithaml & Berry)</div>
+        La qualité perçue = écart (gap) entre attentes du client et perception du service reçu. 5 gaps identifiés → les gaps 1 à 4 (côté prestataire) créent le gap 5 (côté client).
+    </div>
+
+    <!-- BLOC 5 : TÉTRACLASSE -->
+    <div class="section-title">5. Matrice Tétraclasse (Ferrandi, 2000)</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Catégorie</th>
+            <th>Présent =</th>
+            <th>Absent =</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Attributs de base</span></td>
+            <td>Satisfaction neutre</td>
+            <td>Forte insatisfaction</td>
+            <td>Rendre irréprochable</td>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Attributs de performance</span></td>
+            <td>Satisfaction proportionnelle</td>
+            <td>Insatisfaction proportionnelle</td>
+            <td>Améliorer continuellement</td>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Attributs de charme</span></td>
+            <td>Forte satisfaction (effet "wow")</td>
+            <td>Aucun impact</td>
+            <td>Différencier → fidéliser</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Attributs indifférents</span></td>
+            <td>Aucun impact</td>
+            <td>Aucun impact</td>
+            <td>Supprimer (gaspillage)</td>
+        </tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Attention</div>
+        Les attributs changent de catégorie dans le temps. Exemple : le Wi-Fi hôtelier était <em>attribut de charme</em> dans les années 2000 → <em>attribut de base</em> aujourd'hui. Penser en termes de segments et d'évolutions temporelles.
+    </div>
+
+    <!-- BLOC 6 : BLUEPRINT -->
+    <div class="section-title">6. Service Blueprint (outil probable)</div>
+
+    <ul class="blist">
+        <li><strong>Blueprint</strong> = schématisation visuelle du <span class="hl-critical">parcours client</span> et des processus de service</li>
+        <li><strong>5 lignes du blueprint</strong></li>
+        <li class="sub">Actions du client (visible)</li>
+        <li class="sub">Ligne d'interaction (visible/invisible)</li>
+        <li class="sub">Frontstage (personnel en contact — visible)</li>
+        <li class="sub">Ligne de visibilité</li>
+        <li class="sub">Backstage (processus internes — invisible) + Support physique & systèmes</li>
+        <li>Permet d'identifier les <span class="hl-critical">moments de vérité</span> et les points de défaillance potentiels</li>
+        <li>Outil de design de service et d'amélioration de l'expérience client</li>
+    </ul>
+
+    <!-- BLOC 7 : RFM & PROGRAMMES -->
+    <div class="section-title">7. RFM & Programmes de fidélisation</div>
+
+    <table class="compact-table">
+        <tr><th>Critère RFM</th><th>Description</th><th>Usage</th></tr>
+        <tr><td><span class="hl-critical">R</span>ecence</td><td>Date du dernier achat</td><td>Plus récent = plus susceptible de racheter</td></tr>
+        <tr><td><span class="hl-critical">F</span>réquence</td><td>Nombre d'achats sur la période</td><td>Client régulier = plus fidèle</td></tr>
+        <tr><td><span class="hl-critical">M</span>onetary</td><td>Montant total dépensé</td><td>Client à forte valeur = à chouchouter</td></tr>
+    </table>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Dark side du marketing relationnel</div>
+        Risques : dépendance du client (lock-in), intrusion dans la vie privée (data), manipulation perçue, sur-sollicitation. Un excès de marketing relationnel peut <span class="hl-critical">détruire la confiance</span>.
+    </div>
+
+</div>
+
+<div class="source-footer">
+    Insight — Marketing Relationnel — EM Normandie M1
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

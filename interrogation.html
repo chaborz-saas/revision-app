@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mode Interrogation IA — Révisions M1</title>
+<title>Mon Prof IA — Révisions M1</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,18 +25,52 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
   text-transform: uppercase; letter-spacing: 1px;
 }
 
-/* SETUP SCREEN */
-#setup-screen {
+/* ===== MODE SCREEN ===== */
+#mode-screen {
   flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 2rem; gap: 1.5rem;
+}
+#mode-screen h2 { font-size: 1.5rem; font-weight: 800; color: white; text-align: center; }
+#mode-screen p { color: #808090; font-size: 0.9rem; text-align: center; max-width: 480px; }
+
+.mode-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; width: 100%; max-width: 600px;
+}
+.mode-card {
+  background: #1a1a2e; border: 2px solid #252540;
+  border-radius: 16px; padding: 1.8rem 1.5rem;
+  cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.mode-card:hover { border-color: #4361ee; background: #1e1e3a; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(67,97,238,0.2); }
+.mode-card .m-icon { font-size: 2.5rem; margin-bottom: 0.7rem; }
+.mode-card .m-name { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+.mode-card .m-desc { font-size: 0.78rem; color: #808090; line-height: 1.5; }
+.mode-card.interro:hover { border-color: #e74c3c; }
+.mode-card.interro:hover .m-icon-wrap { background: rgba(231,76,60,0.15); }
+.mode-card.question:hover { border-color: #10b981; }
+
+/* ===== SETUP SCREEN ===== */
+#setup-screen {
+  flex: 1; display: none; flex-direction: column;
   align-items: center; justify-content: center;
   padding: 2rem; gap: 1.5rem;
 }
 #setup-screen h2 { font-size: 1.4rem; font-weight: 800; color: white; text-align: center; }
 #setup-screen p { color: #808090; font-size: 0.9rem; text-align: center; max-width: 500px; }
+.mode-indicator {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(67,97,238,0.12); border: 1px solid rgba(67,97,238,0.3);
+  border-radius: 20px; padding: 0.4rem 1rem;
+  font-size: 0.8rem; font-weight: 600; color: #7b93ff;
+}
+.mode-indicator.interro { background: rgba(231,76,60,0.12); border-color: rgba(231,76,60,0.3); color: #ff8080; }
+.mode-indicator.question { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.3); color: #6fedb8; }
 
 .subject-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.8rem; width: 100%; max-width: 700px;
+  gap: 0.8rem; width: 100%; max-width: 750px;
 }
 .subject-card {
   background: #1a1a2e; border: 2px solid #252540;
@@ -57,8 +91,14 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 }
 .btn-start.active { opacity: 1; pointer-events: all; }
 .btn-start.active:hover { background: #3451de; transform: translateY(-2px); }
+.btn-back-mode {
+  background: none; border: 1px solid #252540; color: #606070;
+  border-radius: 8px; padding: 0.4rem 1rem; font-size: 0.8rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-back-mode:hover { border-color: #4361ee; color: #7b93ff; }
 
-/* CHAT SCREEN */
+/* ===== CHAT SCREEN ===== */
 #chat-screen { flex: 1; display: none; flex-direction: column; max-width: 800px; width: 100%; margin: 0 auto; padding: 0 1rem; }
 
 .chat-info {
@@ -66,7 +106,11 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
   margin: 0.8rem 0; display: flex; align-items: center; gap: 0.8rem;
   border-left: 3px solid #4361ee;
 }
+.chat-info.mode-interro { border-left-color: #e74c3c; }
+.chat-info.mode-question { border-left-color: #10b981; }
 .chat-info .subject-tag { font-size: 0.78rem; font-weight: 700; color: #4361ee; }
+.chat-info.mode-interro .subject-tag { color: #ff8080; }
+.chat-info.mode-question .subject-tag { color: #6fedb8; }
 .chat-info .instruction { font-size: 0.78rem; color: #808090; flex: 1; }
 .btn-reset { background: none; border: 1px solid #333; color: #808090; border-radius: 8px; padding: 0.3rem 0.7rem; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
 .btn-reset:hover { border-color: #e74c3c; color: #e74c3c; }
@@ -92,15 +136,6 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 .msg.ai .msg-bubble { background: #1a1a2e; color: #e0e0e0; border-radius: 4px 14px 14px 14px; }
 .msg.user .msg-bubble { background: #4361ee; color: white; border-radius: 14px 4px 14px 14px; }
 
-/* Score badge in AI messages */
-.score-badge {
-  display: inline-block; border-radius: 6px; padding: 2px 8px;
-  font-size: 0.75rem; font-weight: 700; margin-top: 0.4rem;
-}
-.score-good { background: #1a3a2a; color: #2ecc71; }
-.score-partial { background: #3a3000; color: #f39c12; }
-.score-bad { background: #3a1a1a; color: #e74c3c; }
-
 /* Thinking indicator */
 .thinking { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1rem; background: #1a1a2e; border-radius: 14px; width: fit-content; }
 .thinking span { width: 7px; height: 7px; background: #4361ee; border-radius: 50%; animation: bounce 1.2s infinite; }
@@ -109,10 +144,7 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 @keyframes bounce { 0%,80%,100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
 
 /* INPUT */
-.input-area {
-  padding: 0.8rem 0 1rem;
-  display: flex; gap: 0.6rem; align-items: flex-end;
-}
+.input-area { padding: 0.8rem 0 1rem; display: flex; gap: 0.6rem; align-items: flex-end; }
 #userInput {
   flex: 1; background: #1a1a2e; border: 2px solid #252540;
   border-radius: 12px; padding: 0.75rem 1rem;
@@ -131,22 +163,46 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
 .btn-send:hover { background: #3451de; }
 .btn-send:disabled { background: #252540; cursor: not-allowed; }
 .btn-send svg { width: 18px; height: 18px; }
+
+@media (max-width: 500px) {
+  .mode-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
 <div class="header">
   <a href="fr/index.html">← Retour</a>
-  <h1>🎤 Mode Interrogation IA</h1>
-  <span class="mode-badge">Gemini</span>
+  <h1>🎓 Mon Prof IA</h1>
+  <span class="mode-badge">Groq</span>
 </div>
 
-<!-- SETUP -->
-<div id="setup-screen">
-  <h2>Choisis ta matière</h2>
-  <p>Le prof IA va t'interroger sur le cours — réponds en langage naturel, il évalue et corrige.</p>
+<!-- ===== ÉCRAN MODE ===== -->
+<div id="mode-screen">
+  <h2>Que veux-tu faire ?</h2>
+  <p>Choisis ton mode — le prof IA s'adapte à toi.</p>
 
-  <div class="subject-grid">
+  <div class="mode-grid">
+    <div class="mode-card interro" onclick="selectMode('interro')">
+      <div class="m-icon">🎤</div>
+      <div class="m-name">Mode Interrogation</div>
+      <div class="m-desc">Le prof te pose des questions, évalue tes réponses et corrige. Parfait pour tester tes connaissances avant un exam.</div>
+    </div>
+    <div class="mode-card question" onclick="selectMode('question')">
+      <div class="m-icon">💬</div>
+      <div class="m-name">Mode Questions</div>
+      <div class="m-desc">Tu poses des questions sur le cours, le prof t'explique. Comme un tuteur à dispo 24h/24.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ÉCRAN MATIÈRE ===== -->
+<div id="setup-screen">
+  <div class="mode-indicator" id="modeIndicator">—</div>
+  <h2 id="setupTitle">Choisis ta matière</h2>
+  <p id="setupDesc">—</p>
+
+  <div class="subject-grid" id="subjectGrid">
     <div class="subject-card" onclick="selectSubject(this, 'DROIT')" data-subject="DROIT">
       <div class="s-emoji">⚖️</div>
       <div class="s-name">Droit International</div>
@@ -172,22 +228,23 @@ body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; mi
       <div class="s-name">Marketing Relationnel</div>
       <div class="s-desc">CLV, fidélisation, CRM</div>
     </div>
-    <div class="subject-card" onclick="selectSubject(this, 'ALL')" data-subject="ALL">
-      <div class="s-emoji">🎲</div>
-      <div class="s-name">Toutes matières</div>
-      <div class="s-desc">Questions mélangées au hasard</div>
+    <div class="subject-card" onclick="selectSubject(this, 'LEADERSHIP')" data-subject="LEADERSHIP">
+      <div class="s-emoji">🏆</div>
+      <div class="s-name">Leadership</div>
+      <div class="s-desc">Pouvoir, IE, conflits, communication</div>
     </div>
   </div>
 
-  <button class="btn-start" id="btnStart" onclick="startSession()">Commencer l'interrogation →</button>
+  <button class="btn-start" id="btnStart" onclick="startSession()">Commencer →</button>
+  <button class="btn-back-mode" onclick="backToMode()">← Changer de mode</button>
 </div>
 
-<!-- CHAT -->
+<!-- ===== CHAT ===== -->
 <div id="chat-screen">
-  <div class="chat-info">
+  <div class="chat-info" id="chatInfo">
     <span class="subject-tag" id="subjectTag">—</span>
-    <span class="instruction">Réponds librement — le prof IA évalue, corrige et enchaîne</span>
-    <button class="btn-reset" onclick="resetSession()">Changer de matière</button>
+    <span class="instruction" id="chatInstruction">—</span>
+    <button class="btn-reset" onclick="resetSession()">Changer</button>
   </div>
   <div class="messages" id="messages"></div>
   <div class="input-area">
@@ -209,7 +266,7 @@ const GROQ_MODEL = 'llama-3.3-70b-versatile';
 const SUBJECTS = {
   DROIT: {
     name: '⚖️ Droit International des Affaires',
-    context: `Tu interroges un étudiant de M1 en Droit International des Affaires. Voici les concepts du cours :
+    context: `Cours de Droit International des Affaires, M1 EM Normandie.
 
 CHAPITRE 1 — Contrats internationaux
 - Règlement Rome I : loi applicable au contrat. Principe d'autonomie (les parties choisissent). À défaut : résidence du débiteur caractéristique.
@@ -224,14 +281,13 @@ CHAPITRE 2 — CVIM (Convention de Vienne 1980)
 
 CHAPITRE 5 — Incoterms
 - Règles CCI (Chambre de Commerce Internationale). Version actuelle : Incoterms 2020 (11 termes).
-- Nature juridique : clauses contractuelles, pas une loi. S'appliquent seulement si intégrés au contrat.
+- Nature juridique : clauses contractuelles, pas une loi.
 - Règlent : transfert des risques, répartition des frais, obligations de livraison.
 - Ne règlent PAS : transfert de propriété, loi applicable, paiement.
 - FOB : risques à bord du navire, acheteur paye le fret.
 - CIF : vendeur paye fret + assurance, mais risques transférés au chargement.
 
 CHAPITRE 6 — Transport maritime
-- Parties : chargeur, transporteur (armateur), destinataire, commissionnaire.
 - Connaissement (Bill of Lading) : preuve du contrat + reçu + titre de propriété négociable.
 - Charte-partie : contrat d'affrètement.
 - Responsabilité transporteur : obligation de résultat. Exonérations : faute nautique, incendie, force majeure.`
@@ -239,17 +295,16 @@ CHAPITRE 6 — Transport maritime
 
   RH: {
     name: '📗 Ressources Humaines — GRH',
-    context: `Tu interroges un étudiant de M1 en Gestion des Ressources Humaines. Voici les concepts du cours :
+    context: `Cours de Gestion des Ressources Humaines, M1 EM Normandie.
 
 CHAPITRE 1 — Introduction GRH
-- GRH = gérer les hommes comme une ressource stratégique, pas juste administrative.
+- GRH = gérer les hommes comme une ressource stratégique. Double finalité : efficacité + efficience.
 - Missions RH : recrutement, formation, rémunération, GPEC, relations sociales.
-- Distinction : DRH stratégique vs administration du personnel.
 
 CHAPITRE 2 — Recrutement
-- Processus : analyse du besoin → fiche de poste → sourcing → sélection → intégration (onboarding).
+- Processus : analyse du besoin → fiche de poste → sourcing → sélection → onboarding.
 - Méthodes de sélection : entretien structuré, tests psychométriques, assessment center.
-- Erreurs à éviter : effet de halo, biais de similarité, stéréotypes.
+- Erreurs : effet de halo, biais de similarité, stéréotypes.
 
 CHAPITRE 3 — Rémunération
 - Composantes : salaire fixe + variable + avantages (package total).
@@ -258,9 +313,9 @@ CHAPITRE 3 — Rémunération
 
 CHAPITRE 4 — Évaluation de la performance
 - Entretien annuel : objectifs SMART, feedback 360°.
-- Théorie des besoins de Maslow : pyramide des 5 niveaux.
-- Théorie X et Y (McGregor) : vision négative vs positive de l'employé.
-- Théorie des deux facteurs (Herzberg) : facteurs d'hygiène vs motivateurs.
+- Maslow : pyramide des 5 niveaux.
+- McGregor Théorie X et Y : vision négative vs positive de l'employé.
+- Herzberg : facteurs d'hygiène vs motivateurs.
 
 CHAPITRE 5 — Gestion des carrières
 - GPEC : Gestion Prévisionnelle des Emplois et Compétences.
@@ -270,13 +325,13 @@ CHAPITRE 5 — Gestion des carrières
 
   STRATEGIE_DURABLE: {
     name: '🌱 Stratégie Durable & Éthique',
-    context: `Tu interroges un étudiant de M1 en Stratégie Durable et Éthique. Voici les concepts du cours :
+    context: `Cours de Stratégie Durable et Éthique, M1 EM Normandie.
 
 AUTEURS CLÉS
 - Johan Rockström : Limites planétaires (9 boundaries, 6 franchies en 2023)
-- Paul Crutzen : Anthropocène (activité humaine = force géologique)
+- Paul Crutzen : Anthropocène
 - Kate Raworth : Doughnut Economics (plancher social + plafond écologique)
-- Tim Jackson : Prosperity without Growth (bien-être ≠ croissance infinie)
+- Tim Jackson : Prosperity without Growth
 - John Elkington : Triple Bottom Line — People, Planet, Profit
 - Gaël Giraud / Jancovici : Double contrainte carbone
 - Mark Carney : 3 risques climatiques (physiques, transition, responsabilité)
@@ -284,111 +339,179 @@ AUTEURS CLÉS
 - Simon Kuznets : Courbe environnementale de Kuznets
 
 CONCEPTS CLÉS
-- Limites planétaires : 9 limites, 6 déjà franchies (climat, biodiversité, azote...)
-- Safe Operating Space : zone dans laquelle l'humanité peut se développer sans risque
-- Tipping points : seuils irréversibles (ex : fonte des glaces)
-- Double contrainte carbone : épuisement fossiles + accumulation CO2 simultanés
-- Stranded assets : actifs fossiles qui perdent leur valeur avant amortissement
+- Limites planétaires : 9 limites, 6 déjà franchies
+- Safe Operating Space : zone de développement sans risque
+- Tipping points : seuils irréversibles
+- Double contrainte carbone : épuisement fossiles + accumulation CO2
+- Stranded assets : actifs fossiles qui perdent leur valeur
 - Climate Minsky Moment : repricing brutal = crise financière systémique
 - Effet rebond (Jevons) : efficacité accrue → hausse conso globale
 - ESG, CSRD, Taxonomie verte UE, CBAM
-- Green Deal EU, IRA américain, Made in China 2025
-- SDGs / ODD : 17 objectifs, 169 cibles, 2015, 193 signataires`
+- SDGs/ODD : 17 objectifs, 2015, 193 signataires`
   },
 
   CHANGE_MANAGEMENT: {
     name: '🔄 Gestion du Changement',
-    context: `Tu interroges un étudiant de M1 en Gestion du Changement au service de la Durabilité. Voici les concepts du cours :
+    context: `Cours de Gestion du Changement au service de la Durabilité, M1 EM Normandie.
 
 MODULE 1 — Fondations
-- Développement Durable : Rapport Brundtland (1987) — "répondre aux besoins du présent sans compromettre les générations futures"
-- RSE : intégration volontaire des enjeux sociaux et environnementaux au-delà du légal
-- Pyramide de Carroll : responsabilités économique → légale → éthique → philanthropique
+- Développement Durable : Rapport Brundtland (1987)
+- RSE : intégration volontaire des enjeux sociaux et environnementaux
+- Pyramide de Carroll : économique → légale → éthique → philanthropique
 - Triple Bottom Line (Elkington) : People, Planet, Profit
 
 MODULE 3 — Diagnostic de durabilité
-- Modèle HBS de diagnostic organisationnel
 - Business Model Canvas triple valeur : économique, sociale, écologique
-- ODD/SDGs : 17 objectifs de développement durable (ONU 2015)
-- Holacratie : organisation auto-gérée (ex : Zappos)
-- Économie circulaire : bio-digestion, déchets → énergie + fertilisants
+- ODD/SDGs : 17 objectifs (ONU 2015)
+- Holacratie : organisation auto-gérée
+- Économie circulaire
 
-MODULE 4 — Paradoxes & logiques institutionnelles
+MODULE 4 — Paradoxes
 - Logique de marché vs logique civique (Boltanski & Chiapello)
-- Rhétorique de compatibilité : "croissance verte", "capitalisme responsable"
 - Pensée paradoxale (Smith & Lewis 2011) : embrasser le ET plutôt que le OU
 - 3 zones : confort (évitement), performance (tension productive), survie (crise)
-- Cas Fairphone : paradoxes de durabilité (Brix-Asala et al. 2018)
+- Cas Fairphone : paradoxes de durabilité
 
 MODULE 6 — Conduite du changement
 - Kurt Lewin : Unfreeze → Change → Refreeze
 - John Kotter : 8 étapes du changement
 - VRIO (Barney 1991) : Valeur, Rareté, Imitabilité, Organisation
-- Matrice parties prenantes : pouvoir/intérêt (key players, sleeping giants...)
-
-MODULE 7 — Leadership & agilité
-- Leadership transformationnel vs transactionnel
-- Innovation ambidextre : exploitation (améliorer) vs exploration (innover)
-- Résistance au changement : causes + leviers d'influence
-- Cas Mustela : agilité et durabilité`
+- Matrice parties prenantes : pouvoir/intérêt`
   },
 
   MARKETING_RELATIONNEL: {
     name: '💼 Marketing Relationnel',
-    context: `Tu interroges un étudiant de M1 en Marketing Relationnel. Voici les concepts du cours :
+    context: `Cours de Marketing Relationnel, M1 EM Normandie.
 
 CHAPITRE 1 — Fondements
-- Marketing transactionnel vs relationnel : transaction unique vs relation long terme
-- Marketing relationnel = créer, maintenir et développer des relations durables avec les clients
-- Service Blueprint : cartographie des interactions client (frontstage vs backstage)
+- Marketing transactionnel vs relationnel
+- Service Blueprint : frontstage vs backstage
 
 CHAPITRE 2 — Satisfaction & fidélité
 - Satisfaction = écart entre attentes et perceptions (Parasuraman)
 - SERVQUAL : 5 dimensions (fiabilité, réactivité, assurance, empathie, tangibilité)
-- Distinction fidélité comportementale vs attitudinale
-- Insatisfaction ne génère pas toujours de plainte (iceberg de l'insatisfaction)
+- Fidélité comportementale vs attitudinale
 
 CHAPITRE 3 — Expérience client
-- Customer Journey Map : cartographier tous les points de contact
-- Moments of Truth : moments décisifs (Jan Carlzon)
-- Peak-End Rule (Kahneman) : souvenir = pic + fin de l'expérience
+- Customer Journey Map
+- Moments of Truth (Jan Carlzon)
+- Peak-End Rule (Kahneman) : souvenir = pic + fin
 
 CHAPITRE 4 — Programmes de fidélisation
 - Types : points, cashback, statuts (tiered programs)
 - Risques : réductions chroniques, clients opportunistes
 
-CHAPITRE 5 — CLV (Customer Lifetime Value)
+CHAPITRE 5 — CLV
 - CLV = valeur totale d'un client sur toute la relation
 - Formule : marge × taux de rétention / (1 + taux d'actualisation - taux de rétention)
 - Segmentation RFM : Récence, Fréquence, Montant
 
 CHAPITRE 6 — Big Data & IA
-- Personnalisation à grande échelle, hyper-segmentation
-- CRM : stockage et exploitation des données clients
+- Personnalisation à grande échelle, CRM
 
 CHAPITRE 7 — Matrice Tétraclasse
-- Classe 1 : plus → plus de satisfaction (basique attendu)
-- Classe 2 : plus → plus de satisfaction (attractif)
+- Classe 1 : basique attendu (plus → plus satisfaction)
+- Classe 2 : attractif (plus → plus satisfaction)
 - Classe 3 : neutre
-- Classe 4 : moins → insatisfaction (critère de rejet)`
+- Classe 4 : critère de rejet (moins → insatisfaction)`
   },
 
-  ALL: {
-    name: '🎲 Toutes matières',
-    context: `Tu interroges un étudiant de M1 sur TOUTES les matières : Droit International, RH, Stratégie Durable, Gestion du Changement, Marketing Relationnel. Pioche des questions dans toutes les matières de façon aléatoire et variée.
+  LEADERSHIP: {
+    name: '🏆 Leadership',
+    context: `Cours de Leadership, M1 EM Normandie (profs: Fabbe-Costes, Arnaud).
 
-Concepts par matière :
-DROIT : Rome I (loi applicable), Bruxelles I bis (juridiction), CVIM (vente internationale), Incoterms FOB/CIF, Connaissement
-RH : Maslow, Herzberg, McGregor (X/Y), Vroom, Adams, GPEC, recrutement, entretien 360°
-STRATÉGIE DURABLE : Rockström (limites planétaires), Raworth (Doughnut), Jancovici (double contrainte carbone), Jevons (rebond), Triple Bottom Line, CSRD, CBAM
-CHANGE MANAGEMENT : Brundtland (DD), Lewin (unfreeze/change/refreeze), Kotter (8 étapes), VRIO, Carroll (pyramide RSE), Fairphone, Smith & Lewis (zones paradoxe)
-MARKETING : CLV, RFM, SERVQUAL, Tétraclasse, Blueprint, Peak-End Rule`
+CHAPITRE 1 — Introduction
+- Leadership (Plane, 2016): processus d'orientation et d'influence décisif d'une personne sur l'action d'un groupe
+- Leaders vs Managers (Kotter): Management = complexité, Leadership = changement
+- Leadership formel (position) vs informel (reconnu par le groupe)
+
+CHAPITRE 2 — Approches historiques
+- Great Man Theory : traits innés (critique: trop simpliste)
+- Trait Theory (Stogdill): intelligence, confiance, intégrité, sociabilité
+- Ohio State Studies: Initiating Structure (IS) + Consideration (C) — indépendants
+- Michigan Studies (Likert): Employee-oriented vs Production-oriented
+- Grille managériale (Blake & Mouton): 5 styles, 9.9 = Team Management (idéal)
+- Fiedler: LPC scale + favorabilité situationnelle (relations, structure tâche, pouvoir)
+- Hersey & Blanchard: S1(Telling)-S2(Selling)-S3(Participating)-S4(Delegating) vs R1-R2-R3-R4
+- Leadership transformationnel (Burns/Bass): 4I (Influence idéalisée, Motivation inspirante, Stimulation intellectuelle, Considération individualisée)
+- Leadership transactionnel: récompenses contingentes, management par exception
+- Servant Leadership (Greenleaf 1970): servir d'abord les autres
+
+CHAPITRE 3 — Influence et Pouvoir (Whetten & Cameron)
+- Positional Power: Centrality, Flexibility, Visibility, Relevance
+- Personal Power: Expertise, Personal attraction, Effort, Legitimacy
+- Les 3R (Allen et al. 1979): Retribution (menace), Reciprocity (échange), Reason (persuasion)
+- Issue Selling: influence ascendante en 3 étapes (identification, communication, adoption)
+
+CHAPITRE 4 — Conscience de soi & Émotions
+- Fenêtre de Johari: Zone ouverte, Zone aveugle, Zone cachée, Zone inconnue
+- Big Five (OCEAN): Extraversion = relation la plus forte avec le leadership
+- Myers Briggs (16 types): utile mais validité contestée
+- Émotions (Ekman): 6 universelles (joie, peur, colère, tristesse, dégoût, surprise)
+- Plutchik: 32 émotions, roue des émotions
+- Travail émotionnel (Hochschild 1983): surface acting vs deep acting
+- Dissonance émotionnelle: exprimer une émotion ≠ celle ressentie
+- TEA (Weiss & Cropanzano): événements → émotions → attitudes → comportements
+
+CHAPITRE 5 — Intelligence Émotionnelle
+- Goleman (4 domaines, 12 compétences): Conscience de soi, Maîtrise de soi, Conscience sociale, Gestion des relations
+- MSCEIT (Mayer, Salovey, Caruso): 4 branches — Percevoir, Utiliser, Comprendre, Gérer
+- IE est développable (≠ QI fixe); contagion émotionnelle; leader résonnant vs dissonant
+
+CHAPITRE 6 — Gestion des conflits
+- Conflit fonctionnel (tâche) vs dysfonctionnel (relationnel)
+- Thomas-Kilmann (TKI): 2 axes (assertivité + coopérativité)
+- 5 styles: Competing(gagne-perd), Collaborating(win-win), Compromising, Avoiding, Accommodating
+- Processus résolution: identification → diagnostic → stratégie → mise en œuvre → suivi
+- Outil DESC: Décrire, Exprimer, Spécifier, Conséquences
+
+CHAPITRE 7 — Communication
+- Shannon-Weaver: émetteur → encodage → canal → décodage → récepteur + bruit
+- Jakobson: 6 fonctions (référentielle, expressive, conative, phatique, métalinguistique, poétique)
+- Watzlawick: "On ne peut pas ne pas communiquer"; contenu + relation
+- Mehrabian (3V): 55% visuel, 38% vocal, 7% verbal (UNIQUEMENT pour messages d'attitudes/sentiments)
+- Écoute active (Rogers): reformulation, reflet, clarification, silence actif
+- Communication assertive: 4 styles (passif, agressif, manipulateur, assertif)
+- DESC: Décrire, Exprimer, Spécifier, Conséquences
+- Feedback SBI (CCL): Situation, Behavior, Impact`
   }
 };
 
+let selectedMode = null;
 let selectedSubject = null;
 let conversationHistory = [];
 let isThinking = false;
+
+function selectMode(mode) {
+  selectedMode = mode;
+  document.getElementById('mode-screen').style.display = 'none';
+  const setupScreen = document.getElementById('setup-screen');
+  setupScreen.style.display = 'flex';
+  setupScreen.style.flexDirection = 'column';
+
+  const indicator = document.getElementById('modeIndicator');
+  if (mode === 'interro') {
+    indicator.textContent = '🎤 Mode Interrogation';
+    indicator.className = 'mode-indicator interro';
+    document.getElementById('setupTitle').textContent = 'Choisis ta matière';
+    document.getElementById('setupDesc').textContent = "Le prof IA va t'interroger et corriger tes réponses.";
+    document.getElementById('btnStart').textContent = "Commencer l'interrogation →";
+  } else {
+    indicator.textContent = '💬 Mode Questions';
+    indicator.className = 'mode-indicator question';
+    document.getElementById('setupTitle').textContent = 'Sur quelle matière ?';
+    document.getElementById('setupDesc').textContent = "Pose toutes tes questions — le prof IA t'explique et t'aide à comprendre.";
+    document.getElementById('btnStart').textContent = "Ouvrir la session →";
+  }
+}
+
+function backToMode() {
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('mode-screen').style.display = 'flex';
+  document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('btnStart').classList.remove('active');
+  selectedSubject = null;
+}
 
 function selectSubject(card, subject) {
   document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('selected'));
@@ -403,39 +526,109 @@ function startSession() {
   const chatScreen = document.getElementById('chat-screen');
   chatScreen.style.display = 'flex';
   chatScreen.style.flexDirection = 'column';
-  document.getElementById('subjectTag').textContent = SUBJECTS[selectedSubject].name;
+
+  const chatInfo = document.getElementById('chatInfo');
+  const tag = document.getElementById('subjectTag');
+  const instr = document.getElementById('chatInstruction');
+  const placeholder = document.getElementById('userInput');
+
+  tag.textContent = SUBJECTS[selectedSubject].name;
+  if (selectedMode === 'interro') {
+    chatInfo.className = 'chat-info mode-interro';
+    instr.textContent = 'Mode Interrogation — réponds librement, le prof évalue et corrige';
+    placeholder.placeholder = 'Ta réponse...';
+  } else {
+    chatInfo.className = 'chat-info mode-question';
+    instr.textContent = 'Mode Questions — pose toutes tes questions sur le cours';
+    placeholder.placeholder = 'Ta question...';
+  }
+
   conversationHistory = [];
   document.getElementById('messages').innerHTML = '';
-  sendFirstQuestion();
+
+  if (selectedMode === 'interro') {
+    sendFirstQuestion();
+  } else {
+    openTutoringSession();
+  }
 }
 
 function resetSession() {
   document.getElementById('chat-screen').style.display = 'none';
-  document.getElementById('setup-screen').style.display = 'flex';
+  document.getElementById('mode-screen').style.display = 'flex';
   document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('selected'));
   document.getElementById('btnStart').classList.remove('active');
   selectedSubject = null;
+  selectedMode = null;
   conversationHistory = [];
 }
 
+// ===== MODE INTERROGATION =====
 async function sendFirstQuestion() {
-  const systemPrompt = buildSystemPrompt();
-
+  const systemPrompt = buildInterroPrompt();
   conversationHistory = [
     { role: 'system', content: systemPrompt },
     { role: 'user', content: "Commence l'interrogation maintenant. Pose ta première question directement, sans présentation ni introduction." }
   ];
-
   showThinking();
   const response = await callGroq(conversationHistory);
   hideThinking();
-
   if (response) {
     conversationHistory.push({ role: 'assistant', content: response });
     addMessage('ai', response);
   }
 }
 
+function buildInterroPrompt() {
+  const subj = SUBJECTS[selectedSubject];
+  return `${subj.context}
+
+RÈGLES D'INTERROGATION — IMPÉRATIVES :
+1. Tu poses UNE seule question à la fois. Courte. Précise. Max 2 lignes.
+2. Après la réponse de l'étudiant, tu évalues en 1-3 lignes : ce qui est juste ✓, ce qui manque ou est faux ✗.
+3. Tu donnes la réponse correcte complète si l'étudiant est dans l'erreur ou incomplet.
+4. Tu enchaînes IMMÉDIATEMENT avec la question suivante.
+5. Pas de blabla. Pas de "Bien sûr !", "Excellente question !", ni de formules creuses.
+6. Si l'étudiant dit "je sais pas" → tu donnes la réponse directement et tu passes à la suite.
+7. Langue : français. Ton : direct, efficace, bienveillant.
+8. Varie les types de questions : définition, différence entre deux concepts, exemple concret, auteur/théorie, chiffre clé.
+9. Après 5 questions, fais un mini-bilan (forces + lacunes) en 3 lignes max, puis continue.
+10. Ne pose JAMAIS deux fois la même question dans une session.
+11. FORMAT OBLIGATOIRE : chaque question que tu poses doit être sur sa propre ligne, précédée exactement de "▶ " (triangle suivi d'un espace). Exemple : "▶ Qu'est-ce que le règlement Rome I ?".`;
+}
+
+// ===== MODE QUESTIONS =====
+async function openTutoringSession() {
+  const systemPrompt = buildTutoringPrompt();
+  conversationHistory = [
+    { role: 'system', content: systemPrompt }
+  ];
+  // Message d'accueil immédiat (sans appel API)
+  const subj = SUBJECTS[selectedSubject];
+  const welcomeMsg = `Bonjour ! Je suis ton prof IA pour **${subj.name}**.\n\nPose-moi toutes tes questions sur le cours — définitions, explications, exemples concrets, comparaisons entre concepts... Je suis là pour t'aider à comprendre. ▶ De quoi as-tu besoin ?`;
+  addMessage('ai', welcomeMsg);
+  conversationHistory.push({ role: 'assistant', content: welcomeMsg });
+}
+
+function buildTutoringPrompt() {
+  const subj = SUBJECTS[selectedSubject];
+  return `${subj.context}
+
+TU ES UN PROFESSEUR TUTEUR BIENVEILLANT ET PÉDAGOGIQUE.
+RÈGLES :
+1. L'étudiant te pose des questions sur le cours, tu réponds de façon CLAIRE, STRUCTURÉE et PÉDAGOGIQUE.
+2. Utilise des exemples concrets pour illustrer les concepts abstraits.
+3. Si pertinent, utilise des schémas textuels, listes, ou tableaux en markdown pour structurer ta réponse.
+4. Adapte la profondeur de ta réponse : si la question est simple → réponse concise ; si complexe → développe.
+5. Quand l'étudiant comprend, propose d'aller plus loin ou de vérifier sa compréhension.
+6. Pas de jargon inutile. Langage clair et direct.
+7. Langue : français. Ton : accessible, encourageant, expert.
+8. Si la question n'est pas liée au cours, réponds brièvement et recentre sur la matière.
+9. Si l'étudiant donne une réponse incorrecte dans sa question, rectifie poliment.
+10. Tu peux utiliser ▶ pour signaler une question de vérification à l'étudiant.`;
+}
+
+// ===== SHARED =====
 async function sendMessage() {
   const input = document.getElementById('userInput');
   const text = input.value.trim();
@@ -457,24 +650,6 @@ async function sendMessage() {
   }
 }
 
-function buildSystemPrompt() {
-  const subj = SUBJECTS[selectedSubject];
-  return `${subj.context}
-
-RÈGLES D'INTERROGATION — IMPÉRATIVES :
-1. Tu poses UNE seule question à la fois. Courte. Précise. Max 2 lignes.
-2. Après la réponse de l'étudiant, tu évalues en 1-3 lignes : ce qui est juste ✓, ce qui manque ou est faux ✗.
-3. Tu donnes la réponse correcte complète si l'étudiant est dans l'erreur ou incomplet.
-4. Tu enchaînes IMMÉDIATEMENT avec la question suivante.
-5. Pas de blabla. Pas de "Bien sûr !", "Excellente question !", ni de formules creuses.
-6. Si l'étudiant dit "je sais pas" → tu donnes la réponse directement et tu passes à la suite.
-7. Langue : français. Ton : direct, efficace, bienveillant.
-8. Varie les types de questions : définition, différence entre deux concepts, exemple concret, auteur/théorie, chiffre clé.
-9. Après 5 questions, fais un mini-bilan (forces + lacunes) en 3 lignes max, puis continue.
-10. Ne pose JAMAIS deux fois la même question dans une session.
-11. FORMAT OBLIGATOIRE : chaque question que tu poses doit être sur sa propre ligne, précédée exactement de "▶ " (triangle suivi d'un espace). Exemple : "▶ Qu'est-ce que le règlement Rome I ?".
-}
-
 async function callGroq(messages) {
   isThinking = true;
   document.getElementById('btnSend').disabled = true;
@@ -484,7 +659,7 @@ async function callGroq(messages) {
       model: GROQ_MODEL,
       messages: messages,
       temperature: 0.7,
-      max_tokens: 600,
+      max_tokens: 700,
     };
 
     const res = await fetch(GROQ_URL, {
@@ -498,7 +673,6 @@ async function callGroq(messages) {
 
     if (!res.ok) {
       const err = await res.json();
-      console.error('Groq error:', err);
       const errMsg = err?.error?.message || JSON.stringify(err);
       addMessage('ai', `⚠️ Erreur API (${res.status}) : ${errMsg}`);
       return null;
@@ -507,7 +681,6 @@ async function callGroq(messages) {
     const data = await res.json();
     return data.choices?.[0]?.message?.content || null;
   } catch (e) {
-    console.error(e);
     addMessage('ai', '⚠️ Erreur réseau. Réessaie dans un instant.');
     return null;
   } finally {
@@ -571,5 +744,6 @@ function autoResize(el) {
   el.style.height = Math.min(el.scrollHeight, 140) + 'px';
 }
 </script>
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

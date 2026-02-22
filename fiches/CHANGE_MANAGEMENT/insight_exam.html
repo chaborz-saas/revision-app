@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points clés — Gestion du Changement & RSE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a5276 0%, #154360 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #fff3cd 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.32rem 0 0.32rem 1.3rem; position: relative; font-size: 0.91rem; line-height: 1.55; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #1a5276; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.88rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+        .tag-blue { background: #eef6fc; color: #1a5276; }
+        .tag-red { background: #fdecea; color: #c0392b; }
+        .tag-green { background: #e8f8f5; color: #1e8449; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;">← Retour à l'accueil</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">Gestion du Changement — M1</div>
+    <h1>Points clés — RSE, VRIO, Carroll & Modèles de changement</h1>
+</div>
+
+<div class="fiche-body">
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Points prioritaires</div>
+        Évaluation finale : <span class="hl-critical">jeu de rôle + rapport individuel 3-5 pages</span> sur une organisation réelle. Maîtriser : définition Brundtland, RSE (4 dimensions), Carroll, VRIO, et les modèles de conduite du changement (Lewin, Kotter). Savoir distinguer greenwashing et RSE authentique.
+    </div>
+
+    <!-- BLOC 1 : FONDATIONS RSE -->
+    <div class="section-title">1. Fondations — Brundtland & RSE</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définition incontournable — Brundtland (1987)</div>
+        <strong>"Développement durable : répond aux besoins du présent sans compromettre la capacité des générations futures à répondre aux leurs."</strong>
+    </div>
+
+    <ul class="blist">
+        <li><strong>RSE</strong> = intégration <span class="hl-critical">volontaire</span> des préoccupations sociales et environnementales, <strong>au-delà des obligations légales</strong></li>
+        <li><strong>4 dimensions de la RSE</strong></li>
+        <li class="sub">Économique : valeur partagée, pratiques commerciales éthiques</li>
+        <li class="sub">Social : conditions de travail, diversité, droits humains</li>
+        <li class="sub">Environnemental : carbone, déchets, énergie, économie circulaire</li>
+        <li class="sub">Gouvernance : transparence, reporting, composition des instances</li>
+        <li><strong>ODD</strong> = 17 Objectifs de Développement Durable (Agenda 2030, ONU)</li>
+        <li><strong>CSRD</strong> = directive européenne de reporting extra-financier obligatoire</li>
+    </ul>
+
+    <!-- BLOC 2 : CARROLL -->
+    <div class="section-title">2. Pyramide de Carroll — 4 niveaux de responsabilité</div>
+
+    <table class="compact-table">
+        <tr><th>Niveau</th><th>Obligation</th><th>Description</th></tr>
+        <tr>
+            <td><span class="hl-critical">Philanthropique</span></td>
+            <td>Souhaitée</td>
+            <td>Contribution volontaire à la communauté (mécénat, associations)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Éthique</span></td>
+            <td>Attendue</td>
+            <td>Faire ce qui est juste au-delà de la loi</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Légale</span></td>
+            <td>Requise</td>
+            <td>Respecter les lois et régulations</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Économique</span></td>
+            <td>Requise</td>
+            <td>Être rentable — base de tout le reste</td>
+        </tr>
+    </table>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Moyen mémo</div>
+        Base → Sommet : <strong>ÉLÉPHANT</strong> = Économique · Légale · Éthique · Philanthropique
+    </div>
+
+    <!-- BLOC 3 : VRIO -->
+    <div class="section-title">3. Modèle VRIO (Barney) — Avantage concurrentiel durable</div>
+
+    <table class="compact-table">
+        <tr><th>Critère</th><th>Question</th><th>Si OUI</th></tr>
+        <tr><td><span class="hl-critical">V</span>aluable (valeur)</td><td>La ressource crée-t-elle de la valeur ?</td><td>Compétitivité possible</td></tr>
+        <tr><td><span class="hl-critical">R</span>are</td><td>La ressource est-elle détenue par peu de concurrents ?</td><td>Avantage temporaire</td></tr>
+        <tr><td><span class="hl-critical">I</span>mitable (difficilement)</td><td>Est-elle coûteuse/difficile à imiter ?</td><td>Avantage durable potentiel</td></tr>
+        <tr><td><span class="hl-critical">O</span>rganisée</td><td>L'organisation exploite-t-elle cette ressource ?</td><td>Avantage concurrentiel durable</td></tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Application RSE + VRIO</div>
+        Une pratique RSE authentique peut constituer un avantage VRIO : rare (peu d'entreprises), difficile à imiter (ancrage culturel), valorisée (clients, talents, ESG investisseurs).
+    </div>
+
+    <!-- BLOC 4 : THÉORIES ÉTHIQUES -->
+    <div class="section-title">4. Théories éthiques — Repères</div>
+
+    <table class="compact-table">
+        <tr><th>Théorie</th><th>Auteur(s)</th><th>Principe</th></tr>
+        <tr><td>Utilitarisme</td><td>Bentham, Mill</td><td>Maximiser le bien-être du plus grand nombre</td></tr>
+        <tr><td>Déontologie</td><td>Kant</td><td>Agir selon des principes universalisables (impératif catégorique)</td></tr>
+        <tr><td>Éthique des vertus</td><td>Aristote</td><td>Focus sur le caractère moral de l'agent</td></tr>
+        <tr><td>Théorie des parties prenantes</td><td>Freeman (1984)</td><td>Obligations envers tous les stakeholders</td></tr>
+        <tr><td>Doctrine de l'actionnaire</td><td>Friedman (1970)</td><td>Seule responsabilité = maximiser le profit</td></tr>
+    </table>
+
+    <!-- BLOC 5 : CONDUITE DU CHANGEMENT -->
+    <div class="section-title">5. Conduite du changement — Modèles clés</div>
+
+    <div class="block block-def">
+        <div class="block-label">Modèle de Lewin — 3 étapes</div>
+        <strong>1. Dégel (Unfreeze)</strong> : créer la prise de conscience, briser les habitudes<br>
+        <strong>2. Changement (Move)</strong> : mettre en place les nouvelles pratiques<br>
+        <strong>3. Regel (Refreeze)</strong> : ancrer, consolider, institutionnaliser le changement
+    </div>
+
+    <div class="block block-def">
+        <div class="block-label">Modèle de Kotter — 8 étapes</div>
+        1. Créer l'urgence → 2. Former une coalition → 3. Développer vision et stratégie → 4. Communiquer la vision → 5. Lever les obstacles → 6. Générer des victoires à CT → 7. Consolider → 8. Ancrer dans la culture
+    </div>
+
+    <ul class="blist">
+        <li><strong>Résistances au changement</strong> (causes) : peur de l'inconnu, perte de contrôle, remise en question des compétences, intérêts personnels menacés</li>
+        <li><strong>Facteurs de succès</strong> : leadership engagé, communication transparente, implication des acteurs concernés, quick wins visibles</li>
+        <li><strong>Agilité organisationnelle</strong> : capacité à pivoter rapidement → sprints, itérations, feedback loops</li>
+    </ul>
+
+    <!-- BLOC 6 : LOGIQUES DE MOTIVATION RSE -->
+    <div class="section-title">6. Pourquoi s'engager en RSE ? — 4 logiques</div>
+
+    <table class="compact-table">
+        <tr><th>Logique</th><th>Motivation</th><th>Risque</th></tr>
+        <tr><td><span class="hl-important">Instrumentale</span></td><td>ROI, compétitivité, accès financement ESG</td><td>Greenwashing si non ancrée</td></tr>
+        <tr><td><span class="hl-important">Éthique</span></td><td>Valeurs morales, convictions dirigeants</td><td>Difficile à maintenir sous pression actionnaires</td></tr>
+        <tr><td><span class="hl-important">Institutionnelle</span></td><td>Légitimité sociale, normes ISO, labels B Corp</td><td>Conformité sans réel engagement</td></tr>
+        <tr><td><span class="hl-important">Politique</span></td><td>Pression ONG, CSRD, consommateurs</td><td>Réactif, non proactif</td></tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Greenwashing</div>
+        Se donner une image de responsabilité sans actions substantielles. Signe d'une RSE purement instrumentale. <span class="hl-critical">Légal ≠ Éthique. La RSE authentique va au-delà de la conformité.</span>
+    </div>
+
+    <!-- RECAP -->
+    <div class="section-title">Récap — Auteurs et références incontournables</div>
+
+    <table class="compact-table">
+        <tr><th>Auteur / Référence</th><th>Concept associé</th></tr>
+        <tr><td><span class="hl-important">Brundtland (1987)</span></td><td>Définition fondatrice du développement durable</td></tr>
+        <tr><td><span class="hl-important">Carroll (1991)</span></td><td>Pyramide des responsabilités (éco / légale / éthique / philanthropique)</td></tr>
+        <tr><td><span class="hl-important">Barney (VRIO)</span></td><td>Ressources et avantage concurrentiel durable</td></tr>
+        <tr><td><span class="hl-important">Freeman (1984)</span></td><td>Théorie des parties prenantes (stakeholders)</td></tr>
+        <tr><td><span class="hl-important">Friedman (1970)</span></td><td>Doctrine de la valeur actionnariale pure</td></tr>
+        <tr><td><span class="hl-important">Lewin</span></td><td>Modèle 3 étapes : Dégel – Changement – Regel</td></tr>
+        <tr><td><span class="hl-important">Kotter (8 étapes)</span></td><td>Conduite du changement organisationnel</td></tr>
+        <tr><td><span class="hl-important">Business Roundtable (2019)</span></td><td>Élargissement de la mission d'entreprise au-delà des actionnaires</td></tr>
+    </table>
+
+</div>
+
+<div class="source-footer">
+    Insight — Gestion du Changement & RSE — EM Normandie M1
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

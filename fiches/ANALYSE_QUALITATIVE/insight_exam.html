@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points clés — Analyse Qualitative</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #1a5276 0%, #154360 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #fff3cd 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #1a5276; }
+        .block { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #eef6fc; border-color: #2980b9; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.32rem 0 0.32rem 1.3rem; position: relative; font-size: 0.91rem; line-height: 1.55; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #1a5276; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.88rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+        .tag-blue { background: #eef6fc; color: #1a5276; }
+        .tag-red { background: #fdecea; color: #c0392b; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;">← Retour à l'accueil</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">Analyse Qualitative — M1</div>
+    <h1>Points clés — Méthodes, Entretiens, Codage & Références</h1>
+</div>
+
+<div class="fiche-body">
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Points prioritaires</div>
+        Maîtriser la distinction <span class="hl-critical">quali vs quanti</span> (4 dimensions), les types d'entretiens, les étapes du codage thématique, et les concepts de <span class="hl-critical">saturation théorique</span> et <span class="hl-critical">triangulation</span>. Citer les auteurs (Glaser & Strauss, Yin, Eisenhardt).
+    </div>
+
+    <!-- BLOC 1 : QUALI VS QUANTI -->
+    <div class="section-title">1. Méthodes qualitatives vs quantitatives</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Critère</th>
+            <th>Qualitatif</th>
+            <th>Quantitatif</th>
+        </tr>
+        <tr>
+            <td>Objectif</td>
+            <td>Comprendre en profondeur, faire émerger du sens</td>
+            <td>Mesurer, tester des hypothèses, généraliser</td>
+        </tr>
+        <tr>
+            <td>Échantillon</td>
+            <td>Petit, riche en informations (raisonnement)</td>
+            <td>Grand, représentatif (aléatoire)</td>
+        </tr>
+        <tr>
+            <td>Données</td>
+            <td>Verbaux, textes, observations</td>
+            <td>Chiffres, variables mesurables</td>
+        </tr>
+        <tr>
+            <td>Démarche</td>
+            <td><span class="hl-critical">Inductive</span> (émergence des concepts)</td>
+            <td><span class="hl-critical">Hypothético-déductive</span> (test)</td>
+        </tr>
+        <tr>
+            <td>Questions</td>
+            <td>Ouvertes (comment ? pourquoi ?)</td>
+            <td>Fermées (combien ? dans quelle proportion ?)</td>
+        </tr>
+    </table>
+
+    <div class="block block-def">
+        <div class="block-label">Les 4 dimensions du qualitatif</div>
+        <strong>Inductive</strong> (concepts émergent des données) · <strong>Exploratoire</strong> (phénomènes complexes ou peu étudiés) · <strong>Interprétative</strong> (sens donné par les acteurs) · <strong>Contextuelle</strong> (tient compte de l'environnement)
+    </div>
+
+    <!-- BLOC 2 : MÉTHODES -->
+    <div class="section-title">2. Les méthodes qualitatives</div>
+
+    <table class="compact-table">
+        <tr><th>Méthode</th><th>Description clé</th><th>Usage</th></tr>
+        <tr><td><span class="hl-important">Enquête par entretiens</span></td><td>Méthode centrale — interactions individuelles approfondies</td><td>Comprendre motivations, perceptions</td></tr>
+        <tr><td><span class="hl-important">Ethnographie</span></td><td>Observation participante, immersion durable</td><td>Pratiques réelles en contexte</td></tr>
+        <tr><td><span class="hl-important">Étude de cas</span></td><td>Analyse approfondie d'un cas unique ou multiple (Yin)</td><td>Phénomènes contemporains en contexte réel</td></tr>
+        <tr><td><span class="hl-important">Recherche-action</span></td><td>Chercheur = intervenant actif</td><td>Résoudre un problème pratique</td></tr>
+        <tr><td><span class="hl-important">Focus groups</span></td><td>Entretien collectif guidé</td><td>Interactions sociales, représentations partagées</td></tr>
+        <tr><td><span class="hl-important">Analyse des traces</span></td><td>Documents, archives, discours</td><td>Données secondaires, histoire</td></tr>
+    </table>
+
+    <!-- BLOC 3 : ENTRETIENS -->
+    <div class="section-title">3. Les types d'entretiens</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Type</th>
+            <th>Structure</th>
+            <th>Avantages</th>
+            <th>Inconvénients</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Directif</span></td>
+            <td>Questions fermées, ordre strict</td>
+            <td>Comparable, rapide</td>
+            <td>Peu de profondeur</td>
+        </tr>
+        <tr>
+            <td><span class="hl-critical">Semi-directif</span></td>
+            <td>Guide thématique, questions ouvertes, flexible</td>
+            <td>Liberté + cadre = richesse + cohérence</td>
+            <td>Analyse plus longue</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Non-directif</span></td>
+            <td>Thème de départ, libre expression</td>
+            <td>Profondeur maximale</td>
+            <td>Difficile à analyser, chronophage</td>
+        </tr>
+    </table>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ L'entretien semi-directif : le plus utilisé en recherche managériale</div>
+        Guide d'entretien = liste de thèmes et sous-thèmes (pas de questions fermées). Permet la <strong>relance</strong> et l'approfondissement. Durée typique : 45 min – 1h30. Enregistrement + retranscription verbatim.
+    </div>
+
+    <!-- BLOC 4 : CODAGE -->
+    <div class="section-title">4. Analyse thématique et codage</div>
+
+    <ul class="blist">
+        <li><strong>Étapes du codage thématique</strong></li>
+        <li class="sub">1. Retranscription des entretiens (verbatim)</li>
+        <li class="sub">2. Lecture flottante (familiarisation)</li>
+        <li class="sub">3. Codage ouvert : identifier des unités de sens, leur attribuer des codes</li>
+        <li class="sub">4. Codage axial : regrouper les codes en catégories thématiques</li>
+        <li class="sub">5. Codage sélectif : identifier la catégorie centrale (Grounded Theory)</li>
+        <li class="sub">6. Memo writing : noter les réflexions théoriques en cours d'analyse</li>
+        <li><strong>Saturation théorique</strong> : point à partir duquel de nouveaux entretiens n'apportent plus de nouvelles informations → critère d'arrêt de la collecte</li>
+        <li><strong>Triangulation</strong> : croiser plusieurs méthodes, sources ou chercheurs pour renforcer la validité</li>
+    </ul>
+
+    <!-- BLOC 5 : GROUNDED THEORY -->
+    <div class="section-title">5. Grounded Theory et étude de cas</div>
+
+    <div class="block block-def">
+        <div class="block-label">Grounded Theory (Glaser & Strauss, 1967)</div>
+        Démarche inductive permettant de <strong>générer une théorie à partir des données</strong> (et non de tester une théorie préexistante). Codage ouvert → axial → sélectif. Concept central : <span class="hl-critical">saturation théorique</span>.
+    </div>
+
+    <div class="block block-def">
+        <div class="block-label">Étude de cas (Yin, 1981 / 1994)</div>
+        Méthode d'investigation empirique d'un phénomène contemporain dans son <strong>contexte réel</strong>. Cas unique (profondeur) ou cas multiples (comparaison). Réplication ≠ échantillonnage statistique.
+    </div>
+
+    <ul class="blist">
+        <li><span class="hl-important">Eisenhardt (1989)</span> : construire de la théorie à partir de cas multiples — sélection des cas par <em>theoretical sampling</em></li>
+        <li><span class="hl-important">Simon (1957)</span> : rationalité limitée — base pour l'étude des décisions réelles en contexte</li>
+    </ul>
+
+    <!-- BLOC 6 : RIGUEUR -->
+    <div class="section-title">6. Critères de rigueur de la recherche qualitative</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Critère</th>
+            <th>Équivalent quantitatif</th>
+            <th>Moyen d'assurer</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Crédibilité</span></td>
+            <td>Validité interne</td>
+            <td>Triangulation, member checking</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Transférabilité</span></td>
+            <td>Validité externe</td>
+            <td>Description épaisse du contexte</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Fiabilité</span></td>
+            <td>Fidélité</td>
+            <td>Audit trail, protocole explicite</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Confirmabilité</span></td>
+            <td>Objectivité</td>
+            <td>Réflexivité du chercheur</td>
+        </tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Erreur fréquente</div>
+        La recherche qualitative ne vise pas la représentativité statistique mais la <span class="hl-critical">richesse interprétative</span>. On ne généralise pas au sens statistique — on généralise à la théorie.
+    </div>
+
+    <!-- RECAP -->
+    <div class="section-title">Récap — Auteurs incontournables</div>
+
+    <table class="compact-table">
+        <tr><th>Auteur</th><th>Contribution</th></tr>
+        <tr><td><span class="hl-important">Glaser & Strauss (1967)</span></td><td>Grounded Theory — méthode inductive de construction théorique</td></tr>
+        <tr><td><span class="hl-important">Yin (1981 / 1994)</span></td><td>Étude de cas — phénomène contemporain en contexte réel</td></tr>
+        <tr><td><span class="hl-important">Eisenhardt (1989)</span></td><td>Théorie à partir de cas multiples (comparative)</td></tr>
+        <tr><td><span class="hl-important">Simon (1957)</span></td><td>Rationalité limitée — base de l'analyse décisionnelle qualitative</td></tr>
+        <tr><td><span class="hl-important">Miles & Huberman</span></td><td>Analyse des données qualitatives — matrices et schémas de codage</td></tr>
+    </table>
+
+</div>
+
+<div class="source-footer">
+    Insight — Analyse Qualitative — EM Normandie M1
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

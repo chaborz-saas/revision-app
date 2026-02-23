@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Récap Exam — Recherche Qualitative</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #f9e4ff 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #8e44ad; }
+        .block { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #f5eef8; border-color: #8e44ad; }
+        .block-attention { background: #fdecea; border-color: #e74c3c; }
+        .block-astuce { background: #e8f8f5; border-color: #1abc9c; }
+        .block-info { background: #eef6fc; border-color: #2980b9; }
+        .block-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; opacity: 0.7; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin: 1.8rem 0 0.7rem; padding-bottom: 0.25rem; border-bottom: 2px solid #e8e8e8; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.3rem 0 0.3rem 1.3rem; position: relative; font-size: 0.91rem; line-height: 1.55; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #8e44ad; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.88rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.7rem 0; font-size: 0.85rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.45rem 0.7rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #eee; vertical-align: top; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+        .tag-purple { background: #f5eef8; color: #6c3483; }
+        .tag-green { background: #e8f8f5; color: #1e8449; }
+        .tag-red { background: #fdecea; color: #c0392b; }
+        .step-row { display: flex; align-items: flex-start; gap: 0.8rem; margin: 0.6rem 0; }
+        .step-num { background: #8e44ad; color: white; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+        .step-content { flex: 1; font-size: 0.9rem; line-height: 1.55; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.7rem 0; }
+        .mini-card { background: #f8f4ff; border: 1px solid #d7bde2; border-radius: 8px; padding: 0.8rem; }
+        .mini-card h4 { font-size: 0.82rem; font-weight: 700; color: #6c3483; margin-bottom: 0.4rem; }
+        .mini-card p { font-size: 0.82rem; line-height: 1.5; color: #333; }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#8e44ad;text-decoration:none;font-size:0.85rem;">← Retour à l'accueil</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">Analyse Qualitative — M1 · Fiche Récap Exam</div>
+    <h1>🔬 Guide complet — Recherche Qualitative de A à Z</h1>
+</div>
+
+<div class="fiche-body">
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Ce qu'il faut maîtriser pour l'exam</div>
+        La différence quali vs quanti · Les 4 grandes approches · Les types d'échantillonnage · Le processus de codage en 3 étapes · Les 4 critères de rigueur · Les 5 principes éthiques · Les auteurs clés (Glaser & Strauss, Yin, Eisenhardt)
+    </div>
+
+    <!-- PARTIE 1 : QU'EST-CE QUE LA RECHERCHE QUALITATIVE ? -->
+    <div class="section-title">1. Qu'est-ce que la recherche qualitative ?</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définition centrale</div>
+        La recherche qualitative est une approche <span class="hl-critical">inductive</span> et <span class="hl-critical">interprétativiste</span> qui cherche à <strong>comprendre en profondeur des phénomènes sociaux et humains</strong> dans leur contexte naturel. Elle génère des données non numériques (discours, observations, documents) et construit du sens à partir de l'expérience des acteurs.
+    </div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Dimension</th>
+            <th>Qualitative</th>
+            <th>Quantitative</th>
+        </tr>
+        <tr>
+            <td><strong>Objectif</strong></td>
+            <td>Comprendre, explorer, donner du sens</td>
+            <td>Mesurer, tester, généraliser</td>
+        </tr>
+        <tr>
+            <td><strong>Posture</strong></td>
+            <td>Interprétativiste / constructiviste</td>
+            <td>Positiviste / hypothético-déductive</td>
+        </tr>
+        <tr>
+            <td><strong>Démarche</strong></td>
+            <td><span class="hl-important">Inductive</span> (concepts émergent des données)</td>
+            <td><span class="hl-important">Déductive</span> (test d'hypothèses)</td>
+        </tr>
+        <tr>
+            <td><strong>Données</strong></td>
+            <td>Verbaux, textes, observations, images</td>
+            <td>Chiffres, variables mesurables</td>
+        </tr>
+        <tr>
+            <td><strong>Échantillon</strong></td>
+            <td>Petit, raisonné, varié (richesse > taille)</td>
+            <td>Grand, aléatoire, représentatif</td>
+        </tr>
+        <tr>
+            <td><strong>Questions</strong></td>
+            <td>Ouvertes (Comment ? Pourquoi ?)</td>
+            <td>Fermées (Combien ? Dans quelle proportion ?)</td>
+        </tr>
+        <tr>
+            <td><strong>Généralisation</strong></td>
+            <td>Théorique (montée en abstraction)</td>
+            <td>Statistique (extrapolation)</td>
+        </tr>
+    </table>
+
+    <div class="block block-info">
+        <div class="block-label">Les 4 caractéristiques fondamentales du qualitatif</div>
+        <strong>Inductive</strong> (les concepts émergent des données) · <strong>Exploratoire</strong> (phénomènes complexes ou peu étudiés) · <strong>Interprétative</strong> (le sens est donné par les acteurs) · <strong>Contextuelle</strong> (tient compte de l'environnement réel)
+    </div>
+
+    <!-- PARTIE 2 : LES APPROCHES -->
+    <div class="section-title">2. Les 6 principales approches qualitatives</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Approche</th>
+            <th>Auteur(s) clé(s)</th>
+            <th>Principe</th>
+            <th>Usage typique</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Grounded Theory</span></td>
+            <td>Glaser & Strauss (1967)</td>
+            <td>Construire une théorie à partir des données (codage ouvert → axial → sélectif)</td>
+            <td>Explorer un phénomène nouveau sans théorie préexistante</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Étude de cas</span></td>
+            <td>Yin (1981, 1994)</td>
+            <td>Investigation approfondie d'un phénomène dans son contexte réel (cas unique ou multiple)</td>
+            <td>Comprendre "comment" et "pourquoi" un événement se produit</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Ethnographie</span></td>
+            <td>Geertz (description épaisse)</td>
+            <td>Immersion durable dans un groupe social, observation participante</td>
+            <td>Pratiques culturelles, usages réels, rituels organisationnels</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Recherche-action</span></td>
+            <td>Lewin (1946)</td>
+            <td>Le chercheur est acteur du changement qu'il étudie</td>
+            <td>Résoudre un problème pratique tout en produisant des connaissances</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Focus groups</span></td>
+            <td>Morgan (1997)</td>
+            <td>Entretiens collectifs guidés (6–10 personnes) — dynamique de groupe</td>
+            <td>Représentations partagées, normes sociales, opinions collectives</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Analyse documentaire</span></td>
+            <td>—</td>
+            <td>Étude de données secondaires (archives, rapports, discours, médias)</td>
+            <td>Contexte historique, stratégies officielles, traces organisationnelles</td>
+        </tr>
+    </table>
+
+    <!-- PARTIE 3 : ÉCHANTILLONNAGE -->
+    <div class="section-title">3. Échantillonnage en recherche qualitative</div>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Point critique exam</div>
+        En qualitatif, l'échantillonnage est <strong>toujours non probabiliste (raisonné)</strong>. L'objectif n'est <strong>jamais</strong> la représentativité statistique mais la <span class="hl-critical">richesse informationnelle</span> et la diversité des profils.
+    </div>
+
+    <div class="two-col">
+        <div class="mini-card">
+            <h4>🎯 Raisonné (Purposive)</h4>
+            <p>Sélection intentionnelle selon des critères théoriques précis. Le plus courant en recherche managériale.</p>
+        </div>
+        <div class="mini-card">
+            <h4>❄️ Boule de neige (Snowball)</h4>
+            <p>Chaque participant recommande d'autres. Utile pour accéder à des populations cachées ou difficiles à atteindre.</p>
+        </div>
+        <div class="mini-card">
+            <h4>🌈 Variation maximale</h4>
+            <p>Choisir délibérément des profils très différents pour capturer la diversité du phénomène.</p>
+        </div>
+        <div class="mini-card">
+            <h4>⚡ Théorique (Grounded Theory)</h4>
+            <p>L'échantillon évolue au fil de l'analyse : on cherche les profils qui permettent de raffiner la théorie émergente.</p>
+        </div>
+    </div>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Critère d'arrêt : la saturation théorique</div>
+        On arrête de collecter des données quand les nouveaux entretiens n'apportent plus d'éléments nouveaux — concept développé par <strong>Glaser & Strauss (1967)</strong>. En pratique : 10–20 entretiens selon la complexité du phénomène.
+    </div>
+
+    <!-- PARTIE 4 : COLLECTE -->
+    <div class="section-title">4. Méthodes de collecte de données</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Méthode</th>
+            <th>Description</th>
+            <th>Avantages</th>
+            <th>Limites</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Entretien semi-directif</span> <span class="tag tag-purple">Principal</span></td>
+            <td>Guide thématique, questions ouvertes, relances libres. 45–90 min, enregistrement audio.</td>
+            <td>Liberté d'expression + cadre cohérent. Profondeur + comparabilité.</td>
+            <td>Retranscription longue. Biais de désirabilité sociale.</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Entretien directif</span></td>
+            <td>Questions fermées, ordre strict. Proche du questionnaire oral.</td>
+            <td>Rapide, comparable facilement</td>
+            <td>Peu de profondeur, limité en qualitatif</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Entretien non-directif</span></td>
+            <td>Thème de départ, expression totalement libre du répondant.</td>
+            <td>Profondeur maximale, accès aux représentations profondes</td>
+            <td>Très difficile à analyser, très chronophage</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Focus group</span></td>
+            <td>6–10 participants guidés par un animateur. 90–120 min.</td>
+            <td>Dynamique collective, co-construction du sens</td>
+            <td>Risque de conformisme groupal (opinions dominantes)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Observation (non participante)</span></td>
+            <td>Chercheur observe sans s'impliquer. Grille d'observation structurée.</td>
+            <td>Accès aux comportements réels (vs discours)</td>
+            <td>Effet Hawthorne (les observés changent de comportement)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Observation participante</span></td>
+            <td>Chercheur est immergé dans le groupe étudié.</td>
+            <td>Accès aux pratiques tacites et implicites</td>
+            <td>Risque de "going native" (perte de distance critique)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Analyse documentaire</span></td>
+            <td>Rapports, archives, mails, publications, données secondaires.</td>
+            <td>Données non réactives, perspective historique</td>
+            <td>Qualité variable des sources, biais de sélection</td>
+        </tr>
+    </table>
+
+    <!-- PARTIE 5 : ÉTHIQUE -->
+    <div class="section-title">5. Principes éthiques</div>
+
+    <div class="two-col">
+        <div class="mini-card">
+            <h4>✅ Consentement éclairé</h4>
+            <p>Les participants acceptent librement après avoir été informés des objectifs, de l'usage des données et de leur droit de retrait à tout moment.</p>
+        </div>
+        <div class="mini-card">
+            <h4>🔒 Confidentialité</h4>
+            <p>Les données brutes ne sont accessibles qu'aux chercheurs. Les résultats publiés ne permettent pas d'identifier les participants.</p>
+        </div>
+        <div class="mini-card">
+            <h4>👤 Anonymisation</h4>
+            <p>Remplacement des noms par des codes (P1, P2…). Noms d'entreprises modifiés si nécessaire. Aucune donnée nominative publiée.</p>
+        </div>
+        <div class="mini-card">
+            <h4>💊 Bienfaisance / Non-nuisance</h4>
+            <p>La recherche ne doit pas causer de préjudice aux participants. Éviter les sujets traumatisants non encadrés.</p>
+        </div>
+    </div>
+
+    <div class="block block-def">
+        <div class="block-label">Réflexivité — concept clé</div>
+        Le chercheur doit <strong>prendre conscience de sa propre position</strong> (statut, valeurs, intérêts) et de son influence sur les données. Cette réflexivité est <em>déclarée et questionnée</em> tout au long de la recherche. Elle se manifeste par un <strong>journal de bord réflexif</strong> tenu parallèlement à la collecte.
+    </div>
+
+    <!-- PARTIE 6 : ANALYSE -->
+    <div class="section-title">6. Processus d'analyse — Codage & Thèmes</div>
+
+    <div style="margin: 1rem 0;">
+        <div class="step-row">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <strong>Retranscription verbatim</strong> — Transcrire intégralement les entretiens enregistrés. Conserver les hésitations, répétitions, silences (notation systématique). Base indispensable du codage.
+            </div>
+        </div>
+        <div class="step-row">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <strong>Lecture flottante</strong> — Lire les verbatims sans grille prédéfinie pour se familiariser avec le matériau. Première imprégnation générale.
+            </div>
+        </div>
+        <div class="step-row">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <strong>Codage ouvert</strong> — Identifier des unités de sens dans les verbatims et leur attribuer un code descriptif. Ex : "Je ne comprends pas le score" → code : <em>incompréhension_outil</em>
+            </div>
+        </div>
+        <div class="step-row">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <strong>Codage axial</strong> — Regrouper les codes en <strong>catégories thématiques</strong> et identifier les relations entre catégories. Ex : incompréhension_outil + méfiance_données → catégorie : <em>Résistances cognitives</em>
+            </div>
+        </div>
+        <div class="step-row">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <strong>Codage sélectif</strong> — Identifier la <strong>catégorie centrale</strong> qui intègre et explique toutes les autres. C'est la colonne vertébrale de la théorie émergente (Grounded Theory).
+            </div>
+        </div>
+        <div class="step-row">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <strong>Mémos analytiques</strong> — Rédiger des notes théoriques tout au long du processus pour consigner les intuitions, hypothèses et liens conceptuels.
+            </div>
+        </div>
+    </div>
+
+    <div class="block block-info">
+        <div class="block-label">Triangulation — renforcer la crédibilité</div>
+        <ul class="blist">
+            <li><strong>Triangulation des méthodes</strong> : croiser entretiens + observations + documents</li>
+            <li><strong>Triangulation des sources</strong> : plusieurs informateurs différents sur le même phénomène</li>
+            <li><strong>Triangulation des chercheurs</strong> : plusieurs chercheurs codent indépendamment → comparer les codes</li>
+            <li><strong>Member checking</strong> : soumettre les résultats intermédiaires aux participants pour validation</li>
+        </ul>
+    </div>
+
+    <!-- PARTIE 7 : RIGUEUR -->
+    <div class="section-title">7. Rigueur (qualité) en recherche qualitative</div>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Vocabulaire à utiliser à l'exam</div>
+        Ne pas utiliser les termes quantitatifs (validité interne/externe, fidélité) — utiliser le vocabulaire qualitatif approprié ci-dessous.
+    </div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Critère qualitatif</th>
+            <th>Équivalent quantitatif</th>
+            <th>Comment l'assurer concrètement</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Crédibilité</span></td>
+            <td>Validité interne</td>
+            <td>Triangulation · Member checking · Temps prolongé sur le terrain</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Transférabilité</span></td>
+            <td>Validité externe</td>
+            <td>Description épaisse du contexte (permettre au lecteur de juger si les résultats s'appliquent à son cas)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Fiabilité (Dépendabilité)</span></td>
+            <td>Fidélité / Reproductibilité</td>
+            <td>Audit trail : documenter toutes les décisions méthodologiques · Protocole explicite et partageable</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Confirmabilité</span></td>
+            <td>Objectivité</td>
+            <td>Réflexivité du chercheur déclarée · Verbatims cités pour appuyer les interprétations · Double codage</td>
+        </tr>
+    </table>
+
+    <!-- PARTIE 8 : OUTILS VISUELS -->
+    <div class="section-title">8. Outils visuels & livrables de la recherche</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Outil</th>
+            <th>Contenu</th>
+            <th>Utilité</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Guide d'entretien</span></td>
+            <td>Liste de thèmes + sous-thèmes + questions de relance. Jamais de questions fermées.</td>
+            <td>Structurer les entretiens tout en laissant la liberté au répondant</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Grille de codage (Codebook)</span></td>
+            <td>Tableau : code · définition · exemple de verbatim · fréquence d'apparition</td>
+            <td>Outil de référence partagé entre chercheurs pour garantir la fiabilité du codage</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Matrice de données</span></td>
+            <td>Tableau participants × thèmes : présence/absence ou intensité de chaque thème par profil</td>
+            <td>Visualiser les patterns et les variations entre profils (Miles & Huberman)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Carte conceptuelle</span></td>
+            <td>Schéma des relations entre catégories de codes</td>
+            <td>Visualiser la structure théorique émergente</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Journal de bord</span></td>
+            <td>Notes réflexives quotidiennes du chercheur</td>
+            <td>Tracer la posture du chercheur, nourrir la réflexivité, documenter les décisions</td>
+        </tr>
+    </table>
+
+    <!-- RÉCAP AUTEURS -->
+    <div class="section-title">9. Auteurs incontournables — Ce qu'il faut retenir</div>
+
+    <table class="compact-table">
+        <tr>
+            <th>Auteur</th>
+            <th>Date</th>
+            <th>Contribution</th>
+            <th>Concept clé</th>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Glaser & Strauss</span></td>
+            <td>1967</td>
+            <td>Fondateurs de la Grounded Theory</td>
+            <td>Codage ouvert-axial-sélectif, saturation théorique</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Yin</span></td>
+            <td>1981, 1994</td>
+            <td>Méthodologie de l'étude de cas</td>
+            <td>Cas unique vs multiple, réplication (≠ échantillonnage)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Eisenhardt</span></td>
+            <td>1989</td>
+            <td>Construction de théorie à partir de cas multiples</td>
+            <td>Theoretical sampling, cas comparatifs</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Miles & Huberman</span></td>
+            <td>1994</td>
+            <td>Analyse des données qualitatives</td>
+            <td>Matrices, condensation des données, display</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Lincoln & Guba</span></td>
+            <td>1985</td>
+            <td>Critères de rigueur en qualitatif</td>
+            <td>Crédibilité, transférabilité, fiabilité, confirmabilité</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Geertz</span></td>
+            <td>1973</td>
+            <td>Anthropologie interprétativiste</td>
+            <td>Description épaisse (thick description)</td>
+        </tr>
+        <tr>
+            <td><span class="hl-important">Simon</span></td>
+            <td>1957</td>
+            <td>Rationalité limitée</td>
+            <td>Base de l'analyse des décisions réelles en contexte</td>
+        </tr>
+    </table>
+
+    <!-- RÉCAP EXPRESS -->
+    <div class="section-title">⚡ Récap express — Mémo pour l'exam</div>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ La structure parfaite d'une réponse méthodologique</div>
+        <div style="font-size:0.9rem;line-height:1.7;">
+            <strong>① Design</strong> : nommer + justifier (pourquoi ce design face à cette question de recherche ?)<br>
+            <strong>② Échantillon</strong> : type (raisonné / variation max / boule de neige) + nombre + critères de sélection + saturation<br>
+            <strong>③ Collecte</strong> : méthode principale + méthode secondaire + modalités pratiques<br>
+            <strong>④ Éthique</strong> : consentement + anonymisation + réflexivité<br>
+            <strong>⑤ Rigueur</strong> : au moins 2 critères (crédibilité, transférabilité, fiabilité, confirmabilité) + comment les assurer<br>
+            <strong>⑥ Analyse</strong> : codage ouvert → axial → sélectif ou analyse thématique
+        </div>
+    </div>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Les 5 erreurs qui font perdre des points</div>
+        <ul class="blist">
+            <li>Dire "échantillon représentatif" en qualitatif → <strong>FAUX</strong> : toujours raisonné</li>
+            <li>Utiliser le mot "validité" sans préciser de quel type → utiliser <strong>crédibilité / transférabilité</strong></li>
+            <li>Oublier de justifier le choix du design — le "pourquoi" est aussi important que le "quoi"</li>
+            <li>Ignorer la réflexivité du chercheur → toujours mentionner la posture et les biais potentiels</li>
+            <li>Confondre <strong>saturation théorique</strong> (critère d'arrêt) et <strong>triangulation</strong> (critère de rigueur)</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="source-footer">
+    Fiche Récap Exam — Recherche Qualitative — EM Normandie M1
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

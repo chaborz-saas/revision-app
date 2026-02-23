@@ -25,7 +25,7 @@ body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; c
 .flash-q { background: #1a1a2e; color: white; padding: 0.6rem 1rem; border-radius: 8px; margin: 0.5rem 0 0.2rem; font-weight: 600; font-size: 0.9rem; }
 .flash-a { background: #f8f9ff; padding: 0.6rem 1rem; border-radius: 0 0 8px 8px; margin-bottom: 0.8rem; font-size: 0.88rem; border: 1px solid #e8eaf0; border-top: none; }
 .source-footer { margin-top: 2rem; padding: 0.8rem; background: #f8f9ff; border-radius: 8px; font-size: 0.8rem; color: #666; }
-.source-footer a { color: #4361ee; text-decoration: none; }</style>
+.source-footer a { color: #4361ee; text-decoration: none; }.print-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#4361ee,#3a0ca3);color:white;border:none;border-radius:50px;padding:0.7rem 1.2rem;font-size:0.85rem;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(67,97,238,0.4);z-index:9999;transition:all 0.2s;font-family:Inter,sans-serif;}.print-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(67,97,238,0.5);}@media print{.print-btn{display:none!important;}}</style>
 </head>
 <body>
 <div style="max-width:900px;margin:0 auto;"><a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#4361ee;text-decoration:none;font-size:0.85rem;font-family:Inter,sans-serif;">← Retour à l’accueil</a></div>
@@ -94,5 +94,6 @@ body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; c
   </div>
 </div>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<button onclick="window.print()" class="print-btn" title="Télécharger en PDF">📥 PDF</button>
 </body>
 </html>

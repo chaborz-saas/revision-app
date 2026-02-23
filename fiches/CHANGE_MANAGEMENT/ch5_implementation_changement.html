@@ -39,7 +39,7 @@ a.back { font-family: Inter, sans-serif; font-size: 0.85rem; color: #8e44ad; tex
 .steps-mini { counter-reset: sc; list-style: none; padding: 0; margin: 0.5rem 0; }
 .steps-mini li { counter-increment: sc; padding: 0.35rem 0.5rem 0.35rem 2.2rem; position: relative; font-size: 0.87rem; border-bottom: 1px solid #f0e8fa; }
 .steps-mini li::before { content: counter(sc); position: absolute; left: 0.2rem; top: 50%; transform: translateY(-50%); background: #8e44ad; color: white; width: 1.4rem; height: 1.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
-</style>
+.print-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#4361ee,#3a0ca3);color:white;border:none;border-radius:50px;padding:0.7rem 1.2rem;font-size:0.85rem;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(67,97,238,0.4);z-index:9999;transition:all 0.2s;font-family:Inter,sans-serif;}.print-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(67,97,238,0.5);}@media print{.print-btn{display:none!important;}}</style>
 </head>
 <body>
 <a href="../../fr/index.html" class="back">← Retour à l'accueil</a>
@@ -163,5 +163,6 @@ a.back { font-family: Inter, sans-serif; font-size: 0.85rem; color: #8e44ad; tex
 </div>
 <div class="source-footer">Cours GCD — Laurent Paris — EM Normandie M1 2025-2026</div>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<button onclick="window.print()" class="print-btn" title="Télécharger en PDF">📥 PDF</button>
 </body>
 </html>

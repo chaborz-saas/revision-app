@@ -28,7 +28,7 @@
         tr:nth-child(even) { background: #eaf2f8; }
         .section-num { color: #2980b9; }
         @media (max-width: 768px) { .container { padding: 1rem; } h1 { font-size: 1.5rem; } }
-    </style>
+    .print-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#4361ee,#3a0ca3);color:white;border:none;border-radius:50px;padding:0.7rem 1.2rem;font-size:0.85rem;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(67,97,238,0.4);z-index:9999;transition:all 0.2s;font-family:Inter,sans-serif;}.print-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(67,97,238,0.5);}@media print{.print-btn{display:none!important;}}</style>
 </head>
 <body>
 <div class="container">
@@ -219,5 +219,6 @@
 
 </div>
 <script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<button onclick="window.print()" class="print-btn" title="Télécharger en PDF">📥 PDF</button>
 </body>
 </html>

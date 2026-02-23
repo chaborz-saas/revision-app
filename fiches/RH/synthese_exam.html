@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthèse Exam — GRH pour Manager</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 1.5rem; color: #1a1a2e; }
+        .fiche-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white; padding: 1.5rem 2rem; border-radius: 16px 16px 0 0;
+            max-width: 900px; margin: 0 auto;
+        }
+        .fiche-header h1 { font-size: 1.4rem; font-weight: 700; }
+        .fiche-header .matiere { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .fiche-header .sub { font-size: 0.82rem; opacity: 0.8; margin-top: 0.3rem; }
+        .fiche-body {
+            background: white; padding: 1.8rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 900px; margin: 0 auto 1.5rem;
+        }
+        .hl-critical { background: linear-gradient(180deg, transparent 50%, #d1fae5 50%); font-weight: 700; padding: 0 2px; }
+        .hl-important { font-weight: 600; color: #059669; }
+        .hl-red { font-weight: 600; color: #dc2626; }
+        .block { margin: 0.8rem 0; padding: 0.85rem 1.1rem; border-radius: 10px; border-left: 4px solid; }
+        .block-def { background: #f0fdf4; border-color: #10b981; }
+        .block-attention { background: #fef2f2; border-color: #ef4444; }
+        .block-astuce { background: #eff6ff; border-color: #3b82f6; }
+        .block-insight { background: #fefce8; border-color: #eab308; }
+        .block-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.35rem; opacity: 0.65; }
+        .section-title {
+            font-size: 1rem; font-weight: 700; color: white;
+            margin: 1.8rem 0 0.8rem; padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 8px;
+        }
+        .sub-title { font-size: 0.9rem; font-weight: 700; color: #1a1a2e; margin: 1.2rem 0 0.5rem; padding-bottom: 0.2rem; border-bottom: 1.5px solid #d1fae5; }
+        ul.blist { list-style: none; padding: 0; }
+        ul.blist li { padding: 0.28rem 0 0.28rem 1.3rem; position: relative; font-size: 0.9rem; line-height: 1.5; }
+        ul.blist li::before { content: "→"; position: absolute; left: 0; color: #10b981; font-weight: bold; }
+        ul.blist li.sub { padding-left: 2.3rem; color: #444; font-size: 0.86rem; }
+        ul.blist li.sub::before { content: "·"; left: 1rem; color: #aaa; }
+        .compact-table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; font-size: 0.84rem; }
+        .compact-table th { background: #1a1a2e; color: white; padding: 0.4rem 0.65rem; text-align: left; font-size: 0.73rem; text-transform: uppercase; letter-spacing: 1px; }
+        .compact-table td { padding: 0.4rem 0.65rem; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.45; }
+        .compact-table tr:nth-child(even) { background: #f8f9fa; }
+        .tag { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+        .tag-green { background: #d1fae5; color: #065f46; }
+        .tag-red { background: #fee2e2; color: #991b1b; }
+        .tag-yellow { background: #fef9c3; color: #713f12; }
+        .tag-blue { background: #dbeafe; color: #1e40af; }
+        .matrix-grid {
+            display: grid; grid-template-columns: auto 1fr 1fr;
+            gap: 2px; margin: 0.8rem 0; font-size: 0.83rem;
+        }
+        .matrix-cell { padding: 0.5rem 0.7rem; border-radius: 4px; }
+        .matrix-header { background: #1a1a2e; color: white; font-weight: 700; text-align: center; }
+        .matrix-etoile { background: #d1fae5; color: #065f46; font-weight: 600; }
+        .matrix-espoir { background: #dbeafe; color: #1e40af; font-weight: 600; }
+        .matrix-pilier { background: #fef9c3; color: #713f12; font-weight: 600; }
+        .matrix-mort { background: #fee2e2; color: #991b1b; font-weight: 600; }
+        .matrix-axis { background: #f3f4f6; font-style: italic; font-size: 0.78rem; color: #6b7280; display: flex; align-items: center; justify-content: center; writing-mode: vertical-lr; transform: rotate(180deg); }
+        .source-footer { text-align: center; padding: 1rem; color: #95a5a6; font-size: 0.8rem; max-width: 900px; margin: 0 auto; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 0.7rem 0; }
+        .mini-card { background: #f0fdf4; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.7rem; }
+        .mini-card h4 { font-size: 0.8rem; font-weight: 700; color: #059669; margin-bottom: 0.3rem; }
+        .mini-card p { font-size: 0.8rem; line-height: 1.5; }
+        @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+        @media print { body { background: white; padding: 0; } .fiche-body { box-shadow: none; } }
+    .print-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#4361ee,#3a0ca3);color:white;border:none;border-radius:50px;padding:0.7rem 1.2rem;font-size:0.85rem;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(67,97,238,0.4);z-index:9999;transition:all 0.2s;font-family:Inter,sans-serif;}.print-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(67,97,238,0.5);}@media print{.print-btn{display:none!important;}}</style>
+</head>
+<body>
+
+<div style="max-width:900px;margin:0 auto;">
+    <a href="../../fr/index.html" style="display:inline-block;margin-bottom:1rem;color:#10b981;text-decoration:none;font-size:0.85rem;">← Retour à l'accueil</a>
+</div>
+
+<div class="fiche-header">
+    <div class="matiere">GRH pour Manager — M1 · Prof. Vincent Meyer</div>
+    <h1>📗 Synthèse condensée — Tout le cours pour l'exam</h1>
+    <div class="sub">Cours N1 (Recrutement) · N2 (Rémunération & Évaluation) · N3 (Formation & Carrières) · N4 (Diversité & RPS)</div>
+</div>
+
+<div class="fiche-body">
+
+    <div class="block block-insight">
+        <div class="block-label">⭐ Format de l'exam</div>
+        <strong>Examen final (60%) = Étude de cas</strong> sur le modèle du cas Auclair. Structure attendue : <span class="hl-critical">Situation → Problème → Hypothèse → Plan d'action → Alternatives</span>. Citer les auteurs + outils RH pour chaque réponse. Contrôle continu (40%) : participation + QCM dernier cours.
+    </div>
+
+    <!-- ===== SECTION 1 : FONDAMENTAUX ===== -->
+    <div class="section-title">1. Fondamentaux de la GRH</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définitions à connaître par cœur</div>
+        <strong>Peretti (1977) :</strong> "L'ensemble des activités qui permettent à l'entreprise de disposer des ressources humaines correspondant à ses besoins en quantité et en qualité"<br>
+        <strong>Ferrary (2014) :</strong> "Ensemble d'outils et de pratiques qui constituent un système managérial cohérent dont l'objectif est de mettre en œuvre la dimension humaine de la stratégie de l'organisation"
+    </div>
+
+    <div class="sub-title">Modèle d'Ulrich (1997) — 4 rôles de la DRH</div>
+    <table class="compact-table">
+        <tr><th>Rôle</th><th>Focus</th><th>Orientation</th></tr>
+        <tr><td><span class="hl-important">Partenaire stratégique</span></td><td>Processus</td><td>Futur</td></tr>
+        <tr><td><span class="hl-important">Agent du changement</span></td><td>Personnes</td><td>Futur</td></tr>
+        <tr><td><span class="hl-important">Expert administratif</span></td><td>Processus</td><td>Présent</td></tr>
+        <tr><td><span class="hl-important">Champion des salariés</span></td><td>Personnes</td><td>Présent</td></tr>
+    </table>
+
+    <div class="sub-title">Historique de la fonction RH</div>
+    <table class="compact-table">
+        <tr><th>Période</th><th>Théorie dominante</th><th>Pratiques clés</th></tr>
+        <tr><td>1900–1950</td><td>Taylorisme / Fordisme</td><td>Administration du personnel, réglementation</td></tr>
+        <tr><td>1950–1970</td><td>Relations humaines</td><td>Communication, culture</td></tr>
+        <tr><td>1960–1980</td><td>Socio-technique</td><td>Organisation, conditions de travail</td></tr>
+        <tr><td>Après 1980</td><td>Management stratégique</td><td>GPEC, logique compétence, culture d'entreprise</td></tr>
+    </table>
+
+    <div class="block block-astuce">
+        <div class="block-label">Culture d'entreprise — Modèle de Schein</div>
+        3 niveaux : <strong>Artefacts</strong> (visibles : symboles, rituels) → <strong>Valeurs défendues</strong> (ce qu'on dit avoir) → <strong>Postulats de base</strong> (hypothèses tenues pour acquises, non formulées). Le niveau le plus profond est le plus difficile à changer.
+    </div>
+
+    <!-- ===== SECTION 2 : RECRUTEMENT ===== -->
+    <div class="section-title">2. Le Recrutement — 4 étapes</div>
+
+    <table class="compact-table">
+        <tr><th>Étape</th><th>Contenu clé</th><th>Outils / Concepts</th></tr>
+        <tr>
+            <td><strong>① Identification du besoin</strong></td>
+            <td>Profil du poste (intitulé, position, missions, rémunération, évolution) + Profil du candidat (formation, expérience, compétences, caractéristiques)</td>
+            <td>Fiche de poste, ATS, marque employeur</td>
+        </tr>
+        <tr>
+            <td><strong>② Recherche candidatures (Sourcing)</strong></td>
+            <td>Interne (promotion, mobilité) vs Externe (jobboards, réseaux, cooptation, cabinets)</td>
+            <td>LinkedIn Top Companies, APEC : canaux les plus utilisés = réseaux sociaux + jobboards</td>
+        </tr>
+        <tr>
+            <td><strong>③ Sélection / Prise de décision</strong></td>
+            <td>Tests + entretiens. Rationalité limitée (Simon) → décisions rarement 100% objectives</td>
+            <td>BARS, tests aptitudes (forte validité), graphologie (validité nulle !), entretien individuel (92% utilisation)</td>
+        </tr>
+        <tr>
+            <td><strong>④ Intégration</strong></td>
+            <td>36% des CDI se soldent par un départ dans les 12 premiers mois → l'intégration est stratégique</td>
+            <td>Van Maanen : 7 tactiques de socialisation (formelle/informelle, individuelle/collective, séquentielle/disjointe, fixe/variable, en série/aléatoire, investiture/dévestiture)</td>
+        </tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Biais à connaître pour l'exam</div>
+        <strong>Du côté recruteur :</strong> effet de halo (1 qualité colore tout le jugement) · biais de projection (choisir quelqu'un qui nous ressemble) · effet d'inférence<br>
+        <strong>Du côté candidat :</strong> désirabilité sociale (dire ce qu'on croit attendu)
+    </div>
+
+    <div class="block block-insight">
+        <div class="block-label">⭐ Insight Auclair — Ce que le correcteur attend sur le recrutement</div>
+        Q1 du cas : rédiger le <strong>profil du poste</strong> (intitulé, N+1, missions, rémunération, évolution) ET le <strong>profil du candidat</strong> (formation, expérience, compétences savoirs/savoir-faire/savoir-être, contraintes). Toujours distinguer les deux. La décision de recrutement ne doit <strong>jamais</strong> être fondée sur des critères discriminants (grossesse, âge, appartenance syndicale…).
+    </div>
+
+    <!-- ===== SECTION 3 : RÉMUNÉRATION ===== -->
+    <div class="section-title">3. La Rémunération</div>
+
+    <div class="sub-title">Structure de la rémunération globale</div>
+    <table class="compact-table">
+        <tr><th>Composante</th><th>Détail</th></tr>
+        <tr><td><span class="hl-important">① Rémunération directe</span></td><td>Salaire fixe (qualification + complément individuel) + Salaire variable (individuel/collectif) + Primes</td></tr>
+        <tr><td><span class="hl-important">② Périphériques légaux</span></td><td><strong>Intéressement</strong> (1959, facultatif, ≤20% masse salariale brute) · <strong>Participation</strong> (1967, obligatoire >50 sal.) · <strong>PEE</strong> (1967, épargne bloquée 5 ans) · <strong>Stock-options</strong></td></tr>
+        <tr><td><span class="hl-important">③ Avantages en nature</span></td><td>Individuels (voiture, logement, téléphone) · Collectifs (tickets-restaurant, chèques vacances, crèche)</td></tr>
+        <tr><td><span class="hl-important">④ Périphériques statutaires</span></td><td>Mutuelle, prévoyance, complémentaire retraite — avantages acquis par l'entreprise</td></tr>
+    </table>
+
+    <div class="sub-title">Masse salariale</div>
+    <div class="block block-def">
+        <div class="block-label">Formule à connaître</div>
+        Rémunérations nettes + charges sociales = <strong>Rémunérations brutes</strong><br>
+        Rémunérations brutes + charges patronales = <strong>Masse salariale</strong><br><br>
+        <strong>Facteurs d'évolution :</strong> mouvements (entrées/sorties) + promotions internes + recours flexibilité (CDD, intérim) + augmentations générales/catégorielles/individuelles
+    </div>
+
+    <div class="sub-title">Politiques de rémunération (Peretti)</div>
+    <ul class="blist">
+        <li><strong>Compétitivité par les coûts</strong> → ↑ part variable (bonus)</li>
+        <li><strong>Compétitivité par la qualité</strong> → ↑ individualisation des salaires</li>
+        <li><strong>Impératifs du marché financier</strong> → ↑ part différée (stock-options, PEE)</li>
+    </ul>
+    <div class="block block-def">
+        <div class="block-label">4 caractéristiques d'une bonne politique de rémunération</div>
+        <strong>Équitable</strong> (à compétence égale = salaire égal) · <strong>Motivante</strong> (lien performance/rémunération) · <strong>Compétitive</strong> (dans le marché) · <strong>Souple</strong> (adaptée aux situations)
+    </div>
+
+    <div class="block block-insight">
+        <div class="block-label">⭐ Insight Auclair — Rémunération</div>
+        Q2 : distinguer <strong>bonus</strong> (récompense l'atteinte d'objectifs → variable) et <strong>augmentation de salaire</strong> (récompense les efforts continus → fixe). Dans une stratégie de <em>compétitivité par les coûts</em>, on privilégie le variable. Respecter l'équité : même bonus pour même objectif atteint, même salaire à compétence égale quelle que soit l'ancienneté.
+    </div>
+
+    <!-- ===== SECTION 4 : ÉVALUATION ===== -->
+    <div class="section-title">4. L'Évaluation des salariés</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définition — Lawler & McDermott (2003) + Aguinis (2009)</div>
+        "Le processus par lequel les organisations (a) identifient, (b) mesurent, (c) développent et (d) alignent la performance individuelle avec leurs objectifs stratégiques"
+    </div>
+
+    <table class="compact-table">
+        <tr><th>Outil</th><th>Principe</th><th>Avantage</th></tr>
+        <tr><td><span class="hl-important">BARS</span> (Behavioral Anchored Rating Scales)</td><td>Échelles comportementales ancrées sur des exemples concrets</td><td>Réduit la subjectivité et l'indulgence</td></tr>
+        <tr><td><span class="hl-important">FDRS</span> (Forced Distribution)</td><td>Distribution forcée (ex : 10% A, 25% B, 65% C)</td><td>Évite l'inflation des bonnes notes</td></tr>
+        <tr><td><span class="hl-important">Entretien annuel d'évaluation</span></td><td>Bilan performance + objectifs N+1</td><td>Dialogue manager-salarié</td></tr>
+        <tr><td><span class="hl-important">Entretien professionnel</span></td><td>Obligatoire tous les 2 ans depuis 2014 — porte sur l'évolution professionnelle et la formation</td><td>Distinct de l'évaluation de performance</td></tr>
+        <tr><td><span class="hl-important">Évaluation 360°</span></td><td>Feedback de l'ensemble des parties prenantes (N+1, pairs, N-1, clients)</td><td>Vision complète, moins de biais</td></tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Critiques des systèmes d'évaluation — à connaître</div>
+        (1) Injuste et imprécis (biais cognitifs, affinités) · (2) Fardeau administratif · (3) Objectifs multiples et contradictoires (contrôle vs développement) · (4) Ne prouve pas l'amélioration de la performance · (5) "Maladie mortelle" (Deming)
+    </div>
+
+    <!-- ===== SECTION 5 : FORMATION ===== -->
+    <div class="section-title">5. La Formation professionnelle</div>
+
+    <div class="two-col">
+        <div class="mini-card">
+            <h4>📘 CPF (2014)</h4>
+            <p>500€/an (1h = 15€), plafonné à 5 000€. Droits conservés toute la vie, quelle que soit la situation du salarié.</p>
+        </div>
+        <div class="mini-card">
+            <h4>🔄 CPF Transition pro (2019)</h4>
+            <p>Anciennement CIF. Permet de changer de métier. Maintien salaire à 90% 1ère année. Conditions : 24 mois ancienneté dont 12 dans l'entreprise.</p>
+        </div>
+        <div class="mini-card">
+            <h4>🎓 VAE</h4>
+            <p>Valider ses acquis d'expérience (≥1 an) pour obtenir un diplôme/titre. Jury évalue l'expérience.</p>
+        </div>
+        <div class="mini-card">
+            <h4>💰 Obligation entreprise</h4>
+            <p>0,55% masse salariale (< 10 sal.) · 1% masse salariale (≥ 11 sal.) → versé aux OPCA</p>
+        </div>
+    </div>
+
+    <div class="sub-title">4 conceptions de la formation (Meignant)</div>
+    <table class="compact-table">
+        <tr><th>Conception</th><th>Vision</th></tr>
+        <tr><td><span class="hl-important">La formation impôt</span></td><td>Obligation légale à remplir, sans stratégie réelle</td></tr>
+        <tr><td><span class="hl-important">La formation pactole</span></td><td>Opportunité financière (déduire des impôts)</td></tr>
+        <tr><td><span class="hl-important">La formation sécurité</span></td><td>Réponse aux besoins urgents (conformité, risques)</td></tr>
+        <tr><td><span class="hl-important">La formation développement</span></td><td>Investissement stratégique pour la performance future ← <span class="tag tag-green">Idéale</span></td></tr>
+    </table>
+
+    <!-- ===== SECTION 6 : CARRIÈRES ===== -->
+    <div class="section-title">6. Gestion des carrières</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définition — Roger (1991)</div>
+        "Une action finalisée, organisée et animée pour définir la succession des affectations individuelles du personnel"
+    </div>
+
+    <div class="sub-title">Types de mobilité</div>
+    <ul class="blist">
+        <li><strong>Verticale</strong> : changement de niveau hiérarchique (promotion)</li>
+        <li><strong>Horizontale</strong> : changement de fonction/métier sans changement hiérarchique</li>
+        <li><strong>Géographique</strong> : changement de lieu (local, national, international)</li>
+    </ul>
+
+    <div class="sub-title">⭐ Matrice de Ference (1977) — CRITIQUE pour l'exam</div>
+
+    <div style="margin:0.8rem 0;">
+        <table class="compact-table" style="text-align:center;">
+            <tr>
+                <th style="background:#fff;color:#1a1a2e;width:80px;"></th>
+                <th style="background:#1a1a2e;">Performance FAIBLE</th>
+                <th style="background:#1a1a2e;">Performance ÉLEVÉE</th>
+            </tr>
+            <tr>
+                <td style="background:#1a1a2e;color:white;font-weight:700;font-size:0.73rem;">Potentiel ÉLEVÉ</td>
+                <td style="background:#dbeafe;color:#1e40af;font-weight:700;padding:0.7rem;">⬆️ ESPOIRS<br><span style="font-weight:400;font-size:0.78rem;">Accompagner, former, donner du temps</span></td>
+                <td style="background:#d1fae5;color:#065f46;font-weight:700;padding:0.7rem;">⭐ ÉTOILES<br><span style="font-weight:400;font-size:0.78rem;">Fidéliser, accélérer la carrière, défis</span></td>
+            </tr>
+            <tr>
+                <td style="background:#1a1a2e;color:white;font-weight:700;font-size:0.73rem;">Potentiel FAIBLE</td>
+                <td style="background:#fee2e2;color:#991b1b;font-weight:700;padding:0.7rem;">💀 BRANCHES MORTES<br><span style="font-weight:400;font-size:0.78rem;">Bilan de compétences, reconversion, séparation</span></td>
+                <td style="background:#fef9c3;color:#713f12;font-weight:700;padding:0.7rem;">🏛️ PILIERS<br><span style="font-weight:400;font-size:0.78rem;">Reconnaître, maintenir la motivation, mentor</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="block block-insight">
+        <div class="block-label">⭐ Insight Auclair — Matrice de Ference (Q4)</div>
+        <strong>Patrick = Pilier</strong> (performance élevée, potentiel limité à ce stade) → mobilité horizontale + rôle de mentor pour Philippe. <strong>Sandrine = Étoile</strong> (compétente, ambitieuse) → entretien professionnel, évolution verticale (acheteur centrale). <strong>Philippe = Espoir ou Branche morte</strong> (bon savoir-être, mauvaises performances) → feedback + bilan compétences + formation, délai 1 an. <strong>Hugo = Espoir</strong> (1 an en poste, points forts) → formation leadership + feedbacks réguliers avec Patrick.
+    </div>
+
+    <div class="sub-title">Hauts Potentiels (HP)</div>
+    <ul class="blist">
+        <li>Distinctions : <strong>HP</strong> (susceptibles d'atteindre haut niveau) · <strong>Key People</strong> (indispensables à court terme) · <strong>Talents</strong> (large définition)</li>
+        <li>Gestion HP : promotions rapides · fidélisation · tests de performance et d'implication · défis importants</li>
+    </ul>
+
+    <!-- ===== SECTION 7 : DIVERSITÉ ===== -->
+    <div class="section-title">7. Gestion de la diversité</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définition</div>
+        Diversité : toutes sortes de différences visibles et non-visibles entre les individus<br>
+        Management de la diversité : mise en œuvre de politiques intégrant des personnes aux profils variés dans une dynamique de travail (Pearson, 2015)
+    </div>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Critères de discrimination prohibés (25 critères) — à citer à l'exam</div>
+        Âge · Sexe · Origine · Appartenance ethnique/nationale/raciale/religieuse · Grossesse · État de santé · Handicap · Caractéristiques génétiques · Orientation sexuelle · Identité de genre · Opinions politiques · Activités syndicales · Situation de famille · Apparence physique · Lieu de résidence · Vulnérabilité économique · Domiciliation bancaire…
+    </div>
+
+    <div class="sub-title">3 mécanismes d'isomorphisme (DiMaggio & Powell, 1983)</div>
+    <table class="compact-table">
+        <tr><th>Type</th><th>Mécanisme</th><th>Exemple GRH diversité</th></tr>
+        <tr><td><span class="hl-important">Coercitif</span></td><td>Obligations légales, sanctions</td><td>Accord égalité pro obligatoire >50 sal. · Pénalité jusqu'à 1% masse salariale (loi 2018)</td></tr>
+        <tr><td><span class="hl-important">Normatif</span></td><td>Culture organisationnelle, professionnalisation</td><td>Changer les normes implicites (humour sexiste, horaires de réunions)</td></tr>
+        <tr><td><span class="hl-important">Mimétique</span></td><td>Imitation des meilleures pratiques (benchmarking)</td><td>Exemplarité du top management</td></tr>
+    </table>
+
+    <!-- ===== SECTION 8 : RPS & QVT ===== -->
+    <div class="section-title">8. Risques Psycho-Sociaux (RPS) & QVT</div>
+
+    <div class="block block-def">
+        <div class="block-label">Définition RPS — Besseyre des Horts (2011)</div>
+        "Tensions humaines potentielles générées par la mise en œuvre opérationnelle d'une stratégie d'entreprise"
+    </div>
+
+    <table class="compact-table">
+        <tr><th>RPS</th><th>Définition</th><th>Auteur/Source</th></tr>
+        <tr><td><span class="hl-important">Stress</span></td><td>"Déséquilibre entre la perception des contraintes de l'environnement et la perception de ses propres ressources pour y faire face"</td><td>Accord National Interprofessionnel, 2008</td></tr>
+        <tr><td><span class="hl-important">Burn-out</span></td><td>"Épuisement physique, émotionnel et mental résultant d'un investissement prolongé dans des situations exigeantes sur le plan émotionnel"</td><td>Schaufeli & Greenglass, 2001</td></tr>
+        <tr><td><span class="hl-important">Bore-out</span></td><td>"Souffrance psychique durable imputable au manque de sollicitations durant l'activité de travail"</td><td>INRS, 2016</td></tr>
+        <tr><td><span class="hl-important">Harcèlement moral</span></td><td>Agissements répétés dégradant les conditions de travail et portant atteinte à la dignité</td><td>Code du travail</td></tr>
+    </table>
+
+    <div class="block block-attention">
+        <div class="block-label">⚠ Chiffres clés RPS</div>
+        Coût = <strong>2,6% du PIB</strong> · 48% des arrêts de travail dans les grandes entreprises · 400 suicides liés au travail/an · 36% des salariés déclarent avoir vécu un burn-out
+    </div>
+
+    <div class="sub-title">Qualité de Vie au Travail (QVT) — Politiques</div>
+    <table class="compact-table">
+        <tr><th>Thématique</th><th>Exemples de politiques</th></tr>
+        <tr><td><span class="hl-important">Flexibilité temporelle</span></td><td>Horaires aménagés, semaine compressée, temps partiel, partage de poste</td></tr>
+        <tr><td><span class="hl-important">Flexibilité spatiale</span></td><td>Télétravail, tiers-lieux</td></tr>
+        <tr><td><span class="hl-important">Flexibilité de carrière</span></td><td>Congés parentaux, interruptions de carrière, mobilité choisie</td></tr>
+        <tr><td><span class="hl-important">Ressources hors travail</span></td><td>Crèche d'entreprise, conciergerie, aide juridique/psychologique</td></tr>
+        <tr><td><span class="hl-important">Droit à la déconnexion</span></td><td>Loi Travail du 8 août 2016 — protéger l'équilibre vie pro/perso face aux NTIC</td></tr>
+    </table>
+
+    <!-- ===== SECTION 9 : MÉTHODO CAS ===== -->
+    <div class="section-title">9. Méthode — Comment répondre à une étude de cas GRH</div>
+
+    <div class="block block-insight">
+        <div class="block-label">⭐ Structure attendue par le Prof. Meyer</div>
+        <strong>① Situation de départ</strong> : décrire le contexte (entreprise, secteur, problème identifié)<br>
+        <strong>② Problème</strong> : formuler clairement la problématique RH en jeu<br>
+        <strong>③ Questionnement / Hypothèse</strong> : identifier les enjeux, les parties prenantes, les contraintes<br>
+        <strong>④ Plan d'action</strong> : proposer des actions concrètes (recrutement, formation, mobilité…) en citant les outils et auteurs<br>
+        <strong>⑤ Alternatives</strong> : envisager d'autres scénarios si le plan A échoue
+    </div>
+
+    <div class="block block-astuce">
+        <div class="block-label">✓ Ce que le correcteur valorise</div>
+        <ul class="blist">
+            <li>Citer les auteurs et les définitions précises (Peretti, Ulrich, Ference, Roger, Meignant…)</li>
+            <li>Distinguer les outils (ex: bonus ≠ augmentation · BARS ≠ 360° · CPF ≠ VAE)</li>
+            <li>Adapter la réponse au contexte (stratégie, culture, taille de l'entreprise)</li>
+            <li>Respecter l'équité et la légalité (ne jamais justifier par un critère discriminant)</li>
+            <li>Articuler dimension individuelle ET collective dans chaque réponse</li>
+        </ul>
+    </div>
+
+    <!-- ===== SECTION 10 : AUTEURS ===== -->
+    <div class="section-title">10. Auteurs & références à citer à l'exam</div>
+
+    <table class="compact-table">
+        <tr><th>Auteur</th><th>Date</th><th>Contribution clé</th></tr>
+        <tr><td><span class="hl-important">Peretti</span></td><td>1977</td><td>Définition GRH + 3 politiques de rémunération</td></tr>
+        <tr><td><span class="hl-important">Ferrary</span></td><td>2014</td><td>Définition GRH stratégique</td></tr>
+        <tr><td><span class="hl-important">Ulrich</span></td><td>1997</td><td>4 rôles de la DRH (matrice 2×2)</td></tr>
+        <tr><td><span class="hl-important">Schein</span></td><td>—</td><td>Modèle de culture organisationnelle (3 niveaux)</td></tr>
+        <tr><td><span class="hl-important">Simon</span></td><td>1957</td><td>Rationalité limitée → décisions de recrutement non objectives</td></tr>
+        <tr><td><span class="hl-important">Van Maanen</span></td><td>—</td><td>7 tactiques de socialisation / intégration</td></tr>
+        <tr><td><span class="hl-important">Lawler & McDermott / Aguinis</span></td><td>2003 / 2009</td><td>Définition de l'évaluation de la performance</td></tr>
+        <tr><td><span class="hl-important">Roger</span></td><td>1991</td><td>Définition gestion des carrières</td></tr>
+        <tr><td><span class="hl-important">Ference</span></td><td>1977</td><td>Matrice Potentiel × Performance (Étoiles, Espoirs, Piliers, Branches mortes)</td></tr>
+        <tr><td><span class="hl-important">Meignant</span></td><td>—</td><td>4 conceptions de la formation (impôt, pactole, sécurité, développement)</td></tr>
+        <tr><td><span class="hl-important">DiMaggio & Powell</span></td><td>1983</td><td>3 isomorphismes (coercitif, normatif, mimétique) — gestion diversité</td></tr>
+        <tr><td><span class="hl-important">Besseyre des Horts</span></td><td>2011</td><td>Définition des RPS</td></tr>
+        <tr><td><span class="hl-important">Schaufeli & Greenglass</span></td><td>2001</td><td>Définition du burn-out</td></tr>
+        <tr><td><span class="hl-important">Harris & Brewster</span></td><td>1999</td><td>The coffee machine system (décision de recrutement informelle)</td></tr>
+    </table>
+
+    <!-- ===== RÉCAP FLASH ===== -->
+    <div class="section-title">⚡ Récap Flash — Les 10 points à ne pas rater</div>
+
+    <div class="block block-insight">
+        <div class="block-label">⭐ Ce qui tombe à l'exam</div>
+        <ol style="padding-left:1.2rem;font-size:0.9rem;line-height:1.9;">
+            <li><strong>Profil de poste vs Profil candidat</strong> — savoir les rédiger (cas Auclair Q1)</li>
+            <li><strong>Bonus vs Augmentation de salaire</strong> — différence conceptuelle + arbitrage Auclair Q2</li>
+            <li><strong>Matrice de Ference</strong> — positionner les collaborateurs + proposer les actions adaptées</li>
+            <li><strong>Modèle Ulrich</strong> — 4 rôles avec leur focus et orientation temporelle</li>
+            <li><strong>Structure rémunération</strong> — 4 composantes (directe + 3 périphériques)</li>
+            <li><strong>Définition RPS + les 3 maux</strong> (stress, burn-out, bore-out) + définitions précises</li>
+            <li><strong>Isomorphismes DiMaggio & Powell</strong> appliqués à la diversité</li>
+            <li><strong>CPF vs VAE vs entretien professionnel</strong> — les distinguer</li>
+            <li><strong>Critères de discrimination prohibés</strong> — toujours rappeler qu'une décision ne peut s'y fonder</li>
+            <li><strong>Méthode étude de cas</strong> : Situation → Problème → Hypothèse → Plan d'action → Alternatives</li>
+        </ol>
+    </div>
+
+</div>
+
+<div class="source-footer">
+    Synthèse Exam GRH — EM Normandie M1 — Cours Prof. Vincent Meyer
+</div>
+
+<script data-goatcounter="https://chaborz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<button onclick="window.print()" class="print-btn" title="Télécharger en PDF">📥 PDF</button>
+</body>
+</html>

@@ -140,9 +140,136 @@
             .card { min-width: 220px; width: 100%; max-width: 320px; }
             .landing h1 { font-size: 1.7rem; }
         }
+
+        /* ===== EMAIL GATE ===== */
+        #email-gate {
+            position: fixed;
+            inset: 0;
+            background: #0f0f1a;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            transition: opacity 0.4s ease;
+        }
+        #email-gate.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .gate-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 2.5rem 2.2rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .gate-logo { font-size: 2.5rem; margin-bottom: 1rem; }
+        .gate-box h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+        .gate-box p {
+            font-size: 0.85rem;
+            color: #606070;
+            margin-bottom: 1.8rem;
+            line-height: 1.55;
+        }
+        .gate-input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 0.8rem;
+        }
+        .gate-input::placeholder { color: #404055; }
+        .gate-input:focus { border-color: rgba(233,69,96,0.5); }
+        .gate-input.error { border-color: #e94560; animation: shake 0.3s ease; }
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .gate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #e94560, #c0354a);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .gate-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+        .gate-btn:disabled { background: rgba(255,255,255,0.07); color: #404055; cursor: default; transform: none; }
+        .gate-error {
+            margin-top: 0.7rem;
+            font-size: 0.8rem;
+            color: #e94560;
+            min-height: 1.1rem;
+        }
+        .gate-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: rgba(233,69,96,0.08);
+            border: 1px solid rgba(233,69,96,0.2);
+            border-radius: 50px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.72rem;
+            color: #e94560;
+            font-weight: 600;
+        }
+        .gate-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
     </style>
 </head>
 <body>
+
+<!-- ===== EMAIL GATE OVERLAY ===== -->
+<div id="email-gate">
+    <div class="gate-box">
+        <div class="gate-logo">🔐</div>
+        <h2>Accès réservé</h2>
+        <p>Ce site est réservé aux étudiants de l'EM Normandie.<br>Entre ton adresse email pour accéder aux fiches.</p>
+        <input
+            type="email"
+            id="gate-email"
+            class="gate-input"
+            placeholder="prenom.nom@em-normandie.fr"
+            autocomplete="email"
+            onkeydown="if(event.key==='Enter') submitGate()"
+        >
+        <button class="gate-btn" id="gate-btn" onclick="submitGate()">
+            Accéder aux fiches →
+        </button>
+        <div class="gate-error" id="gate-error"></div>
+        <div class="gate-badge">@em-normandie.fr uniquement</div>
+    </div>
+</div>
 
 <div class="landing">
     <h1>Revision pour le peuple</h1>
@@ -178,6 +305,96 @@
     </div>
 </div>
 
+<!-- ===== EMAIL GATE LOGIC ===== -->
+<script>
+// ─────────────────────────────────────────────────────
+// TODO : remplace ces deux valeurs par les tiennes
+// ─────────────────────────────────────────────────────
+const BREVO_API_KEY = 'REMPLACE_PAR_TA_CLE_BREVO';  // xkeysib-...
+const BREVO_LIST_ID = 0;  // Ton ID de liste Brevo (ex: 3)
+// ─────────────────────────────────────────────────────
+
+const GATE_KEY = 'revision_access_v1';
+const ALLOWED_DOMAIN = '@em-normandie.fr';
+
+// Check si déjà validé
+(function() {
+    if (localStorage.getItem(GATE_KEY) === '1') {
+        const gate = document.getElementById('email-gate');
+        gate.style.display = 'none';
+    }
+})();
+
+async function submitGate() {
+    const emailInput = document.getElementById('gate-email');
+    const errorDiv = document.getElementById('gate-error');
+    const btn = document.getElementById('gate-btn');
+    const email = emailInput.value.trim().toLowerCase();
+
+    errorDiv.textContent = '';
+    emailInput.classList.remove('error');
+
+    // Validation côté client
+    if (!email) {
+        showGateError(emailInput, errorDiv, 'Entre ton adresse email EM Normandie.');
+        return;
+    }
+    if (!email.endsWith(ALLOWED_DOMAIN)) {
+        showGateError(emailInput, errorDiv, `Adresse invalide — utilise ton @em-normandie.fr`);
+        return;
+    }
+
+    // Désactiver le bouton + spinner
+    btn.disabled = true;
+    btn.innerHTML = '<span class="gate-spinner"></span> Vérification...';
+
+    // Envoyer à Brevo (best-effort, ne bloque pas l'accès)
+    try {
+        await addToBrevo(email);
+    } catch(e) {
+        // Silently fail — l'accès est accordé quand même
+        console.warn('Brevo:', e.message);
+    }
+
+    // Accès accordé
+    localStorage.setItem(GATE_KEY, '1');
+
+    // Disparition fluide de la gate
+    const gate = document.getElementById('email-gate');
+    gate.classList.add('hidden');
+    setTimeout(() => gate.style.display = 'none', 450);
+
+    btn.disabled = false;
+    btn.innerHTML = 'Accéder aux fiches →';
+}
+
+function showGateError(input, errorDiv, msg) {
+    errorDiv.textContent = msg;
+    input.classList.add('error');
+    setTimeout(() => input.classList.remove('error'), 400);
+}
+
+async function addToBrevo(email) {
+    const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'api-key': BREVO_API_KEY
+        },
+        body: JSON.stringify({
+            email: email,
+            listIds: BREVO_LIST_ID > 0 ? [BREVO_LIST_ID] : [],
+            updateEnabled: true
+        })
+    });
+    if (!res.ok && res.status !== 204) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || `HTTP ${res.status}`);
+    }
+}
+</script>
+
+<!-- ===== FIREBASE AVIS ===== -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";

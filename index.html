@@ -179,22 +179,38 @@
             margin-bottom: 1.8rem;
             line-height: 1.55;
         }
-        .gate-input {
-            width: 100%;
+        .gate-input-wrap {
+            display: flex;
+            align-items: center;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.12);
             border-radius: 10px;
-            padding: 0.75rem 1rem;
+            margin-bottom: 0.8rem;
+            transition: border-color 0.2s;
+            overflow: hidden;
+        }
+        .gate-input-wrap:focus-within { border-color: rgba(233,69,96,0.5); }
+        .gate-input-wrap.error { border-color: #e94560; animation: shake 0.3s ease; }
+        .gate-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.75rem 0 0.75rem 1rem;
             color: #e0e0e0;
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
             outline: none;
-            transition: border-color 0.2s;
-            margin-bottom: 0.8rem;
+            min-width: 0;
         }
         .gate-input::placeholder { color: #404055; }
-        .gate-input:focus { border-color: rgba(233,69,96,0.5); }
-        .gate-input.error { border-color: #e94560; animation: shake 0.3s ease; }
+        .gate-suffix {
+            padding: 0.75rem 1rem 0.75rem 0.2rem;
+            color: #e94560;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            user-select: none;
+        }
         @keyframes shake {
             0%,100% { transform: translateX(0); }
             25% { transform: translateX(-6px); }
@@ -255,14 +271,17 @@
         <div class="gate-logo">🔐</div>
         <h2>Accès réservé</h2>
         <p>Ce site est réservé aux étudiants de l'EM Normandie.<br>Entre ton adresse email pour accéder aux fiches.</p>
-        <input
-            type="email"
-            id="gate-email"
-            class="gate-input"
-            placeholder="prenom.nom@em-normandie.fr"
-            autocomplete="email"
-            onkeydown="if(event.key==='Enter') submitGate()"
-        >
+        <div class="gate-input-wrap" id="gate-input-wrap">
+            <input
+                type="text"
+                id="gate-email"
+                class="gate-input"
+                placeholder="prenom.nom"
+                autocomplete="username"
+                onkeydown="if(event.key==='Enter') submitGate()"
+            >
+            <span class="gate-suffix">@em-normandie.fr</span>
+        </div>
         <button class="gate-btn" id="gate-btn" onclick="submitGate()">
             Accéder aux fiches →
         </button>
@@ -331,20 +350,22 @@ const ALLOWED_DOMAIN = '@em-normandie.fr';
 
 async function submitGate() {
     const emailInput = document.getElementById('gate-email');
+    const wrap = document.getElementById('gate-input-wrap');
     const errorDiv = document.getElementById('gate-error');
     const btn = document.getElementById('gate-btn');
-    const email = emailInput.value.trim().toLowerCase();
+    const username = emailInput.value.trim().toLowerCase();
+    const email = username + ALLOWED_DOMAIN;
 
     errorDiv.textContent = '';
-    emailInput.classList.remove('error');
+    wrap.classList.remove('error');
 
     // Validation côté client
-    if (!email) {
-        showGateError(emailInput, errorDiv, 'Entre ton adresse email EM Normandie.');
+    if (!username) {
+        showGateError(wrap, errorDiv, 'Entre ton prénom.nom EM Normandie.');
         return;
     }
-    if (!email.endsWith(ALLOWED_DOMAIN)) {
-        showGateError(emailInput, errorDiv, `Adresse invalide — utilise ton @em-normandie.fr`);
+    if (username.includes('@')) {
+        showGateError(wrap, errorDiv, 'Tape juste ton prénom.nom, sans @');
         return;
     }
 
@@ -372,10 +393,10 @@ async function submitGate() {
     btn.innerHTML = 'Accéder aux fiches →';
 }
 
-function showGateError(input, errorDiv, msg) {
+function showGateError(wrap, errorDiv, msg) {
     errorDiv.textContent = msg;
-    input.classList.add('error');
-    setTimeout(() => input.classList.remove('error'), 400);
+    wrap.classList.add('error');
+    setTimeout(() => wrap.classList.remove('error'), 400);
 }
 
 async function addToBrevo(email) {

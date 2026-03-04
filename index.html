@@ -340,9 +340,9 @@ const BREVO_LIST_ID = 0;  // TODO: remplace par ton ID de liste Brevo (ex: 3)
 const GATE_KEY = 'revision_access_v1';
 const ALLOWED_DOMAIN = '@em-normandie.fr';
 
-// Check si déjà validé
+// Check si déjà validé dans cette session
 (function() {
-    if (localStorage.getItem(GATE_KEY) === '1') {
+    if (sessionStorage.getItem(GATE_KEY) === '1') {
         const gate = document.getElementById('email-gate');
         gate.style.display = 'none';
     }
@@ -381,8 +381,8 @@ async function submitGate() {
         console.warn('Brevo:', e.message);
     }
 
-    // Accès accordé
-    localStorage.setItem(GATE_KEY, '1');
+    // Accès accordé (session uniquement — expire à la fermeture du navigateur)
+    sessionStorage.setItem(GATE_KEY, '1');
 
     // Disparition fluide de la gate
     const gate = document.getElementById('email-gate');
